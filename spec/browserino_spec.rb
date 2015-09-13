@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'user_agents'
 
 describe Browserino do
   it 'has a version number' do

@@ -9,45 +9,45 @@ module Browserino
   PATTERNS = {
     browser: {
       opera: {
-        name: /ope?ra?/,
-        version: /(ope?ra?|version)(\/|\s)([\d\.]+)/
+        name: /(<name> ope?ra?)/,
+        version: /(ope?ra?|version)(<version>\/|\s)([\d\.]+)/
       },
 
       ie: {
-        name: /msie|trident/,
-        version: /(msie\s|rv\:)([\d\.b]+)/
+        name: /(<name> msie|trident)/,
+        version: /(msie\s|rv\:)(<version> [\d\.b]+)/
       },
 
       maxthon: {
-        name: /maxthon/,
-        version: /maxthon(\s|\/)([\d\.]+)/
+        name: /(<name> maxthon)/,
+        version: /maxthon(\s|\/)(<version> [\d\.]+)/
       },
 
       firefox: {
-        name: /(fire|water)(fox|bird)|ice(weasel|cat)|netscape/,
-        version: /(fire|water)(fox|bird)|ice(weasel|cat)|netscape([\d\.]+)/
+        name: /(<name> (fire|water)(fox|bird)|ice(weasel|cat)|netscape)/,
+        version: /(fire|water)(fox|bird)|ice(weasel|cat)|netscape(<version> [\d\.]+)/
       },
 
       chrome: {
-        name: /chrome?(ium|plus)?/,
-        version: /chrome?(ium|plus)?\/([\d\.]+)/
+        name: /(<name> chrome?(ium|plus)?)/,
+        version: /chrome?(ium|plus)?\/(<version> [\d\.]+)/
       },
 
       safari: {
-        name: /safari/,
-        version: /(version|safari)\/([\d\.]+)/
+        name: /(<name> safari)/,
+        version: /(version|safari)\/(<version> [\d\.]+)/
       }
     },
 
     engine: {
-      name: /((apple)?webkit|gecko|trident|presto)/,
-      version: /((apple)?webkit|gecko|trident|presto)([\d\.]+)/
+      name: /(<name> ((apple)?webkit|gecko|trident|presto))/,
+      version: /((apple)?webkit|gecko|trident|presto)(<version> [\d\.]+)/
     },
 
     operating_system: {
-      name: /windows|macintosh|linux/,
-      version: /(nt|mac\sos\sx)\s([\d\._]+)/,
-      architecture: /(x?(86_)?64)|i(3|6)86/
+      name: /(<name> windows|macintosh|linux)/,
+      version: /(nt|mac\sos\sx)\s(<version> [\d\._]+)/,
+      architecture: /(<architecture> (x?(86_)?64)|i(3|6)86)/
     }
   }
 end
