@@ -10,4 +10,16 @@ describe Browserino do
     @major_browsers = [:opera, :ie, :firefox, :chrome, :safari]
     expect((Browserino::PATTERNS[:browser].keys & @major_browsers).empty?).to eq(false)
   end
+
+  UserAgents.constants.each do |const|
+    UserAgents.const_get(const).each do |platform|
+      unless (platform[1] || []).empty?
+        it "recognizes #{const.downcase} on #{platform[0]}" do
+          platform[1].each do |agent|
+            expect(Browserino::parse(agent)).to eq(const.downcase)
+          end
+        end
+      end
+    end
+  end
 end
