@@ -26,7 +26,7 @@ module Browserino
       firefox: {
         name: /(fire|water)(fox|bird)|ice(weasel|cat)|netscape/,
         version: /(fire|water)(fox|bird)|ice(weasel|cat)|netscape([\d\.]+)/
-      }
+      },
 
       chrome: {
         name: /chrome?(ium|plus)?/,
@@ -46,7 +46,7 @@ module Browserino
 
     operating_system: {
       name: /windows|macintosh|linux/,
-      version: /(nt|mac\sos\sx)\s([\d\._]+)/
+      version: /(nt|mac\sos\sx)\s([\d\._]+)/,
       architecture: /(x?(86_)?64)|i(3|6)86/
     }
   }
