@@ -1,6 +1,8 @@
 require "browserino/version"
-require "browserino/test"
+require "browserino/browser"
+require "browserino/engine"
+require "browserino/operating_system"
 
 module Browserino
-  # Your code goes here...
+
 end
