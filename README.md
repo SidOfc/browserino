@@ -43,6 +43,10 @@ Or install it yourself as:
   * version
   * architecture
 
+## Development
+
+*Should you want to contribute to the project the instructions for it will be here when version 1 releases*
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/SidOfc/browserino. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
