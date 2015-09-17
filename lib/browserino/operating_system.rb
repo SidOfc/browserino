@@ -1,15 +1,15 @@
 module Browserino
   module OperatingSystem
     def self.name(ua)
-      ua.match(Browserino::PATTERNS[:operating_system][:name])
+      MatchExtractor::extract(ua.match(Browserino::PATTERNS[:operating_system][:name]), :name)
     end
 
     def self.version(ua)
-      ua.match(Browserino::PATTERNS[:operating_system][:version])
+      MatchExtractor::extract(ua.match(Browserino::PATTERNS[:operating_system][:version]), :version)
     end
 
     def self.architecture(ua)
-      ua.match(Browserino::PATTERNS[:operating_system][:architecture])
+      MatchExtractor::extract(ua.match(Browserino::PATTERNS[:operating_system][:architecture]), :architecture)
     end
   end
 end

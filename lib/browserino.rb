@@ -1,5 +1,6 @@
 require "browserino/agent"
 require "browserino/version"
+require "browserino/match_extractor"
 require "browserino/patterns"
 require "browserino/browser"
 require "browserino/engine"

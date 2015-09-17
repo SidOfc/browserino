@@ -1,11 +1,11 @@
 module Browserino
   module Browser
     def self.name(ua, patterns)
-      ua.match(patterns[:name])
+      MatchExtractor::extract(ua.match(patterns[:name]), :name)
     end
 
     def self.version(ua, patterns)
-      ua.match(patterns[:version])
+      MatchExtractor::extract(ua.match(patterns[:version]), :version)
     end
   end
 end
