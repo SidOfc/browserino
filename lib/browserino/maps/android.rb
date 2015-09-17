@@ -10,7 +10,7 @@ module Browserino
       [16] => 'Cupcake 4',
       [20] => 'Eclair 5',
       [201] => 'Eclair 6',
-      [21] => 'Eclair 7'
+      [21] => 'Eclair 7',
       [22, 221, 222, 223] => 'Froyo 8',
       [23, 231, 232] => 'Gingerbread 9',
       [233, 234, 235, 236, 237] => 'Gingerbread 10',

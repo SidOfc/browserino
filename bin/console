@@ -2,5 +2,18 @@
 
 require "bundler/setup"
 require "browserino"
-require "pry"
-Pry.start
+# require "pry"
+
+agent = Browserino::parse('Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25')
+
+puts agent.browser_name
+puts agent.browser_version
+puts '--------------------'
+puts agent.engine_name
+puts agent.engine_version
+puts '--------------------'
+puts agent.system_name true
+puts agent.system_version
+puts agent.system_architecture
+
+# Pry.start

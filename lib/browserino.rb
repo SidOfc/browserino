@@ -1,3 +1,8 @@
+require "browserino/maps/osx"
+require "browserino/maps/ios"
+require "browserino/maps/android"
+require "browserino/maps/windows"
+
 require "browserino/agent"
 require "browserino/version"
 require "browserino/match_extractor"
