@@ -12,7 +12,7 @@ puts '--------------------'
 puts agent.engine_name
 puts agent.engine_version
 puts '--------------------'
-puts agent.system_name true
+puts agent.system_name
 puts agent.system_version
 puts agent.system_architecture
 

@@ -3,6 +3,7 @@ require "browserino/maps/ios"
 require "browserino/maps/android"
 require "browserino/maps/windows"
 
+require "browserino/agent_manipulator"
 require "browserino/agent"
 require "browserino/version"
 require "browserino/match_extractor"
@@ -13,7 +14,7 @@ require "browserino/operating_system"
 
 module Browserino
   def self.parse ua
-    ua = ua.gsub(/(Mozilla\/[\d\.]+)/, '').strip
+    ua = AgentManipulator.new(ua).ua
     patterns = find_browser_patterns(ua)
     if patterns == :unknown
       nil
