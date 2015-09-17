@@ -1,16 +1,11 @@
 module Browserino
   module Browser
-    def self.name(ua = nil)
-      name = nil
-      browsers = Browserino::PATTERNS[:browser].keys
-      until browsers.empty? || !name.nil?
-        subject = browsers.shift
-        name = subject if (ua.match(Browserino::PATTERNS[:browser][subject][:name]))
-      end
-      name ||= :unknown
+    def self.name(ua, patterns)
+      ua.match(patterns[:name])
     end
 
-    def self.version
+    def self.version(ua, patterns)
+      ua.match(patterns[:version])
     end
   end
 end
