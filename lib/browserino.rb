@@ -16,19 +16,15 @@ module Browserino
   def self.parse ua
     ua = AgentManipulator.new(ua).ua
     name = find_browser_name(ua)
-    if name == :unknown
-      nil
-    else
-      Agent.new({
-        browser_name: name,
-        browser_version: Browser::version(ua, PATTERNS[:browser][name]),
-        engine_name: Engine::name(ua),
-        engine_version: Engine::version(ua),
-        system_name: OperatingSystem::name(ua),
-        system_version: OperatingSystem::version(ua),
-        system_architecture: OperatingSystem::architecture(ua)
-      }).to_h
-    end
+    Agent.new({
+      browser_name: name,
+      browser_version: Browser::version(ua, PATTERNS[:browser][name]),
+      engine_name: Engine::name(ua),
+      engine_version: Engine::version(ua),
+      system_name: OperatingSystem::name(ua),
+      system_version: OperatingSystem::version(ua),
+      system_architecture: OperatingSystem::architecture(ua)
+    })
   end
 
   private
