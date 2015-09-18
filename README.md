@@ -66,7 +66,7 @@ agent = Browserino::parse('Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWeb
 agent.browser_name # => safari
 agent.browser_version # => 6.0
 
-agent.engine_name # => applewebkit
+agent.engine_name # => webkit
 agent.engine_version # => 536.26
 
 agent.system_name # => ios
@@ -76,7 +76,7 @@ agent.system_architecture # => unknown (though it will make an attempt)
 
 ## Development
 
-*Should you want to contribute to the project the instructions for it will be here when version 1 releases*
+*Should you want to contribute to the project the instructions for it will be here when version 1 releases (PENDING)*
 
 ## Contributing
 
