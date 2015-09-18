@@ -33,12 +33,8 @@ module Browserino
   def self.check_for_aliases(hash)
     h = {}
     hash.each do |prop, val|
-      p prop
-      p val
-      p '--- --- --- --- --- ---'
-      h[prop] = ALIAS.select { |out, matches| true if matches.include?(val) }.keys.first || val
+      h[prop] = ALIAS.select { |key, matches| true if matches.include?(val) }.keys.first || val
     end
-    p h
   end
 
   def self.find_browser_name(ua)
