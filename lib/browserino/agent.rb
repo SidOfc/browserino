@@ -1,11 +1,9 @@
 module Browserino
   class Agent
+    attr_accessor :info
+
     def initialize(hash)
       @info = hash
-    end
-
-    def to_h
-      @info
     end
 
     def browser_name
