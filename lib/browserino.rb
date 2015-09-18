@@ -20,20 +20,14 @@ module Browserino
       nil
     else
       Agent.new({
-        browser: {
-          name: Browser::name(ua, patterns),
-          version: Browser::version(ua, patterns)
-        },
-        engine: {
-          name: Engine::name(ua),
-          version: Engine::version(ua)
-        },
-        operating_system: {
-          name: OperatingSystem::name(ua),
-          version: OperatingSystem::version(ua),
-          architecture: OperatingSystem::architecture(ua)
-        }
-      })
+        browser_name: Browser::name(ua, patterns),
+        browser_version: Browser::version(ua, patterns),
+        engine_name: Engine::name(ua),
+        engine_version: Engine::version(ua),
+        system_name: OperatingSystem::name(ua),
+        system_version: OperatingSystem::version(ua),
+        system_architecture: OperatingSystem::architecture(ua)
+      }).get_hash
     end
   end
 

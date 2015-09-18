@@ -14,9 +14,13 @@ describe Browserino do
   UserAgents.constants.each do |const|
     UserAgents.const_get(const).each do |platform|
       unless (platform[1] || []).empty?
-        it "recognizes #{const.downcase} on #{platform[0]}" do
-          platform[1].each do |agent|
-            expect(Browserino::parse(agent)).to eq(const.downcase)
+        puts "recognizes #{const.downcase} on #{platform[0]}?"
+        platform[1].each do |agent, criteria|
+          out = Browserino::parse(agent)
+          criteria.each do |property, value|
+            it "expects #{property} to be #{value}" do
+              expect(out[property].to_s).to eq value.to_s
+            end
           end
         end
       end

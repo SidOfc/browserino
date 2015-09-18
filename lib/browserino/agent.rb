@@ -4,12 +4,16 @@ module Browserino
       @info = hash
     end
 
+    def get_hash
+      @info
+    end
+
     def browser_name
       @info[:browser][:name]
     end
 
     def browser_version
-      @info[:browser][:version]
+      @info[:browser][:version].gsub('_', '.')
     end
 
     def engine_name
@@ -17,12 +21,13 @@ module Browserino
     end
 
     def engine_version
-      @info[:engine][:version]
+      @info[:engine][:version].gsub('_', '.')
     end
 
-    def system_name(full = false)
+    def system_name(opts = {})
+      opts = {full: false}.merge(opts)
       name = @info[:operating_system][:name]
-      if full
+      if opts[:full]
         [name, fetch_system_version_name(name)]
       else
         name
@@ -30,7 +35,7 @@ module Browserino
     end
 
     def system_version
-      @info[:operating_system][:version]
+      @info[:operating_system][:version].gsub('_', '.')
     end
 
     def system_architecture
@@ -42,14 +47,10 @@ module Browserino
     def fetch_system_version_name(name)
       codename = Browserino::Mapping.const_get(name.upcase)
       name.downcase!
-      if name.start_with?('mac')
-        version = system_version.split('_').first(2).join.to_i
+      if name.match(/mac|ios/i)
+        version = system_version.split('.').first(2).join.to_i
       elsif name.start_with?('win') || name.start_with?('android')
         version = system_version.gsub('.', '').to_i
-      elsif name.match(/ip((a|o)d|hone)/)
-        'got ios'
-      else
-        'got nuttin'
       end
       if version
         codename.select { |k, v| v if k.include?(version) }.values.first
