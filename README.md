@@ -10,7 +10,7 @@ This gem aims to provide information about the browser that your visitor is usin
 Hey there everone, my name is Sidney Liebrand and I aim to become a contributor to various open source projects as I gain experience in working with the community.
 For now All I'm going to say is that I'm not that experienced with git yet or how things go so bear with me should I make any mistake.
 
-If anyone ofcourse desires to manage me with this project feel free to add me on skype: *sidney.liebrand*
+If anyone ofcourse desires to manage this project with me feel free to add me on skype: *sidney.liebrand*
 
 ## Installation
 
