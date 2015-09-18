@@ -27,7 +27,7 @@ module UserAgents
         system_name: 'Windows',
         system_version: '6.0'
       },
-      'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; de) Opera 11.51' => {
+      'Mozilla/5.0 (compatible; ie 9.0; Windows NT 6.1; de) Opera 11.51' => {
         browser_name: 'Opera',
         browser_version: '11.51',
         engine_name: 'unknown',
@@ -57,8 +57,8 @@ module UserAgents
   },
   IE = {
     mac: {
-      'Mozilla/5.0 (compatible; MSIE 10.0; Macintosh; Intel Mac OS X 10_7_3; Trident/6.0)' => {
-        browser_name: 'MSIE',
+      'Mozilla/5.0 (compatible; ie 10.0; Macintosh; Intel Mac OS X 10_7_3; Trident/6.0)' => {
+        browser_name: 'ie',
         browser_version: '10.0',
         engine_name: 'Trident',
         engine_version: '6.0',
@@ -68,15 +68,15 @@ module UserAgents
     },
     win: {
       'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko' => {
-        browser_name: 'MSIE',
+        browser_name: 'ie',
         browser_version: '11.0',
         engine_name: 'Trident',
         engine_version: '7.0',
         system_name: 'Windows',
         system_version: '6.1'
       },
-      'Mozilla/5.0 (compatible; MSIE 10.6; Windows NT 6.1; Trident/5.0; InfoPath.2; SLCC1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET CLR 2.0.50727) 3gpp-gba UNTRUSTED/1.0' => {
-        browser_name: 'MSIE',
+      'Mozilla/5.0 (compatible; ie 10.6; Windows NT 6.1; Trident/5.0; InfoPath.2; SLCC1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET CLR 2.0.50727) 3gpp-gba UNTRUSTED/1.0' => {
+        browser_name: 'ie',
         browser_version: '10.6',
         engine_name: 'Trident',
         engine_version: '5.0',
@@ -97,11 +97,11 @@ module UserAgents
         system_name: 'Windows',
         system_version: '6.0'
       },
-      'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/4.0; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; Zune 4.0; InfoPath.3; MS-RTC LM 8; .NET4.0C; .NET4.0E; Maxthon 2.0)' => {
+      'Mozilla/5.0 (compatible; ie 9.0; Windows NT 6.1; Trident/4.0; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; Zune 4.0; InfoPath.3; MS-RTC LM 8; .NET4.0C; .NET4.0E; Maxthon 2.0)' => {
         browser_name: 'Maxthon',
         browser_version: '2.0',
         engine_name: 'Trident',
-        engine_version: '5.0',
+        engine_version: '4.0',
         system_name: 'Windows',
         system_version: '6.1'
       }
@@ -188,7 +188,7 @@ module UserAgents
         browser_name: 'Chrome',
         browser_version: '41.0.2228.0',
         engine_name: 'AppleWebkit',
-        engine_version: '537.37',
+        engine_version: '537.36',
         system_name: 'Windows',
         system_version: '6.1'
       },
@@ -214,7 +214,7 @@ module UserAgents
         browser_name: 'Chrome',
         browser_version: '41.0.2227.0',
         engine_name: 'AppleWebkit',
-        engine_version: '2537.37',
+        engine_version: '537.36',
         system_name: 'unknown',
         system_version: 'unknown'
       }

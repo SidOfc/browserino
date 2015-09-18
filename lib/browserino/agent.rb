@@ -4,7 +4,7 @@ module Browserino
       @info = hash
     end
 
-    def get_hash
+    def to_h
       @info
     end
 

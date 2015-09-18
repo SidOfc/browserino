@@ -13,12 +13,12 @@ module Browserino
 
       ie: {
         name: /(?<name>msie|trident)/i,
-        version: /(msie\s|rv\:)(?<version>[\d\.b]+)/i
+        version: /((ms)?ie\s|rv\:)(?<version>[\d\.b]+)/i
       },
 
       firefox: {
         name: /(?<name>(fire|water)(fox|bird)|ice(weasel|cat)|netscape)/i,
-        version: /(fire|water)(fox|bird)|ice(weasel|cat)|netscape(?<version>[\d\.]+)/i
+        version: /((fire|water)(fox|bird)|ice(weasel|cat)|netscape)[\/]?(?<version>[\d\.]+)/i
       },
 
       chrome: {
@@ -34,7 +34,7 @@ module Browserino
 
     engine: {
       name: /(?<name>((apple)?webkit|gecko|trident|presto))/i,
-      version: /((apple)?webkit|gecko|trident|presto)\/(?<version>[\d\.]+)/i
+      version: /((apple)?webkit|rv:|trident|presto)[\/\s]?(?<version>[\d\.]+)/i
     },
 
     operating_system: {

@@ -15,31 +15,31 @@ require "browserino/operating_system"
 module Browserino
   def self.parse ua
     ua = AgentManipulator.new(ua).ua
-    patterns = find_browser_patterns(ua)
-    if patterns == :unknown
+    name = find_browser_name(ua)
+    if name == :unknown
       nil
     else
       Agent.new({
-        browser_name: Browser::name(ua, patterns),
-        browser_version: Browser::version(ua, patterns),
+        browser_name: name,
+        browser_version: Browser::version(ua, PATTERNS[:browser][name]),
         engine_name: Engine::name(ua),
         engine_version: Engine::version(ua),
         system_name: OperatingSystem::name(ua),
         system_version: OperatingSystem::version(ua),
         system_architecture: OperatingSystem::architecture(ua)
-      }).get_hash
+      }).to_h
     end
   end
 
   private
 
-  def self.find_browser_patterns ua
-    patterns = nil
+  def self.find_browser_name ua
+    name = nil
     browsers = PATTERNS[:browser].keys
-    until browsers.empty? || !patterns.nil?
-      browser = PATTERNS[:browser][browsers.shift]
-      patterns = browser if (ua.match(browser[:name]))
+    until browsers.empty? || !name.nil?
+      tmp = browsers.shift
+      name = tmp if (ua.match(PATTERNS[:browser][tmp][:name]))
     end
-    patterns ||= :unknown
+    name ||= :unknown
   end
 end
