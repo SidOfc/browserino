@@ -3,18 +3,27 @@
 require "bundler/setup"
 require "browserino"
 require "pry"
+ua = 'Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25'
+@agent = Browserino::parse(ua)
 
-@agent = Browserino::parse('Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25')
-
-puts @agent
+puts "parsed #{ua} with results:"
+puts '------------------'
+puts '|     browser    |'
+puts '------------------'
 puts @agent.browser_name
 puts @agent.browser_version
-puts '--- --- --- --- --- --- --- --- ---'
+puts '------------------'
+puts '|      engine    |'
+puts '------------------'
 puts @agent.engine_name
 puts @agent.engine_version
-puts '--- --- --- --- --- --- --- --- ---'
+puts '------------------'
+puts '|      system    |'
+puts '------------------'
 puts @agent.system_name
 puts @agent.system_version
 puts @agent.system_architecture
+puts '================='
+puts 'the @agent variable will be available at your disposal'
 
 Pry.start
