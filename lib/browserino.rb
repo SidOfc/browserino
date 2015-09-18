@@ -35,6 +35,7 @@ module Browserino
     hash.each do |prop, val|
       h[prop] = ALIAS.select { |key, matches| true if matches.include?(val) }.keys.first || val
     end
+    h
   end
 
   def self.find_browser_name(ua)
