@@ -30,18 +30,49 @@ Or install it yourself as:
 
 ## Usage
 
-*Currently this gem has no functionality - On my list of tasks are:*
+*Currently this gem has only functionality - On my list of tasks so far:*
 
 - Extract browser
-  * name
-  * version
+  * name __- done__
+  * version __- done__
 - Extract engine
-  * name
-  * version
+  * name __- done__
+  * version __- done__
 - Extract operating system
-  * name
-  * version
+  * name __- done__
+  * version __- done__
   * architecture
+
+After installing the gem globally or in your application you'll have to `require` the gem before being able to use it.
+
+```ruby
+require 'browserino'
+```
+
+Afterwards you can simply call
+```ruby
+Browserino::parse('<user agent>')
+```
+
+Which will return a `Browserino::Agent` object containing all the information parsed out of the supplied user agent.
+On this object there are a few method calls you can do to retrieve information.
+
+### general
+```ruby
+require 'browserino'
+
+agent = Browserino::parse('Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25')
+
+agent.browser_name # => safari
+agent.browser_version # => 6.0
+
+agent.engine_name # => applewebkit
+agent.engine_version # => 536.26
+
+agent.system_name # => ios
+agent.system_version # => 6.0
+agent.system_architecture # => unknown (though it will make an attempt)
+```
 
 ## Development
 
