@@ -3,9 +3,5 @@ rvm:
   - 2.2.1
 before_install: gem install bundler -v 1.10.5
 
-branches:
-  only:
-    - development
-
 cache: bundler
 script: 'bundle exec rspec spec'
