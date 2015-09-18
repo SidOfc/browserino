@@ -7,24 +7,24 @@ module Browserino
     end
 
     def browser_name
-      @info[:browser][:name]
+      @info[:browser_name]
     end
 
     def browser_version
-      @info[:browser][:version].gsub('_', '.')
+      @info[:browser_version].gsub('_', '.')
     end
 
     def engine_name
-      @info[:engine][:name]
+      @info[:engine_name]
     end
 
     def engine_version
-      @info[:engine][:version].gsub('_', '.')
+      @info[:engine_version].gsub('_', '.')
     end
 
     def system_name(opts = {})
       opts = {full: false}.merge(opts)
-      name = @info[:operating_system][:name]
+      name = @info[:system_name]
       if opts[:full]
         [name, fetch_system_version_name(name)]
       else
@@ -33,11 +33,11 @@ module Browserino
     end
 
     def system_version
-      @info[:operating_system][:version].gsub('_', '.')
+      @info[:system_version].gsub('_', '.')
     end
 
     def system_architecture
-      @info[:operating_system][:architecture]
+      @info[:system_architecture]
     end
 
     private
