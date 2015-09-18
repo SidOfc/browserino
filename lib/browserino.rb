@@ -3,6 +3,7 @@ require "browserino/maps/ios"
 require "browserino/maps/android"
 require "browserino/maps/windows"
 
+require "browserino/alias"
 require "browserino/agent_manipulator"
 require "browserino/agent"
 require "browserino/version"
@@ -16,7 +17,7 @@ module Browserino
   def self.parse ua
     ua = AgentManipulator.new(ua).ua
     name = find_browser_name(ua)
-    Agent.new({
+    Agent.new(check_for_aliases({
       browser_name: name,
       browser_version: Browser::version(ua, PATTERNS[:browser][name]),
       engine_name: Engine::name(ua),
@@ -24,12 +25,23 @@ module Browserino
       system_name: OperatingSystem::name(ua),
       system_version: OperatingSystem::version(ua),
       system_architecture: OperatingSystem::architecture(ua)
-    })
+    }))
   end
 
   private
 
-  def self.find_browser_name ua
+  def self.check_for_aliases(hash)
+    h = {}
+    hash.each do |prop, val|
+      p prop
+      p val
+      p '--- --- --- --- --- ---'
+      h[prop] = ALIAS.select { |out, matches| true if matches.include?(val) }.keys.first || val
+    end
+    p h
+  end
+
+  def self.find_browser_name(ua)
     name = nil
     browsers = PATTERNS[:browser].keys
     until browsers.empty? || !name.nil?
