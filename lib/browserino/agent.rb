@@ -51,7 +51,7 @@ module Browserino
         version = system_version.gsub('.', '').to_i
       end
       if version
-        codename.select { |k, v| v if k.include?(version) }.values.first
+        codename.select { |name, versions| true if versions.include?(version) }.keys.first
       end
     end
   end

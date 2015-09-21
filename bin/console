@@ -21,6 +21,7 @@ puts '------------------'
 puts '|      system    |'
 puts '------------------'
 puts @agent.system_name
+puts @agent.system_name(full: true)[1]
 puts @agent.system_version
 puts @agent.system_architecture
 puts '================='

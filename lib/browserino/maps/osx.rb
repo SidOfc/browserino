@@ -4,18 +4,18 @@
 module Browserino
   module Mapping
     MACINTOSH = {
-      [100] => 'Cheetah',
-      [101] => 'Puma',
-      [102] => 'Jaguar',
-      [103] => 'Panther',
-      [104] => 'Tiger',
-      [105] => 'Leopard',
-      [106] => 'Snow Leopard',
-      [107] => 'Lion',
-      [108] => 'Mountain Lion',
-      [109] => 'Mavericks',
-      [1010] => 'Yosemite',
-      [1011] => 'El Capitan'
+      'Cheetah' => [100],
+      'Puma' => [101],
+      'Jaguar' => [102],
+      'Panther' => [103],
+      'Tiger' => [104],
+      'Leopard' => [105],
+      'Snow Leopard' => [106],
+      'Lion' => [107],
+      'Mountain Lion' => [108],
+      'Mavericks' => [109],
+      'Yosemite' => [1010],
+      'El Capitan' => [1011]
     }
   end
 end
