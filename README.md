@@ -30,19 +30,6 @@ Or install it yourself as:
 
 ## Usage
 
-*Currently this gem has only functionality - On my list of tasks so far:*
-
-- Extract browser
-  * name __- done__
-  * version __- done__
-- Extract engine
-  * name __- done__
-  * version __- done__
-- Extract operating system
-  * name __- done__
-  * version __- done__
-  * architecture
-
 After installing the gem globally or in your application you'll have to `require` the gem before being able to use it.
 
 ```ruby
@@ -57,26 +44,86 @@ Browserino::parse('<user agent>')
 Which will return a `Browserino::Agent` object containing all the information parsed out of the supplied user agent.
 On this object there are a few method calls you can do to retrieve information.
 
-### general
 ```ruby
 require 'browserino'
 
-agent = Browserino::parse('Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25')
+agent = Browserino::parse('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A')
 
-agent.browser_name # => safari
-agent.browser_version # => 6.0
+agent.browser_name # => 'safari'
+agent.browser_version # => 7.0.3
 
-agent.engine_name # => webkit
-agent.engine_version # => 536.26
+agent.engine_name # => 'webkit'
+agent.engine_version # => 537.75.14
 
-agent.system_name # => ios
+agent.system_name # => 'macintosh'
+# or optionally, the full name (guessed from OS version)
+agent.system_name full: true # => ['macintosh', 'mavericks']
 agent.system_version # => 6.0
-agent.system_architecture # => unknown (though it will make an attempt)
+agent.system_architecture # => 'x32' or 'x64' or 'unknown'
 ```
 
 ## Development
 
-*Should you want to contribute to the project the instructions for it will be here when version 1 releases (PENDING)*
+Currently things are actually going quite well besides the fact that I am trying to learn multiple techniques at the same time thus causing code to sometimes... well be messy at best.
+What I would not want you all to do is dive in there and try to understand it (tho if you do and want in, let me know!) but I would greatly appriciate help regarding the testing of this sniffer.
+
+The tests are dynamically produced and quite easy to write.
+
+The __/spec/user_agents.rb__ actually contains the testcases, here you can see how they are setup and all you simply have to do is read the UA yourself and fill in the correct information for the test to run.
+tests will convert all input to a string and downcase it for easier comparison (since the checks need to filter words and numbers, not types).
+
+If I wanted to add a test case for a different browser for instance (just picking a random FF on windows that is already in the tests)
+
+```ruby
+module UserAgents
+  FIREFOX = {
+    mac: {},
+    win: {
+      'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1' => {
+        browser_name: 'Firefox',
+        browser_version: '40.1',
+        engine_name: 'Gecko',
+        engine_version: '40.0',
+        system_name: ['windows', '7'],
+        system_version: '6.1',
+        system_architecture: 'x64'
+      },
+    },
+    linux: {}
+  }
+end
+```
+
+Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are the browser names)
+
+*browser_name examples*
+- `'unknown'`
+- `'ie'`
+- `'firefox'`
+- `'chrome'`
+- `'opera'`
+- `'maxthon'`
+
+*engine_name examples*
+- `'unknown'`
+- `'gecko'`
+- `'webkit'`
+- `'trident'`
+
+*system_name examples*
+- `['windows', '7']` - where the 'windows' part is the name of the OS and the '7' is the actual version release (e.g. NT 6.1)
+- `['macintosh', 'yosemite']` - same as above but OSX has different names ofcourse.
+- `['android', 'lollipop']` - etcetera...
+- `['unknown', 'unknown']` - in case it isn't known or in case of Linux
+
+__The main reason for not having Linux distro's / versions yet is because of the fact that there are MANY different distro's with no real structured release system (going to work on that whenever there's free time!)__
+
+*system_architecture*
+- `'unknown'`
+- `'x32'`
+- `'x64'`
+
+__The value of unknown is a default error value that will always be available to test against. If it ain't known it's unknown__
 
 ## Contributing
 
