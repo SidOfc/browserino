@@ -21,7 +21,9 @@ module Browserino
       'unknown' => ['unknown', :unknown, '']
     },
     system_architecture: {
-      'unknown' => ['unknown', :unknown, '']
+      'x64' => ['64', 'x86_64'],
+      'x32' => ['32', 'i686', 'i383'],
+      'unknown' => ['unknown', :unknown, '', nil]
     }
   }
 end
