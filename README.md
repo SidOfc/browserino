@@ -1,5 +1,6 @@
 # Browserino
 
+[![Gem Version](https://badge.fury.io/rb/browserino.svg)](http://badge.fury.io/rb/browserino)
 [![Build Status](https://travis-ci.org/SidOfc/browserino.svg?branch=master)](https://travis-ci.org/SidOfc/browserino)
 [![Coverage Status](https://coveralls.io/repos/SidOfc/browserino/badge.svg?branch=master&service=github)](https://coveralls.io/github/SidOfc/browserino?branch=master)
 
@@ -96,32 +97,41 @@ end
 
 Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are the browser names)
 
-*browser_name examples*
-- `'unknown'`
-- `'ie'`
-- `'firefox'`
-- `'chrome'`
-- `'opera'`
-- `'maxthon'`
+#### browser_name examples
+```ruby
+'unknown'
+'ie'
+'firefox'
+'chrome'
+'opera'
+'maxthon'
+```
 
-*engine_name examples*
-- `'unknown'`
-- `'gecko'`
-- `'webkit'`
-- `'trident'`
+#### engine_name examples
+```ruby
+'unknown'
+'gecko'
+'webkit'
+'trident'
+```
 
-*system_name examples*
-- `['windows', '7']` - where the 'windows' part is the name of the OS and the '7' is the actual version release (e.g. NT 6.1)
-- `['macintosh', 'yosemite']` - same as above but OSX has different names ofcourse.
-- `['android', 'lollipop']` - etcetera...
-- `['unknown', 'unknown']` - in case it isn't known or in case of Linux
+#### system_name examples
 
-__The main reason for not having Linux distro's / versions yet is because of the fact that there are MANY different distro's with no real structured release system (going to work on that whenever there's free time!)__
+_The main reason for not having Linux distro's / versions yet is because of the fact that there are MANY different distro's with no real structured release system (going to work on that whenever there's free time!)_
 
-*system_architecture*
-- `'unknown'`
-- `'x32'`
-- `'x64'`
+```ruby
+['windows', '7'] # where the 'windows' part is the name of the OS and the '7' is the actual version release (e.g. NT 6.1)
+['macintosh', 'yosemite'] # same as above but OSX has different names ofcourse.
+['android', 'lollipop'] # etcetera...
+['unknown', 'unknown'] # in case it isn't known or in case of Linux
+```
+
+#### system_architecture examples
+```ruby
+'unknown'
+'x32'
+'x64'
+```
 
 __The value of unknown is a default error value that will always be available to test against. If it ain't known it's unknown__
 
