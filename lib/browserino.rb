@@ -33,7 +33,7 @@ module Browserino
   def self.check_for_aliases(hash)
     h = {}
     hash.each do |prop, val|
-      h[prop] = ALIAS.select { |key, matches| true if matches.include?(val) }.keys.first || val
+      h[prop] = ALIAS[prop].select { |k, m| true if m.include?(val) }.keys.first || val
     end
     h
   end
