@@ -2,12 +2,12 @@ module Browserino
   module MatchExtractor
     def self.extract(match, sym, trim = true)
       if match.nil?
-        :unknown
+        Browserino::UNKNOWN
       elsif match.names.map(&:to_sym).include?(sym)
         match[sym].strip! if trim
         match[sym]
       else
-        :unknown
+        Browserino::UNKNOWN
       end
     end
   end

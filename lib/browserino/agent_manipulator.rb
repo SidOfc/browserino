@@ -18,7 +18,7 @@ module Browserino
     end
 
     def strip_fake_opera_version!
-      @ua = @ua.gsub(/ope?ra?(\/|\s)?[\d\.]+/i, '')
+      @ua = @ua.gsub(/ope?ra?(\/|\s)?9\.80/i, '')
     end
 
     def ua

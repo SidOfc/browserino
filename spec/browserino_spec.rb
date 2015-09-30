@@ -31,3 +31,39 @@ UserAgents.constants.each do |const|
     end
   end
 end
+
+describe 'Returns (string) unknown when information couldn\'t be found' do
+  agent = Browserino::parse('')
+
+  it 'Returns "unknown" for agent.browser_name' do
+    expect(agent.browser_name).to eq 'unknown'
+  end
+
+  it 'Returns "unknown" for agent.browser_version' do
+    expect(agent.browser_version).to eq 'unknown'
+  end
+
+  it 'Returns "unknown" for agent.engine_name' do
+    expect(agent.engine_name).to eq 'unknown'
+  end
+
+  it 'Returns "unknown" for agent.engine_version' do
+    expect(agent.engine_version).to eq 'unknown'
+  end
+
+  it 'Returns "unknown" for agent.system_name full: false' do
+    expect(agent.system_name(full: false)).to eq 'unknown'
+  end
+
+  it 'Returns ["unknown", "unknown"] for agent.system_name' do
+    expect(agent.system_name).to eq ['unknown', 'unknown']
+  end
+
+  it 'Returns "unknown" for agent.system_version' do
+    expect(agent.system_version).to eq 'unknown'
+  end
+
+  it 'Returns "unknown" for agent.system_architecture' do
+    expect(agent.system_architecture).to eq 'unknown'
+  end
+end

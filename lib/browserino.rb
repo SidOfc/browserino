@@ -3,9 +3,11 @@ require "browserino/maps/ios"
 require "browserino/maps/android"
 require "browserino/maps/windows"
 
+require "browserino/unknown"
+require "browserino/agent"
+
 require "browserino/alias"
 require "browserino/agent_manipulator"
-require "browserino/agent"
 require "browserino/version"
 require "browserino/match_extractor"
 require "browserino/patterns"
