@@ -6,12 +6,12 @@
 
 This gem aims to provide information about the browser that your visitor is using, it's main goal is not to let you exclude any browser from partying on your website (e.g. sniffing) but to provide you with more flexibility towards designing maybe a browser-themed website or knowledge of what your visitors are using to check out your website!
 
-## About the developer
+## Changelog
+_dates are in dd-mm-yyyy format_
 
-Hey there everone, my name is Sidney Liebrand and I aim to become a contributor to various open source projects as I gain experience in working with the community.
-For now All I'm going to say is that I'm not that experienced with git yet or how things go so bear with me should I make any mistake.
+#### 15-12-2015 VERSION 1.1.2
 
-If anyone ofcourse desires to manage this project with me feel free to add me on skype: *sidney.liebrand*
+- User definable 'unknown' return value
 
 ## Installation
 
@@ -38,9 +38,18 @@ require 'browserino'
 ```
 
 Afterwards you can simply call
+
 ```ruby
 Browserino::parse('<user agent>')
 ```
+Optionally if you're using a version _>=_ than _1.1.2_ you can set a return value in place of `nil` when running `::parse(...)`.
+If you want any unknown properties to return the string `unknown` you could do so like this:
+
+```ruby
+Browserino::parse('<user agent>', 'unknown')
+```
+
+Without specifying the second argument the value for unknown properties will always be `nil`
 
 Which will return a `Browserino::Agent` object containing all the information parsed out of the supplied user agent.
 On this object there are a few method calls you can do to retrieve information.
