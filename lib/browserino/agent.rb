@@ -8,45 +8,25 @@ module Browserino
     end
 
     def browser_name
-      browser_name = @info[:browser_name]
-      if browser_name.nil? || browser_name == ''
-        @unknown
-      else
-        browser_name.to_s.downcase
-      end
+      with_valid(@info[:browser_name]) { |v| v.to_s.downcase }
     end
 
     def browser_version
-      browser_ver = @info[:browser_version]
-      if browser_ver.nil? || browser_ver == ''
-        @unknown
-      else
-        browser_ver.to_s.downcase.gsub('_', '.')
-      end
+      with_valid(@info[:browser_version]) { |v| v.to_s.downcase.gsub('_', '.') }
     end
 
     def engine_name
-      engine_name = @info[:engine_name]
-      if engine_name.nil? || engine_name == ''
-        @unknown
-      else
-        engine_name.to_s.downcase
-      end
+      with_valid(@info[:engine_name]) { |v| v.to_s.downcase }
+
     end
 
     def engine_version
-      engine_ver = @info[:engine_version]
-      if engine_ver.nil? || engine_ver == ''
-        @unknown
-      else
-        engine_ver.to_s.downcase.gsub('_', '.')
-      end
+      with_valid(@info[:engine_version]) { |v| v.to_s.downcase.gsub('_', '.') }
     end
 
     def system_name(opts = {})
       opts = {full: true}.merge(opts)
-      tmp = @info[:system_name]
-      name = (tmp == '' || tmp.nil? ? @unknown : tmp.to_s.downcase)
+      name = with_valid(@info[:system_name]) { |v| v.to_s.downcase }
       if opts[:full]
         [name, fetch_system_version_name(name)]
       else
@@ -55,24 +35,24 @@ module Browserino
     end
 
     def system_version
-      sys_ver = @info[:system_version].gsub('_', '.')
-      if sys_ver.nil? || sys_ver == ''
-        @unknown
-      else
-        sys_ver.to_s.downcase
-      end
+      with_valid(@info[:system_version]) { |v| v.to_s.downcase.gsub('_', '.') }
     end
 
     def system_architecture
-      sys_arch = @info[:system_architecture]
-      if sys_arch.nil? || sys_arch == ''
-        @unknown
-      else
-        sys_arch.to_s.downcase
-      end
+      with_valid(@info[:system_architecture]) { |v| v.to_s.downcase }
     end
 
     private
+
+    def with_valid(val)
+      if val && (val != '' || val != false) && block_given?
+        res = yield(val)
+        return @unknown if res == ''
+        res
+      else
+        @unknown
+      end
+    end
 
     def fetch_system_version_name(name)
       return @unknown if name.nil? || name == '' || !name
