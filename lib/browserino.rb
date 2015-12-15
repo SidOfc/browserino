@@ -16,7 +16,7 @@ require "browserino/engine"
 require "browserino/operating_system"
 
 module Browserino
-  def self.parse ua
+  def self.parse(ua, unknown_alt = Browserino::UNKNOWN)
     ua = AgentManipulator.new(ua).ua
     name = find_browser_name(ua)
     Agent.new(check_for_aliases({
@@ -27,7 +27,7 @@ module Browserino
       system_name: OperatingSystem::name(ua),
       system_version: OperatingSystem::version(ua),
       system_architecture: OperatingSystem::architecture(ua)
-    }))
+    }), unknown_alt)
   end
 
   private
@@ -47,6 +47,6 @@ module Browserino
       tmp = browsers.shift
       name = tmp if (ua.match(PATTERNS[:browser][tmp][:name]))
     end
-    name ||= :unknown
+    name ||= Browserino::UNKNOWN
   end
 end

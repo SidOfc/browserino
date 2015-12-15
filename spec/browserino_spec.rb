@@ -1,3 +1,6 @@
+USE_FOR_UNKNOWN = false
+VISIBLE_FOR_UNKNOWN = 'false'
+
 require 'spec_helper'
 require 'user_agents'
 
@@ -17,13 +20,13 @@ UserAgents.constants.each do |const|
     unless (platform[1] || []).empty?
       platform[1].each do |agent, criteria|
         describe agent do
-          agent = Browserino::parse(agent)
+          agent = Browserino::parse(agent, USE_FOR_UNKNOWN)
           it 'returns an Agent object' do
             expect(agent.class.name).to eq 'Browserino::Agent'
           end
           criteria.each do |property, value|
             it "expects #{property} to be #{value} for #{const.downcase} on #{platform[0]}" do
-              expect(agent.send(property).to_s).to eq value.to_s.downcase
+              expect(agent.send(property).to_s.downcase).to eq value.to_s.downcase
             end
           end
         end
@@ -33,37 +36,37 @@ UserAgents.constants.each do |const|
 end
 
 describe 'Returns (string) unknown when information couldn\'t be found' do
-  agent = Browserino::parse('')
+  agent = Browserino::parse('', USE_FOR_UNKNOWN)
 
-  it 'Returns "unknown" for agent.browser_name' do
-    expect(agent.browser_name).to eq 'unknown'
+  it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.browser_name" do
+    expect(agent.browser_name).to eq USE_FOR_UNKNOWN
   end
 
-  it 'Returns "unknown" for agent.browser_version' do
-    expect(agent.browser_version).to eq 'unknown'
+  it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.browser_version" do
+    expect(agent.browser_version).to eq USE_FOR_UNKNOWN
   end
 
-  it 'Returns "unknown" for agent.engine_name' do
-    expect(agent.engine_name).to eq 'unknown'
+  it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.engine_name" do
+    expect(agent.engine_name).to eq USE_FOR_UNKNOWN
   end
 
-  it 'Returns "unknown" for agent.engine_version' do
-    expect(agent.engine_version).to eq 'unknown'
+  it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.engine_version" do
+    expect(agent.engine_version).to eq USE_FOR_UNKNOWN
   end
 
-  it 'Returns "unknown" for agent.system_name full: false' do
-    expect(agent.system_name(full: false)).to eq 'unknown'
+  it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.system_name full: false" do
+    expect(agent.system_name(full: false)).to eq USE_FOR_UNKNOWN
   end
 
-  it 'Returns ["unknown", "unknown"] for agent.system_name' do
-    expect(agent.system_name).to eq ['unknown', 'unknown']
+  it 'Returns [' + VISIBLE_FOR_UNKNOWN.to_s + ', ' + VISIBLE_FOR_UNKNOWN.to_s + '] for agent.system_name' do
+    expect(agent.system_name).to eq [USE_FOR_UNKNOWN, USE_FOR_UNKNOWN]
   end
 
-  it 'Returns "unknown" for agent.system_version' do
-    expect(agent.system_version).to eq 'unknown'
+  it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.system_version" do
+    expect(agent.system_version).to eq USE_FOR_UNKNOWN
   end
 
-  it 'Returns "unknown" for agent.system_architecture' do
-    expect(agent.system_architecture).to eq 'unknown'
+  it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.system_architecture" do
+    expect(agent.system_architecture).to eq USE_FOR_UNKNOWN
   end
 end
