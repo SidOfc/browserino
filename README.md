@@ -51,7 +51,7 @@ Browserino::parse('<user agent>', 'unknown')
 
 Without specifying the second argument the value for unknown properties will always be `nil`
 
-Which will return a `Browserino::Agent` object containing all the information parsed out of the supplied user agent.
+`Browserino::parse()` will return a `Browserino::Agent` object containing all the information parsed out of the supplied user agent.
 On this object there are a few method calls you can do to retrieve information.
 
 ```ruby
