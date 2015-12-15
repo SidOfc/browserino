@@ -42,6 +42,11 @@ module Browserino
       with_valid(@info[:system_architecture]) { |v| v.to_s.downcase }
     end
 
+    def method_missing(method_sym, *args, &block)
+      criteria = method_sym.to_s.split(/(?<=\w)(?=\d)|(?<=\d)(?=\?)/)
+      p criteria
+    end
+
     private
 
     def with_valid(val)
