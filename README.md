@@ -9,6 +9,17 @@ This gem aims to provide information about the browser that your visitor is usin
 ## Changelog
 _dates are in dd-mm-yyyy format_
 
+#### 16-12-2015 VERSION 1.2.0
+
+- Opera tests didn't run before
+- For supported systems, it is possible to check OS and version. This is true for `android`, `macintosh`, `ios`, `windows` and `linux` *(any version number can optionally be included)*
+
+  - `agent.windows?`
+  - `agent.windows10?`
+  - `agent.macintosh?`
+  - `agent.macintosh10?`
+  - `agent.linux?`
+
 #### 15-12-2015 VERSION 1.1.2
 
 - User definable 'unknown' return value
