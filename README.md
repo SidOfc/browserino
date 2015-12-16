@@ -83,10 +83,18 @@ agent.system_version # => 6.0
 agent.system_architecture # => 'x32' or 'x64' or 'unknown'
 ```
 
-## Development
+It is now also possible to call methods to determine a specific OS if it's supported, a `noMethodError` will be thrown otherwise
+The function uses the names of the `Browserino::Mapping.constants(true)` output to identify wether or not to throw this exception.
 
-Currently things are actually going quite well besides the fact that I am trying to learn multiple techniques at the same time thus causing code to sometimes... well be messy at best.
-What I would not want you all to do is dive in there and try to understand it (tho if you do and want in, let me know!) but I would greatly appriciate help regarding the testing of this sniffer.
+Currently, supported systems are `android`, `ios`, `windows`, `macintosh` and `linux`
+
+Since linux doesn't have any supported versions all you can pretty much do is check if `agent.linux?` is true if you want to check for linux systems. The others do have versions so if you wanted to check for windows 10 you could do:
+
+```ruby
+agent.windows10?
+```
+
+## Development
 
 The tests are dynamically produced and quite easy to write.
 
@@ -137,7 +145,7 @@ Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are
 
 #### system_name examples
 
-_The main reason for not having Linux distro's / versions yet is because of the fact that there are MANY different distro's with no real structured release system (going to work on that whenever there's free time!)_
+_The main reason for not having Linux distro's / versions <strike>yet</strike> is because of the fact that there are MANY different distro's with no real structured release system. <strike>(going to work on that whenever there's free time!)</strike>_
 
 ```ruby
 ['windows', '7'] # where the 'windows' part is the name of the OS and the '7' is the actual version release (e.g. NT 6.1)
