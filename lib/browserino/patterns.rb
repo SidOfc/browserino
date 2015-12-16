@@ -38,7 +38,7 @@ module Browserino
     },
 
     operating_system: {
-      name: /(?<name>windows|macintosh|android|ios|linux)/i,
+      name: /(?<name>windows|macintosh|android|ios|linux|ubuntu)/i,
       version: /(?:nt|mac\sos\sx|android|(cpu\s|i)os)\s(?<version>[\d\._]+)/i,
       architecture: /(?<architecture>(x?(86_)?64)|i(3|6)86)/i
     }

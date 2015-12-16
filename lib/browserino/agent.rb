@@ -25,7 +25,7 @@ module Browserino
     end
 
     def system_name(opts = {})
-      opts = {full: true}.merge(opts)
+      opts = {full: false}.merge(opts)
       name = with_valid(@info[:system_name]) { |v| v.to_s.downcase }
       if opts[:full]
         [name, fetch_system_version_name(name)]
@@ -43,8 +43,25 @@ module Browserino
     end
 
     def method_missing(method_sym, *args, &block)
-      criteria = method_sym.to_s.split(/(?<=\w)(?=\d)|(?<=\d)(?=\?)/)
-      p criteria
+      criteria = method_sym.to_s.gsub('?', '').split(/(?<=[a-zA-Z])(?=\d+)/)
+      name = criteria[0]
+      if respond_to? name
+        os_equal = (name == system_name)
+        return os_equal unless criteria.size > 1
+        if criteria.size > 1
+          version = criteria[1]
+          os_equal && version == system_version.to_s[0..(version.size - 1)]
+        else
+          os_equal
+        end
+      else
+        super
+      end
+    end
+
+    def respond_to?(method_sym)
+      name = method_sym.to_s.gsub('?', '').split(/(?<=[a-zA-Z])(?=\d+)/).first
+      Browserino::Mapping.constants(true).include?(name.upcase.to_sym)
     end
 
     private
@@ -63,11 +80,13 @@ module Browserino
       return @unknown if name.nil? || name == '' || !name
       const = name.upcase
       name.downcase!
-      if name.match(/mac|ios/i)
-        version = system_version.split('.').first(2).join.to_i
-      elsif name.match(/win|android/i)
-        version = system_version.gsub('.', '').to_i
-      end
+      version = if system_version == @unknown
+                  nil
+                elsif name.match(/mac|ios/i)
+                  system_version.split('.').first(2).join.to_i
+                elsif name.match(/win|android/i)
+                  system_version.gsub('.', '').to_i
+                end
       if version && defined? const
         Browserino::Mapping.const_get(const).select { |name, versions| true if versions.include?(version) }.keys.first
       else

@@ -1,4 +1,6 @@
 module UserAgents
+  #without this opera doesn't get tested (first constant seems to come out as an array)
+  Z = {},
   OPERA = {
     mac: {
       'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52' => {
@@ -46,7 +48,7 @@ module UserAgents
         browser_version: '12.16',
         engine_name: 'Presto',
         engine_version: '2.12.388',
-        system_name: [USE_FOR_UNKNOWN, USE_FOR_UNKNOWN],
+        system_name: ['linux', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
         system_architecture: 'x32'
       },
@@ -55,7 +57,7 @@ module UserAgents
         browser_version: '11.50',
         engine_name: 'Presto',
         engine_version: '2.9.168',
-        system_name: [USE_FOR_UNKNOWN, USE_FOR_UNKNOWN],
+        system_name: ['linux', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
         system_architecture: 'x64'
       }

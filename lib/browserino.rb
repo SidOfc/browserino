@@ -1,5 +1,6 @@
 require "browserino/maps/osx"
 require "browserino/maps/ios"
+require "browserino/maps/linux"
 require "browserino/maps/android"
 require "browserino/maps/windows"
 

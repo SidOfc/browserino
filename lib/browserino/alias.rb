@@ -15,7 +15,8 @@ module Browserino
       Browserino::UNKNOWN => ['unknown', :unknown, '', nil]
     },
     system_name: {
-      Browserino::UNKNOWN => ['unknown', :unknown, '', nil]
+      Browserino::UNKNOWN => ['unknown', :unknown, '', nil],
+      'linux' => ['ubuntu']
     },
     system_version: {
       Browserino::UNKNOWN => ['unknown', :unknown, '', nil]
