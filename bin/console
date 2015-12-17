@@ -7,7 +7,10 @@ require "pry"
 ua = 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10136'
 @agent = Browserino::parse(ua)
 
-puts @agent.windows10?
+puts ua
+puts "@agent.windows10? #=> #{@agent.windows10?}"
+puts "@agent.edge? #=> #{@agent.edge?}"
+puts "@agent.edge12? #=> #{@agent.edge12?}"
 
 # puts "parsed #{ua} with results:"
 # puts '------------------'

@@ -11,6 +11,11 @@ module Browserino
         version: /maxthon(?:\s|\/)(?<version>[\d\.]+)/i
       },
 
+      edge: {
+        name: /(?<name>edge)/i,
+        version: /(?:edge\/)(?<version>[\d\.b]+)/i
+      },
+
       ie: {
         name: /(?<name>msie|trident)/i,
         version: /(?:(?:ms)?ie\s|rv\:)(?<version>[\d\.b]+)/i

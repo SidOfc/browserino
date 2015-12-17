@@ -32,14 +32,30 @@ UserAgents.constants(true).each do |const|
               it "expects #{property} to be #{value.first} for #{const.downcase} on #{platform[0]}" do
                 expect(agent.send(property).to_s.downcase).to eq value.first.to_s.downcase
               end
-              if agent.system_name != USE_FOR_UNKNOWN
-                it "can directly test the OS through method_missing: agent.#{agent.system_name.downcase}?" do
-                  expect(agent.send("#{agent.system_name.downcase}?")).to eq true
-                end
-              end
             else
               it "expects #{property} to be #{value} for #{const.downcase} on #{platform[0]}" do
                 expect(agent.send(property).to_s.downcase).to eq value.to_s.downcase
+              end
+            end
+          end
+          describe "Implements method_missing? for" do
+            sys_nm = agent.system_name.to_s.downcase
+            sys_ver = (agent.system_version || '').split('.').first
+            if agent.system_name != USE_FOR_UNKNOWN
+              it "system names w/o version: agent.#{sys_nm}?" do
+                expect(agent.send("#{sys_nm}?")).to eq true
+              end
+            end
+            if agent.browser_name != USE_FOR_UNKNOWN
+              browser_nm = agent.browser_name.to_s.downcase
+              browser_ver = (agent.browser_version || '').split('.').first
+              it "browser names w/o version: agent.#{browser_nm}?" do
+                expect(agent.send("#{browser_nm}?")).to eq true
+              end
+              if browser_ver
+                it "browser names w/ version: agent.#{browser_nm + browser_ver}?" do
+                  expect(agent.send("#{browser_nm + browser_ver}?")).to eq true
+                end
               end
             end
           end

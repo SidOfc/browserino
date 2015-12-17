@@ -42,29 +42,52 @@ module Browserino
       with_valid(@info[:system_architecture]) { |v| v.to_s.downcase }
     end
 
+    def correct_system?(name, version = nil)
+      os_equal = (name == system_name)
+      if version
+        os_equal && version == system_version.to_s[0..(version.size - 1)]
+      else
+        os_equal
+      end
+    end
+
+    def correct_browser?(name, version = nil)
+      browser_equal = (name == browser_name)
+      if version
+        browser_equal && version == browser_version.to_s[0..(version.size - 1)]
+      else
+        browser_equal
+      end
+    end
+
     def method_missing(method_sym, *args, &block)
       criteria = method_sym.to_s.gsub('?', '').split(/(?<=[a-zA-Z])(?=\d+)/)
       name = criteria[0]
-      if respond_to? name
-        os_equal = (name == system_name)
-        return os_equal unless criteria.size > 1
-        if criteria.size > 1
-          version = criteria[1]
-          os_equal && version == system_version.to_s[0..(version.size - 1)]
-        else
-          os_equal
-        end
-      else
-        super
+      case browser_or_system?(method_sym)
+      when :system then correct_system?(*criteria)
+      when :browser then correct_browser?(*criteria)
+      else super
       end
     end
 
     def respond_to?(method_sym)
-      name = method_sym.to_s.gsub('?', '').split(/(?<=[a-zA-Z])(?=\d+)/).first
-      Browserino::Mapping.constants(true).include?(name.upcase.to_sym)
+      browser_or_system?(method_sym).nil?
     end
 
     private
+
+    def browser_or_system?(method_sym)
+      name = method_sym.to_s.gsub('?', '').split(/(?<=[a-zA-Z])(?=\d+)/).first
+      sys = Browserino::Mapping.constants(true).include?(name.upcase.to_sym)
+      browser = Browserino::PATTERNS[:browser].keys.include?(name.to_sym)
+      if sys
+        :system
+      elsif browser
+        :browser
+      else
+        nil
+      end
+    end
 
     def with_valid(val)
       if val && (val != '' || val != false) && block_given?
