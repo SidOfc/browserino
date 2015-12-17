@@ -111,7 +111,10 @@ module Browserino
                   system_version.gsub('.', '').to_i
                 end
       if version && defined? const
-        Browserino::Mapping.const_get(const).select { |name, versions| true if versions.include?(version) }.keys.first
+        version_names = Browserino::Mapping.const_get(const).select do |_, versions|
+          true if versions.include?(version)
+        end
+        version_names.keys.first
       else
          @unknown
       end

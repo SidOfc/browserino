@@ -5,7 +5,7 @@ module Browserino
         Browserino::UNKNOWN
       elsif match.names.map(&:to_sym).include?(sym)
         match[sym].strip! if trim
-        match[sym]
+        match[sym].to_s.downcase
       else
         Browserino::UNKNOWN
       end
