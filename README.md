@@ -9,16 +9,15 @@ This gem aims to provide information about the browser that your visitor is usin
 ## Changelog
 _dates are in dd-mm-yyyy format_
 
+#### 17-12-2015 VERSION 1.3.0
+
+- Added Edge detection
+- For supported browsers, it is now possible to check name and version through `method_missing?`
+
 #### 16-12-2015 VERSION 1.2.0
 
 - Opera tests didn't run before
-- For supported systems, it is possible to check OS and version. This is true for `android`, `macintosh`, `ios`, `windows` and `linux` *(any version number can optionally be included)*
-
-  - `agent.windows?`
-  - `agent.windows10?`
-  - `agent.macintosh?`
-  - `agent.macintosh10?`
-  - `agent.linux?`
+- For supported systems, it is possible to check OS and version through `method_missing?`
 
 #### 15-12-2015 VERSION 1.1.2
 
@@ -83,10 +82,32 @@ agent.system_version # => 6.0
 agent.system_architecture # => 'x32' or 'x64' or 'unknown'
 ```
 
-It is now also possible to call methods to determine a specific OS if it's supported, a `noMethodError` will be thrown otherwise
-The function uses the names of the `Browserino::Mapping.constants(true)` output to identify wether or not to throw this exception.
+It is now also possible to call methods to determine a specific OS or browser if it's supported, a `noMethodError` will be thrown otherwise
+The function uses the names of the `Browserino::Mapping.constants(true)` or `Browserino::PATTERNS[:browser].keys` output to identify wether or not to throw this exception.
 
-Currently, supported systems are `android`, `ios`, `windows`, `macintosh` and `linux`
+Supported systems
+
+```ruby
+agent.android?
+agent.ios?
+agent.windows?
+agent.macintosh?
+agent.linux?
+```
+
+**note** Windows versions use their respective *NT* versioning so `agent.windows6?` equals `Vista` - I have yet to make changes to fix that. Browser versions use their actual version which always matches up with their real version, the same goes for the other systems.
+
+Supported browsers
+
+```ruby
+agent.opera?
+agent.maxthon?
+agent.edge?
+agent.ie?
+agent.firefox?
+agent.chrome?
+agent.safari?
+```
 
 Since linux doesn't have any supported versions all you can pretty much do is check if `agent.linux?` is true if you want to check for linux systems. The others do have versions so if you wanted to check for windows 10 you could do:
 
