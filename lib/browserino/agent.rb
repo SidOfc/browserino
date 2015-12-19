@@ -88,11 +88,11 @@ module Browserino
         res = send k
         case k
         when :system_version
-          system_name + res.split('.').first
+          system_name + res.to_s.split('.').first.to_s
         when :engine_version
-          engine_name + res.split('.').first
+          engine_name + res.to_s.split('.').first.to_s
         when :browser_version
-          browser_name + res.split('.').first
+          browser_name + res.to_s.split('.').first.to_s
         else res
         end
       end
