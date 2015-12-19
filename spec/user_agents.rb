@@ -1,6 +1,6 @@
 module UserAgents
   #without this opera doesn't get tested (first constant seems to come out as an array)
-  Z = {},
+  USE_FOR_UNKNOWN = false
   OPERA = {
     mac: {
       'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52' => {

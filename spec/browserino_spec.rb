@@ -1,4 +1,3 @@
-USE_FOR_UNKNOWN = false
 VISIBLE_FOR_UNKNOWN = 'false'
 
 require 'spec_helper'
@@ -15,12 +14,14 @@ describe Browserino do
   end
 end
 
-UserAgents.constants(true).each do |const|
+browsers = UserAgents.constants(true)
+browsers.shift
+browsers.each do |const|
   UserAgents.const_get(const).each do |platform|
     unless (platform[1] || []).empty?
       platform[1].each do |agent, criteria|
         describe "#{const} -> #{agent}" do
-          agent = Browserino::parse(agent, USE_FOR_UNKNOWN)
+          agent = Browserino::parse(agent, UserAgents::USE_FOR_UNKNOWN)
           it 'returns an Agent object' do
             expect(agent.class.name).to eq 'Browserino::Agent'
           end
@@ -41,12 +42,12 @@ UserAgents.constants(true).each do |const|
           describe "Implements method_missing? for" do
             sys_nm = agent.system_name.to_s.downcase
             sys_ver = (agent.system_version || '').split('.').first
-            if agent.system_name != USE_FOR_UNKNOWN
+            if agent.system_name != UserAgents::USE_FOR_UNKNOWN
               it "system names w/o version: agent.#{sys_nm}?" do
                 expect(agent.send("#{sys_nm}?")).to eq true
               end
             end
-            if agent.browser_name != USE_FOR_UNKNOWN
+            if agent.browser_name != UserAgents::USE_FOR_UNKNOWN
               browser_nm = agent.browser_name.to_s.downcase
               browser_ver = (agent.browser_version || '').split('.').first
               it "browser names w/o version: agent.#{browser_nm}?" do
@@ -59,44 +60,62 @@ UserAgents.constants(true).each do |const|
               end
             end
           end
+          describe "Correctly inverts method_missing? results when #not is called" do
+            if agent.browser_name != UserAgents::USE_FOR_UNKNOWN
+              browser_nm = agent.browser_name.to_s.downcase
+              it 'returns false for not being itself' do
+                expect(agent.not.send("#{browser_nm}?")).to eq false
+              end
+
+              describe 'returns true for any random others' do
+                brwsrs = browsers.dup
+                brwsrs.delete(browser_nm.upcase.to_sym)
+                brwsrs.sample(2).each do |b|
+                  it "returns true for agent.not.#{b.to_s.downcase}?" do
+                    expect(agent.not.send("#{b.to_s.downcase}?")).to eq true
+                  end
+                end
+              end
+            end
+          end
         end
       end
     end
   end
 end
 
-describe "returns #{USE_FOR_UNKNOWN} when information couldn't be found" do
-  agent = Browserino::parse('', USE_FOR_UNKNOWN)
+describe "returns #{UserAgents::USE_FOR_UNKNOWN} when information couldn't be found" do
+  agent = Browserino::parse('', UserAgents::USE_FOR_UNKNOWN)
 
   it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.browser_name" do
-    expect(agent.browser_name).to eq USE_FOR_UNKNOWN
+    expect(agent.browser_name).to eq UserAgents::USE_FOR_UNKNOWN
   end
 
   it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.browser_version" do
-    expect(agent.browser_version).to eq USE_FOR_UNKNOWN
+    expect(agent.browser_version).to eq UserAgents::USE_FOR_UNKNOWN
   end
 
   it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.engine_name" do
-    expect(agent.engine_name).to eq USE_FOR_UNKNOWN
+    expect(agent.engine_name).to eq UserAgents::USE_FOR_UNKNOWN
   end
 
   it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.engine_version" do
-    expect(agent.engine_version).to eq USE_FOR_UNKNOWN
+    expect(agent.engine_version).to eq UserAgents::USE_FOR_UNKNOWN
   end
 
   it 'Returns [' + VISIBLE_FOR_UNKNOWN.to_s + ', ' + VISIBLE_FOR_UNKNOWN.to_s + '] for agent.system_name({full: true})' do
-    expect(agent.system_name(full: true)).to eq [USE_FOR_UNKNOWN, USE_FOR_UNKNOWN]
+    expect(agent.system_name(full: true)).to eq [UserAgents::USE_FOR_UNKNOWN, UserAgents::USE_FOR_UNKNOWN]
   end
 
   it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.system_name" do
-    expect(agent.system_name).to eq USE_FOR_UNKNOWN
+    expect(agent.system_name).to eq UserAgents::USE_FOR_UNKNOWN
   end
 
   it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.system_version" do
-    expect(agent.system_version).to eq USE_FOR_UNKNOWN
+    expect(agent.system_version).to eq UserAgents::USE_FOR_UNKNOWN
   end
 
   it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.system_architecture" do
-    expect(agent.system_architecture).to eq USE_FOR_UNKNOWN
+    expect(agent.system_architecture).to eq UserAgents::USE_FOR_UNKNOWN
   end
 end

@@ -16,6 +16,8 @@ require "browserino/browser"
 require "browserino/engine"
 require "browserino/operating_system"
 
+# require_relative "../spec/user_agents.rb"
+
 module Browserino
   def self.parse(ua, unknown_alt = Browserino::UNKNOWN)
     ua = AgentManipulator.new(ua).ua

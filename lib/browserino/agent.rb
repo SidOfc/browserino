@@ -5,6 +5,7 @@ module Browserino
     def initialize(hash, unknown = Browserino::UNKNOWN)
       @info = hash
       @unknown = unknown
+      @not = false
     end
 
     def browser_name
@@ -17,7 +18,6 @@ module Browserino
 
     def engine_name
       with_valid(@info[:engine_name]) { |v| v.to_s.downcase }
-
     end
 
     def engine_version
@@ -60,13 +60,24 @@ module Browserino
       end
     end
 
+    def not
+      @not = true
+      self
+    end
+
     def method_missing(method_sym, *args, &block)
       criteria = method_sym.to_s.gsub('?', '').split(/(?<=[a-zA-Z])(?=\d+)/)
       name = criteria[0]
-      case browser_or_system?(method_sym)
+      res = case browser_or_system?(method_sym)
       when :system then correct_system?(*criteria)
       when :browser then correct_browser?(*criteria)
       else super
+      end
+      if @not
+        @not = false
+        !res
+      else
+        res
       end
     end
 

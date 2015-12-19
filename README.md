@@ -9,6 +9,11 @@ This gem aims to provide information about the browser that your visitor is usin
 ## Changelog
 _dates are in dd-mm-yyyy format_
 
+#### 19-12-2015 VERSION 1.4.0
+
+- Added not method to invert questions about browser / system
+- Added random test cases to verify that all inverted answers are correct
+
 #### 17-12-2015 VERSION 1.3.0
 
 - Added Edge detection
@@ -95,9 +100,18 @@ agent.macintosh?
 agent.linux?
 ```
 
-**note** Windows versions use their respective *NT* versioning so `agent.windows6?` equals `Vista` - I have yet to make changes to fix that. Browser versions use their actual version which always matches up with their real version, the same goes for the other systems.
+You could also invert these questions by using the `.not` method
 
-Supported browsers
+
+```ruby
+agent.not.android?
+agent.not.ios?
+agent.not.windows?
+agent.not.macintosh?
+agent.not.linux?
+```
+
+Supported browsers  
 
 ```ruby
 agent.opera?
@@ -107,6 +121,14 @@ agent.ie?
 agent.firefox?
 agent.chrome?
 agent.safari?
+
+# or with the .not method
+
+agent.not.opera?
+agent.not.maxthon?
+
+# etc etc...
+
 ```
 
 Since linux doesn't have any supported versions all you can pretty much do is check if `agent.linux?` is true if you want to check for linux systems. The others do have versions so if you wanted to check for windows 10 you could do:
@@ -114,6 +136,8 @@ Since linux doesn't have any supported versions all you can pretty much do is ch
 ```ruby
 agent.windows10?
 ```
+
+**note** Windows versions use their respective *NT* versioning so `agent.windows6?` equals `Vista` - I have yet to make changes to fix that. Browser versions use their actual version which always matches up with their real version, the same goes for the other systems.
 
 ## Development
 
