@@ -1,11 +1,24 @@
-VISIBLE_FOR_UNKNOWN = 'false'
+VISIBLE_FOR_UNKNOWN = 'nil'
 
 require 'spec_helper'
 require 'user_agents'
 
 describe Browserino do
+  agent = Browserino::parse 'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52'
   it 'has a version number' do
     expect(Browserino::VERSION).not_to be nil
+  end
+
+  it 'implements to_s' do
+    expect(agent.to_s.class).to eq String
+  end
+
+  it 'implements to_a' do
+    expect(agent.to_a.class).to eq Array
+  end
+
+  it 'implements to_h' do
+    expect(agent.to_h.class).to eq Hash
   end
 
   it 'contains hash keys to determine every major browser' do
@@ -68,9 +81,8 @@ browsers.each do |const|
               end
 
               describe 'returns true for any random others' do
-                brwsrs = browsers.dup
-                brwsrs.delete(browser_nm.upcase.to_sym)
-                brwsrs.sample(2).each do |b|
+                brwsrs = browsers.dup - [browser_nm.upcase.to_sym, :Z]
+                brwsrs.each do |b|
                   it "returns true for agent.not.#{b.to_s.downcase}?" do
                     expect(agent.not.send("#{b.to_s.downcase}?")).to eq true
                   end

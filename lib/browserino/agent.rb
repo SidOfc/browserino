@@ -1,7 +1,5 @@
 module Browserino
   class Agent
-    attr_accessor :info
-
     def initialize(hash, unknown = Browserino::UNKNOWN)
       @info = hash
       @unknown = unknown
@@ -60,17 +58,12 @@ module Browserino
       end
     end
 
-    def not
-      @not = true
-      self
-    end
-
     def method_missing(method_sym, *args, &block)
       criteria = method_sym.to_s.gsub('?', '').split(/(?<=[a-zA-Z])(?=\d+)/)
       name = criteria[0]
       res = case browser_or_system?(method_sym)
-      when :system then correct_system?(*criteria)
-      when :browser then correct_browser?(*criteria)
+      when :system then correct_system?(criteria[0], criteria[1])
+      when :browser then correct_browser?(criteria[0], criteria[1])
       else super
       end
       if @not
@@ -83,6 +76,38 @@ module Browserino
 
     def respond_to?(method_sym)
       browser_or_system?(method_sym).nil?
+    end
+
+    def not
+      @not = true
+      self
+    end
+
+    def to_s
+      props = @info.map do |k, _v|
+        res = send k
+        case k
+        when :system_version
+          system_name + res.split('.').first
+        when :engine_version
+          engine_name + res.split('.').first
+        when :browser_version
+          browser_name + res.split('.').first
+        else res
+        end
+      end
+      props.compact.join(' ')
+    end
+
+    def to_a
+      @info.inject([]) do |memo, arr|
+        memo.push [arr.first, send(arr.first)]
+        memo
+      end
+    end
+
+    def to_h
+      to_a.to_h
     end
 
     private

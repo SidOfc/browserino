@@ -9,6 +9,13 @@ This gem aims to provide information about the browser that your visitor is usin
 ## Changelog
 _dates are in dd-mm-yyyy format_
 
+#### 19-12-2015 VERSION 1.5.0
+
+- Implemented to_s to return a concatenated string of property values
+- Implemented to_a to return an array with arrays containing property name-value pairs
+- Implemented to_h to return a hash containing property name-value pairs
+- Removed unused code
+
 #### 19-12-2015 VERSION 1.4.0
 
 - Added not method to invert questions about browser / system
@@ -85,6 +92,27 @@ agent.system_name # => 'macintosh'
 agent.system_name full: true # => ['macintosh', 'mavericks']
 agent.system_version # => 6.0
 agent.system_architecture # => 'x32' or 'x64' or 'unknown'
+
+# methods to convert object into a String, Array or hash
+agent.to_s # => 'safari safari7 webkit webkit537 macintosh macintosh10'
+agent.to_a # => [
+#                 [:browser_name, 'safari'],
+#                 [:browser_version, '7.0.3'],
+#                 [:engine_name, 'webkit'],
+#                 [:engine_version, '537.75.14'],
+#                 [:system_name, 'macintosh'],
+#                 [:system_version, '10'],
+#                 [:system_architecture, nil]
+#               ]
+agent.to_h # => {
+#                 browser_name: 'safari',
+#                 browser_version: '7.0.3',
+#                 engine_name: 'webkit',
+#                 engine_version: '537.75.14',
+#                 system_name: 'macintosh',
+#                 system_version: '10',
+#                 system_architecture: nil
+#               }
 ```
 
 It is now also possible to call methods to determine a specific OS or browser if it's supported, a `noMethodError` will be thrown otherwise

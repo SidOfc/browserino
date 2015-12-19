@@ -1,6 +1,6 @@
 module UserAgents
   #without this opera doesn't get tested (first constant seems to come out as an array)
-  USE_FOR_UNKNOWN = false
+  USE_FOR_UNKNOWN = nil
   OPERA = {
     mac: {
       'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52' => {
@@ -62,7 +62,7 @@ module UserAgents
         system_architecture: 'x64'
       }
     }
-  },
+  }
   IE = {
     mac: {
       'Mozilla/5.0 (compatible; MSIE 10.0; Macintosh; Intel Mac OS X 10_7_3; Trident/6.0)' => {
@@ -96,7 +96,7 @@ module UserAgents
       }
     },
     linux: {}
-  },
+  }
   MAXTHON = {
     mac: [],
     win: {
@@ -120,7 +120,7 @@ module UserAgents
       }
     },
     linux: {}
-  },
+  }
   FIREFOX = {
     mac: {
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10; rv:33.0) Gecko/20100101 Firefox/33.0' => {
@@ -182,7 +182,7 @@ module UserAgents
         system_architecture: 'x64'
       }
     }
-  },
+  }
   CHROME = {
     mac: {
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36' => {
@@ -244,7 +244,7 @@ module UserAgents
         system_architecture: 'x64'
       }
     }
-  },
+  }
   SAFARI = {
     mac: {
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A' => {
