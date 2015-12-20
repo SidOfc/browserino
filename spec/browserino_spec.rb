@@ -54,10 +54,15 @@ browsers.each do |const|
           end
           describe "Implements method_missing? for" do
             sys_nm = agent.system_name.to_s.downcase
-            sys_ver = (agent.system_version || '').split('.').first
+            sys_ver = (agent.system_version || '').split('.').first.to_s
             if agent.system_name != UserAgents::USE_FOR_UNKNOWN
               it "system names w/o version: agent.#{sys_nm}?" do
                 expect(agent.send("#{sys_nm}?")).to eq true
+              end
+              unless sys_ver.empty?
+                it "system names w/ version: agent.#{sys_nm + sys_ver}?" do
+                  expect(agent.send("#{sys_nm + sys_ver}?")).to eq true
+                end
               end
             end
             if agent.browser_name != UserAgents::USE_FOR_UNKNOWN
