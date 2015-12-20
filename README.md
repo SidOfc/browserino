@@ -9,6 +9,10 @@ This gem aims to provide information about the browser that your visitor is usin
 ## Changelog
 _dates are in dd-mm-yyyy format_
 
+#### 20-12-2015 VERSION 1.5.1
+
+- Fixed `respond_to?` method which would first return inverted results (e.g. false when it should be true)
+
 #### 19-12-2015 VERSION 1.5.0
 
 - Implemented to_s to return a concatenated string of property values

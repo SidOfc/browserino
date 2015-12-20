@@ -21,6 +21,10 @@ describe Browserino do
     expect(agent.to_h.class).to eq Hash
   end
 
+  it 'raises NoMethodError when a simulated method isn\'t supported' do
+    expect { agent.fhjkshfj? }.to raise_error(NoMethodError)
+  end
+
   it 'contains hash keys to determine every major browser' do
     @major_browsers = [:opera, :ie, :firefox, :chrome, :safari]
     expect((Browserino::PATTERNS[:browser].keys & @major_browsers).empty?).to eq(false)
@@ -52,14 +56,20 @@ browsers.each do |const|
               end
             end
           end
-          describe "Implements method_missing? for" do
+          describe "Implements method_missing? and respond_to for" do
             sys_nm = agent.system_name.to_s.downcase
             sys_ver = (agent.system_version || '').split('.').first.to_s
             if agent.system_name != UserAgents::USE_FOR_UNKNOWN
+              it "respond_to :#{sys_nm}?" do
+                expect(agent.respond_to?("#{sys_nm}?".to_sym)).to eq true
+              end
               it "system names w/o version: agent.#{sys_nm}?" do
                 expect(agent.send("#{sys_nm}?")).to eq true
               end
               unless sys_ver.empty?
+                it "respond_to :#{sys_nm + sys_ver}?" do
+                  expect(agent.respond_to?("#{sys_nm + sys_ver}?".to_sym)).to eq true
+                end
                 it "system names w/ version: agent.#{sys_nm + sys_ver}?" do
                   expect(agent.send("#{sys_nm + sys_ver}?")).to eq true
                 end
@@ -68,10 +78,16 @@ browsers.each do |const|
             if agent.browser_name != UserAgents::USE_FOR_UNKNOWN
               browser_nm = agent.browser_name.to_s.downcase
               browser_ver = (agent.browser_version || '').split('.').first
+              it "respond_to :#{browser_nm}?" do
+                expect(agent.respond_to?("#{browser_nm}?".to_sym)).to eq true
+              end
               it "browser names w/o version: agent.#{browser_nm}?" do
                 expect(agent.send("#{browser_nm}?")).to eq true
               end
               if browser_ver
+                it "respond_to :#{browser_nm + browser_ver}?" do
+                  expect(agent.respond_to?("#{browser_nm + browser_ver}?".to_sym)).to eq true
+                end
                 it "browser names w/ version: agent.#{browser_nm + browser_ver}?" do
                   expect(agent.send("#{browser_nm + browser_ver}?")).to eq true
                 end

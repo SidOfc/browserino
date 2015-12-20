@@ -75,7 +75,7 @@ module Browserino
     end
 
     def respond_to?(method_sym)
-      browser_or_system?(method_sym).nil?
+      browser_or_system?(method_sym).nil? ? false : true
     end
 
     def not
@@ -114,6 +114,8 @@ module Browserino
 
     def browser_or_system?(method_sym)
       name = method_sym.to_s.gsub('?', '').split(/(?<=[a-zA-Z])(?=\d+)/).first
+      p name
+      p method_sym
       sys = Browserino::Mapping.constants(true).include?(name.upcase.to_sym)
       browser = Browserino::PATTERNS[:browser].keys.include?(name.to_sym)
       if sys
