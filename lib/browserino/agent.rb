@@ -107,15 +107,16 @@ module Browserino
     end
 
     def to_h
-      to_a.to_h
+      to_a.inject({}) do |memo, arr|
+        memo[arr[0].to_sym] = arr[1]
+        memo
+      end
     end
 
     private
 
     def browser_or_system?(method_sym)
       name = method_sym.to_s.gsub('?', '').split(/(?<=[a-zA-Z])(?=\d+)/).first
-      p name
-      p method_sym
       sys = Browserino::Mapping.constants(true).include?(name.upcase.to_sym)
       browser = Browserino::PATTERNS[:browser].keys.include?(name.to_sym)
       if sys
