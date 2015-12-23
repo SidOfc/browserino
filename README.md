@@ -12,6 +12,7 @@ _dates are in dd-mm-yyyy format_
 #### 23-12-2015 VERSION 1.5.1.1
 
 - Removed print statements from method
+- Builds are now executed for Ruby 1.9.3 as well as 2.2.1
 
 #### 20-12-2015 VERSION 1.5.1
 
