@@ -46,6 +46,7 @@ _dates are in dd-mm-yyyy format_
 
 ## Installation
 
+*supports ruby 1.9.3+*
 Add this line to your application's Gemfile:
 
 ```ruby
