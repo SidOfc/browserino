@@ -9,6 +9,11 @@ This gem aims to provide information about the browser that your visitor is usin
 ## Changelog
 _dates are in dd-mm-yyyy format_
 
+#### 31-12-2015 VERSION 1.5.3
+
+- Added blackberry support
+- Added tests for blackberry user agent strings
+
 #### 31-12-2015 VERSION 1.5.2
 
 - Added user agents

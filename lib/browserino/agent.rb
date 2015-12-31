@@ -148,6 +148,8 @@ module Browserino
                   system_version.split('.').first(2).join.to_i
                 elsif name.match(/win|android/i)
                   system_version.gsub('.', '').to_i
+                else
+                  system_version.to_i
                 end
       if version && defined? const
         version_names = Browserino::Mapping.const_get(const).select do |_, versions|

@@ -1,4 +1,5 @@
-require "browserino/maps/osx"
+require "browserino/maps/macintosh"
+require "browserino/maps/blackberry"
 require "browserino/maps/ios"
 require "browserino/maps/linux"
 require "browserino/maps/android"
@@ -15,8 +16,6 @@ require "browserino/patterns"
 require "browserino/browser"
 require "browserino/engine"
 require "browserino/operating_system"
-
-# require_relative "../spec/user_agents.rb"
 
 module Browserino
   def self.parse(ua, unknown_alt = Browserino::UNKNOWN)

@@ -426,6 +426,44 @@ module UserAgents
         system_architecture: USE_FOR_UNKNOWN
       }
     },
-    linux: {}
+    linux: {},
+    blackberry: {
+      'Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+' => {
+        browser_name: 'Safari',
+        browser_version: '7.1.0.346',
+        engine_name: 'webkit',
+        engine_version: '534.11',
+        system_name: ['blackberry', '9900'],
+        system_version: '9900',
+        system_architecture: USE_FOR_UNKNOWN
+      },
+      'Mozilla/5.0 (BlackBerry; U; BlackBerry 9860; en-US) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.0.0.254 Mobile Safari/534.11+' => {
+        browser_name: 'Safari',
+        browser_version: '7.0.0.254',
+        engine_name: 'webkit',
+        engine_version: '534.11',
+        system_name: ['blackberry', '9860'],
+        system_version: '9860',
+        system_architecture: USE_FOR_UNKNOWN
+      },
+      'Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; it) AppleWebKit/534.8+ (KHTML, like Gecko) Version/6.0.0.668 Mobile Safari/534.8+' => {
+        browser_name: 'Safari',
+        browser_version: '6.0.0.668',
+        engine_name: 'webkit',
+        engine_version: '534.8',
+        system_name: ['blackberry', '9800'],
+        system_version: '9800',
+        system_architecture: USE_FOR_UNKNOWN
+      },
+      'Mozilla/5.0 (BlackBerry; U; BlackBerry 9700; pt) AppleWebKit/534.8+ (KHTML, like Gecko) Version/6.0.0.546 Mobile Safari/534.8+' => {
+        browser_name: 'Safari',
+        browser_version: '6.0.0.546',
+        engine_name: 'webkit',
+        engine_version: '534.8',
+        system_name: ['blackberry', '9700'],
+        system_version: '9700',
+        system_architecture: USE_FOR_UNKNOWN
+      }
+    }
   }
 end
