@@ -43,9 +43,9 @@ module Browserino
     },
 
     operating_system: {
-      name: /(?<name>windows|macintosh|android|ios|linux|ubuntu)/i,
+      name: /(?<name>windows|macintosh|android|ios|linux|ubuntu|x11)/i,
       version: /(?:nt|mac\sos\sx|android|(cpu\s|i)os)\s(?<version>[\d\._]+)/i,
-      architecture: /(?<architecture>(x?(86_)?64)|i(3|6)86)/i
+      architecture: /(?<architecture>((?:x|x86_|amd|wow)64)|i(3|6)86)/i
     }
   }
 end

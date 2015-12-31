@@ -9,6 +9,12 @@ This gem aims to provide information about the browser that your visitor is usin
 ## Changelog
 _dates are in dd-mm-yyyy format_
 
+#### 31-12-2015 VERSION 1.5.2
+
+- Added user agents
+- Patterns could falsely identify a 64bit system, made the pattern more strict
+- using `X11` in a user agent as a synonym to a `#linux?` system
+
 #### 23-12-2015 VERSION 1.5.1.1
 
 - Removed print statements from method
@@ -169,7 +175,7 @@ agent.not.maxthon?
 
 ```
 
-Since linux doesn't have any supported versions all you can pretty much do is check if `agent.linux?` is true if you want to check for linux systems. The others do have versions so if you wanted to check for windows 10 you could do:
+Since linux doesn't have any supported versions all you can pretty much do is check if `agent.linux?` is true if you want to check for linux systems. Also - `X11` in a user agent string will now also cause the OS to be set to linux. The others do have versions so if you wanted to check for windows 10 you could do:
 
 ```ruby
 agent.windows10?

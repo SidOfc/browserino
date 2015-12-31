@@ -117,7 +117,7 @@ browsers.each do |const|
   end
 end
 
-describe "returns #{UserAgents::USE_FOR_UNKNOWN} when information couldn't be found" do
+describe "returns #{VISIBLE_FOR_UNKNOWN} when information couldn't be found" do
   agent = Browserino::parse('', UserAgents::USE_FOR_UNKNOWN)
 
   it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.browser_name" do
