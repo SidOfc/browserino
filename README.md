@@ -146,6 +146,7 @@ agent.android?
 agent.ios?
 agent.windows?
 agent.macintosh?
+agent.blackberry?
 agent.linux?
 ```
 
@@ -157,6 +158,7 @@ agent.not.android?
 agent.not.ios?
 agent.not.windows?
 agent.not.macintosh?
+agent.not.blackberry?
 agent.not.linux?
 ```
 
