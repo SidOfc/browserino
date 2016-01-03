@@ -355,6 +355,48 @@ module UserAgents
       }
     }
   }
+  SEAMONKEY = {
+    win: {
+      'Mozilla/5.0 (Windows NT 5.2; RW; rv:7.0a1) Gecko/20091211 SeaMonkey/9.23a1pre' => {
+        browser_name: 'SeaMonkey',
+        browser_version: '9.23',
+        engine_name: 'Gecko',
+        engine_version: '7.0',
+        system_name: ['windows', 'xp'],
+        system_version: '5.2',
+        system_architecture: USE_FOR_UNKNOWN
+      },
+      'Mozilla/5.0 (Windows; U; Windows NT 6.2; WOW64; rv:1.8.0.7) Gecko/20110321 MultiZilla/4.33.2.6a SeaMonkey/8.6.55' => {
+        browser_name: 'SeaMonkey',
+        browser_version: '8.6.55',
+        engine_name: 'Gecko',
+        engine_version: '1.8.0.7',
+        system_name: ['windows', '8'],
+        system_version: '6.2',
+        system_architecture: 'x64'
+      }
+    },
+    linux: {
+      'Mozilla/5.0 (X11; U; Linux i686; ru; rv:33.2.3.12) Gecko/20120201 SeaMonkey/8.2.8' => {
+        browser_name: 'SeaMonkey',
+        browser_version: '8.2.8',
+        engine_name: 'Gecko',
+        engine_version: '33.2.3.12',
+        system_name: ['linux', USE_FOR_UNKNOWN],
+        system_version: USE_FOR_UNKNOWN,
+        system_architecture: 'x32'
+      },
+      'Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20120501 Firefox/12.0 SeaMonkey/2.9.1 Lightning/1.4' => {
+        browser_name: 'SeaMonkey',
+        browser_version: '2.9.1',
+        engine_name: 'Gecko',
+        engine_version: '12.0',
+        system_name: ['linux', USE_FOR_UNKNOWN],
+        system_version: USE_FOR_UNKNOWN,
+        system_architecture: 'x64'
+      }
+    }
+  }
   FIREFOX = {
     mac: {
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:43.0) Gecko/20100101 Firefox/43.0' => {

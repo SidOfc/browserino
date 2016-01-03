@@ -36,6 +36,11 @@ module Browserino
         version: /(?:(?:ms)?ie\s|rv\:)(?<version>[\d\.b]+)/i
       },
 
+      seamonkey: {
+        name: /(?<name>seamonkey)/i,
+        version: /seamonkey\/(?<version>[\d\.]+)/i
+      },
+
       firefox: {
         name: /(?<name>(?:fire|water)(?:fox|bird)|ice(?:weasel|cat)|netscape)/i,
         version: /(?:(?:fire|water)(?:fox|bird)|ice(?:weasel|cat)|netscape)[\/]?(?<version>[\d\.]+)/i
