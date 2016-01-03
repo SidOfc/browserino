@@ -364,7 +364,11 @@ module UserAgents
         engine_version: '7.0',
         system_name: ['windows', 'xp'],
         system_version: '5.2',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Windows; U; Windows NT 6.2; WOW64; rv:1.8.0.7) Gecko/20110321 MultiZilla/4.33.2.6a SeaMonkey/8.6.55' => {
         browser_name: 'SeaMonkey',
@@ -373,7 +377,11 @@ module UserAgents
         engine_version: '1.8.0.7',
         system_name: ['windows', '8'],
         system_version: '6.2',
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
     },
     linux: {
@@ -384,7 +392,11 @@ module UserAgents
         engine_version: '33.2.3.12',
         system_name: ['linux', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
-        system_architecture: 'x32'
+        system_architecture: 'x32',
+        x64?: false,
+        x32?: true,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20120501 Firefox/12.0 SeaMonkey/2.9.1 Lightning/1.4' => {
         browser_name: 'SeaMonkey',
@@ -393,7 +405,11 @@ module UserAgents
         engine_version: '12.0',
         system_name: ['linux', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
     }
   }
