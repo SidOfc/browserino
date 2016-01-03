@@ -71,53 +71,43 @@ module Browserino
     end
 
     def known?
-      browser_name != @unknown
+      res = !@not && browser_name != @unknown
+      @not = false
+      res
     end
 
     def mobile?
-      !!(ua =~ /bolt|nokia|samsung|mobi(?:le)?|android|ip(?:[ao]d|hone)|bb\d+|blackberry|iemobile|fennec|bada|meego|vodafone|t\-mobile|opera\sm(?:ob|in)i/i)
+      allow_inverted_return !!(ua =~ /bolt|nokia|samsung|mobi(?:le)?|android|ip(?:[ao]d|hone)|bb\d+|blackberry|iemobile|fennec|bada|meego|vodafone|t\-mobile|opera\sm(?:ob|in)i/i)
     end
 
     def x64?
-      system_architecture == 'x64'
+      allow_inverted_return(system_architecture == 'x64')
     end
 
     def x32?
-      system_architecture == 'x32'
+      allow_inverted_return(system_architecture == 'x32')
     end
 
-    def correct_system?(name, version = nil)
-      os_equal = (name == system_name)
-      if version
-        os_equal && version == system_version.to_s[0..(version.size - 1)]
-      else
-        os_equal
-      end
+    def osx?(*arg)
+      macintosh?(*arg)
     end
 
-    def correct_browser?(name, version = nil)
-      browser_equal = (name.gsub(/_/, ' ') == browser_name)
-      if version
-        browser_equal && version == browser_version.to_s[0..(version.size - 1)]
-      else
-        browser_equal
-      end
+    def win?(*arg)
+      windows?(*arg)
+    end
+
+    def bb?(*arg)
+      blackberry?(*arg)
     end
 
     def method_missing(method_sym, *args, &block)
-      criteria = method_sym.to_s.gsub('?', '').split(/(?<=[a-zA-Z_])(?=\d+)/)
-      name = criteria[0]
+      name = method_sym.to_s.gsub('?', '')
       res = case browser_or_system?(method_sym)
-      when :system then correct_system?(criteria[0], criteria[1])
-      when :browser then correct_browser?(criteria[0], criteria[1])
+      when :system then correct_system?(name, *args)
+      when :browser then correct_browser?(name, *args)
       else super
       end
-      if @not
-        @not = false
-        !res
-      else
-        res
-      end
+      allow_inverted_return res
     end
 
     def respond_to?(method_sym)
@@ -160,8 +150,45 @@ module Browserino
 
     private
 
+    def allow_inverted_return(res)
+      if @not
+        @not = false
+        !res
+      else
+        res
+      end
+    end
+
+    def compare_versions(a, b)
+      b = b.to_s.split('.')
+      !a.to_s.split('.').map { |v| v == b.shift }.include?(false)
+    end
+
+    def correct_system?(name, version = nil)
+      sys_name = name.to_s.downcase.gsub(/\s/, '_')
+      sys_name_compare = system_name(full: true).join.downcase.gsub(/\s/, '_')
+      name_variations = [sys_name_compare, sys_name_compare.gsub(/^[\s_]+|\d|[\s_]+$/, '')]
+
+      if (name_variations.include?((sys_name + version.to_s).gsub(/\s/, '_').downcase) ||
+          (sys_name == system_name.gsub(/\s/, '_') && compare_versions(version, system_version)) ||
+          (!version && sys_name == system_name.gsub(/\s/, '_')))
+        true
+      else
+        false
+      end
+    end
+
+    def correct_browser?(name, version = nil)
+      browser_equal = (name.gsub(/_/, ' ') == browser_name)
+      if version
+        browser_equal && compare_versions(version, browser_version)
+      else
+        browser_equal
+      end
+    end
+
     def browser_or_system?(method_sym)
-      name = method_sym.to_s.gsub('?', '').split(/(?<=[a-zA-Z])(?=\d+)/).first
+      name = method_sym.to_s.gsub('?', '').split(/_/).first
       sys = Browserino::Mapping.constants(true).include?(name.upcase.to_sym)
       browser = Browserino::PATTERNS[:browser].keys.include?(name.to_sym)
       if sys

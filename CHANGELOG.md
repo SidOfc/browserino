@@ -1,6 +1,12 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_  
 
+#### 31-12-2015 VERSION 1.5.2
+
+- Added user agents
+- Patterns could falsely identify a 64bit system, made the pattern more strict
+- using `X11` in a user agent as a synonym to a `#linux?` system
+
 #### 23-12-2015 VERSION 1.5.1.1
 
 - Removed print statements from method

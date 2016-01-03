@@ -10,6 +10,13 @@ This gem aims to provide information about the browser that your visitor is usin
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md)_
 
+#### 03-01-2016 VERSION 2.0.0
+
+- **IMPORTANT** Changed behaviour of all dynamic methods to include version as an argument rather than in the method name.
+- **IMPORTANT** Changed the behaviour of version checking to be more strict
+- Changed tests to reflect new behaviour
+- Added convenience methods `#win?`, `#osx?` and `#bb?`
+
 #### 03-01-2016 VERSION 1.6.0
 
 - Added more tests
@@ -27,15 +34,9 @@ _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/brow
 - Added blackberry support
 - Added tests for blackberry user agent strings
 
-#### 31-12-2015 VERSION 1.5.2
-
-- Added user agents
-- Patterns could falsely identify a 64bit system, made the pattern more strict
-- using `X11` in a user agent as a synonym to a `#linux?` system
-
 ## Installation
 
-*supports ruby 1.9.3+*
+*supports ruby 1.9.3+*  
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -125,13 +126,32 @@ agent.to_h # => {
 
 It is now also possible to call methods to determine a specific OS or browser if it's supported, a `noMethodError` will be thrown otherwise
 The function uses the names of the `Browserino::Mapping.constants(true)` or `Browserino::PATTERNS[:browser].keys` output to identify wether or not to throw this exception.
+Versions are also supported as an argument to the function, for operating systems versions could include a string, symbol or float / integer to indicate a version.
+_(examples given for windows, android and ios, for a full list of versions check the **maps** folder)_
+Browsers can also accept a float / integer to check for a specific version.
+
+### DEPRECATION NOTICE
+
+**Methods that include a version number in their name (`agent.android4?`) are deprecated as of version 2.0.0. Supply the version as argument instead `agent.android?(4)`**
 
 Supported systems
 
 ```ruby
 agent.android?
+# check for android jellybean
+# agent.android?(:jellybean) or agent.android?('jellybean') or agent.android?(4.1)
 agent.ios?
+# check version of iOS (v1.x.x)
+# agent.ios9?
+# check version of iOS (v2.x.x)
+# agent.ios?(9)
 agent.windows?
+# check for windows Vista (v1.x.x)
+# agent.windows60?
+# check for windows Vista (v2.x.x)
+# agent.windows?(6) - based on NT version
+# agent.windows?(6.0) - based on NT version
+# agent.windows?(:vista) or agent.windows?('vista')
 agent.macintosh?
 agent.blackberry?
 agent.linux?
@@ -139,15 +159,28 @@ agent.linux?
 
 You could also invert these questions by using the `.not` method
 
-
 ```ruby
 agent.not.android?
+# check for android jellybean
+# agent.not.android?(:jelly_bean) or agent.not.android?('jelly bean') or agent.not.android?(4.1)
 agent.not.ios?
+# check if iOS version isn't 9 (v1.4.0+)
+# agent.not.ios9?
+# check if iOS version isn't 9 (v2.x.x)
+# agent.not.ios?(9)
 agent.not.windows?
+# check if not windows vista (v1.4.0+)
+# agent.not.windows60?
+# check if not windows vista (v2.x.x)
+# agent.not.windows?(6) - based on NT version
+# agent.not.windows?(6.0) - based on NT version
+# agent.not.windows?(:vista) or agent.not.windows?('vista')
 agent.not.macintosh?
 agent.not.blackberry?
 agent.not.linux?
 ```
+
+The `#windows?`, `#macintosh?` and `#blackberry?` each have a shortcut method to allow for easier access, `#win?`, `#osx?`, `#bb?`
 
 Supported browsers  
 
@@ -167,18 +200,9 @@ agent.safari?
 
 agent.not.opera?
 agent.not.maxthon?
-
 # etc etc...
 
 ```
-
-Since linux doesn't have any supported versions all you can pretty much do is check if `agent.linux?` is true if you want to check for linux systems. Also - `X11` in a user agent string will now also cause the OS to be set to linux. The others do have versions so if you wanted to check for windows 10 you could do:
-
-```ruby
-agent.windows10?
-```
-
-**note** Windows versions use their respective *NT* versioning so `agent.windows6?` equals `Vista` - I have yet to make changes to fix that. Browser versions use their actual version which always matches up with their real version, the same goes for the other systems.
 
 ## Development
 

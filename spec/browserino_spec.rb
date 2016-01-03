@@ -30,7 +30,7 @@ describe Browserino do
     expect((Browserino::PATTERNS[:browser].keys & @major_browsers).empty?).to eq(false)
   end
 end
-
+convenience_os_fn = {macintosh: :osx, windows: :win, blackberry: :bb}
 browsers = UserAgents.constants(true)
 browsers.shift
 browsers.each do |const|
@@ -58,20 +58,36 @@ browsers.each do |const|
           end
           describe "Implements method_missing? and respond_to for" do
             sys_nm = agent.system_name.to_s.downcase
-            sys_ver = (agent.system_version || '').split('.').first.to_s
+            sys_nm_full = agent.system_name(full: true)
+            sys_ver_split = (agent.system_version || '').split('.')
+            con = convenience_os_fn[sys_nm.to_sym]
             if agent.system_name != UserAgents::USE_FOR_UNKNOWN
               it "respond_to :#{sys_nm}?" do
                 expect(agent.respond_to?("#{sys_nm}?".to_sym)).to eq true
               end
-              it "system names w/o version: agent.#{sys_nm}?" do
+              if convenience_os_fn.keys.include?(sys_nm.to_sym)
+                it "has a convenience method for calling system name" do
+                  expect(agent.send("#{con}?")).to eq true
+                end
+              end
+              it "accepts a system_name w/o version: agent.#{sys_nm}?" do
                 expect(agent.send("#{sys_nm}?")).to eq true
               end
-              unless sys_ver.empty?
-                it "respond_to :#{sys_nm + sys_ver}?" do
-                  expect(agent.respond_to?("#{sys_nm + sys_ver}?".to_sym)).to eq true
+              unless sys_ver_split.empty?
+                sys_ver = sys_ver_split[0..(1 + rand(0..sys_ver_split.size))].join('.')
+                it "accepts a system_name w/ version: agent.#{sys_nm}?(#{sys_ver})" do
+                  expect(agent.send("#{sys_nm}?", sys_ver)).to eq true
                 end
-                it "system names w/ version: agent.#{sys_nm + sys_ver}?" do
-                  expect(agent.send("#{sys_nm + sys_ver}?")).to eq true
+                it "accepts a system_name w/ (named)version: agent.#{sys_nm}?(#{sys_nm_full[1]})" do
+                  expect(agent.send("#{sys_nm}?", sys_nm_full[1])).to eq true
+                end
+                if convenience_os_fn.keys.include?(sys_nm.to_sym)
+                  it "has a convenience method for calling system name w/ version agent.#{con}?(#{sys_ver})" do
+                    expect(agent.send("#{con}?", sys_ver)).to eq true
+                  end
+                  it "has a convenience method for calling system name w/ (named)version agent.#{con}?(#{sys_nm_full[1]})" do
+                    expect(agent.send("#{con}?", sys_nm_full[1])).to eq true
+                  end
                 end
               end
             end
@@ -81,15 +97,12 @@ browsers.each do |const|
               it "respond_to :#{browser_nm}?" do
                 expect(agent.respond_to?("#{browser_nm}?".to_sym)).to eq true
               end
-              it "browser names w/o version: agent.#{browser_nm}?" do
+              it "accepts a browser_name w/o version: agent.#{browser_nm}?" do
                 expect(agent.send("#{browser_nm}?")).to eq true
               end
               if browser_ver
-                it "respond_to :#{browser_nm + browser_ver}?" do
-                  expect(agent.respond_to?("#{browser_nm + browser_ver}?".to_sym)).to eq true
-                end
-                it "browser names w/ version: agent.#{browser_nm + browser_ver}?" do
-                  expect(agent.send("#{browser_nm + browser_ver}?")).to eq true
+                it "accepts a browser_name w/ version: agent.#{browser_nm}?(#{browser_ver})" do
+                  expect(agent.send("#{browser_nm}?", browser_ver)).to eq true
                 end
               end
             end
@@ -157,11 +170,23 @@ describe "returns #{VISIBLE_FOR_UNKNOWN} when information couldn't be found" do
     expect(agent.known?).to eq false
   end
 
+  it "Returns true for agent.not.known?" do
+    expect(agent.not.known?).to eq false
+  end
+
   it "Returns false for agent.x32?" do
     expect(agent.x32?).to eq false
   end
 
+  it "Returns true for agent.not.x32?" do
+    expect(agent.not.x32?).to eq true
+  end
+
   it "Returns false for agent.x64?" do
     expect(agent.x64?).to eq false
+  end
+
+  it "Returns true for agent.not.x64?" do
+    expect(agent.not.x64?).to eq true
   end
 end
