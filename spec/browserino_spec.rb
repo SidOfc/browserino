@@ -76,7 +76,7 @@ browsers.each do |const|
               end
             end
             if agent.browser_name != UserAgents::USE_FOR_UNKNOWN
-              browser_nm = agent.browser_name.to_s.downcase
+              browser_nm = agent.browser_name.to_s.downcase.gsub(/\s/, '_')
               browser_ver = (agent.browser_version || '').split('.').first
               it "respond_to :#{browser_nm}?" do
                 expect(agent.respond_to?("#{browser_nm}?".to_sym)).to eq true
@@ -96,7 +96,7 @@ browsers.each do |const|
           end
           describe "Correctly inverts method_missing? results when #not is called" do
             if agent.browser_name != UserAgents::USE_FOR_UNKNOWN
-              browser_nm = agent.browser_name.to_s.downcase
+              browser_nm = agent.browser_name.to_s.downcase.gsub(/\s/, '_')
               it 'returns false for not being itself' do
                 expect(agent.not.send("#{browser_nm}?")).to eq false
               end
@@ -104,8 +104,9 @@ browsers.each do |const|
               describe 'returns true for any random others' do
                 brwsrs = browsers.dup - [browser_nm.upcase.to_sym, :Z]
                 brwsrs.each do |b|
-                  it "returns true for agent.not.#{b.to_s.downcase}?" do
-                    expect(agent.not.send("#{b.to_s.downcase}?")).to eq true
+                  bb = b.to_s.downcase.gsub(/\s/, '_')
+                  it "returns true for agent.not.#{bb}?" do
+                    expect(agent.not.send("#{bb}?")).to eq true
                   end
                 end
               end
@@ -120,35 +121,47 @@ end
 describe "returns #{VISIBLE_FOR_UNKNOWN} when information couldn't be found" do
   agent = Browserino::parse('', UserAgents::USE_FOR_UNKNOWN)
 
-  it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.browser_name" do
+  it "Returns #{VISIBLE_FOR_UNKNOWN} for agent.browser_name" do
     expect(agent.browser_name).to eq UserAgents::USE_FOR_UNKNOWN
   end
 
-  it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.browser_version" do
+  it "Returns #{VISIBLE_FOR_UNKNOWN} for agent.browser_version" do
     expect(agent.browser_version).to eq UserAgents::USE_FOR_UNKNOWN
   end
 
-  it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.engine_name" do
+  it "Returns #{VISIBLE_FOR_UNKNOWN} for agent.engine_name" do
     expect(agent.engine_name).to eq UserAgents::USE_FOR_UNKNOWN
   end
 
-  it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.engine_version" do
+  it "Returns #{VISIBLE_FOR_UNKNOWN} for agent.engine_version" do
     expect(agent.engine_version).to eq UserAgents::USE_FOR_UNKNOWN
   end
 
-  it 'Returns [' + VISIBLE_FOR_UNKNOWN.to_s + ', ' + VISIBLE_FOR_UNKNOWN.to_s + '] for agent.system_name({full: true})' do
+  it "Returns [" + VISIBLE_FOR_UNKNOWN.to_s + ", " + VISIBLE_FOR_UNKNOWN.to_s + "] for agent.system_name({full: true})" do
     expect(agent.system_name(full: true)).to eq [UserAgents::USE_FOR_UNKNOWN, UserAgents::USE_FOR_UNKNOWN]
   end
 
-  it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.system_name" do
+  it "Returns #{VISIBLE_FOR_UNKNOWN} for agent.system_name" do
     expect(agent.system_name).to eq UserAgents::USE_FOR_UNKNOWN
   end
 
-  it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.system_version" do
+  it "Returns #{VISIBLE_FOR_UNKNOWN} for agent.system_version" do
     expect(agent.system_version).to eq UserAgents::USE_FOR_UNKNOWN
   end
 
-  it "Returns '#{VISIBLE_FOR_UNKNOWN}' for agent.system_architecture" do
+  it "Returns #{VISIBLE_FOR_UNKNOWN} for agent.system_architecture" do
     expect(agent.system_architecture).to eq UserAgents::USE_FOR_UNKNOWN
+  end
+
+  it "Returns false for agent.known?" do
+    expect(agent.known?).to eq false
+  end
+
+  it "Returns false for agent.x32?" do
+    expect(agent.x32?).to eq false
+  end
+
+  it "Returns false for agent.x64?" do
+    expect(agent.x64?).to eq false
   end
 end

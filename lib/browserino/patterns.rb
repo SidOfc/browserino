@@ -1,6 +1,21 @@
 module Browserino
   PATTERNS = {
     browser: {
+      ucbrowser: {
+        name: /(?<name>ucbrowser)/i,
+        version: /ucbrowser\/?(?<version>[\d\.]+)/i
+      },
+
+      bolt: {
+        name: /(?<name>bolt)/i,
+        version: /bolt\/(?<version>[\d\.]+)/i
+      },
+
+      opera_mini: {
+        name: /(?<name>ope?ra?\smini)/i,
+        version: /(?:ope?ra?\smini)\/(?<version>[\d\.]+)/i
+      },
+
       opera: {
         name: /(?<name>ope?ra?)/i,
         version: /(?:ope?ra?|version)(\/|\s)(?<version>[\d\.]+)/i
@@ -38,13 +53,13 @@ module Browserino
     },
 
     engine: {
-      name: /(?<name>((apple)?webkit|gecko|trident|presto))/i,
-      version: /(?:(?:apple)?webkit|rv:|trident|presto)[\/\s]?(?<version>[\d\.]+)/i
+      name: /(?<name>((apple)?webkit|presto|gecko|trident))/i,
+      version: /(?:(?:apple)?webkit|presto|rv:|trident)[\/\s]?(?<version>[\d\.]+)/i
     },
 
     operating_system: {
       name: /(?<name>windows|macintosh|android|ios|blackberry|linux|ubuntu|x11)/i,
-      version: /(?:nt|mac\sos\sx|android|(cpu\s|i)os|blackberry)\s(?<version>[\d\._]+)/i,
+      version: /(?:nt|mac\sos\sx|android|(cpu\s|i)os|blackberry)\s?(?<version>[\d\._]+)/i,
       architecture: /(?<architecture>((?:x|x86_|amd|wow)64)|i(3|6)86)/i
     }
   }

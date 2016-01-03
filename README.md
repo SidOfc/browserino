@@ -7,7 +7,20 @@
 This gem aims to provide information about the browser that your visitor is using, it's main goal is not to let you exclude any browser from partying on your website (e.g. sniffing) but to provide you with more flexibility towards designing maybe a browser-themed website or knowledge of what your visitors are using to check out your website!
 
 ## Changelog
-_dates are in dd-mm-yyyy format_
+_dates are in dd-mm-yyyy format_  
+_older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md)_
+
+#### 03-01-2016 VERSION 1.6.0
+
+- Added more tests
+- Added more browsers to check: *(bolt, opera mini and ucbrowser)*
+- Added `#known?` method to check if the agent is known
+- Added a `#ua` method to return the User Agent string as given to `Browserino::parse()`
+- Added `#x64?` and `#x32?` convenience methods to check system architecture
+- Added `#mobile?` to check wether or not a user agent is mobile
+- Moved older changelogs to its own [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md) file
+- Changed `#to_s` to add dashes (`-`) between browser names if they have a space
+- `#to_s` now has an optional (`sep = ''`) parameter that allows info and version numbers to be seperated
 
 #### 31-12-2015 VERSION 1.5.3
 
@@ -19,41 +32,6 @@ _dates are in dd-mm-yyyy format_
 - Added user agents
 - Patterns could falsely identify a 64bit system, made the pattern more strict
 - using `X11` in a user agent as a synonym to a `#linux?` system
-
-#### 23-12-2015 VERSION 1.5.1.1
-
-- Removed print statements from method
-- Builds are now executed for Ruby 1.9.3 as well as 2.2.1
-
-#### 20-12-2015 VERSION 1.5.1
-
-- Fixed `respond_to?` method which would first return inverted results (e.g. false when it should be true)
-
-#### 19-12-2015 VERSION 1.5.0
-
-- Implemented to_s to return a concatenated string of property values
-- Implemented to_a to return an array with arrays containing property name-value pairs
-- Implemented to_h to return a hash containing property name-value pairs
-- Removed unused code
-
-#### 19-12-2015 VERSION 1.4.0
-
-- Added not method to invert questions about browser / system
-- Added random test cases to verify that all inverted answers are correct
-
-#### 17-12-2015 VERSION 1.3.0
-
-- Added Edge detection
-- For supported browsers, it is now possible to check name and version through `method_missing?`
-
-#### 16-12-2015 VERSION 1.2.0
-
-- Opera tests didn't run before
-- For supported systems, it is possible to check OS and version through `method_missing?`
-
-#### 15-12-2015 VERSION 1.1.2
-
-- User definable 'unknown' return value
 
 ## Installation
 
@@ -111,11 +89,20 @@ agent.engine_version # => 537.75.14
 agent.system_name # => 'macintosh'
 # or optionally, the full name (guessed from OS version)
 agent.system_name full: true # => ['macintosh', 'mavericks']
-agent.system_version # => 6.0
-agent.system_architecture # => 'x32' or 'x64' or 'unknown'
+agent.system_version # => 10.9.3
+agent.system_architecture # => 'x32' or 'x64' if known
+# or through convenience methods:
+agent.x32? # => true for 32bit UA's
+agent.x64? # => true for 64bit UA's
+
+agent.known? # => true if browser_name present
+agent.mobile? # => true if agent is a mobile device
 
 # methods to convert object into a String, Array or hash
 agent.to_s # => 'safari safari7 webkit webkit537 macintosh macintosh10'
+# to_s can split version numbers from words if a seperator is supplied
+agent.to_s '-' # => 'safari safari-7 webkit webkit-537 macintosh macintosh-10'
+
 agent.to_a # => [
 #                 [:browser_name, 'safari'],
 #                 [:browser_version, '7.0.3'],
@@ -166,6 +153,9 @@ Supported browsers
 
 ```ruby
 agent.opera?
+agent.opera_mini?
+agent.bolt?
+agent.ucbrowser?
 agent.maxthon?
 agent.edge?
 agent.ie?

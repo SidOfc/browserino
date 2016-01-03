@@ -9,7 +9,6 @@ require "browserino/unknown"
 require "browserino/agent"
 
 require "browserino/alias"
-require "browserino/agent_manipulator"
 require "browserino/version"
 require "browserino/match_extractor"
 require "browserino/patterns"
@@ -19,20 +18,23 @@ require "browserino/operating_system"
 
 module Browserino
   def self.parse(ua, unknown_alt = Browserino::UNKNOWN)
-    ua = AgentManipulator.new(ua).ua
-    name = find_browser_name(ua)
-    Agent.new(check_for_aliases({
-      browser_name: name,
-      browser_version: Browser::version(ua, PATTERNS[:browser][name]),
-      engine_name: Engine::name(ua),
-      engine_version: Engine::version(ua),
-      system_name: OperatingSystem::name(ua),
-      system_version: OperatingSystem::version(ua),
-      system_architecture: OperatingSystem::architecture(ua)
-    }), unknown_alt)
+    Agent.new(ua, unknown_alt)
   end
 
   private
+
+  def self.cleanse(ua)
+    #make iphone / ipad / ipod consistent
+    ua = ua.gsub(/ip((a|o)d|hone)/i, 'ios')
+    #strip legacy mozilla version
+    ua = ua.gsub(/(Mozilla\/[\d\.]+)/i, '')
+    #strip fake opera version
+    ua = ua.gsub(/9\.80/i, '')
+    #strip webkit if presto engine is used
+    ua = ua.gsub(/(?:apple)?webkit\/[\d\.]+/i, '') if /presto/i =~ ua
+    ua = ua.gsub(/linux/i, '') if /android/i =~ ua
+    ua
+  end
 
   def self.check_for_aliases(hash)
     h = {}

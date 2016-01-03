@@ -9,7 +9,11 @@ module UserAgents
         engine_version: '537.36',
         system_name: ['macintosh', 'El Capitan'],
         system_version: '10.11.2',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52' => {
         browser_name: 'Opera',
@@ -18,7 +22,11 @@ module UserAgents
         engine_version: '2.9.168',
         system_name: ['macintosh', 'snow leopard'],
         system_version: '10.6.8',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Opera/9.80 (Macintosh; Intel Mac OS X; U; nl) Presto/2.6.30 Version/10.61' => {
         browser_name: 'Opera',
@@ -27,7 +35,11 @@ module UserAgents
         engine_version: '2.6.30',
         system_name: ['macintosh', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
     },
     win: {
@@ -38,7 +50,11 @@ module UserAgents
         engine_version: '2.12.388',
         system_name: ['windows', 'vista'],
         system_version: '6.0',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; de) Opera 11.51' => {
         browser_name: 'Opera',
@@ -47,7 +63,11 @@ module UserAgents
         engine_version: USE_FOR_UNKNOWN,
         system_name: ['windows', '7'],
         system_version: '6.1',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
     },
     linux: {
@@ -58,7 +78,11 @@ module UserAgents
         engine_version: '2.12.388',
         system_name: ['linux', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
-        system_architecture: 'x32'
+        system_architecture: 'x32',
+        x64?: false,
+        x32?: true,
+        mobile?: false,
+        known?: true
       },
       'Opera/9.80 (X11; Linux x86_64; U; fr) Presto/2.9.168 Version/11.50' => {
         browser_name: 'Opera',
@@ -67,7 +91,148 @@ module UserAgents
         engine_version: '2.9.168',
         system_name: ['linux', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
+      }
+    }
+  }
+  OPERA_MINI = {
+    mac: {
+      'Opera/9.80 (iPad; Opera Mini/7.1.32694/27.1407; U; en) Presto/2.8.119 Version/11.10' => {
+        browser_name: 'Opera Mini',
+        browser_version: '7.1.32694',
+        engine_name: 'Presto',
+        engine_version: '2.8.119',
+        system_name: ['ios', USE_FOR_UNKNOWN],
+        system_version: USE_FOR_UNKNOWN,
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: true,
+        known?: true
+      },
+      'Opera/9.80 (iPhone; Opera Mini/7.1.32694/27.1407; U; en) Presto/2.8.119 Version/11.10' => {
+        browser_name: 'Opera Mini',
+        browser_version: '7.1.32694',
+        engine_name: 'Presto',
+        engine_version: '2.8.119',
+        system_name: ['ios', USE_FOR_UNKNOWN],
+        system_version: USE_FOR_UNKNOWN,
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: true,
+        known?: true
+      }
+    },
+    win: {
+      'Opera/9.80 (Windows NT 5.1; U; Opera/9.80 (J2ME/MIDP; Opera Mini/5.0.18635/1030; U; en) Presto/2.4.15; ru) Presto/2.8.99 Version/11.10' => {
+        browser_name: 'Opera Mini',
+        browser_version: '5.0.18635',
+        engine_name: 'Presto',
+        engine_version: '2.4.15',
+        system_name: ['windows', 'XP'],
+        system_version: '5.1',
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: true,
+        known?: true
+      }
+    },
+    android: {
+      'Opera/9.80 (Android; Opera Mini/7.6.35766/35.5706; U; en) Presto/2.8.119 Version/11.10' => {
+        browser_name: 'Opera Mini',
+        browser_version: '7.6.35766',
+        engine_name: 'Presto',
+        engine_version: '2.8.119',
+        system_name: ['Android', USE_FOR_UNKNOWN],
+        system_version: USE_FOR_UNKNOWN,
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: true,
+        known?: true
+      }
+    },
+    blackberry: {
+      'Opera/9.80 (J2ME/MIDP; Opera Mini/9 (Compatible; MSIE:9.0; BlackBerry9700; AppleWebKit/24.746; U; en) Presto/2.5.25 Version/10.54' => {
+        browser_name: 'Opera Mini',
+        browser_version: '9',
+        engine_name: 'Presto',
+        engine_version: '2.5.25',
+        system_name: ['blackberry', '9700'],
+        system_version: '9700',
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: true,
+        known?: true
+      }
+    }
+  }
+  UCBROWSER = {
+    android: {
+      'Mozilla/5.0 (Linux; U; Android 4.1.2; en-us; SM-T210R Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30 UCBrowser/2.3.2.300' => {
+        browser_name: 'ucbrowser',
+        browser_version: '2.3.2.300',
+        engine_name: 'Webkit',
+        engine_version: '534.30',
+        system_name: ['Android', 'Jelly Bean 16'],
+        system_version: '4.1.2',
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: true,
+        known?: true
+      }
+    },
+    win: {
+      'NokiaX2-02/2.0 (11.79) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; SLCC2;.NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2) UCBrowser8.4.0.159/70/352' => {
+        browser_name: 'ucbrowser',
+        browser_version: '8.4.0.159',
+        engine_name: 'trident',
+        engine_version: '4.0',
+        system_name: ['Windows', '7'],
+        system_version: '6.1',
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: true,
+        known?: true
+      }
+    }
+  }
+  BOLT = {
+    win: {
+      'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; BOLT/2.340) AppleWebKit/530+ (KHTML, like Gecko) Version/4.0 Safari/530.17 UNTRUSTED/1.0 3gpp-gba' => {
+        browser_name: 'Bolt',
+        browser_version: '2.340',
+        engine_name: 'Webkit',
+        engine_version: '530',
+        system_name: ['windows', 'XP'],
+        system_version: '5.1',
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: true,
+        known?: true
+      },
+      'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; BOLT/2.800) AppleWebKit/534.6 (KHTML, like Gecko) Version/5.0 Safari/534.6.3' => {
+        browser_name: 'Bolt',
+        browser_version: '2.800',
+        engine_name: 'Webkit',
+        engine_version: '534.6',
+        system_name: ['windows', 'XP'],
+        system_version: '5.1',
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: true,
+        known?: true
       }
     }
   }
@@ -80,7 +245,11 @@ module UserAgents
         engine_version: '6.0',
         system_name: ['macintosh', 'lion'],
         system_version: '10.7.3',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
     },
     win: {
@@ -91,7 +260,11 @@ module UserAgents
         engine_version: '7.0',
         system_name: ['windows', '8.1'],
         system_version: '6.3',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko' => {
         browser_name: 'ie',
@@ -100,7 +273,11 @@ module UserAgents
         engine_version: '7.0',
         system_name: ['windows', '7'],
         system_version: '6.1',
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (compatible; MSIE 10.6; Windows NT 6.1; Trident/5.0; InfoPath.2; SLCC1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET CLR 2.0.50727) 3gpp-gba UNTRUSTED/1.0' => {
         browser_name: 'ie',
@@ -109,10 +286,13 @@ module UserAgents
         engine_version: '5.0',
         system_name: ['windows', '7'],
         system_version: '6.1',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
-    },
-    linux: {}
+    }
   }
   EDGE = {
     win: {
@@ -123,11 +303,13 @@ module UserAgents
         engine_version: '537.36',
         system_name: ['windows', '10'],
         system_version: '10.0',
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
-    },
-    mac: {},
-    linux: {}
+    }
   }
   MAXTHON = {
     mac: [],
@@ -139,7 +321,11 @@ module UserAgents
         engine_version: '532.4',
         system_name: ['windows', '7'],
         system_version: '6.1',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/533.1 (KHTML, like Gecko) Maxthon/3.0.8.2 Safari/533.1' => {
         browser_name: 'Maxthon',
@@ -148,7 +334,11 @@ module UserAgents
         engine_version: '533.1',
         system_name: ['windows', 'vista'],
         system_version: '6.0',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/4.0; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; Zune 4.0; InfoPath.3; MS-RTC LM 8; .NET4.0C; .NET4.0E; Maxthon 2.0)' => {
         browser_name: 'Maxthon',
@@ -157,10 +347,13 @@ module UserAgents
         engine_version: '4.0',
         system_name: ['windows', '7'],
         system_version: '6.1',
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
-    },
-    linux: {}
+    }
   }
   FIREFOX = {
     mac: {
@@ -171,7 +364,11 @@ module UserAgents
         engine_version: '43.0',
         system_name: ['macintosh', 'El Capitan'],
         system_version: '10.11',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10; rv:33.0) Gecko/20100101 Firefox/33.0' => {
         browser_name: 'Firefox',
@@ -180,7 +377,11 @@ module UserAgents
         engine_version: '33.0',
         system_name: ['macintosh', 'yosemite'],
         system_version: '10.10',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:25.0) Gecko/20100101 Firefox/25.0' => {
         browser_name: 'Firefox',
@@ -189,7 +390,11 @@ module UserAgents
         engine_version: '25.0',
         system_name: ['macintosh', 'snow leopard'],
         system_version: '10.6',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
     },
     win: {
@@ -200,7 +405,11 @@ module UserAgents
         engine_version: '40.0',
         system_name: ['windows', '7'],
         system_version: '6.1',
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0' => {
         browser_name: 'Firefox',
@@ -209,7 +418,11 @@ module UserAgents
         engine_version: '36.0',
         system_name: ['windows', '8.1'],
         system_version: '6.3',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20130401 Firefox/31.0' => {
         browser_name: 'Firefox',
@@ -218,7 +431,11 @@ module UserAgents
         engine_version: '31.0',
         system_name: ['windows', '7'],
         system_version: '6.1',
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
     },
     linux: {
@@ -229,7 +446,11 @@ module UserAgents
         engine_version: '28.0',
         system_name: ['linux', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0' => {
         browser_name: 'Firefox',
@@ -238,7 +459,11 @@ module UserAgents
         engine_version: '24.0',
         system_name: ['linux', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:21.0) Gecko/20130331 Firefox/21.0' => {
         browser_name: 'Firefox',
@@ -247,7 +472,11 @@ module UserAgents
         engine_version: '21.0',
         system_name: ['linux', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (X11; OpenBSD amd64; rv:28.0) Gecko/20100101 Firefox/28.0' => {
         browser_name: 'Firefox',
@@ -256,7 +485,11 @@ module UserAgents
         engine_version: '28.0',
         system_name: ['linux', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
     }
   }
@@ -269,7 +502,11 @@ module UserAgents
         engine_version: '537.36',
         system_name: ['macintosh', 'El Capitan'],
         system_version: '10.11.2',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36' => {
         browser_name: 'Chrome',
@@ -278,7 +515,11 @@ module UserAgents
         engine_version: '537.36',
         system_name: ['macintosh', 'yosemite'],
         system_version: '10.10.1',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1944.0 Safari/537.36' => {
         browser_name: 'Chrome',
@@ -287,7 +528,11 @@ module UserAgents
         engine_version: '537.36',
         system_name: ['macintosh', 'mavericks'],
         system_version: '10.9.2',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36' => {
         browser_name: 'Chrome',
@@ -296,7 +541,11 @@ module UserAgents
         engine_version: '537.36',
         system_name: ['macintosh', 'Mountain Lion'],
         system_version: '10.8.3',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
     },
     win: {
@@ -307,7 +556,11 @@ module UserAgents
         engine_version: '537.36',
         system_name: ['windows', '7'],
         system_version: '6.1',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1623.0 Safari/537.36' => {
         browser_name: 'Chrome',
@@ -316,7 +569,11 @@ module UserAgents
         engine_version: '537.36',
         system_name: ['windows', '7'],
         system_version: '6.1',
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1464.0 Safari/537.36' => {
         browser_name: 'Chrome',
@@ -325,7 +582,11 @@ module UserAgents
         engine_version: '537.36',
         system_name: ['windows', '8'],
         system_version: '6.2',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
     },
     linux: {
@@ -336,7 +597,11 @@ module UserAgents
         engine_version: '537.36',
         system_name: ['linux', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/4E423F' => {
         browser_name: 'Chrome',
@@ -345,7 +610,11 @@ module UserAgents
         engine_version: '537.36',
         system_name: ['linux', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36' => {
         browser_name: 'Chrome',
@@ -354,7 +623,11 @@ module UserAgents
         engine_version: '537.36',
         system_name: ['linux', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.9 Safari/536.5' => {
         browser_name: 'Chrome',
@@ -363,7 +636,11 @@ module UserAgents
         engine_version: '536.5',
         system_name: ['linux', USE_FOR_UNKNOWN],
         system_version: USE_FOR_UNKNOWN,
-        system_architecture: 'x64'
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
     }
   }
@@ -376,7 +653,11 @@ module UserAgents
         engine_version: '601.3.9',
         system_name: ['macintosh', 'El Capitan'],
         system_version: '10.11.2',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A' => {
         browser_name: 'Safari',
@@ -385,7 +666,11 @@ module UserAgents
         engine_version: '537.75.14',
         system_name: ['macintosh', 'mavericks'],
         system_version: '10.9.3',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2' => {
         browser_name: 'Safari',
@@ -394,7 +679,11 @@ module UserAgents
         engine_version: '537.13',
         system_name: ['macintosh', 'snow leopard'],
         system_version: '10.6.8',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
     },
     win: {
@@ -405,7 +694,11 @@ module UserAgents
         engine_version: '533.20.25',
         system_name: ['windows', '7'],
         system_version: '6.1',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Windows; U; Windows NT 6.1; de-DE) AppleWebKit/533.20.25 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4' => {
         browser_name: 'Safari',
@@ -414,7 +707,11 @@ module UserAgents
         engine_version: '533.20.25',
         system_name: ['windows', '7'],
         system_version: '6.1',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       },
       'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.18.1 (KHTML, like Gecko) Version/5.0 Safari/533.16' => {
         browser_name: 'Safari',
@@ -423,11 +720,27 @@ module UserAgents
         engine_version: '533.18.1',
         system_name: ['windows', '7'],
         system_version: '6.1',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: false,
+        known?: true
       }
     },
-    linux: {},
     blackberry: {
+      'Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; en-US) AppleWebKit/534.8+ (KHTML, like Gecko) Version/6.0.0.450 Mobile Safari/534.8+' => {
+        browser_name: 'Safari',
+        browser_version: '6.0.0.450',
+        engine_name: 'webkit',
+        engine_version: '534.8',
+        system_name: ['blackberry', '9800'],
+        system_version: '9800',
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: true,
+        known?: true
+      },
       'Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+' => {
         browser_name: 'Safari',
         browser_version: '7.1.0.346',
@@ -435,7 +748,11 @@ module UserAgents
         engine_version: '534.11',
         system_name: ['blackberry', '9900'],
         system_version: '9900',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: true,
+        known?: true
       },
       'Mozilla/5.0 (BlackBerry; U; BlackBerry 9860; en-US) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.0.0.254 Mobile Safari/534.11+' => {
         browser_name: 'Safari',
@@ -444,7 +761,11 @@ module UserAgents
         engine_version: '534.11',
         system_name: ['blackberry', '9860'],
         system_version: '9860',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: true,
+        known?: true
       },
       'Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; it) AppleWebKit/534.8+ (KHTML, like Gecko) Version/6.0.0.668 Mobile Safari/534.8+' => {
         browser_name: 'Safari',
@@ -453,7 +774,11 @@ module UserAgents
         engine_version: '534.8',
         system_name: ['blackberry', '9800'],
         system_version: '9800',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: true,
+        known?: true
       },
       'Mozilla/5.0 (BlackBerry; U; BlackBerry 9700; pt) AppleWebKit/534.8+ (KHTML, like Gecko) Version/6.0.0.546 Mobile Safari/534.8+' => {
         browser_name: 'Safari',
@@ -462,7 +787,11 @@ module UserAgents
         engine_version: '534.8',
         system_name: ['blackberry', '9700'],
         system_version: '9700',
-        system_architecture: USE_FOR_UNKNOWN
+        system_architecture: USE_FOR_UNKNOWN,
+        x64?: false,
+        x32?: false,
+        mobile?: true,
+        known?: true
       }
     }
   }

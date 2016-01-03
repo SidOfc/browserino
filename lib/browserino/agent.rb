@@ -1,30 +1,52 @@
 module Browserino
   class Agent
-    def initialize(hash, unknown = Browserino::UNKNOWN)
-      @info = hash
+    def initialize(ua, unknown = Browserino::UNKNOWN)
+      @ua = ua
       @unknown = unknown
       @not = false
+
+      cleansed_ua = Browserino::cleanse @ua
+      name = Browserino::find_browser_name cleansed_ua
+      @info = Browserino::check_for_aliases({
+        browser_name: name,
+        browser_version: Browser::version(cleansed_ua, PATTERNS[:browser][name]),
+        engine_name: Engine::name(cleansed_ua),
+        engine_version: Engine::version(cleansed_ua),
+        system_name: OperatingSystem::name(cleansed_ua),
+        system_version: OperatingSystem::version(cleansed_ua),
+        system_architecture: OperatingSystem::architecture(cleansed_ua)
+      })
     end
 
     def browser_name
-      with_valid(@info[:browser_name]) { |v| v.to_s.downcase }
+      with_valid(@info[:browser_name]) do |v|
+        v.to_s.downcase.gsub(/_/, ' ')
+      end
     end
 
     def browser_version
-      with_valid(@info[:browser_version]) { |v| v.to_s.downcase.gsub('_', '.') }
+      with_valid(@info[:browser_version]) do |v|
+        v.to_s.downcase.gsub('_', '.')
+      end
     end
 
     def engine_name
-      with_valid(@info[:engine_name]) { |v| v.to_s.downcase }
+      with_valid(@info[:engine_name]) do |v|
+        v.to_s.downcase
+      end
     end
 
     def engine_version
-      with_valid(@info[:engine_version]) { |v| v.to_s.downcase.gsub('_', '.') }
+      with_valid(@info[:engine_version]) do |v|
+        v.to_s.downcase.gsub('_', '.')
+      end
     end
 
     def system_name(opts = {})
       opts = {full: false}.merge(opts)
-      name = with_valid(@info[:system_name]) { |v| v.to_s.downcase }
+      name = with_valid(@info[:system_name]) do |v|
+        v.to_s.downcase
+      end
       if opts[:full]
         [name, fetch_system_version_name(name)]
       else
@@ -33,11 +55,35 @@ module Browserino
     end
 
     def system_version
-      with_valid(@info[:system_version]) { |v| v.to_s.downcase.gsub('_', '.') }
+      with_valid(@info[:system_version]) do |v|
+        v.to_s.downcase.gsub('_', '.')
+      end
     end
 
     def system_architecture
-      with_valid(@info[:system_architecture]) { |v| v.to_s.downcase }
+      with_valid(@info[:system_architecture]) do |v|
+        v.to_s.downcase
+      end
+    end
+
+    def ua
+      @ua
+    end
+
+    def known?
+      browser_name != @unknown
+    end
+
+    def mobile?
+      !!(ua =~ /bolt|nokia|samsung|mobi(?:le)?|android|ip(?:[ao]d|hone)|bb\d+|blackberry|iemobile|fennec|bada|meego|vodafone|t\-mobile|opera\sm(?:ob|in)i/i)
+    end
+
+    def x64?
+      system_architecture == 'x64'
+    end
+
+    def x32?
+      system_architecture == 'x32'
     end
 
     def correct_system?(name, version = nil)
@@ -50,7 +96,7 @@ module Browserino
     end
 
     def correct_browser?(name, version = nil)
-      browser_equal = (name == browser_name)
+      browser_equal = (name.gsub(/_/, ' ') == browser_name)
       if version
         browser_equal && version == browser_version.to_s[0..(version.size - 1)]
       else
@@ -59,7 +105,7 @@ module Browserino
     end
 
     def method_missing(method_sym, *args, &block)
-      criteria = method_sym.to_s.gsub('?', '').split(/(?<=[a-zA-Z])(?=\d+)/)
+      criteria = method_sym.to_s.gsub('?', '').split(/(?<=[a-zA-Z_])(?=\d+)/)
       name = criteria[0]
       res = case browser_or_system?(method_sym)
       when :system then correct_system?(criteria[0], criteria[1])
@@ -83,20 +129,19 @@ module Browserino
       self
     end
 
-    def to_s
-      props = @info.map do |k, _v|
-        res = send k
+    def to_s(sep = '')
+      props = @info.map do |k, _|
         case k
         when :system_version
-          system_name + res.to_s.split('.').first.to_s
+          system_name + sep + send(k).to_s.split('.').first.to_s
         when :engine_version
-          engine_name + res.to_s.split('.').first.to_s
+          engine_name + sep + send(k).to_s.split('.').first.to_s
         when :browser_version
-          browser_name + res.to_s.split('.').first.to_s
-        else res
+          browser_name + sep + send(k).to_s.split('.').first.to_s
+        else send(k)
         end
       end
-      props.compact.join(' ')
+      props.compact.map { |v| v.gsub(/\s/, '-') }.join(' ')
     end
 
     def to_a
