@@ -192,7 +192,6 @@ If I wanted to add a test case for a different browser for instance (just pickin
 ```ruby
 module UserAgents
   FIREFOX = {
-    mac: {},
     win: {
       'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1' => {
         browser_name: 'Firefox',
@@ -201,10 +200,13 @@ module UserAgents
         engine_version: '40.0',
         system_name: ['windows', '7'],
         system_version: '6.1',
-        system_architecture: 'x64'
-      },
-    },
-    linux: {}
+        system_architecture: 'x64',
+        x64?: true,
+        x32?: false,
+        known?: true,
+        mobile: false
+      }
+    }
   }
 end
 ```
@@ -213,17 +215,18 @@ Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are
 
 #### browser_name examples
 ```ruby
-'unknown'
 'ie'
 'firefox'
 'chrome'
 'opera'
+'opera_mini'
+'bolt'
+'ucbrowser'
 'maxthon'
 ```
 
 #### engine_name examples
 ```ruby
-'unknown'
 'gecko'
 'webkit'
 'trident'
@@ -231,23 +234,21 @@ Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are
 
 #### system_name examples
 
-_The main reason for not having Linux distro's / versions <strike>yet</strike> is because of the fact that there are MANY different distro's with no real structured release system. <strike>(going to work on that whenever there's free time!)</strike>_
+_The main reason for not having Linux distro's / versions is because of the fact that there are MANY different distro's with no real structured release system. The best I can do here is allow a `linux?` system to be found atleast_
 
 ```ruby
 ['windows', '7'] # where the 'windows' part is the name of the OS and the '7' is the actual version release (e.g. NT 6.1)
 ['macintosh', 'yosemite'] # same as above but OSX has different names ofcourse.
-['android', 'lollipop'] # etcetera...
-['unknown', 'unknown'] # in case it isn't known or in case of Linux
+['android', 'lollipop 22'] # etcetera...
+['linux', nil] # in every linux case, the version will be missing on system_name full: true
+[nil, nil] # when nothing about the agent could be found
 ```
 
 #### system_architecture examples
 ```ruby
-'unknown'
 'x32'
 'x64'
 ```
-
-__The value of unknown is a default error value that will always be available to test against. If it ain't known it's unknown__
 
 ## Contributing
 
