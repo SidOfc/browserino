@@ -16,6 +16,10 @@ require "browserino/browser"
 require "browserino/engine"
 require "browserino/operating_system"
 
+# require_relative "../spec/user_agents"
+# require_relative "../spec/user_agents_bots"
+# require_relative "../spec/user_agents_browsers"
+
 module Browserino
   def self.parse(ua, unknown_alt = Browserino::UNKNOWN)
     Agent.new(ua, unknown_alt)
@@ -44,12 +48,13 @@ module Browserino
     h
   end
 
-  def self.find_browser_name(ua)
+  def self.agent_id(ua)
     name = nil
-    browsers = PATTERNS[:browser].keys
+    patterns = PATTERNS[:browser].merge(PATTERNS[:bot])
+    browsers = patterns.keys
     until browsers.empty? || !name.nil?
       tmp = browsers.shift
-      name = tmp if (ua.match(PATTERNS[:browser][tmp][:name]))
+      name = tmp if (ua.match(patterns[tmp][:name]))
     end
     name ||= Browserino::UNKNOWN
   end

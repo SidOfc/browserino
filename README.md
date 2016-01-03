@@ -10,6 +10,14 @@ This gem aims to provide information about the browser that your visitor is usin
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md)_
 
+#### 04-01-2016 VERSION 2.1.0
+
+- Small restructuring of test suite
+- Added bot detection
+- Added `#bot?` method
+- Added dynamic method support for bots
+- Added support for the seamonkey browser
+
 #### 03-01-2016 VERSION 2.0.0
 
 - **IMPORTANT** Changed behaviour of all dynamic methods to include version as an argument rather than in the method name.
@@ -28,11 +36,6 @@ _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/brow
 - Moved older changelogs to its own [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md) file
 - Changed `#to_s` to add dashes (`-`) between browser names if they have a space
 - `#to_s` now has an optional (`sep = ''`) parameter that allows info and version numbers to be seperated
-
-#### 31-12-2015 VERSION 1.5.3
-
-- Added blackberry support
-- Added tests for blackberry user agent strings
 
 ## Installation
 
@@ -96,7 +99,10 @@ agent.system_architecture # => 'x32' or 'x64' if known
 agent.x32? # => true for 32bit UA's
 agent.x64? # => true for 64bit UA's
 
-agent.known? # => true if browser_name present
+agent.bot_name # => name of bot if the UA was identified as bot
+agent.bot? # => returns true or false depending on if the agent is a bot
+
+agent.known? # => true if browser_name or bot_name present
 agent.mobile? # => true if agent is a mobile device
 
 # methods to convert object into a String, Array or hash
@@ -134,7 +140,7 @@ Browsers can also accept a float / integer to check for a specific version.
 
 **Methods that include a version number in their name (`agent.android4?`) are deprecated as of version 2.0.0. Supply the version as argument instead `agent.android?(4)`**
 
-Supported systems
+##### Supported systems
 
 ```ruby
 agent.android?
@@ -182,7 +188,7 @@ agent.not.linux?
 
 The `#windows?`, `#macintosh?` and `#blackberry?` each have a shortcut method to allow for easier access, `#win?`, `#osx?`, `#bb?`
 
-Supported browsers  
+##### Supported browsers  
 
 ```ruby
 agent.opera?
@@ -196,42 +202,55 @@ agent.firefox?
 agent.chrome?
 agent.safari?
 
-# or with the .not method
+# or with the .not method (v1.4.0+)
 
 agent.not.opera?
 agent.not.maxthon?
 # etc etc...
+```
 
+##### Supported bots
+```ruby
+agent.msnbot?
+agent.yahoo_slurp?
+agent.googlebot?
+
+# or with the .not method (v1.4.0+)
+agent.not.msnbot?
+agent.not.yahoo_slurp?
+# etc etc...
 ```
 
 ## Development
 
 The tests are dynamically produced and quite easy to write.
 
-The __/spec/user_agents.rb__ actually contains the testcases, here you can see how they are setup and all you simply have to do is read the UA yourself and fill in the correct information for the test to run.
-tests will convert all input to a string and downcase it for easier comparison (since the checks need to filter words and numbers, not types).
+The __/spec/user_agents_browsers.rb__ and __/spec/user_agents_bots.rb__ actually contain the test cases for both browsers and bots respectively, here you can see how they are setup and all you simply have to do is read the UA yourself and fill in the correct information for the test to run.
+the tests will lowercase most of the input to make sure there's no case mismatches, this happens mainly on the `*_name` properties
 
 If I wanted to add a test case for a different browser for instance (just picking a random FF on windows that is already in the tests)
 
 ```ruby
 module UserAgents
-  FIREFOX = {
-    win: {
-      'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1' => {
-        browser_name: 'Firefox',
-        browser_version: '40.1',
-        engine_name: 'Gecko',
-        engine_version: '40.0',
-        system_name: ['windows', '7'],
-        system_version: '6.1',
-        system_architecture: 'x64',
-        x64?: true,
-        x32?: false,
-        known?: true,
-        mobile: false
+  module Browsers
+    FIREFOX = {
+      win: {
+        'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1' => {
+          browser_name: 'Firefox',
+          browser_version: '40.1',
+          engine_name: 'Gecko',
+          engine_version: '40.0',
+          system_name: ['windows', '7'],
+          system_version: '6.1',
+          system_architecture: 'x64',
+          x64?: true,
+          x32?: false,
+          known?: true,
+          mobile: false
+        }
       }
     }
-  }
+  end
 end
 ```
 
@@ -246,6 +265,7 @@ Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are
 'opera_mini'
 'bolt'
 'ucbrowser'
+'seamonkey'
 'maxthon'
 ```
 
@@ -254,6 +274,13 @@ Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are
 'gecko'
 'webkit'
 'trident'
+```
+
+#### bot_name examples
+```ruby
+'googlebot'
+'yahoo_slurp'
+'msnbot'
 ```
 
 #### system_name examples

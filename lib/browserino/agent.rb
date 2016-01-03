@@ -6,16 +6,21 @@ module Browserino
       @not = false
 
       cleansed_ua = Browserino::cleanse @ua
-      name = Browserino::find_browser_name cleansed_ua
-      @info = Browserino::check_for_aliases({
+      name = Browserino::agent_id cleansed_ua
+      info = {
         browser_name: name,
         browser_version: Browser::version(cleansed_ua, PATTERNS[:browser][name]),
         engine_name: Engine::name(cleansed_ua),
         engine_version: Engine::version(cleansed_ua),
         system_name: OperatingSystem::name(cleansed_ua),
         system_version: OperatingSystem::version(cleansed_ua),
-        system_architecture: OperatingSystem::architecture(cleansed_ua)
-      })
+        system_architecture: OperatingSystem::architecture(cleansed_ua),
+        bot_name: nil
+      }
+      if Browserino::PATTERNS[:bot].include? name
+        info.merge!({browser_name: nil, browser_version: nil, bot_name: name})
+      end
+      @info = Browserino::check_for_aliases(info)
     end
 
     def browser_name
@@ -66,52 +71,60 @@ module Browserino
       end
     end
 
+    def bot_name
+      with_valid(@info[:bot_name]) do |v|
+        v.to_s.downcase.gsub(/_/, ' ')
+      end
+    end
+
     def ua
       @ua
     end
 
     def known?
-      res = !@not && browser_name != @unknown
-      @not = false
-      res
+      allow_inverted_return (browser_name != @unknown || bot_name != @unknown)
     end
 
     def mobile?
-      allow_inverted_return !!(ua =~ /bolt|nokia|samsung|mobi(?:le)?|android|ip(?:[ao]d|hone)|bb\d+|blackberry|iemobile|fennec|bada|meego|vodafone|t\-mobile|opera\sm(?:ob|in)i/i)
+      allow_inverted_return !!(ua =~ Browserino::PATTERNS[:operating_system][:mobile])
     end
 
     def x64?
-      allow_inverted_return(system_architecture == 'x64')
+      allow_inverted_return system_architecture == 'x64'
     end
 
     def x32?
-      allow_inverted_return(system_architecture == 'x32')
+      allow_inverted_return system_architecture == 'x32'
     end
 
     def osx?(*arg)
-      macintosh?(*arg)
+      allow_inverted_return macintosh?(*arg)
     end
 
     def win?(*arg)
-      windows?(*arg)
+      allow_inverted_return windows?(*arg)
     end
 
     def bb?(*arg)
-      blackberry?(*arg)
+      allow_inverted_return blackberry?(*arg)
+    end
+
+    def bot?
+      allow_inverted_return (bot_name.nil? ? false : true)
     end
 
     def method_missing(method_sym, *args, &block)
       name = method_sym.to_s.gsub('?', '')
-      res = case browser_or_system?(method_sym)
+      res = case agent_or_system?(method_sym)
       when :system then correct_system?(name, *args)
-      when :browser then correct_browser?(name, *args)
+      when :agent then correct_agent?(name, *args)
       else super
       end
       allow_inverted_return res
     end
 
     def respond_to?(method_sym)
-      browser_or_system?(method_sym).nil? ? false : true
+      agent_or_system?(method_sym).nil? ? false : true
     end
 
     def not
@@ -178,8 +191,9 @@ module Browserino
       end
     end
 
-    def correct_browser?(name, version = nil)
-      browser_equal = (name.gsub(/_/, ' ') == browser_name)
+    def correct_agent?(name, version = nil)
+      name = name.gsub(/_/, ' ')
+      browser_equal = (name == browser_name || name == bot_name)
       if version
         browser_equal && compare_versions(version, browser_version)
       else
@@ -187,14 +201,14 @@ module Browserino
       end
     end
 
-    def browser_or_system?(method_sym)
-      name = method_sym.to_s.gsub('?', '').split(/_/).first
+    def agent_or_system?(method_sym)
+      name = method_sym.to_s.gsub('?', '')
       sys = Browserino::Mapping.constants(true).include?(name.upcase.to_sym)
-      browser = Browserino::PATTERNS[:browser].keys.include?(name.to_sym)
+      agent = Browserino::PATTERNS[:browser].merge(Browserino::PATTERNS[:bot]).keys.include?(name.to_sym)
       if sys
         :system
-      elsif browser
-        :browser
+      elsif agent
+        :agent
       else
         nil
       end

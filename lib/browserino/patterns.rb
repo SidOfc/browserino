@@ -57,6 +57,21 @@ module Browserino
       }
     },
 
+    bot: {
+      googlebot: {
+        name: /(?<name>googlebot)/i,
+        version: /googlebot\/(?<version>[\d\.]+)/i
+      },
+      yahoo_slurp: {
+        name: /(?<name>yahoo\!\sslurp)/i,
+        version: /\/(?<version>[\d\.]+)/i
+      },
+      msnbot: {
+        name: /(?<name>msnbot)/i,
+        version: /msnbot\/(?<version>[\d\.]+)/i
+      }
+    },
+
     engine: {
       name: /(?<name>((apple)?webkit|presto|gecko|trident))/i,
       version: /(?:(?:apple)?webkit|presto|rv:|trident)[\/\s]?(?<version>[\d\.]+)/i
@@ -65,7 +80,8 @@ module Browserino
     operating_system: {
       name: /(?<name>windows|macintosh|android|ios|blackberry|linux|ubuntu|x11)/i,
       version: /(?:nt|mac\sos\sx|android|(cpu\s|i)os|blackberry)\s?(?<version>[\d\._]+)/i,
-      architecture: /(?<architecture>((?:x|x86_|amd|wow)64)|i(3|6)86)/i
+      architecture: /(?<architecture>((?:x|x86_|amd|wow)64)|i(3|6)86)/i,
+      mobile: /bolt|nokia|samsung|mobi(?:le)?|android|ip(?:[ao]d|hone)|bb\d+|blackberry|iemobile|fennec|bada|meego|vodafone|t\-mobile|opera\sm(?:ob|in)i/i
     }
   }
 end
