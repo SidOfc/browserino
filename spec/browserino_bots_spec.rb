@@ -24,6 +24,13 @@ describe "Browserino Bot identification" do
                 expect(agent.not.send("#{const.downcase}?")).to eq true
               end
             end
+          elsif prop == :bot?
+            it "Expects agent.bot?(#{agent.bot_name}) to be true for #{bot}" do
+              expect(agent.bot?(agent.bot_name)).to eq true
+            end
+            it "Expects agent.#{prop} to be #{val} for #{bot}" do
+              expect(agent.send(prop)).to eq val
+            end
           else
             it "Expects agent.#{prop} to be #{val} for #{bot}" do
               expect(agent.send(prop)).to eq val

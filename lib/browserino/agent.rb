@@ -17,9 +17,11 @@ module Browserino
         system_architecture: OperatingSystem::architecture(cleansed_ua),
         bot_name: nil
       }
+
       if Browserino::PATTERNS[:bot].include? name
         info.merge!({browser_name: nil, browser_version: nil, bot_name: name})
       end
+
       @info = Browserino::check_for_aliases(info)
     end
 
@@ -109,8 +111,10 @@ module Browserino
       allow_inverted_return blackberry?(*arg)
     end
 
-    def bot?
-      allow_inverted_return (bot_name.nil? ? false : true)
+    def bot?(name = nil)
+      is_bot = (bot_name.nil? ? false : true)
+      is_name = (name.nil? ? true : (name.to_s.downcase.gsub(/_/, ' ') == bot_name))
+      allow_inverted_return(is_bot && is_name)
     end
 
     def method_missing(method_sym, *args, &block)

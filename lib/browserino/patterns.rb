@@ -61,7 +61,12 @@ module Browserino
       googlebot: { name: /(?<name>googlebot)/i },
       yahoo_slurp: { name: /(?<name>yahoo\!\sslurp)/i },
       msnbot: { name: /(?<name>msnbot)/i },
-      bingbot: { name: /(?<name>bingbot)/i }
+      bingbot: { name: /(?<name>bingbot)/i },
+      baiduspider: { name: /(?<name>baiduspider)/i },
+      yandexbot: { name: /(?<name>yandexbot)/i },
+      sosospider: { name: /(?<name>sosospider)/i },
+      exabot: { name: /(?<name>exabot)/i },
+      sogou_spider: { name: /(?<name>sogou\s?spider)/i }
     },
 
     engine: {

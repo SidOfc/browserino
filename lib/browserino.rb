@@ -10,7 +10,6 @@ require "browserino/agent"
 
 require "browserino/alias"
 require "browserino/version"
-require "browserino/match_extractor"
 require "browserino/patterns"
 require "browserino/browser"
 require "browserino/engine"
@@ -57,5 +56,14 @@ module Browserino
       name = tmp if (ua.match(patterns[tmp][:name]))
     end
     name ||= Browserino::UNKNOWN
+  end
+
+  def self.extract_match(match, sym, trim = true)
+    if match && match.names.map(&:to_sym).include?(sym)
+      match[sym].strip! if trim
+      match[sym].to_s.downcase
+    else
+      Browserino::UNKNOWN
+    end
   end
 end

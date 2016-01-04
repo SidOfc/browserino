@@ -38,5 +38,45 @@ module UserAgents
         known?: true
       }
     }
+    BAIDUSPIDER = {
+      'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)' => {
+        bot_name: 'baiduspider',
+        bot?: true,
+        known?: true
+      },
+      'Baiduspider+(+http://www.baidu.com/search/spider_jp.html)' => {
+        bot_name: 'baiduspider',
+        bot?: true,
+        known?: true
+      }
+    }
+    YANDEXBOT = {
+      'Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)' => {
+        bot_name: 'yandexbot',
+        bot?: true,
+        known?: true
+      }
+    }
+    SOSOSPIDER = {
+      'Sosospider+(+http://help.soso.com/webspider.htm)' => {
+        bot_name: 'sosospider',
+        bot?: true,
+        known?: true
+      }
+    }
+    EXABOT = {
+      'Exabot/2.0' => {
+        bot_name: 'exabot',
+        bot?: true,
+        known?: true
+      }
+    }
+    SOGOU_SPIDER = {
+      'sogou spider' => {
+        bot_name: 'sogou spider',
+        bot?: true,
+        known?: true
+      }
+    }
   end
 end
