@@ -58,18 +58,10 @@ module Browserino
     },
 
     bot: {
-      googlebot: {
-        name: /(?<name>googlebot)/i,
-        version: /googlebot\/(?<version>[\d\.]+)/i
-      },
-      yahoo_slurp: {
-        name: /(?<name>yahoo\!\sslurp)/i,
-        version: /\/(?<version>[\d\.]+)/i
-      },
-      msnbot: {
-        name: /(?<name>msnbot)/i,
-        version: /msnbot\/(?<version>[\d\.]+)/i
-      }
+      googlebot: { name: /(?<name>googlebot)/i },
+      yahoo_slurp: { name: /(?<name>yahoo\!\sslurp)/i },
+      msnbot: { name: /(?<name>msnbot)/i },
+      bingbot: { name: /(?<name>bingbot)/i }
     },
 
     engine: {

@@ -138,7 +138,7 @@ Browsers can also accept a float / integer to check for a specific version.
 
 ### DEPRECATION NOTICE
 
-**Methods that include a version number in their name (`agent.android4?`) are deprecated as of version 2.0.0. Supply the version as argument instead `agent.android?(4)`**
+**Methods that include a version number in their name (`agent.android4?`) are deprecated as of version 2.0.0. Supply the version as argument instead `agent.android?(4)` or `agent.android('Ice Cream Sandwich')`**
 
 ##### Supported systems
 
@@ -214,6 +214,7 @@ agent.not.maxthon?
 agent.msnbot?
 agent.yahoo_slurp?
 agent.googlebot?
+agent.bingbot?
 
 # or with the .not method (v1.4.0+)
 agent.not.msnbot?
@@ -281,6 +282,7 @@ Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are
 'googlebot'
 'yahoo_slurp'
 'msnbot'
+'bingbot'
 ```
 
 #### system_name examples

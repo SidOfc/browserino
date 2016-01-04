@@ -41,11 +41,11 @@ module Browserino
   end
 
   def self.check_for_aliases(hash)
-    h = {}
-    hash.each do |prop, val|
-      h[prop] = ALIAS[prop].select { |k, m| true if m.include?(val) }.keys.first || val
+    hash.inject({}) do |memo, kv|
+      ls = ALIAS[kv.first].select { |k, m| true if m.include?(kv.last) }.keys.first || kv.last
+      memo[kv.first] = ls
+      memo
     end
-    h
   end
 
   def self.agent_id(ua)

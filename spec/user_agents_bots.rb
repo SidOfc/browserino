@@ -29,7 +29,14 @@ module UserAgents
         bot_name: 'msnbot',
         bot?: true,
         known?: true
-      },
+      }
+    }
+    BINGBOT = {
+      'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)' => {
+        bot_name: 'bingbot',
+        bot?: true,
+        known?: true
+      }
     }
   end
 end
