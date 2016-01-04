@@ -76,6 +76,9 @@ browsers.each do |const|
                 it "accepts a system_name w/ version: agent.#{sys_nm}?(#{sys_ver})" do
                   expect(agent.send("#{sys_nm}?", sys_ver)).to eq true
                 end
+                it "returns false for an invalid system_name w/ version comparison: agent.#{sys_nm}?(#{'1' + sys_ver})" do
+                  expect(agent.send("#{sys_nm}?", '1' + sys_ver)).to eq false
+                end
                 it "accepts a system_name w/ (named)version: agent.#{sys_nm}?(#{sys_nm_full[1]})" do
                   expect(agent.send("#{sys_nm}?", sys_nm_full[1])).to eq true
                 end

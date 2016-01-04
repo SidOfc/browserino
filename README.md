@@ -117,7 +117,8 @@ agent.to_a # => [
 #                 [:engine_version, '537.75.14'],
 #                 [:system_name, 'macintosh'],
 #                 [:system_version, '10'],
-#                 [:system_architecture, nil]
+#                 [:system_architecture, nil],
+#                 [:bot_name, nil]
 #               ]
 agent.to_h # => {
 #                 browser_name: 'safari',
@@ -126,12 +127,13 @@ agent.to_h # => {
 #                 engine_version: '537.75.14',
 #                 system_name: 'macintosh',
 #                 system_version: '10',
-#                 system_architecture: nil
+#                 system_architecture: nil,
+#                 bot_name: nil
 #               }
 ```
 
 It is now also possible to call methods to determine a specific OS or browser if it's supported, a `noMethodError` will be thrown otherwise
-The function uses the names of the `Browserino::Mapping.constants(true)` or `Browserino::PATTERNS[:browser].keys` output to identify wether or not to throw this exception.
+The function uses the names of the `Browserino::Mapping` constants and the `Browserino::PATTERNS` hashes `:browser` and `:bot` output to identify wether or not to throw this exception.
 Versions are also supported as an argument to the function, for operating systems versions could include a string, symbol or float / integer to indicate a version.
 _(examples given for windows, android and ios, for a full list of versions check the **maps** folder)_
 Browsers can also accept a float / integer to check for a specific version.
@@ -200,6 +202,7 @@ agent.edge?
 agent.ie?
 agent.firefox?
 agent.chrome?
+agent.seamonkey?
 agent.safari?
 
 # or with the .not method (v1.4.0+)
@@ -287,14 +290,16 @@ Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are
 
 #### system_name examples
 
-_The main reason for not having Linux distro's / versions is because of the fact that there are MANY different distro's with no real structured release system. The best I can do here is allow a `linux?` system to be found atleast_
-
 ```ruby
-['windows', '7'] # where the 'windows' part is the name of the OS and the '7' is the actual version release (e.g. NT 6.1)
-['macintosh', 'yosemite'] # same as above but OSX has different names ofcourse.
-['android', 'lollipop 22'] # etcetera...
-['linux', nil] # in every linux case, the version will be missing on system_name full: true
-[nil, nil] # when nothing about the agent could be found
+'windows'
+'win'
+'macintosh'
+'osx'
+'blackberry'
+'bb'
+'android'
+'ios'
+'linux' # => doesn't have versions
 ```
 
 #### system_architecture examples
