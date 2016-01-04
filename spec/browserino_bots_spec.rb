@@ -6,17 +6,17 @@ describe "Browserino Bot identification" do
   bots = UserAgents::Bots.constants(true)
   bots.each do |bot|
     UserAgents::Bots.const_get(bot).each do |ua, criteria|
-      agent = Browserino::parse ua
-      describe ua do
+      describe "#{bot} - #{ua}" do
+        agent = Browserino::parse ua
         criteria.each do |prop, val|
           if prop == :bot_name
-            it "Expects agent.#{prop} to be #{val} for #{bot}" do
+            it "Expects agent.#{prop} to be #{val} for #{bot.downcase}" do
               expect(agent.send(prop).downcase).to eq val.downcase
             end
-            it "Expects agent.#{val}? to be true for #{bot}" do
+            it "Expects agent.#{val}? to be true for #{bot.downcase}" do
               expect(agent.send("#{val.downcase.gsub(/\s/, '_')}?")).to eq true
             end
-            it "Expects agent.not.#{val}? to be false for #{bot}" do
+            it "Expects agent.not.#{val}? to be false for #{bot.downcase}" do
               expect(agent.not.send("#{val.downcase.gsub(/\s/, '_')}?")).to eq false
             end
             (bots - [bot]).each do |const|
@@ -25,14 +25,14 @@ describe "Browserino Bot identification" do
               end
             end
           elsif prop == :bot?
-            it "Expects agent.bot?(#{agent.bot_name}) to be true for #{bot}" do
-              expect(agent.bot?(agent.bot_name)).to eq true
+            it "Expects agent.bot?(#{criteria[:bot_name]}) to be true for #{bot.downcase}" do
+              expect(agent.bot?(criteria[:bot_name])).to eq true
             end
-            it "Expects agent.#{prop} to be #{val} for #{bot}" do
+            it "Expects agent.#{prop} to be #{val} for #{bot.downcase}" do
               expect(agent.send(prop)).to eq val
             end
           else
-            it "Expects agent.#{prop} to be #{val} for #{bot}" do
+            it "Expects agent.#{prop} to be #{val} for #{bot.downcase}" do
               expect(agent.send(prop)).to eq val
             end
           end

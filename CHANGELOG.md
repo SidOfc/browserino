@@ -1,6 +1,18 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_  
 
+#### 03-01-2016 VERSION 1.6.0
+
+- Added more tests
+- Added more browsers to check: *(bolt, opera mini and ucbrowser)*
+- Added `#known?` method to check if the agent is known
+- Added a `#ua` method to return the User Agent string as given to `Browserino::parse()`
+- Added `#x64?` and `#x32?` convenience methods to check system architecture
+- Added `#mobile?` to check wether or not a user agent is mobile
+- Moved older changelogs to its own [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md) file
+- Changed `#to_s` to add dashes (`-`) between browser names if they have a space
+- `#to_s` now has an optional (`sep = ''`) parameter that allows info and version numbers to be seperated
+
 #### 31-12-2015 VERSION 1.5.3
 
 - Added blackberry support

@@ -10,6 +10,11 @@ This gem aims to provide information about the browser that your visitor is usin
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md)_
 
+#### 04-01-2016 VERSION 2.2.0
+
+- Added more bots
+- `#bot?` method can now take a bot name as argument to check for an exact bot
+
 #### 04-01-2016 VERSION 2.1.0
 
 - Small restructuring of test suite
@@ -24,18 +29,6 @@ _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/brow
 - **IMPORTANT** Changed the behaviour of version checking to be more strict
 - Changed tests to reflect new behaviour
 - Added convenience methods `#win?`, `#osx?` and `#bb?`
-
-#### 03-01-2016 VERSION 1.6.0
-
-- Added more tests
-- Added more browsers to check: *(bolt, opera mini and ucbrowser)*
-- Added `#known?` method to check if the agent is known
-- Added a `#ua` method to return the User Agent string as given to `Browserino::parse()`
-- Added `#x64?` and `#x32?` convenience methods to check system architecture
-- Added `#mobile?` to check wether or not a user agent is mobile
-- Moved older changelogs to its own [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md) file
-- Changed `#to_s` to add dashes (`-`) between browser names if they have a space
-- `#to_s` now has an optional (`sep = ''`) parameter that allows info and version numbers to be seperated
 
 ## Installation
 
@@ -100,7 +93,8 @@ agent.x32? # => true for 32bit UA's
 agent.x64? # => true for 64bit UA's
 
 agent.bot_name # => name of bot if the UA was identified as bot
-agent.bot? # => returns true or false depending on if the agent is a bot
+agent.bot? # => returns true if the agent is a bot
+agent.bot? :googlebot # => returns true if the agent is the specified bot
 
 agent.known? # => true if browser_name or bot_name present
 agent.mobile? # => true if agent is a mobile device
@@ -218,8 +212,14 @@ agent.msnbot?
 agent.yahoo_slurp?
 agent.googlebot?
 agent.bingbot?
+agent.baiduspider?
+agent.yandexbot?
+agent.sosospider?
+agent.exabot?
+agent.sogou_spider?
 
 # or with the .not method (v1.4.0+)
+
 agent.not.msnbot?
 agent.not.yahoo_slurp?
 # etc etc...
@@ -286,6 +286,11 @@ Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are
 'yahoo_slurp'
 'msnbot'
 'bingbot'
+'baiduspider'
+'yandexbot'
+'sosospider'
+'exabot'
+'sogou_spider'
 ```
 
 #### system_name examples
