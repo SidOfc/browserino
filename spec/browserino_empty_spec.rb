@@ -69,11 +69,19 @@ describe "returns #{VISIBLE_FOR_UNKNOWN} when information couldn't be found" do
     expect(agent2.bot?).to eq false
   end
 
+  it "Returns false for agent.known? if the supplied ua is actually unknown" do
+    expect(agent2.known?).to eq false
+  end
+
   it "Returns false for agent.not.bot? if the supplied ua is empty" do
     expect(agent.not.bot?).to eq false
   end
 
   it "Returns true for agent.not.bot? if the supplied ua is actually unknown" do
     expect(agent2.not.bot?).to eq true
+  end
+
+  it "Returns true for agent.not.known? if the supplied ua is actually unknown" do
+    expect(agent2.not.known?).to eq true
   end
 end
