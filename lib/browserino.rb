@@ -20,7 +20,7 @@ require "browserino/operating_system"
 # require_relative "../spec/user_agents_browsers"
 
 module Browserino
-  def self.parse(ua, unknown_alt = Browserino::UNKNOWN)
+  def self.parse(ua, unknown_alt = UNKNOWN)
     Agent.new(ua, unknown_alt)
   end
 
@@ -55,15 +55,15 @@ module Browserino
       tmp = browsers.shift
       name = tmp if (ua.match(patterns[tmp][:name]))
     end
-    name ||= Browserino::UNKNOWN
+    name ||= UNKNOWN
   end
 
   def self.extract_match(match, sym, trim = true)
-    if match && match.names.map(&:to_sym).include?(sym)
+    if match && match.names.include?(sym.to_s)
       match[sym].strip! if trim
       match[sym].to_s.downcase
     else
-      Browserino::UNKNOWN
+      UNKNOWN
     end
   end
 end

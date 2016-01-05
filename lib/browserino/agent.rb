@@ -15,6 +15,7 @@ module Browserino
         system_name: OperatingSystem::name(cleansed_ua),
         system_version: OperatingSystem::version(cleansed_ua),
         system_architecture: OperatingSystem::architecture(cleansed_ua),
+        locale: OperatingSystem::locale(cleansed_ua),
         bot_name: nil
       }
 
@@ -23,6 +24,10 @@ module Browserino
       end
 
       @info = Browserino::check_for_aliases(info)
+    end
+
+    def locale
+      with_valid(@info[:locale]) { |v| v.to_s.downcase }
     end
 
     def browser_name

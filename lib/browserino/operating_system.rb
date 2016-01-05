@@ -11,5 +11,9 @@ module Browserino
     def self.architecture(ua)
       Browserino::extract_match(ua.match(PATTERNS[:operating_system][:architecture]), :architecture) || UNKNOWN
     end
+
+    def self.locale(ua)
+      Browserino::extract_match(ua.match(PATTERNS[:operating_system][:locale]), :locale) || UNKNOWN
+    end
   end
 end

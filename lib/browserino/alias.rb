@@ -16,6 +16,7 @@ module Browserino
       'x64' => ['64', 'x86_64', 'amd64', 'wow64'],
       'x32' => ['32', 'i686', 'i383', 'x86_32']
     },
-    bot_name: {}
+    bot_name: {},
+    locale: {}
   }
 end

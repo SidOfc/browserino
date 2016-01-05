@@ -3,7 +3,7 @@
 require "bundler/setup"
 require "browserino"
 require "pry"
-ua = 'msnbot/2.1'
+ua = 'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US))'
 @agent = Browserino::parse(ua)
 
 puts "> @agent variable available parsed with: '#{ua}'\n\n"
