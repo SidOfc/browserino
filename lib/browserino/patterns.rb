@@ -66,7 +66,11 @@ module Browserino
       yandexbot: { name: /(?<name>yandexbot)/i },
       sosospider: { name: /(?<name>sosospider)/i },
       exabot: { name: /(?<name>exabot)/i },
-      sogou_spider: { name: /(?<name>sogou\s?spider)/i }
+      sogou_spider: { name: /(?<name>sogou\s?spider)/i },
+      nutch: { name: /(?<name>nutch)/i },
+      scrapy: { name: /(?<name>scrapy)/i },
+      dataparksearch: { name: /(?<name>dataparksearch)/i },
+      beslistbot: { name: /(?<name>beslistbot)/i }
     },
 
     engine: {

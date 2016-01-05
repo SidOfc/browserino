@@ -78,5 +78,38 @@ module UserAgents
         known?: true
       }
     }
+    NUTCH = {
+      'NutchCVS/0.8-dev (Nutch; http://lucene.apache.org/nutch/bot.html; nutch-agent@lucene.apache.org)' => {
+        bot_name: 'nutch',
+        bot?: true,
+        known?: true
+      }
+    }
+    SCRAPY = {
+      'Scrapy/2.0 (+http://scrapy.org)' => {
+        bot_name: 'scrapy',
+        bot?: true,
+        known?: true
+      }
+    }
+    DATAPARKSEARCH = {
+      'DataparkSearch/4.37-23012006 ( http://www.dataparksearch.org/)' => {
+        bot_name: 'dataparksearch',
+        bot?: true,
+        known?: true
+      },
+      'DataparkSearch/4.35-02122005 ( http://www.dataparksearch.org/)' => {
+        bot_name: 'dataparksearch',
+        bot?: true,
+        known?: true
+      }
+    }
+    BESLISTBOT = {
+      'Mozilla/5.0 (compatible; BeslistBot; nl; BeslistBot 1.0; http://www.beslist.nl/' => {
+        bot_name: 'beslistbot',
+        bot?: true,
+        known?: true
+      }
+    }
   end
 end
