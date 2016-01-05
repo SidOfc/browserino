@@ -112,9 +112,9 @@ module Browserino
     end
 
     def bot?(name = nil)
-      is_bot = (bot_name.nil? ? false : true)
+      is_bot = ((bot_name.nil? ? false : true) ? true : ua.strip.empty?)
       is_name = (name.nil? ? true : (name.to_s.downcase.gsub(/_/, ' ') == bot_name))
-      allow_inverted_return(is_bot && is_name)
+      allow_inverted_return((is_bot && is_name))
     end
 
     def method_missing(method_sym, *args, &block)

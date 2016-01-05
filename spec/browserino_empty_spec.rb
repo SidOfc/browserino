@@ -3,6 +3,7 @@ require 'user_agents'
 
 describe "returns #{VISIBLE_FOR_UNKNOWN} when information couldn't be found" do
   agent = Browserino::parse('', UserAgents::USE_FOR_UNKNOWN)
+  agent2 = Browserino::parse('haksdjhkj', UserAgents::USE_FOR_UNKNOWN)
 
   it "Returns #{VISIBLE_FOR_UNKNOWN} for agent.browser_name" do
     expect(agent.browser_name).to eq UserAgents::USE_FOR_UNKNOWN
@@ -60,11 +61,19 @@ describe "returns #{VISIBLE_FOR_UNKNOWN} when information couldn't be found" do
     expect(agent.not.x64?).to eq true
   end
 
-  it "Returns false for agent.bot?" do
-    expect(agent.bot?).to eq false
+  it "Returns true for agent.bot? if the supplied ua is empty" do
+    expect(agent.bot?).to eq true
   end
 
-  it "Returns true for agent.not.bot?" do
-    expect(agent.not.bot?).to eq true
+  it "Returns false for agent.bot? if the supplied ua is actually unknown" do
+    expect(agent2.bot?).to eq false
+  end
+
+  it "Returns false for agent.not.bot? if the supplied ua is empty" do
+    expect(agent.not.bot?).to eq false
+  end
+
+  it "Returns true for agent.not.bot? if the supplied ua is actually unknown" do
+    expect(agent2.not.bot?).to eq true
   end
 end
