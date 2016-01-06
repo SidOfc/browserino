@@ -41,12 +41,19 @@ browsers.each do |const|
             expect(agent.class.name).to eq 'Browserino::Agent'
           end
           criteria.each do |property, value|
-            if (property == :system_name)
+            if property == :system_name
               it "expects #{property}({full: true}) to be #{value} for #{const.downcase} on #{platform[0]}" do
                 expect(agent.send(property, {full: true}).to_s.downcase).to eq value.to_s.downcase
               end
               it "expects #{property} to be #{value.first} for #{const.downcase} on #{platform[0]}" do
                 expect(agent.send(property).to_s.downcase).to eq value.first.to_s.downcase
+              end
+            elsif property == :browser_version && agent.ie? && value.is_a?(Hash)
+              it "expects #{property} to be #{value[:real]} for #{const.downcase} on #{platform[0]}" do
+                expect(agent.send(property).to_s.downcase).to eq value[:real].to_s.downcase
+              end
+              it "expects #{property}({compat: true}) to be #{value[:compat]} for #{const.downcase} on #{platform[0]}" do
+                expect(agent.send(property, {compat: true}).to_s.downcase).to eq value[:compat].to_s.downcase
               end
             else
               it "expects #{property} to be #{value} for #{const.downcase} on #{platform[0]}" do

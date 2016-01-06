@@ -26,10 +26,6 @@ module Browserino
       @info = Browserino::check_for_aliases(info)
     end
 
-    def locale
-      with_valid(@info[:locale]) { |v| v.to_s.downcase }
-    end
-
     def browser_name
       with_valid(@info[:browser_name]) do |v|
         v.to_s.downcase.gsub(/_/, ' ')
@@ -82,6 +78,10 @@ module Browserino
       end
     end
 
+    def locale
+      with_valid(@info[:locale]) { |v| v.to_s.downcase }
+    end
+
     def bot_name
       with_valid(@info[:bot_name]) do |v|
         v.to_s.downcase.gsub(/_/, ' ')
@@ -90,6 +90,10 @@ module Browserino
 
     def ua
       @ua
+    end
+
+    def compat?
+      allow_inverted_return (ie? && browser_version != browser_version(compat: true))
     end
 
     def known?
@@ -123,7 +127,7 @@ module Browserino
     def bot?(name = nil)
       is_bot = ((bot_name.nil? ? false : true) ? true : ua.strip.empty?)
       is_name = (name.nil? ? true : (name.to_s.downcase.gsub(/_/, ' ') == bot_name))
-      allow_inverted_return((is_bot && is_name))
+      allow_inverted_return (is_bot && is_name)
     end
 
     def method_missing(method_sym, *args, &block)
