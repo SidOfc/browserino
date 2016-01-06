@@ -28,12 +28,12 @@ module Browserino
 
       edge: {
         name: /(?<name>edge)/i,
-        version: /(?:edge\/)(?<version>[\d\.b]+)/i
+        version: /(?:edge\/)(?<version>[\d\.]+)/i
       },
 
       ie: {
         name: /(?<name>msie|trident)/i,
-        version: /(?:(?:ms)?ie\s|rv\:)(?<version>[\d\.b]+)/i
+        version: /(?:(?:ms)?ie\s|rv\:)(?<version>[\d\.]+)/i
       },
 
       seamonkey: {

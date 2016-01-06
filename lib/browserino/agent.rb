@@ -36,9 +36,13 @@ module Browserino
       end
     end
 
-    def browser_version
-      with_valid(@info[:browser_version]) do |v|
-        v.to_s.downcase.gsub('_', '.')
+    def browser_version(opts = {})
+      if ie? && engine_version && !opts[:compat]
+        (engine_version.to_f + 4.0).to_s
+      else
+        with_valid(@info[:browser_version]) do |v|
+          v.to_s.downcase.gsub('_', '.')
+        end
       end
     end
 

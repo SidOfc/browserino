@@ -29,12 +29,10 @@ module Browserino
   def self.cleanse(ua)
     #make iphone / ipad / ipod consistent
     ua = ua.gsub(/ip((a|o)d|hone)/i, 'ios')
-    #strip legacy mozilla version
     ua = ua.gsub(/(Mozilla\/[\d\.]+)/i, '')
-    #strip fake opera version
     ua = ua.gsub(/9\.80/i, '')
-    #strip webkit if presto engine is used
     ua = ua.gsub(/(?:apple)?webkit\/[\d\.]+/i, '') if /presto/i =~ ua
+    ua = ua.gsub(/(?:ms)?ie/i, '') if /rv\:/i =~ ua
     ua = ua.gsub(/linux/i, '') if /android/i =~ ua
     ua
   end

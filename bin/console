@@ -3,7 +3,7 @@
 require "bundler/setup"
 require "browserino"
 require "pry"
-ua = 'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US))'
+ua = 'Mozilla/5.0 (compatible, MSIE 11, Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko'
 @agent = Browserino::parse(ua)
 
 puts "> @agent variable available parsed with: '#{ua}'\n\n"
