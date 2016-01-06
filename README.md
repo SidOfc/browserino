@@ -10,6 +10,13 @@ This gem aims to provide information about the browser that your visitor is usin
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md)_
 
+#### 06-01-2016 VERSION 2.3.0
+
+- Added `#compat?` method to test if IE is in compatibility mode
+- Extended `#browser_version` to now also take an argument
+- Added `#locale` method
+- Empty UA's are identified as bots through `#bot?`
+
 #### 04-01-2016 VERSION 2.2.0
 
 - Added more bots
@@ -22,13 +29,6 @@ _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/brow
 - Added `#bot?` method
 - Added dynamic method support for bots
 - Added support for the seamonkey browser
-
-#### 03-01-2016 VERSION 2.0.0
-
-- **IMPORTANT** Changed behaviour of all dynamic methods to include version as an argument rather than in the method name.
-- **IMPORTANT** Changed the behaviour of version checking to be more strict
-- Changed tests to reflect new behaviour
-- Added convenience methods `#win?`, `#osx?` and `#bb?`
 
 ## Installation
 
@@ -75,55 +75,107 @@ On this object there are a few method calls you can do to retrieve information.
 ```ruby
 require 'browserino'
 
-agent = Browserino::parse('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A')
+agent = Browserino::parse('user-agent')
 
-agent.browser_name # => 'safari'
-agent.browser_version # => 7.0.3
+agent.browser_name
+# => 'safari'
 
-agent.engine_name # => 'webkit'
-agent.engine_version # => 537.75.14
+# always returns the real version (also with IE in compat)
+agent.browser_version
+# => '7.0.3'
 
-agent.system_name # => 'macintosh'
+# if a user is running IE in compat mode this will return the compat version
+agent.browser_version compat: true
+# => '7.0'
+
+agent.engine_name
+# => 'webkit'
+
+agent.engine_version
+# => '537.75.14'
+
+agent.system_name
+# => 'macintosh'
+
 # or optionally, the full name (guessed from OS version)
-agent.system_name full: true # => ['macintosh', 'mavericks']
-agent.system_version # => 10.9.3
-agent.system_architecture # => 'x32' or 'x64' if known
+agent.system_name full: true
+# => ['macintosh', 'mavericks']
+
+agent.system_version
+# => '10.9.3'
+
+agent.system_architecture
+# => 'x32'
+
 # or through convenience methods:
-agent.x32? # => true for 32bit UA's
-agent.x64? # => true for 64bit UA's
+agent.x32?
+# => true
 
-agent.bot_name # => name of bot if the UA was identified as bot
-agent.bot? # => returns true if the agent is a bot
-agent.bot? :googlebot # => returns true if the agent is the specified bot
+agent.x64?
+# => false
 
-agent.known? # => true if browser_name or bot_name present
-agent.mobile? # => true if agent is a mobile device
+# get the locale, either 'aa' or 'aa-bb' format
+agent.locale
+# => 'en'
+# or if the UA supplies the information
+# => 'en-us'
+
+
+# name of bot if the UA was identified as bot
+agent.bot_name
+# => 'googlebot'
+
+# returns true if the agent is a bot
+agent.bot?
+# => true
+
+# returns true if the agent is the specified bot
+agent.bot? :googlebot
+# => true
+
+# check IE compatibility mode
+agent.compat?
+# => true
+
+# true if browser_name or bot_name present
+agent.known?
+# => true
+
+# true if agent is a mobile device
+agent.mobile?
+# => true
 
 # methods to convert object into a String, Array or hash
-agent.to_s # => 'safari safari7 webkit webkit537 macintosh macintosh10'
-# to_s can split version numbers from words if a seperator is supplied
-agent.to_s '-' # => 'safari safari-7 webkit webkit-537 macintosh macintosh-10'
+agent.to_s
+# => 'safari safari7 webkit webkit537 macintosh macintosh10 en-us'
 
-agent.to_a # => [
-#                 [:browser_name, 'safari'],
-#                 [:browser_version, '7.0.3'],
-#                 [:engine_name, 'webkit'],
-#                 [:engine_version, '537.75.14'],
-#                 [:system_name, 'macintosh'],
-#                 [:system_version, '10'],
-#                 [:system_architecture, nil],
-#                 [:bot_name, nil]
-#               ]
-agent.to_h # => {
-#                 browser_name: 'safari',
-#                 browser_version: '7.0.3',
-#                 engine_name: 'webkit',
-#                 engine_version: '537.75.14',
-#                 system_name: 'macintosh',
-#                 system_version: '10',
-#                 system_architecture: nil,
-#                 bot_name: nil
-#               }
+# to_s can split version numbers from words if a seperator is supplied
+agent.to_s '-'
+# => 'safari safari-7 webkit webkit-537 macintosh macintosh-10 en-us'
+
+agent.to_a
+# => [
+#      [:browser_name, 'safari'],
+#      [:browser_version, '7.0.3'],
+#      [:engine_name, 'webkit'],
+#      [:engine_version, '537.75.14'],
+#      [:system_name, 'macintosh'],
+#      [:system_version, '10'],
+#      [:system_architecture, nil],
+#      [:bot_name, nil]
+#    ]
+
+agent.to_h
+# => {
+#      browser_name: 'safari',
+#      browser_version: '7.0.3',
+#      engine_name: 'webkit',
+#      engine_version: '537.75.14',
+#      system_name: 'macintosh',
+#      system_version: '10',
+#      system_architecture: nil,
+#      bot_name: nil
+#    }
 ```
 
 It is now also possible to call methods to determine a specific OS or browser if it's supported, a `noMethodError` will be thrown otherwise

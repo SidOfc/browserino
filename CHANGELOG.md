@@ -1,6 +1,13 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_  
 
+#### 03-01-2016 VERSION 2.0.0
+
+- **IMPORTANT** Changed behaviour of all dynamic methods to include version as an argument rather than in the method name.
+- **IMPORTANT** Changed the behaviour of version checking to be more strict
+- Changed tests to reflect new behaviour
+- Added convenience methods `#win?`, `#osx?` and `#bb?`
+
 #### 03-01-2016 VERSION 1.6.0
 
 - Added more tests
