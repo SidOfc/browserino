@@ -5,6 +5,8 @@ require "browserino/maps/linux"
 require "browserino/maps/android"
 require "browserino/maps/windows"
 
+require "browserino/integrate/rails" if defined?(::Rails)
+
 require "browserino/unknown"
 require "browserino/agent"
 
