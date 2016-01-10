@@ -10,6 +10,10 @@ This gem aims to provide information about the browser that your visitor is usin
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md)_
 
+#### 10-01-2016 VERSION 2.4.0
+
+- Added rails integration
+
 #### 06-01-2016 VERSION 2.3.0
 
 - Added `#compat?` method to test if IE is in compatibility mode
@@ -21,14 +25,6 @@ _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/brow
 
 - Added more bots
 - `#bot?` method can now take a bot name as argument to check for an exact bot
-
-#### 04-01-2016 VERSION 2.1.0
-
-- Small restructuring of test suite
-- Added bot detection
-- Added `#bot?` method
-- Added dynamic method support for bots
-- Added support for the seamonkey browser
 
 ## Installation
 
@@ -60,14 +56,18 @@ Afterwards you can simply call
 ```ruby
 Browserino::parse('<user agent>')
 ```
-Optionally if you're using a version _>=_ than _1.1.2_ you can set a return value in place of `nil` when running `::parse(...)`.
-If you want any unknown properties to return the string `unknown` you could do so like this:
+
+Or if you're using Rails *(>= 3.2.0)*, in your controllers you'll have access to an `agent` object
 
 ```ruby
-Browserino::parse('<user agent>', 'unknown')
+class HomeController < ApplicationController
+  def index
+    render json: agent
+  end
+end
 ```
 
-Without specifying the second argument the value for unknown properties will always be `nil`
+The return value will always be `nil` if a value isn't found
 
 `Browserino::parse()` will return a `Browserino::Agent` object containing all the information parsed out of the supplied user agent.
 On this object there are a few method calls you can do to retrieve information.
@@ -162,6 +162,7 @@ agent.to_a
 #      [:system_name, 'macintosh'],
 #      [:system_version, '10'],
 #      [:system_architecture, nil],
+#      [:locale, nil],
 #      [:bot_name, nil]
 #    ]
 
@@ -174,6 +175,7 @@ agent.to_h
 #      system_name: 'macintosh',
 #      system_version: '10',
 #      system_architecture: nil,
+#      locale: nil,
 #      bot_name: nil
 #    }
 ```
@@ -192,22 +194,32 @@ Browsers can also accept a float / integer to check for a specific version.
 
 ```ruby
 agent.android?
+
 # check for android jellybean
 # agent.android?(:jellybean) or agent.android?('jellybean') or agent.android?(4.1)
+
 agent.ios?
-# check version of iOS (v1.x.x)
+
+# check version of iOS (>= 1.0.0)
 # agent.ios9?
-# check version of iOS (v2.x.x)
+
+# check version of iOS (>= 2.0.0)
 # agent.ios?(9)
+
 agent.windows?
-# check for windows Vista (v1.x.x)
+
+# check for windows Vista (>= 1.0.0)
 # agent.windows60?
-# check for windows Vista (v2.x.x)
+
+# check for windows Vista (>= 2.0.0)
 # agent.windows?(6) - based on NT version
 # agent.windows?(6.0) - based on NT version
 # agent.windows?(:vista) or agent.windows?('vista')
+
 agent.macintosh?
+
 agent.blackberry?
+
 agent.linux?
 ```
 
@@ -215,22 +227,32 @@ You could also invert these questions by using the `.not` method
 
 ```ruby
 agent.not.android?
+
 # check for android jellybean
 # agent.not.android?(:jelly_bean) or agent.not.android?('jelly bean') or agent.not.android?(4.1)
+
 agent.not.ios?
-# check if iOS version isn't 9 (v1.4.0+)
+
+# check if iOS version isn't 9 (>= 1.4.0)
 # agent.not.ios9?
-# check if iOS version isn't 9 (v2.x.x)
+
+# check if iOS version isn't 9 (>= 2.0.0)
 # agent.not.ios?(9)
+
 agent.not.windows?
-# check if not windows vista (v1.4.0+)
+
+# check if not windows vista (>= 1.4.0)
 # agent.not.windows60?
+
 # check if not windows vista (v2.x.x)
 # agent.not.windows?(6) - based on NT version
 # agent.not.windows?(6.0) - based on NT version
 # agent.not.windows?(:vista) or agent.not.windows?('vista')
+
 agent.not.macintosh?
+
 agent.not.blackberry?
+
 agent.not.linux?
 ```
 
@@ -240,40 +262,62 @@ The `#windows?`, `#macintosh?` and `#blackberry?` each have a shortcut method to
 
 ```ruby
 agent.opera?
+
 agent.opera_mini?
+
 agent.bolt?
+
 agent.ucbrowser?
+
 agent.maxthon?
+
 agent.edge?
+
 agent.ie?
+
 agent.firefox?
+
 agent.chrome?
+
 agent.seamonkey?
+
 agent.safari?
 
-# or with the .not method (v1.4.0+)
+# or with the .not method (>= 1.4.0)
 
 agent.not.opera?
+
 agent.not.maxthon?
+
 # etc etc...
 ```
 
 ##### Supported bots
 ```ruby
 agent.msnbot?
+
 agent.yahoo_slurp?
+
 agent.googlebot?
+
 agent.bingbot?
+
 agent.baiduspider?
+
 agent.yandexbot?
+
 agent.sosospider?
+
 agent.exabot?
+
 agent.sogou_spider?
 
-# or with the .not method (v1.4.0+)
+# or with the .not method (>= v1.4.0)
 
 agent.not.msnbot?
+
 agent.not.yahoo_slurp?
+
 # etc etc...
 ```
 
@@ -299,6 +343,7 @@ module UserAgents
           system_name: ['windows', '7'],
           system_version: '6.1',
           system_architecture: 'x64',
+          locale: nil,
           x64?: true,
           x32?: false,
           known?: true,
@@ -315,33 +360,52 @@ Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are
 #### browser_name examples
 ```ruby
 'ie'
+
 'firefox'
+
 'chrome'
+
 'opera'
+
 'opera_mini'
+
 'bolt'
+
 'ucbrowser'
+
 'seamonkey'
+
 'maxthon'
 ```
 
 #### engine_name examples
 ```ruby
+
 'gecko'
+
 'webkit'
+
 'trident'
 ```
 
 #### bot_name examples
 ```ruby
 'googlebot'
+
 'yahoo_slurp'
+
 'msnbot'
+
 'bingbot'
+
 'baiduspider'
+
 'yandexbot'
+
 'sosospider'
+
 'exabot'
+
 'sogou_spider'
 ```
 
@@ -349,19 +413,28 @@ Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are
 
 ```ruby
 'windows'
+
 'win'
+
 'macintosh'
+
 'osx'
+
 'blackberry'
+
 'bb'
+
 'android'
+
 'ios'
+
 'linux' # => doesn't have versions
 ```
 
 #### system_architecture examples
 ```ruby
 'x32'
+
 'x64'
 ```
 

@@ -1,6 +1,14 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_  
 
+#### 04-01-2016 VERSION 2.1.0
+
+- Small restructuring of test suite
+- Added bot detection
+- Added `#bot?` method
+- Added dynamic method support for bots
+- Added support for the seamonkey browser
+
 #### 03-01-2016 VERSION 2.0.0
 
 - **IMPORTANT** Changed behaviour of all dynamic methods to include version as an argument rather than in the method name.
