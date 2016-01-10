@@ -1,13 +1,11 @@
 require 'action_controller/railtie'
 
 module Browserino
-  module ActionController
-    extend ActiveSupport::Concern
-
-    included { helper_method(:browser) }
-
-    def browser
-      @agent ||= Browserino::parse request.headers['User-Agent']
+  class ActionController
+    module Base
+      def agent
+        Browserino::parse request.headers['User-Agent']
+      end
     end
   end
 end
