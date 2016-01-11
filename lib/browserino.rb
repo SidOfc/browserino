@@ -22,8 +22,11 @@ require "browserino/operating_system"
 # require_relative "../spec/user_agents_browsers"
 
 module Browserino
-  def self.parse(ua, unknown_alt = UNKNOWN)
-    Agent.new(ua, unknown_alt)
+  def self.parse(ua, unknown_alt = nil)
+    if unknown_alt
+      puts "The feature for using a custom return value is deprecated and will be removed in a future release. For now, your value will be ignored and nil will be the return value for unknown properties."
+    end
+    Agent.new(ua, UNKNOWN)
   end
 
   private
