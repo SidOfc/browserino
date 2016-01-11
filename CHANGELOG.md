@@ -1,6 +1,11 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_  
 
+#### 04-01-2016 VERSION 2.2.0
+
+- Added more bots
+- `#bot?` method can now take a bot name as argument to check for an exact bot
+
 #### 04-01-2016 VERSION 2.1.0
 
 - Small restructuring of test suite

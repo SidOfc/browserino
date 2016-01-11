@@ -10,6 +10,11 @@ This gem aims to provide information about the browser that your visitor is usin
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md)_
 
+#### 11-01-2016 VERSION 2.4.1
+
+- Caching the agent object in Rails
+- **DEPRECATE** Using a custom return value for when a property isn't found
+
 #### 10-01-2016 VERSION 2.4.0
 
 - Added rails integration
@@ -20,11 +25,6 @@ _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/brow
 - Extended `#browser_version` to now also take an argument
 - Added `#locale` method
 - Empty UA's are identified as bots through `#bot?`
-
-#### 04-01-2016 VERSION 2.2.0
-
-- Added more bots
-- `#bot?` method can now take a bot name as argument to check for an exact bot
 
 ## Installation
 
