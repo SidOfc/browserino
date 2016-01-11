@@ -1,5 +1,23 @@
 module UserAgents
   module Browsers
+    VIVALDI = {
+      mac: {
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 Vivaldi/1.0.344.37' => {
+          browser_name: 'Vivaldi',
+          browser_version: '1.0.344.37',
+          engine_name: 'Webkit',
+          engine_version: '537.36',
+          system_name: ['macintosh', 'El Capitan'],
+          system_version: '10.11.2',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: USE_FOR_UNKNOWN,
+          x64?: false,
+          x32?: false,
+          mobile?: false,
+          known?: true
+        }
+      }
+    }
     OPERA = {
       mac: {
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36 OPR/34.0.2036.25' => {
@@ -101,6 +119,36 @@ module UserAgents
           locale: 'fr',
           x64?: true,
           x32?: false,
+          mobile?: false,
+          known?: true
+        }
+      },
+      bsd: {
+        'Opera/9.63 (X11; FreeBSD 7.1-RELEASE i386; U; en) Presto/2.1.1' => {
+          browser_name: 'Opera',
+          browser_version: '9.63',
+          engine_name: 'Presto',
+          engine_version: '2.1.1',
+          system_name: ['bsd', USE_FOR_UNKNOWN],
+          system_version: USE_FOR_UNKNOWN,
+          system_architecture: 'x32',
+          locale: 'en',
+          x64?: false,
+          x32?: true,
+          mobile?: false,
+          known?: true
+        },
+        'Opera/9.22 (X11; OpenBSD i386; U; en)' => {
+          browser_name: 'Opera',
+          browser_version: '9.22',
+          engine_name: USE_FOR_UNKNOWN,
+          engine_version: USE_FOR_UNKNOWN,
+          system_name: ['bsd', USE_FOR_UNKNOWN],
+          system_version: USE_FOR_UNKNOWN,
+          system_architecture: 'x32',
+          locale: 'en',
+          x64?: false,
+          x32?: true,
           mobile?: false,
           known?: true
         }
@@ -576,18 +624,62 @@ module UserAgents
           x32?: false,
           mobile?: false,
           known?: true
-        },
+        }
+      },
+      bsd: {
         'Mozilla/5.0 (X11; OpenBSD amd64; rv:28.0) Gecko/20100101 Firefox/28.0' => {
           browser_name: 'Firefox',
           browser_version: '28.0',
           engine_name: 'Gecko',
           engine_version: '28.0',
-          system_name: ['linux', USE_FOR_UNKNOWN],
+          system_name: ['bsd', USE_FOR_UNKNOWN],
           system_version: USE_FOR_UNKNOWN,
           system_architecture: 'x64',
           locale: USE_FOR_UNKNOWN,
           x64?: true,
           x32?: false,
+          mobile?: false,
+          known?: true
+        },
+        'Mozilla/5.0 (X11; NetBSD amd64; rv:16.0) Gecko/20121102 Firefox/16.0' => {
+          browser_name: 'Firefox',
+          browser_version: '16.0',
+          engine_name: 'Gecko',
+          engine_version: '16.0',
+          system_name: ['bsd', USE_FOR_UNKNOWN],
+          system_version: USE_FOR_UNKNOWN,
+          system_architecture: 'x64',
+          locale: USE_FOR_UNKNOWN,
+          x64?: true,
+          x32?: false,
+          mobile?: false,
+          known?: true
+        },
+        'Mozilla/5.0 (X11; FreeBSD amd64; rv:5.0) Gecko/20100101 Firefox/5.0' => {
+          browser_name: 'Firefox',
+          browser_version: '5.0',
+          engine_name: 'Gecko',
+          engine_version: '5.0',
+          system_name: ['bsd', USE_FOR_UNKNOWN],
+          system_version: USE_FOR_UNKNOWN,
+          system_architecture: 'x64',
+          locale: USE_FOR_UNKNOWN,
+          x64?: true,
+          x32?: false,
+          mobile?: false,
+          known?: true
+        },
+        'Mozilla/5.0 (X11; U; FreeBSD i386; de-CH; rv:1.9.2.8) Gecko/20100729 Firefox/3.6.8' => {
+          browser_name: 'Firefox',
+          browser_version: '3.6.8',
+          engine_name: 'Gecko',
+          engine_version: '1.9.2.8',
+          system_name: ['bsd', USE_FOR_UNKNOWN],
+          system_version: USE_FOR_UNKNOWN,
+          system_architecture: 'x32',
+          locale: 'de-ch',
+          x64?: false,
+          x32?: true,
           mobile?: false,
           known?: true
         }
@@ -749,6 +841,36 @@ module UserAgents
           system_architecture: 'x64',
           locale: USE_FOR_UNKNOWN,
           x64?: true,
+          x32?: false,
+          mobile?: false,
+          known?: true
+        }
+      },
+      bsd: {
+        'Mozilla/5.0 (X11; OpenBSD i386) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36' => {
+          browser_name: 'Chrome',
+          browser_version: '36.0.1985.125',
+          engine_name: 'webkit',
+          engine_version: '537.36',
+          system_name: ['bsd', USE_FOR_UNKNOWN],
+          system_version: USE_FOR_UNKNOWN,
+          system_architecture: 'x32',
+          locale: USE_FOR_UNKNOWN,
+          x64?: false,
+          x32?: true,
+          mobile?: false,
+          known?: true
+        },
+        'Mozilla/5.0 (X11; NetBSD) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36' => {
+          browser_name: 'Chrome',
+          browser_version: '27.0.1453.116',
+          engine_name: 'webkit',
+          engine_version: '537.36',
+          system_name: ['bsd', USE_FOR_UNKNOWN],
+          system_version: USE_FOR_UNKNOWN,
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: USE_FOR_UNKNOWN,
+          x64?: false,
           x32?: false,
           mobile?: false,
           known?: true
