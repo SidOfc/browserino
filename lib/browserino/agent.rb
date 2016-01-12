@@ -197,8 +197,7 @@ module Browserino
     def correct_system?(name, version = nil)
       sys_name = name.to_s.downcase.gsub(/\s/, '_')
       sys_name_compare = system_name(full: true).join.downcase.gsub(/\s/, '_')
-      name_variations = [sys_name_compare, sys_name_compare.gsub(/^[\s_]+|\d|[\s_]+$/, '')]
-
+      name_variations = [sys_name_compare, sys_name_compare.gsub(/^[\s_]+|[\d\.\s_]+$/, '')]
       if (name_variations.include?((sys_name + version.to_s).gsub(/\s/, '_').downcase) ||
           (sys_name == system_name.gsub(/\s/, '_') && compare_versions(version, system_version)) ||
           (!version && sys_name == system_name.gsub(/\s/, '_')))

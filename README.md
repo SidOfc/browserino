@@ -10,7 +10,15 @@ This gem aims to provide information about the browser that your visitor is usin
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md)_
 
-#### 11-01-2016 VERSION 2.4.1
+#### 12-01-2016 VERSION 2.5.0
+
+- Added support for the Vivaldi browser
+- New method `#vivaldi?`
+- Added support for the bsd family of operating systems
+- New method `#bsd?`
+- Fixed using symbols for system version identification (e.g. `:vista` or `:el_capitan`) without a version number
+
+#### 11-01-2016 VERSION 2.4.1(.1)
 
 - Caching the agent object in Rails
 - **DEPRECATE** Using a custom return value for when a property isn't found
@@ -18,13 +26,6 @@ _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/brow
 #### 10-01-2016 VERSION 2.4.0
 
 - Added rails integration
-
-#### 06-01-2016 VERSION 2.3.0
-
-- Added `#compat?` method to test if IE is in compatibility mode
-- Extended `#browser_version` to now also take an argument
-- Added `#locale` method
-- Empty UA's are identified as bots through `#bot?`
 
 ## Installation
 
@@ -220,7 +221,9 @@ agent.macintosh?
 
 agent.blackberry?
 
-agent.linux?
+agent.linux? # linux doesn't have versions
+
+agent.bsd? # bsd also doesn't have versions
 ```
 
 You could also invert these questions by using the `.not` method
@@ -254,6 +257,8 @@ agent.not.macintosh?
 agent.not.blackberry?
 
 agent.not.linux?
+
+agent.not.bsd?
 ```
 
 The `#windows?`, `#macintosh?` and `#blackberry?` each have a shortcut method to allow for easier access, `#win?`, `#osx?`, `#bb?`
@@ -261,6 +266,8 @@ The `#windows?`, `#macintosh?` and `#blackberry?` each have a shortcut method to
 ##### Supported browsers  
 
 ```ruby
+agent.vivaldi?
+
 agent.opera?
 
 agent.opera_mini?
@@ -284,6 +291,7 @@ agent.seamonkey?
 agent.safari?
 
 # or with the .not method (>= 1.4.0)
+agent.not.vivaldi?
 
 agent.not.opera?
 
@@ -361,9 +369,13 @@ Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are
 ```ruby
 'ie'
 
+`edge`
+
 'firefox'
 
 'chrome'
+
+`vivaldi`
 
 'opera'
 
@@ -428,7 +440,9 @@ Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are
 
 'ios'
 
-'linux' # => doesn't have versions
+'linux'
+
+`bsd`
 ```
 
 #### system_architecture examples

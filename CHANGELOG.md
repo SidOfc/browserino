@@ -1,6 +1,13 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_  
 
+#### 06-01-2016 VERSION 2.3.0
+
+- Added `#compat?` method to test if IE is in compatibility mode
+- Extended `#browser_version` to now also take an argument
+- Added `#locale` method
+- Empty UA's are identified as bots through `#bot?`
+
 #### 04-01-2016 VERSION 2.2.0
 
 - Added more bots
