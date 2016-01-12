@@ -16,6 +16,66 @@ module UserAgents
           mobile?: false,
           known?: true
         }
+      },
+      win: {
+        'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.99 Safari/537.36 Vivaldi/1.0.288.3' => {
+          browser_name: 'Vivaldi',
+          browser_version: '1.0.288.3',
+          engine_name: 'Webkit',
+          engine_version: '537.36',
+          system_name: ['windows', '10'],
+          system_version: '10.0',
+          system_architecture: 'x64',
+          locale: USE_FOR_UNKNOWN,
+          x64?: true,
+          x32?: false,
+          mobile?: false,
+          known?: true
+        },
+        'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.89 Vivaldi/1.0.83.38 Safari/537.36' => {
+          browser_name: 'Vivaldi',
+          browser_version: '1.0.83.38',
+          engine_name: 'Webkit',
+          engine_version: '537.36',
+          system_name: ['windows', '7'],
+          system_version: '6.1',
+          system_architecture: 'x64',
+          locale: USE_FOR_UNKNOWN,
+          x64?: true,
+          x32?: false,
+          mobile?: false,
+          known?: true
+        },
+        'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36 Vivaldi/1.0.129.2' => {
+          browser_name: 'Vivaldi',
+          browser_version: '1.0.129.2',
+          engine_name: 'Webkit',
+          engine_version: '537.36',
+          system_name: ['windows', '8.1'],
+          system_version: '6.3',
+          system_architecture: 'x64',
+          locale: USE_FOR_UNKNOWN,
+          x64?: true,
+          x32?: false,
+          mobile?: false,
+          known?: true
+        }
+      },
+      linux: {
+        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.105 Safari/537.36 Vivaldi/1.0.162.2' => {
+          browser_name: 'Vivaldi',
+          browser_version: '1.0.162.2',
+          engine_name: 'Webkit',
+          engine_version: '537.36',
+          system_name: ['Linux', USE_FOR_UNKNOWN],
+          system_version: USE_FOR_UNKNOWN,
+          system_architecture: 'x64',
+          locale: USE_FOR_UNKNOWN,
+          x64?: true,
+          x32?: false,
+          mobile?: false,
+          known?: true
+        }
       }
     }
     OPERA = {

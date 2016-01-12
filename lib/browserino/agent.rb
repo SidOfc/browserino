@@ -5,7 +5,7 @@ module Browserino
       @unknown = unknown
       @not = false
 
-      cleansed_ua = Browserino::cleanse @ua
+      cleansed_ua = Browserino::strip_lies @ua
       name = Browserino::agent_id cleansed_ua
       info = {
         browser_name: name,

@@ -32,7 +32,7 @@ module Browserino
 
   private
 
-  def self.cleanse(ua)
+  def self.strip_lies(ua)
     #make iphone / ipad / ipod consistent
     ua = ua.gsub(/ip((a|o)d|hone)/i, 'ios')
     ua = ua.gsub(/(Mozilla\/[\d\.]+)/i, '')
