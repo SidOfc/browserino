@@ -1,6 +1,10 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_  
 
+#### 10-01-2016 VERSION 2.4.0
+
+- Added rails integration
+
 #### 06-01-2016 VERSION 2.3.0
 
 - Added `#compat?` method to test if IE is in compatibility mode

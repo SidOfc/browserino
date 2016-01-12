@@ -10,6 +10,10 @@ This gem aims to provide information about the browser that your visitor is usin
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md)_
 
+#### 12-01-2016 VERSION 2.5.1
+
+- Patched blackberry mapping, this used to be done by model number instead but is now corrected
+
 #### 12-01-2016 VERSION 2.5.0
 
 - Added support for the Vivaldi browser
@@ -22,10 +26,6 @@ _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/brow
 
 - Caching the agent object in Rails
 - **DEPRECATE** Using a custom return value for when a property isn't found
-
-#### 10-01-2016 VERSION 2.4.0
-
-- Added rails integration
 
 ## Installation
 

@@ -246,7 +246,7 @@ module Browserino
       name.downcase!
       version = if system_version == @unknown
                   nil
-                elsif name.match(/mac|ios/i)
+                elsif name.match(/mac|ios|blackberry/i)
                   system_version.split('.').first(2).join.to_i
                 elsif name.match(/win|android/i)
                   system_version.gsub('.', '').to_i
@@ -257,7 +257,7 @@ module Browserino
         version_names = Browserino::Mapping.const_get(const).select do |_, versions|
           true if versions.include?(version)
         end
-        version_names.keys.first
+        version_names.keys.first || system_version.split('.').first(2).join('.')
       else
          @unknown
       end
