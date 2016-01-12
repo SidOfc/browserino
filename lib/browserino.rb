@@ -1,6 +1,7 @@
 require "browserino/maps/macintosh"
 require "browserino/maps/blackberry"
 require "browserino/maps/ios"
+require "browserino/maps/bsd"
 require "browserino/maps/linux"
 require "browserino/maps/android"
 require "browserino/maps/windows"
@@ -31,7 +32,7 @@ module Browserino
 
   private
 
-  def self.cleanse(ua)
+  def self.strip_lies(ua)
     #make iphone / ipad / ipod consistent
     ua = ua.gsub(/ip((a|o)d|hone)/i, 'ios')
     ua = ua.gsub(/(Mozilla\/[\d\.]+)/i, '')
@@ -39,6 +40,7 @@ module Browserino
     ua = ua.gsub(/(?:apple)?webkit\/[\d\.]+/i, '') if /presto/i =~ ua
     ua = ua.gsub(/(?:ms)?ie/i, '') if /rv\:/i =~ ua
     ua = ua.gsub(/linux/i, '') if /android/i =~ ua
+    ua = ua.gsub(/x11/i, '') if /bsd/i =~ ua
     ua
   end
 

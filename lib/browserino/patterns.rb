@@ -1,6 +1,11 @@
 module Browserino
   PATTERNS = {
     browser: {
+      vivaldi: {
+        name: /(?<name>vivaldi)/i,
+        version: /vivaldi\/(?<version>[\d\.]+)/i
+      },
+
       ucbrowser: {
         name: /(?<name>ucbrowser)/i,
         version: /ucbrowser\/?(?<version>[\d\.]+)/i
@@ -79,7 +84,7 @@ module Browserino
     },
 
     operating_system: {
-      name: /(?<name>windows|macintosh|android|ios|blackberry|linux|ubuntu|x11)/i,
+      name: /(?<name>windows|macintosh|android|ios|blackberry|linux|ubuntu|x11|bsd)/i,
       version: /(?:nt|mac\sos\sx|android|(cpu\s|i)os|blackberry)\s?(?<version>[\d\._]+)/i,
       architecture: /(?<architecture>((?:x|x86_|amd|wow)64)|i(3|6)86)/i,
       mobile: /bolt|nokia|samsung|mobi(?:le)?|android|ip(?:[ao]d|hone)|bb\d+|blackberry|iemobile|fennec|bada|meego|vodafone|t\-mobile|opera\sm(?:ob|in)i/i,
