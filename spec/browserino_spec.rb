@@ -89,6 +89,12 @@ browsers.each do |const|
                 it "accepts a system_name w/ (named)version: agent.#{sys_nm}?(#{sys_nm_full[1]})" do
                   expect(agent.send("#{sys_nm}?", sys_nm_full[1])).to eq true
                 end
+                sys_name_variant = sys_nm_full.last.to_s.downcase.gsub(/\s/, '_').gsub(/^[\s_]+|[\d\s\._]+$/, '')
+                unless sys_name_variant.size == 0
+                  it "can be passed a symbol as a system version (agent.#{sys_nm_full.first}?(:#{sys_name_variant}))" do
+                    expect(agent.send("#{sys_nm_full.first}?", sys_name_variant.to_sym)).to eq true
+                  end
+                end
                 if convenience_os_fn.keys.include?(sys_nm.to_sym)
                   it "has a convenience method for calling system name w/ version agent.#{con}?(#{sys_ver})" do
                     expect(agent.send("#{con}?", sys_ver)).to eq true
