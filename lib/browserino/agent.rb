@@ -2,7 +2,6 @@ module Browserino
   class Agent
     def initialize(ua, unknown = Browserino::UNKNOWN)
       @ua = ua
-      @unknown = unknown
       @not = false
 
       cleansed_ua = Browserino::strip_lies @ua
@@ -97,7 +96,7 @@ module Browserino
     end
 
     def known?
-      allow_inverted_return (browser_name != @unknown || bot_name != @unknown)
+      allow_inverted_return (browser_name != Browserino::UNKNOWN || bot_name != Browserino::UNKNOWN)
     end
 
     def mobile?
@@ -233,18 +232,18 @@ module Browserino
     def with_valid(val)
       if val && (val != '' || val != false) && block_given?
         res = yield(val)
-        return @unknown if res == ''
+        return Browserino::UNKNOWN if res == ''
         res
       else
-        @unknown
+        Browserino::UNKNOWN
       end
     end
 
     def fetch_system_version_name(name)
-      return @unknown if name.nil? || name == '' || !name
+      return Browserino::UNKNOWN if name.nil? || name == '' || !name
       const = name.upcase
       name.downcase!
-      version = if system_version == @unknown
+      version = if system_version == Browserino::UNKNOWN
                   nil
                 elsif name.match(/mac|ios|blackberry/i)
                   system_version.split('.').first(2).join.to_i
@@ -259,7 +258,7 @@ module Browserino
         end
         version_names.keys.first || system_version.split('.').first(2).join('.')
       else
-         @unknown
+         Browserino::UNKNOWN
       end
     end
   end
