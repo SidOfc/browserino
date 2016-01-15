@@ -241,7 +241,7 @@ module Browserino
 
     def fetch_system_version_name(name)
       return Browserino::UNKNOWN if name.nil? || name == '' || !name
-      const = name.upcase
+      const = name.upcase.gsub(/\s/, '_')
       name.downcase!
       version = if system_version == Browserino::UNKNOWN
                   nil

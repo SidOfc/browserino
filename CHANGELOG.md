@@ -1,6 +1,11 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_  
 
+#### 11-01-2016 VERSION 2.4.1(.1)
+
+- Caching the agent object in Rails
+- **DEPRECATE** Using a custom return value for when a property isn't found
+
 #### 10-01-2016 VERSION 2.4.0
 
 - Added rails integration

@@ -10,6 +10,12 @@ This gem aims to provide information about the browser that your visitor is usin
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md)_
 
+#### 15-01-2016 VERSION 2.5.2
+
+- **DEPRECATE** Custom return values (passed through `Browserino::parse`) will no longer alter the output of the agent object
+- Added support for windows phone detection
+- Added `windows_phone?` method
+
 #### 12-01-2016 VERSION 2.5.1
 
 - Patched blackberry mapping, this used to be done by model number instead but is now corrected
@@ -21,11 +27,6 @@ _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/brow
 - Added support for the bsd family of operating systems
 - New method `#bsd?`
 - Fixed using symbols for system version identification (e.g. `:vista` or `:el_capitan`) without a version number
-
-#### 11-01-2016 VERSION 2.4.1(.1)
-
-- Caching the agent object in Rails
-- **DEPRECATE** Using a custom return value for when a property isn't found
 
 ## Installation
 
@@ -97,6 +98,7 @@ agent.engine_version
 
 agent.system_name
 # => 'macintosh'
+# possibilities are macintosh, windows, blackberry, android, linux, bsd and ios
 
 # or optionally, the full name (guessed from OS version)
 agent.system_name full: true
@@ -221,6 +223,8 @@ agent.macintosh?
 
 agent.blackberry?
 
+agent.windows_phone?
+
 agent.linux? # linux doesn't have versions
 
 agent.bsd? # bsd also doesn't have versions
@@ -255,6 +259,8 @@ agent.not.windows?
 agent.not.macintosh?
 
 agent.not.blackberry?
+
+agent.not.windows_phone?
 
 agent.not.linux?
 
@@ -435,6 +441,8 @@ Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are
 'blackberry'
 
 'bb'
+
+'windows_phone'
 
 'android'
 

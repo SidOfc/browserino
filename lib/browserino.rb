@@ -5,6 +5,7 @@ require "browserino/maps/bsd"
 require "browserino/maps/linux"
 require "browserino/maps/android"
 require "browserino/maps/windows"
+require "browserino/maps/windows_phone"
 
 require "browserino/integrate/rails" if defined?(::Rails)
 
@@ -41,6 +42,7 @@ module Browserino
     ua = ua.gsub(/(?:ms)?ie/i, '') if /rv\:/i =~ ua
     ua = ua.gsub(/linux/i, '') if /android/i =~ ua
     ua = ua.gsub(/x11/i, '') if /bsd/i =~ ua
+    ua = ua.gsub(/windows\snt/i, '') if /windows\sphone/i =~ ua
     ua
   end
 

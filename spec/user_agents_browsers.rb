@@ -424,6 +424,68 @@ module UserAgents
           known?: true,
           compat?: true
         }
+      },
+      windows_phone: {
+        'Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0)' => {
+          browser_name: 'ie',
+          browser_version: '9.0',
+          engine_name: 'Trident',
+          engine_version: '5.0',
+          system_name: ['windows_phone', '7.5'],
+          system_version: '7.5',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: USE_FOR_UNKNOWN,
+          x64?: false,
+          x32?: false,
+          mobile?: true,
+          known?: true,
+          compat?: false
+        },
+        'Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 920)' => {
+          browser_name: 'ie',
+          browser_version: '10.0',
+          engine_name: 'Trident',
+          engine_version: '6.0',
+          system_name: ['windows_phone', '8.0'],
+          system_version: '8.0',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: USE_FOR_UNKNOWN,
+          x64?: false,
+          x32?: false,
+          mobile?: true,
+          known?: true,
+          compat?: false
+        },
+        'Mozilla/4.0 (compatible; MSIE 7.0; Windows Phone OS 7.0; Trident/3.1; IEMobile/7.0; LG; GW910)' => {
+          browser_name: 'ie',
+          browser_version: {real: '7.1', compat: '7.0'},
+          engine_name: 'Trident',
+          engine_version: '3.1',
+          system_name: ['windows_phone', '7.0'],
+          system_version: '7.0',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: 'lg',
+          x64?: false,
+          x32?: false,
+          mobile?: true,
+          known?: true,
+          compat?: true
+        },
+        'Mozilla/4.0 (Compatible; MSIE 6.0; Windows NT 5.1 T-01A_6.5; Windows Phone 6.5)' => {
+          browser_name: 'ie',
+          browser_version: '6.0',
+          engine_name: USE_FOR_UNKNOWN,
+          engine_version: USE_FOR_UNKNOWN,
+          system_name: ['windows_phone', '6.5'],
+          system_version: '6.5',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: USE_FOR_UNKNOWN,
+          x64?: false,
+          x32?: false,
+          mobile?: true,
+          known?: true,
+          compat?: false
+        }
       }
     }
     EDGE = {
