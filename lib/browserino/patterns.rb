@@ -84,7 +84,7 @@ module Browserino
     },
 
     operating_system: {
-      name: /(?<name>windows(?:\sphone(?:\sos)?)?|macintosh|android|ios|blackberry|linux|ubuntu|x11|bsd)/i,
+      name: /(?<name>windows(?:\sphone(?:\sos)?)?|macintosh|android|ip(?:[ao]d|hone)|blackberry|linux|ubuntu|x11|bsd)/i,
       version: /(?:windows(?:\sphone(?:\sos)?)?|nt|mac\sos\sx|android|(cpu\s|i)os|blackberry.*?version\/|bb)\s?(?<version>[\d\._]+)/i,
       architecture: /(?<architecture>((?:x|x86_|amd|wow)64)|i(3|6)86)/i,
       mobile: /bolt|nokia|samsung|mobi(?:le)?|android|i?p(?:[ao]d|hone)|bb\d+|blackberry|iemobile|fennec|bada|meego|vodafone|t\-mobile|opera\sm(?:ob|in)i/i,

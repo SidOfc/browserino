@@ -4,11 +4,13 @@ module Browserino
       @ua = ua
       @not = false
 
-      cleansed_ua = Browserino::strip_lies @ua
-      name = Browserino::agent_id cleansed_ua
+      cleansed_ua = Browserino.strip_lies(@ua)
+      pat_name = Browser::name(cleansed_ua)
+      name = pat_name.to_s.downcase.gsub(/_/, ' ')
+      name = nil unless name.size > 0
       info = {
         browser_name: name,
-        browser_version: Browser::version(cleansed_ua, PATTERNS[:browser][name]),
+        browser_version: Browser::version(cleansed_ua, PATTERNS[:browser][pat_name]),
         engine_name: Engine::name(cleansed_ua),
         engine_version: Engine::version(cleansed_ua),
         system_name: OperatingSystem::name(cleansed_ua),
@@ -18,73 +20,58 @@ module Browserino
         bot_name: nil
       }
 
-      if Browserino::PATTERNS[:bot].include? name
-        info.merge!({browser_name: nil, browser_version: nil, bot_name: name})
+      if Browserino::PATTERNS[:bot].include? pat_name
+        info.merge!(browser_name: nil,
+                    browser_version: nil,
+                    bot_name: name)
       end
 
-      @info = Browserino::check_for_aliases(info)
+      @info = Browserino.check_for_aliases(info)
     end
 
     def browser_name
-      with_valid(@info[:browser_name]) do |v|
-        v.to_s.downcase.gsub(/_/, ' ')
-      end
+      @info[:browser_name]
     end
 
     def browser_version(opts = {})
       if ie? && engine_version && !opts[:compat]
         (engine_version.to_f + 4.0).to_s
       else
-        with_valid(@info[:browser_version]) do |v|
-          v.to_s.downcase.gsub('_', '.')
-        end
+        @info[:browser_version]
       end
     end
 
     def engine_name
-      with_valid(@info[:engine_name]) do |v|
-        v.to_s.downcase
-      end
+      @info[:engine_name]
     end
 
     def engine_version
-      with_valid(@info[:engine_version]) do |v|
-        v.to_s.downcase.gsub('_', '.')
-      end
+      @info[:engine_version]
     end
 
     def system_name(opts = {})
       opts = {full: false}.merge(opts)
-      name = with_valid(@info[:system_name]) do |v|
-        v.to_s.downcase
-      end
       if opts[:full]
-        [name, fetch_system_version_name(name)]
+        [@info[:system_name], fetch_system_version_name(@info[:system_name])]
       else
-        name
+        @info[:system_name]
       end
     end
 
     def system_version
-      with_valid(@info[:system_version]) do |v|
-        v.to_s.downcase.gsub('_', '.')
-      end
+      @info[:system_version]
     end
 
     def system_architecture
-      with_valid(@info[:system_architecture]) do |v|
-        v.to_s.downcase
-      end
+      @info[:system_architecture]
     end
 
     def locale
-      with_valid(@info[:locale]) { |v| v.to_s.downcase }
+      @info[:locale]
     end
 
     def bot_name
-      with_valid(@info[:bot_name]) do |v|
-        v.to_s.downcase.gsub(/_/, ' ')
-      end
+      @info[:bot_name]
     end
 
     def ua
@@ -96,7 +83,7 @@ module Browserino
     end
 
     def known?
-      allow_inverted_return (browser_name != Browserino::UNKNOWN || bot_name != Browserino::UNKNOWN)
+      allow_inverted_return (!browser_name.nil? || !bot_name.nil?)
     end
 
     def mobile?
@@ -131,12 +118,11 @@ module Browserino
 
     def method_missing(method_sym, *args, &block)
       name = method_sym.to_s.gsub('?', '')
-      res = case agent_or_system?(method_sym)
-      when :system then correct_system?(name, *args)
-      when :agent then correct_agent?(name, *args)
-      else super
-      end
-      allow_inverted_return res
+      allow_inverted_return case agent_or_system?(method_sym)
+                            when :system then correct_system?(name, *args)
+                            when :agent then correct_agent?(name, *args)
+                            else super
+                            end
     end
 
     def respond_to?(method_sym)
@@ -229,20 +215,9 @@ module Browserino
       end
     end
 
-    def with_valid(val)
-      if val && (val != '' || val != false) && block_given?
-        res = yield(val)
-        return Browserino::UNKNOWN if res == ''
-        res
-      else
-        Browserino::UNKNOWN
-      end
-    end
-
     def fetch_system_version_name(name)
       return Browserino::UNKNOWN if name.nil? || name == '' || !name
-      const = name.upcase.gsub(/\s/, '_')
-      name.downcase!
+      const = name.dup.upcase.gsub(/\s/, '_')
       version = if system_version == Browserino::UNKNOWN
                   nil
                 elsif name.match(/mac|ios|blackberry/i)

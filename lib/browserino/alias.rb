@@ -10,7 +10,8 @@ module Browserino
     engine_version: {},
     system_name: {
       'linux' => ['ubuntu', 'x11'],
-      'windows_phone' => ['windows phone os', 'windows phone']
+      'windows_phone' => ['windows phone os', 'windows phone'],
+      'ios' => ['ipod', 'ipad', 'iphone']
     },
     system_version: {},
     system_architecture: {

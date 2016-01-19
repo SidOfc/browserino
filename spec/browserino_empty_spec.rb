@@ -2,8 +2,8 @@ require 'spec_helper'
 require 'user_agents'
 
 describe "returns #{VISIBLE_FOR_UNKNOWN} when information couldn't be found" do
-  agent = Browserino::parse('', UserAgents::USE_FOR_UNKNOWN)
-  agent2 = Browserino::parse('haksdjhkj', UserAgents::USE_FOR_UNKNOWN)
+  agent = Browserino.parse('')
+  agent2 = Browserino.parse('haksdjhkj')
 
   it "Returns #{VISIBLE_FOR_UNKNOWN} for agent.browser_name" do
     expect(agent.browser_name).to eq UserAgents::USE_FOR_UNKNOWN

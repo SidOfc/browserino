@@ -12,7 +12,11 @@ _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/brow
 
 #### 15-01-2016 VERSION 2.5.2
 
+<<<<<<< e46761e3d718b6cfbbc6826b05414a7d80fdb850
 - **DEPRECATE** Custom return values (passed through `Browserino::parse`) will no longer alter the output of the agent object
+=======
+- **DEPRECATE** Custom return values (passed through `Browserino.parse`) will no longer alter the output of the agent object
+>>>>>>> minor rewrite
 - Added support for windows phone detection
 - Added `windows_phone?` method
 
@@ -56,7 +60,7 @@ require 'browserino'
 Afterwards you can simply call
 
 ```ruby
-Browserino::parse('<user agent>')
+Browserino.parse('<user agent>')
 ```
 
 Or if you're using Rails *(>= 3.2.0)*, in your controllers you'll have access to an `agent` object
@@ -71,13 +75,13 @@ end
 
 The return value will always be `nil` if a value isn't found
 
-`Browserino::parse()` will return a `Browserino::Agent` object containing all the information parsed out of the supplied user agent.
+`Browserino.parse()` will return a `Browserino::Agent` object containing all the information parsed out of the supplied user agent.
 On this object there are a few method calls you can do to retrieve information.
 
 ```ruby
 require 'browserino'
 
-agent = Browserino::parse('user-agent')
+agent = Browserino.parse('user-agent')
 
 agent.browser_name
 # => 'safari'

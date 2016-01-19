@@ -4,11 +4,11 @@ require "bundler/setup"
 require "browserino"
 require "pry"
 ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 Vivaldi/1.0.344.37'
-@agent = Browserino::parse(ua)
+@agent = Browserino.parse(ua)
 
 puts "> @agent variable available parsed with: '#{ua}'\n\n"
 puts "> You can create a fresh object by using\n"
-puts "> Browserino::parse((string) ua, (any) unknown_alt = nil)\n\n"
+puts "> Browserino.parse((string) ua)\n\n"
 puts "> ua          - The user agent you'd actually want to parse as a string"
 puts "> unknown_alt - A default value for unknown properties, default nil (recommended)\n\n"
 

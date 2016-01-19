@@ -1,8 +1,23 @@
 module Browserino
   module Browser
+    def self.name(ua)
+      name = nil
+      patterns = PATTERNS[:browser].merge(PATTERNS[:bot])
+      agents = patterns.keys
+
+      until agents.empty? || !name.nil?
+        tmp = agents.shift
+        name = tmp if (ua.match(patterns[tmp][:name]))
+      end
+
+      name
+    end
+
     def self.version(ua, patterns)
       if patterns
-        Browserino::extract_match(ua.match(patterns[:version]), :version)
+        Browserino::extract_match(ua.match(patterns[:version]), :version) do |v|
+          v.gsub('_', '.')
+        end
       else
         UNKNOWN
       end

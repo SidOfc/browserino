@@ -24,20 +24,15 @@ require "browserino/operating_system"
 # require_relative "../spec/user_agents_browsers"
 
 module Browserino
-  def self.parse(ua, unknown_alt = nil)
-    if unknown_alt
-      puts "The feature for using a custom return value is deprecated and will be removed in a future release. For now, your value will be ignored and nil will be the return value for unknown properties."
-    end
-    Agent.new(ua, UNKNOWN)
+  def self.parse(ua, _ = nil) # _ = nil maintains backwards compatibility
+    Agent.new ua
   end
 
   private
 
   def self.strip_lies(ua)
-    #make iphone / ipad / ipod consistent
-    ua = ua.gsub(/ip((a|o)d|hone)/i, 'ios')
     ua = ua.gsub(/(Mozilla\/[\d\.]+)/i, '')
-    ua = ua.gsub(/9\.80/i, '')
+    ua = ua.gsub(/9\.80/i, '') if /opera/i =~ ua
     ua = ua.gsub(/(?:apple)?webkit\/[\d\.]+/i, '') if /presto/i =~ ua
     ua = ua.gsub(/(?:ms)?ie/i, '') if /rv\:/i =~ ua
     ua = ua.gsub(/linux/i, '') if /android/i =~ ua
@@ -54,21 +49,15 @@ module Browserino
     end
   end
 
-  def self.agent_id(ua)
-    name = nil
-    patterns = PATTERNS[:browser].merge(PATTERNS[:bot])
-    browsers = patterns.keys
-    until browsers.empty? || !name.nil?
-      tmp = browsers.shift
-      name = tmp if (ua.match(patterns[tmp][:name]))
-    end
-    name ||= UNKNOWN
-  end
-
-  def self.extract_match(match, sym, trim = true)
+  def self.extract_match(match, sym)
     if match && match.names.include?(sym.to_s)
-      match[sym].strip! if trim
-      match[sym].to_s.downcase
+      m = match[sym].to_s.downcase.strip
+      m = yield(m) if block_given?
+      if m && m.strip != ''
+        m
+      else
+        UNKNOWN
+      end
     else
       UNKNOWN
     end

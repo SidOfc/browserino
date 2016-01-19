@@ -3,7 +3,7 @@ require 'user_agents'
 require 'user_agents_browsers'
 
 describe Browserino do
-  agent = Browserino::parse 'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52'
+  agent = Browserino.parse 'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52'
   it 'has a version number' do
     expect(Browserino::VERSION).not_to be nil
   end
@@ -36,7 +36,7 @@ browsers.each do |const|
     unless (platform[1] || []).empty?
       platform[1].each do |agent, criteria|
         describe "#{const} -> #{agent}" do
-          agent = Browserino::parse(agent, UserAgents::USE_FOR_UNKNOWN)
+          agent = Browserino.parse(agent)
           it 'returns an Agent object' do
             expect(agent.class.name).to eq 'Browserino::Agent'
           end

@@ -4,7 +4,7 @@ module Browserino
   class ActionController
     module Base
       def agent
-        @agent ||= Browserino::parse(request.headers['User-Agent'])
+        @agent ||= Browserino.parse(request.headers['User-Agent'])
       end
     end
   end

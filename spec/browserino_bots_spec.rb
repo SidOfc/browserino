@@ -7,7 +7,7 @@ describe "Browserino Bot identification" do
   bots.each do |bot|
     UserAgents::Bots.const_get(bot).each do |ua, criteria|
       describe "#{bot} - #{ua}" do
-        agent = Browserino::parse ua
+        agent = Browserino.parse ua
         criteria.each do |prop, val|
           if prop == :bot_name
             it "Expects agent.#{prop} to be #{val} for #{bot.downcase}" do

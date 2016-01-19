@@ -42,7 +42,7 @@ _dates are in dd-mm-yyyy format_
 - Added more tests
 - Added more browsers to check: *(bolt, opera mini and ucbrowser)*
 - Added `#known?` method to check if the agent is known
-- Added a `#ua` method to return the User Agent string as given to `Browserino::parse()`
+- Added a `#ua` method to return the User Agent string as given to `Browserino.parse()`
 - Added `#x64?` and `#x32?` convenience methods to check system architecture
 - Added `#mobile?` to check wether or not a user agent is mobile
 - Moved older changelogs to its own [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md) file
