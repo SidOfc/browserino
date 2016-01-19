@@ -1,13 +1,14 @@
 module Browserino
   class Agent
-    def initialize(ua, unknown = Browserino::UNKNOWN)
+    def initialize(ua)
       @ua = ua
       @not = false
 
       cleansed_ua = Browserino.strip_lies(@ua)
       pat_name = Browser::name(cleansed_ua)
       name = pat_name.to_s.downcase.gsub(/_/, ' ')
-      name = nil unless name.size > 0
+      name = nil if name == ''
+
       info = {
         browser_name: name,
         browser_version: Browser::version(cleansed_ua, PATTERNS[:browser][pat_name]),

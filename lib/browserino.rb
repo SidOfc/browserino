@@ -32,7 +32,7 @@ module Browserino
 
   def self.strip_lies(ua)
     ua = ua.gsub(/(Mozilla\/[\d\.]+)/i, '')
-    ua = ua.gsub(/9\.80/i, '') if /opera/i =~ ua
+    ua = ua.gsub(/9\.80/, '') if /opera/i =~ ua
     ua = ua.gsub(/(?:apple)?webkit\/[\d\.]+/i, '') if /presto/i =~ ua
     ua = ua.gsub(/(?:ms)?ie/i, '') if /rv\:/i =~ ua
     ua = ua.gsub(/linux/i, '') if /android/i =~ ua
@@ -41,12 +41,11 @@ module Browserino
     ua
   end
 
-  def self.check_for_aliases(hash)
-    hash.inject({}) do |memo, kv|
-      ls = ALIAS[kv.first].select { |k, m| true if m.include?(kv.last) }.keys.first || kv.last
-      memo[kv.first] = ls
-      memo
+  def self.check_for_aliases(h)
+    ALIAS.each do |k, v|
+      h[k] = v.select { |n, re| n if h[k] =~ re }.keys.first || h[k]
     end
+    h
   end
 
   def self.extract_match(match, sym)

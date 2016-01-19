@@ -10,27 +10,19 @@ This gem aims to provide information about the browser that your visitor is usin
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md)_
 
+#### 19-01-2016 VERSION 2.5.3
+
+- Minor refactoring of code
+
 #### 15-01-2016 VERSION 2.5.2
 
-<<<<<<< e46761e3d718b6cfbbc6826b05414a7d80fdb850
-- **DEPRECATE** Custom return values (passed through `Browserino::parse`) will no longer alter the output of the agent object
-=======
 - **DEPRECATE** Custom return values (passed through `Browserino.parse`) will no longer alter the output of the agent object
->>>>>>> minor rewrite
 - Added support for windows phone detection
 - Added `windows_phone?` method
 
 #### 12-01-2016 VERSION 2.5.1
 
 - Patched blackberry mapping, this used to be done by model number instead but is now corrected
-
-#### 12-01-2016 VERSION 2.5.0
-
-- Added support for the Vivaldi browser
-- New method `#vivaldi?`
-- Added support for the bsd family of operating systems
-- New method `#bsd?`
-- Fixed using symbols for system version identification (e.g. `:vista` or `:el_capitan`) without a version number
 
 ## Installation
 

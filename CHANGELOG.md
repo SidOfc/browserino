@@ -1,6 +1,14 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_  
 
+#### 12-01-2016 VERSION 2.5.0
+
+- Added support for the Vivaldi browser
+- New method `#vivaldi?`
+- Added support for the bsd family of operating systems
+- New method `#bsd?`
+- Fixed using symbols for system version identification (e.g. `:vista` or `:el_capitan`) without a version number
+
 #### 11-01-2016 VERSION 2.4.1(.1)
 
 - Caching the agent object in Rails

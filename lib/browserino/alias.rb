@@ -1,24 +1,15 @@
 module Browserino
   ALIAS = {
-    browser_name: {
-      'ie' => ['msie']
-    },
-    browser_version: {},
-    engine_name: {
-      'webkit' => ['applewebkit']
-    },
-    engine_version: {},
+    browser_name: { 'ie' => /msie/ },
+    engine_name: { 'webkit' => /applewebkit/ },
     system_name: {
-      'linux' => ['ubuntu', 'x11'],
-      'windows_phone' => ['windows phone os', 'windows phone'],
-      'ios' => ['ipod', 'ipad', 'iphone']
+      'linux' => /ubuntu|x11/,
+      'windows_phone' => /windows\sphone/,
+      'ios' => /ip(?:[ao]d|hone)/
     },
-    system_version: {},
     system_architecture: {
-      'x64' => ['64', 'x86_64', 'amd64', 'wow64'],
-      'x32' => ['32', 'i686', 'i383', 'i386', 'x86_32']
-    },
-    bot_name: {},
-    locale: {}
+      'x64' => /(?:x86_|amd|wow)?64/,
+      'x32' => /(?:(?:x86_)?32|i[36]8[36])/
+    }
   }
 end
