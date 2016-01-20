@@ -1,3 +1,3 @@
 module Browserino
-    UNKNOWN = nil
+  UNKNOWN = nil
 end

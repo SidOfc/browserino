@@ -16,6 +16,6 @@ module Browserino
       'Mavericks' => [109],
       'Yosemite' => [1010],
       'El Capitan' => [1011]
-    }
+    }.freeze
   end
 end

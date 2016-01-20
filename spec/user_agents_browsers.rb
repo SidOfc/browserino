@@ -215,7 +215,7 @@ module UserAgents
       }
     }
     OPERA_MINI = {
-      mac: {
+      ios: {
         'Opera/9.80 (iPad; Opera Mini/7.1.32694/27.1407; U; en) Presto/2.8.119 Version/11.10' => {
           browser_name: 'Opera Mini',
           browser_version: '7.1.32694',
@@ -507,7 +507,6 @@ module UserAgents
       }
     }
     MAXTHON = {
-      mac: [],
       win: {
         'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/532.4 (KHTML, like Gecko) Maxthon/3.0.6.27 Safari/532.4' => {
           browser_name: 'Maxthon',
@@ -1154,6 +1153,50 @@ module UserAgents
           system_version: '6.0.0.546',
           system_architecture: USE_FOR_UNKNOWN,
           locale: 'pt',
+          x64?: false,
+          x32?: false,
+          mobile?: true,
+          known?: true
+        }
+      },
+      ios: {
+        'Mozilla/5.0 (iPhone; U; CPU iPhone OS 8_0 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8A293 Safari/6531.22.7' => {
+          browser_name: 'safari',
+          browser_version: '4.0.5',
+          engine_name: 'webkit',
+          engine_version: '532.9',
+          system_name: ['ios', '8.0'],
+          system_version: '8.0',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: 'en-us',
+          x64?: false,
+          x32?: false,
+          mobile?: true,
+          known?: true
+        },
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25' => {
+          browser_name: 'safari',
+          browser_version: '6.0',
+          engine_name: 'webkit',
+          engine_version: '536.26',
+          system_name: ['ios', '6.0'],
+          system_version: '6.0',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: USE_FOR_UNKNOWN,
+          x64?: false,
+          x32?: false,
+          mobile?: true,
+          known?: true
+        },
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3' => {
+          browser_name: 'safari',
+          browser_version: '5.1',
+          engine_name: 'webkit',
+          engine_version: '534.46',
+          system_name: ['ios', '5.0'],
+          system_version: '5.0',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: USE_FOR_UNKNOWN,
           x64?: false,
           x32?: false,
           mobile?: true,

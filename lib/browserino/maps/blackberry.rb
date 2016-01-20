@@ -1,5 +1,5 @@
 module Browserino
   module Mapping
-    BLACKBERRY = {}
+    BLACKBERRY = {}.freeze
   end
 end

@@ -1,0 +1,9 @@
+AllCops:
+  Exclude:
+    - 'spec/*'
+    - 'Guardfile'
+    - '*.gemspec'
+    - 'Rakefile'
+
+Documentation:
+  Enabled: false

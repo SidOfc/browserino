@@ -1,62 +1,85 @@
-require "browserino/maps/macintosh"
-require "browserino/maps/blackberry"
-require "browserino/maps/ios"
-require "browserino/maps/bsd"
-require "browserino/maps/linux"
-require "browserino/maps/android"
-require "browserino/maps/windows"
-require "browserino/maps/windows_phone"
+require 'browserino/core/helpers'
+require 'browserino/core/lies'
+require 'browserino/core/alias'
+require 'browserino/core/patterns'
 
-require "browserino/integrate/rails" if defined?(::Rails)
+require 'browserino/maps/mapping'
+require 'browserino/maps/macintosh'
+require 'browserino/maps/blackberry'
+require 'browserino/maps/ios'
+require 'browserino/maps/bsd'
+require 'browserino/maps/linux'
+require 'browserino/maps/android'
+require 'browserino/maps/windows'
+require 'browserino/maps/windows_phone'
 
-require "browserino/unknown"
-require "browserino/agent"
+require 'browserino/integrate/rails' if defined?(::Rails)
 
-require "browserino/alias"
-require "browserino/version"
-require "browserino/patterns"
-require "browserino/browser"
-require "browserino/engine"
-require "browserino/operating_system"
+require 'browserino/unknown'
+require 'browserino/agent'
+
+require 'browserino/version'
+require 'browserino/browser'
+require 'browserino/engine'
+require 'browserino/operating_system'
 
 # require_relative "../spec/user_agents"
 # require_relative "../spec/user_agents_bots"
 # require_relative "../spec/user_agents_browsers"
 
 module Browserino
-  def self.parse(ua, _ = nil) # _ = nil maintains backwards compatibility
-    Agent.new ua
+  module_function
+
+  def parse(ua, _ = nil) # _ = nil maintains backwards compatibility
+    name = Browser.name(ua)
+    info = fetch_info(strip_lies(ua), name)
+    tmp = info[:browser_name].to_s.tr('_', ' ')
+    info[:browser_name] = tmp.strip == '' ? nil : tmp
+    info = check_if_bot(name, info)
+
+    Agent.new check_for_aliases(info), ua
   end
 
-  private
-
-  def self.strip_lies(ua)
-    ua = ua.gsub(/(Mozilla\/[\d\.]+)/i, '')
-    ua = ua.gsub(/9\.80/, '') if /opera/i =~ ua
-    ua = ua.gsub(/(?:apple)?webkit\/[\d\.]+/i, '') if /presto/i =~ ua
-    ua = ua.gsub(/(?:ms)?ie/i, '') if /rv\:/i =~ ua
-    ua = ua.gsub(/linux/i, '') if /android/i =~ ua
-    ua = ua.gsub(/x11/i, '') if /bsd/i =~ ua
-    ua = ua.gsub(/windows\snt/i, '') if /windows\sphone/i =~ ua
-    ua
+  def fetch_info(ua, name)
+    { browser_name: name,
+      browser_version: Browser.version(ua, Core::PATTERNS[:browser][name]),
+      engine_name: Engine.name(ua),
+      engine_version: Engine.version(ua),
+      system_name: OperatingSystem.name(ua),
+      system_version: OperatingSystem.version(ua),
+      system_architecture: OperatingSystem.architecture(ua),
+      locale: OperatingSystem.locale(ua),
+      bot_name: nil }
   end
 
-  def self.check_for_aliases(h)
-    ALIAS.each do |k, v|
+  def check_if_bot(name, info)
+    if Core::PATTERNS[:bot].include?(name)
+      info[:bot_name] = info[:browser_name]
+      info[:browser_name] = nil
+      info[:browser_version] = nil
+    end
+    info
+  end
+
+  def strip_lies(ua)
+    Core::LIES.inject(ua) do |s, arr|
+      s = s.gsub(arr[0], '') if arr[1] == true || s =~ arr[1]
+      s
+    end
+  end
+
+  def check_for_aliases(h)
+    Core::ALIAS.each do |k, v|
       h[k] = v.select { |n, re| n if h[k] =~ re }.keys.first || h[k]
     end
     h
   end
 
-  def self.extract_match(match, sym)
+  def extract_match(match, sym)
     if match && match.names.include?(sym.to_s)
       m = match[sym].to_s.downcase.strip
       m = yield(m) if block_given?
-      if m && m.strip != ''
-        m
-      else
-        UNKNOWN
-      end
+      m
     else
       UNKNOWN
     end

@@ -1,6 +1,10 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_  
 
+#### 12-01-2016 VERSION 2.5.1
+
+- Patched blackberry mapping, this used to be done by model number instead but is now corrected
+
 #### 12-01-2016 VERSION 2.5.0
 
 - Added support for the Vivaldi browser

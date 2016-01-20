@@ -10,6 +10,11 @@ This gem aims to provide information about the browser that your visitor is usin
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md)_
 
+#### 20-01-2016 VERSION 2.5.4
+
+- formatted / refactored code with rubocop
+- iOS `system_name full: true` returns the version no. of iOS if found
+
 #### 19-01-2016 VERSION 2.5.3
 
 - Minor refactoring of code
@@ -19,10 +24,6 @@ _older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/brow
 - **DEPRECATE** Custom return values (passed through `Browserino.parse`) will no longer alter the output of the agent object
 - Added support for windows phone detection
 - Added `windows_phone?` method
-
-#### 12-01-2016 VERSION 2.5.1
-
-- Patched blackberry mapping, this used to be done by model number instead but is now corrected
 
 ## Installation
 
@@ -180,7 +181,7 @@ agent.to_h
 ```
 
 It is now also possible to call methods to determine a specific OS or browser if it's supported, a `noMethodError` will be thrown otherwise
-The function uses the names of the `Browserino::Mapping` constants and the `Browserino::PATTERNS` hashes `:browser` and `:bot` output to identify wether or not to throw this exception.
+The function uses the names of the `Browserino::Mapping` constants and the `Browserino::Core::PATTERNS` hashes `:browser` and `:bot` output to identify wether or not to throw this exception.
 Versions are also supported as an argument to the function, for operating systems versions could include a string, symbol or float / integer to indicate a version.
 _(examples given for windows, android and ios, for a full list of versions check the **maps** folder)_
 Browsers can also accept a float / integer to check for a specific version.

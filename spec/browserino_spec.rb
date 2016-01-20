@@ -26,7 +26,7 @@ describe Browserino do
 
   it 'contains hash keys to determine every major browser' do
     @major_browsers = [:opera, :ie, :firefox, :chrome, :safari]
-    expect((Browserino::PATTERNS[:browser].keys & @major_browsers).empty?).to eq(false)
+    expect((Browserino::Core::PATTERNS[:browser].keys & @major_browsers).empty?).to eq(false)
   end
 end
 convenience_os_fn = {macintosh: :osx, windows: :win, blackberry: :bb}

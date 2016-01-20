@@ -13,6 +13,6 @@ module Browserino
       '8' => [62],
       '8.1' => [63],
       '10' => [100]
-    }
+    }.freeze
   end
 end

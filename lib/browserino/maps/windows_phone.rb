@@ -1,5 +1,5 @@
 module Browserino
   module Mapping
-    WINDOWS_PHONE = {}
+    WINDOWS_PHONE = {}.freeze
   end
 end

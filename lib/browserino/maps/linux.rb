@@ -1,5 +1,5 @@
 module Browserino
   module Mapping
-    LINUX = {}
+    LINUX = {}.freeze
   end
 end

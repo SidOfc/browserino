@@ -1,5 +1,5 @@
 module Browserino
   module Mapping
-    BSD = {}
+    BSD = {}.freeze
   end
 end
