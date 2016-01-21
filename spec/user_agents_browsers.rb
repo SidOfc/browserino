@@ -806,6 +806,24 @@ module UserAgents
         }
       }
     }
+    BRAVE = {
+      mac: {
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) brave/0.7.7 Chrome/47.0.2526.73 Electron/0.36.2 Safari/537.36' => {
+          browser_name: 'Brave',
+          browser_version: '0.7.7',
+          engine_name: 'webkit',
+          engine_version: '537.36',
+          system_name: ['macintosh', 'el capitan'],
+          system_version: '10.11.2',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: USE_FOR_UNKNOWN,
+          x64?: false,
+          x32?: false,
+          mobile?: false,
+          known?: true
+        }
+      }
+    }
     CHROME = {
       mac: {
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36' => {

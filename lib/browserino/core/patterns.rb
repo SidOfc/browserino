@@ -54,6 +54,11 @@ module Browserino
                       |netscape)/?(?<version>[\d\.]+)}xi
         },
 
+        brave: {
+          name: /(?<name>brave)/i,
+          version: %r{brave/(?<version>[\d\.]+)}i
+        },
+
         chrome: {
           name: /(?<name>chrome?(ium|plus)?)/i,
           version: %r{chrome?(?:ium|plus)?/(?<version>[\d\.]+)}i
@@ -66,19 +71,25 @@ module Browserino
       },
 
       bot: {
-        googlebot: { name: /(?<name>googlebot)/i },
+        google: { name: /(?<name>googlebot)/i },
         yahoo_slurp: { name: /(?<name>yahoo\!\sslurp)/i },
-        msnbot: { name: /(?<name>msnbot)/i },
-        bingbot: { name: /(?<name>bingbot)/i },
+        msn: { name: /(?<name>msnbot)/i },
+        bing: { name: /(?<name>bingbot)/i },
         baiduspider: { name: /(?<name>baiduspider)/i },
-        yandexbot: { name: /(?<name>yandexbot)/i },
+        yandex: { name: /(?<name>yandexbot)/i },
         sosospider: { name: /(?<name>sosospider)/i },
-        exabot: { name: /(?<name>exabot)/i },
+        exa: { name: /(?<name>exabot)/i },
         sogou_spider: { name: /(?<name>sogou\s?spider)/i },
         nutch: { name: /(?<name>nutch)/i },
         scrapy: { name: /(?<name>scrapy)/i },
         dataparksearch: { name: /(?<name>dataparksearch)/i },
-        beslistbot: { name: /(?<name>beslistbot)/i }
+        beslist: { name: /(?<name>beslistbot)/i },
+        facebook: { name: /(?<name>face(?:bookexternalhit|bot))/i },
+        twitter: { name: /(?<name>twitterbot)/i },
+        linkedin: { name: /(?<name>linkedinbot)/i },
+        instagram: { name: /(?<name>instagram)/i },
+        pinterest: { name: /(?<name>pinterest)/i },
+        tumblr: { name: /(?<name>tumblr)/i }
       },
 
       engine: {

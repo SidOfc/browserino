@@ -1,4 +1,5 @@
 require 'browserino/core/helpers'
+require 'browserino/core/questions'
 require 'browserino/core/lies'
 require 'browserino/core/alias'
 require 'browserino/core/patterns'

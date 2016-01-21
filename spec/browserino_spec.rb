@@ -25,7 +25,7 @@ describe Browserino do
   end
 
   it 'contains hash keys to determine every major browser' do
-    @major_browsers = [:opera, :ie, :firefox, :chrome, :safari]
+    @major_browsers = [:opera, :ie, :firefox, :chrome, :safari, :edge]
     expect((Browserino::Core::PATTERNS[:browser].keys & @major_browsers).empty?).to eq(false)
   end
 end
@@ -113,6 +113,12 @@ browsers.each do |const|
               end
               it "accepts a browser_name w/o version: agent.#{browser_nm}?" do
                 expect(agent.send("#{browser_nm}?")).to eq true
+              end
+              it "expects agent.browser? to be true" do
+                expect(agent.browser?).to eq true
+              end
+              it "expects agent.browser?(#{browser_nm}) to be true" do
+                expect(agent.browser?(browser_nm)).to eq true
               end
               if browser_ver
                 it "accepts a browser_name w/ version: agent.#{browser_nm}?(#{browser_ver})" do

@@ -3,6 +3,7 @@ require 'user_agents'
 require 'user_agents_bots'
 
 describe "Browserino Bot identification" do
+  social_media = :facebook, :twitter, :linkedin, :instagram, :pinterest, :tumblr
   bots = UserAgents::Bots.constants(true)
   bots.each do |bot|
     UserAgents::Bots.const_get(bot).each do |ua, criteria|
@@ -22,6 +23,14 @@ describe "Browserino Bot identification" do
             (bots - [bot]).each do |const|
               it "Expects agent.not.#{const.downcase}? to be true for #{val}" do
                 expect(agent.not.send("#{const.downcase}?")).to eq true
+              end
+            end
+            if social_media.include?(val.to_sym)
+              it "Expects agent.social_media? to be true" do
+                expect(agent.social_media?).to eq true
+              end
+              it "Expects agent.social_media?(#{val}) to be true" do
+                expect(agent.social_media?(val)).to eq true
               end
             end
           elsif prop == :bot?

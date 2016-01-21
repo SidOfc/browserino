@@ -1,13 +1,13 @@
 module UserAgents
   module Bots
-    GOOGLEBOT = {
+    GOOGLE = {
       'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' => {
-        bot_name: 'googlebot',
+        bot_name: 'google',
         bot?: true,
         known?: true
       },
       'Googlebot/2.1 (+http://www.googlebot.com/bot.html)' => {
-        bot_name: 'googlebot',
+        bot_name: 'google',
         bot?: true,
         known?: true
       }
@@ -19,21 +19,21 @@ module UserAgents
         known?: true
       }
     }
-    MSNBOT = {
+    MSN = {
       'msnbot/2.1' => {
-        bot_name: 'msnbot',
+        bot_name: 'msn',
         bot?: true,
         known?: true
       },
       'msnbot/1.1 (+http://search.msn.com/msnbot.htm)' => {
-        bot_name: 'msnbot',
+        bot_name: 'msn',
         bot?: true,
         known?: true
       }
     }
-    BINGBOT = {
+    BING = {
       'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)' => {
-        bot_name: 'bingbot',
+        bot_name: 'bing',
         bot?: true,
         known?: true
       }
@@ -50,9 +50,9 @@ module UserAgents
         known?: true
       }
     }
-    YANDEXBOT = {
+    YANDEX = {
       'Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)' => {
-        bot_name: 'yandexbot',
+        bot_name: 'yandex',
         bot?: true,
         known?: true
       }
@@ -64,9 +64,9 @@ module UserAgents
         known?: true
       }
     }
-    EXABOT = {
+    EXA = {
       'Exabot/2.0' => {
-        bot_name: 'exabot',
+        bot_name: 'exa',
         bot?: true,
         known?: true
       }
@@ -104,9 +104,65 @@ module UserAgents
         known?: true
       }
     }
-    BESLISTBOT = {
+    BESLIST = {
       'Mozilla/5.0 (compatible; BeslistBot; nl; BeslistBot 1.0; http://www.beslist.nl/' => {
-        bot_name: 'beslistbot',
+        bot_name: 'beslist',
+        bot?: true,
+        known?: true
+      }
+    }
+    FACEBOOK = {
+      'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)' => {
+        bot_name: 'facebook',
+        bot?: true,
+        known?: true,
+        fb?: true
+      },
+
+      'facebot' => {
+        bot_name: 'facebook',
+        bot?: true,
+        known?: true,
+        fb?: true
+      }
+    }
+    TWITTER = {
+      'twitterbot' => {
+        bot_name: 'twitter',
+        bot?: true,
+        known?: true
+      }
+    }
+    LINKEDIN = {
+      'linkedinbot' => {
+        bot_name: 'linkedin',
+        bot?: true,
+        known?: true
+      }
+    }
+    INSTAGRAM = {
+      'Instagram 4.2.5 (iPad3,6; iPhone OS 7_0_6; en_US; en) AppleWebKit/420+' => {
+        bot_name: 'instagram',
+        bot?: true,
+        known?: true
+      },
+
+      'Instagram 6.0.1 (iPad3,4; iPhone OS 7_0_3; en_AU; en-GB) AppleWebKit/420+' => {
+        bot_name: 'instagram',
+        bot?: true,
+        known?: true
+      }
+    }
+    PINTEREST = {
+      'Pinterest/1.0 +http://pinterest.com' => {
+        bot_name: 'pinterest',
+        bot?: true,
+        known?: true
+      }
+    }
+    TUMBLR = {
+      'Tumblr/117 CFNetwork/609.1.4 Darwin/13.0.0' => {
+        bot_name: 'tumblr',
         bot?: true,
         known?: true
       }

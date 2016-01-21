@@ -1,6 +1,6 @@
 module Browserino
   class Agent
-    include Core::Helpers
+    include Core::Helpers, Core::Questions
     attr_reader :ua
 
     def initialize(info, ua = nil)
@@ -53,57 +53,6 @@ module Browserino
       @info[:bot_name]
     end
 
-    def compat?
-      invert_if_not ie? && browser_version != browser_version(compat: true)
-    end
-
-    def known?
-      invert_if_not !browser_name.nil? || !bot_name.nil?
-    end
-
-    def mobile?
-      invert_if_not !ua.match(Core::PATTERNS[:operating_system][:mobile]).nil?
-    end
-
-    def x64?
-      invert_if_not system_architecture == 'x64'
-    end
-
-    def x32?
-      invert_if_not system_architecture == 'x32'
-    end
-
-    def osx?(*arg)
-      invert_if_not macintosh?(*arg)
-    end
-
-    def win?(*arg)
-      invert_if_not windows?(*arg)
-    end
-
-    def bb?(*arg)
-      invert_if_not blackberry?(*arg)
-    end
-
-    def bot?(name = nil)
-      is_bot = ua.strip.empty? || !bot_name.nil?
-      is_name = name.nil? || name.to_s.downcase.tr('_', ' ') == bot_name
-      invert_if_not is_bot && is_name
-    end
-
-    def method_missing(method_sym, *args, &block)
-      name = method_sym.to_s.tr('?', '')
-      invert_if_not case agent_or_system?(method_sym)
-                    when :system then correct_system?(name, *args)
-                    when :agent then correct_agent?(name, *args)
-                    else super
-                    end
-    end
-
-    def respond_to?(method_sym)
-      agent_or_system?(method_sym).nil? ? false : true
-    end
-
     def not
       @not = true
       self
@@ -123,6 +72,19 @@ module Browserino
 
     def to_h
       to_a.each_with_object({}) { |v, h| h[v[0].to_sym] = v[1] }
+    end
+
+    def method_missing(method_sym, *args, &block)
+      name = method_sym.to_s.tr('?', '')
+      invertable case agent_or_system?(method_sym)
+                 when :system then correct_system?(name, *args)
+                 when :agent then correct_agent?(name, *args)
+                 else super
+                 end
+    end
+
+    def respond_to?(method_sym)
+      agent_or_system?(method_sym).nil? ? false : true
     end
   end
 end

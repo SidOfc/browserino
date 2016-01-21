@@ -1,7 +1,9 @@
 module Browserino
   module Core
     module Helpers
-      def invert_if_not(res)
+      private
+
+      def invertable(res)
         if @not
           @not = false
           !res
