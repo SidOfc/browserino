@@ -1,6 +1,6 @@
 module Browserino
   module Core
-    Core::PATTERNS = {
+    PATTERNS = {
       browser: {
         vivaldi: {
           name: /(?<name>vivaldi)/i,

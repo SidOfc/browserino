@@ -1,6 +1,6 @@
 module Browserino
   module Core
-    Core::LIES = [
+    LIES = [
       [%r{(Mozilla/[\d\.]+)}i, true],
       [/9\.80/, /opera/i],
       [%r{(?:apple)?webkit/[\d\.]+}i, /presto/i],
