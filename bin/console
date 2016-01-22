@@ -3,8 +3,7 @@
 require 'bundler/setup'
 require 'browserino'
 require 'pry'
-ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 \
-      (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9'
+ua = 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko'
 @agent = Browserino.parse(ua)
 
 puts "> @agent variable available parsed with: '#{ua}'\n\n"

@@ -60,7 +60,7 @@ module Browserino
         if name
           invertable send("#{name}?")
         else
-          invertable SOCIAL_MEDIA.include?(bot_name.to_sym)
+          invertable SOCIAL_MEDIA.include?(bot_name.to_s.to_sym)
         end
       end
 

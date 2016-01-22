@@ -78,6 +78,12 @@ browsers.each do |const|
               it "accepts a system_name w/o version: agent.#{sys_nm}?" do
                 expect(agent.send("#{sys_nm}?")).to eq true
               end
+              it "expects agent.platform? to be true" do
+                expect(agent.platform?).to eq true
+              end
+              it "expects agent.platform?(#{sys_nm}) to be true" do
+                expect(agent.platform?("#{sys_nm}")).to eq true
+              end
               unless sys_ver_split.empty?
                 sys_ver = sys_ver_split[0..(1 + rand(0..sys_ver_split.size))].join('.')
                 it "accepts a system_name w/ version: agent.#{sys_nm}?(#{sys_ver})" do
@@ -88,6 +94,9 @@ browsers.each do |const|
                 end
                 it "accepts a system_name w/ (named)version: agent.#{sys_nm}?(#{sys_nm_full[1]})" do
                   expect(agent.send("#{sys_nm}?", sys_nm_full[1])).to eq true
+                end
+                it "expects agent.platform?(#{sys_nm}, version: #{sys_ver}) to be true" do
+                  expect(agent.platform?("#{sys_nm}", version: sys_ver)).to eq true
                 end
                 sys_name_variant = sys_nm_full.last.to_s.downcase.gsub(/\s/, '_').gsub(/^[\s_]+|[\d\s\._]+$/, '')
                 unless sys_name_variant.size == 0
@@ -123,6 +132,9 @@ browsers.each do |const|
               if browser_ver
                 it "accepts a browser_name w/ version: agent.#{browser_nm}?(#{browser_ver})" do
                   expect(agent.send("#{browser_nm}?", browser_ver)).to eq true
+                end
+                it "expects agent.browser?(#{browser_nm}, version: #{browser_ver})" do
+                  expect(agent.send("#{browser_nm}", browser_ver)).to eq true
                 end
               end
             end

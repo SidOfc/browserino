@@ -59,11 +59,17 @@ module Browserino
     end
 
     def to_s(sep = '')
-      props = @info.map do |k, _|
-        y = [:system_version, :engine_version, :browser_version].include?(k)
-        y ? send(k) + sep + send(k).to_s.split('.').first : send(k)
+      prev = ''
+      r = except(to_h, :locale, :system_version).each_with_object([]) do |c, a|
+        v = send(c[0]).to_s.gsub(/[\s_]/, '-')
+        a << if prev != '' && [:browser_version, :engine_version].include?(c[0])
+               prev + sep + v.to_s.split('.').first.to_s
+             else
+               v
+             end
+        prev = v
       end
-      props.compact.map { |v| v.tr(' ', '-') }.join(' ')
+      build_res_from_arr(r)
     end
 
     def to_a
