@@ -60,24 +60,31 @@ module Browserino
 
     def to_s(sep = '')
       prev = ''
-      r = except(to_h, :locale, :system_version).each_with_object([]) do |c, a|
-        v = send(c[0]).to_s.gsub(/[\s_]/, '-')
-        a << if prev != '' && [:browser_version, :engine_version].include?(c[0])
-               prev + sep + v.to_s.split('.').first.to_s
-             else
-               v
+      s = hash_for_to_s.each_with_object([]) do |v, a|
+        a << case v[0]
+             when :browser_version, :engine_version
+               prev + sep + (v[1].split('.').first || '')
+             else v[1]
              end
-        prev = v
+        prev = v[1]
       end
-      build_res_from_arr(r)
+      s.reject { |str| str == '' }.join ' '
+    end
+
+    def hash_for_to_s
+      out = to_h.each_with_object({}) do |a, h|
+        h[a[0]] = a[1].to_s.gsub(/[\s_]/, '-')
+      end
+      [:locale, :system_version].each { |k| out.delete(k) }
+      out
     end
 
     def to_a
-      @info.each_with_object([]) { |v, a| a.push(v) }
+      @info.keys.each_with_object([]) { |f, a| a.push([f, send(f)]) }.compact
     end
 
     def to_h
-      to_a.each_with_object({}) { |v, h| h[v[0].to_sym] = v[1] }
+      to_a.each_with_object({}) { |a, h| h[a[0]] = a[1] }
     end
 
     def method_missing(method_sym, *args, &block)

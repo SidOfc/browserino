@@ -12,23 +12,6 @@ module Browserino
         end
       end
 
-      def build_res_from_arr(arr)
-        prev = nil
-        res = arr.each_with_object([]) do |v, a|
-          a << v unless v == prev
-          prev = v
-        end
-        res.compact.join(' ').strip.gsub(/\s{2,}/, ' ')
-      end
-
-      def except(hash, *keys)
-        res = hash.dup
-        keys.each do |k|
-          res.delete k
-        end
-        res
-      end
-
       def compare_versions(a, b)
         b = b.to_s.split('.')
         !a.to_s.split('.').map { |v| v == b.shift }.include?(false)
