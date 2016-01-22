@@ -1,34 +1,21 @@
 # Browserino
 
+A UserAgent sniffer with Rails >= 3.2.0 integration
+
+## Status
+
 [![Gem Version](https://badge.fury.io/rb/browserino.svg)](http://badge.fury.io/rb/browserino)
 [![Build Status](https://travis-ci.org/SidOfc/browserino.svg?branch=master)](https://travis-ci.org/SidOfc/browserino)
 [![Coverage Status](https://coveralls.io/repos/SidOfc/browserino/badge.svg?branch=master&service=github)](https://coveralls.io/github/SidOfc/browserino?branch=master)
 
-This gem aims to provide information about the browser that your visitor is using, it's main goal is not to let you exclude any browser from partying on your website (e.g. sniffing) but to provide you with more flexibility towards designing maybe a browser-themed website or knowledge of what your visitors are using to check out your website!
-
 ## Changelog
+
 _dates are in dd-mm-yyyy format_  
-_older changes can be found in the [CHANGELOG.md](https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md)_
-
-#### 20-01-2016 VERSION 2.5.4
-
-- formatted / refactored code with rubocop
-- iOS `system_name full: true` returns the version no. of iOS if found
-
-#### 19-01-2016 VERSION 2.5.3
-
-- Minor refactoring of code
-
-#### 15-01-2016 VERSION 2.5.2
-
-- **DEPRECATE** Custom return values (passed through `Browserino.parse`) will no longer alter the output of the agent object
-- Added support for windows phone detection
-- Added `windows_phone?` method
+_older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 
 ## Installation
 
-*supports ruby 1.9.3+*  
-Add this line to your application's Gemfile:
+Add the following to your applications Gemfile:
 
 ```ruby
 gem 'browserino'
@@ -36,11 +23,23 @@ gem 'browserino'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
-Or install it yourself as:
+Or install it yourself with:
 
-    $ gem install browserino
+```
+$ gem install browserino
+```
+
+Browserino is tested with the following ruby versions
+
+* 1.9.3
+* 2.0.0
+* 2.1.0
+* 2.2.1
+* 2.3.0
 
 ## Usage
 
@@ -49,413 +48,451 @@ After installing the gem globally or in your application you'll have to `require
 ```ruby
 require 'browserino'
 ```
-
-Afterwards you can simply call
+Afterwards, the gem is loaded and you can proceed by calling:
 
 ```ruby
-Browserino.parse('<user agent>')
+Browserino.parse '<user agent>'
 ```
 
-Or if you're using Rails *(>= 3.2.0)*, in your controllers you'll have access to an `agent` object
+### Rails (>= 3.2.0)
 
+If you're using Rails (>= 3.2.0) you'll have access to an `agent` object. Browserino will initialize itself using the `request.headers['User-Agent']`
+
+
+A quick example on how to get going:
 ```ruby
-class HomeController < ApplicationController
-  def index
+class ApplicationController < ActionController::Base
+  def some_method
     render json: agent
   end
 end
 ```
 
-The return value will always be `nil` if a value isn't found
+### General
 
-`Browserino.parse()` will return a `Browserino::Agent` object containing all the information parsed out of the supplied user agent.
-On this object there are a few method calls you can do to retrieve information.
+the `parse` method will **always** return a `Browserino::Agent` object.
 
 ```ruby
-require 'browserino'
+Browserino.parse '<user agent>' # => #<Browserino::Agent:0x007f9b09b1fae8 ... >
+```
 
-agent = Browserino.parse('user-agent')
+### Default return values
+
+If a property isn't available or not known to Browserino it's return value will always be `nil`, this can be tested by supplying an empty string (`''`) to `parse`:
+
+```ruby
+agent = Browserino.parse ''
+agent.browser_name
+# => nil
+```
+
+If a value *is* found then you'll recieve a *lowercase string* containing the information:
+
+```ruby
+agent = Browserino.parse 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) brave/0.7.7 Chrome/47.0.2526.73 Electron/0.36.2 Safari/537.36'
 
 agent.browser_name
-# => 'safari'
+# => 'brave'
 
-# always returns the real version (also with IE in compat)
 agent.browser_version
-# => '7.0.3'
-
-# if a user is running IE in compat mode this will return the compat version
-agent.browser_version compat: true
-# => '7.0'
+# => '0.7.7'
 
 agent.engine_name
 # => 'webkit'
+```
 
-agent.engine_version
-# => '537.75.14'
+Browserino also has some question methods, these will always return either `true` or `false`. The exceptions to this rule are methods that can take a name, for instance the `bot?` method:
 
-agent.system_name
-# => 'macintosh'
-# possibilities are macintosh, windows, blackberry, android, linux, bsd and ios
+```ruby
+agent = Browserino.parse ''
+agent.bot?
+# => true (empty UA's count as anonymous bots)
 
-# or optionally, the full name (guessed from OS version)
-agent.system_name full: true
-# => ['macintosh', 'mavericks']
-
-agent.system_version
-# => '10.9.3'
-
-agent.system_architecture
-# => 'x32'
-
-# or through convenience methods:
-agent.x32?
-# => true
-
-agent.x64?
+agent.googlebot?
 # => false
 
-# get the locale, either 'aa' or 'aa-bb' format
+agent.non_supported_bot?
+# => NoMethodError
+
+agent.bot? :non_supported_bot
+# => NoMethodError
+```
+
+### Functions
+
+The samples below are all valid calls with their respective outputs, using the `agent` defined below.
+
+```ruby
+agent = Browserino.parse 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko'
+```
+
+##### Quick usage
+
+```ruby
+agent.browser_name
+# => 'ie'
+
+# always returns real version, also when IE is in compat
+agent.browser_version
+# => '11.0'
+
+# to get the compat version that IE is running in
+# returns real version if not in compat mode
+agent.browser_version compat: true
+# => '11.0'
+
+agent.engine_name
+# => 'trident'
+
+agent.engine_version
+# => '7.0'
+
+agent.system_name
+# => 'windows'
+
+# system_name attempts to find the operating systems version name
+# when full: true is used
+# returning an array with either the version name or nil if not found
+agent.system_name full: true
+# => ['windows', '7']
+
+agent.system_version
+# => '6.1'
+
+agent.system_architecture
+# => 'x64'
+
+# two formats possible: 'aa' or `aa-bb`
 agent.locale
-# => 'en'
-# or if the UA supplies the information
-# => 'en-us'
+# => 'as'
+```
 
+##### Question methods
 
-# name of bot if the UA was identified as bot
-agent.bot_name
-# => 'googlebot'
+Browserino also provides some question methods.
 
-# returns true if the agent is a bot
-agent.bot?
-# => true
-
-# returns true if the agent is the specified bot
-agent.bot? :googlebot
-# => true
-
-# check IE compatibility mode
+```ruby
+# only for Internet Explorer
 agent.compat?
-# => true
+# => false
 
-# true if browser_name or bot_name present
+# returns true if browser_name or bot_name are present
 agent.known?
 # => true
 
-# true if agent is a mobile device
-agent.mobile?
+# returns true if browser is known
+agent.browser?
 # => true
 
-# methods to convert object into a String, Array or hash
-agent.to_s
-# => 'safari safari7 webkit webkit537 macintosh macintosh10 en-us'
+# returns true if specific browser
+agent.browser? :ie
+# => true
 
-# to_s can split version numbers from words if a seperator is supplied
-agent.to_s '-'
-# => 'safari safari-7 webkit webkit-537 macintosh macintosh-10 en-us'
+# returns true if specific browser and version
+agent.browser? :ie, version: '11.0'
 
-agent.to_a
-# => [
-#      [:browser_name, 'safari'],
-#      [:browser_version, '7.0.3'],
-#      [:engine_name, 'webkit'],
-#      [:engine_version, '537.75.14'],
-#      [:system_name, 'macintosh'],
-#      [:system_version, '10'],
-#      [:system_architecture, nil],
-#      [:locale, nil],
-#      [:bot_name, nil]
-#    ]
+# returns true if there is a social media bot on your website
+agent.social_media?
+# => false
 
-agent.to_h
-# => {
-#      browser_name: 'safari',
-#      browser_version: '7.0.3',
-#      engine_name: 'webkit',
-#      engine_version: '537.75.14',
-#      system_name: 'macintosh',
-#      system_version: '10',
-#      system_architecture: nil,
-#      locale: nil,
-#      bot_name: nil
-#    }
+# returns true if platform is known
+agent.platform?
+# => true
+
+# returns true if specific platform
+agent.platform? :windows
+# => true
+
+# returns true if specific platform and version
+agent.platform? :windows, version: '7'
+# => true
+
+# returns true if user agent is empty or a bot is recognized
+agent.bot?
+# => false
+
+agent.x64?
+# => true
+
+agent.x32?
+# => false
+
+agent.mobile?
+# => false
 ```
 
-It is now also possible to call methods to determine a specific OS or browser if it's supported, a `noMethodError` will be thrown otherwise
-The function uses the names of the `Browserino::Mapping` constants and the `Browserino::Core::PATTERNS` hashes `:browser` and `:bot` output to identify wether or not to throw this exception.
-Versions are also supported as an argument to the function, for operating systems versions could include a string, symbol or float / integer to indicate a version.
-_(examples given for windows, android and ios, for a full list of versions check the **maps** folder)_
-Browsers can also accept a float / integer to check for a specific version.
-
-### DEPRECATION NOTICE
-
-**Methods that include a version number in their name (`agent.android4?`) are deprecated as of version 2.0.0. Supply the version as argument instead `agent.android?(4)` or `agent.android('Ice Cream Sandwich')`**
-
-##### Supported systems
+The above methods are the base questions you can ask but there are a lot more methods you can call on the `agent`. Every supported browser, operating system or bot is basically a question method so you could do this:
 
 ```ruby
-agent.android?
-
-# check for android jellybean
-# agent.android?(:jellybean) or agent.android?('jellybean') or agent.android?(4.1)
-
-agent.ios?
-
-# check version of iOS (>= 1.0.0)
-# agent.ios9?
-
-# check version of iOS (>= 2.0.0)
-# agent.ios?(9)
-
 agent.windows?
+# => true
 
-# check for windows Vista (>= 1.0.0)
-# agent.windows60?
+# based on full name
+agent.windows? '7'
+# => true
 
-# check for windows Vista (>= 2.0.0)
-# agent.windows?(6) - based on NT version
-# agent.windows?(6.0) - based on NT version
-# agent.windows?(:vista) or agent.windows?('vista')
-
-agent.macintosh?
-
-agent.blackberry?
-
-agent.windows_phone?
-
-agent.linux? # linux doesn't have versions
-
-agent.bsd? # bsd also doesn't have versions
+# NT versions also work
+agent.windows? 6.1
+# => true
 ```
 
-You could also invert these questions by using the `.not` method
+##### Transformation
+
+Browserino implements `to_a`, `to_h` and `to_s` to allow for collected data to be moved around without attaching the entire object with methods.
+
+**to_s**
+
+Returns a compiled string of properties based on available information.
 
 ```ruby
-agent.not.android?
+agent.to_s
+# => 'ie ie11 trident trident7 windows x64'
 
-# check for android jellybean
-# agent.not.android?(:jelly_bean) or agent.not.android?('jelly bean') or agent.not.android?(4.1)
-
-agent.not.ios?
-
-# check if iOS version isn't 9 (>= 1.4.0)
-# agent.not.ios9?
-
-# check if iOS version isn't 9 (>= 2.0.0)
-# agent.not.ios?(9)
-
-agent.not.windows?
-
-# check if not windows vista (>= 1.4.0)
-# agent.not.windows60?
-
-# check if not windows vista (v2.x.x)
-# agent.not.windows?(6) - based on NT version
-# agent.not.windows?(6.0) - based on NT version
-# agent.not.windows?(:vista) or agent.not.windows?('vista')
-
-agent.not.macintosh?
-
-agent.not.blackberry?
-
-agent.not.windows_phone?
-
-agent.not.linux?
-
-agent.not.bsd?
+# a seperator can be passed to format the name + version combo's
+agent.to_s '-'
+# => 'ie ie-11 trident trident-7 windows x64'
 ```
 
-The `#windows?`, `#macintosh?` and `#blackberry?` each have a shortcut method to allow for easier access, `#win?`, `#osx?`, `#bb?`
-
-##### Supported browsers  
+If the agent object can't find a property in the user agent, that property will be excluded from the string.
+For instance, if the `browser_version` and `engine_version` of the `agent` object are `nil` then the following will be returned:
 
 ```ruby
-agent.vivaldi?
+agent.to_s
+# => ie trident windows x64
+```
 
-agent.opera?
+**to_a**
 
-agent.opera_mini?
+Returns an array with key => value pairs.
 
-agent.bolt?
+```ruby
+agent.to_a
+# => [[:browser_name, "ie"],
+#     [:browser_version, "11.0"],
+#     [:engine_name, "trident"],
+#     [:engine_version, "7.0"],
+#     [:system_name, "windows"],
+#     [:system_version, "6.1"],
+#     [:system_architecture, "x64"],
+#     [:locale, "as"],
+#     [:bot_name, nil]]
+```
 
-agent.ucbrowser?
+**to_h**
 
-agent.maxthon?
+Returns a hash with key => value pairs.
 
-agent.edge?
+```ruby
+agent.to_h
+# => {:browser_name=>"ie",
+#     :browser_version=>"11.0",
+#     :engine_name=>"trident",
+#     :engine_version=>"7.0",
+#     :system_name=>"windows",
+#     :system_version=>"6.1",
+#     :system_architecture=>"x64",
+#     :locale=>"as",
+#     :bot_name=>nil}
+```
 
-agent.ie?
+##### Supplying versions
 
+Consider this parsed string:
+
+```ruby
+agent = Browserino.parse 'Mozilla/5.0 (Linux; U; Android 4.1.2; en-us; SM-T210R Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30 UCBrowser/2.3.2.300'
+
+# output for system_name
+agent.system_name
+# => 'android'
+
+# output for system_name full: true
+agent.system_name full: true
+# => ['android', 'Jelly Bean 16']
+```
+
+When supplying a version to a method that supports it, you have multiple options for the format of that version.
+
+* Using a symbol or string without version: `:jelly_bean` or `'jelly_bean'`
+* Using a symbol or string with version: `:jelly_bean_16` or `'jelly_bean_16'`
+* Using a string: `'4.1.2'`  
+* Using a float: `4.1`
+* Using an int: `4`
+
+When calling the `platform?` or `android?` functions with the above examples, they would all match since the method that compares versions also checks how specific the version is that you want to compare against.
+
+If you pass in `4.1` as a version the matcher will look for `x.x` in the extracted version and discard the unspecified value, this allows for you to be explicitly less specific to allow for a greater range of systems to be matched.
+
+* `4.1.2` will match `4.1.2`
+* `4.1` will match `4.1.x`
+* `4` will match `4.x.x`
+
+**Examples using `platform?`**
+
+```ruby
+agent.platform? :android, version: '4.1.2'
+# => true
+
+agent.platform? :android, version: 4.1
+# => true
+
+agent.platform? :android, version: 4
+# => true
+
+agent.platform? :android, version: :jelly_bean
+# => true
+
+agent.platform? :android, version: :jelly_bean_16
+# => true
+```
+
+##### `platform?`, `browser?`, `bot?` and `social_media?` methods
+
+As you've seen above, the `platform?` function can take two arguments, a symbol with the system name and optionally a hash with a `:version` key to supply a version, the `browser?` method works in exactly the same way.
+
+The `bot?` and `social_media?` methods however aren't that complex since you don't need to know a bot / social media version or anything other than it's name so inside these methods, only a name can be passed:
+
+*Every social media match is automatically a bot, but a bot isn't automatically social media*
+
+```ruby
+# when a bot UA gets parsed
+agent = Browserino.parse 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)'
+
+agent.bot?
+# => true
+
+agent.social_media?
+# => true
+
+agent.bot? :facebook
+# => true
+
+agent.social_media? :facebook
+# => true
+
+agent.bot? :facebook, version: 1.1
+# => ArgumentError
+```
+
+##### Checking a specific browser, system, bot or social media
+
+Every name you see in the below lists can be passed as symbol or string to their respective method
+
+**social media**
+
+* `facebook` or `fb`
+* `twitter`
+* `linkedin`
+* `instagram`
+* `pinterest`
+* `tumblr`
+
+Examples:
+
+```ruby
+agent.facebook?
+agent.tumblr?
+
+# using the social_media? method
+agent.social_media? :facebook
+
+# using shorthand
+agent.social_media? :fb
+
+agent.social_media? :tumblr
+```
+
+**bot**
+
+* `google`
+* `msn`
+* `bing`
+* `yahoo_slurp`
+* `baiduspider`
+* `yandex`
+* `sosospider`
+* `exa`
+* `sogou_spider`
+
+Examples:
+
+```ruby
+agent.google?
+agent.exa?
+
+# using the bot? method
+agent.bot? :google
+agent.bot? :exa
+```
+
+**browser**
+
+* `chrome`
+* `firefox` or `ff`
+* `seamonkey`
+* `opera`
+* `opera_mini`
+* `vivaldi`
+* `ucbrowser`
+* `maxthon`
+* `bolt`
+* `brave`
+* `safari`
+* `ie`
+* `edge`
+
+Examples:
+
+```ruby
 agent.firefox?
+agent.chrome? 42
 
-agent.chrome?
+# using the browser? method
+agent.browser? :firefox
 
-agent.seamonkey?
+# using shorthand
+agent.browser? :ff
 
-agent.safari?
-
-# or with the .not method (>= 1.4.0)
-agent.not.vivaldi?
-
-agent.not.opera?
-
-agent.not.maxthon?
-
-# etc etc...
+agent.browser? :chrome, version: 42
 ```
 
-##### Supported bots
-```ruby
-agent.msnbot?
+**operating system**
 
-agent.yahoo_slurp?
+* `windows` or `win`
+* `macintosh` or `osx`
+* `linux`
+* `bsd`
+* `android`
+* `ios`
+* `blackberry` or `bb`
+* `windows_phone`
 
-agent.googlebot?
-
-agent.bingbot?
-
-agent.baiduspider?
-
-agent.yandexbot?
-
-agent.sosospider?
-
-agent.exabot?
-
-agent.sogou_spider?
-
-# or with the .not method (>= v1.4.0)
-
-agent.not.msnbot?
-
-agent.not.yahoo_slurp?
-
-# etc etc...
-```
-
-## Development
-
-The tests are dynamically produced and quite easy to write.
-
-The __/spec/user_agents_browsers.rb__ and __/spec/user_agents_bots.rb__ actually contain the test cases for both browsers and bots respectively, here you can see how they are setup and all you simply have to do is read the UA yourself and fill in the correct information for the test to run.
-the tests will lowercase most of the input to make sure there's no case mismatches, this happens mainly on the `*_name` properties
-
-If I wanted to add a test case for a different browser for instance (just picking a random FF on windows that is already in the tests)
+Examples:
 
 ```ruby
-module UserAgents
-  module Browsers
-    FIREFOX = {
-      win: {
-        'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1' => {
-          browser_name: 'Firefox',
-          browser_version: '40.1',
-          engine_name: 'Gecko',
-          engine_version: '40.0',
-          system_name: ['windows', '7'],
-          system_version: '6.1',
-          system_architecture: 'x64',
-          locale: nil,
-          x64?: true,
-          x32?: false,
-          known?: true,
-          mobile: false
-        }
-      }
-    }
-  end
-end
+agent.macintosh?
+agent.windows_phone? 7
+
+# to check for windows vista one could do
+agent.windows? 6
+
+# a more readable equivelant
+agent.windows? :vista
+
+# using the platform? method
+agent.platform? :macintosh
+
+# using shorthand
+agent.platform? :osx
+
+agent.platform? :windows_phone, version: 7
 ```
 
-Valid browser names are defined by __/lib/browserino/patterns.rb__ (the keys are the browser names)
+Notes:
 
-#### browser_name examples
-```ruby
-'ie'
-
-`edge`
-
-'firefox'
-
-'chrome'
-
-`vivaldi`
-
-'opera'
-
-'opera_mini'
-
-'bolt'
-
-'ucbrowser'
-
-'seamonkey'
-
-'maxthon'
-```
-
-#### engine_name examples
-```ruby
-
-'gecko'
-
-'webkit'
-
-'trident'
-```
-
-#### bot_name examples
-```ruby
-'googlebot'
-
-'yahoo_slurp'
-
-'msnbot'
-
-'bingbot'
-
-'baiduspider'
-
-'yandexbot'
-
-'sosospider'
-
-'exabot'
-
-'sogou_spider'
-```
-
-#### system_name examples
-
-```ruby
-'windows'
-
-'win'
-
-'macintosh'
-
-'osx'
-
-'blackberry'
-
-'bb'
-
-'windows_phone'
-
-'android'
-
-'ios'
-
-'linux'
-
-`bsd`
-```
-
-#### system_architecture examples
-```ruby
-'x32'
-
-'x64'
-```
+* `linux?` doesn't support any versions
+* `bsd?` doesn't support any versions
+* *named versions* are only supported if they are present in a [map](/lib/browserino/maps)
 
 ## Contributing
 
