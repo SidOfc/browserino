@@ -1,5 +1,11 @@
 ## CHANGELOG
-_dates are in dd-mm-yyyy format_  
+_dates are in dd-mm-yyyy format_
+
+#### 15-01-2016 VERSION 2.5.2
+
+- **DEPRECATE** Custom return values (passed through `Browserino.parse`) will no longer alter the output of the agent object
+- Added support for windows phone detection
+- Added `windows_phone?` method
 
 #### 12-01-2016 VERSION 2.5.1
 

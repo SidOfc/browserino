@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Sidney Liebrand"]
   spec.email         = ["sidneyliebrand@gmail.com"]
 
-  spec.summary       = %q{A browser identification gem}
+  spec.summary       = %q{A browser identification gem with Rails (>= 3.2.0) integration}
   spec.homepage      = "https://github.com/SidOfc/browserino"
   spec.license       = "MIT"
 

@@ -13,6 +13,37 @@ A UserAgent sniffer with Rails >= 3.2.0 integration
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 
+#### 22-01-2016 VERSION 2.6.0
+
+- Fixed `to_a` method
+- Fixed `to_s` method
+- Removed **bot** suffixes from every bot name
+  - Replaced `googlebot?` with `google?`
+  - Replaced `msnbot?` with `msn?`
+  - Replaced `bingbot?` with `bing?`
+  - Replaced `yandexbot?` with `yandex?`
+  - Replaced `exabot?` with `exa?`
+- Added `platform?` method
+- Added `browser?` method
+- Added `social_media?` method
+- Added `facebook?` and `fb?` methods
+- Added `twitter?` method
+- Added `linkedin?` method
+- Added `instagram?` method
+- Added `pinterest?` method
+- Added `tumblr?` method
+- Added support for the Brave browser and the `brave?` method
+- Added `ff?` method
+
+#### 20-01-2016 VERSION 2.5.4
+
+- formatted / refactored code with rubocop
+- iOS `system_name full: true` returns the version no. of iOS if found
+
+#### 19-01-2016 VERSION 2.5.3
+
+- Minor refactoring of code
+
 ## Installation
 
 Add the following to your applications Gemfile:
