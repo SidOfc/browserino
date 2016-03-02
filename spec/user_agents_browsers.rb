@@ -873,6 +873,7 @@ module UserAgents
           known?: true,
           to_s: 'firefox firefox3 gecko gecko1 solaris x64'
         },
+        # Currently, it's not possible to test just by a useragent
         'SUNPlex 4.1 (Trusted Solaris 8 Operating Environment; Solaris 8 OE; Sun Fire 15K)' => {
           browser_name: USE_FOR_UNKNOWN,
           browser_version: USE_FOR_UNKNOWN,
