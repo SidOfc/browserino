@@ -58,6 +58,13 @@ module Browserino
       self
     end
 
+    def to_console_s
+      hash_for_to_s.each_with_object('') do |pair, a|
+        a << "\e[1;32;49m#{pair[0]}:\e[0m "
+        a << "\e[1;95;49m#{(pair[1] == '' ? 'nil' : pair[1])}\e[0m, "
+      end[0..-3]
+    end
+
     def to_s(sep = '')
       prev = ''
       s = hash_for_to_s.each_with_object([]) do |v, a|
@@ -96,7 +103,7 @@ module Browserino
                  end
     end
 
-    def respond_to?(method_sym)
+    def respond_to?(method_sym, *args, &block)
       agent_or_system?(method_sym).nil? ? false : true
     end
   end

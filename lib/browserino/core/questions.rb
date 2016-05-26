@@ -1,14 +1,11 @@
 module Browserino
   module Core
     module Questions
-      SHORT_SYSTEM_NAMES = {
-        'osx' => 'macintosh',
-        'win' => 'windows',
-        'bb' => 'blackberry'
-      }.freeze
-
       SOCIAL_MEDIA = [:facebook, :twitter, :linkedin,
                       :instagram, :pinterest, :tumblr].freeze
+
+      SEARCH_ENGINES = [:google, :bing, :yahoo_slurp,
+                        :baiduspider, :duckduckgo].freeze
 
       def compat?
         invertable ie? && browser_version != browser_version(compat: true)
@@ -50,10 +47,22 @@ module Browserino
         firefox?(*arg)
       end
 
+      def ddg?(*arg)
+        duckduckgo?(*arg)
+      end
+
       def bot?(name = nil)
         is_bot = ua.strip.empty? || !bot_name.nil?
         is_name = name.nil? || name.to_s.downcase.tr('_', ' ') == bot_name
         invertable is_bot && is_name
+      end
+
+      def search_engine?(name = nil)
+        if name
+          invertable send("#{name}?")
+        else
+          invertable SEARCH_ENGINES.include?(search_engine_name.to_s.to_sym)
+        end
       end
 
       def social_media?(name = nil)
