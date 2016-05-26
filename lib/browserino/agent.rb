@@ -53,6 +53,10 @@ module Browserino
       @info[:bot_name]
     end
 
+    def search_engine_name
+      @info[:bot_name]
+    end
+
     def not
       @not = true
       self

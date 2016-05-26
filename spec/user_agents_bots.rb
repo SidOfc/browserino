@@ -167,5 +167,26 @@ module UserAgents
         known?: true
       }
     }
+    HOLMES = {
+      'holmes/3.12.4 (http://morfeo.centrum.cz/bot)' => {
+        bot_name: 'holmes',
+        bot?: true,
+        known?: true
+      }
+    }
+    ASK = {
+      'Mozilla/2.0 (compatible; Ask Jeeves/Teoma)' => {
+        bot_name: 'ask',
+        bot?: true,
+        known?: true
+      }
+    }
+    DUCKDUCKGO = {
+      'DuckDuckBot/1.0; (+http://duckduckgo.com/duckduckbot.html)' => {
+        bot_name: 'duckduckgo',
+        bot?: true,
+        known?: true
+      }
+    }
   end
 end

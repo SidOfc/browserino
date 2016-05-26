@@ -1,5 +1,3 @@
-require 'colorize'
-
 require 'browserino/core/helpers'
 require 'browserino/core/questions'
 require 'browserino/core/lies'
