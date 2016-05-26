@@ -23,7 +23,7 @@ module Browserino
         },
 
         opera: {
-          name: /(?<name>ope?ra?)/i,
+          name: /opera(?!ti(?:on|ng))|opr/i,
           version: %r{(?:ope?ra?|version)[/\s](?<version>[\d\.]+)}i
         },
 
@@ -49,9 +49,9 @@ module Browserino
 
         firefox: {
           name: /(?<name>(?:fire|water)(?:fox|bird)
-                 |ice(?:weasel|cat)|netscape)/xi,
+                 |ice(?:weasel|cat)|netscape|superswan)/xi,
           version: %r{(?:(?:fire|water)(?:fox|bird)|ice(?:weasel|cat)
-                      |netscape)/?(?<version>[\d\.]+)}xi
+                      |netscape|superswan)/?(?<version>[\d\.]+)}xi
         },
 
         brave: {
@@ -103,10 +103,11 @@ module Browserino
 
       operating_system: {
         name: /(?<name>windows(?:\sphone(?:\sos)?)?|macintosh|android
-                |ip(?:[ao]d|hone)|blackberry|linux|ubuntu|x11|bsd)/xi,
+                |ip(?:[ao]d|hone)|blackberry|linux|ubuntu|x11|bsd
+                |s(?:unos|olaris))/xi,
         version: %r{(?:windows(?:\sphone(?:\sos)?)?|nt|mac\sos\sx|android
-                    |(cpu\s|ip([ao]d|hone)\s)os|blackberry.*?version/|bb)
-                    \s?(?<version>[\d\._]+)}xi,
+                    |(cpu\s|ip([ao]d|hone)\s)os|blackberry.*?version/|bb
+                    |s(?:unos|olaris)/?)\s?(?<version>[\d\._]+)}xi,
         architecture: /(?<architecture>((?:x|x86_|amd|wow)64)|i(3|6)86)/i,
         mobile: /bolt|nokia|samsung|mobi(?:le)?|android|i?p(?:[ao]d|hone)|bb\d+
                 |blackberry|iemobile|fennec|bada|meego|vodafone

@@ -856,6 +856,39 @@ module UserAgents
           known?: true,
           to_s: 'firefox firefox3 gecko gecko1 bsd x32'
         }
+      },
+      solaris: {
+        'Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.8) Gecko/20100215 Solaris/10.1 (GNU) Superswan/3.5.8 (Byte/me)' => {
+          browser_name: 'Firefox',
+          browser_version: '3.5.8',
+          engine_name: 'Gecko',
+          engine_version: '1.9.1.8',
+          system_name: ['solaris', '10.1'],
+          system_version: '10.1',
+          system_architecture: 'x64',
+          locale: 'en-us',
+          x64?: true,
+          x32?: false,
+          mobile?: false,
+          known?: true,
+          to_s: 'firefox firefox3 gecko gecko1 solaris x64'
+        },
+        # Currently, it's not possible to test just by a useragent
+        'SUNPlex 4.1 (Trusted Solaris 8 Operating Environment; Solaris 8 OE; Sun Fire 15K)' => {
+          browser_name: USE_FOR_UNKNOWN,
+          browser_version: USE_FOR_UNKNOWN,
+          engine_name: USE_FOR_UNKNOWN,
+          engine_version: USE_FOR_UNKNOWN,
+          system_name: ['solaris', '8'],
+          system_version: '8',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: 'oe',
+          x64?: false,
+          x32?: false,
+          mobile?: false,
+          known?: false,
+          to_s: 'solaris'
+        }
       }
     }
     BRAVE = {

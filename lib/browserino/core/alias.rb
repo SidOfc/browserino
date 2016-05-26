@@ -4,6 +4,7 @@ module Browserino
       browser_name: { 'ie' => /msie/ },
       engine_name: { 'webkit' => /applewebkit/ },
       system_name: {
+        'solaris' => /s(?:unos|olaris)/,
         'linux' => /ubuntu|x11/,
         'windows_phone' => /windows\sphone/,
         'ios' => /ip(?:[ao]d|hone)/

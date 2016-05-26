@@ -1,6 +1,10 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_
 
+#### 19-01-2016 VERSION 2.5.3
+
+- Minor refactoring of code
+
 #### 15-01-2016 VERSION 2.5.2
 
 - **DEPRECATE** Custom return values (passed through `Browserino.parse`) will no longer alter the output of the agent object

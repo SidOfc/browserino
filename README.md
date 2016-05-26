@@ -13,6 +13,10 @@ A UserAgent sniffer with Rails >= 3.2.0 integration
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 
+#### 02-03-2016 VERSION 2.7.0
+
+- Added `solaris?` method
+
 #### 22-01-2016 VERSION 2.6.0
 
 - Fixed `to_a` method
@@ -39,10 +43,6 @@ _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 
 - formatted / refactored code with rubocop
 - iOS `system_name full: true` returns the version no. of iOS if found
-
-#### 19-01-2016 VERSION 2.5.3
-
-- Minor refactoring of code
 
 ## Installation
 
@@ -493,6 +493,7 @@ agent.browser? :chrome, version: 42
 * `macintosh` or `osx`
 * `linux`
 * `bsd`
+* `solaris`
 * `android`
 * `ios`
 * `blackberry` or `bb`
@@ -523,6 +524,7 @@ Notes:
 
 * `linux?` doesn't support any versions
 * `bsd?` doesn't support any versions
+* `solaris?` only supports numeric versions
 * *named versions* are only supported if they are present in a [map](/lib/browserino/maps)
 
 ## Contributing
