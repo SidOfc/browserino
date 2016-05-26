@@ -1,15 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require 'optparse'
 require 'browserino'
 
-options = {}
-OptionParser.new do |opt|
-  opt.on '-pUA', '--parse=UA', 'Parse a given user agent.' do |ua|
-    options[:user_agent] = ua
-  end
-end.parse!
-
-agent = Browserino.parse(options[:user_agent])
-puts agent.to_console_s
+case ARGV[0]
+when 'parse' then puts Browserino.parse(ARGV[1] || '').to_console_s
+end
