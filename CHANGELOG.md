@@ -1,6 +1,11 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_
 
+#### 20-01-2016 VERSION 2.5.4
+
+- formatted / refactored code with rubocop
+- iOS `system_name full: true` returns the version no. of iOS if found
+
 #### 19-01-2016 VERSION 2.5.3
 
 - Minor refactoring of code

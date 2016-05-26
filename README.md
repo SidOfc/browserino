@@ -8,10 +8,26 @@ A UserAgent sniffer with Rails >= 3.2.0 integration
 [![Build Status](https://travis-ci.org/SidOfc/browserino.svg?branch=master)](https://travis-ci.org/SidOfc/browserino)
 [![Coverage Status](https://coveralls.io/repos/SidOfc/browserino/badge.svg?branch=master&service=github)](https://coveralls.io/github/SidOfc/browserino?branch=master)
 
+---
+
+Useragent references:
+
+* http://useragentstring.com/
+* http://www.zytrax.com/tech/web/mobile_ids.html
+* http://www.user-agents.org/
+
 ## Changelog
 
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
+
+#### 26-05-2016 VERSION 2.8.0
+
+- Added `search_engine?` method
+- Added `holmes?` method
+- Added `ask?` method
+- Added `duckduckgo?` and alias `ddg?` methods
+- Fixed `respond_to?` method signature
 
 #### 02-03-2016 VERSION 2.7.0
 
@@ -38,11 +54,6 @@ _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 - Added `tumblr?` method
 - Added support for the Brave browser and the `brave?` method
 - Added `ff?` method
-
-#### 20-01-2016 VERSION 2.5.4
-
-- formatted / refactored code with rubocop
-- iOS `system_name full: true` returns the version no. of iOS if found
 
 ## Installation
 
@@ -83,6 +94,17 @@ Afterwards, the gem is loaded and you can proceed by calling:
 
 ```ruby
 Browserino.parse '<user agent>'
+```
+
+Browserino is also usable in the command line
+
+```
+~$ browserino -p <ua>
+```
+
+Output
+```
+browser_name: chrome, browser_version: 50.0.2661.102, engine_name: webkit, engine_version: 537.36, system_name: macintosh, system_architecture: nil, bot_name: nil
 ```
 
 ### Rails (>= 3.2.0)
@@ -377,13 +399,13 @@ agent.platform? :android, version: :jelly_bean_16
 # => true
 ```
 
-##### `platform?`, `browser?`, `bot?` and `social_media?` methods
+##### `platform?`, `browser?`, `bot?` `search_engine?` and `social_media?` methods
 
 As you've seen above, the `platform?` function can take two arguments, a symbol with the system name and optionally a hash with a `:version` key to supply a version, the `browser?` method works in exactly the same way.
 
 The `bot?` and `social_media?` methods however aren't that complex since you don't need to know a bot / social media version or anything other than it's name so inside these methods, only a name can be passed:
 
-*Every social media match is automatically a bot, but a bot isn't automatically social media*
+*Every social media match is automatically a bot, but a bot isn't automatically social media, __This is also true for the `search_engine?` method__*
 
 ```ruby
 # when a bot UA gets parsed
@@ -408,6 +430,26 @@ agent.bot? :facebook, version: 1.1
 ##### Checking a specific browser, system, bot or social media
 
 Every name you see in the below lists can be passed as symbol or string to their respective method
+
+**search engine**
+* `google`
+* `bing`
+* `yahoo_slurp`
+* `baiduspider`
+* `duckduckgo` or `ddg`
+
+Examples:
+
+```ruby
+agent.google?
+agent.baiduspider?
+
+# using the search_engine? method
+agent.search_engine? :google
+
+# using shorthand
+agent.search_engine? :ddg
+```
 
 **social media**
 
