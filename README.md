@@ -28,6 +28,7 @@ _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 - Added `ask?` method
 - Added `duckduckgo?` and alias `ddg?` methods
 - Fixed `respond_to?` method signature
+- Added executable for parsing useragents in terminal
 
 #### 02-03-2016 VERSION 2.7.0
 
@@ -99,7 +100,7 @@ Browserino.parse '<user agent>'
 Browserino is also usable in the command line
 
 ```
-~$ browserino -p <ua>
+~$ browserino parse <ua>
 ```
 
 Output
