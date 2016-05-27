@@ -21,6 +21,10 @@ Useragent references:
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 
+#### 27-05-2016 VERSION 2.8.2
+
+- Removed Guard gem dependency
+
 #### 26-05-2016 VERSION 2.8.0
 
 - Added `search_engine?` method
@@ -33,28 +37,6 @@ _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 #### 02-03-2016 VERSION 2.7.0
 
 - Added `solaris?` method
-
-#### 22-01-2016 VERSION 2.6.0
-
-- Fixed `to_a` method
-- Fixed `to_s` method
-- Removed **bot** suffixes from every bot name
-  - Replaced `googlebot?` with `google?`
-  - Replaced `msnbot?` with `msn?`
-  - Replaced `bingbot?` with `bing?`
-  - Replaced `yandexbot?` with `yandex?`
-  - Replaced `exabot?` with `exa?`
-- Added `platform?` method
-- Added `browser?` method
-- Added `social_media?` method
-- Added `facebook?` and `fb?` methods
-- Added `twitter?` method
-- Added `linkedin?` method
-- Added `instagram?` method
-- Added `pinterest?` method
-- Added `tumblr?` method
-- Added support for the Brave browser and the `brave?` method
-- Added `ff?` method
 
 ## Installation
 
