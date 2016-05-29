@@ -1,6 +1,10 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_
 
+#### 02-03-2016 VERSION 2.7.0
+
+- Added `solaris?` method
+
 #### 22-01-2016 VERSION 2.6.0
 
 - Fixed `to_a` method

@@ -21,6 +21,25 @@ Useragent references:
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 
+#### 29-05-2016 VERSION 2.9.0
+
+- Stricter checking for:
+  * `social_media?`
+  * `bot?`
+  * `browser?`
+  * `platform?`
+
+  These functions used to be callable with unrelated symbols
+  (e.g `agent.platform?(:firefox) # => true`). This is now also filtered.
+- Added support for consoles
+  * Added `console?` method
+  * Added `wii?`, `playstation?`, `xbox?` and `nintendo_ds?` methods
+- Added general `name` method to store any browser / bot / search engine / social media agent
+- `social_media_name`, `search_engine_name` and `bot_name` are now aliasses of `name`
+- removed `:bot_name` from data structure (now stored in a general `name` property)
+- removed `:browser_name` from data structure (now stored in a general `name` property)
+- Added `console_name` method to get the name of a console
+
 #### 27-05-2016 VERSION 2.8.2
 
 - Removed Guard gem dependency
@@ -33,10 +52,6 @@ _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 - Added `duckduckgo?` and alias `ddg?` methods
 - Fixed `respond_to?` method signature
 - Added executable for parsing useragents in terminal
-
-#### 02-03-2016 VERSION 2.7.0
-
-- Added `solaris?` method
 
 ## Installation
 
@@ -130,6 +145,11 @@ agent = Browserino.parse 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleW
 agent.name
 # => 'brave'
 
+# or using browser_name
+
+agent.browser_name
+# => 'brave'
+
 agent.browser_version
 # => '0.7.7'
 
@@ -161,6 +181,13 @@ The samples below are all valid calls with their respective outputs, using the `
 ```ruby
 agent = Browserino.parse 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko'
 ```
+
+#### Note
+
+The methods `social_media_name`, `search_engine_name`, `bot_name` and `browser_name`
+are *all* aliasses of the general `name` method.
+
+The exceptions to this rule are `system_name` and `console_name`. They each have their own method.
 
 ##### Quick usage
 
@@ -197,6 +224,9 @@ agent.system_version
 
 agent.system_architecture
 # => 'x64'
+
+agent.console_name
+# => nil
 
 # two formats possible: 'aa' or `aa-bb`
 agent.locale
@@ -242,6 +272,14 @@ agent.platform? :windows
 # returns true if specific platform and version
 agent.platform? :windows, version: '7'
 # => true
+
+# returns true if console is known
+agent.console?
+# => false
+
+# returns true if specific console
+agent.console? :xbox
+# => false
 
 # returns true if user agent is empty or a bot is recognized
 agent.bot?
@@ -310,6 +348,7 @@ agent.to_a
 #     [:system_name, "windows"],
 #     [:system_version, "6.1"],
 #     [:system_architecture, "x64"],
+#     [:console_name, nil],
 #     [:locale, "as"]]
 ```
 
@@ -326,6 +365,7 @@ agent.to_h
 #     :system_name=>"windows",
 #     :system_version=>"6.1",
 #     :system_architecture=>"x64",
+#     :console_name => nil,
 #     :locale=>"as"}
 ```
 
@@ -380,7 +420,7 @@ agent.platform? :android, version: :jelly_bean_16
 # => true
 ```
 
-##### `platform?`, `browser?`, `bot?` `search_engine?` and `social_media?` methods
+##### `platform?`, `browser?`, `bot?`, `console?`, `search_engine?` and `social_media?` methods
 
 As you've seen above, the `platform?` function can take two arguments, a symbol with the system name and optionally a hash with a `:version` key to supply a version, the `browser?` method works in exactly the same way.
 
@@ -430,6 +470,24 @@ agent.search_engine? :google
 
 # using shorthand
 agent.search_engine? :ddg
+```
+
+**consoles**
+
+* `xbox`
+* `nintendo_ds`
+* `wii`
+* `playstation`
+
+Examples:
+
+```ruby
+agent.playstation?
+agent.wii?
+
+agent.console?
+
+agent.console? :facebook
 ```
 
 **social media**
