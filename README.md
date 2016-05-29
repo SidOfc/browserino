@@ -87,7 +87,7 @@ Browserino is also usable in the command line
 
 Output
 ```
-browser_name: chrome, browser_version: 50.0.2661.102, engine_name: webkit, engine_version: 537.36, system_name: macintosh, system_architecture: nil, bot_name: nil
+name: chrome, browser_version: 50.0.2661.102, engine_name: webkit, engine_version: 537.36, system_name: macintosh, system_architecture: nil
 ```
 
 ### Rails (>= 3.2.0)
@@ -118,7 +118,7 @@ If a property isn't available or not known to Browserino it's return value will 
 
 ```ruby
 agent = Browserino.parse ''
-agent.browser_name
+agent.name
 # => nil
 ```
 
@@ -127,7 +127,7 @@ If a value *is* found then you'll recieve a *lowercase string* containing the in
 ```ruby
 agent = Browserino.parse 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) brave/0.7.7 Chrome/47.0.2526.73 Electron/0.36.2 Safari/537.36'
 
-agent.browser_name
+agent.name
 # => 'brave'
 
 agent.browser_version
@@ -165,7 +165,7 @@ agent = Browserino.parse 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; r
 ##### Quick usage
 
 ```ruby
-agent.browser_name
+agent.name
 # => 'ie'
 
 # always returns real version, also when IE is in compat
@@ -212,7 +212,7 @@ Browserino also provides some question methods.
 agent.compat?
 # => false
 
-# returns true if browser_name or bot_name are present
+# returns true if name is present
 agent.known?
 # => true
 
@@ -303,15 +303,14 @@ Returns an array with key => value pairs.
 
 ```ruby
 agent.to_a
-# => [[:browser_name, "ie"],
+# => [[:name, "ie"],
 #     [:browser_version, "11.0"],
 #     [:engine_name, "trident"],
 #     [:engine_version, "7.0"],
 #     [:system_name, "windows"],
 #     [:system_version, "6.1"],
 #     [:system_architecture, "x64"],
-#     [:locale, "as"],
-#     [:bot_name, nil]]
+#     [:locale, "as"]]
 ```
 
 **to_h**
@@ -320,15 +319,14 @@ Returns a hash with key => value pairs.
 
 ```ruby
 agent.to_h
-# => {:browser_name=>"ie",
+# => {:name=>"ie",
 #     :browser_version=>"11.0",
 #     :engine_name=>"trident",
 #     :engine_version=>"7.0",
 #     :system_name=>"windows",
 #     :system_version=>"6.1",
 #     :system_architecture=>"x64",
-#     :locale=>"as",
-#     :bot_name=>nil}
+#     :locale=>"as"}
 ```
 
 ##### Supplying versions

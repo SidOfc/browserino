@@ -9,7 +9,9 @@ module Browserino
 
       BROWSERS = (Core::PATTERNS[:browser].keys + [:ff]).freeze
 
-      OPERATING_SYSTEMS = (Browserino::Mapping.constants(:true).map(&:downcase) + [:osx, :bb, :win]).freeze
+      OPERATING_SYSTEMS = (Browserino::Mapping
+                            .constants(:true)
+                            .map(&:downcase) + [:osx, :bb, :win]).freeze
 
       def compat?
         invertable ie? && browser_version != browser_version(compat: true)

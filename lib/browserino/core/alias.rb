@@ -1,7 +1,7 @@
 module Browserino
   module Core
     ALIAS = {
-      browser_name: { 'ie' => /msie/ },
+      name: { 'ie' => /msie/ },
       engine_name: { 'webkit' => /applewebkit/ },
       system_name: {
         'solaris' => /s(?:unos|olaris)/,

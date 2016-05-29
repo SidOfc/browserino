@@ -11,7 +11,7 @@ describe "Browserino Bot identification" do
       describe "#{bot} - #{ua}" do
         agent = Browserino.parse ua
         criteria.each do |prop, val|
-          if prop == :bot_name
+          if prop == :name
             it "Expects agent.#{prop} to be #{val} for #{bot.downcase}" do
               expect(agent.send(prop).downcase).to eq val.downcase
             end
@@ -42,8 +42,8 @@ describe "Browserino Bot identification" do
               end
             end
           elsif prop == :bot?
-            it "Expects agent.bot?(#{criteria[:bot_name]}) to be true for #{bot.downcase}" do
-              expect(agent.bot?(criteria[:bot_name])).to eq true
+            it "Expects agent.bot?(#{criteria[:name]}) to be true for #{bot.downcase}" do
+              expect(agent.bot?(criteria[:name])).to eq true
             end
             it "Expects agent.#{prop} to be #{val} for #{bot.downcase}" do
               expect(agent.send(prop)).to eq val

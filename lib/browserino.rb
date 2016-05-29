@@ -35,32 +35,21 @@ module Browserino
   def parse(ua, _ = nil) # _ = nil maintains backwards compatibility
     name = Browser.name(ua)
     info = fetch_info(strip_lies(ua), name)
-    tmp = info[:browser_name].to_s.tr('_', ' ')
-    info[:browser_name] = tmp.strip == '' ? nil : tmp
-    info = check_if_bot(name, info)
+    tmp = info[:name].to_s.tr('_', ' ')
+    info[:name] = tmp.strip == '' ? nil : tmp
 
     Agent.new check_for_aliases(info), ua
   end
 
   def fetch_info(ua, name)
-    { browser_name: name,
+    { name: name,
       browser_version: Browser.version(ua, Core::PATTERNS[:browser][name]),
       engine_name: Engine.name(ua),
       engine_version: Engine.version(ua),
       system_name: OperatingSystem.name(ua),
       system_version: OperatingSystem.version(ua),
       system_architecture: OperatingSystem.architecture(ua),
-      locale: OperatingSystem.locale(ua),
-      bot_name: nil }
-  end
-
-  def check_if_bot(name, info)
-    if Core::PATTERNS[:bot].include?(name)
-      info[:bot_name] = info[:browser_name]
-      info[:browser_name] = nil
-      info[:browser_version] = nil
-    end
-    info
+      locale: OperatingSystem.locale(ua) }
   end
 
   def strip_lies(ua)

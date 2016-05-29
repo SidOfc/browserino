@@ -6,12 +6,17 @@ module Browserino
     def initialize(info, ua = nil)
       @ua = ua
       @not = false
-      @info = info
+      @info = post_process(info)
     end
 
-    def browser_name
-      @info[:browser_name]
+    def name
+      @info[:name]
     end
+
+    alias_method :browser_name, :name
+    alias_method :bot_name, :name
+    alias_method :search_engine_name, :name
+    alias_method :social_media_name, :name
 
     def browser_version(opts = {})
       if ie? && engine_version && !opts[:compat]
@@ -31,11 +36,14 @@ module Browserino
 
     def system_name(opts = {})
       if opts[:full]
-        [@info[:system_name], fetch_system_version_name(@info[:system_name])]
+        @full_sys_name ||= [@info[:system_name],
+                            fetch_system_version_name(@info[:system_name])]
       else
         @info[:system_name]
       end
     end
+
+    alias_method :console_name, :system_name
 
     def system_version
       @info[:system_version]
@@ -47,14 +55,6 @@ module Browserino
 
     def locale
       @info[:locale]
-    end
-
-    def bot_name
-      @info[:bot_name]
-    end
-
-    def search_engine_name
-      @info[:bot_name]
     end
 
     def not
@@ -79,7 +79,7 @@ module Browserino
              end
         prev = v[1]
       end
-      s.reject { |str| str == '' }.join ' '
+      s.uniq.reject { |str| str == '' }.join ' '
     end
 
     def hash_for_to_s
@@ -109,6 +109,19 @@ module Browserino
 
     def respond_to?(method_sym, *args, &block)
       agent_or_system?(method_sym).nil? ? false : true
+    end
+
+    private
+
+    def post_process(h)
+      case h[:name]
+      when 'edge'
+        h[:engine_name] = 'edgehtml'
+        h[:engine_version] = h[:browser_version].to_s.split('.').shift.to_s
+      when 'ie'
+        h[:engine_name] = 'trident'
+      end
+      h
     end
   end
 end
