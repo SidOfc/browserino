@@ -43,14 +43,16 @@ module Browserino
       end
     end
 
-    alias_method :console_name, :system_name
-
     def system_version
       @info[:system_version]
     end
 
     def system_architecture
       @info[:system_architecture]
+    end
+
+    def console_name
+      @info[:console_name]
     end
 
     def locale
@@ -91,7 +93,7 @@ module Browserino
     end
 
     def to_a
-      @info.keys.each_with_object([]) { |f, a| a.push([f, send(f)]) }.compact
+      @info.keys.each_with_object([]) { |f, a| a.push([f, send(f)]) }
     end
 
     def to_h
@@ -100,15 +102,16 @@ module Browserino
 
     def method_missing(method_sym, *args, &block)
       name = method_sym.to_s.tr('?', '')
-      invertable case agent_or_system?(method_sym)
+      invertable case type_id(method_sym)
                  when :system then correct_system?(name, *args)
                  when :agent then correct_agent?(name, *args)
+                 when :console then correct_console?(name, *args)
                  else super
                  end
     end
 
     def respond_to?(method_sym, *args, &block)
-      agent_or_system?(method_sym).nil? ? false : true
+      type_id(method_sym).nil? ? false : true
     end
 
     private

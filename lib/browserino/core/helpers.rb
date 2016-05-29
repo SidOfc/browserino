@@ -45,13 +45,19 @@ module Browserino
         end
       end
 
-      def agent_or_system?(method_sym)
+      def correct_console?(name)
+        Core::Questions::CONSOLES.include?(name.to_sym)
+      end
+
+      def type_id(method_sym)
         name = method_sym.to_s.tr('?', '')
         supported = Core::PATTERNS[:browser].merge(Core::PATTERNS[:bot]).keys
         if supported.include?(name.to_sym)
           :agent
         elsif Mapping.const?(name.upcase.to_sym)
           :system
+        elsif name == 'console'
+          :console
         end
       end
 

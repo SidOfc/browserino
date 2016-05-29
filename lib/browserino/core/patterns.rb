@@ -113,6 +113,10 @@ module Browserino
                 |blackberry|iemobile|fennec|bada|meego|vodafone
                 |t\-mobile|opera\sm(?:ob|in)i/xi,
         locale: /\s(?<locale>\w{2}(?:\-\w{2})?)[;\)]/
+      },
+
+      console: {
+        name: /(?<name>xbox|playstation|nintendo\s3?ds|wiiu?)/i,
       }
     }.freeze
   end

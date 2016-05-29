@@ -9,6 +9,8 @@ module Browserino
 
       BROWSERS = (Core::PATTERNS[:browser].keys + [:ff]).freeze
 
+      CONSOLES = [:xbox, :playstation, :nintendo_ds, :wii].freeze
+
       OPERATING_SYSTEMS = (Browserino::Mapping
                             .constants(:true)
                             .map(&:downcase) + [:osx, :bb, :win]).freeze
@@ -61,6 +63,11 @@ module Browserino
         is_bot = ua.strip.empty? || !bot_name.nil?
         is_name = name.nil? || name.to_s.downcase.tr('_', ' ') == bot_name
         invertable is_bot && is_name
+      end
+
+      def console?(name = nil)
+        arg = (name.nil? ? console_name : name).to_s.to_sym
+        invertable CONSOLES.include?(arg)
       end
 
       def search_engine?(name = nil)

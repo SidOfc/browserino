@@ -10,8 +10,8 @@ require 'browserino/maps/windows'
 require 'browserino/maps/windows_phone'
 
 require 'browserino/core/patterns'
-require 'browserino/core/helpers'
 require 'browserino/core/questions'
+require 'browserino/core/helpers'
 require 'browserino/core/lies'
 require 'browserino/core/alias'
 
@@ -24,6 +24,7 @@ require 'browserino/version'
 require 'browserino/browser'
 require 'browserino/engine'
 require 'browserino/operating_system'
+require 'browserino/console'
 
 # require_relative "../spec/user_agents"
 # require_relative "../spec/user_agents_bots"
@@ -49,6 +50,7 @@ module Browserino
       system_name: OperatingSystem.name(ua),
       system_version: OperatingSystem.version(ua),
       system_architecture: OperatingSystem.architecture(ua),
+      console_name: Console.name(ua),
       locale: OperatingSystem.locale(ua) }
   end
 

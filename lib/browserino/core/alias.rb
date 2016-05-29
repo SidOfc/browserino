@@ -9,6 +9,10 @@ module Browserino
         'windows_phone' => /windows\sphone/,
         'ios' => /ip(?:[ao]d|hone)/
       },
+      console_name: {
+        'nintendo_ds' => /nintendo\s\d?ds/,
+        'wii' => /wiiu?/
+      },
       system_architecture: {
         'x64' => /(?:x86_|amd|wow)?64/,
         'x32' => /(?:(?:x86_)?32|i[36]8[36])/
