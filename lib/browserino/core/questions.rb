@@ -1,11 +1,15 @@
 module Browserino
   module Core
     module Questions
-      SOCIAL_MEDIA = [:facebook, :twitter, :linkedin,
+      SOCIAL_MEDIA = [:facebook, :fb, :twitter, :linkedin,
                       :instagram, :pinterest, :tumblr].freeze
 
       SEARCH_ENGINES = [:google, :bing, :yahoo_slurp,
-                        :baiduspider, :duckduckgo].freeze
+                        :baiduspider, :duckduckgo, :ddg].freeze
+
+      BROWSERS = (Core::PATTERNS[:browser].keys + [:ff]).freeze
+
+      OPERATING_SYSTEMS = (Browserino::Mapping.constants(:true).map(&:downcase) + [:osx, :bb, :win]).freeze
 
       def compat?
         invertable ie? && browser_version != browser_version(compat: true)
@@ -58,27 +62,25 @@ module Browserino
       end
 
       def search_engine?(name = nil)
-        if name
-          invertable send("#{name}?")
-        else
-          invertable SEARCH_ENGINES.include?(search_engine_name.to_s.to_sym)
-        end
+        arg = (name.nil? ? search_engine_name : name).to_s.to_sym
+        invertable SEARCH_ENGINES.include?(arg)
       end
 
       def social_media?(name = nil)
-        if name
-          invertable send("#{name}?")
-        else
-          invertable SOCIAL_MEDIA.include?(bot_name.to_s.to_sym)
-        end
+        arg = (name.nil? ? bot_name : name).to_s.to_sym
+        invertable SOCIAL_MEDIA.include?(arg.to_s.to_sym)
       end
 
       def platform?(name = nil, opts = {})
-        invertable name ? send("#{name}?", opts[:version]) : !system_name.nil?
+        arg = (name.nil? ? system_name : name).to_s.to_sym
+        invertable OPERATING_SYSTEMS.include?(arg) &&
+                   (opts[:version].nil? ? true : send("#{name}?", opts[:version]))
       end
 
       def browser?(name = nil, opts = {})
-        invertable name ? send("#{name}?", opts[:version]) : !browser_name.nil?
+        arg = (name.nil? ? browser_name.tr(' ', '_') : name).to_s.to_sym
+        invertable BROWSERS.include?(arg) &&
+                   (opts[:version].nil? ? true : send("#{name}?", opts[:version]))
       end
     end
   end

@@ -1,9 +1,3 @@
-require 'browserino/core/helpers'
-require 'browserino/core/questions'
-require 'browserino/core/lies'
-require 'browserino/core/alias'
-require 'browserino/core/patterns'
-
 require 'browserino/maps/mapping'
 require 'browserino/maps/macintosh'
 require 'browserino/maps/blackberry'
@@ -14,6 +8,12 @@ require 'browserino/maps/solaris'
 require 'browserino/maps/android'
 require 'browserino/maps/windows'
 require 'browserino/maps/windows_phone'
+
+require 'browserino/core/patterns'
+require 'browserino/core/helpers'
+require 'browserino/core/questions'
+require 'browserino/core/lies'
+require 'browserino/core/alias'
 
 require 'browserino/integrate/rails' if defined?(::Rails)
 
