@@ -28,12 +28,12 @@ when 'list', '-l'
     puts '      * operating-systems        - list supported operating systems'
   else
     res = {}
-    res[:bots] = Browserino::Core::PATTERNS[:bot].keys - aliasses if type == :all || type == :bots
-    res[:browsers] = Browserino::Core::PATTERNS[:browser].keys - aliasses if type == :all || type == :browsers
-    res[:consoles] = Browserino::Core::Questions::CONSOLES - aliasses if type == :all || type == :consoles
-    res[:social_media] = Browserino::Core::Questions::SOCIAL_MEDIA  - aliasses if type == :all || type == :social_media
-    res[:search_engines] = Browserino::Core::Questions::SEARCH_ENGINES - aliasses if type == :all || type == :search_engines
-    res[:operating_systems] = Browserino::Mapping.constants(true).map(&:downcase) - aliasses if type == :all || type == :operating_systems
+    res[:bots] = Browserino::Core::SUPPORTED[:bots].keys - aliasses if type == :all || type == :bots
+    res[:browsers] = Browserino::Core::SUPPORTED[:browsers] - aliasses if type == :all || type == :browsers
+    res[:consoles] = Browserino::Core::SUPPORTED[:consoles] - aliasses if type == :all || type == :consoles
+    res[:social_media] = Browserino::Core::SUPPORTED[:social_media]  - aliasses if type == :all || type == :social_media
+    res[:search_engines] = Browserino::Core::SUPPORTED[:search_engines] - aliasses if type == :all || type == :search_engines
+    res[:operating_systems] = Browserino::Core::SUPPORTED[:operating_systems] - aliasses if type == :all || type == :operating_systems
 
     out = res.each_with_object([]) do |(type, supported_names), arr|
       arr << "  \e[1;32;49m#{type.to_s.tr('_', ' ')}:\e[0m"

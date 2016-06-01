@@ -129,6 +129,11 @@ browsers.each do |const|
               it "expects agent.browser?(#{browser_nm}) to be true" do
                 expect(agent.browser?(browser_nm)).to eq true
               end
+              (UserAgents::AGENTS_CATEGORIES - [:browser]).each do |name|
+                it "agent.#{name}_name correctly returns nil if the subject isn't of the right type" do
+                  expect(agent.send("#{name}_name")).to eq nil
+                end
+              end
               if browser_ver
                 it "accepts a browser_name w/ version: agent.#{browser_nm}?(#{browser_ver})" do
                   expect(agent.send("#{browser_nm}?", browser_ver)).to eq true

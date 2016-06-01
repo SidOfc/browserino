@@ -10,6 +10,7 @@ require 'browserino/maps/windows'
 require 'browserino/maps/windows_phone'
 
 require 'browserino/core/patterns'
+require 'browserino/core/supported'
 require 'browserino/core/questions'
 require 'browserino/core/helpers'
 require 'browserino/core/lies'

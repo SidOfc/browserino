@@ -1,20 +1,6 @@
 module Browserino
   module Core
     module Questions
-      SOCIAL_MEDIA = [:facebook, :fb, :twitter, :linkedin,
-                      :instagram, :pinterest, :tumblr].freeze
-
-      SEARCH_ENGINES = [:google, :bing, :yahoo_slurp,
-                        :baiduspider, :duckduckgo, :ddg].freeze
-
-      BROWSERS = (Core::PATTERNS[:browser].keys + [:ff]).freeze
-
-      CONSOLES = [:xbox, :playstation, :nintendo_ds, :wii].freeze
-
-      OPERATING_SYSTEMS = (Browserino::Mapping
-                            .constants(:true)
-                            .map(&:downcase) + [:osx, :bb, :win]).freeze
-
       def compat?
         invertable ie? && browser_version != browser_version(compat: true)
       end
@@ -83,28 +69,28 @@ module Browserino
 
       def console?(name = nil)
         arg = (name.nil? ? console_name : name).to_s.to_sym
-        invertable CONSOLES.include?(arg)
+        invertable Core::SUPPORTED[:consoles].include?(arg)
       end
 
       def search_engine?(name = nil)
         arg = (name.nil? ? search_engine_name : name).to_s.to_sym
-        invertable SEARCH_ENGINES.include?(arg)
+        invertable Core::SUPPORTED[:search_engines].include?(arg)
       end
 
       def social_media?(name = nil)
         arg = (name.nil? ? bot_name : name).to_s.to_sym
-        invertable SOCIAL_MEDIA.include?(arg.to_s.to_sym)
+        invertable Core::SUPPORTED[:social_media].include?(arg.to_s.to_sym)
       end
 
       def platform?(name = nil, opts = {})
         arg = (name.nil? ? system_name : name).to_s.to_sym
-        invertable OPERATING_SYSTEMS.include?(arg) &&
+        invertable Core::SUPPORTED[:operating_systems].include?(arg) &&
                    (opts[:version].nil? ? true : send("#{name}?", opts[:version]))
       end
 
       def browser?(name = nil, opts = {})
         arg = (name.nil? ? browser_name.tr(' ', '_') : name).to_s.to_sym
-        invertable BROWSERS.include?(arg) &&
+        invertable Core::SUPPORTED[:browsers].include?(arg) &&
                    (opts[:version].nil? ? true : send("#{name}?", opts[:version]))
       end
     end

@@ -7,16 +7,12 @@ module Browserino
       @ua = ua
       @not = false
       @info = post_process(info)
+      @name = {}
     end
 
     def name
       @info[:name]
     end
-
-    alias_method :browser_name, :name
-    alias_method :bot_name, :name
-    alias_method :search_engine_name, :name
-    alias_method :social_media_name, :name
 
     def browser_version(opts = {})
       if ie? && engine_version && !opts[:compat]
@@ -84,14 +80,6 @@ module Browserino
       s.uniq.reject { |str| str == '' }.join ' '
     end
 
-    def hash_for_to_s
-      out = to_h.each_with_object({}) do |a, h|
-        h[a[0]] = a[1].to_s.gsub(/[\s_]/, '-')
-      end
-      [:locale, :system_version].each { |k| out.delete(k) }
-      out
-    end
-
     def to_a
       @info.keys.each_with_object([]) { |f, a| a.push([f, send(f)]) }
     end
@@ -112,19 +100,6 @@ module Browserino
 
     def respond_to?(method_sym, *args, &block)
       type_id(method_sym).nil? ? false : true
-    end
-
-    private
-
-    def post_process(h)
-      case h[:name]
-      when 'edge'
-        h[:engine_name] = 'edgehtml'
-        h[:engine_version] = h[:browser_version].to_s.split('.').shift.to_s
-      when 'ie'
-        h[:engine_name] = 'trident'
-      end
-      h
     end
   end
 end
