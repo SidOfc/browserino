@@ -17,10 +17,6 @@ module Browserino
         name_strict(:social_media)
       end
 
-      def console_name
-        name_strict(:consoles)
-      end
-
       private
 
       def post_process(h)
