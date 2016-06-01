@@ -89,6 +89,7 @@ module Browserino
 
     def method_missing(method_sym, *args, &block)
       name = method_sym.to_s.tr('?', '')
+      name = method_sym.to_s.tr('?', '')
       invertable case type_id(method_sym)
                  when :system then correct_system?(name, *args)
                  when :agent then correct_agent?(name, *args)
