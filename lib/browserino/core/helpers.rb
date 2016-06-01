@@ -100,13 +100,9 @@ module Browserino
 
       def type_id(method_sym)
         name = method_sym.to_s.downcase.tr('?', '').to_sym
-        if SUPPORTED[:browsers].concat(SUPPORTED[:bots]).include?(name)
-          :agent
-        elsif SUPPORTED[:operating_systems].include?(name)
-          :system
-        elsif method_sym == :console?
-          :console
-        end
+        return :console if name == :console
+        return :agent if SUPPORTED[:browsers].concat(SUPPORTED[:bots]).include?(name)
+        return :system if SUPPORTED[:operating_systems].include?(name)
       end
 
       def fetch_system_version_name(name)
