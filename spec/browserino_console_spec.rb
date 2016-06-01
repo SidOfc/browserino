@@ -15,7 +15,7 @@ describe 'Browserino console identification' do
         case prop
         when :console_name
           it "Expects agent.#{prop} to be #{val} for #{console.downcase}" do
-            expect(agent.send(prop).downcase).to eq val.downcase
+            expect(agent.send(prop)).to eq val
           end
         when :console?
           it "Expects agent.#{prop} to be #{val} for #{console.downcase}" do

@@ -29,6 +29,7 @@ require 'browserino/console'
 
 # require_relative "../spec/user_agents"
 # require_relative "../spec/user_agents_bots"
+# require_relative "../spec/user_agents_consoles"
 # require_relative "../spec/user_agents_browsers"
 
 module Browserino

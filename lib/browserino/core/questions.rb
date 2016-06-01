@@ -45,22 +45,6 @@ module Browserino
         duckduckgo?(*arg)
       end
 
-      def playstation?
-        invertable console_name == 'playstation'
-      end
-
-      def nintendo_ds?
-        invertable console_name == 'nintendo_ds'
-      end
-
-      def xbox?
-        invertable console_name == 'xbox'
-      end
-
-      def wii?
-        invertable console_name == 'wii'
-      end
-
       def bot?(name = nil)
         is_bot = ua.strip.empty? || !bot_name.nil?
         is_name = name.nil? || name.to_s.downcase.tr('_', ' ') == bot_name

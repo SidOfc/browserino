@@ -35,7 +35,7 @@ module Browserino
       end
 
       def name_strict(cat)
-        @name[cat] ||= name if category? cat
+        name if category? cat
       end
 
       def hash_for_to_s
@@ -89,7 +89,7 @@ module Browserino
       end
 
       def correct_console?(name)
-        SUPPORTED[:consoles].include?(name.to_sym)
+        name == console_name
       end
 
       def category?(cat)
@@ -100,9 +100,10 @@ module Browserino
 
       def type_id(method_sym)
         name = method_sym.to_s.downcase.tr('?', '').to_sym
-        return :console if name == :console
-        return :agent if SUPPORTED[:browsers].concat(SUPPORTED[:bots]).include?(name)
+        return :console if SUPPORTED[:consoles].include?(name)
         return :system if SUPPORTED[:operating_systems].include?(name)
+        return :agent if SUPPORTED[:browsers].concat(SUPPORTED[:bots]).include?(name)
+        nil
       end
 
       def fetch_system_version_name(name)

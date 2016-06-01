@@ -7,7 +7,6 @@ module Browserino
       @ua = ua
       @not = false
       @info = post_process(info)
-      @name = {}
     end
 
     def name
