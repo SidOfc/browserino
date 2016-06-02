@@ -51,6 +51,11 @@ module Browserino
         invertable is_bot && is_name
       end
 
+      def console?(name = nil)
+        arg = (name.nil? ? console_name : name).to_s.to_sym
+        invertable Core::SUPPORTED[:consoles].include?(arg)
+      end
+
       def search_engine?(name = nil)
         arg = (name.nil? ? search_engine_name : name).to_s.to_sym
         invertable Core::SUPPORTED[:search_engines].include?(arg)
