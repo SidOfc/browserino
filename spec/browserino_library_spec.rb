@@ -9,6 +9,14 @@ describe "Browserino Library identification" do
       describe "#{library} - #{ua}" do
         agent = Browserino.parse ua
         lib_name = library.downcase
+        it "Expects agent.#{lib_name}? to be true for #{lib_name}" do
+          expect(agent.send("#{lib_name}?")).to eq true
+        end
+        if (lib_version = agent.library_version)
+          it "Expects agent.#{lib_name}?(#{lib_version}) to be true for #{lib_name}" do
+            expect(agent.send("#{lib_name}?", lib_version)).to eq true
+          end
+        end
         criteria.each do |prop, val|
           if prop == :library?
             it "Expects agent.library? to be true for #{lib_name}" do
@@ -17,7 +25,7 @@ describe "Browserino Library identification" do
             it "Expects agent.library?(#{lib_name}) to be true for #{lib_name}" do
               expect(agent.library?(lib_name)).to eq true
             end
-            if (lib_version = agent.library_version)
+            if lib_version
               it "Expects agent.library?(#{lib_name}, version: #{lib_version}) to be true for #{lib_name}" do
                 expect(agent.library?(lib_name, version: lib_version)).to eq true
               end
