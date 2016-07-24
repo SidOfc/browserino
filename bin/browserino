@@ -25,12 +25,14 @@ when 'list', '-l'
     puts '      * social-media             - list supported social media'
     puts '      * search-engines           - list supported search engines'
     puts '      * consoles                 - list supported consoles'
+    puts '      * libraries                - list supported libraries'
     puts '      * operating-systems        - list supported operating systems'
   else
     res = {}
-    res[:bots] = Browserino::Core::SUPPORTED[:bots].keys - aliasses if type == :all || type == :bots
+    res[:bots] = Browserino::Core::SUPPORTED[:bots] - aliasses if type == :all || type == :bots
     res[:browsers] = Browserino::Core::SUPPORTED[:browsers] - aliasses if type == :all || type == :browsers
     res[:consoles] = Browserino::Core::SUPPORTED[:consoles] - aliasses if type == :all || type == :consoles
+    res[:libraries] = Browserino::Core::SUPPORTED[:libraries] - aliasses if type == :all || type == :libraries
     res[:social_media] = Browserino::Core::SUPPORTED[:social_media]  - aliasses if type == :all || type == :social_media
     res[:search_engines] = Browserino::Core::SUPPORTED[:search_engines] - aliasses if type == :all || type == :search_engines
     res[:operating_systems] = Browserino::Core::SUPPORTED[:operating_systems] - aliasses if type == :all || type == :operating_systems
