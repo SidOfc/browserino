@@ -21,6 +21,14 @@ module Browserino
       end
     end
 
+    def library_version
+      @info[:browser_version]
+    end
+
+    def library_name
+      @info[:name]
+    end
+
     def engine_name
       @info[:engine_name]
     end
@@ -89,11 +97,11 @@ module Browserino
 
     def method_missing(method_sym, *args, &block)
       name = method_sym.to_s.tr('?', '')
-      name = method_sym.to_s.tr('?', '')
       invertable case type_id(method_sym)
-                 when :system then correct_system?(name, *args)
-                 when :agent then correct_agent?(name, *args)
-                 when :console then correct_console?(name, *args)
+                 when :system then correct_system? name, *args
+                 when :agent then correct_agent? name, *args
+                 when :console then correct_console? name
+                 when :library then correct_library? name, *args
                  else super
                  end
     end

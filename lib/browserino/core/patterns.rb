@@ -47,6 +47,11 @@ module Browserino
           version: %r{seamonkey/(?<version>[\d\.]+)}i
         },
 
+        servo: {
+          name: /(?<name>servo)/i,
+          version: %r{servo/(?<version>[\d\.]+)}i
+        },
+
         firefox: {
           name: /(?<name>(?:fire|water)(?:fox|bird)
                  |ice(?:weasel|cat)|netscape|superswan)/xi,
@@ -67,6 +72,33 @@ module Browserino
         safari: {
           name: /(?<name>safari)/i,
           version: %r{(?:version|safari)/(?<version>[\d\.]+)}i
+        }
+      },
+
+      library: {
+        php: {
+          name: /(?<name>php)/i,
+          version: %r{php/(?<version>[\d\.]+)}i
+        },
+        python: {
+          name: /(?<name>python)/i,
+          version: %r{python-urllib/(?<version>[\d\.]+)}i
+        },
+        perl: {
+          name: /(?<name>perl)/i,
+          version: %r{perl/(?<version>[\d\.]+)}i
+        },
+        java: {
+          name: /(?<name>java)/i,
+          version: %r{java/(?<version>[\d\._]+)}i
+        },
+        pycurl: {
+          name: /(?<name>pycurl)/i,
+          version: %r{pycurl/(?<version>[\d\.]+)}i
+        },
+        curl: {
+          name: /(?<name>curl)/i,
+          version: %r{curl/(?<version>[\d\.a-z]+)}i
         }
       },
 

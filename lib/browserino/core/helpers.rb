@@ -38,7 +38,11 @@ module Browserino
         out = to_h.each_with_object({}) do |a, h|
           h[a[0]] = a[1].to_s.gsub(/[\s_]/, '-')
         end
+
         [:locale, :system_version].each { |k| out.delete(k) }
+        out.delete(:browser_version) if out[:name] == ''
+        out.delete(:engine_version) if out[:engine_name] == ''
+
         out
       end
 
@@ -84,6 +88,10 @@ module Browserino
         end
       end
 
+      def correct_library?(name, version = nil)
+        name == library_name && (version.nil? || compare_versions(version, library_version))
+      end
+
       def correct_console?(name)
         name == console_name
       end
@@ -96,9 +104,10 @@ module Browserino
 
       def type_id(method_sym)
         name = method_sym.to_s.downcase.tr('?', '').to_sym
-        return :console if SUPPORTED[:consoles].include?(name)
-        return :system if SUPPORTED[:operating_systems].include?(name)
-        return :agent if SUPPORTED[:browsers].concat(SUPPORTED[:bots]).include?(name)
+        return :library if SUPPORTED[:libraries].include? name
+        return :console if SUPPORTED[:consoles].include? name
+        return :system if SUPPORTED[:operating_systems].include? name
+        return :agent if SUPPORTED[:browsers].concat(SUPPORTED[:bots]).include? name
         nil
       end
 

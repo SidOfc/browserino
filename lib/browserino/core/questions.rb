@@ -53,29 +53,35 @@ module Browserino
 
       def console?(name = nil)
         arg = (name.nil? ? console_name : name).to_s.to_sym
-        invertable Core::SUPPORTED[:consoles].include?(arg)
+        invertable Core::SUPPORTED[:consoles].include? arg
       end
 
       def search_engine?(name = nil)
         arg = (name.nil? ? search_engine_name : name).to_s.to_sym
-        invertable Core::SUPPORTED[:search_engines].include?(arg)
+        invertable Core::SUPPORTED[:search_engines].include? arg
       end
 
       def social_media?(name = nil)
         arg = (name.nil? ? bot_name : name).to_s.to_sym
-        invertable Core::SUPPORTED[:social_media].include?(arg.to_s.to_sym)
+        invertable Core::SUPPORTED[:social_media].include? arg
       end
 
       def platform?(name = nil, opts = {})
         arg = (name.nil? ? system_name : name).to_s.to_sym
         invertable Core::SUPPORTED[:operating_systems].include?(arg) &&
-                   (opts[:version].nil? ? true : send("#{name}?", opts[:version]))
+                   (opts[:version].nil? ? true : send("#{arg}?", opts[:version]))
+      end
+
+      def library?(name = nil, opts = {})
+        arg = (name.nil? ? library_name : name).to_s.to_sym
+        invertable Core::SUPPORTED[:libraries].include?(arg) &&
+                   (opts[:version].nil? ? true : send("#{arg}?", opts[:version]))
       end
 
       def browser?(name = nil, opts = {})
         arg = (name.nil? ? browser_name.tr(' ', '_') : name).to_s.to_sym
         invertable Core::SUPPORTED[:browsers].include?(arg) &&
-                   (opts[:version].nil? ? true : send("#{name}?", opts[:version]))
+                   (opts[:version].nil? ? true : send("#{arg}?", opts[:version]))
       end
     end
   end

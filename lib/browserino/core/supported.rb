@@ -1,6 +1,6 @@
 module Browserino
   module Core
-     SUPPORTED_ALIASSES = {
+    SUPPORTED_ALIASSES = {
        browsers: {firefox: [:ff]},
        social_media: {facebook: [:fb]},
        search_engines: {duckduckgo: [:ddg]},
@@ -8,7 +8,7 @@ module Browserino
        consoles: {},
        operating_systems: {macintosh: [:osx], blackberry: [:bb],
                            windows: [:win]}
-     }
+    }.freeze
 
     SUPPORTED = {
       browsers: (PATTERNS[:browser].keys +
@@ -19,6 +19,7 @@ module Browserino
       search_engines: [:google, :bing, :yahoo_slurp,
                        :baiduspider, :duckduckgo] +
                       SUPPORTED_ALIASSES[:search_engines].values.flatten,
+      libraries: PATTERNS[:library].keys,
       bots: (PATTERNS[:bot].keys + SUPPORTED_ALIASSES[:bots].values.flatten),
       consoles: [:xbox, :playstation, :nintendo_ds, :wii] +
                 SUPPORTED_ALIASSES[:consoles].values.flatten,

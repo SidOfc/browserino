@@ -46,7 +46,7 @@ module Browserino
 
   def fetch_info(ua, name)
     { name: name,
-      browser_version: Browser.version(ua, Core::PATTERNS[:browser][name]),
+      browser_version: Browser.version(ua, name),
       engine_name: Engine.name(ua),
       engine_version: Engine.version(ua),
       system_name: OperatingSystem.name(ua),

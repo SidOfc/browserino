@@ -3,6 +3,7 @@ module Browserino
     def self.name(ua)
       name = nil
       patterns = Core::PATTERNS[:browser].merge(Core::PATTERNS[:bot])
+                                         .merge(Core::PATTERNS[:library])
       agents = patterns.keys
 
       until agents.empty? || !name.nil?
@@ -13,7 +14,8 @@ module Browserino
       name
     end
 
-    def self.version(ua, patterns)
+    def self.version(ua, name)
+      patterns = Core::PATTERNS[:browser][name] || Core::PATTERNS[:library][name]
       if patterns
         Browserino.extract_match(ua.match(patterns[:version]), :version) do |v|
           v.tr('_', '.')
