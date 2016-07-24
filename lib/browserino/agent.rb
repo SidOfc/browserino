@@ -22,7 +22,7 @@ module Browserino
     end
 
     def library_version
-      @info[:browser_version]
+      @info[:library_version]
     end
 
     def library_name
@@ -76,15 +76,18 @@ module Browserino
 
     def to_s(sep = '')
       prev = ''
-      s = hash_for_to_s.each_with_object([]) do |v, a|
+      props = hash_for_to_s
+      res = props.each_with_object([]) do |v, a|
         a << case v[0]
              when :browser_version, :engine_version
                prev + sep + (v[1].split('.').first || '')
+             when :library_version
+               props[:name] + sep + (v[1].split('.').first || '')
              else v[1]
              end
         prev = v[1]
       end
-      s.uniq.reject { |str| str == '' }.join ' '
+      res.uniq.reject { |str| str == '' }.join ' '
     end
 
     def to_a

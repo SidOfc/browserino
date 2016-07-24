@@ -20,12 +20,16 @@ module Browserino
       private
 
       def post_process(h)
-        case h[:name]
-        when 'edge'
+        h[:library_version] = nil
+        case h[:name].to_s.to_sym
+        when :edge
           h[:engine_name] = 'edgehtml'
           h[:engine_version] = h[:browser_version].to_s.split('.').shift.to_s
-        when 'ie'
+        when :ie
           h[:engine_name] = 'trident'
+        when *SUPPORTED[:libraries]
+          h[:library_version] = h[:browser_version].dup
+          h[:browser_version] = nil
         end
         h
       end
