@@ -583,6 +583,7 @@ agent.library? :curl, version: 7.21
 
 * `chrome`
 * `firefox` or `ff`
+* `servo`
 * `seamonkey`
 * `opera`
 * `opera_mini`
