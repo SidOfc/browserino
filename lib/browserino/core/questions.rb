@@ -1,20 +1,6 @@
 module Browserino
   module Core
     module Questions
-      SOCIAL_MEDIA = [:facebook, :fb, :twitter, :linkedin,
-                      :instagram, :pinterest, :tumblr].freeze
-
-      SEARCH_ENGINES = [:google, :bing, :yahoo_slurp,
-                        :baiduspider, :duckduckgo, :ddg].freeze
-
-      BROWSERS = (Core::PATTERNS[:browser].keys + [:ff]).freeze
-
-      CONSOLES = [:xbox, :playstation, :nintendo_ds, :wii].freeze
-
-      OPERATING_SYSTEMS = (Browserino::Mapping
-                            .constants(:true)
-                            .map(&:downcase) + [:osx, :bb, :win]).freeze
-
       def compat?
         invertable ie? && browser_version != browser_version(compat: true)
       end
@@ -59,22 +45,6 @@ module Browserino
         duckduckgo?(*arg)
       end
 
-      def playstation?
-        invertable console_name == 'playstation'
-      end
-
-      def nintendo_ds?
-        invertable console_name == 'nintendo_ds'
-      end
-
-      def xbox?
-        invertable console_name == 'xbox'
-      end
-
-      def wii?
-        invertable console_name == 'wii'
-      end
-
       def bot?(name = nil)
         is_bot = ua.strip.empty? || !bot_name.nil?
         is_name = name.nil? || name.to_s.downcase.tr('_', ' ') == bot_name
@@ -83,29 +53,35 @@ module Browserino
 
       def console?(name = nil)
         arg = (name.nil? ? console_name : name).to_s.to_sym
-        invertable CONSOLES.include?(arg)
+        invertable Core::SUPPORTED[:consoles].include? arg
       end
 
       def search_engine?(name = nil)
         arg = (name.nil? ? search_engine_name : name).to_s.to_sym
-        invertable SEARCH_ENGINES.include?(arg)
+        invertable Core::SUPPORTED[:search_engines].include? arg
       end
 
       def social_media?(name = nil)
         arg = (name.nil? ? bot_name : name).to_s.to_sym
-        invertable SOCIAL_MEDIA.include?(arg.to_s.to_sym)
+        invertable Core::SUPPORTED[:social_media].include? arg
       end
 
       def platform?(name = nil, opts = {})
         arg = (name.nil? ? system_name : name).to_s.to_sym
-        invertable OPERATING_SYSTEMS.include?(arg) &&
-                   (opts[:version].nil? ? true : send("#{name}?", opts[:version]))
+        invertable Core::SUPPORTED[:operating_systems].include?(arg) &&
+                   (opts[:version].nil? ? true : send("#{arg}?", opts[:version]))
+      end
+
+      def library?(name = nil, opts = {})
+        arg = (name.nil? ? library_name : name).to_s.to_sym
+        invertable Core::SUPPORTED[:libraries].include?(arg) &&
+                   (opts[:version].nil? ? true : send("#{arg}?", opts[:version]))
       end
 
       def browser?(name = nil, opts = {})
         arg = (name.nil? ? browser_name.tr(' ', '_') : name).to_s.to_sym
-        invertable BROWSERS.include?(arg) &&
-                   (opts[:version].nil? ? true : send("#{name}?", opts[:version]))
+        invertable Core::SUPPORTED[:browsers].include?(arg) &&
+                   (opts[:version].nil? ? true : send("#{arg}?", opts[:version]))
       end
     end
   end

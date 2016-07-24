@@ -653,6 +653,25 @@ module UserAgents
         }
       }
     }
+    SERVO = {
+      android: {
+        'Mozilla/5.0 (Android; Mobile; rv:37.0) Servo/1.0 Firefox/37.0' => {
+          name: 'Servo',
+          browser_version: '1.0',
+          engine_name: USE_FOR_UNKNOWN,
+          engine_version: '37.0',
+          system_name: ['android', USE_FOR_UNKNOWN],
+          system_version: USE_FOR_UNKNOWN,
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: USE_FOR_UNKNOWN,
+          x64?: false,
+          x32?: false,
+          mobile?: true,
+          known?: true,
+          to_s: 'servo servo1 android'
+        }
+      }
+    }
     FIREFOX = {
       mac: {
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:43.0) Gecko/20100101 Firefox/43.0' => {

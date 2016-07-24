@@ -21,6 +21,20 @@ Useragent references:
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 
+#### 24-07-2016 VERSION 2.10.0
+
+- Added support for the servo browser:
+  - Added `servo?` method
+
+- Added detection for various programming languages:
+  - Added `library?` method
+  - Added `php?` method
+  - Added `perl?` method
+  - Added `python?` method
+  - Added `java` method
+  - Added `curl` method
+  - Added `pycurl` method
+
 #### 29-05-2016 VERSION 2.9.0
 
 - Stricter checking for:
@@ -29,8 +43,8 @@ _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
   * `browser?`
   * `platform?`
 
-  These functions used to be callable with unrelated symbols
-  (e.g `agent.platform?(:firefox) # => true`). This is now also filtered.
+  These methods used to be callable with unrelated symbols
+  (e.g `agent.platform?(:firefox) # => true`), they will now correctly return false.
 - Added support for consoles
   * Added `console?` method
   * Added `wii?`, `playstation?`, `xbox?` and `nintendo_ds?` methods
@@ -43,15 +57,6 @@ _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 #### 27-05-2016 VERSION 2.8.2
 
 - Removed Guard gem dependency
-
-#### 26-05-2016 VERSION 2.8.0
-
-- Added `search_engine?` method
-- Added `holmes?` method
-- Added `ask?` method
-- Added `duckduckgo?` and alias `ddg?` methods
-- Fixed `respond_to?` method signature
-- Added executable for parsing useragents in terminal
 
 ## Installation
 
@@ -204,6 +209,12 @@ agent.browser_version
 agent.browser_version compat: true
 # => '11.0'
 
+agent.library_name
+# => nil
+
+agent.library_version
+# => nil
+
 agent.engine_name
 # => 'trident'
 
@@ -256,6 +267,15 @@ agent.browser? :ie
 
 # returns true if specific browser and version
 agent.browser? :ie, version: '11.0'
+
+# returns true if library is known
+agent.library?
+
+# returns true if specific library
+agent.library? :php
+
+# returns true if specific library and version
+agent.library? :php, version: '5.9.0'
 
 # returns true if there is a social media bot on your website
 agent.social_media?
@@ -420,9 +440,9 @@ agent.platform? :android, version: :jelly_bean_16
 # => true
 ```
 
-##### `platform?`, `browser?`, `bot?`, `console?`, `search_engine?` and `social_media?` methods
+##### `platform?`, `browser?`, `bot?`, `console?`, `search_engine?`, `library` and `social_media?` methods
 
-As you've seen above, the `platform?` function can take two arguments, a symbol with the system name and optionally a hash with a `:version` key to supply a version, the `browser?` method works in exactly the same way.
+As you've seen above, the `platform?` function can take two arguments, a symbol with the system name and optionally a hash with a `:version` key to supply a version, the `browser?` and `library?` method works in exactly the same way.
 
 The `bot?` and `social_media?` methods however aren't that complex since you don't need to know a bot / social media version or anything other than it's name so inside these methods, only a name can be passed:
 
@@ -448,7 +468,7 @@ agent.bot? :facebook, version: 1.1
 # => ArgumentError
 ```
 
-##### Checking a specific browser, system, bot or social media
+##### Checking a specific browser, system, bot, library or social media
 
 Every name you see in the below lists can be passed as symbol or string to their respective method
 
@@ -535,6 +555,28 @@ agent.exa?
 # using the bot? method
 agent.bot? :google
 agent.bot? :exa
+```
+
+**library**
+
+* `php`
+* `perl`
+* `curl`
+* `python`
+* `java`
+* `pycurl`
+
+Examples:
+
+```ruby
+agent.php?
+agent.pycurl?
+
+agent.library?
+
+agent.library? :curl
+
+agent.library? :curl, version: 7.21
 ```
 
 **browser**

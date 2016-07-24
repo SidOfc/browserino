@@ -13,17 +13,20 @@ module Browserino
       @info[:name]
     end
 
-    alias_method :browser_name, :name
-    alias_method :bot_name, :name
-    alias_method :search_engine_name, :name
-    alias_method :social_media_name, :name
-
     def browser_version(opts = {})
       if ie? && engine_version && !opts[:compat]
         (engine_version.to_f + 4.0).to_s
       else
         @info[:browser_version]
       end
+    end
+
+    def library_version
+      @info[:library_version]
+    end
+
+    def library_name
+      @info[:name]
     end
 
     def engine_name
@@ -73,23 +76,18 @@ module Browserino
 
     def to_s(sep = '')
       prev = ''
-      s = hash_for_to_s.each_with_object([]) do |v, a|
+      props = hash_for_to_s
+      res = props.each_with_object([]) do |v, a|
         a << case v[0]
              when :browser_version, :engine_version
                prev + sep + (v[1].split('.').first || '')
+             when :library_version
+               props[:name] + sep + (v[1].split('.').first || '')
              else v[1]
              end
         prev = v[1]
       end
-      s.uniq.reject { |str| str == '' }.join ' '
-    end
-
-    def hash_for_to_s
-      out = to_h.each_with_object({}) do |a, h|
-        h[a[0]] = a[1].to_s.gsub(/[\s_]/, '-')
-      end
-      [:locale, :system_version].each { |k| out.delete(k) }
-      out
+      res.uniq.reject { |str| str == '' }.join ' '
     end
 
     def to_a
@@ -103,28 +101,16 @@ module Browserino
     def method_missing(method_sym, *args, &block)
       name = method_sym.to_s.tr('?', '')
       invertable case type_id(method_sym)
-                 when :system then correct_system?(name, *args)
-                 when :agent then correct_agent?(name, *args)
-                 when :console then correct_console?(name, *args)
+                 when :system then correct_system? name, *args
+                 when :agent then correct_agent? name, *args
+                 when :console then correct_console? name
+                 when :library then correct_library? name, *args
                  else super
                  end
     end
 
     def respond_to?(method_sym, *args, &block)
       type_id(method_sym).nil? ? false : true
-    end
-
-    private
-
-    def post_process(h)
-      case h[:name]
-      when 'edge'
-        h[:engine_name] = 'edgehtml'
-        h[:engine_version] = h[:browser_version].to_s.split('.').shift.to_s
-      when 'ie'
-        h[:engine_name] = 'trident'
-      end
-      h
     end
   end
 end

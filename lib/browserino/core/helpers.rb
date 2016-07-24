@@ -1,7 +1,54 @@
 module Browserino
   module Core
     module Helpers
+      def browser_name
+        name_strict(:browsers)
+      end
+
+      def bot_name
+        name_strict(:bots)
+      end
+
+      def search_engine_name
+        name_strict(:search_engines)
+      end
+
+      def social_media_name
+        name_strict(:social_media)
+      end
+
       private
+
+      def post_process(h)
+        h[:library_version] = nil
+        case h[:name].to_s.to_sym
+        when :edge
+          h[:engine_name] = 'edgehtml'
+          h[:engine_version] = h[:browser_version].to_s.split('.').shift.to_s
+        when :ie
+          h[:engine_name] = 'trident'
+        when *SUPPORTED[:libraries]
+          h[:library_version] = h[:browser_version].dup
+          h[:browser_version] = nil
+        end
+        h
+      end
+
+      def name_strict(cat)
+        name if category? cat
+      end
+
+      def hash_for_to_s
+        out = to_h.each_with_object({}) do |a, h|
+          h[a[0]] = a[1].to_s.gsub(/[\s_]/, '-')
+        end
+
+        [:locale, :system_version].each { |k| out.delete(k) }
+        out.delete(:browser_version) if out[:name] == ''
+        out.delete(:engine_version) if out[:engine_name] == ''
+
+        out
+      end
 
       def invertable(res)
         if @not
@@ -45,25 +92,32 @@ module Browserino
         end
       end
 
+      def correct_library?(name, version = nil)
+        name == library_name && (version.nil? || compare_versions(version, library_version))
+      end
+
       def correct_console?(name)
-        Core::Questions::CONSOLES.include?(name.to_sym)
+        name == console_name
+      end
+
+      def category?(cat)
+        n = name.to_s.gsub(/[\s-]/, '_').to_sym
+        SUPPORTED.each { |t, s| return true if s.include?(n) && t == cat }
+        nil
       end
 
       def type_id(method_sym)
-        name = method_sym.to_s.tr('?', '')
-        supported = Core::PATTERNS[:browser].merge(Core::PATTERNS[:bot]).keys
-        if supported.include?(name.to_sym)
-          :agent
-        elsif Mapping.const?(name.upcase.to_sym)
-          :system
-        elsif name == 'console'
-          :console
-        end
+        name = method_sym.to_s.downcase.tr('?', '').to_sym
+        return :library if SUPPORTED[:libraries].include? name
+        return :console if SUPPORTED[:consoles].include? name
+        return :system if SUPPORTED[:operating_systems].include? name
+        return :agent if SUPPORTED[:browsers].concat(SUPPORTED[:bots]).include? name
+        nil
       end
 
       def fetch_system_version_name(name)
-        const = to_const_sym(name)
-        version = parse_system_version(const)
+        const = name.to_s.tr(' ', '_').upcase.to_sym
+        version = internal_sys_version(const)
         if version && Mapping.const?(const)
           res = Mapping.const_get(const)
                        .select { |_, v| true if v.include?(version) }.keys.first
@@ -71,7 +125,7 @@ module Browserino
         end
       end
 
-      def parse_system_version(name)
+      def internal_sys_version(name)
         if system_version
           if name =~ /mac|blackberry/i
             system_version.split('.').first(2).join.to_i
@@ -81,10 +135,6 @@ module Browserino
             system_version.to_i
           end
         end
-      end
-
-      def to_const_sym(s)
-        s.to_s.tr(' ', '_').upcase.to_sym
       end
     end
   end

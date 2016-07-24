@@ -3,6 +3,58 @@
 require 'bundler/setup'
 require 'browserino'
 
+aliasses = [:fb, :ddg, :ff, :win, :osx, :bb]
+
 case ARGV[0]
-when 'parse' then puts Browserino.parse(ARGV[1] || '').to_console_s
+when 'parse', '-p'
+  if ARGV[1]
+    puts Browserino.parse(ARGV[1]).to_console_s
+  else
+    puts '  Usage: browserino parse [ua]'
+    puts '    * ua: the user agent string you want to parse'
+  end
+when 'list', '-l'
+  ARGV[1] ||= 'info'
+  type = (ARGV[1].to_s.gsub(/[\s\-]/, '_')).to_sym
+  if type == :info
+    puts '  Usage: browserino list [subject]'
+    puts '    * subject: the type you want to display'
+    puts '      * all                      - list everything that is supported'
+    puts '      * bots                     - list supported bots'
+    puts '      * browsers                 - list supported browsers'
+    puts '      * social-media             - list supported social media'
+    puts '      * search-engines           - list supported search engines'
+    puts '      * consoles                 - list supported consoles'
+    puts '      * libraries                - list supported libraries'
+    puts '      * operating-systems        - list supported operating systems'
+  else
+    res = {}
+    res[:bots] = Browserino::Core::SUPPORTED[:bots] - aliasses if type == :all || type == :bots
+    res[:browsers] = Browserino::Core::SUPPORTED[:browsers] - aliasses if type == :all || type == :browsers
+    res[:consoles] = Browserino::Core::SUPPORTED[:consoles] - aliasses if type == :all || type == :consoles
+    res[:libraries] = Browserino::Core::SUPPORTED[:libraries] - aliasses if type == :all || type == :libraries
+    res[:social_media] = Browserino::Core::SUPPORTED[:social_media]  - aliasses if type == :all || type == :social_media
+    res[:search_engines] = Browserino::Core::SUPPORTED[:search_engines] - aliasses if type == :all || type == :search_engines
+    res[:operating_systems] = Browserino::Core::SUPPORTED[:operating_systems] - aliasses if type == :all || type == :operating_systems
+
+    out = res.each_with_object([]) do |(type, supported_names), arr|
+      arr << "  \e[1;32;49m#{type.to_s.tr('_', ' ')}:\e[0m"
+      supported_names.each { |name| arr << "    \e[1;95;49m- #{name}\e[0m" }
+    end
+    puts out
+  end
+when 'console', '-c'
+  require 'pry'
+  puts "Starting Browserino #{Browserino::VERSION} on Ruby #{RUBY_VERSION}"
+  Pry.start
+
+else
+  puts '  Usage: browserino [command] [args]'
+  puts "\n"
+  puts '    Calling browserino with anything other than these options will show this help'
+  puts '    Entering a [command] without [args] will show help for that command if it requires [args]'
+  puts "\n"
+  puts '    * parse     or -p              - parse a user agent'
+  puts '    * list      or -l              - list supported entities'
+  puts '    * console   or -c              - enter a console'
 end

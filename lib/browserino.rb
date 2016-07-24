@@ -10,6 +10,7 @@ require 'browserino/maps/windows'
 require 'browserino/maps/windows_phone'
 
 require 'browserino/core/patterns'
+require 'browserino/core/supported'
 require 'browserino/core/questions'
 require 'browserino/core/helpers'
 require 'browserino/core/lies'
@@ -28,6 +29,7 @@ require 'browserino/console'
 
 # require_relative "../spec/user_agents"
 # require_relative "../spec/user_agents_bots"
+# require_relative "../spec/user_agents_consoles"
 # require_relative "../spec/user_agents_browsers"
 
 module Browserino
@@ -44,7 +46,7 @@ module Browserino
 
   def fetch_info(ua, name)
     { name: name,
-      browser_version: Browser.version(ua, Core::PATTERNS[:browser][name]),
+      browser_version: Browser.version(ua, name),
       engine_name: Engine.name(ua),
       engine_version: Engine.version(ua),
       system_name: OperatingSystem.name(ua),

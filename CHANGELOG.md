@@ -1,6 +1,15 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_
 
+#### 26-05-2016 VERSION 2.8.0
+
+- Added `search_engine?` method
+- Added `holmes?` method
+- Added `ask?` method
+- Added `duckduckgo?` and alias `ddg?` methods
+- Fixed `respond_to?` method signature
+- Added executable for parsing useragents in terminal
+
 #### 02-03-2016 VERSION 2.7.0
 
 - Added `solaris?` method
