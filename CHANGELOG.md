@@ -1,6 +1,10 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_
 
+#### 27-05-2016 VERSION 2.8.2
+
+- Removed Guard gem dependency
+
 #### 26-05-2016 VERSION 2.8.0
 
 - Added `search_engine?` method

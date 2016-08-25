@@ -21,6 +21,11 @@ Useragent references:
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 
+#### 25-08-2016 VERSION 2.10.1
+
+- Replaced `require` with `require_relative` where possible
+- Fixed cli not loading due to failing `require`
+
 #### 24-07-2016 VERSION 2.10.0
 
 - Added support for the servo browser:
@@ -53,10 +58,6 @@ _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 - removed `:bot_name` from data structure (now stored in a general `name` property)
 - removed `:browser_name` from data structure (now stored in a general `name` property)
 - Added `console_name` method to get the name of a console
-
-#### 27-05-2016 VERSION 2.8.2
-
-- Removed Guard gem dependency
 
 ## Installation
 
