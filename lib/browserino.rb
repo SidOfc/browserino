@@ -1,36 +1,31 @@
-require 'browserino/maps/mapping'
-require 'browserino/maps/macintosh'
-require 'browserino/maps/blackberry'
-require 'browserino/maps/ios'
-require 'browserino/maps/bsd'
-require 'browserino/maps/linux'
-require 'browserino/maps/solaris'
-require 'browserino/maps/android'
-require 'browserino/maps/windows'
-require 'browserino/maps/windows_phone'
+require_relative 'browserino/maps/mapping'
+require_relative 'browserino/maps/macintosh'
+require_relative 'browserino/maps/blackberry'
+require_relative 'browserino/maps/ios'
+require_relative 'browserino/maps/bsd'
+require_relative 'browserino/maps/linux'
+require_relative 'browserino/maps/solaris'
+require_relative 'browserino/maps/android'
+require_relative 'browserino/maps/windows'
+require_relative 'browserino/maps/windows_phone'
 
-require 'browserino/core/patterns'
-require 'browserino/core/supported'
-require 'browserino/core/questions'
-require 'browserino/core/helpers'
-require 'browserino/core/lies'
-require 'browserino/core/alias'
+require_relative 'browserino/core/patterns'
+require_relative 'browserino/core/supported'
+require_relative 'browserino/core/questions'
+require_relative 'browserino/core/helpers'
+require_relative 'browserino/core/lies'
+require_relative 'browserino/core/alias'
 
-require 'browserino/integrate/rails' if defined?(::Rails)
+require_relative 'browserino/integrate/rails' if defined?(::Rails)
 
-require 'browserino/unknown'
-require 'browserino/agent'
+require_relative 'browserino/unknown'
+require_relative 'browserino/agent'
 
-require 'browserino/version'
-require 'browserino/browser'
-require 'browserino/engine'
-require 'browserino/operating_system'
-require 'browserino/console'
-
-# require_relative "../spec/user_agents"
-# require_relative "../spec/user_agents_bots"
-# require_relative "../spec/user_agents_consoles"
-# require_relative "../spec/user_agents_browsers"
+require_relative 'browserino/version'
+require_relative 'browserino/browser'
+require_relative 'browserino/engine'
+require_relative 'browserino/operating_system'
+require_relative 'browserino/console'
 
 module Browserino
   module_function
