@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Browserino by SidOfc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Browserino</h1>
+      <h2 class="project-tagline">A ruby browser (dare I say) sniffer</h2>
+      <a href="https://github.com/SidOfc/browserino" class="btn">View on GitHub</a>
+      <a href="https://github.com/SidOfc/browserino/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/SidOfc/browserino/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="browserino" class="anchor" href="#browserino" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Browserino</h1>
+
+<p>A UserAgent sniffer with Rails &gt;= 3.2.0 integration.
+The sniffer can currently identify 22 bots (of which 6 social media and 5 search engines), 14 browsers, 9 operating systems, 6 programming language UA's and 4 consoles.</p>
+
+<h2>
+<a id="status" class="anchor" href="#status" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Status</h2>
+
+<p><a href="http://badge.fury.io/rb/browserino"><img src="https://badge.fury.io/rb/browserino.svg" alt="Gem Version"></a>
+<a href="https://travis-ci.org/SidOfc/browserino"><img src="https://travis-ci.org/SidOfc/browserino.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/github/SidOfc/browserino?branch=master"><img src="https://coveralls.io/repos/SidOfc/browserino/badge.svg?branch=master&amp;service=github" alt="Coverage Status"></a></p>
+
+<hr>
+
+<p>Useragent references:</p>
+
+<ul>
+<li><a href="http://useragentstring.com/">http://useragentstring.com/</a></li>
+<li><a href="http://www.zytrax.com/tech/web/mobile_ids.html">http://www.zytrax.com/tech/web/mobile_ids.html</a></li>
+<li><a href="http://www.user-agents.org/">http://www.user-agents.org/</a></li>
+</ul>
+
+<h2>
+<a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Changelog</h2>
+
+<p><em>dates are in dd-mm-yyyy format</em><br>
+<em>older changes can be found in the <a href="CHANGELOG.md">CHANGELOG.md</a></em></p>
+
+<h4>
+<a id="19-10-2016-version-21011" class="anchor" href="#19-10-2016-version-21011" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>19-10-2016 VERSION 2.10.1.1</h4>
+
+<ul>
+<li>Test on ruby 2.3.1</li>
+<li>Fix missing questionmarks on method names in the README.</li>
+<li>Change gem homepage to io domain</li>
+</ul>
+
+<h4>
+<a id="25-08-2016-version-2101" class="anchor" href="#25-08-2016-version-2101" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>25-08-2016 VERSION 2.10.1</h4>
+
+<ul>
+<li>Replaced <code>require</code> with <code>require_relative</code> where possible</li>
+<li>Fixed cli not loading due to failing <code>require</code>
+</li>
+</ul>
+
+<h4>
+<a id="24-07-2016-version-2100" class="anchor" href="#24-07-2016-version-2100" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>24-07-2016 VERSION 2.10.0</h4>
+
+<ul>
+<li>
+<p>Added support for the servo browser:</p>
+
+<ul>
+<li>Added <code>servo?</code> method</li>
+</ul>
+</li>
+<li>
+<p>Added detection for various programming languages:</p>
+
+<ul>
+<li>Added <code>library?</code> method</li>
+<li>Added <code>php?</code> method</li>
+<li>Added <code>perl?</code> method</li>
+<li>Added <code>python?</code> method</li>
+<li>Added <code>java?</code> method</li>
+<li>Added <code>curl?</code> method</li>
+<li>Added <code>pycurl?</code> method</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add the following to your applications Gemfile:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">gem</span> <span class="pl-s"><span class="pl-pds">'</span>browserino<span class="pl-pds">'</span></span></pre></div>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself with:</p>
+
+<pre><code>$ gem install browserino
+</code></pre>
+
+<p>Browserino is tested with the following ruby versions</p>
+
+<ul>
+<li>1.9.3</li>
+<li>2.0.0</li>
+<li>2.1.0</li>
+<li>2.2.1</li>
+<li>2.3.0</li>
+<li>2.3.1</li>
+</ul>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>After installing the gem globally or in your application you'll have to <code>require</code> the gem before being able to use it.</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">require</span> <span class="pl-s"><span class="pl-pds">'</span>browserino<span class="pl-pds">'</span></span></pre></div>
+
+<p>Afterwards, the gem is loaded and you can proceed by calling:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-c1">Browserino</span>.parse <span class="pl-s"><span class="pl-pds">'</span>&lt;user agent&gt;<span class="pl-pds">'</span></span></pre></div>
+
+<p>Browserino is also usable in the command line</p>
+
+<pre><code>~$ browserino parse &lt;ua&gt;
+</code></pre>
+
+<p>Output</p>
+
+<pre><code>name: chrome, browser_version: 50.0.2661.102, engine_name: webkit, engine_version: 537.36, system_name: macintosh, system_architecture: nil
+</code></pre>
+
+<h3>
+<a id="rails--320" class="anchor" href="#rails--320" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Rails (&gt;= 3.2.0)</h3>
+
+<p>If you're using Rails (&gt;= 3.2.0) you'll have access to an <code>agent</code> object. Browserino will initialize itself using the <code>request.headers['User-Agent']</code></p>
+
+<p>A quick example on how to get going:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">class</span> <span class="pl-en">ApplicationController<span class="pl-e"> &lt; ActionController::Base</span></span>
+  <span class="pl-k">def</span> <span class="pl-en">some_method</span>
+    render <span class="pl-c1">json:</span> agent
+  <span class="pl-k">end</span>
+<span class="pl-k">end</span></pre></div>
+
+<h3>
+<a id="general" class="anchor" href="#general" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>General</h3>
+
+<p>the <code>parse</code> method will <strong>always</strong> return a <code>Browserino::Agent</code> object.</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-c1">Browserino</span>.parse <span class="pl-s"><span class="pl-pds">'</span>&lt;user agent&gt;<span class="pl-pds">'</span></span> <span class="pl-c"># =&gt; #&lt;Browserino::Agent:0x007f9b09b1fae8 ... &gt;</span></pre></div>
+
+<h3>
+<a id="default-return-values" class="anchor" href="#default-return-values" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default return values</h3>
+
+<p>If a property isn't available or not known to Browserino it's return value will always be <code>nil</code>, this can be tested by supplying an empty string (<code>''</code>) to <code>parse</code>:</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent <span class="pl-k">=</span> <span class="pl-c1">Browserino</span>.parse <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
+agent.name
+<span class="pl-c"># =&gt; nil</span></pre></div>
+
+<p>If a value <em>is</em> found then you'll recieve a <em>lowercase string</em> containing the information:</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent <span class="pl-k">=</span> <span class="pl-c1">Browserino</span>.parse <span class="pl-s"><span class="pl-pds">'</span>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) brave/0.7.7 Chrome/47.0.2526.73 Electron/0.36.2 Safari/537.36<span class="pl-pds">'</span></span>
+
+agent.name
+<span class="pl-c"># =&gt; 'brave'</span>
+
+<span class="pl-c"># or using browser_name</span>
+
+agent.browser_name
+<span class="pl-c"># =&gt; 'brave'</span>
+
+agent.browser_version
+<span class="pl-c"># =&gt; '0.7.7'</span>
+
+agent.engine_name
+<span class="pl-c"># =&gt; 'webkit'</span></pre></div>
+
+<p>Browserino also has some question methods, these will always return either <code>true</code> or <code>false</code>. The exceptions to this rule are methods that can take a name, for instance the <code>bot?</code> method:</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent <span class="pl-k">=</span> <span class="pl-c1">Browserino</span>.parse <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
+agent.bot?
+<span class="pl-c"># =&gt; true (empty UA's count as anonymous bots)</span>
+
+agent.googlebot?
+<span class="pl-c"># =&gt; false</span>
+
+agent.non_supported_bot?
+<span class="pl-c"># =&gt; NoMethodError</span>
+
+agent.bot? <span class="pl-c1">:non_supported_bot</span>
+<span class="pl-c"># =&gt; NoMethodError</span></pre></div>
+
+<h3>
+<a id="functions" class="anchor" href="#functions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Functions</h3>
+
+<p>The samples below are all valid calls with their respective outputs, using the <code>agent</code> defined below.</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent <span class="pl-k">=</span> <span class="pl-c1">Browserino</span>.parse <span class="pl-s"><span class="pl-pds">'</span>Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko<span class="pl-pds">'</span></span></pre></div>
+
+<h4>
+<a id="note" class="anchor" href="#note" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Note</h4>
+
+<p>The methods <code>social_media_name</code>, <code>search_engine_name</code>, <code>bot_name</code> and <code>browser_name</code>
+are <em>all</em> aliasses of the general <code>name</code> method.</p>
+
+<p>The exceptions to this rule are <code>system_name</code> and <code>console_name</code>. They each have their own method.</p>
+
+<h5>
+<a id="quick-usage" class="anchor" href="#quick-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Quick usage</h5>
+
+<div class="highlight highlight-source-ruby"><pre>agent.name
+<span class="pl-c"># =&gt; 'ie'</span>
+
+<span class="pl-c"># always returns real version, also when IE is in compat</span>
+agent.browser_version
+<span class="pl-c"># =&gt; '11.0'</span>
+
+<span class="pl-c"># to get the compat version that IE is running in</span>
+<span class="pl-c"># returns real version if not in compat mode</span>
+agent.browser_version <span class="pl-c1">compat:</span> <span class="pl-c1">true</span>
+<span class="pl-c"># =&gt; '11.0'</span>
+
+agent.library_name
+<span class="pl-c"># =&gt; nil</span>
+
+agent.library_version
+<span class="pl-c"># =&gt; nil</span>
+
+agent.engine_name
+<span class="pl-c"># =&gt; 'trident'</span>
+
+agent.engine_version
+<span class="pl-c"># =&gt; '7.0'</span>
+
+agent.system_name
+<span class="pl-c"># =&gt; 'windows'</span>
+
+<span class="pl-c"># system_name attempts to find the operating systems version name</span>
+<span class="pl-c"># when full: true is used</span>
+<span class="pl-c"># returning an array with either the version name or nil if not found</span>
+agent.system_name <span class="pl-c1">full:</span> <span class="pl-c1">true</span>
+<span class="pl-c"># =&gt; ['windows', '7']</span>
+
+agent.system_version
+<span class="pl-c"># =&gt; '6.1'</span>
+
+agent.system_architecture
+<span class="pl-c"># =&gt; 'x64'</span>
+
+agent.console_name
+<span class="pl-c"># =&gt; nil</span>
+
+<span class="pl-c"># two formats possible: 'aa' or `aa-bb`</span>
+agent.locale
+<span class="pl-c"># =&gt; 'as'</span></pre></div>
+
+<h5>
+<a id="question-methods" class="anchor" href="#question-methods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Question methods</h5>
+
+<p>Browserino also provides some question methods.</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-c"># only for Internet Explorer</span>
+agent.compat?
+<span class="pl-c"># =&gt; false</span>
+
+<span class="pl-c"># returns true if name is present</span>
+agent.known?
+<span class="pl-c"># =&gt; true</span>
+
+<span class="pl-c"># returns true if browser is known</span>
+agent.browser?
+<span class="pl-c"># =&gt; true</span>
+
+<span class="pl-c"># returns true if specific browser</span>
+agent.browser? <span class="pl-c1">:ie</span>
+<span class="pl-c"># =&gt; true</span>
+
+<span class="pl-c"># returns true if specific browser and version</span>
+agent.browser? <span class="pl-c1">:ie</span>, <span class="pl-c1">version:</span> <span class="pl-s"><span class="pl-pds">'</span>11.0<span class="pl-pds">'</span></span>
+
+<span class="pl-c"># returns true if library is known</span>
+agent.library?
+
+<span class="pl-c"># returns true if specific library</span>
+agent.library? <span class="pl-c1">:php</span>
+
+<span class="pl-c"># returns true if specific library and version</span>
+agent.library? <span class="pl-c1">:php</span>, <span class="pl-c1">version:</span> <span class="pl-s"><span class="pl-pds">'</span>5.9.0<span class="pl-pds">'</span></span>
+
+<span class="pl-c"># returns true if there is a social media bot on your website</span>
+agent.social_media?
+<span class="pl-c"># =&gt; false</span>
+
+<span class="pl-c"># returns true if platform is known</span>
+agent.platform?
+<span class="pl-c"># =&gt; true</span>
+
+<span class="pl-c"># returns true if specific platform</span>
+agent.platform? <span class="pl-c1">:windows</span>
+<span class="pl-c"># =&gt; true</span>
+
+<span class="pl-c"># returns true if specific platform and version</span>
+agent.platform? <span class="pl-c1">:windows</span>, <span class="pl-c1">version:</span> <span class="pl-s"><span class="pl-pds">'</span>7<span class="pl-pds">'</span></span>
+<span class="pl-c"># =&gt; true</span>
+
+<span class="pl-c"># returns true if console is known</span>
+agent.console?
+<span class="pl-c"># =&gt; false</span>
+
+<span class="pl-c"># returns true if specific console</span>
+agent.console? <span class="pl-c1">:xbox</span>
+<span class="pl-c"># =&gt; false</span>
+
+<span class="pl-c"># returns true if user agent is empty or a bot is recognized</span>
+agent.bot?
+<span class="pl-c"># =&gt; false</span>
+
+agent.x64?
+<span class="pl-c"># =&gt; true</span>
+
+agent.x32?
+<span class="pl-c"># =&gt; false</span>
+
+agent.mobile?
+<span class="pl-c"># =&gt; false</span></pre></div>
+
+<p>The above methods are the base questions you can ask but there are a lot more methods you can call on the <code>agent</code>. Every supported browser, operating system or bot is basically a question method so you could do this:</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent.windows?
+<span class="pl-c"># =&gt; true</span>
+
+<span class="pl-c"># based on full name</span>
+agent.windows? <span class="pl-s"><span class="pl-pds">'</span>7<span class="pl-pds">'</span></span>
+<span class="pl-c"># =&gt; true</span>
+
+<span class="pl-c"># NT versions also work</span>
+agent.windows? <span class="pl-c1">6.1</span>
+<span class="pl-c"># =&gt; true</span></pre></div>
+
+<h5>
+<a id="transformation" class="anchor" href="#transformation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Transformation</h5>
+
+<p>Browserino implements <code>to_a</code>, <code>to_h</code> and <code>to_s</code> to allow for collected data to be moved around without attaching the entire object with methods.</p>
+
+<p><strong>to_s</strong></p>
+
+<p>Returns a compiled string of properties based on available information.</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent.to_s
+<span class="pl-c"># =&gt; 'ie ie11 trident trident7 windows x64'</span>
+
+<span class="pl-c"># a seperator can be passed to format the name + version combo's</span>
+agent.to_s <span class="pl-s"><span class="pl-pds">'</span>-<span class="pl-pds">'</span></span>
+<span class="pl-c"># =&gt; 'ie ie-11 trident trident-7 windows x64'</span></pre></div>
+
+<p>If the agent object can't find a property in the user agent, that property will be excluded from the string.
+For instance, if the <code>browser_version</code> and <code>engine_version</code> of the <code>agent</code> object are <code>nil</code> then the following will be returned:</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent.to_s
+<span class="pl-c"># =&gt; ie trident windows x64</span></pre></div>
+
+<p><strong>to_a</strong></p>
+
+<p>Returns an array with key =&gt; value pairs.</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent.to_a
+<span class="pl-c"># =&gt; [[:name, "ie"],</span>
+<span class="pl-c">#     [:browser_version, "11.0"],</span>
+<span class="pl-c">#     [:engine_name, "trident"],</span>
+<span class="pl-c">#     [:engine_version, "7.0"],</span>
+<span class="pl-c">#     [:system_name, "windows"],</span>
+<span class="pl-c">#     [:system_version, "6.1"],</span>
+<span class="pl-c">#     [:system_architecture, "x64"],</span>
+<span class="pl-c">#     [:console_name, nil],</span>
+<span class="pl-c">#     [:locale, "as"]]</span></pre></div>
+
+<p><strong>to_h</strong></p>
+
+<p>Returns a hash with key =&gt; value pairs.</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent.to_h
+<span class="pl-c"># =&gt; {:name=&gt;"ie",</span>
+<span class="pl-c">#     :browser_version=&gt;"11.0",</span>
+<span class="pl-c">#     :engine_name=&gt;"trident",</span>
+<span class="pl-c">#     :engine_version=&gt;"7.0",</span>
+<span class="pl-c">#     :system_name=&gt;"windows",</span>
+<span class="pl-c">#     :system_version=&gt;"6.1",</span>
+<span class="pl-c">#     :system_architecture=&gt;"x64",</span>
+<span class="pl-c">#     :console_name =&gt; nil,</span>
+<span class="pl-c">#     :locale=&gt;"as"}</span></pre></div>
+
+<h5>
+<a id="supplying-versions" class="anchor" href="#supplying-versions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supplying versions</h5>
+
+<p>Consider this parsed string:</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent <span class="pl-k">=</span> <span class="pl-c1">Browserino</span>.parse <span class="pl-s"><span class="pl-pds">'</span>Mozilla/5.0 (Linux; U; Android 4.1.2; en-us; SM-T210R Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30 UCBrowser/2.3.2.300<span class="pl-pds">'</span></span>
+
+<span class="pl-c"># output for system_name</span>
+agent.system_name
+<span class="pl-c"># =&gt; 'android'</span>
+
+<span class="pl-c"># output for system_name full: true</span>
+agent.system_name <span class="pl-c1">full:</span> <span class="pl-c1">true</span>
+<span class="pl-c"># =&gt; ['android', 'Jelly Bean 16']</span></pre></div>
+
+<p>When supplying a version to a method that supports it, you have multiple options for the format of that version.</p>
+
+<ul>
+<li>Using a symbol or string without version: <code>:jelly_bean</code> or <code>'jelly_bean'</code>
+</li>
+<li>Using a symbol or string with version: <code>:jelly_bean_16</code> or <code>'jelly_bean_16'</code>
+</li>
+<li>Using a string: <code>'4.1.2'</code><br>
+</li>
+<li>Using a float: <code>4.1</code>
+</li>
+<li>Using an int: <code>4</code>
+</li>
+</ul>
+
+<p>When calling the <code>platform?</code> or <code>android?</code> functions with the above examples, they would all match since the method that compares versions also checks how specific the version is that you want to compare against.</p>
+
+<p>If you pass in <code>4.1</code> as a version the matcher will look for <code>x.x</code> in the extracted version and discard the unspecified value, this allows for you to be explicitly less specific to allow for a greater range of systems to be matched.</p>
+
+<ul>
+<li>
+<code>4.1.2</code> will match <code>4.1.2</code>
+</li>
+<li>
+<code>4.1</code> will match <code>4.1.x</code>
+</li>
+<li>
+<code>4</code> will match <code>4.x.x</code>
+</li>
+</ul>
+
+<p><strong>Examples using <code>platform?</code></strong></p>
+
+<div class="highlight highlight-source-ruby"><pre>agent.platform? <span class="pl-c1">:android</span>, <span class="pl-c1">version:</span> <span class="pl-s"><span class="pl-pds">'</span>4.1.2<span class="pl-pds">'</span></span>
+<span class="pl-c"># =&gt; true</span>
+
+agent.platform? <span class="pl-c1">:android</span>, <span class="pl-c1">version:</span> <span class="pl-c1">4.1</span>
+<span class="pl-c"># =&gt; true</span>
+
+agent.platform? <span class="pl-c1">:android</span>, <span class="pl-c1">version:</span> <span class="pl-c1">4</span>
+<span class="pl-c"># =&gt; true</span>
+
+agent.platform? <span class="pl-c1">:android</span>, <span class="pl-c1">version:</span> <span class="pl-c1">:jelly_bean</span>
+<span class="pl-c"># =&gt; true</span>
+
+agent.platform? <span class="pl-c1">:android</span>, <span class="pl-c1">version:</span> <span class="pl-c1">:jelly_bean_16</span>
+<span class="pl-c"># =&gt; true</span></pre></div>
+
+<h5>
+<a id="platform-browser-bot-console-search_engine-library-and-social_media-methods" class="anchor" href="#platform-browser-bot-console-search_engine-library-and-social_media-methods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>platform?</code>, <code>browser?</code>, <code>bot?</code>, <code>console?</code>, <code>search_engine?</code>, <code>library</code> and <code>social_media?</code> methods</h5>
+
+<p>As you've seen above, the <code>platform?</code> function can take two arguments, a symbol with the system name and optionally a hash with a <code>:version</code> key to supply a version, the <code>browser?</code> and <code>library?</code> method works in exactly the same way.</p>
+
+<p>The <code>bot?</code> and <code>social_media?</code> methods however aren't that complex since you don't need to know a bot / social media version or anything other than it's name so inside these methods, only a name can be passed:</p>
+
+<p><em>Every social media match is automatically a bot, but a bot isn't automatically social media, <strong>This is also true for the <code>search_engine?</code> method</strong></em></p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-c"># when a bot UA gets parsed</span>
+agent <span class="pl-k">=</span> <span class="pl-c1">Browserino</span>.parse <span class="pl-s"><span class="pl-pds">'</span>facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)<span class="pl-pds">'</span></span>
+
+agent.bot?
+<span class="pl-c"># =&gt; true</span>
+
+agent.social_media?
+<span class="pl-c"># =&gt; true</span>
+
+agent.bot? <span class="pl-c1">:facebook</span>
+<span class="pl-c"># =&gt; true</span>
+
+agent.social_media? <span class="pl-c1">:facebook</span>
+<span class="pl-c"># =&gt; true</span>
+
+agent.bot? <span class="pl-c1">:facebook</span>, <span class="pl-c1">version:</span> <span class="pl-c1">1.1</span>
+<span class="pl-c"># =&gt; ArgumentError</span></pre></div>
+
+<h5>
+<a id="checking-a-specific-browser-system-bot-library-or-social-media" class="anchor" href="#checking-a-specific-browser-system-bot-library-or-social-media" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Checking a specific browser, system, bot, library or social media</h5>
+
+<p>Every name you see in the below lists can be passed as symbol or string to their respective method</p>
+
+<p><strong>search engine</strong></p>
+
+<ul>
+<li><code>google</code></li>
+<li><code>bing</code></li>
+<li><code>yahoo_slurp</code></li>
+<li><code>baiduspider</code></li>
+<li>
+<code>duckduckgo</code> or <code>ddg</code>
+</li>
+</ul>
+
+<p>Examples:</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent.google?
+agent.baiduspider?
+
+<span class="pl-c"># using the search_engine? method</span>
+agent.search_engine? <span class="pl-c1">:google</span>
+
+<span class="pl-c"># using shorthand</span>
+agent.search_engine? <span class="pl-c1">:ddg</span></pre></div>
+
+<p><strong>consoles</strong></p>
+
+<ul>
+<li><code>xbox</code></li>
+<li><code>nintendo_ds</code></li>
+<li><code>wii</code></li>
+<li><code>playstation</code></li>
+</ul>
+
+<p>Examples:</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent.playstation?
+agent.wii?
+
+agent.console?
+
+agent.console? <span class="pl-c1">:facebook</span></pre></div>
+
+<p><strong>social media</strong></p>
+
+<ul>
+<li>
+<code>facebook</code> or <code>fb</code>
+</li>
+<li><code>twitter</code></li>
+<li><code>linkedin</code></li>
+<li><code>instagram</code></li>
+<li><code>pinterest</code></li>
+<li><code>tumblr</code></li>
+</ul>
+
+<p>Examples:</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent.facebook?
+agent.tumblr?
+
+<span class="pl-c"># using the social_media? method</span>
+agent.social_media? <span class="pl-c1">:facebook</span>
+
+<span class="pl-c"># using shorthand</span>
+agent.social_media? <span class="pl-c1">:fb</span>
+
+agent.social_media? <span class="pl-c1">:tumblr</span></pre></div>
+
+<p><strong>bot</strong></p>
+
+<ul>
+<li><code>google</code></li>
+<li><code>msn</code></li>
+<li><code>bing</code></li>
+<li><code>yahoo_slurp</code></li>
+<li><code>baiduspider</code></li>
+<li><code>yandex</code></li>
+<li><code>sosospider</code></li>
+<li><code>exa</code></li>
+<li><code>sogou_spider</code></li>
+</ul>
+
+<p>Examples:</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent.google?
+agent.exa?
+
+<span class="pl-c"># using the bot? method</span>
+agent.bot? <span class="pl-c1">:google</span>
+agent.bot? <span class="pl-c1">:exa</span></pre></div>
+
+<p><strong>library</strong></p>
+
+<ul>
+<li><code>php</code></li>
+<li><code>perl</code></li>
+<li><code>curl</code></li>
+<li><code>python</code></li>
+<li><code>java</code></li>
+<li><code>pycurl</code></li>
+</ul>
+
+<p>Examples:</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent.php?
+agent.pycurl?
+
+agent.library?
+
+agent.library? <span class="pl-c1">:curl</span>
+
+agent.library? <span class="pl-c1">:curl</span>, <span class="pl-c1">version:</span> <span class="pl-c1">7.21</span></pre></div>
+
+<p><strong>browser</strong></p>
+
+<ul>
+<li><code>chrome</code></li>
+<li>
+<code>firefox</code> or <code>ff</code>
+</li>
+<li><code>servo</code></li>
+<li><code>seamonkey</code></li>
+<li><code>opera</code></li>
+<li><code>opera_mini</code></li>
+<li><code>vivaldi</code></li>
+<li><code>ucbrowser</code></li>
+<li><code>maxthon</code></li>
+<li><code>bolt</code></li>
+<li><code>brave</code></li>
+<li><code>safari</code></li>
+<li><code>ie</code></li>
+<li><code>edge</code></li>
+</ul>
+
+<p>Examples:</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent.firefox?
+agent.chrome? <span class="pl-c1">42</span>
+
+<span class="pl-c"># using the browser? method</span>
+agent.browser? <span class="pl-c1">:firefox</span>
+
+<span class="pl-c"># using shorthand</span>
+agent.browser? <span class="pl-c1">:ff</span>
+
+agent.browser? <span class="pl-c1">:chrome</span>, <span class="pl-c1">version:</span> <span class="pl-c1">42</span></pre></div>
+
+<p><strong>operating system</strong></p>
+
+<ul>
+<li>
+<code>windows</code> or <code>win</code>
+</li>
+<li>
+<code>macintosh</code> or <code>osx</code>
+</li>
+<li><code>linux</code></li>
+<li><code>bsd</code></li>
+<li><code>solaris</code></li>
+<li><code>android</code></li>
+<li><code>ios</code></li>
+<li>
+<code>blackberry</code> or <code>bb</code>
+</li>
+<li><code>windows_phone</code></li>
+</ul>
+
+<p>Examples:</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent.macintosh?
+agent.windows_phone? <span class="pl-c1">7</span>
+
+<span class="pl-c"># to check for windows vista one could do</span>
+agent.windows? <span class="pl-c1">6</span>
+
+<span class="pl-c"># a more readable equivelant</span>
+agent.windows? <span class="pl-c1">:vista</span>
+
+<span class="pl-c"># using the platform? method</span>
+agent.platform? <span class="pl-c1">:macintosh</span>
+
+<span class="pl-c"># using shorthand</span>
+agent.platform? <span class="pl-c1">:osx</span>
+
+agent.platform? <span class="pl-c1">:windows_phone</span>, <span class="pl-c1">version:</span> <span class="pl-c1">7</span></pre></div>
+
+<p>Notes:</p>
+
+<ul>
+<li>
+<code>linux?</code> doesn't support any versions</li>
+<li>
+<code>bsd?</code> doesn't support any versions</li>
+<li>
+<code>solaris?</code> only supports numeric versions</li>
+<li>
+<em>named versions</em> are only supported if they are present in a <a href="https://github.com/SidOfc/browserino/tree/master/lib/browserino/maps">map</a>
+</li>
+</ul>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Bug reports and pull requests are welcome on GitHub at <a href="https://github.com/SidOfc/browserino">https://github.com/SidOfc/browserino</a>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the <a href="contributor-covenant.org">Contributor Covenant</a> code of conduct.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>The gem is available as open source under the terms of the <a href="http://opensource.org/licenses/MIT">MIT License</a>.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/SidOfc/browserino">Browserino</a> is maintained by <a href="https://github.com/SidOfc">SidOfc</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
