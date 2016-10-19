@@ -1,6 +1,25 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_
 
+#### 29-05-2016 VERSION 2.9.0
+
+- Stricter checking for:
+* `social_media?`
+* `bot?`
+* `browser?`
+* `platform?`
+
+These methods used to be callable with unrelated symbols
+(e.g `agent.platform?(:firefox) # => true`), they will now correctly return false.
+- Added support for consoles
+* Added `console?` method
+* Added `wii?`, `playstation?`, `xbox?` and `nintendo_ds?` methods
+- Added general `name` method to store any browser / bot / search engine / social media agent
+- `social_media_name`, `search_engine_name` and `bot_name` are now aliasses of `name`
+- removed `:bot_name` from data structure (now stored in a general `name` property)
+- removed `:browser_name` from data structure (now stored in a general `name` property)
+- Added `console_name` method to get the name of a console
+
 #### 27-05-2016 VERSION 2.8.2
 
 - Removed Guard gem dependency

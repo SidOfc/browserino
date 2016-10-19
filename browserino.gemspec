@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["sidneyliebrand@gmail.com"]
 
   spec.summary       = %q{A browser identification gem with command line and Rails (>= 3.2.0) integration}
-  spec.homepage      = "https://github.com/SidOfc/browserino"
+  spec.homepage      = "http://sidofc.github.io/browserino/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

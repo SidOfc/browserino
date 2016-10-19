@@ -1,3 +1,3 @@
 module Browserino
-  VERSION = '2.10.1'.freeze
+  VERSION = '2.10.1.1'.freeze
 end

@@ -1,6 +1,7 @@
 # Browserino
 
-A UserAgent sniffer with Rails >= 3.2.0 integration
+A UserAgent sniffer with Rails >= 3.2.0 integration.
+The sniffer can currently identify 22 bots (of which 6 social media and 5 search engines), 14 browsers, 9 operating systems, 6 programming language UA's and 4 consoles.
 
 ## Status
 
@@ -21,6 +22,12 @@ Useragent references:
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
 
+#### 19-10-2016 VERSION 2.10.1.1
+
+- Test on ruby 2.3.1
+- Fix missing questionmarks on method names in the README.
+- Change gem homepage to io domain
+
 #### 25-08-2016 VERSION 2.10.1
 
 - Replaced `require` with `require_relative` where possible
@@ -36,28 +43,9 @@ _older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
   - Added `php?` method
   - Added `perl?` method
   - Added `python?` method
-  - Added `java` method
-  - Added `curl` method
-  - Added `pycurl` method
-
-#### 29-05-2016 VERSION 2.9.0
-
-- Stricter checking for:
-  * `social_media?`
-  * `bot?`
-  * `browser?`
-  * `platform?`
-
-  These methods used to be callable with unrelated symbols
-  (e.g `agent.platform?(:firefox) # => true`), they will now correctly return false.
-- Added support for consoles
-  * Added `console?` method
-  * Added `wii?`, `playstation?`, `xbox?` and `nintendo_ds?` methods
-- Added general `name` method to store any browser / bot / search engine / social media agent
-- `social_media_name`, `search_engine_name` and `bot_name` are now aliasses of `name`
-- removed `:bot_name` from data structure (now stored in a general `name` property)
-- removed `:browser_name` from data structure (now stored in a general `name` property)
-- Added `console_name` method to get the name of a console
+  - Added `java?` method
+  - Added `curl?` method
+  - Added `pycurl?` method
 
 ## Installation
 
@@ -86,6 +74,7 @@ Browserino is tested with the following ruby versions
 * 2.1.0
 * 2.2.1
 * 2.3.0
+* 2.3.1
 
 ## Usage
 
