@@ -22,7 +22,8 @@
       <h1>
 <a id="browserino" class="anchor" href="#browserino" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Browserino</h1>
 
-<p>A UserAgent sniffer with Rails &gt;= 3.2.0 integration</p>
+<p>A UserAgent sniffer with Rails &gt;= 3.2.0 integration.
+The sniffer can currently identify 22 bots (of which 6 social media and 5 search engines), 14 browsers, 9 operating systems, 6 programming language UA's and 4 consoles.</p>
 
 <h2>
 <a id="status" class="anchor" href="#status" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Status</h2>
@@ -48,55 +49,47 @@
 <em>older changes can be found in the <a href="/CHANGELOG.md">CHANGELOG.md</a></em></p>
 
 <h4>
-<a id="29-05-2016-version-290" class="anchor" href="#29-05-2016-version-290" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>29-05-2016 VERSION 2.9.0</h4>
+<a id="19-10-2016-version-21011" class="anchor" href="#19-10-2016-version-21011" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>19-10-2016 VERSION 2.10.1.1</h4>
 
 <ul>
-<li>
-<p>Stricter checking for:</p>
-
-<ul>
-<li><code>social_media?</code></li>
-<li><code>bot?</code></li>
-<li><code>browser?</code></li>
-<li><code>platform?</code></li>
-</ul>
-
-<p>These functions used to be callable with unrelated symbols
-(e.g <code>agent.platform?(:firefox) # =&gt; true</code>). This is now also filtered.</p>
-</li>
-<li>Added support for consoles
-
-<ul>
-<li>Added <code>console?</code> method</li>
-<li>Added <code>wii?</code>, <code>playstation?</code>, <code>xbox?</code> and <code>nintendo_ds?</code> methods</li>
-</ul>
-</li>
-<li>Added general <code>name</code> method to store any browser / bot / search engine / social media agent</li>
-<li>
-<code>social_media_name</code>, <code>search_engine_name</code> and <code>bot_name</code> are now aliasses of <code>name</code>
-</li>
-<li>removed <code>:bot_name</code> from data structure (now stored in a general <code>name</code> property)</li>
-<li>removed <code>:browser_name</code> from data structure (now stored in a general <code>name</code> property)</li>
-<li>Added <code>console_name</code> method to get the name of a console</li>
+<li>Test on ruby 2.3.1</li>
+<li>Fix missing questionmarks on method names in the README.</li>
+<li>Change gem homepage to io domain</li>
 </ul>
 
 <h4>
-<a id="27-05-2016-version-282" class="anchor" href="#27-05-2016-version-282" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>27-05-2016 VERSION 2.8.2</h4>
+<a id="25-08-2016-version-2101" class="anchor" href="#25-08-2016-version-2101" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>25-08-2016 VERSION 2.10.1</h4>
 
 <ul>
-<li>Removed Guard gem dependency</li>
+<li>Replaced <code>require</code> with <code>require_relative</code> where possible</li>
+<li>Fixed cli not loading due to failing <code>require</code>
+</li>
 </ul>
 
 <h4>
-<a id="26-05-2016-version-280" class="anchor" href="#26-05-2016-version-280" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>26-05-2016 VERSION 2.8.0</h4>
+<a id="24-07-2016-version-2100" class="anchor" href="#24-07-2016-version-2100" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>24-07-2016 VERSION 2.10.0</h4>
 
 <ul>
-<li>Added <code>search_engine?</code> method</li>
-<li>Added <code>holmes?</code> method</li>
-<li>Added <code>ask?</code> method</li>
-<li>Added <code>duckduckgo?</code> and alias <code>ddg?</code> methods</li>
-<li>Fixed <code>respond_to?</code> method signature</li>
-<li>Added executable for parsing useragents in terminal</li>
+<li>
+<p>Added support for the servo browser:</p>
+
+<ul>
+<li>Added <code>servo?</code> method</li>
+</ul>
+</li>
+<li>
+<p>Added detection for various programming languages:</p>
+
+<ul>
+<li>Added <code>library?</code> method</li>
+<li>Added <code>php?</code> method</li>
+<li>Added <code>perl?</code> method</li>
+<li>Added <code>python?</code> method</li>
+<li>Added <code>java?</code> method</li>
+<li>Added <code>curl?</code> method</li>
+<li>Added <code>pycurl?</code> method</li>
+</ul>
+</li>
 </ul>
 
 <h2>
@@ -124,6 +117,7 @@
 <li>2.1.0</li>
 <li>2.2.1</li>
 <li>2.3.0</li>
+<li>2.3.1</li>
 </ul>
 
 <h2>
@@ -239,6 +233,12 @@ agent.browser_version
 agent.browser_version <span class="pl-c1">compat:</span> <span class="pl-c1">true</span>
 <span class="pl-c"># =&gt; '11.0'</span>
 
+agent.library_name
+<span class="pl-c"># =&gt; nil</span>
+
+agent.library_version
+<span class="pl-c"># =&gt; nil</span>
+
 agent.engine_name
 <span class="pl-c"># =&gt; 'trident'</span>
 
@@ -290,6 +290,15 @@ agent.browser? <span class="pl-c1">:ie</span>
 
 <span class="pl-c"># returns true if specific browser and version</span>
 agent.browser? <span class="pl-c1">:ie</span>, <span class="pl-c1">version:</span> <span class="pl-s"><span class="pl-pds">'</span>11.0<span class="pl-pds">'</span></span>
+
+<span class="pl-c"># returns true if library is known</span>
+agent.library?
+
+<span class="pl-c"># returns true if specific library</span>
+agent.library? <span class="pl-c1">:php</span>
+
+<span class="pl-c"># returns true if specific library and version</span>
+agent.library? <span class="pl-c1">:php</span>, <span class="pl-c1">version:</span> <span class="pl-s"><span class="pl-pds">'</span>5.9.0<span class="pl-pds">'</span></span>
 
 <span class="pl-c"># returns true if there is a social media bot on your website</span>
 agent.social_media?
@@ -457,9 +466,9 @@ agent.platform? <span class="pl-c1">:android</span>, <span class="pl-c1">version
 <span class="pl-c"># =&gt; true</span></pre></div>
 
 <h5>
-<a id="platform-browser-bot-console-search_engine-and-social_media-methods" class="anchor" href="#platform-browser-bot-console-search_engine-and-social_media-methods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>platform?</code>, <code>browser?</code>, <code>bot?</code>, <code>console?</code>, <code>search_engine?</code> and <code>social_media?</code> methods</h5>
+<a id="platform-browser-bot-console-search_engine-library-and-social_media-methods" class="anchor" href="#platform-browser-bot-console-search_engine-library-and-social_media-methods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>platform?</code>, <code>browser?</code>, <code>bot?</code>, <code>console?</code>, <code>search_engine?</code>, <code>library</code> and <code>social_media?</code> methods</h5>
 
-<p>As you've seen above, the <code>platform?</code> function can take two arguments, a symbol with the system name and optionally a hash with a <code>:version</code> key to supply a version, the <code>browser?</code> method works in exactly the same way.</p>
+<p>As you've seen above, the <code>platform?</code> function can take two arguments, a symbol with the system name and optionally a hash with a <code>:version</code> key to supply a version, the <code>browser?</code> and <code>library?</code> method works in exactly the same way.</p>
 
 <p>The <code>bot?</code> and <code>social_media?</code> methods however aren't that complex since you don't need to know a bot / social media version or anything other than it's name so inside these methods, only a name can be passed:</p>
 
@@ -484,7 +493,7 @@ agent.bot? <span class="pl-c1">:facebook</span>, <span class="pl-c1">version:</s
 <span class="pl-c"># =&gt; ArgumentError</span></pre></div>
 
 <h5>
-<a id="checking-a-specific-browser-system-bot-or-social-media" class="anchor" href="#checking-a-specific-browser-system-bot-or-social-media" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Checking a specific browser, system, bot or social media</h5>
+<a id="checking-a-specific-browser-system-bot-library-or-social-media" class="anchor" href="#checking-a-specific-browser-system-bot-library-or-social-media" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Checking a specific browser, system, bot, library or social media</h5>
 
 <p>Every name you see in the below lists can be passed as symbol or string to their respective method</p>
 
@@ -578,6 +587,28 @@ agent.exa?
 agent.bot? <span class="pl-c1">:google</span>
 agent.bot? <span class="pl-c1">:exa</span></pre></div>
 
+<p><strong>library</strong></p>
+
+<ul>
+<li><code>php</code></li>
+<li><code>perl</code></li>
+<li><code>curl</code></li>
+<li><code>python</code></li>
+<li><code>java</code></li>
+<li><code>pycurl</code></li>
+</ul>
+
+<p>Examples:</p>
+
+<div class="highlight highlight-source-ruby"><pre>agent.php?
+agent.pycurl?
+
+agent.library?
+
+agent.library? <span class="pl-c1">:curl</span>
+
+agent.library? <span class="pl-c1">:curl</span>, <span class="pl-c1">version:</span> <span class="pl-c1">7.21</span></pre></div>
+
 <p><strong>browser</strong></p>
 
 <ul>
@@ -585,6 +616,7 @@ agent.bot? <span class="pl-c1">:exa</span></pre></div>
 <li>
 <code>firefox</code> or <code>ff</code>
 </li>
+<li><code>servo</code></li>
 <li><code>seamonkey</code></li>
 <li><code>opera</code></li>
 <li><code>opera_mini</code></li>
