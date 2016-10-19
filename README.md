@@ -20,7 +20,7 @@ Useragent references:
 ## Changelog
 
 _dates are in dd-mm-yyyy format_  
-_older changes can be found in the [CHANGELOG.md](/CHANGELOG.md)_
+_older changes can be found in the [CHANGELOG.md](CHANGELOG.md)_
 
 #### 19-10-2016 VERSION 2.10.1.1
 
@@ -639,7 +639,7 @@ Notes:
 * `linux?` doesn't support any versions
 * `bsd?` doesn't support any versions
 * `solaris?` only supports numeric versions
-* *named versions* are only supported if they are present in a [map](/lib/browserino/maps)
+* *named versions* are only supported if they are present in a [map](https://github.com/SidOfc/browserino/tree/master/lib/browserino/maps)
 
 ## Contributing
 
