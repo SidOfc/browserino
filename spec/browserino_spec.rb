@@ -2,33 +2,6 @@ require 'spec_helper'
 require 'user_agents'
 require 'user_agents_browsers'
 
-describe Browserino do
-  agent = Browserino.parse 'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52'
-  it 'has a version number' do
-    expect(Browserino::VERSION).not_to be nil
-  end
-
-  it 'implements to_s' do
-    expect(agent.to_s.class).to eq String
-  end
-
-  it 'implements to_a' do
-    expect(agent.to_a.class).to eq Array
-  end
-
-  it 'implements to_h' do
-    expect(agent.to_h.class).to eq Hash
-  end
-
-  it 'raises NoMethodError when a simulated method isn\'t supported' do
-    expect { agent.fhjkshfj? }.to raise_error(NoMethodError)
-  end
-
-  it 'contains hash keys to determine every major browser' do
-    @major_browsers = [:opera, :ie, :firefox, :chrome, :safari, :edge]
-    expect((Browserino::Core::PATTERNS[:browser].keys & @major_browsers).empty?).to eq(false)
-  end
-end
 convenience_os_fn = {macintosh: :osx, windows: :win, blackberry: :bb}
 browsers = UserAgents::Browsers.constants(true)
 browsers.each do |const|
@@ -37,9 +10,6 @@ browsers.each do |const|
       platform[1].each do |agent, criteria|
         describe "#{const} -> #{agent}" do
           agent = Browserino.parse(agent)
-          it 'returns an Agent object' do
-            expect(agent.class.name).to eq 'Browserino::Agent'
-          end
           criteria.each do |property, value|
             if property == :system_name
               it "expects #{property}({full: true}) to be #{value} for #{const.downcase} on #{platform[0]}" do
@@ -61,21 +31,18 @@ browsers.each do |const|
               end
             end
           end
-          describe "Implements method_missing? and respond_to for" do
+          describe "General methods" do
             sys_nm = agent.system_name.to_s.downcase
             sys_nm_full = agent.system_name(full: true)
             sys_ver_split = (agent.system_version || '').split('.')
             con = convenience_os_fn[sys_nm.to_sym]
             if agent.system_name != UserAgents::USE_FOR_UNKNOWN
-              it "respond_to :#{sys_nm}?" do
-                expect(agent.respond_to?("#{sys_nm}?".to_sym)).to eq true
-              end
               if convenience_os_fn.keys.include?(sys_nm.to_sym)
                 it "has a convenience method for calling system name" do
                   expect(agent.send("#{con}?")).to eq true
                 end
               end
-              it "accepts a system_name w/o version: agent.#{sys_nm}?" do
+              it "accepts a system_name without version: agent.#{sys_nm}?" do
                 expect(agent.send("#{sys_nm}?")).to eq true
               end
               it "expects agent.platform? to be true" do
@@ -117,10 +84,7 @@ browsers.each do |const|
             if agent.browser_name != UserAgents::USE_FOR_UNKNOWN
               browser_nm = agent.browser_name.to_s.downcase.gsub(/\s/, '_')
               browser_ver = (agent.browser_version || '').split('.').first
-              it "respond_to :#{browser_nm}?" do
-                expect(agent.respond_to?("#{browser_nm}?".to_sym)).to eq true
-              end
-              it "accepts a browser_name w/o version: agent.#{browser_nm}?" do
+              it "accepts a browser_name without version: agent.#{browser_nm}?" do
                 expect(agent.send("#{browser_nm}?")).to eq true
               end
               it "expects agent.browser? to be true" do
@@ -144,15 +108,15 @@ browsers.each do |const|
               end
             end
           end
-          describe "Correctly inverts method_missing? results when #not is called" do
+          describe "Using not" do
             if agent.browser_name != UserAgents::USE_FOR_UNKNOWN
               browser_nm = agent.browser_name.to_s.downcase.gsub(/\s/, '_')
-              it 'returns false for not being itself' do
+              it "returns false for agent.not.#{browser_nm}?" do
                 expect(agent.not.send("#{browser_nm}?")).to eq false
               end
 
-              describe 'returns true for any random others' do
-                brwsrs = browsers.dup - [browser_nm.upcase.to_sym]
+              describe 'returns true for not being any other browser' do
+                brwsrs = (browsers.dup - [browser_nm.upcase.to_sym]).sample(3)
                 brwsrs.each do |b|
                   bb = b.to_s.downcase.gsub(/\s/, '_')
                   it "returns true for agent.not.#{bb}?" do
