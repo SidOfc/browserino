@@ -3,6 +3,10 @@
 A UserAgent sniffer with Rails >= 3.2.0 integration.
 The sniffer can currently identify 22 bots (of which 6 social media and 5 search engines), 14 browsers, 9 operating systems, 6 programming language UA's and 4 consoles.
 
+# DEPRECATION WARNING: Ruby < 2
+
+Browserino will be dropping support for Ruby versions less than 2 with the release of version `3.0.0`
+
 ## Status
 
 [![Gem Version](https://badge.fury.io/rb/browserino.svg)](http://badge.fury.io/rb/browserino)

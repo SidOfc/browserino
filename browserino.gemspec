@@ -18,6 +18,15 @@ Gem::Specification.new do |spec|
   spec.executables   = ['browserino']
   spec.require_paths = ["lib"]
 
+  spec.post_install_message = %q{
+    Thanks for using Browserino!
+
+    Documentation can be found on : https://github.com/SidOfc/browserino
+    Changes can be found on       : https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md
+    Deprecation notice            : Browserino will be dropping support for Ruby versions less than 2 with the release of version 3.0.0
+
+  }
+
   spec.add_development_dependency "json", "<= 1.8.3"
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
