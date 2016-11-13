@@ -6,7 +6,7 @@ module Browserino
        search_engines: {duckduckgo: [:ddg]},
        bots: {},
        consoles: {},
-       operating_systems: {macintosh: [:osx], blackberry: [:bb],
+       operating_systems: {macintosh: [:osx, :macos], blackberry: [:bb],
                            windows: [:win]}
     }.freeze
 

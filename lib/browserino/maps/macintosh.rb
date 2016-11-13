@@ -15,7 +15,8 @@ module Browserino
       'Mountain Lion' => [108],
       'Mavericks' => [109],
       'Yosemite' => [1010],
-      'El Capitan' => [1011]
+      'El Capitan' => [1011],
+      'Sierra' => [1012]
     }.freeze
   end
 end

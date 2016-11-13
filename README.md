@@ -26,6 +26,12 @@ Useragent references:
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](CHANGELOG.md)_
 
+#### 13-11-2016 VERSION 2.11.0
+
+- Add `:macos` alias for `:macintosh` systems.
+- Added support for MacOS `:sierra` alias in methods.
+- Added deprecation notice for dropping support of Ruby < 2.0.0
+
 #### 19-10-2016 VERSION 2.10.1.1
 
 - Test on ruby 2.3.1
@@ -36,20 +42,6 @@ _older changes can be found in the [CHANGELOG.md](CHANGELOG.md)_
 
 - Replaced `require` with `require_relative` where possible
 - Fixed cli not loading due to failing `require`
-
-#### 24-07-2016 VERSION 2.10.0
-
-- Added support for the servo browser:
-  - Added `servo?` method
-
-- Added detection for various programming languages:
-  - Added `library?` method
-  - Added `php?` method
-  - Added `perl?` method
-  - Added `python?` method
-  - Added `java?` method
-  - Added `curl?` method
-  - Added `pycurl?` method
 
 ## Installation
 
@@ -73,7 +65,7 @@ $ gem install browserino
 
 Browserino is tested with the following ruby versions
 
-* 1.9.3
+* 1.9.3 - **SUPPORT WILL BE DROPPED WITHIN THE NEXT VERSION**
 * 2.0.0
 * 2.1.0
 * 2.2.1

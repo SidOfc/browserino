@@ -1,6 +1,20 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_
 
+#### 24-07-2016 VERSION 2.10.0
+
+- Added support for the servo browser:
+  - Added `servo?` method
+
+- Added detection for various programming languages:
+  - Added `library?` method
+  - Added `php?` method
+  - Added `perl?` method
+  - Added `python?` method
+  - Added `java?` method
+  - Added `curl?` method
+  - Added `pycurl?` method
+
 #### 29-05-2016 VERSION 2.9.0
 
 - Stricter checking for:
