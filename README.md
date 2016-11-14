@@ -1,11 +1,11 @@
 # Browserino
 
 A UserAgent sniffer with Rails >= 3.2.0 integration.
-The sniffer can currently identify 22 bots (of which 6 social media and 5 search engines), 14 browsers, 9 operating systems, 6 programming language UA's and 4 consoles.
+The sniffer can currently identify 22 bots (of which 6 social media and 5 search engines), 16 browsers, 11 operating systems, 6 programming language UA's and 4 consoles.
 
 # DEPRECATION WARNING: Ruby < 2
 
-Browserino will be dropping support for Ruby versions less than 2 with the release of version `3.0.0`
+Browserino will be dropping support for Ruby versions less than 2 with the release of version `3`
 
 ## Status
 
@@ -26,6 +26,24 @@ Useragent references:
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](CHANGELOG.md)_
 
+#### 14-11-2016 VERSION 2.12.0
+
+- Added support for SamsungBrowser
+  - Added `samsungbrowser?` method
+  - Added support for `:samsungbrowser` (`Symbol` and `String`) in methods
+- Added support for Tizen
+  - Added `tizen?` method
+  - Added support for `:tizen` (`Symbol` and `String`) in methods
+- Added support for WebOS
+  - Added `webos?` method
+  - Added support for `:webos` (`Symbol` and `String`) in methods
+- Added support for WebOSBrowser
+  - Added `webosbrowser?` method
+  - Added support for `:webosbrowser` (`Symbol` and `String`) in methods
+- Added Android Nougat (7.0 and 7.1) detection
+- merged OS map files into _/core/mappings.rb_ and removed the _lib/maps_ folder
+- Reduced amount of (overkill) tests
+
 #### 13-11-2016 VERSION 2.11.0
 
 - Add `:macos` alias for `:macintosh` systems.
@@ -37,11 +55,6 @@ _older changes can be found in the [CHANGELOG.md](CHANGELOG.md)_
 - Test on ruby 2.3.1
 - Fix missing questionmarks on method names in the README.
 - Change gem homepage to io domain
-
-#### 25-08-2016 VERSION 2.10.1
-
-- Replaced `require` with `require_relative` where possible
-- Fixed cli not loading due to failing `require`
 
 ## Installation
 
@@ -65,7 +78,7 @@ $ gem install browserino
 
 Browserino is tested with the following ruby versions
 
-* 1.9.3 - **SUPPORT WILL BE DROPPED WITHIN THE NEXT VERSION**
+* 1.9.3 - **SUPPORT WILL BE DROPPED IN THE NEXT MAJOR VERSION RELEASE**
 * 2.0.0
 * 2.1.0
 * 2.2.1
@@ -581,6 +594,8 @@ agent.library? :curl, version: 7.21
 * `safari`
 * `ie`
 * `edge`
+* `samsungbrowser`
+* `webosbrowser`
 
 Examples:
 
@@ -608,6 +623,8 @@ agent.browser? :chrome, version: 42
 * `ios`
 * `blackberry` or `bb`
 * `windows_phone`
+* `tizen`
+* `webos`
 
 Examples:
 

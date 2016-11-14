@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
 
     Documentation can be found on : https://github.com/SidOfc/browserino
     Changes can be found on       : https://github.com/SidOfc/browserino/blob/master/CHANGELOG.md
-    Deprecation notice            : Browserino will be dropping support for Ruby versions less than 2 with the release of version 3.0.0
+    Deprecation notice            : Browserino will be dropping support for Ruby versions less than 2 with the release of version 3
 
   }
 

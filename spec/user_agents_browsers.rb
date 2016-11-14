@@ -361,6 +361,21 @@ module UserAgents
       }
     }
     UCBROWSER = {
+      tizen: {
+        'Mozilla/5.0 (Linux; U; Android 4.4.4; en-US; Tizen Phone with ACL Build/KTU84Q) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/10.8.8.730 U3/0.8.0 Mobile Safari/534.30' => {
+          name: 'ucbrowser',
+          browser_version: '10.8.8.730',
+          engine_name: 'webkit',
+          engine_version: '534.30',
+          system_name: ['Tizen', USE_FOR_UNKNOWN],
+          system_version: USE_FOR_UNKNOWN,
+          locale: 'en-us',
+          x64?: false,
+          x32?: false,
+          mobile?: true,
+          to_s: 'ucbrowser ucbrowser10 webkit webkit534 tizen'
+        }
+      },
       android: {
         'Mozilla/5.0 (Linux; U; Android 4.1.2; en-us; SM-T210R Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30 UCBrowser/2.3.2.300' => {
           name: 'ucbrowser',

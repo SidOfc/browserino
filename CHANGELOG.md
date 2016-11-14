@@ -1,6 +1,11 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_
 
+#### 25-08-2016 VERSION 2.10.1
+
+- Replaced `require` with `require_relative` where possible
+- Fixed cli not loading due to failing `require`
+
 #### 24-07-2016 VERSION 2.10.0
 
 - Added support for the servo browser:
