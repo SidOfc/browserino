@@ -21,7 +21,7 @@ describe "Browserino Bot identification" do
             it "Expects agent.not.#{val}? to be false for #{bot.downcase}" do
               expect(agent.not.send("#{val.downcase.gsub(/\s/, '_')}?")).to eq false
             end
-            (bots - [bot]).each do |const|
+            (bots - [bot]).sample(3).each do |const|
               it "Expects agent.not.#{const.downcase}? to be true for #{val}" do
                 expect(agent.not.send("#{const.downcase}?")).to eq true
               end

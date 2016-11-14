@@ -2,6 +2,11 @@ module Browserino
   module Core
     PATTERNS = {
       browser: {
+        samsungbrowser: {
+            name: /(?<name>samsungbrowser)/i,
+            version: %r{samsungbrowser/(?<version>[\d\.]+)}i
+        },
+
         webosbrowser: {
           name: /(?<name>w(?:eb)?os(?:browser)?)/i,
           version: %r{w(?:eb)?osbrowser/(?<version>[\d\.]+)}i,
@@ -147,9 +152,9 @@ module Browserino
                     |s(?:unos|olaris)/?|w(?:eb)?os/|tizen)
                     \s?(?<version>[\d\._]+)}xi,
         architecture: /(?<architecture>((?:x|x86_|amd|wow)64)|i(3|6)86)/i,
-        mobile: /bolt|nokia|samsung|mobi(?:le)?|android|i?p(?:[ao]d|hone)|bb\d+
-                |blackberry|iemobile|fennec|bada|meego|vodafone
-                |t\-mobile|opera\sm(?:ob|in)i/xi,
+        mobile: /bolt|nokia|samsung(?!b)|mobi(?:le)?|android|i?p(?:[ao]d|hone)
+                |bb\d+|blackberry|iemobile|fennec|bada|meego|vodafone|t\-mobile
+                |opera\sm(?:ob|in)i/xi,
         locale: /\s(?<locale>\w{2}(?:\-\w{2})?)[;\)]/
       },
 

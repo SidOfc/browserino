@@ -1,5 +1,23 @@
 module UserAgents
   module Browsers
+    SAMSUNGBROWSER = {
+      tizen: {
+        'Mozilla/5.0 (SMART-TV; Linux; Tizen 2.3) AppleWebkit/538.1 (KHTML, like Gecko) SamsungBrowser/1.0 Safari/538.1' => {
+          name: 'SamsungBrowser',
+          browser_version: '1.0',
+          engine_name: 'Webkit',
+          engine_version: '538.1',
+          system_name: ['tizen', '2.3'],
+          system_version: '2.3',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: USE_FOR_UNKNOWN,
+          x64?: false,
+          x32?: false,
+          mobile?: false,
+          to_s: 'samsungbrowser samsungbrowser1 webkit webkit538 tizen'
+        }
+      }
+    }
     WEBOSBROWSER = {
       webos: {
         'Mozilla/5.0 (webOS/1.3; U; en-US) AppleWebKit/525.27.1 (KHTML, like Gecko) Version/1.0 Safari/525.27.1 Desktop/1.0' => {
