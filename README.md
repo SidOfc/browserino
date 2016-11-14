@@ -635,7 +635,7 @@ Notes:
 * `linux?` doesn't support any versions
 * `bsd?` doesn't support any versions
 * `solaris?` only supports numeric versions
-* *named versions* are only supported if they are present in a [map](https://github.com/SidOfc/browserino/tree/master/lib/browserino/maps)
+* *named versions* are only supported if they are present in a [map](https://github.com/SidOfc/browserino/tree/master/lib/browserino/core/mapping.rb)
 
 ## Contributing
 
