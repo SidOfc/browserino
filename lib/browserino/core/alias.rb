@@ -7,7 +7,8 @@ module Browserino
         'solaris' => /s(?:unos|olaris)/,
         'linux' => /ubuntu|x11/,
         'windows_phone' => /windows\sphone/,
-        'ios' => /ip(?:[ao]d|hone)/
+        'ios' => /ip(?:[ao]d|hone)/,
+        'webos' => /w(?:eb)?os/
       },
       console_name: {
         'nintendo_ds' => /nintendo\s\d?ds/,

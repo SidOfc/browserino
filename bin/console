@@ -4,7 +4,7 @@ require 'bundler/setup'
 require 'browserino'
 require 'pry'
 
-ua = 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko'
+ua = 'Mozilla/5.0 (hp-tablet; Linux; hpwOS/3.0.2; U; de-DE) AppleWebKit/534.6 (KHTML, like Gecko) wOSBrowser/234.40.1 Safari/534.6 TouchPad/1.0'
 @agent = Browserino.parse(ua)
 
 puts "> @agent variable available parsed with: '#{ua}'\n\n"

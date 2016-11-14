@@ -2,6 +2,11 @@ module Browserino
   module Core
     PATTERNS = {
       browser: {
+        webosbrowser: {
+          name: /(?<name>w(?:eb)?os(?:browser)?)/i,
+          version: %r{w(?:eb)?osbrowser/(?<version>[\d\.]+)}i,
+        },
+
         vivaldi: {
           name: /(?<name>vivaldi)/i,
           version: %r{vivaldi/(?<version>[\d\.]+)}i
@@ -136,10 +141,10 @@ module Browserino
       operating_system: {
         name: /(?<name>windows(?:\sphone(?:\sos)?)?|macintosh|android
                 |ip(?:[ao]d|hone)|blackberry|linux|ubuntu|x11|bsd
-                |s(?:unos|olaris))/xi,
+                |s(?:unos|olaris)|w(?:eb)?os)/xi,
         version: %r{(?:windows(?:\sphone(?:\sos)?)?|nt|mac\sos\sx|android
                     |(cpu\s|ip([ao]d|hone)\s)os|blackberry.*?version/|bb
-                    |s(?:unos|olaris)/?)\s?(?<version>[\d\._]+)}xi,
+                    |s(?:unos|olaris)/?|w(?:eb)?os/)\s?(?<version>[\d\._]+)}xi,
         architecture: /(?<architecture>((?:x|x86_|amd|wow)64)|i(3|6)86)/i,
         mobile: /bolt|nokia|samsung|mobi(?:le)?|android|i?p(?:[ao]d|hone)|bb\d+
                 |blackberry|iemobile|fennec|bada|meego|vodafone

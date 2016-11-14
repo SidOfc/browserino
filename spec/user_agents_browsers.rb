@@ -1,5 +1,37 @@
 module UserAgents
   module Browsers
+    WEBOSBROWSER = {
+      webos: {
+        'Mozilla/5.0 (webOS/1.3; U; en-US) AppleWebKit/525.27.1 (KHTML, like Gecko) Version/1.0 Safari/525.27.1 Desktop/1.0' => {
+          name: 'WebOSbrowser',
+          browser_version: USE_FOR_UNKNOWN,
+          engine_name: 'Webkit',
+          engine_version: '525.27.1',
+          system_name: ['webos', '1.3'],
+          system_version: '1.3',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: 'en-us',
+          x64?: false,
+          x32?: false,
+          mobile?: false,
+          to_s: 'webosbrowser webkit webkit525 webos'
+        },
+        'Mozilla/5.0 (hp-tablet; Linux; hpwOS/3.0.2; U; de-DE) AppleWebKit/534.6 (KHTML, like Gecko) wOSBrowser/234.40.1 Safari/534.6 TouchPad/1.0' => {
+          name: 'WebOSbrowser',
+          browser_version: '234.40.1',
+          engine_name: 'Webkit',
+          engine_version: '534.6',
+          system_name: ['webos', '3.0'],
+          system_version: '3.0.2',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: 'de-de',
+          x64?: false,
+          x32?: false,
+          mobile?: true,
+          to_s: 'webosbrowser webosbrowser234 webkit webkit534 webos'
+        }
+      }
+    }
     VIVALDI = {
       mac: {
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 Vivaldi/1.0.344.37' => {
@@ -14,7 +46,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'vivaldi vivaldi1 webkit webkit537 macintosh'
         }
       },
@@ -31,7 +62,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'vivaldi vivaldi1 webkit webkit537 windows x64'
         },
         'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.89 Vivaldi/1.0.83.38 Safari/537.36' => {
@@ -46,7 +76,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'vivaldi vivaldi1 webkit webkit537 windows x64'
         },
         'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36 Vivaldi/1.0.129.2' => {
@@ -61,7 +90,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'vivaldi vivaldi1 webkit webkit537 windows x64'
         }
       },
@@ -78,7 +106,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'vivaldi vivaldi1 webkit webkit537 linux x64'
         }
       }
@@ -97,7 +124,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'opera opera34 webkit webkit537 macintosh'
         },
         'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52' => {
@@ -112,7 +138,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'opera opera11 presto presto2 macintosh'
         },
         'Opera/9.80 (Macintosh; Intel Mac OS X; U; nl) Presto/2.6.30 Version/10.61' => {
@@ -127,7 +152,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'opera opera10 presto presto2 macintosh'
         }
       },
@@ -144,7 +168,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'opera opera12 presto presto2 windows'
         },
         'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; de) Opera 11.51' => {
@@ -159,7 +182,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'opera opera11 windows'
         }
       },
@@ -176,7 +198,6 @@ module UserAgents
           x64?: false,
           x32?: true,
           mobile?: false,
-          known?: true,
           to_s: 'opera opera12 presto presto2 linux x32'
         },
         'Opera/9.80 (X11; Linux x86_64; U; fr) Presto/2.9.168 Version/11.50' => {
@@ -191,7 +212,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'opera opera11 presto presto2 linux x64'
         }
       },
@@ -208,7 +228,6 @@ module UserAgents
           x64?: false,
           x32?: true,
           mobile?: false,
-          known?: true,
           to_s: 'opera opera9 presto presto2 bsd x32'
         },
         'Opera/9.22 (X11; OpenBSD i386; U; en)' => {
@@ -223,7 +242,6 @@ module UserAgents
           x64?: false,
           x32?: true,
           mobile?: false,
-          known?: true,
           to_s: 'opera opera9 bsd x32'
         }
       }
@@ -242,7 +260,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'opera-mini opera-mini7 presto presto2 ios'
         },
         'Opera/9.80 (iPhone; Opera Mini/7.1.32694/27.1407; U; en) Presto/2.8.119 Version/11.10' => {
@@ -257,7 +274,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'opera-mini opera-mini7 presto presto2 ios'
         }
       },
@@ -274,7 +290,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'opera-mini opera-mini5 presto presto2 windows'
         }
       },
@@ -291,7 +306,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'opera-mini opera-mini7 presto presto2 android'
         }
       },
@@ -308,7 +322,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'opera-mini opera-mini9 presto presto2 blackberry'
         }
       }
@@ -327,7 +340,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'ucbrowser ucbrowser2 webkit webkit534 android'
         }
       },
@@ -344,7 +356,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'ucbrowser ucbrowser8 trident trident4 windows'
         }
       }
@@ -363,7 +374,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'bolt bolt2 webkit webkit530 windows'
         },
         'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; BOLT/2.800) AppleWebKit/534.6 (KHTML, like Gecko) Version/5.0 Safari/534.6.3' => {
@@ -378,7 +388,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'bolt bolt2 webkit webkit534 windows'
         }
       }
@@ -397,7 +406,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           compat?: false,
           to_s: 'ie ie10 trident trident6 macintosh'
         }
@@ -415,7 +423,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           compat?: false,
           to_s: 'ie ie11 trident trident7 windows'
         },
@@ -431,7 +438,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           compat?: false,
           to_s: 'ie ie11 trident trident7 windows x64'
         },
@@ -447,7 +453,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           compat?: true,
           to_s: 'ie ie9 trident trident5 windows'
         }
@@ -465,7 +470,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           compat?: false,
           to_s: 'ie ie9 trident trident5 windows-phone'
         },
@@ -481,7 +485,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           compat?: false,
           to_s: 'ie ie10 trident trident6 windows-phone'
         },
@@ -497,7 +500,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           compat?: true,
           to_s: 'ie ie7 trident trident3 windows-phone'
         },
@@ -513,7 +515,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           compat?: false,
           to_s: 'ie ie6 trident windows-phone'
         }
@@ -533,7 +534,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'edge edge12 edgehtml edgehtml12 windows x64'
         }
       }
@@ -552,7 +552,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'maxthon maxthon3 webkit webkit532 windows'
         },
         'Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/533.1 (KHTML, like Gecko) Maxthon/3.0.8.2 Safari/533.1' => {
@@ -567,7 +566,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'maxthon maxthon3 webkit webkit533 windows'
         },
         'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/4.0; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; Zune 4.0; InfoPath.3; MS-RTC LM 8; .NET4.0C; .NET4.0E; Maxthon 2.0)' => {
@@ -582,7 +580,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'maxthon maxthon2 trident trident4 windows x64'
         }
       }
@@ -601,7 +598,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'seamonkey seamonkey9 gecko gecko7 windows'
         },
         'Mozilla/5.0 (Windows; U; Windows NT 6.2; WOW64; rv:1.8.0.7) Gecko/20110321 MultiZilla/4.33.2.6a SeaMonkey/8.6.55' => {
@@ -616,7 +612,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'seamonkey seamonkey8 gecko gecko1 windows x64'
         }
       },
@@ -633,7 +628,6 @@ module UserAgents
           x64?: false,
           x32?: true,
           mobile?: false,
-          known?: true,
           to_s: 'seamonkey seamonkey8 gecko gecko33 linux x32'
         },
         'Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20120501 Firefox/12.0 SeaMonkey/2.9.1 Lightning/1.4' => {
@@ -648,7 +642,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'seamonkey seamonkey2 gecko gecko12 linux x64'
         }
       }
@@ -667,7 +660,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'servo servo1 android'
         }
       }
@@ -686,7 +678,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'firefox firefox43 gecko gecko43 macintosh'
         },
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10; rv:33.0) Gecko/20100101 Firefox/33.0' => {
@@ -701,7 +692,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'firefox firefox33 gecko gecko33 macintosh'
         },
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:25.0) Gecko/20100101 Firefox/25.0' => {
@@ -716,7 +706,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'firefox firefox25 gecko gecko25 macintosh'
         }
       },
@@ -733,7 +722,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'firefox firefox40 gecko gecko40 windows x64'
         },
         'Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0' => {
@@ -748,7 +736,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'firefox firefox36 gecko gecko36 windows'
         },
         'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20130401 Firefox/31.0' => {
@@ -763,7 +750,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'firefox firefox31 gecko gecko31 windows x64'
         }
       },
@@ -780,7 +766,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'firefox firefox28 gecko gecko28 linux x64'
         },
         'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0' => {
@@ -795,7 +780,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'firefox firefox24 gecko gecko24 linux x64'
         },
         'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:21.0) Gecko/20130331 Firefox/21.0' => {
@@ -810,7 +794,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'firefox firefox21 gecko gecko21 linux x64'
         }
       },
@@ -827,7 +810,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'firefox firefox28 gecko gecko28 bsd x64'
         },
         'Mozilla/5.0 (X11; NetBSD amd64; rv:16.0) Gecko/20121102 Firefox/16.0' => {
@@ -842,7 +824,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'firefox firefox16 gecko gecko16 bsd x64'
         },
         'Mozilla/5.0 (X11; FreeBSD amd64; rv:5.0) Gecko/20100101 Firefox/5.0' => {
@@ -857,7 +838,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'firefox firefox5 gecko gecko5 bsd x64'
         },
         'Mozilla/5.0 (X11; U; FreeBSD i386; de-CH; rv:1.9.2.8) Gecko/20100729 Firefox/3.6.8' => {
@@ -872,7 +852,6 @@ module UserAgents
           x64?: false,
           x32?: true,
           mobile?: false,
-          known?: true,
           to_s: 'firefox firefox3 gecko gecko1 bsd x32'
         }
       },
@@ -889,7 +868,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'firefox firefox3 gecko gecko1 solaris x64'
         },
         # Currently, it's not possible to test just by a useragent
@@ -905,7 +883,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: false,
           to_s: 'solaris'
         }
       }
@@ -924,7 +901,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'brave brave0 webkit webkit537 macintosh'
         }
       }
@@ -943,7 +919,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'chrome chrome47 webkit webkit537 macintosh'
         },
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36' => {
@@ -958,7 +933,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'chrome chrome37 webkit webkit537 macintosh'
         },
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1944.0 Safari/537.36' => {
@@ -973,7 +947,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'chrome chrome36 webkit webkit537 macintosh'
         },
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36' => {
@@ -988,7 +961,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'chrome chrome27 webkit webkit537 macintosh'
         }
       },
@@ -1005,7 +977,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'chrome chrome41 webkit webkit537 windows'
         },
         'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1623.0 Safari/537.36' => {
@@ -1020,7 +991,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'chrome chrome31 webkit webkit537 windows x64'
         },
         'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1464.0 Safari/537.36' => {
@@ -1035,7 +1005,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'chrome chrome28 webkit webkit537 windows'
         }
       },
@@ -1052,7 +1021,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'chrome chrome33 webkit webkit537 linux x64'
         },
         'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/4E423F' => {
@@ -1067,7 +1035,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'chrome chrome34 webkit webkit537 linux x64'
         },
         'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36' => {
@@ -1082,7 +1049,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'chrome chrome41 webkit webkit537 linux x64'
         },
         'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.9 Safari/536.5' => {
@@ -1097,7 +1063,6 @@ module UserAgents
           x64?: true,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'chrome chrome19 webkit webkit536 linux x64'
         }
       },
@@ -1114,7 +1079,6 @@ module UserAgents
           x64?: false,
           x32?: true,
           mobile?: false,
-          known?: true,
           to_s: 'chrome chrome36 webkit webkit537 bsd x32'
         },
         'Mozilla/5.0 (X11; NetBSD) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36' => {
@@ -1129,7 +1093,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'chrome chrome27 webkit webkit537 bsd'
         }
       }
@@ -1148,7 +1111,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'safari safari9 webkit webkit601 macintosh'
         },
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A' => {
@@ -1163,7 +1125,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'safari safari7 webkit webkit537 macintosh'
         },
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2' => {
@@ -1178,7 +1139,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'safari safari5 webkit webkit537 macintosh'
         }
       },
@@ -1195,7 +1155,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'safari safari5 webkit webkit533 windows'
         },
         'Mozilla/5.0 (Windows; U; Windows NT 6.1; de-DE) AppleWebKit/533.20.25 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4' => {
@@ -1210,7 +1169,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'safari safari5 webkit webkit533 windows'
         },
         'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.18.1 (KHTML, like Gecko) Version/5.0 Safari/533.16' => {
@@ -1225,7 +1183,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          known?: true,
           to_s: 'safari safari5 webkit webkit533 windows'
         }
       },
@@ -1242,7 +1199,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'safari safari6 webkit webkit534 blackberry'
         },
         'Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+' => {
@@ -1257,7 +1213,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'safari safari7 webkit webkit534 blackberry'
         },
         'Mozilla/5.0 (BlackBerry; U; BlackBerry 9860; en-US) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.0.0.254 Mobile Safari/534.11+' => {
@@ -1272,7 +1227,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'safari safari7 webkit webkit534 blackberry'
         },
         'Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; it) AppleWebKit/534.8+ (KHTML, like Gecko) Version/6.0.0.668 Mobile Safari/534.8+' => {
@@ -1287,7 +1241,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'safari safari6 webkit webkit534 blackberry'
         },
         'Mozilla/5.0 (BlackBerry; U; BlackBerry 9700; pt) AppleWebKit/534.8+ (KHTML, like Gecko) Version/6.0.0.546 Mobile Safari/534.8+' => {
@@ -1302,7 +1255,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'safari safari6 webkit webkit534 blackberry'
         }
       },
@@ -1319,7 +1271,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'safari safari4 webkit webkit532 ios'
         },
         'Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25' => {
@@ -1334,7 +1285,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'safari safari6 webkit webkit536 ios'
         },
         'Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3' => {
@@ -1349,7 +1299,6 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: true,
-          known?: true,
           to_s: 'safari safari5 webkit webkit534 ios'
         }
       }

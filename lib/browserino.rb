@@ -8,6 +8,7 @@ require_relative 'browserino/maps/solaris'
 require_relative 'browserino/maps/android'
 require_relative 'browserino/maps/windows'
 require_relative 'browserino/maps/windows_phone'
+require_relative 'browserino/maps/webos'
 
 require_relative 'browserino/core/patterns'
 require_relative 'browserino/core/supported'
