@@ -1095,6 +1095,21 @@ module UserAgents
           mobile?: false,
           to_s: 'chrome chrome27 webkit webkit537 bsd'
         }
+      },
+      android: {
+        'Mozilla/5.0 (Linux; Android 7.0; LG-H910 Build/NRD90C) AppleWebKit/537.26 (KHTML, like Gecko) Chrome/51.0.2704.90 Mobile Safari/537.36' => {
+          name: 'Chrome',
+          browser_version: '51.0.2704.90',
+          engine_name: 'webkit',
+          engine_version: '537.26',
+          system_name: ['Android', 'Nougat 24'],
+          system_version: '7.0',
+          system_architecture: USE_FOR_UNKNOWN,
+          x64?: false,
+          x32?: false,
+          mobile?: true,
+          to_s: 'chrome chrome51 webkit webkit537 android'
+        }
       }
     }
     SAFARI = {

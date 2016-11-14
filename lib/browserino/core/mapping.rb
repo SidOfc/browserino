@@ -28,7 +28,9 @@ module Browserino
       'KitKat 19' => [44, 441, 442, 443, 444],
       'Lollipop 21' => [50, 501, 502],
       'Lollipop 22' => [51, 511],
-      'Marshmallow 23' => [60, 601]
+      'Marshmallow 23' => [60, 601],
+      'Nougat 24' => [70],
+      'Nougat 25' => [71]
     }.freeze
 
     # Taken from https://nl.wikipedia.org/wiki/OS_X
