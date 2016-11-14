@@ -247,6 +247,22 @@ module UserAgents
       }
     }
     OPERA_MINI = {
+      tizen: {
+        'Opera/9.80 (Tizen; Opera Mini/7.6.9/35.7827; U; en) Presto/2.8.119 Version/11.10' => {
+          name: 'Opera Mini',
+          browser_version: '7.6.9',
+          engine_name: 'Presto',
+          engine_version: '2.8.119',
+          system_name: ['Tizen', USE_FOR_UNKNOWN],
+          system_version: USE_FOR_UNKNOWN,
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: 'en',
+          x64?: false,
+          x32?: false,
+          mobile?: true,
+          to_s: 'opera-mini opera-mini7 presto presto2 tizen'
+        }
+      },
       ios: {
         'Opera/9.80 (iPad; Opera Mini/7.1.32694/27.1407; U; en) Presto/2.8.119 Version/11.10' => {
           name: 'Opera Mini',
@@ -1113,6 +1129,22 @@ module UserAgents
       }
     }
     SAFARI = {
+      tizen: {
+        'Mozilla/5.0 (Linux; Tizen 2.2; SAMSUNG SM-Z9005) AppleWebKit/537.3 (KHTML, like Gecko) Version/2.2 like Android 4.1; Mobile Safari/537.3' => {
+          name: 'Safari',
+          browser_version: '2.2',
+          engine_name: 'webkit',
+          engine_version: '537.3',
+          system_name: ['tizen', '2.2'],
+          system_version: '2.2',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: USE_FOR_UNKNOWN,
+          x64?: false,
+          x32?: false,
+          mobile?: true,
+          to_s: 'safari safari2 webkit webkit537 tizen'
+        }
+      },
       mac: {
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9' => {
           name: 'Safari',

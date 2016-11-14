@@ -54,6 +54,7 @@ module Browserino
     # Taken from https://nl.wikipedia.org/wiki/Windows_NT
     # 15 - 09 - 2015
     WINDOWS = {
+      '3.1' => [31],
       '3.5' => [35],
       '4' => [40],
       '2000' => [50],
@@ -65,6 +66,7 @@ module Browserino
       '10' => [100]
     }.freeze
 
+    TIZEN = {}.freeze
     BLACKBERRY = {}.freeze
     BSD = {}.freeze
     IOS = {}.freeze
