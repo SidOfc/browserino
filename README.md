@@ -1,11 +1,15 @@
 # Browserino
 
 A UserAgent sniffer with Rails >= 3.2.0 integration.
-The sniffer can currently identify 22 bots (of which 6 social media and 5 search engines), 16 browsers, 11 operating systems, 6 programming language UA's and 4 consoles.
+The sniffer can currently identify 22 bots (of which 6 social media and 5 search engines), 17 browsers, 11 operating systems, 6 programming language UA's and 4 consoles.
 
 # DEPRECATION WARNING: Ruby < 2
 
 Browserino will be dropping support for Ruby versions less than 2 with the release of version `3`
+The planned release date for version `3` is on new years day (Jan 01, 2017).
+
+This breaking update will also remove the deprecated (and no longer used) second value that can be passed to `Browserino.new` which allowed you to return a custom value instead of the default `nil` if a property isn't set.
+**Rails** users can simply upgrade their version as long as they use Ruby `>= 2` or above since the custom return value was never used during initialization.
 
 ## Status
 
@@ -25,6 +29,17 @@ Useragent references:
 
 _dates are in dd-mm-yyyy format_  
 _older changes can be found in the [CHANGELOG.md](CHANGELOG.md)_
+
+#### 09-12-2016 VERSION 2.13.0
+
+- Added support for Colibri
+  - Added `colibri?` method
+  - Added support for `:colibri` (`Symbol` and `String`) in methods
+- Added `agent.internet_explorer?` method as alias for `agent.ie?`
+  - Added support for `:internet_explorer` (`Symbol` and `String`) in methods
+- Test aliasses if they exist for a certain browser (used to be tested by hand)
+- Test aliasses if they exist for a certain user (used to be tested by hand)
+- Add a roadmap
 
 #### 14-11-2016 VERSION 2.12.0
 
@@ -49,12 +64,6 @@ _older changes can be found in the [CHANGELOG.md](CHANGELOG.md)_
 - Add `:macos` alias for `:macintosh` systems.
 - Added support for MacOS `:sierra` alias in methods.
 - Added deprecation notice for dropping support of Ruby < 2.0.0
-
-#### 19-10-2016 VERSION 2.10.1.1
-
-- Test on ruby 2.3.1
-- Fix missing questionmarks on method names in the README.
-- Change gem homepage to io domain
 
 ## Installation
 
@@ -596,6 +605,7 @@ agent.library? :curl, version: 7.21
 * `edge`
 * `samsungbrowser`
 * `webosbrowser`
+* `colibri`
 
 Examples:
 
@@ -653,6 +663,16 @@ Notes:
 * `bsd?` doesn't support any versions
 * `solaris?` only supports numeric versions
 * *named versions* are only supported if they are present in a [map](https://github.com/SidOfc/browserino/tree/master/lib/browserino/core/mapping.rb)
+
+## Roadmap
+
+Browserino will always be a work in progress, I will do my best to maintain and update the gem regularly as I have so far, below are some points of interest on what could / should be improved, rewritten or removed.
+There is no steady schedule for these changes however these are the changes I deemed most important, the value in them being here is that you, as a developer using Browserino have the possibility to see what might be added, changed or removed in the near(est) future of change.
+
+* Drop ruby `< 2` support and remove custom return value from constructor
+* Refactor test suite entirely to improve readability and structure of tests.
+* Add more bot identification
+* Rewrite aliassing and UA lie detection
 
 ## Contributing
 

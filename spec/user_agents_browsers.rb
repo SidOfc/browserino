@@ -746,7 +746,7 @@ module UserAgents
           x64?: false,
           x32?: false,
           mobile?: false,
-          to_s: 'firefox firefox43 gecko gecko43 macintosh'
+          to_s: 'firefox firefox43 gecko gecko43 macintosh',
         },
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10; rv:33.0) Gecko/20100101 Firefox/33.0' => {
           name: 'Firefox',

@@ -35,11 +35,15 @@ browsers.each do |const|
             sys_nm = agent.system_name.to_s.downcase
             sys_nm_full = agent.system_name(full: true)
             sys_ver_split = (agent.system_version || '').split('.')
-            con = convenience_os_fn[sys_nm.to_sym]
             if agent.system_name != UserAgents::USE_FOR_UNKNOWN
               if convenience_os_fn.keys.include?(sys_nm.to_sym)
-                it "has a convenience method for calling system name" do
+                con = convenience_os_fn[sys_nm.to_sym]
+                it "has an alias for #{sys_nm} => #{con}" do
                   expect(agent.send("#{con}?")).to eq true
+                end
+
+                it "allows the alias to be used in agent.platform?" do
+                  expect(agent.platform?(sys_nm.to_sym)).to eq true
                 end
               end
               it "accepts a system_name without version: agent.#{sys_nm}?" do
@@ -122,6 +126,20 @@ browsers.each do |const|
                   it "returns true for agent.not.#{bb}?" do
                     expect(agent.not.send("#{bb}?")).to eq true
                   end
+                end
+              end
+            end
+          end
+          nm_sym = const.downcase.to_sym
+          if (agent.browser_name != UserAgents::USE_FOR_UNKNOWN && nm_aliasses = Browserino::Core::SUPPORTED_ALIASSES[:browsers][nm_sym])
+            describe "Testing aliasses for: #{nm_sym}" do
+              nm_aliasses.each do |current_alias|
+                it "returns true for alias #{current_alias} of #{nm_sym}: agent.#{current_alias}?" do
+                  expect(agent.send("#{nm_sym}?")).to eq true
+                end
+
+                it "can use the alias :#{current_alias} in agent.browser?" do
+                  expect(agent.browser?(nm_sym)).to eq true
                 end
               end
             end

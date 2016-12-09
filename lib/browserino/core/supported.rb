@@ -1,7 +1,7 @@
 module Browserino
   module Core
     SUPPORTED_ALIASSES = {
-       browsers: {firefox: [:ff]},
+       browsers: {firefox: [:ff], ie: [:internet_explorer]},
        social_media: {facebook: [:fb]},
        search_engines: {duckduckgo: [:ddg]},
        bots: {},

@@ -1,6 +1,12 @@
 ## CHANGELOG
 _dates are in dd-mm-yyyy format_
 
+#### 19-10-2016 VERSION 2.10.1.1
+
+- Test on ruby 2.3.1
+- Fix missing questionmarks on method names in the README.
+- Change gem homepage to io domain
+
 #### 25-08-2016 VERSION 2.10.1
 
 - Replaced `require` with `require_relative` where possible
