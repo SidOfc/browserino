@@ -2,114 +2,79 @@ module Browserino
   module Core
     PATTERNS = {
       browser: {
-        samsungbrowser: {
-            name: /(?<name>samsungbrowser)/i,
-            version: %r{samsungbrowser/(?<version>[\d\.]+)}i
+        colibri: { name: /(?<name>colibri)/i,
+                   version: %r{colibri/(?<version>[\d\.]+)}i },
+
+        samsungbrowser: { name: /(?<name>samsungbrowser)/i,
+                          version: %r{samsungbrowser/(?<version>[\d\.]+)}i },
+
+        webosbrowser: { name: /(?<name>w(?:eb)?os(?:browser)?)/i,
+                        version: %r{w(?:eb)?osbrowser/(?<version>[\d\.]+)}i },
+
+        vivaldi: { name: /(?<name>vivaldi)/i,
+                   version: %r{vivaldi/(?<version>[\d\.]+)}i },
+
+        ucbrowser: { name: /(?<name>ucbrowser)/i,
+                     version: %r{ucbrowser/?(?<version>[\d\.]+)}i },
+
+        bolt: { name: /(?<name>bolt)/i,
+                version: %r{bolt/(?<version>[\d\.]+)}i },
+
+        opera_mini: { name: /(?<name>ope?ra?\smini)/i,
+                      version: %r{(?:ope?ra?\smini)/(?<version>[\d\.]+)}i },
+
+        opera: { name: /opera(?!ti(?:on|ng))|opr/i,
+                 version: %r{(?:ope?ra?|version)[/\s](?<version>[\d\.]+)}i },
+
+        maxthon: { name: /(?<name>maxthon)/i,
+                   version: %r{maxthon[\s/](?<version>[\d\.]+)}i },
+
+        edge: { name: /(?<name>edge)/i,
+                version: %r{edge/(?<version>[\d\.]+)}i },
+
+        ie: { name: /(?<name>msie|trident)/i,
+              version: /(?:(?:ms)?ie\s|rv:)(?<version>[\d\.]+)/i },
+
+        seamonkey: { name: /(?<name>seamonkey)/i,
+                     version: %r{seamonkey/(?<version>[\d\.]+)}i },
+
+        servo: { name: /(?<name>servo)/i,
+                 version: %r{servo/(?<version>[\d\.]+)}i },
+
+        firefox: {name: /(?<name>(?:fire|water)(?:fox|bird)
+                         |ice(?:weasel|cat)|netscape|superswan)/xi,
+                  version: %r{(?:(?:fire|water)(?:fox|bird)|ice(?:weasel|cat)
+                              |netscape|superswan)/?(?<version>[\d\.]+)}xi
         },
 
-        webosbrowser: {
-          name: /(?<name>w(?:eb)?os(?:browser)?)/i,
-          version: %r{w(?:eb)?osbrowser/(?<version>[\d\.]+)}i,
-        },
+        brave: { name: /(?<name>brave)/i,
+                 version: %r{brave/(?<version>[\d\.]+)}i },
 
-        vivaldi: {
-          name: /(?<name>vivaldi)/i,
-          version: %r{vivaldi/(?<version>[\d\.]+)}i
-        },
+        chrome: { name: /(?<name>chrome?(ium|plus)?)/i,
+                  version: %r{chrome?(?:ium|plus)?/(?<version>[\d\.]+)}i },
 
-        ucbrowser: {
-          name: /(?<name>ucbrowser)/i,
-          version: %r{ucbrowser/?(?<version>[\d\.]+)}i
-        },
-
-        bolt: {
-          name: /(?<name>bolt)/i,
-          version: %r{bolt/(?<version>[\d\.]+)}i
-        },
-
-        opera_mini: {
-          name: /(?<name>ope?ra?\smini)/i,
-          version: %r{(?:ope?ra?\smini)/(?<version>[\d\.]+)}i
-        },
-
-        opera: {
-          name: /opera(?!ti(?:on|ng))|opr/i,
-          version: %r{(?:ope?ra?|version)[/\s](?<version>[\d\.]+)}i
-        },
-
-        maxthon: {
-          name: /(?<name>maxthon)/i,
-          version: %r{maxthon[\s/](?<version>[\d\.]+)}i
-        },
-
-        edge: {
-          name: /(?<name>edge)/i,
-          version: %r{edge/(?<version>[\d\.]+)}i
-        },
-
-        ie: {
-          name: /(?<name>msie|trident)/i,
-          version: /(?:(?:ms)?ie\s|rv:)(?<version>[\d\.]+)/i
-        },
-
-        seamonkey: {
-          name: /(?<name>seamonkey)/i,
-          version: %r{seamonkey/(?<version>[\d\.]+)}i
-        },
-
-        servo: {
-          name: /(?<name>servo)/i,
-          version: %r{servo/(?<version>[\d\.]+)}i
-        },
-
-        firefox: {
-          name: /(?<name>(?:fire|water)(?:fox|bird)
-                 |ice(?:weasel|cat)|netscape|superswan)/xi,
-          version: %r{(?:(?:fire|water)(?:fox|bird)|ice(?:weasel|cat)
-                      |netscape|superswan)/?(?<version>[\d\.]+)}xi
-        },
-
-        brave: {
-          name: /(?<name>brave)/i,
-          version: %r{brave/(?<version>[\d\.]+)}i
-        },
-
-        chrome: {
-          name: /(?<name>chrome?(ium|plus)?)/i,
-          version: %r{chrome?(?:ium|plus)?/(?<version>[\d\.]+)}i
-        },
-
-        safari: {
-          name: /(?<name>safari)/i,
-          version: %r{(?:version|safari)/(?<version>[\d\.]+)}i
-        }
+        safari: { name: /(?<name>safari)/i,
+                  version: %r{(?:version|safari)/(?<version>[\d\.]+)}i }
       },
 
       library: {
-        php: {
-          name: /(?<name>php)/i,
-          version: %r{php/(?<version>[\d\.]+)}i
-        },
-        python: {
-          name: /(?<name>python)/i,
-          version: %r{python-urllib/(?<version>[\d\.]+)}i
-        },
-        perl: {
-          name: /(?<name>perl)/i,
-          version: %r{perl/(?<version>[\d\.]+)}i
-        },
-        java: {
-          name: /(?<name>java)/i,
-          version: %r{java/(?<version>[\d\._]+)}i
-        },
-        pycurl: {
-          name: /(?<name>pycurl)/i,
-          version: %r{pycurl/(?<version>[\d\.]+)}i
-        },
-        curl: {
-          name: /(?<name>curl)/i,
-          version: %r{curl/(?<version>[\d\.a-z]+)}i
-        }
+        php: { name: /(?<name>php)/i,
+               version: %r{php/(?<version>[\d\.]+)}i },
+
+        python: { name: /(?<name>python)/i,
+                  version: %r{python-urllib/(?<version>[\d\.]+)}i },
+
+        perl: { name: /(?<name>perl)/i,
+                version: %r{perl/(?<version>[\d\.]+)}i },
+
+        java: { name: /(?<name>java)/i,
+                version: %r{java/(?<version>[\d\._]+)}i },
+
+        pycurl: { name: /(?<name>pycurl)/i,
+                  version: %r{pycurl/(?<version>[\d\.]+)}i },
+
+        curl: { name: /(?<name>curl)/i,
+                version: %r{curl/(?<version>[\d\.a-z]+)}i }
       },
 
       bot: {

@@ -1,5 +1,24 @@
 module UserAgents
   module Browsers
+    COLIBRI = {
+      mac: {
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Colibri/1.0.0-beta.9 Chrome/52.0.2743.82 Electron/1.3.13 Safari/537.36' => {
+          name: 'colibri',
+          browser_version: '1.0.0',
+          engine_name: 'webkit',
+          engine_version: '537.36',
+          system_name: ['macintosh', 'sierra'],
+          system_version: '10.12.1',
+          system_architecture: USE_FOR_UNKNOWN,
+          locale: USE_FOR_UNKNOWN,
+          x64?: false,
+          x32?: false,
+          mobile?: false,
+          to_s: 'colibri colibri1 webkit webkit537 macintosh'
+        }
+      }
+    }
+
     SAMSUNGBROWSER = {
       tizen: {
         'Mozilla/5.0 (SMART-TV; Linux; Tizen 2.3) AppleWebkit/538.1 (KHTML, like Gecko) SamsungBrowser/1.0 Safari/538.1' => {
