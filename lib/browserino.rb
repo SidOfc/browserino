@@ -20,7 +20,7 @@ require_relative 'browserino/console'
 module Browserino
   module_function
 
-  def parse(ua, _ = nil) # _ = nil maintains backwards compatibility
+  def parse(ua)
     name = Browser.name(ua)
     info = fetch_info(strip_lies(ua), name)
     tmp = info[:name].to_s.tr('_', ' ')
