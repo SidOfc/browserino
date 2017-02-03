@@ -99,7 +99,18 @@ module Browserino
         linkedin: { name: /(?<name>linkedinbot)/i },
         instagram: { name: /(?<name>instagram)/i },
         pinterest: { name: /(?<name>pinterest)/i },
-        tumblr: { name: /(?<name>tumblr)/i }
+        tumblr: { name: /(?<name>tumblr)/i },
+        alexa: { name: /(?<name>ia_archiver)/i },
+        four_anything: { name: /(?<name>4anything)/i },
+        auto_email_spider: { name: /(?<name>autoemailspider)/i },
+        boston_project: { name: /(?<name>boston[_ ]project)/i },
+        atomz: { name: /(?<name>atomz)/i },
+        atomic_email_hunter: { name: /(?<name>atomic_email_hunter)/i },
+        altavista: { name: /(?<name>altavista)/i },
+        alkaline: { name: /(?<name>alkaline)/i },
+        acoi: { name: /(?<name>acoi)/i },
+        acoon: { name: /(?<name>acoon)/i },
+        accoona: { name: /(?<name>accoona)/i }
       },
 
       engine: {
@@ -124,7 +135,7 @@ module Browserino
       },
 
       console: {
-        name: /(?<name>xbox|playstation|nintendo\s3?ds|wiiu?)/i,
+        name: /(?<name>xbox|playstation|nintendo\s3?ds|wiiu?)/i
       }
     }.freeze
   end

@@ -1,5 +1,91 @@
 module UserAgents
   module Bots
+    AUTO_EMAIL_SPIDER = {
+      'autoemailspider' => {
+        name: 'auto email spider',
+        bot?: true,
+        known?: true
+      }
+    }
+    ATOMZ = {
+      'Atomz/1.0' => {
+        name: 'atomz',
+        bot?: true,
+        known?: true
+      }
+    }
+    ATOMIC_EMAIL_HUNTER = {
+      'Atomic_Email_Hunter/4.0' => {
+        name: 'atomic email hunter',
+        bot?: true,
+        known?: true,
+        atomic_email_hunter?: true
+      }
+    }
+    ALTAVISTA = {
+      'AltaVista Intranet V2.0 evreka.com crawler@evreka.com' => {
+        name: 'altavista',
+        bot?: true,
+        known?: true
+      }
+    }
+    ALKALINE = {
+      'AlkalineBOT/1.4 (1.4.0326.0 RTM)' => {
+        name: 'alkaline',
+        bot?: true,
+        known?: true
+      }
+    }
+    ACOI = {
+      'AcoiRobot' => {
+        name: 'acoi',
+        bot?: true,
+        known?: true
+      }
+    }
+    BOSTON_PROJECT = {
+      '8484 Boston Project v 1.0' => {
+        name: 'boston project',
+        bot?: true,
+        known?: true,
+        boston_project?: true
+      }
+    }
+    ACOON = {
+      'Acoon Robot v1.52 (http://www.acoon.de)' => {
+        name: 'acoon',
+        bot?: true,
+        known?: true
+      },
+      'Acoon Robot v1.50.001' => {
+        name: 'acoon',
+        bot?: true,
+        known?: true
+      }
+    }
+    ACCOONA = {
+      'Accoona-AI-Agent/1.1.1 (crawler at accoona dot com)' => {
+        name: 'accoona',
+        bot?: true,
+        known?: true
+      }
+    }
+    FOUR_ANYTHING = {
+      '4anything.com LinkChecker v2.0' => {
+        name: 'four anything',
+        bot?: true,
+        known?: true,
+        four_anything?: true
+      }
+    }
+    ALEXA = {
+      'ia_archiver (+http://www.alexa.com/site/help/webmasters; crawler@alexa.com)' => {
+        name: 'alexa',
+        bot?: true,
+        known?: true
+      }
+    }
+
     GOOGLE = {
       'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' => {
         name: 'google',
