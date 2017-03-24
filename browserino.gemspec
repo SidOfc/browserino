@@ -6,6 +6,7 @@ require 'browserino/version'
 Gem::Specification.new do |spec|
   spec.name          = "browserino"
   spec.version       = Browserino::VERSION
+  s.version          = "#{s.version}-alpha-#{ENV['TRAVIS_BUILD_NUMBER']}" if ENV['TRAVIS']
   spec.authors       = ["Sidney Liebrand"]
   spec.email         = ["sidneyliebrand@gmail.com"]
 

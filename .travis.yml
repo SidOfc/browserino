@@ -1,10 +1,18 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.3.1
-  - 2.3.0
-  - 2.2.1
-  - 2.1.0
-  - 2.0.0
+- 2.3.1
+- 2.3.0
+- 2.2.1
+- 2.1.0
+- 2.0.0
 before_install: gem install bundler -v 1.10.5
-script: 'bundle exec rspec spec'
+script: bundle exec rspec spec
+deploy:
+  provider: rubygems
+  api_key:
+    secure: BduOKuqYsQkb6hDmNWM9FFE3bygnHoi28BT2BGU7eP3Cmg4rqrWPAQdnY9LN6exXc4Y4V2gRCNBPVuYS1j0GqOychFcm21qtzuizZIAtWhaZRd7POws7T1yvfp80Z1KTtitrWW0qc9XKe0aF187F+V1DxYeVmGGLITAGOXHEfShSj74leqLUAhE1b819aCRwe9/sR51x+7aTx3FaK0jKC0eZA9k3uA/3E594z+miUJqVHRwQQfxJWidkkaUGaRTAHxfj5Ud+u4+xn8fjvgt6m5OVwKxI4Mv52ZVdTdI8Cx331hFFOiFgQsGjB2xwZBWgBIbL7XtR4yZJAhVRfaChXW7i1q42W3ckbrfXUcKHYEVsbznt/JEvlJaXpBsc9Wyzn3m8pPyt3TvugE8KSbYpS2KNOW1wN8gKkmOI2L3TJ0JrSE3I4TRd9JDzqQeXBm2MAOJ03fPNPFiRB10Q+7kremR9gVlzbahcQ/aslwqu5kK60mTPi3V7hv0E6cGka+YVBPKDNu7m5uH4QEPu662ERAoXJ/0s6IuehuyddWau390RHTN0sd9hfo8+sErAnEMeAvDtkvcJCQgXXVyo6+O7b8OFyjKIbyDdkhU8vbsozla3q8iYEcpM+joRVP6RxuRp7FeFgKKOLfSrKRez2LkEMDKA7JT0Yx2MssR1twLTHQU=
+  gem: browserino
+  on:
+    tags: true
+    repo: SidOfc/browserino
