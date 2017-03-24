@@ -6,10 +6,8 @@ require 'browserino/version'
 Gem::Specification.new do |spec|
   spec.name          = "browserino"
   spec.version       = Browserino::VERSION
-  spec.version       = "#{spec.version}-alpha-#{ENV['TRAVIS_BUILD_NUMBER']}" if ENV['TRAVIS']
   spec.authors       = ["Sidney Liebrand"]
   spec.email         = ["sidneyliebrand@gmail.com"]
-
   spec.summary       = %q{A browser identification gem with command line and Rails (>= 3.2.0) integration}
   spec.homepage      = "https://sidofc.github.io/projects/browserino/"
   spec.license       = "MIT"
@@ -27,4 +25,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "tins"
   spec.add_development_dependency "coveralls"
   spec.add_development_dependency "pry"
+
+  if ENV['CI']
+    digits       = spec.version.to_s.split '.'
+    digits[-1]   = digits[-1].to_s.succ
+    spec.version = digits.join('.') + ".pre.#{ENV['TRAVIC_JOB_NUMBER']}"
+  end
 end
