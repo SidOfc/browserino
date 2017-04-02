@@ -25,10 +25,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "tins"
   spec.add_development_dependency "coveralls"
   spec.add_development_dependency "pry"
-
-  if ENV['TRAVIS']
-    digits       = spec.version.to_s.split '.'
-    digits[-1]   = digits[-1].to_s.succ
-    spec.version = digits.join('.') + ".pre.#{ENV['TRAVIS_BUILD_NUMBER']}"
-  end
 end
