@@ -1,67 +1,45 @@
-require_relative 'browserino/core/mapping'
-require_relative 'browserino/core/patterns'
-require_relative 'browserino/core/supported'
-require_relative 'browserino/core/questions'
-require_relative 'browserino/core/helpers'
-require_relative 'browserino/core/lies'
-require_relative 'browserino/core/alias'
-
-require_relative 'browserino/integrate/rails' if defined?(::Rails)
-
-require_relative 'browserino/unknown'
-require_relative 'browserino/agent'
-
-require_relative 'browserino/version'
-require_relative 'browserino/browser'
-require_relative 'browserino/engine'
-require_relative 'browserino/operating_system'
-require_relative 'browserino/console'
+# frozen_string_literal: true
+require_relative 'browserino/base'
+require_relative 'browserino/collector'
+require_relative 'browserino/identity'
 
 module Browserino
-  module_function
-
-  def parse(ua)
-    name = Browser.name(ua)
-    info = fetch_info(strip_lies(ua), name)
-    tmp = info[:name].to_s.tr('_', ' ')
-    info[:name] = tmp.strip == '' ? nil : tmp
-
-    Agent.new check_for_aliases(info), ua
+  def self.parse(user_agent)
+    puts "Parsing: #{user_agent}"
+    identities.each do |identity|
+      puts "Checking if agent is #{identity.name}"
+      if identity.matches? user_agent
+        # extractors = @general_collector.properties.merge identity.properties
+        puts "Browser is: #{identity.name}"
+        return analyze user_agent, identity.collectable
+      end
+    end
+    puts 'Browser is: unknown'
   end
 
-  def fetch_info(ua, name)
-    { name: name,
-      browser_version: Browser.version(ua, name),
-      engine_name: Engine.name(ua),
-      engine_version: Engine.version(ua),
-      system_name: OperatingSystem.name(ua),
-      system_version: OperatingSystem.version(ua),
-      system_architecture: OperatingSystem.architecture(ua),
-      console_name: Console.name(ua),
-      locale: OperatingSystem.locale(ua) }
-  end
+  def self.analyze(user_agent, *collectors)
+    base = @general_collector&.properties || {}
+    collectors.each_with_object(base) { |c, b| b.merge! c.properties }
 
-  def strip_lies(ua)
-    Core::LIES.inject(ua) do |s, arr|
-      s = s.gsub(arr[0], '') if arr[1] == true || s =~ arr[1]
-      s
+    base.each_with_object({}) do |(prop, pattern), result|
+      match = pattern.match user_agent
+      result[prop] = match && match[1]
     end
   end
 
-  def check_for_aliases(h)
-    Core::ALIAS.each do |k, v|
-      h[k] = v.select { |n, re| n if h[k] =~ re }.keys.first || h[k]
-    end
-    h
+  def self.define(&block)
+    module_eval(&block)
   end
 
-  def extract_match(match, sym)
-    if match && match.names.include?(sym.to_s)
-      m = match[sym].to_s.downcase.strip
-      m = yield(m) if block_given?
-      m
-    else
-      UNKNOWN
-    end
+  def self.general(&block)
+    (@general_collector ||= Collector.new).define_collectors(&block)
+  end
+
+  def self.identify(pattern, &block)
+    identities << Identity.new(pattern, &block)
+  end
+
+  def self.identities
+    @identities ||= []
   end
 end
