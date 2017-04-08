@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 module Browserino
   class Identity
-    attr_reader :pattern, :collectable
+    attr_reader :pattern, :collectable, :alias
 
     def initialize(pattern, &block)
       @pattern     = pattern
       @collectable = Collector.new
+      @alias       = nil
 
       instance_eval(&block) if block
     end
@@ -14,8 +15,30 @@ module Browserino
       user_agent.match? pattern
     end
 
+    def ===(other)
+      case other
+      when Regexp then other.match? name
+      when String then other.to_sym == name
+      when Symbol then other == name
+      when Browserino::Identity then other.name == name
+      else false
+      end
+    end
+
+    def ==(other)
+      self === other
+    end
+
     def collect(&block)
       collectable.define_collectors(&block)
+    end
+
+    def collector(other = nil)
+      other && (@collectable = other) || @collectable
+    end
+
+    def alias_of(val = nil)
+      val && (@alias = val) || @alias
     end
 
     def type(val = nil)

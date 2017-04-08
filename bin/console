@@ -5,22 +5,33 @@ require 'browserino'
 require 'pry'
 
 Browserino.define do
-  general do
+  before_parse do |s|
+    s.gsub! %r{(Mozilla/[\d\.]+)}i, ''
+    s.gsub! %r{9\.80}, '' if %r{opera}i.match? s
+    s.gsub! %r{(?:apple)?webkit/[\d\.]+}i, '' if %r{presto}i.match? s
+    s.gsub! %r{(?:ms)?ie}i, '' if %r{rv:}i.match? s
+    s.gsub! %r{android|linux}i, '' if %r{tizen}i.match? s
+    s.gsub! %r{linux}i, '' if %r{android|s(?:unos|olaris)|w(?:eb)?os}i.match? s
+    s.gsub! %r{x11}i, '' if %r{bsd|s(?:unos|olaris)}i.match? s
+    s.gsub! %r{windows\snt}i, '' if %r{windows\sphone}i.match? s
+  end
+
+  always do
     locale       %r{\s(\w{2}(?:\-\w{2})?)[;\)]}i
     architecture %r{(((?:x|x86_|amd|wow)64)|i(3|6)86)}i
   end
 
-  identify /chrome/i do
+  match %r{chrome}i do
     name :chrome
     type :browser
   end
 
-  identify /safari/i do
+  match %r{safari}i do
     name :safari
     type :browser
   end
 
-  identify /firefox/i do
+  match %r{firefox}i do
     name :firefox
     type :browser
 
@@ -30,6 +41,8 @@ Browserino.define do
       engine_version %r{rv:\s?([\d\.]+)}i
     end
   end
+
+  match_alias /seamonkey/i, name: :seamonkey, to: :firefox
 end
 
-p Browserino.parse 'Mozilla/5.0 (X11; Linux i686 on x86_64; rv:10.0) Gecko/20100101 Firefox/10.0'
+p Browserino.parse 'Mozilla/5.0 (X11; Linux i686 on x86_64; rv:10.0) Gecko/20100101 Chrome/10.0'
