@@ -45,4 +45,6 @@ Browserino.define do
   match_alias /seamonkey/i, name: :seamonkey, to: :firefox
 end
 
-p Browserino.parse 'Mozilla/5.0 (X11; Linux i686 on x86_64; rv:10.0) Gecko/20100101 Chrome/10.0'
+@a = Browserino.parse 'Mozilla/5.0 (X11; Linux i686 on x86_64; rv:10.0) Gecko/20100101 Chrome/10.0'
+
+Pry.start

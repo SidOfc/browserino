@@ -1,33 +1,29 @@
 # frozen_string_literal: true
-require_relative 'browserino/base'
+require_relative 'browserino/agent'
 require_relative 'browserino/collector'
 require_relative 'browserino/identity'
 
 module Browserino
   def self.parse(user_agent)
-    puts "Parsing: #{user_agent}"
-    puts "before_parse:"
     before_parse.each { |b| b.call user_agent } if before_parse.any?
-    puts "# => #{user_agent}"
     identities.each do |name, identity|
-      puts "Checking if agent is #{name}"
       if identity.matches? user_agent
-        puts "Browser is: #{identity.name}"
-        puts "Browser is alias of #{identity.alias}" if identity.alias
-        return analyze user_agent, identity.collectable
+        return analyze identity, user_agent
       end
     end
-    puts 'Browser is: unknown'
+    return analyze user_agent
   end
 
-  def self.analyze(user_agent, *collectors)
+  def self.analyze(identity, user_agent)
     base = @general_collector&.properties.dup || {}
-    collectors.each_with_object(base) { |c, b| b.merge! c.properties }
+    base.merge! identity.collectable.properties
 
-    base.each_with_object({}) do |(prop, pattern), result|
+    properties = base.each_with_object({}) do |(prop, pattern), result|
       match = pattern.match user_agent
       result[prop] = match && match[1]
     end
+
+    Agent.new identity, properties
   end
 
   def self.define(&block)
@@ -36,8 +32,11 @@ module Browserino
     module_eval(&block)
 
     @tmp_identities.each do |identity|
+      property_names << identity.collectable.properties.keys
       identities[identity.name] = identity
     end
+
+    @property_names.uniq!.flatten!
   end
 
   def self.always(&block)
@@ -67,6 +66,10 @@ module Browserino
     end
 
     @tmp_identities << definition
+  end
+
+  def self.property_names
+    @property_names ||= []
   end
 
   def self.identities
