@@ -5,7 +5,7 @@ module Browserino
 
     def initialize(identity, properties = {})
       @identity = identity
-      @name     = identity&.name
+      @name     = identity&.name&.to_s
       @type     = identity&.type
 
       # Define all global (excluding current property) definitions
@@ -27,10 +27,6 @@ module Browserino
       Browserino.names.each do |identity_name|
         define_singleton_method("#{identity_name}?") { name == identity_name }
       end
-    end
-
-    def type?(sym)
-      type == sym
     end
 
     def method_missing(s, *a, &b)

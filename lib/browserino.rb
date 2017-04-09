@@ -102,3 +102,5 @@ module Browserino
     @identities ||= {}
   end
 end
+
+require_relative 'browserino/definitions/default'
