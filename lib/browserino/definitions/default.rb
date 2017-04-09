@@ -23,7 +23,11 @@ Browserino.define do
   end
 
   formatter :architecture do |arch|
-    (%r{(?:x86_|amd|wow)?64}.match?(arch) && 'x64') || 'x32'
+    if arch.strip.empty?
+      nil
+    else
+      (%r{(?:x86_|amd|wow)?64}.match?(arch) && 'x64') || 'x32'
+    end
   end
 
   formatter :version, :engine_version, :system_version do |version|

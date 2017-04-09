@@ -1,9 +1,47 @@
-browsers:
-  - user_agent:     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Colibri/1.0.0-beta.9 Chrome/52.0.2743.82 Electron/1.3.13 Safari/537.36'
-    name:           'colibri'
-    version:        '1.0.0'
-    engine:         'webkit'
-    engine_version: '537.36'
-    system_name:    'macintosh'
-    system_version: '10.12.1'
-    architecture:   null
+---
+:browsers:
+- :user_agent: Mozilla/5.0 (Linux; Tizen 2.2; SAMSUNG SM-Z9005) AppleWebKit/537.3
+    (KHTML, like Gecko) Version/2.2 like Android 4.1; Mobile Safari/537.3
+  :name: Safari
+  :engine: webkit
+  :engine_version: '537.3'
+  :system_name: tizen
+  :system_version: '2.2'
+  :locale:
+  :architecture:
+- :user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9
+    (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9
+  :name: Safari
+  :engine: webkit
+  :engine_version: 601.3.9
+  :system_name: macintosh
+  :system_version: 10.11.2
+  :locale:
+  :architecture:
+- :user_agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; tr-TR) AppleWebKit/533.20.25
+    (KHTML, like Gecko) Version/5.0.4 Safari/533.20.27
+  :name: Safari
+  :engine: webkit
+  :engine_version: 533.20.25
+  :system_name: windows
+  :system_version: '6.1'
+  :locale: tr-tr
+  :architecture:
+- :user_agent: Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; en-US) AppleWebKit/534.8+
+    (KHTML, like Gecko) Version/6.0.0.450 Mobile Safari/534.8+
+  :name: Safari
+  :engine: webkit
+  :engine_version: '534.8'
+  :system_name: blackberry
+  :system_version: 6.0.0.450
+  :locale: en-us
+  :architecture:
+- :user_agent: Mozilla/5.0 (iPhone; U; CPU iPhone OS 8_0 like Mac OS X; en-us) AppleWebKit/532.9
+    (KHTML, like Gecko) Version/4.0.5 Mobile/8A293 Safari/6531.22.7
+  :name: safari
+  :engine: webkit
+  :engine_version: '532.9'
+  :system_name: ios
+  :system_version: '8.0'
+  :locale: en-us
+  :architecture:
