@@ -3,10 +3,13 @@ module Browserino
   class Identity
     attr_reader :pattern, :collectable, :alias
 
-    def initialize(pattern, &block)
+    def initialize(pattern, **opts, &block)
       @pattern     = pattern
       @collectable = Collector.new
       @alias       = nil
+
+      name opts[:name] if opts[:name]
+      type opts[:type] if opts[:type]
 
       instance_eval(&block) if block
     end
