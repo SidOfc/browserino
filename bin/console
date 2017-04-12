@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require 'browserino'
 require 'pry'
+require 'browserino'
 
 @a = Browserino.parse ARGV[0].dup || 'Mozilla/5.0 (Macintosh; Intel Mac OS X\
                                       10_11_2) AppleWebKit/601.3.9 (KHTML, l\

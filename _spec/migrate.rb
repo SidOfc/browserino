@@ -6,14 +6,16 @@ short  = UserAgents::Browsers
 consts = short.constants(true) - [:USE_FOR_UNKNOWN]
 out = []
 consts.each do |const|
-  out = short.const_get(const).values.map do |hsh|
+  tmp = short.const_get(const).values.map do |hsh|
     ua   = hsh.keys.first
     data = hsh.values.first
-    { user_agent: ua, name: data[:name], engine: data[:engine_name],
+    { user_agent: ua, name: data[:name]&.downcase, version: data[:browser_version], engine_name: data[:engine_name]&.downcase,
       engine_version: data[:engine_version], system_name: data[:system_name]&.first.to_s.downcase,
       system_version: data[:system_version], locale: data[:locale],
-      architecture: data[:system_architecture] }
+      system_arch: data[:system_architecture] }
   end
+
+  out.concat tmp
 end
 
 yaml = { browsers: out }.to_yaml

@@ -1,17 +1,18 @@
 # frozen_string_literal: true
 module Browserino
   class Identity
-    attr_reader :pattern, :collectable, :alias
+    attr_reader :pattern, :alias, :properties
 
-    def initialize(pattern, **opts, &block)
-      @pattern     = pattern
-      @collectable = Collector.new
-      @alias       = nil
-
-      name opts[:name] if opts[:name]
-      type opts[:type] if opts[:type]
+    def initialize(pattern, opts = {}, &block)
+      @alias      = opts.delete :to
+      @properties = opts
+      @pattern    = pattern
 
       instance_eval(&block) if block
+    end
+
+    def alias?
+      @alias
     end
 
     def matches?(user_agent)
@@ -32,24 +33,13 @@ module Browserino
       self === other
     end
 
-    def collect(&block)
-      collectable.define_collectors(&block)
+    def method_missing(sym, *args, &_)
+      @properties[sym] = args.shift if args.any?
+      @properties[sym]
     end
 
-    def collector(other = nil)
-      other && (@collectable = other) || @collectable
-    end
-
-    def alias_of(val = nil)
-      val && (@alias = val) || @alias
-    end
-
-    def type(val = nil)
-      val && (@type = val) || @type
-    end
-
-    def name(val = nil)
-      val && (@name = val) || @name
+    def respond_to_missing?(_, *__, &___)
+      true
     end
   end
 end

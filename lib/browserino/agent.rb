@@ -5,8 +5,8 @@ module Browserino
 
     def initialize(identity, properties = {})
       @identity = identity
-      @name     = identity&.name&.to_s
-      @type     = identity&.type
+      @name     = identity.name
+      @type     = identity.type
 
       # Define all global (excluding current property) definitions
       (Browserino.property_names - properties.keys).each do |name|

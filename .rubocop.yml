@@ -7,3 +7,9 @@ AllCops:
 
 Documentation:
   Enabled: false
+
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
