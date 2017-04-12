@@ -21,7 +21,7 @@ module Browserino
                   end
     end
 
-    Agent.new identity, properties
+    Agent.new (identity || global_identity), properties
   end
 
   def self.define(&block)
@@ -45,7 +45,7 @@ module Browserino
   end
 
   def self.always(&block)
-    @global_identity = Identity.new %r{}, {}, &block
+    @global_identity = Identity.new //, name: nil, type: :unknown, &block
   end
 
   def self.before_parse(&block)
@@ -77,7 +77,7 @@ module Browserino
   end
 
   def self.global_identity
-    @global_identity ||= Identity.new %r{}, {}, &block
+    @global_identity ||= Identity.new //, name: :unknown, type: :unknown, &block
   end
 
   def self.property_names

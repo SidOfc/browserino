@@ -46,6 +46,15 @@ Browserino.define do
     engine_version %r{(?:presto|webkit)/([\d\.]+)}i
   end
 
+  match %r{opera[^\w]}i do
+    name           :opera
+    type           :browser
+
+    version        %r{(?:opera|version)/([\d\.]+)}i
+    engine_name    %r{(presto|webkit)}i
+    engine_version %r{(?:presto|webkit)/([\d\.]+)}i
+  end
+
   match %r{msie|trident}i do
     name           :ie
     type           :browser
@@ -80,15 +89,6 @@ Browserino.define do
 
     version        %r{(?:safari|version)/([\d\.]+)}i
     engine_version %r{webkit/([\d\.]+)}i
-  end
-
-  match %r{ope?ra?}i do
-    name           :opera
-    type           :browser
-
-    version        %r{(?:opera|version)/([\d\.]+)}i
-    engine_name    %r{(presto|webkit)}i
-    engine_version %r{(?:presto|webkit)/([\d\.]+)}i
   end
 
   match %r{googlebot}i,                   name: :google,              type: :bot
@@ -146,5 +146,7 @@ Browserino.define do
   match_alias %r{colibri}i, to: :chrome, name: :colibri,
                             version: %r{colibri/([\d\.]+)}i
 
-  match_alias %r{webos}i, to: :chrome, name: :webosbrowser
+  match_alias %r{webos|wosbrowser}i,
+              to: :chrome, name: :webosbrowser,
+              version: %r{(?:version|w(?:eb)?osbrowser)/([\d\.]+)}i
 end
