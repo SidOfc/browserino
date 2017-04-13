@@ -155,7 +155,7 @@
   :engine_name:    :presto
   :engine_version: '2.5.25'
   :system_name:    :blackberry
-  :system_version: '10.54'
+  :system_version: '9700'
   :locale:         :en
   :system_arch:
 
@@ -425,7 +425,7 @@
   :engine_name:    :webkit
   :engine_version: '534.8'
   :system_name:    :blackberry
-  :system_version: '6.0.0.450'
+  :system_version: '9800'
   :locale:         :en_us
   :system_arch:
 
@@ -443,246 +443,273 @@
 
 - :user_agent:     Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.89 Vivaldi/1.0.83.38 Safari/537.36
   :name:           :vivaldi
+  :version:        '1.0.83.38'
   :engine_name:    :webkit
   :engine_version: '537.36'
   :system_name:    :windows
   :system_version: '6.1'
   :locale:
-  :architecture:
+  :system_arch:    :x64
 
 - :user_agent:     Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.115 Safari/537.36 Vivaldi/1.0.129.2
   :name:           :vivaldi
+  :version:        '1.0.129.2'
   :engine_name:    :webkit
   :engine_version: '537.36'
   :system_name:    :windows
   :system_version: '6.3'
   :locale:
-  :architecture:
+  :system_arch:    :x64
 
 - :user_agent:     Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52
   :name:           :opera
+  :version:        '11.52'
   :engine_name:    :presto
   :engine_version: 2.9.168
   :system_name:    :macintosh
   :system_version: 10.6.8
-  :locale: :fr
-  :architecture:
+  :locale:         :fr
+  :system_arch:
 
 - :user_agent:     Opera/9.80 (Macintosh; Intel Mac OS X; U; nl) Presto/2.6.30 Version/10.61
   :name:           :opera
+  :version:        '10.61'
   :engine_name:    :presto
   :engine_version: 2.6.30
   :system_name:    :macintosh
   :system_version:
   :locale: :nl
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; de) Opera 11.51
   :name:           :opera
+  :version:        '11.51'
   :engine_name:
   :engine_version:
   :system_name:    :windows
   :system_version: '6.1'
-  :locale: :de
-  :architecture:
+  :locale:         :de
+  :system_arch:
 
 - :user_agent:     Opera/9.80 (X11; Linux x86_64; U; fr) Presto/2.9.168 Version/11.50
   :name:           :opera
+  :version:        '11.50'
   :engine_name:    :presto
-  :engine_version: 2.9.168
+  :engine_version: '2.9.168'
   :system_name:    :linux
   :system_version:
-  :locale: :fr
-  :architecture:
+  :locale:         :fr
+  :system_arch:    :x64
 
 - :user_agent:     Opera/9.22 (X11; OpenBSD i386; U; en)
   :name:           :opera
+  :version:        '9.22'
   :engine_name:
   :engine_version:
   :system_name:    :bsd
   :system_version:
-  :locale: :en
-  :architecture:
+  :locale:         :en
+  :system_arch:    :x32
 
 - :user_agent:     Opera/9.80 (iPhone; Opera Mini/7.1.32694/27.1407; U; en) Presto/2.8.119 Version/11.10
   :name:           :opera_mini
+  :version:        '7.1.32694'
   :engine_name:    :presto
-  :engine_version: 2.8.119
+  :engine_version: '2.8.119'
   :system_name:    :ios
   :system_version:
-  :locale: :en
-  :architecture:
+  :locale:         :en
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; BOLT/2.800) AppleWebKit/534.6 (KHTML, like Gecko) Version/5.0 Safari/534.6.3
   :name:           :bolt
+  :version:        '2.800'
   :engine_name:    :webkit
   :engine_version: '534.6'
   :system_name:    :windows
   :system_version: '5.1'
-  :locale: :en_us
-  :architecture:
+  :locale:         :en_us
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko
   :name:           :ie
+  :version:        '11.0'
   :engine_name:    :trident
   :engine_version: '7.0'
   :system_name:    :windows
   :system_version: '6.1'
-  :locale: :as
-  :architecture:
+  :locale:         :as
+  :system_arch:    :x64
 
 - :user_agent:     Mozilla/5.0 (compatible; MSIE 10.6; Windows NT 6.1; Trident/5.0; InfoPath.2; SLCC1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET CLR 2.0.50727) 3gpp-gba UNTRUSTED/1.0
   :name:           :ie
+  :version:        '10.6'
   :engine_name:    :trident
   :engine_version: '5.0'
   :system_name:    :windows
   :system_version: '6.1'
   :locale:
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 920)
   :name:           :ie
+  :version:        '10.0'
   :engine_name:    :trident
   :engine_version: '6.0'
   :system_name:    :windows_phone
   :system_version: '8.0'
   :locale:
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/4.0 (compatible; MSIE 7.0; Windows Phone OS 7.0; Trident/3.1; IEMobile/7.0; LG; GW910)
   :name:           :ie
+  :version:        '7.0'
   :engine_name:    :trident
   :engine_version: '3.1'
   :system_name:    :windows_phone
   :system_version: '7.0'
-  :locale: :lg
-  :architecture:
+  :locale:         :lg
+  :system_arch:
 
 - :user_agent:     Mozilla/4.0 (Compatible; MSIE 6.0; Windows NT 5.1 T-01A_6.5; Windows Phone 6.5)
   :name:           :ie
+  :version:        '6.0'
   :engine_name:    :trident
   :engine_version:
   :system_name:    :windows_phone
   :system_version: '6.5'
   :locale:
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/533.1 (KHTML, like Gecko) Maxthon/3.0.8.2 Safari/533.1
   :name:           :maxthon
+  :version:        '3.0.8.2'
   :engine_name:    :webkit
   :engine_version: '533.1'
   :system_name:    :windows
   :system_version: '6.0'
-  :locale: :en_us
-  :architecture:
+  :locale:         :en_us
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/4.0; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; Zune 4.0; InfoPath.3; MS-RTC LM 8; .NET4.0C; .NET4.0E; Maxthon 2.0)
   :name:           :maxthon
+  :version:        '2.0'
   :engine_name:    :trident
   :engine_version: '4.0'
   :system_name:    :windows
   :system_version: '6.1'
   :locale:
-  :architecture:
+  :system_arch:    :x64
 
 - :user_agent:     Mozilla/5.0 (Windows; U; Windows NT 6.2; WOW64; rv:1.8.0.7) Gecko/20110321 MultiZilla/4.33.2.6a SeaMonkey/8.6.55
   :name:           :seamonkey
+  :version:        '8.6.55'
   :engine_name:    :gecko
   :engine_version: 1.8.0.7
   :system_name:    :windows
   :system_version: '6.2'
   :locale:
-  :architecture:
+  :system_arch:    :x64
 
 - :user_agent:     Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20120501 Firefox/12.0 SeaMonkey/2.9.1 Lightning/1.4
   :name:           :seamonkey
+  :version:        '2.9.1'
   :engine_name:    :gecko
   :engine_version: '12.0'
   :system_name:    :linux
   :system_version:
   :locale:
-  :architecture:
+  :system_arch:    :x64
 
 - :user_agent:     Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10; rv:33.0) Gecko/20100101 Firefox/33.0
   :name:           :firefox
+  :version:        '33.0'
   :engine_name:    :gecko
   :engine_version: '33.0'
   :system_name:    :macintosh
   :system_version: '10.10'
   :locale:
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:25.0) Gecko/20100101 Firefox/25.0
   :name:           :firefox
+  :version:        '25.0'
   :engine_name:    :gecko
   :engine_version: '25.0'
   :system_name:    :macintosh
   :system_version: '10.6'
   :locale:
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0
   :name:           :firefox
+  :version:        '36.0'
   :engine_name:    :gecko
   :engine_version: '36.0'
   :system_name:    :windows
   :system_version: '6.3'
   :locale:
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20130401 Firefox/31.0
   :name:           :firefox
+  :version:        '31.0'
   :engine_name:    :gecko
   :engine_version: '31.0'
   :system_name:    :windows
   :system_version: '6.1'
   :locale:
-  :architecture:
+  :system_arch:    :x64
 
 - :user_agent:     Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0
   :name:           :firefox
+  :version:        '24.0'
   :engine_name:    :gecko
   :engine_version: '24.0'
   :system_name:    :linux
   :system_version:
   :locale:
-  :architecture:
+  :system_arch:    :x64
 
 - :user_agent:     Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:21.0) Gecko/20130331 Firefox/21.0
   :name:           :firefox
+  :version:        '21.0'
   :engine_name:    :gecko
   :engine_version: '21.0'
   :system_name:    :linux
   :system_version:
   :locale:
-  :architecture:
+  :system_arch:    :x64
 
 - :user_agent:     Mozilla/5.0 (X11; NetBSD amd64; rv:16.0) Gecko/20121102 Firefox/16.0
   :name:           :firefox
+  :version:        '16.0'
   :engine_name:    :gecko
   :engine_version: '16.0'
   :system_name:    :bsd
   :system_version:
   :locale:
-  :architecture:
+  :system_arch:    :x64
 
 - :user_agent:     Mozilla/5.0 (X11; FreeBSD amd64; rv:5.0) Gecko/20100101 Firefox/5.0
   :name:           :firefox
+  :version:        '5.0'
   :engine_name:    :gecko
   :engine_version: '5.0'
   :system_name:    :bsd
   :system_version:
   :locale:
-  :architecture:
+  :system_arch:    :x64
 
 - :user_agent:     Mozilla/5.0 (X11; U; FreeBSD i386; de-CH; rv:1.9.2.8) Gecko/20100729 Firefox/3.6.8
   :name:           :firefox
+  :version:        '3.6.8'
   :engine_name:    :gecko
-  :engine_version: 1.9.2.8
+  :engine_version: '1.9.2.8'
   :system_name:    :bsd
   :system_version:
-  :locale: :de_ch
-  :architecture:
+  :locale:         :de_ch
+  :system_arch:    :x32
 
 - :user_agent:     SUNPlex 4.1 (Trusted Solaris 8 Operating Environment; Solaris 8 OE; Sun Fire 15K)
   :name:
@@ -691,175 +718,194 @@
   :system_name:    :solaris
   :system_version: '8'
   :locale:         :oe
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36
   :name:           :chrome
+  :version:        '37.0.2062.124'
   :engine_name:    :webkit
   :engine_version: '537.36'
   :system_name:    :macintosh
-  :system_version: 10.10.1
+  :system_version: '10.10.1'
   :locale:
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1944.0 Safari/537.36
   :name:           :chrome
+  :version:        '36.0.1944.0'
   :engine_name:    :webkit
   :engine_version: '537.36'
   :system_name:    :macintosh
-  :system_version: 10.9.2
+  :system_version: '10.9.2'
   :locale:
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36
   :name:           :chrome
+  :version:        '27.0.1453.93'
   :engine_name:    :webkit
   :engine_version: '537.36'
   :system_name:    :macintosh
-  :system_version: 10.8.3
+  :system_version: '10.8.3'
   :locale:
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1623.0 Safari/537.36
   :name:           :chrome
+  :version:        '31.0.1623.0'
   :engine_name:    :webkit
   :engine_version: '537.36'
   :system_name:    :windows
   :system_version: '6.1'
   :locale:
-  :architecture:
+  :system_arch:    :x64
 
 - :user_agent:     Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1464.0 Safari/537.36
   :name:           :chrome
+  :version:        '28.0.1464.0'
   :engine_name:    :webkit
   :engine_version: '537.36'
   :system_name:    :windows
   :system_version: '6.2'
   :locale:
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/4E423F
   :name:           :chrome
+  :version:        '34.0.1847.137'
   :engine_name:    :webkit
   :engine_version: '537.36'
   :system_name:    :linux
   :system_version:
   :locale:
-  :architecture:
+  :system_arch:    :x64
 
 - :user_agent:     Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36
   :name:           :chrome
+  :version:        '41.0.2227.0'
   :engine_name:    :webkit
   :engine_version: '537.36'
   :system_name:    :linux
   :system_version:
   :locale:
-  :architecture:
+  :system_arch:    :x64
 
 - :user_agent:     Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.9 Safari/536.5
   :name:           :chrome
+  :version:        '19.0.1084.9'
   :engine_name:    :webkit
   :engine_version: '536.5'
   :system_name:    :linux
   :system_version:
   :locale:
-  :architecture:
+  :system_arch:    :x64
 
 - :user_agent:     Mozilla/5.0 (X11; NetBSD) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36
   :name:           :chrome
+  :version:        '27.0.1453.116'
   :engine_name:    :webkit
   :engine_version: '537.36'
   :system_name:    :bsd
   :system_version:
   :locale:
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A
   :name:           :safari
+  :version:        '7.0.3'
   :engine_name:    :webkit
   :engine_version: '537.75.14'
   :system_name:    :macintosh
   :system_version: '10.9.3'
   :locale:
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2
   :name:           :safari
+  :version:        '5.1.7'
   :engine_name:    :webkit
   :engine_version: '537.13'
   :system_name:    :macintosh
   :system_version: '10.6.8'
   :locale:
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (Windows; U; Windows NT 6.1; de-DE) AppleWebKit/533.20.25 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4
   :name:           :safari
+  :version:        '5.0.3'
   :engine_name:    :webkit
   :engine_version: '533.20.25'
   :system_name:    :windows
   :system_version: '6.1'
   :locale:         :de_de
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.18.1 (KHTML, like Gecko) Version/5.0 Safari/533.16
   :name:           :safari
+  :version:        '5.0'
   :engine_name:    :webkit
   :engine_version: '533.18.1'
   :system_name:    :windows
   :system_version: '6.1'
   :locale:         :en_us
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+
   :name:           :safari
+  :version:        '7.1.0.346'
   :engine_name:    :webkit
   :engine_version: '534.11'
   :system_name:    :blackberry
-  :system_version: '7.1.0.346'
+  :system_version: '9900'
   :locale:         :en
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (BlackBerry; U; BlackBerry 9860; en-US) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.0.0.254 Mobile Safari/534.11+
   :name:           :safari
+  :version:        '7.0.0.254'
   :engine_name:    :webkit
   :engine_version: '534.11'
   :system_name:    :blackberry
-  :system_version: '7.0.0.254'
+  :system_version: '9860'
   :locale:         :en_us
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; it) AppleWebKit/534.8+ (KHTML, like Gecko) Version/6.0.0.668 Mobile Safari/534.8+
   :name:           :safari
+  :version:        '6.0.0.668'
   :engine_name:    :webkit
   :engine_version: '534.8'
   :system_name:    :blackberry
-  :system_version: '6.0.0.668'
+  :system_version: '9800'
   :locale:         :it
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (BlackBerry; U; BlackBerry 9700; pt) AppleWebKit/534.8+ (KHTML, like Gecko) Version/6.0.0.546 Mobile Safari/534.8+
   :name:           :safari
+  :version:        '6.0.0.546'
   :engine_name:    :webkit
   :engine_version: '534.8'
   :system_name:    :blackberry
-  :system_version: '6.0.0.546'
+  :system_version: '9700'
   :locale:         :pt
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25
   :name:           :safari
+  :version:        '6.0'
   :engine_name:    :webkit
   :engine_version: '536.26'
   :system_name:    :ios
   :system_version: '6.0'
   :locale:
-  :architecture:
+  :system_arch:
 
 - :user_agent:     Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3
   :name:           :safari
+  :version:        '5.1'
   :engine_name:    :webkit
   :engine_version: '534.46'
   :system_name:    :ios
   :system_version: '5.0'
   :locale:
-  :architecture:
+  :system_arch:

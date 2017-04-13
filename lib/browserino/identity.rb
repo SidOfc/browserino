@@ -33,8 +33,10 @@ module Browserino
       self === other
     end
 
-    def method_missing(sym, *args, &_)
-      @properties[sym] = args.shift if args.any?
+    def method_missing(sym, *args, &block)
+      return @properties[sym] = block      if block
+      return @properties[sym] = args.shift if args.any?
+
       @properties[sym]
     end
 

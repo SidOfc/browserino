@@ -2,7 +2,7 @@
 Browserino.define do
   format_all do |value|
     case value
-    when TrueClass, FalseClass, NilClass then value
+    when TrueClass, FalseClass, NilClass, Proc then value
     when %r{^[\d_\.]+$}i then value.to_s.strip.tr('_', '.')
     else value.to_s.downcase.strip.gsub(%r{[\s-]+}i, '_').to_sym
     end

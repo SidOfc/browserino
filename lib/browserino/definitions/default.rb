@@ -6,7 +6,7 @@ Browserino.define do
                       |ip(?:[ao]d|hone)|blackberry|linux|ubuntu|x11|bsd
                       |s(?:unos|olaris)|w(?:eb)?os)}xi
     system_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|mac\sos\sx|android
-                      |(?:cpu\s|ip(?:[ao]d|hone)\s)os|blackberry.*?version/|bb
+                      |(?:cpu\s|ip(?:[ao]d|hone)\s)os|blackberry|bb
                       |s(?:unos|olaris)/?|w(?:eb)?os/|tizen)\s?([\d\._]+)}xi
   end
 
@@ -14,7 +14,7 @@ Browserino.define do
     name           :maxthon
     type           :browser
 
-    version        %r{maxthon/([\d\.]+)}i
+    version        %r{maxthon[/\s]([\d\.]+)}i
     engine_name    %r{(webkit|presto|gecko|trident)}i
     engine_version %r{(?:webkit|presto|gecko|trident)/([\d\.]+)}i
   end
@@ -50,7 +50,7 @@ Browserino.define do
     name           :opera
     type           :browser
 
-    version        %r{(?:opera|version)/([\d\.]+)}i
+    version        %r{(?:opera[\s/]|version/)([\d\.]+)}i
     engine_name    %r{(presto|webkit)}i
     engine_version %r{(?:presto|webkit)/([\d\.]+)}i
   end
@@ -59,6 +59,7 @@ Browserino.define do
     name           :ie
     type           :browser
     engine_name    :trident
+    modern?        { version.split('.').first.to_i >= 10 }
 
     version        %r{(?:(?:ms)?ie\s|rv:)([\d\.]+)}i
     engine_version %r{trident/([\d\.]+)}i

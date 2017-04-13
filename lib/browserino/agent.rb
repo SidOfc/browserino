@@ -31,6 +31,8 @@ module Browserino
       true
     end
 
+    private
+
     def format_property_values(properties)
       properties.each_with_object({}) do |(prop, value), store|
         store[prop] = convert value, format: prop
