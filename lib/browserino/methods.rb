@@ -49,13 +49,14 @@ module Browserino
 
   def self.match(rgxp = nil, **opts, &block)
     rgxp, opts = [nil, rgxp] if rgxp.is_a? Hash
+    return add_alias(rgxp, opts, &block) if opts[:like] && rgxp
     rgxp && (@tmp_ids << Identity.new(rgxp, opts, &block)) || global(&block)
   end
 
-  def self.match_alias(pattern, **opts, &block)
-    id = @tmp_ids.select { |id| id == opts[:to] }.first
+  def self.add_alias(pattern, **opts, &block)
+    id = @tmp_ids.select { |id| id == opts[:like] }.first
 
-    raise "No alias found for: #{opts[:to] || 'nil'}" unless id
+    raise "No alias found for: #{opts[:like] || 'nil'}" unless id
     definition = Identity.new pattern, id.properties.merge(opts), &block
 
     @tmp_ids.unshift definition
@@ -70,11 +71,11 @@ module Browserino
   end
 
   def self.types
-    @types ||= []
+    @types ||= [:unknown]
   end
 
   def self.names
-    @names ||= []
+    @names ||= [:unknown]
   end
 
   def self.formatters

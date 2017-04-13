@@ -3,7 +3,7 @@ module Browserino
   class Identity
     attr_reader :pattern, :properties
 
-    SETTINGS = { name: //, type: :unknown }
+    SETTINGS = { name: :unknown, type: :unknown }
 
     def initialize(pattern = //, opts = {}, **additional, &block)
       opts        = pattern if pattern.is_a?(Hash) && opts.empty?

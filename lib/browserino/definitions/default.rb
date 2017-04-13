@@ -125,28 +125,25 @@ Browserino.define do
   match %r{accoona}i,                     name: :accoona,             type: :bot
   match %r{face(?:bookexternalhit|bot)}i, name: :facebook,            type: :bot
 
-  match_alias %r{vivaldi}i, to: :chrome, name: :vivaldi,
-                            version: %r{vivaldi/([\d\.]+)}i
+  match %r{bolt}i, like: :safari, name: :bolt, version: %r{bolt/([\d\.]+)}i
+  match %r{brave}i, like: :chrome, name: :brave, version: %r{brave/([\d\.]+)}i
 
-  match_alias %r{samsungbrowser}i, to: :chrome, name: :samsungbrowser,
-                                   version: %r{samsungbrowser/([\d\.]+)}i
+  match %r{vivaldi}i, like: :chrome, name: :vivaldi,
+                      version: %r{vivaldi/([\d\.]+)}i
 
-  match_alias %r{seamonkey}i, to: :firefox, name: :seamonkey,
-                              version: %r{seamonkey/([\d\.]+)}i
+  match %r{samsungbrowser}i, like: :chrome, name: :samsungbrowser,
+                             version: %r{samsungbrowser/([\d\.]+)}i
 
-  match_alias %r{superswan}i, to: :firefox, name: :superswan,
-                              version: %r{superswan/([\d\.]+)}i
+  match %r{seamonkey}i, like: :firefox, name: :seamonkey,
+                        version: %r{seamonkey/([\d\.]+)}i
 
-  match_alias %r{bolt}i, to: :safari, name: :bolt,
-                         version: %r{bolt/([\d\.]+)}i
+  match %r{superswan}i, like: :firefox, name: :superswan,
+                        version: %r{superswan/([\d\.]+)}i
 
-  match_alias %r{brave}i, to: :chrome, name: :brave,
-                          version: %r{brave/([\d\.]+)}i
+  match %r{colibri}i, like: :chrome, name: :colibri,
+                      version: %r{colibri/([\d\.]+)}i
 
-  match_alias %r{colibri}i, to: :chrome, name: :colibri,
-                            version: %r{colibri/([\d\.]+)}i
-
-  match_alias %r{webos|wosbrowser}i,
-              to: :chrome, name: :webosbrowser,
-              version: %r{(?:version|w(?:eb)?osbrowser)/([\d\.]+)}i
+  match %r{webos|wosbrowser}i,
+        like: :chrome, name: :webosbrowser,
+        version: %r{(?:version|w(?:eb)?osbrowser)/([\d\.]+)}i
 end

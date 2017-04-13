@@ -685,7 +685,7 @@
   :architecture:
 
 - :user_agent:     SUNPlex 4.1 (Trusted Solaris 8 Operating Environment; Solaris 8 OE; Sun Fire 15K)
-  :name:
+  :name:           :unknown
   :engine_name:
   :engine_version:
   :system_name:    :solaris

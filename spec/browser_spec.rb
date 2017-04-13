@@ -20,7 +20,7 @@ describe Browserino do
     agent = Browserino.parse ua
 
     Browserino.types.each do |type|
-      it "defines a question method for #{type}" do
+      it "defines agent.#{type}?" do
         expect(agent.send("#{type}?")).to eq (agent.type == type)
       end
     end
