@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Browserino do
+describe 'Browserino' do
   browsers = Library.data.fetch(:browsers, [])
 
   browsers.each do |spec|
@@ -15,7 +15,7 @@ describe Browserino do
     end
   end
 
-  describe Browserino::Agent do
+  describe 'Browserino::Agent' do
     ua    = browsers.sample[:user_agent]
     agent = Browserino.parse ua
 

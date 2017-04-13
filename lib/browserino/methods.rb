@@ -75,7 +75,7 @@ module Browserino
   end
 
   def self.names
-    @names ||= [:unknown]
+    @names ||= []
   end
 
   def self.formatters

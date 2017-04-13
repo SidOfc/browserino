@@ -3,7 +3,7 @@ module Browserino
   class Identity
     attr_reader :pattern, :properties
 
-    SETTINGS = { name: :unknown, type: :unknown }
+    SETTINGS = { name: nil, type: :unknown }
 
     def initialize(pattern = //, opts = {}, **additional, &block)
       opts        = pattern if pattern.is_a?(Hash) && opts.empty?
@@ -18,6 +18,8 @@ module Browserino
     end
 
     def ===(other)
+      return false if properties[:name].nil?
+
       case other
       when Regexp   then other.match? properties[:name]
       when String   then other.to_sym == properties[:name]
