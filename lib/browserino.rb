@@ -8,4 +8,12 @@ require_relative 'browserino/definitions/format'
 require_relative 'browserino/definitions/default'
 
 module Browserino
+  def self.parse(user_agent)
+    before_parse.each { |b| b.call user_agent } if before_parse.any?
+    identities.each do |_, identity|
+      return analyze user_agent, identity if identity.matches? user_agent
+    end
+
+    analyze user_agent
+  end
 end

@@ -1,15 +1,27 @@
 require 'spec_helper'
 
 describe Browserino do
-  Library.data.fetch(:browsers, []).each do |spec|
-    ua = spec.delete :user_agent
+  browsers = Library.data.fetch(:browsers, [])
+
+  browsers.each do |spec|
+    agent = Browserino.parse spec[:user_agent]
+
+    describe spec[:user_agent] do
+      spec.reject { |k| k == :user_agent }.each do |test_method, test_result|
+        it "correctly outputs #{test_method} for #{agent.name}" do
+          expect(agent.send(test_method)).to eq test_result
+        end
+      end
+    end
+  end
+
+  describe Browserino::Agent do
+    ua    = browsers.sample[:user_agent]
     agent = Browserino.parse ua
 
-    describe ua do
-      spec.each do |test_method, expected_result|
-        it "correctly outputs #{test_method} for #{agent.name}" do
-          expect(agent.send(test_method)).to eq expected_result
-        end
+    Browserino.types.each do |type|
+      it "defines a question method for #{type}" do
+        expect(agent.send("#{type}?")).to eq (agent.type == type)
       end
     end
   end

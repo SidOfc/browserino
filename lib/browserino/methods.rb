@@ -1,18 +1,8 @@
 # frozen_string_literal: true
 module Browserino
-  def self.parse(user_agent)
-    before_parse.each { |b| b.call user_agent } if before_parse.any?
-    identities.each do |name, identity|
-      if identity.matches? user_agent
-        return analyze user_agent, identity
-      end
-    end
-
-    analyze user_agent
-  end
-
   def self.analyze(user_agent, identity = nil)
-    base = [global_identity, identity].compact.map(&:properties).reduce(&:merge)
+    id   = identity || global.first
+    base = [*global, identity].compact.map(&:properties).reduce(&:merge)
 
     properties = base.each_with_object({}) do |(prop, value), res|
       res[prop] = case value
@@ -21,31 +11,26 @@ module Browserino
                   end
     end
 
-    Agent.new (identity || global_identity), properties
+    Agent.new({name: id.name, type: id.type}.merge(properties))
   end
 
   def self.define(&block)
-    @tmp_identities = []
+    @tmp_ids = []
 
     module_eval(&block)
+    return unless @tmp_ids.any?
 
-    if @tmp_identities.any?
-      @tmp_identities.each do |identity|
-        property_names << identity.properties.keys
-        type_names << identity.type
-        names << identity.name
+    @tmp_ids.each do |identity|
+      properties << identity.properties.keys
+      types << identity.type
+      names << identity.name
 
-        identities[identity.name] = identity
-      end
-
-      property_names.flatten!.uniq!
-      type_names.uniq!
-      names.uniq!
+      identities[identity.name] = identity
     end
-  end
 
-  def self.always(&block)
-    @global_identity = Identity.new //, name: nil, type: :unknown, &block
+    properties.flatten!.uniq!
+    types.uniq!
+    names.uniq!
   end
 
   def self.before_parse(&block)
@@ -62,30 +47,30 @@ module Browserino
     props.each { |prop| formatters[prop] = block }
   end
 
-  def self.match(pattern, **opts, &block)
-    @tmp_identities << Identity.new(pattern, opts, &block)
+  def self.match(rgxp = nil, **opts, &block)
+    rgxp, opts = [nil, rgxp] if rgxp.is_a? Hash
+    rgxp && (@tmp_ids << Identity.new(rgxp, opts, &block)) || global(&block)
   end
 
   def self.match_alias(pattern, **opts, &block)
-    id = @tmp_identities.select { |id| id == opts[:to] }.first
+    id = @tmp_ids.select { |id| id == opts[:to] }.first
 
     raise "No alias found for: #{opts[:to] || 'nil'}" unless id
-
     definition = Identity.new pattern, id.properties.merge(opts), &block
 
-    @tmp_identities.unshift definition
+    @tmp_ids.unshift definition
   end
 
-  def self.global_identity
-    @global_identity ||= Identity.new //, name: :unknown, type: :unknown, &block
+  def self.global(&block)
+    (@global ||= []) << Identity.new(&block)
   end
 
-  def self.property_names
-    @property_names ||= []
+  def self.properties
+    @properties ||= []
   end
 
-  def self.type_names
-    @type_names ||= []
+  def self.types
+    @types ||= []
   end
 
   def self.names

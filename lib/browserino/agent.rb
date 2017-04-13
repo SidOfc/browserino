@@ -1,15 +1,9 @@
 # frozen_string_literal: true
 module Browserino
   class Agent
-    attr_reader :identity, :name, :type
-
-    def initialize(identity, properties = {})
-      @identity = identity
-      @name     = identity.name
-      @type     = identity.type
-
+    def initialize(properties = {})
       # Define all global (excluding current property) definitions
-      (Browserino.property_names - properties.keys).each do |name|
+      (Browserino.properties - properties.keys).each do |name|
         define_singleton_method(name) { nil }
       end
 
@@ -19,7 +13,7 @@ module Browserino
       end
 
       # Define possible type definitions
-      Browserino.type_names.each do |type_name|
+      Browserino.types.each do |type_name|
         define_singleton_method("#{type_name}?") { type == type_name }
       end
 
@@ -29,8 +23,12 @@ module Browserino
       end
     end
 
-    def method_missing(s, *a, &b)
+    def method_missing(_, *__, &___)
       nil
+    end
+
+    def respond_to_missing?(_, *__, &___)
+      true
     end
 
     def format_property_values(properties)

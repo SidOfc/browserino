@@ -1,30 +1,28 @@
 # frozen_string_literal: true
 module Browserino
   class Identity
-    attr_reader :pattern, :alias, :properties
+    attr_reader :pattern, :properties
 
-    def initialize(pattern, opts = {}, &block)
-      @alias      = opts.delete :to
-      @properties = opts
+    SETTINGS = { name: //, type: :unknown }
+
+    def initialize(pattern = //, opts = {}, **additional, &block)
+      opts        = pattern if pattern.is_a?(Hash) && opts.empty?
+      @properties = SETTINGS.merge(opts.merge(additional))
       @pattern    = pattern
 
       instance_eval(&block) if block
     end
 
-    def alias?
-      @alias
-    end
-
     def matches?(user_agent)
-      user_agent.match? pattern
+      user_agent.match? pattern if pattern.is_a? Regexp
     end
 
     def ===(other)
       case other
-      when Regexp then other.match? name
-      when String then other.to_sym == name
-      when Symbol then other == name
-      when Browserino::Identity then other.name == name
+      when Regexp   then other.match? properties[:name]
+      when String   then other.to_sym == properties[:name]
+      when Symbol   then other == properties[:name]
+      when Identity then other.properties[:name] == properties[:name]
       else false
       end
     end

@@ -13,3 +13,7 @@ Lint/AmbiguousRegexpLiteral:
 
 Style/RegexpLiteral:
   Enabled: false
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 15

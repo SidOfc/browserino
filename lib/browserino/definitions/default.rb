@@ -1,5 +1,5 @@
 Browserino.define do
-  always do
+  match do
     locale         %r{\s(\w{2}(?:\-\w{2})?)[;\)]}i
     system_arch    %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86)}i
     system_name    %r{(windows(?:\sphone)?|macintosh|android|tizen
