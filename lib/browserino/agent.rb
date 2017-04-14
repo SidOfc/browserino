@@ -7,9 +7,18 @@ module Browserino
         define_singleton_method(name) { nil }
       end
 
-      # Define all property definitions
-      format_property_values(properties).each do |name, value|
+      predefined = properties.reject { |_, val| val.respond_to? :call }
+      procs      = properties.select { |_, val| val.respond_to? :call }
+
+      # Define all non-proc property definitions
+      format_property_values(predefined).each do |name, value|
         define_singleton_method(name) { value }
+      end
+
+      # Define proc
+      format_property_values(procs).each do |name, value|
+        result = instance_eval(&value)
+        define_singleton_method(name) { result }
       end
 
       # Define possible type definitions

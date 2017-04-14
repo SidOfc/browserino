@@ -23,6 +23,6 @@ Browserino.define do
   end
 
   formatter :version, :engine_version, :system_version do |version|
-    (version && version.to_s.split('_').join('.')) || version
+    Browserino::Agent::Version.new version
   end
 end

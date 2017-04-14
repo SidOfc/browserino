@@ -14,6 +14,24 @@ module Browserino
     Agent.new({name: id.name, type: id.type}.merge(properties))
   end
 
+  def self.like(tmp, &block)
+    @tmp_like = tmp.to_sym
+    instance_eval(&block)
+    @tmp_like = nil
+  end
+
+  def self.browsers(&block)
+    @tmp_type = :browser
+    instance_eval(&block)
+    @tmp_type = nil
+  end
+
+  def self.bots(&block)
+    @tmp_type = :bot
+    instance_eval(&block)
+    @tmp_type = nil
+  end
+
   def self.define(&block)
     @tmp_ids = []
 
@@ -49,6 +67,8 @@ module Browserino
 
   def self.match(rgxp = nil, **opts, &block)
     rgxp, opts = [nil, rgxp] if rgxp.is_a? Hash
+    opts[:type] ||= @tmp_type if @tmp_type
+    opts[:like] ||= @tmp_like if @tmp_like
     return add_alias(rgxp, opts, &block) if opts[:like] && rgxp
     rgxp && (@tmp_ids << Identity.new(rgxp, opts, &block)) || global(&block)
   end
