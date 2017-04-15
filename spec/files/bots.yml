@@ -37,10 +37,10 @@
   :name:       :alexa
 
 - :user_agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
-  :name:       :google
+  :name:       :googlebot
 
 - :user_agent: Googlebot/2.1 (+http://www.googlebot.com/bot.html)
-  :name:       :google
+  :name:       :googlebot
 
 - :user_agent: Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)
   :name:       :yahoo_slurp

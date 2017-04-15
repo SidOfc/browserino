@@ -6,16 +6,17 @@ require_relative 'browserino/identity'
 require_relative 'browserino/agent/version'
 
 require_relative 'browserino/definitions/lies'
-require_relative 'browserino/definitions/format'
-require_relative 'browserino/definitions/default'
+require_relative 'browserino/definitions/defaults'
+require_relative 'browserino/definitions/detectors'
+require_relative 'browserino/definitions/formatters'
 
 module Browserino
-  def self.parse(user_agent)
-    before_parse.each { |b| b.call user_agent } if before_parse.any?
+  def self.parse(ua)
+    before_parse.each { |b| b.call ua } if before_parse.any?
     identities.each do |_, identity|
-      return analyze user_agent, identity if identity.matches? user_agent
+      return analyze ua, identity if identity.matches? ua
     end
 
-    analyze user_agent
+    analyze ua
   end
 end

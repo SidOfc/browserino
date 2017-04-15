@@ -52,7 +52,7 @@ module Browserino
         case val
         when Float   then val.to_s.split '.'
         when Integer then [val, *rest]
-        when String  then val.split '.'
+        when String  then val.tr('_', '.').split '.'
         when Array   then val
         when Hash    then [val[:major], val[:minor], val[:patch]]
         else val.to_a

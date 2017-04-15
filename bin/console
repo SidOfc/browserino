@@ -8,4 +8,6 @@ require 'browserino'
                                       10_11_2) AppleWebKit/601.3.9 (KHTML, l\
                                       ike Gecko) Version/9.0.2 Safari/601.3.9'
 
-Pry.start
+# Pry.start
+
+puts @a.version.full

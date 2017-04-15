@@ -11,12 +11,12 @@ module Browserino
       procs      = properties.select { |_, val| val.respond_to? :call }
 
       # Define all non-proc property definitions
-      format_property_values(predefined).each do |name, value|
+      predefined.each do |name, value|
         define_singleton_method(name) { value }
       end
 
       # Define proc
-      format_property_values(procs).each do |name, value|
+      procs.each do |name, value|
         result = instance_eval(&value)
         define_singleton_method(name) { result }
       end
@@ -38,25 +38,6 @@ module Browserino
 
     def respond_to_missing?(_, *__, &___)
       true
-    end
-
-    private
-
-    def format_property_values(properties)
-      properties.each_with_object({}) do |(prop, value), store|
-        store[prop] = convert value, format: prop
-      end
-    end
-
-    def convert(val, **opts)
-      formatters = Browserino.formatters[:global].dup
-      formatters << Browserino.formatters[opts[:format]]
-
-      formatters.compact.each do |fmt|
-        val = fmt.call val
-      end
-
-      val
     end
   end
 end

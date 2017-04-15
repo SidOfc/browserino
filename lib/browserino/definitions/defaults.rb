@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 Browserino.define do
   match do
     locale         %r{\s(\w{2}(?:\-\w{2})?)[;\)]}i
@@ -33,7 +34,6 @@ Browserino.define do
       engine_name    :edgehtml
       modern?        true
 
-      version        %r{edge/([\d\.]+)}i
       engine_version %r{edge/([\d\.]+)}i
     end
 
@@ -91,7 +91,7 @@ Browserino.define do
   end
 
   bots do
-    match %r{googlebot}i,                   name: :google
+    match %r{googlebot}i,                   name: :googlebot
     match %r{yahoo\!\sslurp}i,              name: :yahoo_slurp
     match %r{msnbot}i,                      name: :msn
     match %r{bingbot}i,                     name: :bing

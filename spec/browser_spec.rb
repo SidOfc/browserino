@@ -9,6 +9,10 @@ describe 'Browserino' do
     describe spec[:user_agent] do
       spec.reject { |k| k == :user_agent }.each do |test_method, test_result|
         it "correctly outputs #{test_method} for #{agent.name}" do
+          if /version/i.match?(test_method.to_s)
+            test_result = Browserino::Agent::Version.new test_result
+          end
+
           expect(agent.send(test_method)).to eq test_result
         end
       end
