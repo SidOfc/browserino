@@ -7,14 +7,14 @@ describe 'Browserino' do
     exclude = [:user_agent]
     client  = Browserino.parse spec[:user_agent]
 
-    describe spec[:user_agent] do
+    describe [client.name, spec[:user_agent]].join(' :: ') do
       # Test defined property methods in browsers.yml
       spec.reject { |k| exclude.include? k }.each do |test_method, test_result|
-        it "expects client.#{test_method} to match #{test_result || 'nil'} for #{client.name}" do
+        it "expects client.#{test_method} to be #{test_result || 'nil'}" do
           expect(client.send(test_method)).to eq test_result
         end
 
-        it "expects client.#{test_method}? :#{test_result} to be #{test_result.nil? && 'falsy' || 'truthy'} for #{client.name}" do
+        it "expects client.#{test_method}? #{test_result && ":#{test_result}"} to be #{test_result.nil? && 'falsy' || 'truthy'}" do
           if test_result.nil?
             expect(client.send("#{test_method}?", test_result)).to eq client.send test_method
           else
