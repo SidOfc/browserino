@@ -41,10 +41,10 @@ module Browserino
   end
 
   def self.convert(val, **opts)
-    formatters = Browserino.formatters[:global].dup
-    formatters << Browserino.formatters[opts[:format]]
+    processors = Browserino.processors[:global].dup
+    processors << Browserino.processors[opts[:format]]
 
-    formatters.compact.each do |fmt|
+    processors.compact.each do |fmt|
       val = fmt.call val
     end
 
@@ -108,12 +108,9 @@ module Browserino
     @before_parse
   end
 
-  def self.format_all(&block)
-    (formatters[:global] ||= []) << block
-  end
-
-  def self.formatter(*props, &block)
-    props.each { |prop| formatters[prop] = block }
+  def self.process(*props, &block)
+    return (processors[:global] ||= []) << block unless props.any?
+    props.each { |prop| processors[prop] = block }
   end
 
   def self.smart_detect(prop, **options)
@@ -158,8 +155,8 @@ module Browserino
     @detectors ||= {}
   end
 
-  def self.formatters
-    @formatters ||= {}
+  def self.processors
+    @processors ||= {}
   end
 
   def self.identities

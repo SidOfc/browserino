@@ -24,6 +24,8 @@ module Browserino
         end
       end
 
+      # Keep this here to implement aliasses in an easier manner
+      # for instance, join an array of aliasses to generate aliassed methods
       [:name, :engine, :platform].each do |prop|
         result = send prop
         define_singleton_method("#{result}?") do |value = nil|
