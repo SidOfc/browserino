@@ -114,6 +114,10 @@ module Browserino
     @before_parse
   end
 
+  def self.alias_for(name, *names)
+    aliasses[name] += names
+  end
+
   def self.process(*props, &block)
     return (processors[:global] ||= []) << block unless props.any?
     props.each { |prop| processors[prop] = block }
@@ -167,5 +171,9 @@ module Browserino
 
   def self.identities
     @identities ||= {}
+  end
+
+  def self.aliasses
+    @aliasses ||= Hash.new { [] }
   end
 end
