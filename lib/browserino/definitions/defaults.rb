@@ -15,6 +15,9 @@ Browserino.define do
   match do
     locale           %r{(?<!nintendo)[;\s](\w{2}(?:\-\w{2})?)[;)]}i
     architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86)}i
+    mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
+                        |android|bb\d+|blackberry|iemobile|fennec|bada|meego
+                        |tizen|vodafone|t\-mobile|opera\sm(?:ob|in)i)}xi
     platform         %r{.*(xbox|wii|nintendo\sds|playstation|windows(?:\sphone)?
                         |macintosh|android|tizen|ip(?:[ao]d|hone)|blackberry
                         |linux|ubuntu|x11|bsd|s(?:unos|olaris)|w(?:eb)?os)}xi

@@ -4,11 +4,16 @@ describe 'Browserino' do
   browsers = Library.data.fetch(:browsers, [])
 
   browsers.each do |spec|
-    exclude     = [:user_agent]
+    exclude     = [:user_agent, :mobile]
     client      = Browserino.parse spec[:user_agent]
     spec[:type] ||= :browser
 
     describe [client.name, spec[:user_agent]].join(' :: ') do
+      # test mobile properties
+      it "expects client.mobile? to be #{client.mobile? && 'true' || 'false'}" do
+        expect(client.mobile?).to eq spec[:mobile]
+      end
+
       # Test defined property methods in browsers.yml
       spec.reject { |k| exclude.include? k }.each do |test_method, test_result|
         it "expects client.#{test_method} to be #{test_result || 'nil'}" do
