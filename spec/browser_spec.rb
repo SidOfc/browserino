@@ -33,6 +33,8 @@ describe 'Browserino' do
       [:name, :engine, :platform].each do |prop|
         result  = spec[prop]
 
+        next unless Browserino.aliasses[result].any?
+
         ver_res = spec[:version] if prop == :name
         ver_res = spec["#{prop}_version".to_sym] if ver_res.nil?
 

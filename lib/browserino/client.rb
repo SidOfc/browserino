@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 module Browserino
   class Client
+    attr_reader :property_names
+
     def initialize(properties = {})
+      @property_names = properties.keys
       # properties are added as methods that will each be defined in a specific
       # order below. First, seperate static value methods from procs,
       # procs will be able to call methods in this instances' context
@@ -62,6 +65,12 @@ module Browserino
             result
           end
         end
+      end
+    end
+
+    def properties
+      @properties ||= @property_names.each_with_object({}) do |prop, result|
+        result[prop] = send prop
       end
     end
 
