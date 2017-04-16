@@ -119,18 +119,27 @@ Browserino.define do
     match %r{face(?:bookexternalhit|bot)}i, name: :facebook
   end
 
+  libraries do
+    match %r{php}i,    name: :php
+    match %r{python}i, name: :python, version: %r{-urllib/([\d\.]+)}i
+    match %r{perl}i,   name: :perl
+    match %r{java}i,   name: :java
+    match %r{pycurl}i, name: :pycurl
+    match %r{curl}i,   name: :curl
+  end
+
   like :chrome do
-      match %r{brave}i,   name: :brave,   version: %r{brave/([\d\.]+)}i
-      match %r{vivaldi}i, name: :vivaldi, version: %r{vivaldi/([\d\.]+)}i
-      match %r{colibri}i, name: :colibri, version: %r{colibri/([\d\.]+)}i
-      match %r{bolt}i,    name: :bolt,    version: %r{bolt/([\d\.]+)}i
+    match %r{brave}i,   name: :brave,   version: %r{brave/([\d\.]+)}i
+    match %r{vivaldi}i, name: :vivaldi, version: %r{vivaldi/([\d\.]+)}i
+    match %r{colibri}i, name: :colibri, version: %r{colibri/([\d\.]+)}i
+    match %r{bolt}i,    name: :bolt,    version: %r{bolt/([\d\.]+)}i
 
-      match %r{samsungbrowser}i, name: :samsungbrowser,
-                                 version: %r{samsungbrowser/([\d\.]+)}i
+    match %r{samsungbrowser}i, name: :samsungbrowser,
+                               version: %r{samsungbrowser/([\d\.]+)}i
 
-      match %r{webos|wosbrowser}i,
-            name: :webosbrowser,
-            version: %r{(?:version|w(?:eb)?osbrowser)/([\d\.]+)}i
+    match %r{webos|wosbrowser}i,
+          name: :webosbrowser,
+          version: %r{(?:version|w(?:eb)?osbrowser)/([\d\.]+)}i
   end
 
   like :firefox do

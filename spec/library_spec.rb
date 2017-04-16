@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Browserino do
-  Library.data.fetch(:bots, []).each do |spec|
-    ua     = spec.delete :user_agent
+  Library.data.fetch(:libraries, []).each do |spec|
+    ua = spec.delete :user_agent
     client = Browserino.parse ua
 
     describe ua do

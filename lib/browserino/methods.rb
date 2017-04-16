@@ -83,6 +83,12 @@ module Browserino
     @tmp_type = nil
   end
 
+  def self.libraries(&block)
+    @tmp_type = :library
+    instance_eval(&block)
+    @tmp_type = nil
+  end
+
   def self.define(&block)
     @tmp_ids = []
 
