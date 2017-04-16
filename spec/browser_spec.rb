@@ -15,26 +15,4 @@ describe 'Browserino' do
       end
     end
   end
-
-  describe 'Browserino::Agent defined names' do
-    ua    = browsers.sample[:user_agent]
-    agent = Browserino.parse ua
-
-    Browserino.names.each do |name|
-      it "defines agent.#{name}?" do
-        expect(agent.send("#{name}?")).to eq (agent.name == name)
-      end
-    end
-  end
-
-  describe 'Browserino::Agent defined types' do
-    ua    = browsers.sample[:user_agent]
-    agent = Browserino.parse ua
-
-    Browserino.types.each do |type|
-      it "defines agent.#{type}?" do
-        expect(agent.send("#{type}?")).to eq (agent.type == type)
-      end
-    end
-  end
 end

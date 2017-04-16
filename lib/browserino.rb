@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require_relative 'browserino/methods'
-require_relative 'browserino/agent'
 require_relative 'browserino/identity'
+require_relative 'browserino/client'
 
 require_relative 'browserino/agent/version'
 

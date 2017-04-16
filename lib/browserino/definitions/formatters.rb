@@ -8,19 +8,19 @@ Browserino.define do
     end
   end
 
-  formatter :version, :engine_version, :system_version do |version|
-    Browserino::Agent::Version.new version
+  formatter :version, :engine_version, :platform_version do |version|
+    Browserino::Client::Version.new version
   end
 
-  formatter :system_name do |system_name|
-    system_name = :ios     if %r{ip(?:[ao]d|hone)}.match? system_name
-    system_name = :webos   if %r{w(?:eb)?os}.match? system_name
-    system_name = :linux   if %r{ubuntu|x11}.match? system_name
-    system_name = :solaris if %r{s(?:unos|olaris)}.match? system_name
-    system_name
+  formatter :platform do |platform|
+    platform = :ios     if %r{ip(?:[ao]d|hone)}.match? platform
+    platform = :webos   if %r{w(?:eb)?os}.match? platform
+    platform = :linux   if %r{ubuntu|x11}.match? platform
+    platform = :solaris if %r{s(?:unos|olaris)}.match? platform
+    platform
   end
 
-  formatter :system_arch do |arch|
+  formatter :architecture do |arch|
     arch = :x64 if arch && %r{(?:x86_|amd|wow)?64|i686}i.match?(arch)
     arch = :x32 if arch && arch != :x64
     arch

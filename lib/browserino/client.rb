@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Browserino
-  class Agent
+  class Client
     def initialize(properties = {})
       static = properties.reject { |_, val| val.respond_to? :call }
       procs  = properties.select { |_, val| val.respond_to? :call }
@@ -14,7 +14,7 @@ module Browserino
         end
       end
 
-      # Define proc
+      # Define proc property definitions
       procs.each do |name, value|
         result = instance_eval(&value)
         define_singleton_method(name) { result }
@@ -24,18 +24,11 @@ module Browserino
         end
       end
 
-      # Define possible type definitions
-      Browserino.types.each do |type_name|
-        define_singleton_method("#{type_name}?") { type == type_name }
-      end
-
-      # Define possible name definitions
-      Browserino.names.each do |identity_name|
-        define_singleton_method("#{identity_name}?") { name == identity_name }
-        define_singleton_method("#{identity_name}?") do |value = nil|
-          conditions = [name == identity_name]
-          conditions << (version == value) if value.is_a? Integer
-          conditions.all?
+      [:name, :engine, :platform].each do |prop|
+        result = send prop
+        define_singleton_method("#{result}?") do |value = nil|
+          return version == value if value
+          result
         end
       end
     end

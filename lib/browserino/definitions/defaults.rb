@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 Browserino.define do
   match do
-    locale         %r{\s(\w{2}(?:\-\w{2})?)[;\)]}i
-    system_arch    %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86)}i
-    system_name    %r{(windows(?:\sphone)?|macintosh|android|tizen
-                      |ip(?:[ao]d|hone)|blackberry|linux|ubuntu|x11|bsd
-                      |s(?:unos|olaris)|w(?:eb)?os)}xi
-    system_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|mac\sos\sx|android
+    locale           %r{\s(\w{2}(?:\-\w{2})?)[;\)]}i
+    architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86)}i
+    platform         %r{(windows(?:\sphone)?|macintosh|android|tizen
+                        |ip(?:[ao]d|hone)|blackberry|linux|ubuntu|x11|bsd
+                        |s(?:unos|olaris)|w(?:eb)?os)}xi
+    platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|mac\sos\sx|android
                       |(?:cpu\s|ip(?:[ao]d|hone)\s)os|blackberry|bb
                       |s(?:unos|olaris)/?|w(?:eb)?os/|tizen)\s?([\d\._]+)}xi
   end
@@ -16,7 +16,7 @@ Browserino.define do
       name           :maxthon
 
       version        %r{maxthon[/\s]([\d\.]+)}i
-      engine_name    %r{(webkit|presto|gecko|trident)}i
+      engine         %r{(webkit|presto|gecko|trident)}i
       engine_version %r{(?:webkit|presto|gecko|trident)/([\d\.]+)}i
     end
 
@@ -24,13 +24,13 @@ Browserino.define do
       name           :ucbrowser
 
       version        %r{ucbrowser/?([\d\.]+)}i
-      engine_name    %r{(trident|gecko|webkit|presto)}i
+      engine         %r{(trident|gecko|webkit|presto)}i
       engine_version %r{(?:trident|gecko|webkit|presto)/([\d\.]+)}i
     end
 
     match %r{edge}i do
       name           :edge
-      engine_name    :edge
+      engine         :edge
       modern?        true
     end
 
@@ -38,7 +38,7 @@ Browserino.define do
       name           :opera_mini
 
       version        %r{ope?ra?\smini/([\d\.]+)}i
-      engine_name    %r{(presto|webkit)}i
+      engine         %r{(presto|webkit)}i
       engine_version %r{(?:presto|webkit)/([\d\.]+)}i
     end
 
@@ -46,13 +46,13 @@ Browserino.define do
       name           :opera
 
       version        %r{(?:opera[\s/]|version/)([\d\.]+)}i
-      engine_name    %r{(presto|webkit)}i
+      engine         %r{(presto|webkit)}i
       engine_version %r{(?:presto|webkit)/([\d\.]+)}i
     end
 
     match %r{msie|trident}i do
       name           :ie
-      engine_name    :trident
+      engine         :trident
 
       version        %r{(?:(?:ms)?ie\s|rv:)([\d\.]+)}i
       modern?        { version >= 10 }
@@ -62,7 +62,7 @@ Browserino.define do
       name           :chrome
 
       version        %r{chrome(?:ium)?/([\d\.]+)}i
-      engine_name    %r{(webkit|blink)}i
+      engine         %r{(webkit|blink)}i
       engine_version %r{(?:webkit|blink)/([\d\.]+)}i
     end
 
@@ -70,13 +70,13 @@ Browserino.define do
       name           :firefox
 
       version        %r{firefox/([\d\.]+)}i
-      engine_name    %r{(gecko|servo)}i
+      engine         %r{(gecko|servo)}i
       engine_version %r{(?:rv:\s?|servo/)([\d\.]+)}i
     end
 
     match %r{safari}i do
       name           :safari
-      engine_name    :webkit
+      engine         :webkit
 
       version        %r{(?:safari|version)/([\d\.]+)}i
       modern?        { version >= 9 }

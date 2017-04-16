@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Browserino
-  class Agent
+  class Client
     class Version < Array
       attr_reader :major, :minor, :patch
 

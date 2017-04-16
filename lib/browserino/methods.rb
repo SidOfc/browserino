@@ -7,7 +7,7 @@ module Browserino
     left  = props.select { |_, val| val.is_a? Regexp }
     props = props.merge normalize(collect(left, user_agent))
 
-    Agent.new props
+    Client.new props
   end
 
   def self.with_detectors(properties)
