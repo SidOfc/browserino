@@ -1,54 +1,47 @@
 # frozen_string_literal: true
 module Browserino
   class Agent
-    class Version
-      attr_reader :major, :minor, :patch, :full
+    class Version < Array
+      attr_reader :major, :minor, :patch
 
       def initialize(val, *rest)
-        results = parse_val val, *rest
-        @major  = results.fetch 0, 0
-        @minor  = results.fetch 1, 0
-        @patch  = results.fetch 2, 0
-        @full ||= to_a.join '.'
+        super parse_params(val, *rest)
+        @major = fetch 0, 0
+        @minor = fetch 1, 0
+        @patch = fetch 2, 0
       end
 
       def to_s
-        full
-      end
-
-      def to_a
-        @components ||= [@major, @minor, @patch]
-      end
-
-      def to_i
-        @num = to_a.join.to_i
+        @str ||= join '.'
       end
 
       def <(other)
         compare :<, other
       end
 
-      def >(other)
-        compare :>, other
-      end
-
       def <=(other)
         compare :<=, other
+      end
+
+      def >(other)
+        compare :>, other
       end
 
       def >=(other)
         compare :>=, other
       end
 
-      def !=(other)
-        compare :!=, other
-      end
-
       def ==(other)
         compare :==, other
       end
 
-      def parse_val(val, *rest)
+      def !=(other)
+        compare :!=, other
+      end
+
+      private
+
+      def parse_params(val, *rest)
         case val
         when Float   then val.to_s.split '.'
         when Integer then [val, *rest]
@@ -59,12 +52,13 @@ module Browserino
         end.map(&:to_i)
       end
 
-      private
-
       def compare(op, other)
-        other    = Version.new(other) unless other.is_a? Version
-        size     = [to_a.size, other.to_a.size].min
-        to_a[0...size].join.to_i.send op, other.to_a[0..size].join.to_i
+        other = Version.new other unless other.is_a? Version
+
+        return false if other.size > size
+
+        subsize = [size, other.size].min
+        (self[0...subsize] <=> other[0...subsize]).send op, 0
       end
     end
   end

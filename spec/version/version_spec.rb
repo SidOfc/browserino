@@ -1,11 +1,9 @@
 require 'spec_helper'
 
-vrsn_alias = Browserino::Agent::Version
-
 describe 'Browserino::Agent::Version' do
   it 'maps numeric arguments to a version' do
-    a = vrsn_alias.new 10, 0, 1
-    b = vrsn_alias.new 9,  9, 9
+    a = Browserino::Agent::Version.new 10, 0, 1
+    b = Browserino::Agent::Version.new 9,  9, 9
 
     expect(a.major).to eq 10
     expect(a.minor).to eq 0
@@ -22,11 +20,11 @@ describe 'Browserino::Agent::Version' do
   end
 
   it 'correctly identifies less and / or equal than' do
-    a = vrsn_alias.new '4.2.0'
-    b = vrsn_alias.new '4.2.0'
+    a = Browserino::Agent::Version.new '4.2.0'
+    b = Browserino::Agent::Version.new '4.2.0'
 
-    c = vrsn_alias.new '1.33.7'
-    d = vrsn_alias.new '1.33.9'
+    c = Browserino::Agent::Version.new '1.33.7'
+    d = Browserino::Agent::Version.new '1.33.9'
 
     expect(a < b).to  eq false
     expect(a <= b).to eq true
@@ -39,11 +37,11 @@ describe 'Browserino::Agent::Version' do
   end
 
   it 'correctly identifies greater and / or equal than' do
-    a = vrsn_alias.new '4.2.0'
-    b = vrsn_alias.new '4.2.0'
+    a = Browserino::Agent::Version.new '4.2.0'
+    b = Browserino::Agent::Version.new '4.2.0'
 
-    c = vrsn_alias.new '1.33.7'
-    d = vrsn_alias.new '1.33.9'
+    c = Browserino::Agent::Version.new '1.33.7'
+    d = Browserino::Agent::Version.new '1.33.9'
 
     expect(a > b).to  eq false
     expect(a >= b).to eq true
@@ -56,11 +54,11 @@ describe 'Browserino::Agent::Version' do
   end
 
   it 'correctly handles equality and inequality' do
-    a = vrsn_alias.new '4.2.0'
-    b = vrsn_alias.new '4.2.0'
+    a = Browserino::Agent::Version.new '4.2.0'
+    b = Browserino::Agent::Version.new '4.2.0'
 
-    c = vrsn_alias.new '1.33.7'
-    d = vrsn_alias.new '1.33.9'
+    c = Browserino::Agent::Version.new '1.33.7'
+    d = Browserino::Agent::Version.new '1.33.9'
 
     expect(a == b).to eq true
     expect(a != b).to eq false
