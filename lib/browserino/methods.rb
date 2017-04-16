@@ -3,15 +3,15 @@ module Browserino
   def self.analyze(user_agent, identity = nil)
     props = [*global, identity].compact.map(&:properties).reduce(&:merge)
     props = normalize collect(props, user_agent)
-    props = with_detectors props
+    props = with_smart_matchers props
     left  = props.select { |_, val| val.is_a? Regexp }
     props = props.merge normalize(collect(left, user_agent))
 
     Client.new props
   end
 
-  def self.with_detectors(properties)
-    detectors.each_with_object properties do |(prop, detector), props|
+  def self.with_smart_matchers(properties)
+    smart_matchers.each_with_object properties do |(prop, detector), props|
       props[prop] ||= detector_regex detector, properties
     end
   end
@@ -119,8 +119,8 @@ module Browserino
     props.each { |prop| processors[prop] = block }
   end
 
-  def self.smart_detect(prop, **options)
-    detectors[prop] = options if options[:with]
+  def self.smart_match(prop, **options)
+    smart_matchers[prop] = options if options[:with]
   end
 
   def self.match(rgxp = nil, **opts, &block)
@@ -157,8 +157,8 @@ module Browserino
     @names ||= []
   end
 
-  def self.detectors
-    @detectors ||= {}
+  def self.smart_matchers
+    @smart_matchers ||= {}
   end
 
   def self.processors

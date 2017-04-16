@@ -11,6 +11,9 @@ Browserino.define do
                       |s(?:unos|olaris)/?|w(?:eb)?os/|tizen)\s?([\d\._]+)}xi
   end
 
+  smart_match :version,        with: ':name/([\d\._]+)',   flags: [:i]
+  smart_match :engine_version, with: ':engine/([\d\._]+)', flags: [:i]
+
   browsers do
     match %r{maxthon}i do
       name           :maxthon
