@@ -15,11 +15,33 @@ describe 'Browserino' do
           expect(client.send(test_method)).to eq test_result
         end
 
-        it "expects client.#{test_method}? #{test_result && ":#{test_result}"} to be #{test_result.nil? && 'falsy' || 'truthy'}" do
+        it "expects client.#{test_method}? #{test_result && ":#{test_result}"} to be #{test_result && 'truthy' || 'falsy'}" do
           if test_result.nil?
             expect(client.send("#{test_method}?", test_result)).to eq client.send test_method
           else
             expect(client.send("#{test_method}?", test_result)).to be_truthy
+          end
+        end
+      end
+
+      # test magic aliasses when defined
+      [:name, :engine, :platform].each do |prop|
+        result  = spec[prop]
+
+        ver_res = spec[:version] if prop == :name
+        ver_res = spec["#{prop}_version".to_sym] if ver_res.nil?
+
+        Browserino.aliasses[result].each do |alt|
+          it "expects client.#{alt}? to be truthy" do
+            expect(client.send("#{alt}?")).to be_truthy
+          end
+
+          it "expects client.#{alt}? #{ver_res} to be #{ver_res && 'truthy' || 'falsy'}" do
+            if ver_res.nil?
+              expect(client.send("#{alt}?", ver_res)).to eq client.send prop
+            else
+              expect(client.send("#{alt}?", ver_res)).to be_truthy
+            end
           end
         end
       end

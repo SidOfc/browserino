@@ -38,9 +38,7 @@ module Browserino
       # keep this here to implement aliasses in an easier manner
       # for instance, join an array of aliasses to generate aliassed methods
       [:name, :engine, :platform].each do |prop|
-        result   = send prop
-        aliasses = Browserino.aliasses[result]
-
+        result  = send prop
         ver_res = version if prop == :name
         ver_res = send("#{prop}_version") if ver_res.nil?
 
@@ -58,12 +56,10 @@ module Browserino
         # -- define a question method using the current alias
         #    -- when supplied with a value, check it against {prop_res}_version
         #    -- when called without argument, return result
-        if aliasses.any?
-          aliasses.each do |alt|
-            define_singleton_method("#{alt}?") do |value = nil|
-              return ver_res == value if value
-              result
-            end
+        Browserino.aliasses[result].each do |alt|
+          define_singleton_method("#{alt}?") do |value = nil|
+            return ver_res == value if value
+            result
           end
         end
       end
