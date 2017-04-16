@@ -54,19 +54,33 @@ module Browserino
       end
     end
 
+    def x64?
+      architecture == :x64
+    end
+
+    def x32?
+      architecture == :x32
+    end
+
+    # check the type of a Client
     def type?(sym)
       type == sym
     end
 
+    # the catch all method, anything it can ask as question will respond
+    # supplying a version is optional, it will simply be nil and skipped
+    # and a correct value will still be returned
     def is?(sym, opts = {})
       send "#{sym}?", opts[:version]
     end
 
-    # sc
+    # scary, I know, but a falsy value is all we need to return if some
+    # property isn't known or true as any property can be defined on the Client
     def method_missing(_, *__, &___)
       nil
     end
 
+    # always respond to missing, read method_missing comment
     def respond_to_missing?(_, *__, &___)
       true
     end
