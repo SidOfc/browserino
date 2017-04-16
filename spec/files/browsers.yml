@@ -232,7 +232,7 @@
 - :user_agent:     Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246
   :name:           :edge
   :version:        '12.246'
-  :engine_name:    :edgehtml
+  :engine_name:    :edge
   :engine_version: '12.246'
   :system_name:    :windows
   :system_version: '10.0'

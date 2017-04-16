@@ -18,7 +18,8 @@ module Browserino
 
   def self.detector_regex(detect, properties)
     pat = properties.each_with_object(detect[:with].dup) do |(key, val), str|
-      str.gsub! ":#{key}", val.to_s
+      replacement = val.to_s.strip
+      str.gsub! ":#{key}", replacement unless replacement.empty?
     end
 
     Regexp.new pat, get_flags(*detect[:flags].to_a)
@@ -128,10 +129,11 @@ module Browserino
   end
 
   def self.add_alias(pattern, **opts, &block)
-    id = @tmp_ids.select { |id| id == opts[:like] }.first
+    id      = @tmp_ids.select { |id| id == opts[:like] }.first
+    allowed = id.properties
 
     raise "No alias found for: #{opts[:like] || 'nil'}" unless id
-    definition = Identity.new pattern, id.properties.merge(opts), &block
+    definition = Identity.new pattern, allowed.merge(opts), &block
 
     @tmp_ids.unshift definition
   end

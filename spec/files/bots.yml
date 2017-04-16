@@ -5,69 +5,90 @@
 
 - :user_agent: Atomz/1.0
   :name:       :atomz
+  :version:    '1.0'
 
 - :user_agent: Atomic_Email_Hunter/4.0
   :name:       :atomic_email_hunter
+  :version:    '4.0'
 
 - :user_agent: AltaVista Intranet V2.0 evreka.com crawler@evreka.com
   :name:       :altavista
+  :version:
 
 - :user_agent: AlkalineBOT/1.4 (1.4.0326.0 RTM)
-  :name:       :alkaline
+  :name:       :alkalinebot
+  :version:     '1.4'
 
 - :user_agent: AcoiRobot
   :name:       :acoi
+  :version:
 
 - :user_agent: 8484 Boston Project v 1.0
   :name:       :boston_project
+  :version:
 
 - :user_agent: Acoon Robot v1.52 (http://www.acoon.de)
   :name:       :acoon
+  :version:
 
 - :user_agent: Acoon Robot v1.50.001
   :name:       :acoon
+  :version:
 
 - :user_agent: Accoona-AI-Agent/1.1.1 (crawler at accoona dot com)
   :name:       :accoona
+  :version:
 
 - :user_agent: 4anything.com LinkChecker v2.0
   :name:       :four_anything
+  :version:
 
 - :user_agent: ia_archiver (+http://www.alexa.com/site/help/webmasters; crawler@alexa.com)
   :name:       :alexa
+  :version:
 
 - :user_agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
   :name:       :googlebot
+  :version:    '2.1'
 
 - :user_agent: Googlebot/2.1 (+http://www.googlebot.com/bot.html)
   :name:       :googlebot
+  :version:    '2.1'
 
 - :user_agent: Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)
   :name:       :yahoo_slurp
+  :version:
 
 - :user_agent: msnbot/2.1
-  :name:       :msn
+  :name:       :msnbot
+  :version:    '2.1'
 
 - :user_agent: msnbot/1.1 (+http://search.msn.com/msnbot.htm)
-  :name:       :msn
+  :name:       :msnbot
 
 - :user_agent: Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)
-  :name:       :bing
+  :name:       :bingbot
+  :version:    '2.0'
 
 - :user_agent: Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)
   :name:       :baiduspider
+  :version:    '2.0'
 
 - :user_agent: Baiduspider+(+http://www.baidu.com/search/spider_jp.html)
   :name:       :baiduspider
+  :version:
 
 - :user_agent: Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)
-  :name:       :yandex
+  :name:       :yandexbot
+  :version:    '3.0'
 
 - :user_agent: Sosospider+(+http://help.soso.com/webspider.htm)
   :name:       :sosospider
+  :version:
 
 - :user_agent: Exabot/2.0
-  :name:       :exa
+  :name:       :exabot
+  :version:    '2.0'
 
 - :user_agent: sogou spider
   :name:       :sogou_spider
@@ -77,6 +98,7 @@
 
 - :user_agent: Scrapy/2.0 (+http://scrapy.org)
   :name:       :scrapy
+  :version:    '2.0'
 
 - :user_agent: DataparkSearch/4.37-23012006 ( http://www.dataparksearch.org/)
   :name:       :dataparksearch

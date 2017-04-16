@@ -14,7 +14,6 @@ Browserino.define do
   browsers do
     match %r{maxthon}i do
       name           :maxthon
-      type           :browser
 
       version        %r{maxthon[/\s]([\d\.]+)}i
       engine_name    %r{(webkit|presto|gecko|trident)}i
@@ -31,10 +30,8 @@ Browserino.define do
 
     match %r{edge}i do
       name           :edge
-      engine_name    :edgehtml
+      engine_name    :edge
       modern?        true
-
-      engine_version %r{edge/([\d\.]+)}i
     end
 
     match %r{ope?ra?\smini}i do
@@ -58,8 +55,6 @@ Browserino.define do
       engine_name    :trident
 
       version        %r{(?:(?:ms)?ie\s|rv:)([\d\.]+)}i
-      engine_version %r{trident/([\d\.]+)}i
-
       modern?        { version >= 10 }
     end
 
@@ -84,8 +79,6 @@ Browserino.define do
       engine_name    :webkit
 
       version        %r{(?:safari|version)/([\d\.]+)}i
-      engine_version %r{webkit/([\d\.]+)}i
-
       modern?        { version >= 9 }
     end
   end
@@ -93,12 +86,12 @@ Browserino.define do
   bots do
     match %r{googlebot}i,                   name: :googlebot
     match %r{yahoo\!\sslurp}i,              name: :yahoo_slurp
-    match %r{msnbot}i,                      name: :msn
-    match %r{bingbot}i,                     name: :bing
+    match %r{msnbot}i,                      name: :msnbot
+    match %r{bingbot}i,                     name: :bingbot
     match %r{baiduspider}i,                 name: :baiduspider
-    match %r{yandexbot}i,                   name: :yandex
+    match %r{yandexbot}i,                   name: :yandexbot
     match %r{sosospider}i,                  name: :sosospider
-    match %r{exabot}i,                      name: :exa
+    match %r{exabot}i,                      name: :exabot
     match %r{sogou\s?spider}i,              name: :sogou_spider
     match %r{nutch}i,                       name: :nutch
     match %r{scrapy}i,                      name: :scrapy
@@ -119,7 +112,7 @@ Browserino.define do
     match %r{atomz}i,                       name: :atomz
     match %r{atomic_email_hunter}i,         name: :atomic_email_hunter
     match %r{altavista}i,                   name: :altavista
-    match %r{alkaline}i,                    name: :alkaline
+    match %r{alkaline}i,                    name: :alkalinebot
     match %r{acoi}i,                        name: :acoi
     match %r{acoon}i,                       name: :acoon
     match %r{accoona}i,                     name: :accoona
