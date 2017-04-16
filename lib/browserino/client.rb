@@ -64,7 +64,8 @@ module Browserino
 
     # check the type of a Client
     def type?(sym)
-      type == sym
+      return type == sym if sym.is_a? Symbol
+      type == sym.to_sym
     end
 
     # the catch all method, anything it can ask as question will respond
