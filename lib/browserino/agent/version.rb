@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 module Browserino
   class Client
+    # This class makes versions easily comparable using logical operators
+    # it makes it convenient to check versions in a natural way
     class Version < Array
       attr_reader :major, :minor, :patch
 

@@ -1,5 +1,15 @@
 # frozen_string_literal: true
 Browserino.define do
+  # executes before parsing the user agent, 's' in this case is the actual
+  # user agent string in full glory. Do manipulations as you wish, I'm
+  # using it to successfully strip lies from the user agent and to sometimes
+  # simplify a word e.g. 'AppleWebKit' => 'webkit'
+
+  # the string does not have to be returned as it will not be assigned to the
+  # result of this block, use destructive(!) methods instead
+
+  # I decided to implement this to reduce the complexity and length of the
+  # user agent in order to allow for faster matching of identities
   before_parse do |s|
     s.gsub! %r{applewebkit}i, 'webkit'
     s.gsub! %r{(Mozilla/[\d\.]+)}i, ''

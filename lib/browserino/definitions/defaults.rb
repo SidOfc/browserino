@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 Browserino.define do
+  # a simple set of global matchers that will be merged
+  # with an identity the final client object is created
   match do
     locale           %r{\s(\w{2}(?:\-\w{2})?)[;\)]}i
     architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86)}i
@@ -11,11 +13,26 @@ Browserino.define do
                       |s(?:unos|olaris)/?|w(?:eb)?os/|tizen)\s?([\d\._]+)}xi
   end
 
+  # a set of global matchers that will use formatted properties found earlier
+  # they will also be applied to every matcher unless that matcher has it's own
+  # property set for the defined smart matcher
   smart_match :version,        with: ':name/([\d\._]+)',   flags: [:i]
   smart_match :engine_version, with: ':engine/([\d\._]+)', flags: [:i]
 
+  # automatically set type to :browser for each defined matcher
   browsers do
+    # a single matcher that will create an Identity for a specific match
+    # identities are keyed by name so if two different matchers define a
+    # matcher with a name: :maxthon then the last one will be that name's
+    # resulting Identity
     match %r{maxthon}i do
+      # define properties by calling a method with the desired name and:
+      #  -- value   # => will create a static method that returns that value
+      #  -- /(pat)/ # => will create a method that scans the UA and
+      #                  saves the first capture group
+      #  -- { blk } # => will create a dynamic method that returns the result
+      #                  of the block, it will be executed within an
+      #                  instantiated Client object
       name           :maxthon
 
       version        %r{maxthon[/\s]([\d\.]+)}i
@@ -86,6 +103,7 @@ Browserino.define do
     end
   end
 
+  # automatically set type to :bot for each defined matcher
   bots do
     match %r{googlebot}i,                   name: :googlebot
     match %r{yahoo\!\sslurp}i,              name: :yahoo_slurp
@@ -122,6 +140,7 @@ Browserino.define do
     match %r{face(?:bookexternalhit|bot)}i, name: :facebook
   end
 
+  # automatically set type to :library for each defined matcher
   libraries do
     match %r{php}i,    name: :php
     match %r{python}i, name: :python, version: %r{-urllib/([\d\.]+)}i
@@ -131,6 +150,9 @@ Browserino.define do
     match %r{curl}i,   name: :curl
   end
 
+  # inherit properties a standard set of properties by the name of a
+  # previously defined matcher, overwritten by properties added within matchers
+  # inherit properties from Identity where name == :chrome
   like :chrome do
     match %r{brave}i,   name: :brave,   version: %r{brave/([\d\.]+)}i
     match %r{vivaldi}i, name: :vivaldi, version: %r{vivaldi/([\d\.]+)}i
@@ -145,6 +167,7 @@ Browserino.define do
           version: %r{(?:version|w(?:eb)?osbrowser)/([\d\.]+)}i
   end
 
+  # inherit properties from Identity where name == :firefox
   like :firefox do
     match %r{seamonkey}i, name: :seamonkey, version: %r{seamonkey/([\d\.]+)}i
     match %r{superswan}i, name: :superswan, version: %r{superswan/([\d\.]+)}i
