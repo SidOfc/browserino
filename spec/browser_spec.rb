@@ -4,8 +4,9 @@ describe 'Browserino' do
   browsers = Library.data.fetch(:browsers, [])
 
   browsers.each do |spec|
-    exclude = [:user_agent]
-    client  = Browserino.parse spec[:user_agent]
+    exclude     = [:user_agent]
+    client      = Browserino.parse spec[:user_agent]
+    spec[:type] ||= :browser
 
     describe [client.name, spec[:user_agent]].join(' :: ') do
       # Test defined property methods in browsers.yml

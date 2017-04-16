@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe Browserino do
   Library.data.fetch(:bots, []).each do |spec|
-    ua     = spec.delete :user_agent
-    client = Browserino.parse ua
+    ua          = spec.delete :user_agent
+    client      = Browserino.parse ua
+    spec[:type] ||= :bot
 
     describe ua do
       spec.each do |test_method, test_result|
