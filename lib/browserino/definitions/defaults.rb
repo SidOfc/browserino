@@ -3,11 +3,11 @@ Browserino.define do
   # a simple set of global matchers that will be merged
   # with an identity the final client object is created
   match do
-    locale           %r{\s(\w{2}(?:\-\w{2})?)[;\)]}i
+    locale           %r{(?<!nintendo)[;\s](\w{2}(?:\-\w{2})?)[;)]}i
     architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86)}i
-    platform         %r{(windows(?:\sphone)?|macintosh|android|tizen
-                        |ip(?:[ao]d|hone)|blackberry|linux|ubuntu|x11|bsd
-                        |s(?:unos|olaris)|w(?:eb)?os)}xi
+    platform         %r{.*(xbox|wii|nintendo\sds|playstation|windows(?:\sphone)?
+                        |macintosh|android|tizen|ip(?:[ao]d|hone)|blackberry
+                        |linux|ubuntu|x11|bsd|s(?:unos|olaris)|w(?:eb)?os)}xi
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|mac\sos\sx|android
                       |(?:cpu\s|ip(?:[ao]d|hone)\s)os|blackberry|bb
                       |s(?:unos|olaris)/?|w(?:eb)?os/|tizen)\s?([\d\._]+)}xi

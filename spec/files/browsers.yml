@@ -910,3 +910,56 @@
   :platform_version: '5.0'
   :locale:
   :architecture:
+
+- :user_agent:       Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; Xbox)
+  :name:             :ie
+  :version:          '9.0'
+  :engine:           :trident
+  :engine_version:   '5.0'
+  :platform:         :xbox
+  :platform_version: '6.1'
+  :locale:
+  :architecture:
+
+- :user_agent:       Opera/9.30 (Nintendo Wii; U; ; 2047-7; de)
+  :name:             :opera
+  :version:          '9.30'
+  :engine:
+  :engine_version:
+  :platform:         :wii
+  :platform_version:
+  :locale:           :de
+  :architecture:
+
+- :user_agent:       Bunjalloo/0.7.6(Nintendo DS;U;en)
+  :name:
+  :version:
+  :engine:
+  :engine_version:
+  :platform:         :nintendo_ds
+  :platform_version:
+  :locale:           :en
+  :architecture:
+  :type:             :unknown
+
+- :user_agent:       Mozilla/4.0 (PS3 (PlayStation 3); 1.00)
+  :name:
+  :version:
+  :engine:
+  :engine_version:
+  :platform:         :playstation
+  :platform_version:
+  :locale:
+  :architecture:
+  :type:             :unknown
+
+- :user_agent:       Mozilla/5.0 (PLAYSTATION 3; 3.55)
+  :name:
+  :version:
+  :engine:
+  :engine_version:
+  :platform:         :playstation
+  :platform_version:
+  :locale:
+  :architecture:
+  :type:             :unknown
