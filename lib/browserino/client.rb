@@ -104,6 +104,18 @@ module Browserino
       end.flatten.uniq.join(' ').gsub(/\s{2,}/, ' ').strip
     end
 
+    def to_hash
+      properties
+    end
+
+    def to_h
+      properties
+    end
+
+    def to_a
+      properties.to_a
+    end
+
     # scary, I know, but a falsy value is all we need to return if some
     # property isn't known or true as any property can be defined on the Client
     def method_missing(_, *__, &___)
