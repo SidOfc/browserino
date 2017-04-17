@@ -64,11 +64,9 @@ module Browserino
     end
 
     def compare(op, other)
-      other = Version.new other unless other.is_a? Version
-
-      return false if other.size > size
-
+      other   = Version.new other unless other.is_a? Version
       subsize = [size, other.size].min
+
       (self[0...subsize] <=> other[0...subsize]).send op, 0
     end
   end

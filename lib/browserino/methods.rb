@@ -9,6 +9,9 @@ module Browserino
     props = props.merge normalize(collect(left, user_agent))
     like  = parse user_agent.gsub identity.pattern, '' if like
 
+    props[:platform_name] ||=
+      find_platform_version_name props[:platform], props[:platform_version]
+
     Client.new props, like
   end
 
@@ -118,6 +121,24 @@ module Browserino
     aliasses[name] += names
   end
 
+  def self.platform_name(name, **opts)
+    return false unless opts[:for]
+    opts[:name] ||= name
+    platform_names[opts[:for]] << opts
+  end
+
+  def self.find_platform_version_name(platform, version = nil)
+    return unless platform_names.key?(platform) && version
+    version = Version.new version unless version.is_a? Version
+    platform_names[platform].each do |candidate|
+      min = Version.new candidate[:range].min
+      max = Version.new candidate[:range].max
+
+      return candidate[:name] if version >= min && version <= max
+    end
+    nil
+  end
+
   def self.filter(*props, &block)
     props << :global unless props.any?
     props.each { |prop| filters[prop] << block }
@@ -167,6 +188,10 @@ module Browserino
 
   def self.identities
     @identities ||= {}
+  end
+
+  def self.platform_names
+    @platform_names ||= Hash.new { |h, k| h[k] = [] }
   end
 
   def self.filters

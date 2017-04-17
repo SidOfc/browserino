@@ -6,6 +6,7 @@
   :engine:           :webkit
   :engine_version:   '537.36'
   :platform:         :macintosh
+  :platform_name:    :sierra
   :platform_version: '10.12.1'
   :locale:
   :architecture:
@@ -54,7 +55,8 @@
   :engine:           :webkit
   :engine_version:   '537.36'
   :platform:         :macintosh
-  :platform_version: 10.11.2
+  :platform_name:    :el_capitan
+  :platform_version: '10.11.2'
   :locale:
   :architecture:
   :mobile:           false
@@ -66,6 +68,7 @@
   :engine:           :webkit
   :engine_version:   '537.36'
   :platform:         :windows
+  :platform_name:    :windows_10
   :platform_version: '10.0'
   :locale:
   :architecture:     :x64
@@ -90,6 +93,7 @@
   :engine:           :webkit
   :engine_version:   '537.36'
   :platform:         :macintosh
+  :platform_name:    :el_capitan
   :platform_version: '10.11.2'
   :locale:
   :architecture:
@@ -102,6 +106,7 @@
   :engine:           :presto
   :engine_version:   '2.12.388'
   :platform:         :windows
+  :platform_name:    :windows_vista
   :platform_version: '6.0'
   :locale:
   :architecture:
@@ -162,6 +167,7 @@
   :engine:           :presto
   :engine_version:   '2.4.15'
   :platform:         :windows
+  :platform_name:    :windows_xp
   :platform_version: '5.1'
   :locale:           :en
   :architecture:
@@ -210,6 +216,7 @@
   :engine:           :webkit
   :engine_version:   '534.30'
   :platform:         :android
+  :platform_name:    :jelly_bean
   :platform_version: '4.1.2'
   :locale:           :en_us
   :architecture:
@@ -222,6 +229,7 @@
   :engine:           :trident
   :engine_version:   '4.0'
   :platform:         :windows
+  :platform_name:    :windows_7
   :platform_version: '6.1'
   :locale:
   :architecture:
@@ -234,6 +242,7 @@
   :engine:           :webkit
   :engine_version:   '530'
   :platform:         :windows
+  :platform_name:    :windows_xp
   :platform_version: '5.1'
   :locale:           :en_us
   :architecture:
@@ -246,6 +255,7 @@
   :engine:           :trident
   :engine_version:   '6.0'
   :platform:         :macintosh
+  :platform_name:    :lion
   :platform_version: '10.7.3'
   :locale:
   :architecture:
@@ -258,6 +268,7 @@
   :engine:           :trident
   :engine_version:   '7.0'
   :platform:         :windows
+  :platform_name:    :windows_8
   :platform_version: '6.3'
   :locale:
   :architecture:
@@ -282,6 +293,7 @@
   :engine:           :edge
   :engine_version:   '12.246'
   :platform:         :windows
+  :platform_name:    :windows_10
   :platform_version: '10.0'
   :locale:
   :architecture:     :x64
@@ -294,6 +306,7 @@
   :engine:           :webkit
   :engine_version:   '532.4'
   :platform:         :windows
+  :platform_name:    :windows_7
   :platform_version: '6.1'
   :locale:           :en_us
   :architecture:
@@ -306,6 +319,7 @@
   :engine:           :gecko
   :engine_version:   '7.0'
   :platform:         :windows
+  :platform_name:    :windows_xp
   :platform_version: '5.2'
   :locale:           :rw
   :architecture:
@@ -342,6 +356,7 @@
   :engine:           :gecko
   :engine_version:   '43.0'
   :platform:         :macintosh
+  :platform_name:    :el_capitan
   :platform_version: '10.11'
   :locale:
   :architecture:
@@ -354,6 +369,7 @@
   :engine:           :gecko
   :engine_version:   '40.0'
   :platform:         :windows
+  :platform_name:    :windows_7
   :platform_version: '6.1'
   :locale:
   :architecture:     :x64
@@ -402,6 +418,7 @@
   :engine:           :webkit
   :engine_version:   '537.36'
   :platform:         :macintosh
+  :platform_name:    :el_capitan
   :platform_version: '10.11.2'
   :locale:
   :architecture:
@@ -414,6 +431,7 @@
   :engine:           :webkit
   :engine_version:   '537.36'
   :platform:         :macintosh
+  :platform_name:    :el_capitan
   :platform_version: '10.11.2'
   :locale:
   :architecture:
@@ -426,6 +444,7 @@
   :engine:           :webkit
   :engine_version:   '537.36'
   :platform:         :windows
+  :platform_name:    :windows_7
   :platform_version: '6.1'
   :locale:
   :architecture:
@@ -462,6 +481,7 @@
   :engine:           :webkit
   :engine_version:   '537.26'
   :platform:         :android
+  :platform_name:    :nougat
   :platform_version: '7.0'
   :locale:
   :architecture:
@@ -486,6 +506,7 @@
   :engine:           :webkit
   :engine_version:   '601.3.9'
   :platform:         :macintosh
+  :platform_name:    :el_capitan
   :platform_version: '10.11.2'
   :locale:
   :architecture:
@@ -498,6 +519,7 @@
   :engine:           :webkit
   :engine_version:   '533.20.25'
   :platform:         :windows
+  :platform_name:    :windows_7
   :platform_version: '6.1'
   :locale:           :tr_tr
   :architecture:
@@ -534,6 +556,7 @@
   :engine:           :webkit
   :engine_version:   '537.36'
   :platform:         :windows
+  :platform_name:    :windows_7
   :platform_version: '6.1'
   :locale:
   :architecture:     :x64
@@ -546,6 +569,7 @@
   :engine:           :webkit
   :engine_version:   '537.36'
   :platform:         :windows
+  :platform_name:    :windows_8
   :platform_version: '6.3'
   :locale:
   :architecture:     :x64
@@ -558,6 +582,7 @@
   :engine:           :presto
   :engine_version:   '2.9.168'
   :platform:         :macintosh
+  :platform_name:    :snow_leopard
   :platform_version: '10.6.8'
   :locale:           :fr
   :architecture:
@@ -582,6 +607,7 @@
   :engine:
   :engine_version:
   :platform:         :windows
+  :platform_name:    :windows_7
   :platform_version: '6.1'
   :locale:           :de
   :architecture:
@@ -630,6 +656,7 @@
   :engine:           :webkit
   :engine_version:   '534.6'
   :platform:         :windows
+  :platform_name:    :windows_xp
   :platform_version: '5.1'
   :locale:           :en_us
   :architecture:
@@ -642,6 +669,7 @@
   :engine:           :trident
   :engine_version:   '7.0'
   :platform:         :windows
+  :platform_name:    :windows_7
   :platform_version: '6.1'
   :locale:           :as
   :architecture:     :x64
@@ -654,6 +682,7 @@
   :engine:           :trident
   :engine_version:   '5.0'
   :platform:         :windows
+  :platform_name:    :windows_7
   :platform_version: '6.1'
   :locale:
   :architecture:
@@ -702,6 +731,7 @@
   :engine:           :webkit
   :engine_version:   '533.1'
   :platform:         :windows
+  :platform_name:    :windows_vista
   :platform_version: '6.0'
   :locale:           :en_us
   :architecture:
@@ -714,6 +744,7 @@
   :engine:           :trident
   :engine_version:   '4.0'
   :platform:         :windows
+  :platform_name:    :windows_7
   :platform_version: '6.1'
   :locale:
   :architecture:     :x64
@@ -726,6 +757,7 @@
   :engine:           :gecko
   :engine_version:   1.8.0.7
   :platform:         :windows
+  :platform_name:    :windows_8
   :platform_version: '6.2'
   :locale:
   :architecture:     :x64
@@ -750,6 +782,7 @@
   :engine:           :gecko
   :engine_version:   '33.0'
   :platform:         :macintosh
+  :platform_name:    :yosemite
   :platform_version: '10.10'
   :locale:
   :architecture:
@@ -762,6 +795,7 @@
   :engine:           :gecko
   :engine_version:   '25.0'
   :platform:         :macintosh
+  :platform_name:    :snow_leopard
   :platform_version: '10.6'
   :locale:
   :architecture:
@@ -774,6 +808,7 @@
   :engine:           :gecko
   :engine_version:   '36.0'
   :platform:         :windows
+  :platform_name:    :windows_8
   :platform_version: '6.3'
   :locale:
   :architecture:
@@ -786,6 +821,7 @@
   :engine:           :gecko
   :engine_version:   '31.0'
   :platform:         :windows
+  :platform_name:    :windows_7
   :platform_version: '6.1'
   :locale:
   :architecture:     :x64
@@ -870,6 +906,7 @@
   :engine:           :webkit
   :engine_version:   '537.36'
   :platform:         :macintosh
+  :platform_name:    :yosemite
   :platform_version: '10.10.1'
   :locale:
   :architecture:
@@ -882,6 +919,7 @@
   :engine:           :webkit
   :engine_version:   '537.36'
   :platform:         :macintosh
+  :platform_name:    :mavericks
   :platform_version: '10.9.2'
   :locale:
   :architecture:
@@ -894,6 +932,7 @@
   :engine:           :webkit
   :engine_version:   '537.36'
   :platform:         :macintosh
+  :platform_name:    :mountain_lion
   :platform_version: '10.8.3'
   :locale:
   :architecture:
@@ -906,6 +945,7 @@
   :engine:           :webkit
   :engine_version:   '537.36'
   :platform:         :windows
+  :platform_name:    :windows_7
   :platform_version: '6.1'
   :locale:
   :architecture:     :x64
@@ -918,6 +958,7 @@
   :engine:           :webkit
   :engine_version:   '537.36'
   :platform:         :windows
+  :platform_name:    :windows_8
   :platform_version: '6.2'
   :locale:
   :architecture:
@@ -978,6 +1019,7 @@
   :engine:           :webkit
   :engine_version:   '537.75.14'
   :platform:         :macintosh
+  :platform_name:    :mavericks
   :platform_version: '10.9.3'
   :locale:
   :architecture:
@@ -990,6 +1032,7 @@
   :engine:           :webkit
   :engine_version:   '537.13'
   :platform:         :macintosh
+  :platform_name:    :snow_leopard
   :platform_version: '10.6.8'
   :locale:
   :architecture:
@@ -1002,6 +1045,7 @@
   :engine:           :webkit
   :engine_version:   '533.20.25'
   :platform:         :windows
+  :platform_name:    :windows_7
   :platform_version: '6.1'
   :locale:           :de_de
   :architecture:
@@ -1014,6 +1058,7 @@
   :engine:           :webkit
   :engine_version:   '533.18.1'
   :platform:         :windows
+  :platform_name:    :windows_7
   :platform_version: '6.1'
   :locale:           :en_us
   :architecture:
