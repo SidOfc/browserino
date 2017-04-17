@@ -20,7 +20,7 @@ Browserino.define do
   # a named processor can only be defined once and will be overwritten when
   # redefined
   process :version, :engine_version, :platform_version do |value|
-    Browserino::Client::Version.new value
+    Browserino::Version.new value
   end
 
   process :platform do |value|

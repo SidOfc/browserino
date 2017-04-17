@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe 'Browserino::Client::Version' do
+describe 'Browserino::Version' do
   it 'maps numeric arguments to a version' do
-    a = Browserino::Client::Version.new 10, 0, 1
-    b = Browserino::Client::Version.new 9,  9, 9
+    a = Browserino::Version.new 10, 0, 1
+    b = Browserino::Version.new 9,  9, 9
 
     expect(a.major).to eq 10
     expect(a.minor).to eq 0
@@ -20,11 +20,11 @@ describe 'Browserino::Client::Version' do
   end
 
   it 'correctly identifies less and / or equal than' do
-    a = Browserino::Client::Version.new '4.2.0'
-    b = Browserino::Client::Version.new '4.2.0'
+    a = Browserino::Version.new '4.2.0'
+    b = Browserino::Version.new '4.2.0'
 
-    c = Browserino::Client::Version.new '1.33.7'
-    d = Browserino::Client::Version.new '1.33.9'
+    c = Browserino::Version.new '1.33.7'
+    d = Browserino::Version.new '1.33.9'
 
     expect(a < b).to  eq false
     expect(a <= b).to eq true
@@ -37,11 +37,11 @@ describe 'Browserino::Client::Version' do
   end
 
   it 'correctly identifies greater and / or equal than' do
-    a = Browserino::Client::Version.new '4.2.0'
-    b = Browserino::Client::Version.new '4.2.0'
+    a = Browserino::Version.new '4.2.0'
+    b = Browserino::Version.new '4.2.0'
 
-    c = Browserino::Client::Version.new '1.33.7'
-    d = Browserino::Client::Version.new '1.33.9'
+    c = Browserino::Version.new '1.33.7'
+    d = Browserino::Version.new '1.33.9'
 
     expect(a > b).to  eq false
     expect(a >= b).to eq true
@@ -54,11 +54,11 @@ describe 'Browserino::Client::Version' do
   end
 
   it 'correctly handles equality and inequality' do
-    a = Browserino::Client::Version.new '4.2.0'
-    b = Browserino::Client::Version.new '4.2.0'
+    a = Browserino::Version.new '4.2.0'
+    b = Browserino::Version.new '4.2.0'
 
-    c = Browserino::Client::Version.new '1.33.7'
-    d = Browserino::Client::Version.new '1.33.9'
+    c = Browserino::Version.new '1.33.7'
+    d = Browserino::Version.new '1.33.9'
 
     expect(a == b).to eq true
     expect(a != b).to eq false

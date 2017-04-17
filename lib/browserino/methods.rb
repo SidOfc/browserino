@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 module Browserino
-  def self.version
-    Client::Version.new Browserino::VERSION.dup
-  end
-
   def self.analyze(user_agent, identity = nil)
     props = [*global, identity].compact.map(&:properties).reduce(&:merge)
     like  = props.delete :like if props.key? :like
