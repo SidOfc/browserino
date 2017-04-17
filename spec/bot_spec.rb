@@ -7,7 +7,13 @@ describe Browserino do
     spec[:type] ||= :bot
 
     describe ua do
-      spec.each do |test_method, test_result|
+      if spec[:to_s]
+        it "expects client.to_s to be #{spec[:to_s]}" do
+          expect(client.to_s).to eq spec[:to_s]
+        end
+      end
+
+      spec.reject { |k, _| k == :to_s }.each do |test_method, test_result|
         it "expects #{test_method} to be #{test_result}" do
           expect(client.send(test_method)).to eq test_result
         end

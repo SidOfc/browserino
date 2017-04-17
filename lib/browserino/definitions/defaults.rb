@@ -133,8 +133,8 @@ Browserino.define do
     match %r{holmes}i,                      name: :holmes
     match %r{(?:ask)\sjeeves}i,             name: :ask
     match %r{duckduckgo}i,                  name: :duckduckgo
-    match %r{beslistbot}i,                  name: :beslist
-    match %r{twitterbot}i,                  name: :twitter
+    match %r{beslistbot}i,                  name: :beslistbot
+    match %r{twitterbot}i,                  name: :twitterbot
     match %r{linkedinbot}i,                 name: :linkedin
     match %r{instagram}i,                   name: :instagram
     match %r{pinterest}i,                   name: :pinterest
