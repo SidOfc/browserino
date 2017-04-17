@@ -17,8 +17,8 @@ Browserino.define do
   end
 
   # this is a named filter, it defines the same filter for 3 properties
-  # a named filter can only be defined once and will be overwritten when
-  # redefined
+  # multiple name filters for the same property can be created, they will be
+  # executed in order of addition
   filter :version, :engine_version, :platform_version do |value|
     Browserino::Version.new value
   end

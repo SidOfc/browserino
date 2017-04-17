@@ -43,9 +43,7 @@ module Browserino
   end
 
   def self.convert(val, **opts)
-    filters = Browserino.filters[:global].dup
-    filters << Browserino.filters[opts[:format]]
-
+    filters = Browserino.filters[:global] + Browserino.filters[opts[:format]]
     filters.compact.each do |fmt|
       val = fmt.call val
     end
@@ -121,8 +119,8 @@ module Browserino
   end
 
   def self.filter(*props, &block)
-    return (filters[:global] ||= []) << block unless props.any?
-    props.each { |prop| filters[prop] = block }
+    props << :global unless props.any?
+    props.each { |prop| filters[prop] << block }
   end
 
   def self.smart_match(prop, **options)
@@ -167,15 +165,15 @@ module Browserino
     @smart_matchers ||= {}
   end
 
-  def self.filters
-    @filters ||= {}
-  end
-
   def self.identities
     @identities ||= {}
   end
 
+  def self.filters
+    @filters ||= Hash.new { |h, k| h[k] = [] }
+  end
+
   def self.aliasses
-    @aliasses ||= Hash.new { [] }
+    @aliasses ||= Hash.new { |h, k| h[k] = [] }
   end
 end
