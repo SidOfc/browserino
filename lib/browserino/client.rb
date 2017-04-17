@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 module Browserino
   class Client
-    attr_reader :property_names
+    attr_reader :property_names, :like
 
-    def initialize(props = {})
+    def initialize(props = {}, like = nil)
       @property_names = props.is_a?(Hash) && props.keys || []
+      @like           = like if like
       # properties are added as methods that will each be defined in a specific
       # order below. First, seperate static value methods from procs,
       # procs will be able to call methods in this instances' context
@@ -73,6 +74,15 @@ module Browserino
       end
     end
 
+    def like?(sym = nil)
+      conditions = []
+      conditions << like == sym if sym
+      conditions << like.version == opts[:version] if opts[:version]
+
+      return like unless conditions.any?
+      conditions.all?
+    end
+
     def x64?
       architecture == :x64
     end
@@ -92,6 +102,20 @@ module Browserino
     # and a correct value will still be returned
     def is?(sym, opts = {})
       send "#{sym}?", opts[:version]
+    end
+
+    def ===(other)
+      return false unless name
+
+      case other
+      when String then other.to_sym == name
+      when Symbol then other == name
+      else false
+      end
+    end
+
+    def ==(other)
+      self === other
     end
 
     def to_s

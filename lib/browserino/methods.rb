@@ -2,12 +2,14 @@
 module Browserino
   def self.analyze(user_agent, identity = nil)
     props = [*global, identity].compact.map(&:properties).reduce(&:merge)
+    like  = props.delete :like if props.key? :like
     props = normalize collect(props, user_agent)
     props = with_smart_matchers props
     left  = props.select { |_, val| val.is_a? Regexp }
     props = props.merge normalize(collect(left, user_agent))
+    like  = parse user_agent.gsub identity.pattern, '' if like
 
-    Client.new props
+    Client.new props, like
   end
 
   def self.with_smart_matchers(properties)
