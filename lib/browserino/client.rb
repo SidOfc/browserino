@@ -74,13 +74,17 @@ module Browserino
       end
     end
 
-    def like?(sym = nil)
-      conditions = []
-      conditions << like == sym if sym
-      conditions << like.version == opts[:version] if opts[:version]
+    def like?(sym = nil, opts = {})
+      opts  = sym if sym.is_a? Hash
+      must  = []
+      must << (self == sym || like == sym) if sym
 
-      return like unless conditions.any?
-      conditions.all?
+      if (v = opts[:version])
+        must << ((version == v) || (like && like.version == v))
+      end
+
+      return like unless must.any?
+      must.all?
     end
 
     def x64?
