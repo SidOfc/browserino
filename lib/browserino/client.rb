@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 module Browserino
   class Client
-    attr_reader :property_names, :like
+    attr_reader :property_names
 
     def initialize(props = {}, like = nil)
       @property_names = props.is_a?(Hash) && props.keys || []
@@ -74,14 +74,15 @@ module Browserino
       end
     end
 
+    def like
+      @like ||= self
+    end
+
     def like?(sym = nil, opts = {})
       opts  = sym if sym.is_a? Hash
       must  = []
-      must << (self == sym || like == sym) if sym
-
-      if (v = opts[:version])
-        must << ((version == v) || (like && like.version == v))
-      end
+      must << like == sym if sym
+      must << like.version == opts[:version] if opts[:version]
 
       return like unless must.any?
       must.all?
