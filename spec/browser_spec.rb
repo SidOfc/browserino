@@ -4,11 +4,25 @@ describe 'Browserino' do
   browsers = Library.data.fetch(:browsers, [])
 
   browsers.each do |spec|
-    exclude     = [:user_agent, :mobile]
+    exclude     = [:user_agent, :mobile, :to_s]
     client      = Browserino.parse spec[:user_agent]
     spec[:type] ||= :browser
 
     describe [client.name, spec[:user_agent]].join(' :: ') do
+      if spec[:to_s]
+        it "expects client.to_s to be #{spec[:to_s]}" do
+          expect(client.to_s).to eq spec[:to_s]
+        end
+      end
+
+      # test defined property name presence
+      it 'expects all properties in client.properties to be defined with formatted values' do
+        client.properties.each do |property, value|
+          expect { spec.keys.include? property }
+          expect(value).to eq client.send property
+        end
+      end
+
       # test mobile properties
       it "expects client.mobile? to be #{client.mobile? && 'true' || 'false'}" do
         expect(client.mobile?).to eq spec[:mobile]

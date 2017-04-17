@@ -3,15 +3,14 @@ module Browserino
   class Client
     attr_reader :property_names
 
-    def initialize(properties = {})
-      @property_names = properties.keys
+    def initialize(props = {})
+      @property_names = props.is_a?(Hash) && props.keys || []
       # properties are added as methods that will each be defined in a specific
       # order below. First, seperate static value methods from procs,
       # procs will be able to call methods in this instances' context
       # therefore we need to define static methods before procs
-
-      static = properties.reject { |_, val| val.respond_to? :call }
-      procs  = properties.select { |_, val| val.respond_to? :call }
+      static = props.reject { |_, val| val.respond_to? :call }
+      procs  = props.select { |_, val| val.respond_to? :call }
 
       # for each static property:
       # -- define a method that returns it's property value
@@ -93,6 +92,16 @@ module Browserino
     # and a correct value will still be returned
     def is?(sym, opts = {})
       send "#{sym}?", opts[:version]
+    end
+
+    def to_s
+      [:name, :engine, :platform].map do |prop|
+        name = send prop
+        ver  = version if prop == :name
+        ver  = send "#{prop}_version" if ver.nil?
+
+        [[name], [name, (ver.major if ver > 0)].compact.join.to_sym]
+      end.flatten.uniq.join(' ').gsub(/\s{2,}/, ' ').strip
     end
 
     # scary, I know, but a falsy value is all we need to return if some
