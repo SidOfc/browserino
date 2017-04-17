@@ -7,7 +7,7 @@ require_relative 'browserino/version'
 
 require_relative 'browserino/definitions/lies'
 require_relative 'browserino/definitions/defaults'
-require_relative 'browserino/definitions/processors'
+require_relative 'browserino/definitions/filters'
 
 module Browserino
   def self.parse(ua)
