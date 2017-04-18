@@ -19,6 +19,7 @@ module Browserino
       ver_prop = (prop == :name) && :version || "#{prop}_version".to_sym
       properties[lbl_prop] ||= label_for properties[prop], properties[ver_prop]
     end
+
     properties
   end
 
