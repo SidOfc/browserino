@@ -1,14 +1,10 @@
 # frozen_string_literal: true
 Browserino.define do
-  # aliasses will be defined after a Client has been initialized
-  # only the aliasses matching the Client will be defined
-  alias_for :firefox,    :ff
-  alias_for :windows,    :win
-  alias_for :macintosh,  :mac, :osx, :macos
-  alias_for :blackberry, :bb
-  alias_for :ie,         :internet_explorer
-  alias_for :facebook,   :fb
-  alias_for :duckduckgo, :ddg
+  # a set of global matchers that will use formatted properties found earlier
+  # they will also be applied to every matcher unless that matcher has it's own
+  # property set for the defined smart matcher
+  smart_match :version,        with: ':name/([\d\._]+)',   flags: [:i]
+  smart_match :engine_version, with: ':engine/([\d\._]+)', flags: [:i]
 
   # a simple set of global matchers that will be merged
   # with an identity the final client object is created
@@ -25,12 +21,6 @@ Browserino.define do
                       |(?:cpu\s|ip(?:[ao]d|hone)\s)os|blackberry|bb
                       |s(?:unos|olaris)/?|w(?:eb)?os/|tizen)\s?([\d\._]+)}xi
   end
-
-  # a set of global matchers that will use formatted properties found earlier
-  # they will also be applied to every matcher unless that matcher has it's own
-  # property set for the defined smart matcher
-  smart_match :version,        with: ':name/([\d\._]+)',   flags: [:i]
-  smart_match :engine_version, with: ':engine/([\d\._]+)', flags: [:i]
 
   # automatically set type to :browser for each defined matcher
   browsers do

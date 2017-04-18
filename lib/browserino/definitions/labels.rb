@@ -1,5 +1,23 @@
 # frozen_string_literal: true
 Browserino.define do
+  # aliasses will be defined after a Client has been initialized
+  # only the aliasses matching the Client will be defined
+  alias_for :firefox,    :ff
+  alias_for :windows,    :win
+  alias_for :macintosh,  :mac, :osx, :macos
+  alias_for :blackberry, :bb
+  alias_for :ie,         :internet_explorer
+  alias_for :facebook,   :fb
+  alias_for :duckduckgo, :ddg
+
+  # labels will be defined before a client has been initialized
+  # they will not be filtered before being injected into the Client
+
+  # labels will be matched against values of #name, #engine and #platform and
+  # will create #label, #engine_label and #platform_label properties
+  # respectively. These enjoy all the features that regular defined properties
+  # in for instance methods enjoy, such as automatic question methods like
+  # client.label? :mavericks
   label :android,            for: :android,   range: '1'..'1.4.9'
   label :cupcake,            for: :android,   range: '1.5'..'1.9.9'
   label :eclair,             for: :android,   range: '2'..'2.1'
