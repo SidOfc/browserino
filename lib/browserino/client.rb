@@ -10,62 +10,28 @@ module Browserino
       # order below. First, seperate static value methods from procs,
       # procs will be able to call methods in this instances' context
       # therefore we need to define static methods before procs
-      static = props.reject { |_, val| val.respond_to? :call }
-      procs  = props.select { |_, val| val.respond_to? :call }
 
       # for each static property:
       # -- define a method that returns it's property value
       # -- define a question method that returns it's property value or
       #    checks version against supplied value if truthy
-      static.each do |name, value|
-        define_singleton_method(name) { value }
-        define_singleton_method("#{name}?") do |val = nil|
-          return value == val if val
-          value
-        end
-      end
+      define_simple_methods! props
 
       # for each proc property:
       # -- define a method that returns it's instance evalled block value
       # -- define a question method that returns it's instance evalled block
       #    value or checks version against supplied value if truthy
-      procs.each do |name, value|
-        result = instance_eval(&value)
-        define_singleton_method(name) { result }
-        define_singleton_method("#{name}?") do |val|
-          return value == val if val
-          result
-        end
-      end
+      define_proc_methods! props
 
-      # keep this here to implement aliasses in an easier manner
-      # for instance, join an array of aliasses to generate aliassed methods
-      [:name, :engine, :platform].each do |prop|
-        result  = send prop
-        ver_res = version if prop == :name
-        ver_res = send("#{prop}_version") if ver_res.nil?
+      # for each of #name, #engine and #platform, use their results as
+      # methods names, this will create a method #firefox? for the output
+      # of a #name # => :firefox for example.
+      define_name_result_methods!
 
-        # for each of the props:
-        # -- define a question method using the value of prop
-        #    (ex: name # => firefox # => "firefox?")
-        #    -- when supplied with a value, check it against {prop_res}_version
-        #    -- when called without argument, return result
-        define_singleton_method("#{result}?") do |value = nil|
-          return ver_res == value if value
-          result
-        end
-
-        # for each of the aliasses found:
-        # -- define a question method using the current alias
-        #    -- when supplied with a value, check it against {prop_res}_version
-        #    -- when called without argument, return result
-        Browserino.aliasses[result].each do |alt|
-          define_singleton_method("#{alt}?") do |value = nil|
-            return ver_res == value if value
-            result
-          end
-        end
-      end
+      # finally, add labels and their aliasses into the mix
+      # none of these methods should override an existing method
+      # therefore we check it's existence using defined?
+      define_label_methods!
     end
 
     def properties
@@ -153,6 +119,70 @@ module Browserino
     # always respond to missing, read method_missing comment
     def respond_to_missing?(_, *__, &___)
       true
+    end
+
+    private
+
+    def define_simple_methods!(props)
+      props.reject { |val| val.respond_to? :call }.each do |name, value|
+        define_singleton_method(name) { value }
+        define_singleton_method("#{name}?") do |val = nil|
+          return value == val if val
+          return value > 0 if value.is_a? Version
+          value && true
+        end
+      end
+    end
+
+    def define_proc_methods!(props)
+      props.select { |_, val| val.respond_to? :call }.each do |name, value|
+        result = instance_eval(&value)
+        define_singleton_method(name) { result }
+        define_singleton_method("#{name}?") do |val|
+          return value == val if val
+          result && true
+        end
+      end
+    end
+
+    def define_name_result_methods!
+      [:name, :engine, :platform].each do |prop|
+        result  = send prop
+        ver_res = version if prop == :name
+        ver_res = send("#{prop}_version") if ver_res.nil?
+
+        # for each of the props:
+        # -- define a question method using the value of prop
+        #    (ex: name # => firefox # => "firefox?")
+        #    -- when supplied with a value, check it against {prop_res}_version
+        #    -- when called without argument, return result
+        define_singleton_method("#{result}?") do |value = nil|
+          return ver_res == value if value
+          result && true
+        end
+
+        # for each of the aliasses found:
+        # -- define a question method using the current alias
+        #    -- when supplied with a value, check it against {prop_res}_version
+        #    -- when called without argument, return result
+        Browserino.aliasses[result].each do |alt|
+          define_singleton_method("#{alt}?") do |value = nil|
+            return ver_res == value if value
+            result && true
+          end
+        end
+      end
+    end
+
+    def define_label_methods!
+      property_names.select { |name| /label/i.match? name }.each do |prop|
+        result = send prop
+        next if defined? result
+        define_singleton_method("#{result}?") { result && true }
+        Browserino.aliasses[result].each do |alt|
+          define_singleton_method("#{alt}?") { result && true }
+        end
+      end
     end
   end
 end

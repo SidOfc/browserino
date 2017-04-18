@@ -18,11 +18,11 @@ describe Browserino do
           expect(client.send(test_method)).to eq test_result
         end
 
-        it "expects client.#{test_method}? #{test_result && ":#{test_result}"} to be #{test_result.nil? && 'falsy' || 'truthy'}" do
-          if test_result.nil?
-            expect(client.send("#{test_method}?", test_result)).to eq client.send test_method
-          else
+        it "expects client.#{test_method}? #{test_result && ":#{test_result}"} to be #{test_result && 'truthy' || 'falsy'}" do
+          if test_result
             expect(client.send("#{test_method}?", test_result)).to be_truthy
+          else
+            expect(client.send("#{test_method}?", test_result)).to be_falsy
           end
         end
       end
@@ -33,10 +33,8 @@ describe Browserino do
           expect(client.send("#{alt}?")).to be_truthy
         end
 
-        it "expects client.#{alt}? #{spec[:version]} to be #{spec[:version] && 'truthy' || 'falsy'}" do
-          if spec[:version].nil?
-            expect(client.send("#{alt}?", spec[:version])).to eq spec[:name]
-          else
+        if spec[:version]
+          it "expects client.#{alt}? #{spec[:version]} to be truthy}" do
             expect(client.send("#{alt}?", spec[:version])).to be_truthy
           end
         end

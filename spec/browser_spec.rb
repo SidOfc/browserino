@@ -35,10 +35,10 @@ describe 'Browserino' do
         end
 
         it "expects client.#{test_method}? #{test_result && ":#{test_result}"} to be #{test_result && 'truthy' || 'falsy'}" do
-          if test_result.nil?
-            expect(client.send("#{test_method}?", test_result)).to eq client.send test_method
-          else
+          if test_result
             expect(client.send("#{test_method}?", test_result)).to be_truthy
+          else
+            expect(client.send("#{test_method}?", test_result)).to be_falsy
           end
         end
       end
@@ -57,10 +57,8 @@ describe 'Browserino' do
             expect(client.send("#{alt}?")).to be_truthy
           end
 
-          it "expects client.#{alt}? #{ver_res} to be #{ver_res && 'truthy' || 'falsy'}" do
-            if ver_res.nil?
-              expect(client.send("#{alt}?", ver_res)).to eq client.send prop
-            else
+          if ver_res
+            it "expects client.#{alt}? #{ver_res} to be truthy" do
               expect(client.send("#{alt}?", ver_res)).to be_truthy
             end
           end
