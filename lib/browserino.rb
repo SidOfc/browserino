@@ -5,10 +5,10 @@ require_relative 'browserino/client'
 
 require_relative 'browserino/version'
 
-require_relative 'browserino/definitions/platform_names'
-require_relative 'browserino/definitions/filters'
-require_relative 'browserino/definitions/lies'
 require_relative 'browserino/definitions/defaults'
+require_relative 'browserino/definitions/filters'
+require_relative 'browserino/definitions/labels'
+require_relative 'browserino/definitions/lies'
 
 module Browserino
   def self.parse(ua)

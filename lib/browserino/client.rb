@@ -81,11 +81,10 @@ module Browserino
     def like?(sym = nil, opts = {})
       opts  = sym if sym.is_a? Hash
       must  = []
-      must << like == sym if sym
-      must << like.version == opts[:version] if opts[:version]
+      must << like.is?(sym) if sym
+      must << like.version?(opts[:version]) if opts[:version]
 
-      return like unless must.any?
-      must.all?
+      must.any? && must.all?
     end
 
     def x64?

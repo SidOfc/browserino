@@ -7,12 +7,19 @@ module Browserino
     props = with_smart_matchers props
     left  = props.select { |_, val| val.is_a? Regexp }
     props = props.merge normalize(collect(left, user_agent))
+    props = with_labels props
     like  = parse user_agent.gsub identity.pattern, '' if like
 
-    props[:platform_name] ||=
-      find_platform_version_name props[:platform], props[:platform_version]
-
     Client.new props, like
+  end
+
+  def self.with_labels(properties)
+    [:name, :engine, :platform].each do |prop|
+      lbl_prop = (prop == :name) && :label || "#{prop}_label".to_sym
+      ver_prop = (prop == :name) && :version || "#{prop}_version".to_sym
+      properties[lbl_prop] ||= label_for properties[prop], properties[ver_prop]
+    end
+    properties
   end
 
   def self.with_smart_matchers(properties)
@@ -121,16 +128,16 @@ module Browserino
     aliasses[name] += names
   end
 
-  def self.platform_name(name, **opts)
+  def self.label(name, **opts)
     return false unless opts[:for]
     opts[:name] ||= name
-    platform_names[opts[:for]] << opts
+    labels[opts[:for]] << opts
   end
 
-  def self.find_platform_version_name(platform, version = nil)
-    return unless platform_names.key?(platform) && version
+  def self.label_for(target_name, version = nil)
+    return unless labels.key?(target_name) && version
     version = Version.new version unless version.is_a? Version
-    platform_names[platform].each do |candidate|
+    labels[target_name].each do |candidate|
       min = Version.new candidate[:range].min
       max = Version.new candidate[:range].max
 
@@ -190,8 +197,8 @@ module Browserino
     @identities ||= {}
   end
 
-  def self.platform_names
-    @platform_names ||= Hash.new { |h, k| h[k] = [] }
+  def self.labels
+    @labels ||= Hash.new { |h, k| h[k] = [] }
   end
 
   def self.filters
