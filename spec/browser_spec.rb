@@ -47,12 +47,12 @@ describe 'Browserino' do
       [:name, :engine, :platform].each do |prop|
         result  = spec[prop]
 
-        next unless Browserino.aliasses[result].any?
+        next unless Browserino.config.aliasses[result].any?
 
         ver_res = spec[:version] if prop == :name
         ver_res = spec["#{prop}_version".to_sym] if ver_res.nil?
 
-        Browserino.aliasses[result].each do |alt|
+        Browserino.config.aliasses[result].each do |alt|
           it "expects client.#{alt}? to be truthy" do
             expect(client.send("#{alt}?")).to be_truthy
           end

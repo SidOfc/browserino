@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 module Browserino
   def self.analyze(user_agent, identity = nil)
-    props = [*global, identity].compact.map(&:properties).reduce(&:merge)
+    props = [*config.global_identities, identity].compact.map(&:properties)
+                                                 .reduce(&:merge)
     like  = props.delete :like if props.key? :like
-    props = normalize collect(props, user_agent)
+    props = collect(props, user_agent)
+    props = normalize props
     props = with_smart_matchers props
     left  = props.select { |_, val| val.is_a? Regexp }
     props = props.merge normalize(collect(left, user_agent))
     props = with_labels props
     like  = parse user_agent.gsub identity.pattern, '' if like
-
     Client.new props, like
   end
 
@@ -18,7 +19,7 @@ module Browserino
                              properties: [],
                              types: [:unknown],
                              names: [],
-                             smart_matchers: [],
+                             smart_matchers: {},
                              identities: [],
                              labels: Hash.new { |h, k| h[k] = [] },
                              filters: Hash.new { |h, k| h[k] = [] },
@@ -67,7 +68,8 @@ module Browserino
   end
 
   def self.convert(val, **opts)
-    config.filters.values.flatten.compact.each do |fmt|
+    filters = config.filters[:global] + config.filters[opts[:format]]
+    filters.compact.each do |fmt|
       val = fmt.call val
     end
 
@@ -90,7 +92,7 @@ module Browserino
 
   def self.like(tmp, &block)
     @tmp_like = tmp.to_sym
-    instance_eval(&block)
+    module_eval(&block)
     @tmp_like = nil
   end
 
@@ -119,16 +121,16 @@ module Browserino
     return unless @tmp_ids.any?
 
     @tmp_ids.each do |identity|
-      properties << identity.properties.keys
-      types << identity.type
-      names << identity.name
+      config.properties << identity.properties.keys
+      config.types << identity.type
+      config.names << identity.name
 
       identities[identity.name] = identity
     end
 
-    properties.flatten!.uniq!
-    types.uniq!
-    names.uniq!
+    config.properties.flatten!.uniq!
+    config.types.uniq!
+    config.names.uniq!
   end
 
   def self.before_parse(&block)
@@ -138,19 +140,19 @@ module Browserino
   end
 
   def self.alias_for(name, *names)
-    aliasses[name] += names
+    config.aliasses[name] += names
   end
 
   def self.label(name, **opts)
     return false unless opts[:for]
     opts[:name] ||= name
-    labels[opts[:for]] << opts
+    config.labels[opts[:for]] << opts
   end
 
   def self.label_for(target_name, version = nil)
-    return unless labels.key?(target_name) && version
+    return unless config.labels.key?(target_name) && version
     version = Version.new version unless version.is_a? Version
-    labels[target_name].each do |candidate|
+    config.labels[target_name].each do |candidate|
       min = Version.new candidate[:range].min
       max = Version.new candidate[:range].max
 
@@ -165,7 +167,7 @@ module Browserino
   end
 
   def self.smart_match(prop, **options)
-    smart_matchers[prop] = options if options[:with]
+    config.smart_matchers[prop] = options if options[:with]
   end
 
   def self.match(rgxp = nil, **opts, &block)
@@ -173,56 +175,52 @@ module Browserino
     opts[:type] ||= @tmp_type if @tmp_type
     opts[:like] ||= @tmp_like if @tmp_like
 
-    return with_alias(rgxp, opts, &block) if opts[:like] && rgxp
-    return (@tmp_ids << Identity.new(rgxp, opts, &block)) if rgxp
-
-    if rgxp
-      return config.aliasses << with_alias(rgxp, opts, &block) if opts[:like]
-      config.identites << Identity.new(rgxp, opts, &block)
+    if rgxp && opts[:like]
+      config.identities.unshift with_alias(rgxp, opts, &block)
+    elsif rgxp
+      config.identities << Identity.new(rgxp, opts, &block)
     else
       config.global_identities.unshift Identity.new(&block)
     end
   end
 
   def self.with_alias(pattern, **opts, &block)
-    id      = @tmp_ids.select { |id| id == opts[:like] }.first
-    allowed = id.properties
+    id = config.identities.select { |id| id == opts[:like] }.first
 
     raise "No alias found for: #{opts[:like] || 'nil'}" unless id
-    definition = Identity.new pattern, allowed.merge(opts), &block
 
-    @tmp_ids.unshift definition
+    Identity.new pattern, id.properties.merge(opts), &block
   end
 
   def self.global(&block)
     (@global ||= []) << Identity.new(&block)
   end
 
-  def self.properties
-    config.properties
-  end
-
-  def self.types
-    config.types
-  end
-
-  def self.names
-    config.names
-  end
-
-  def self.smart_matchers
-    @smart_matchers ||= {}
-  end
-
-  def self.identities
-    @identities ||= {}
-  end
-
-  def self.labels
-    @labels ||= Hash.new { |h, k| h[k] = [] }
-  end
-
-  def self.aliasses
-    @aliasses ||= Hash.new { |h, k| h[k] = [] }
-  end
+  # def self.properties
+  #   config.properties
+  # end
+  #
+  # def self.types
+  #   config.types
+  # end
+  #
+  # def self.names
+  #   config.names
+  # end
+  #
+  # def self.smart_matchers
+  #   @smart_matchers ||= {}
+  # end
+  #
+  # def self.identities
+  #   @identities ||= {}
+  # end
+  #
+  # def self.labels
+  #   @labels ||= Hash.new { |h, k| h[k] = [] }
+  # end
+  #
+  # def self.aliasses
+  #   @aliasses ||= Hash.new { |h, k| h[k] = [] }
+  # end
 end

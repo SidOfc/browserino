@@ -28,7 +28,7 @@ describe Browserino do
       end
 
       # test magic aliasses when defined
-      Browserino.aliasses[spec[:name]].each do |alt|
+      Browserino.config.aliasses[spec[:name]].each do |alt|
         it "expects client.#{alt}? to be truthy" do
           expect(client.send("#{alt}?")).to be_truthy
         end

@@ -165,7 +165,7 @@ module Browserino
         # -- define a question method using the current alias
         #    -- when supplied with a value, check it against {prop_res}_version
         #    -- when called without argument, return result
-        Browserino.aliasses[result].each do |alt|
+        Browserino.config.aliasses[result].each do |alt|
           define_singleton_method("#{alt}?") do |value = nil|
             return ver_res == value if value
             result && true
@@ -179,7 +179,7 @@ module Browserino
         result = send prop
         next if defined? result
         define_singleton_method("#{result}?") { result && true }
-        Browserino.aliasses[result].each do |alt|
+        Browserino.config.aliasses[result].each do |alt|
           define_singleton_method("#{alt}?") { result && true }
         end
       end
