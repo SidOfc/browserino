@@ -15,7 +15,8 @@ module Browserino
   end
 
   def self.config
-    @config ||= Config.new({ global_identities: [],
+    @config ||= Config.new({ before_parse: [],
+                             global_identities: [],
                              properties: [],
                              types: [:unknown],
                              names: [],
@@ -90,42 +91,36 @@ module Browserino
     val
   end
 
-  def self.like(tmp, &block)
-    @tmp_like = tmp.to_sym
+  def self.with_preset(props, &block)
+    @tmp_defaults = props
     module_eval(&block)
-    @tmp_like = nil
+    @tmp_defaults = nil
+  end
+
+  def self.like(tmp, &block)
+    with_preset like: tmp.to_sym, &block
   end
 
   def self.browsers(&block)
-    @tmp_type = :browser
-    module_eval(&block)
-    @tmp_type = nil
+    with_preset type: :browser, &block
   end
 
   def self.bots(&block)
-    @tmp_type = :bot
-    module_eval(&block)
-    @tmp_type = nil
+    with_preset type: :bot, &block
   end
 
   def self.libraries(&block)
-    @tmp_type = :library
-    module_eval(&block)
-    @tmp_type = nil
+    with_preset type: :library, &block
   end
 
   def self.define(&block)
-    @tmp_ids = []
-
     module_eval(&block)
-    return unless @tmp_ids.any?
+    return unless config.identities.any?
 
-    @tmp_ids.each do |identity|
+    config.identities.each do |identity|
       config.properties << identity.properties.keys
-      config.types << identity.type
-      config.names << identity.name
-
-      identities[identity.name] = identity
+      config.types      << identity.type
+      config.names      << identity.name
     end
 
     config.properties.flatten!.uniq!
@@ -134,19 +129,40 @@ module Browserino
   end
 
   def self.before_parse(&block)
-    @before_parse ||= []
-    @before_parse << block if block
-    @before_parse
-  end
-
-  def self.alias_for(name, *names)
-    config.aliasses[name] += names
+    config.before_parse << block if block
+    config.before_parse
   end
 
   def self.label(name, **opts)
     return false unless opts[:for]
     opts[:name] ||= name
     config.labels[opts[:for]] << opts
+  end
+
+  def self.filter(*props, &block)
+    props << :global unless props.any?
+    props.each { |prop| config.filters[prop] << block }
+  end
+
+  def self.smart_match(prop, **options)
+    config.smart_matchers[prop] = options if options[:with]
+  end
+
+  def self.match(rgxp = nil, **opts, &block)
+    rgxp, opts = [nil, rgxp] if rgxp.is_a? Hash
+    opts = @tmp_defaults.merge opts if @tmp_defaults.is_a? Hash
+
+    if rgxp && opts[:like]
+      config.identities.unshift with_alias(rgxp, opts, &block)
+    elsif rgxp
+      config.identities << Identity.new(rgxp, opts, &block)
+    else
+      config.global_identities.unshift Identity.new(&block)
+    end
+  end
+
+  def self.alias_for(name, *names)
+    config.aliasses[name] += names
   end
 
   def self.label_for(target_name, version = nil)
@@ -161,29 +177,6 @@ module Browserino
     nil
   end
 
-  def self.filter(*props, &block)
-    props << :global unless props.any?
-    props.each { |prop| config.filters[prop] << block }
-  end
-
-  def self.smart_match(prop, **options)
-    config.smart_matchers[prop] = options if options[:with]
-  end
-
-  def self.match(rgxp = nil, **opts, &block)
-    rgxp, opts = [nil, rgxp] if rgxp.is_a? Hash
-    opts[:type] ||= @tmp_type if @tmp_type
-    opts[:like] ||= @tmp_like if @tmp_like
-
-    if rgxp && opts[:like]
-      config.identities.unshift with_alias(rgxp, opts, &block)
-    elsif rgxp
-      config.identities << Identity.new(rgxp, opts, &block)
-    else
-      config.global_identities.unshift Identity.new(&block)
-    end
-  end
-
   def self.with_alias(pattern, **opts, &block)
     id = config.identities.select { |id| id == opts[:like] }.first
 
@@ -191,36 +184,4 @@ module Browserino
 
     Identity.new pattern, id.properties.merge(opts), &block
   end
-
-  def self.global(&block)
-    (@global ||= []) << Identity.new(&block)
-  end
-
-  # def self.properties
-  #   config.properties
-  # end
-  #
-  # def self.types
-  #   config.types
-  # end
-  #
-  # def self.names
-  #   config.names
-  # end
-  #
-  # def self.smart_matchers
-  #   @smart_matchers ||= {}
-  # end
-  #
-  # def self.identities
-  #   @identities ||= {}
-  # end
-  #
-  # def self.labels
-  #   @labels ||= Hash.new { |h, k| h[k] = [] }
-  # end
-  #
-  # def self.aliasses
-  #   @aliasses ||= Hash.new { |h, k| h[k] = [] }
-  # end
 end
