@@ -13,6 +13,19 @@ module Browserino
     Client.new props, like
   end
 
+  def self.config
+    @config ||= Config.new({ global_identities: [],
+                             properties: [],
+                             types: [:unknown],
+                             names: [],
+                             smart_matchers: [],
+                             identities: [],
+                             labels: Hash.new { |h, k| h[k] = [] },
+                             filters: Hash.new { |h, k| h[k] = [] },
+                             aliasses: Hash.new { |h, k| h[k] = [] } })
+    @config
+  end
+
   def self.with_labels(properties)
     [:name, :engine, :platform].each do |prop|
       lbl_prop = (prop == :name) && :label || "#{prop}_label".to_sym
@@ -24,7 +37,7 @@ module Browserino
   end
 
   def self.with_smart_matchers(properties)
-    smart_matchers.each_with_object properties do |(prop, detector), props|
+    config.smart_matchers.each_with_object properties do |(prop, detector), props|
       props[prop] ||= detector_regex detector, properties
     end
   end
@@ -54,8 +67,7 @@ module Browserino
   end
 
   def self.convert(val, **opts)
-    filters = Browserino.filters[:global] + Browserino.filters[opts[:format]]
-    filters.compact.each do |fmt|
+    config.filters.values.flatten.compact.each do |fmt|
       val = fmt.call val
     end
 
@@ -84,19 +96,19 @@ module Browserino
 
   def self.browsers(&block)
     @tmp_type = :browser
-    instance_eval(&block)
+    module_eval(&block)
     @tmp_type = nil
   end
 
   def self.bots(&block)
     @tmp_type = :bot
-    instance_eval(&block)
+    module_eval(&block)
     @tmp_type = nil
   end
 
   def self.libraries(&block)
     @tmp_type = :library
-    instance_eval(&block)
+    module_eval(&block)
     @tmp_type = nil
   end
 
@@ -149,7 +161,7 @@ module Browserino
 
   def self.filter(*props, &block)
     props << :global unless props.any?
-    props.each { |prop| filters[prop] << block }
+    props.each { |prop| config.filters[prop] << block }
   end
 
   def self.smart_match(prop, **options)
@@ -160,11 +172,19 @@ module Browserino
     rgxp, opts = [nil, rgxp] if rgxp.is_a? Hash
     opts[:type] ||= @tmp_type if @tmp_type
     opts[:like] ||= @tmp_like if @tmp_like
-    return add_alias(rgxp, opts, &block) if opts[:like] && rgxp
-    rgxp && (@tmp_ids << Identity.new(rgxp, opts, &block)) || global(&block)
+
+    return with_alias(rgxp, opts, &block) if opts[:like] && rgxp
+    return (@tmp_ids << Identity.new(rgxp, opts, &block)) if rgxp
+
+    if rgxp
+      return config.aliasses << with_alias(rgxp, opts, &block) if opts[:like]
+      config.identites << Identity.new(rgxp, opts, &block)
+    else
+      config.global_identities.unshift Identity.new(&block)
+    end
   end
 
-  def self.add_alias(pattern, **opts, &block)
+  def self.with_alias(pattern, **opts, &block)
     id      = @tmp_ids.select { |id| id == opts[:like] }.first
     allowed = id.properties
 
@@ -179,15 +199,15 @@ module Browserino
   end
 
   def self.properties
-    @properties ||= []
+    config.properties
   end
 
   def self.types
-    @types ||= [:unknown]
+    config.types
   end
 
   def self.names
-    @names ||= []
+    config.names
   end
 
   def self.smart_matchers
@@ -200,10 +220,6 @@ module Browserino
 
   def self.labels
     @labels ||= Hash.new { |h, k| h[k] = [] }
-  end
-
-  def self.filters
-    @filters ||= Hash.new { |h, k| h[k] = [] }
   end
 
   def self.aliasses

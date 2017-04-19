@@ -59,6 +59,7 @@ module Browserino
       when String  then val.tr('_', '.').split '.'
       when Array   then val
       when Hash    then [val[:major], val[:minor], val[:patch]]
+      when Symbol  then []
       else val.to_a
       end.map(&:to_i)
     end
