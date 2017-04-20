@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'yaml'
+
 require_relative 'browserino/options'
 require_relative 'browserino/config'
 require_relative 'browserino/methods'
