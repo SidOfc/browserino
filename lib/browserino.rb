@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'yaml'
+require_relative 'browserino/integrate/rails' if defined?(::Rails)
 
 require_relative 'browserino/options'
 require_relative 'browserino/config'
