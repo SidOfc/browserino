@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-Browserino.define do
+Browserino.config.define do
   # a set of global matchers that will use formatted properties found earlier
   # they will also be applied to every matcher unless that matcher has it's own
   # property set for the defined smart matcher

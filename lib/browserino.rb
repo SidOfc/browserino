@@ -11,7 +11,7 @@ require_relative 'browserino/definitions/labels'
 
 module Browserino
   def self.parse(ua)
-    before_parse.each { |b| b.call ua } if before_parse.any?
+    config.before_parse.each { |b| b.call ua } if config.before_parse.any?
     config.identities.each do |identity|
       return analyze ua, identity if identity.matches? ua
     end

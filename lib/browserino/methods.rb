@@ -26,7 +26,18 @@ module Browserino
                              labels: Hash.new { |h, k| h[k] = [] },
                              filters: Hash.new { |h, k| h[k] = [] },
                              aliasses: Hash.new { |h, k| h[k] = [] } })
-    @config
+  end
+
+  def self.label_for(target_name, version = nil)
+    return unless config.labels.key?(target_name) && version
+    version = Version.new version unless version.is_a? Version
+    config.labels[target_name].each do |candidate|
+      min = Version.new candidate[:range].min
+      max = Version.new candidate[:range].max
+
+      return candidate[:name] if version >= min && version <= max
+    end
+    nil
   end
 
   def self.with_labels(properties)
@@ -41,11 +52,11 @@ module Browserino
 
   def self.with_smart_matchers(properties)
     config.smart_matchers.each_with_object properties do |(prop, detector), props|
-      props[prop] ||= detector_regex detector, properties
+      props[prop] ||= parse_detector detector, properties
     end
   end
 
-  def self.detector_regex(detect, properties)
+  def self.parse_detector(detect, properties)
     pat = properties.each_with_object(detect[:with].dup) do |(key, val), str|
       replacement = val.to_s.strip
       str.gsub! ":#{key}", replacement unless replacement.empty?
@@ -90,99 +101,5 @@ module Browserino
     end
 
     val
-  end
-
-  def self.with_preset(props, &block)
-    @tmp_defaults = props
-    module_eval(&block)
-    @tmp_defaults = nil
-  end
-
-  def self.like(tmp, &block)
-    with_preset like: tmp.to_sym, &block
-  end
-
-  def self.browsers(&block)
-    with_preset type: :browser, &block
-  end
-
-  def self.bots(&block)
-    with_preset type: :bot, &block
-  end
-
-  def self.libraries(&block)
-    with_preset type: :library, &block
-  end
-
-  def self.define(&block)
-    module_eval(&block)
-    return unless config.identities.any?
-
-    config.identities.each do |identity|
-      config.properties << identity.properties.keys
-      config.types      << identity.type
-      config.names      << identity.name
-    end
-
-    config.properties.flatten!.uniq!
-    config.types.uniq!
-    config.names.uniq!
-  end
-
-  def self.before_parse(&block)
-    config.before_parse << block if block
-    config.before_parse
-  end
-
-  def self.label(name, **opts)
-    return false unless opts[:for]
-    opts[:name] ||= name
-    config.labels[opts[:for]] << opts
-  end
-
-  def self.filter(*props, &block)
-    props << :global unless props.any?
-    props.each { |prop| config.filters[prop] << block }
-  end
-
-  def self.smart_match(prop, **options)
-    config.smart_matchers[prop] = options if options[:with]
-  end
-
-  def self.match(rgxp = nil, **opts, &block)
-    rgxp, opts = [nil, rgxp] if rgxp.is_a? Hash
-    opts = @tmp_defaults.merge opts if @tmp_defaults.is_a? Hash
-
-    if rgxp && opts[:like]
-      config.identities.unshift with_alias(rgxp, opts, &block)
-    elsif rgxp
-      config.identities << Identity.new(rgxp, opts, &block)
-    else
-      config.global_identities.unshift Identity.new(&block)
-    end
-  end
-
-  def self.alias_for(name, *names)
-    config.aliasses[name] += names
-  end
-
-  def self.label_for(target_name, version = nil)
-    return unless config.labels.key?(target_name) && version
-    version = Version.new version unless version.is_a? Version
-    config.labels[target_name].each do |candidate|
-      min = Version.new candidate[:range].min
-      max = Version.new candidate[:range].max
-
-      return candidate[:name] if version >= min && version <= max
-    end
-    nil
-  end
-
-  def self.with_alias(pattern, **opts, &block)
-    id = config.identities.select { |id| id == opts[:like] }.first
-
-    raise "No alias found for: #{opts[:like] || 'nil'}" unless id
-
-    Identity.new pattern, id.properties.merge(opts), &block
   end
 end

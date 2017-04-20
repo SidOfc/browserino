@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-Browserino.define do
+Browserino.config.define do
   # executes before parsing the user agent, 's' in this case is the actual
   # user agent string in full glory. Do manipulations as you wish, I'm
   # using it to successfully strip lies from the user agent and to sometimes

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-Browserino.define do
+Browserino.config.define do
   # aliasses will be defined after a Client has been initialized
   # only the aliasses matching the Client will be defined
   alias_for :firefox,    :ff
