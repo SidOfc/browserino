@@ -1,44 +1,6 @@
 # frozen_string_literal: true
 module Browserino
-  class Config
-    def initialize(options = {})
-      @properties = options
-    end
-
-    def [](key)
-      @properties[key]
-    end
-
-    def []=(key, value)
-      @properties[key] = value
-    end
-
-    def method_missing(sym, *args, &block)
-      return @properties[to_option(sym)] == args.first if args.any?
-      @properties[to_option(sym)]
-    end
-
-    def respond_to_missing?(sym, *args, &block)
-      option? sym
-    end
-
-    def merge(other)
-      @properties.merge! other
-      self
-    end
-
-    def to_hash
-      @properties
-    end
-
-    def to_a
-      @properties.to_a
-    end
-
-    def to_s
-      @properties.to_s
-    end
-
+  class Config < Options
     def define(&block)
       instance_eval(&block)
       return unless identities.any? && identities.all?
@@ -87,8 +49,8 @@ module Browserino
     end
 
     def before_parse(&block)
-      @properties[:before_parse] << block if block
-      @properties[:before_parse]
+      @options[:before_parse] << block if block
+      @options[:before_parse]
     end
 
     def preset(props, &block)
@@ -119,16 +81,6 @@ module Browserino
       raise "No alias found for: #{opts[:like] || 'nil'}" unless id
 
       Identity.new pattern, id.properties.merge(opts), &block
-    end
-
-    private
-
-    def to_option(sym)
-      sym.to_s.tr('?', '').to_sym
-    end
-
-    def option?(sym)
-      @properties.keys.include? to_option(sym)
     end
   end
 end
