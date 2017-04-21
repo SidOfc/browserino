@@ -5,21 +5,20 @@ Browserino.config.define do
   # using it to successfully strip lies from the user agent and to sometimes
   # simplify a word e.g. 'AppleWebKit' => 'webkit'
 
-  # the string does not have to be returned as it will not be assigned to the
-  # result of this block, use destructive(!) methods instead!
+  # the returned result will be used as the user agent to parse so make
+  # sure to return the final ua at the end
   before_parse do |ua|
-    ua.gsub! %r{applewebkit}i, 'webkit'
-    ua.gsub! %r{(Mozilla/[\d\.]+)}i, ''
-
-    ua.gsub!(%r{chrome|safari}i, '').gsub!('OPR', 'opera') if ua =~ %r{OPR}
-    ua.gsub! %r{9\.80}, '' if ua =~ %r{opera}i
-    ua.gsub! %r{webkit/}i, '' if ua =~ %r{presto}i
-    ua.gsub! %r{(?:ms)?ie}i, '' if ua =~ %r{rv:}i
-    ua.gsub! %r{android|linux}i, '' if ua =~ %r{tizen}i
-    ua.gsub! %r{linux}i, '' if ua =~ %r{android|s(?:unos|olaris)|w(?:eb)?os}i
-    ua.gsub! %r{x11}i, '' if ua =~ %r{bsd|s(?:unos|olaris)}i
-    ua.gsub! %r{windows\snt}i, '' if ua =~ %r{windows\sphone}i
-    ua.gsub! %r{rv:}i, '' if ua =~ %r{servo}i
+    ua = ua.gsub(%r{applewebkit}i, 'webkit').gsub %r{(Mozilla/[\d\.]+)}i, ''
+    ua = ua.gsub(%r{chrome|safari}i, '').gsub('OPR', 'opera') if ua =~ %r{OPR}
+    ua = ua.gsub %r{9\.80}, '' if ua =~ %r{opera}i
+    ua = ua.gsub %r{webkit/}i, '' if ua =~ %r{presto}i
+    ua = ua.gsub %r{(?:ms)?ie}i, '' if ua =~ %r{rv:}i
+    ua = ua.gsub %r{android|linux}i, '' if ua =~ %r{tizen}i
+    ua = ua.gsub %r{linux}i, '' if ua =~ %r{android|s(unos|olaris)|w(eb)?os}i
+    ua = ua.gsub %r{x11}i, '' if ua =~ %r{bsd|s(unos|olaris)}i
+    ua = ua.gsub %r{windows\snt}i, '' if ua =~ %r{windows\sphone}i
+    ua = ua.gsub %r{rv:}i, '' if ua =~ %r{servo}i
+    ua
   end
 
   # after an identity is found, it's values are filtered in two stages

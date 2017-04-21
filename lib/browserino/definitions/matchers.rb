@@ -25,9 +25,9 @@ Browserino.config.define do
   # automatically set type to :browser for each defined matcher
   browsers do
     # a single matcher that will create an Identity for a specific match
-    # identities are keyed by name so if two different matchers define a
-    # matcher with a name: :maxthon then the last one will be that name's
-    # resulting Identity
+    # identities are added in an array in order of definition - higher is better
+    # aliasses are prepended to the list instead of appended (e.g. like blocks)
+    # this ensures that aliasses will be matched before any regular matcher
     match %r{maxthon}i do
       # define properties by calling a method with the desired name and:
       #  -- value   # => will create a static method that returns that value

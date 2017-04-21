@@ -9,12 +9,13 @@ require_relative 'browserino/version'
 require_relative 'browserino/identity'
 
 require_relative 'browserino/definitions/matchers'
+require_relative 'browserino/definitions/aliasses'
 require_relative 'browserino/definitions/filters'
 require_relative 'browserino/definitions/labels'
 
 module Browserino
   def self.parse(ua)
-    config.before_parse.each { |b| b.call ua } if config.before_parse.any?
+    config.before_parse.each { |b| ua = b.call ua } if config.before_parse.any?
     config.identities.each do |identity|
       return analyze ua, identity if identity.matches? ua
     end
