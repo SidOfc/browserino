@@ -29,6 +29,14 @@ module Browserino
       end
     end
 
+    def to_str
+      properties[:name].to_s
+    end
+
+    def =~(other)
+      self === other
+    end
+
     def ==(other)
       self === other
     end

@@ -5,14 +5,6 @@ module Browserino
       @options = options
     end
 
-    def [](key)
-      @options[key]
-    end
-
-    def []=(key, value)
-      @options[key] = value
-    end
-
     def method_missing(sym, *args, &block)
       return @options[opt(sym)] == args.first if args.any?
       @options[opt(sym)]
