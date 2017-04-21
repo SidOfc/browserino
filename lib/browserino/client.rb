@@ -54,11 +54,11 @@ module Browserino
     end
 
     def x64?
-      architecture == :x64
+      @x64_cache ||= architecture == :x64
     end
 
     def x32?
-      architecture == :x32
+      @x32_cache ||= architecture == :x32
     end
 
     # check the type of a Client
@@ -98,11 +98,14 @@ module Browserino
     end
 
     def to_json(*args)
-      properties.to_json(*args)
+      @json_cache ||= properties.map do |prop, val|
+        final = val.is_a?(Version) && val.full || val
+        [prop, final]
+      end.to_h.to_json(*args)
     end
 
     def to_s
-      [:name, :engine, :platform].map do |prop|
+      @str_cache ||= [:name, :engine, :platform].map do |prop|
         name = send prop
         ver  = version if prop == :name
         ver  = send "#{prop}_version" if ver.nil?
