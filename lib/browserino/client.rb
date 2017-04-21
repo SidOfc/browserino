@@ -175,7 +175,7 @@ module Browserino
     end
 
     def define_label_methods!
-      property_names.select { |name| /label/i.match? name }.each do |prop|
+      property_names.select { |name| name =~ /label/i }.each do |prop|
         result = send prop
         next if defined? result
         define_singleton_method("#{result}?") { result && true }

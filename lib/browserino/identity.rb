@@ -14,14 +14,14 @@ module Browserino
     end
 
     def matches?(user_agent)
-      user_agent.match? pattern if pattern.is_a? Regexp
+      pattern =~ user_agent if pattern.is_a? Regexp
     end
 
     def ===(other)
       return false if properties[:name].nil?
 
       case other
-      when Regexp   then other.match? properties[:name]
+      when Regexp   then other =~ properties[:name]
       when String   then other.to_sym == properties[:name]
       when Symbol   then other == properties[:name]
       when Identity then other.properties[:name] == properties[:name]
