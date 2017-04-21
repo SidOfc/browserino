@@ -97,6 +97,10 @@ module Browserino
       to_s
     end
 
+    def to_json(*args)
+      properties.to_json(*args)
+    end
+
     def to_s
       [:name, :engine, :platform].map do |prop|
         name = send prop

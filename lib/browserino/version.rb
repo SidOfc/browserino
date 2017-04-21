@@ -22,6 +22,10 @@ module Browserino
       to_s
     end
 
+    def to_json(*args)
+      full.to_json(*args)
+    end
+
     def to_s
       @str ||= join '.'
     end
