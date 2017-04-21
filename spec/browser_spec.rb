@@ -1,14 +1,29 @@
 require 'spec_helper'
 
-describe 'Browserino' do
+describe 'Browserino browsers' do
   browsers = Library.data.fetch(:browsers, [])
 
   browsers.each do |spec|
     exclude     = [:user_agent, :mobile, :to_s]
     client      = Browserino.parse spec[:user_agent]
-    spec[:type] ||= :browser
 
     describe [client.name, spec[:user_agent]].join(' :: ') do
+      if client.type != :unknown
+        it "expects client.type? :browser to be true" do
+          expect(client.type?(:browser)).to eq true
+        end
+      end
+
+      if client.architecture == :x64
+        it "expects client.x64? to be true" do
+          expect(client.x64?).to eq true
+        end
+      elsif client.architecture == :x32
+        it "expects client.x32? to be true" do
+          expect(client.x32?).to eq true
+        end
+      end
+
       if spec[:to_s]
         it "expects client.to_s to be #{spec[:to_s]}" do
           expect(client.to_s).to eq spec[:to_s]
@@ -30,8 +45,8 @@ describe 'Browserino' do
 
       # Test defined property methods in browsers.yml
       spec.reject { |k| exclude.include? k }.each do |test_method, test_result|
-        it "expects client.#{test_method} to be #{test_result || 'nil'}" do
-          expect(client.send(test_method)).to eq test_result
+        it "expects client.#{test_method} == :#{test_result} to be truthy" do
+          expect(client.send(test_method) == test_result).to be_truthy
         end
 
         it "expects client.#{test_method}? #{test_result && ":#{test_result}"} to be #{test_result && 'truthy' || 'falsy'}" do

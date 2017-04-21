@@ -10,9 +10,13 @@ module Library
     @data ||= begin
       paths = Dir[File.expand_path('files/*.yml', File.dirname(__FILE__))]
       paths.each_with_object({}) do |path, data|
-        subject = path.split('/').last.split('.').first
-        data[subject.to_sym] = YAML.load_file(path)[subject.to_sym]
+        subject = path.split('/').last.split('.').first.to_sym
+        data[subject] = YAML.load_file(path)[subject]
       end
     end
+  end
+
+  def self.random_user_agent(type = :browsers)
+    data[type].sample[:user_agent]
   end
 end

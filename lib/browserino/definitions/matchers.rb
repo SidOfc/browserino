@@ -160,8 +160,11 @@ Browserino.config.define do
     match %r{brave}i,   name: :brave,   version: %r{brave/([\d\.]+)}i
     match %r{vivaldi}i, name: :vivaldi, version: %r{vivaldi/([\d\.]+)}i
     match %r{colibri}i, name: :colibri, version: %r{colibri/([\d\.]+)}i
-    match %r{bolt}i,    name: :bolt,    version: %r{bolt/([\d\.]+)}i
+  end
 
+  # inherit properties from Identity where name == :safari
+  like :safari do
+    match %r{bolt}i,           name: :bolt, version: %r{bolt/([\d\.]+)}i
     match %r{samsungbrowser}i, name: :samsungbrowser,
                                version: %r{samsungbrowser/([\d\.]+)}i
 

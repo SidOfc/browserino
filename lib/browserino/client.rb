@@ -69,7 +69,7 @@ module Browserino
 
     # the catch all method, anything it can ask as question will respond
     # supplying a version is optional, it will simply be nil and skipped
-    # and a correct value will still be returned
+    # otherwise and a correct value will still be returned
     def is?(sym, opts = {})
       send "#{sym}?", opts[:version]
     end
@@ -78,6 +78,7 @@ module Browserino
       return false unless name
 
       case other
+      when Regexp then other =~ name
       when String then other.to_sym == name
       when Symbol then other == name
       else false
@@ -86,6 +87,14 @@ module Browserino
 
     def ==(other)
       self === other
+    end
+
+    def =~(other)
+      self === other
+    end
+
+    def to_str
+      to_s
     end
 
     def to_s
@@ -138,10 +147,6 @@ module Browserino
       props.select { |_, val| val.respond_to? :call }.each do |name, value|
         result = instance_eval(&value)
         define_singleton_method(name) { result }
-        define_singleton_method("#{name}?") do |val|
-          return value == val if val
-          result && true
-        end
       end
     end
 
@@ -177,9 +182,13 @@ module Browserino
     def define_label_methods!
       property_names.select { |name| name =~ /label/i }.each do |prop|
         result = send prop
-        next if defined? result
-        define_singleton_method("#{result}?") { result && true }
+
+        unless defined? result
+          define_singleton_method("#{result}?") { result && true }
+        end
+
         Browserino.config.aliasses[result].each do |alt|
+          next if defined? alt
           define_singleton_method("#{alt}?") { result && true }
         end
       end

@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Browserino do
+describe 'Browserino bots' do
   Library.data.fetch(:bots, []).each do |spec|
     ua          = spec.delete :user_agent
     client      = Browserino.parse ua
     spec[:type] ||= :bot
 
-    describe ua do
+    describe [client.name, ua].join(' :: ') do
       if spec[:to_s]
         it "expects client.to_s to be #{spec[:to_s]}" do
           expect(client.to_s).to eq spec[:to_s]

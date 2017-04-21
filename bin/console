@@ -10,5 +10,3 @@ require 'browserino'
                                            2 Safari/601.3.9'
 
 Pry.start
-
-# puts @a.version.full

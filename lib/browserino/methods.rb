@@ -10,7 +10,11 @@ module Browserino
     left  = props.select { |_, val| val.is_a? Regexp }
     props = props.merge normalize(collect(left, user_agent)) if left.any?
     props = with_labels props
-    like  = parse user_agent.gsub identity.pattern, '' if like
+
+    if like
+      repl = user_agent =~ %r{#{like}}i && '' || like.to_s
+      like = parse user_agent.gsub identity.pattern, repl
+    end
 
     Client.new props, like
   end
