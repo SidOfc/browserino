@@ -142,9 +142,13 @@ module Browserino
     def define_simple_methods!(props)
       props.reject { |val| val.respond_to? :call }.each do |name, value|
         define_singleton_method(name) { value }
-        define_singleton_method("#{name}?") do |val = nil|
+        define_singleton_method("#{name}?") do |val = nil, **opts|
           values = [value, *Browserino.config.aliasses[value]]
-          return values.include? val if val
+          return values.include? val if val && !opts[:version]
+          if val && opts[:version]
+            ver_res = send(name == :name ? :version : "#{name}_version")
+            return (ver_res == opts[:version]) && values.include?(val)
+          end
           return value > 0 if value.is_a? Version
           value && true
         end
