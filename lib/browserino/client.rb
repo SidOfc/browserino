@@ -68,10 +68,10 @@ module Browserino
     end
 
     # the catch all method, anything it can ask as question will respond
-    # supplying a version is optional, it will simply be nil and skipped
-    # otherwise and a correct value will still be returned
+    # otherwise nil is returned, this is also true when supplying a version
     def is?(sym, opts = {})
-      send "#{sym}?", opts[:version]
+      return send "#{sym}?", opts[:version] if opts[:version]
+      send "#{sym}?"
     end
 
     def ===(other)
@@ -80,7 +80,7 @@ module Browserino
       case other
       when Regexp then other =~ name
       when String then other.to_sym == name
-      when Symbol then other == name
+      when Symbol, Browserino::Client then other == name
       else false
       end
     end
@@ -143,7 +143,8 @@ module Browserino
       props.reject { |val| val.respond_to? :call }.each do |name, value|
         define_singleton_method(name) { value }
         define_singleton_method("#{name}?") do |val = nil|
-          return value == val if val
+          values = [value, *Browserino.config.aliasses[value]]
+          return values.include? val if val
           return value > 0 if value.is_a? Version
           value && true
         end
