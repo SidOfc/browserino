@@ -193,15 +193,22 @@ module Browserino
 
     def define_label_methods!
       property_names.select { |name| name =~ /label/i }.each do |prop|
-        result = send prop
+        next unless (result = send(prop))
 
-        unless defined? result
-          define_singleton_method("#{result}?") { result && true }
+        ver_type = prop.to_s.gsub /_?label/, ''
+        ver_res  = version if ver_type.empty?
+        ver_res  = send("#{ver_type}_version") unless prop == :label
+
+        define_singleton_method("#{result}?") do |value = nil|
+          return ver_res == value if value
+          result && true
         end
 
         Browserino.config.aliasses[result].each do |alt|
-          next if defined? alt
-          define_singleton_method("#{alt}?") { result && true }
+          define_singleton_method("#{alt}?") do |value = nil|
+            return ver_res == value if value
+            result && true
+          end
         end
       end
     end
