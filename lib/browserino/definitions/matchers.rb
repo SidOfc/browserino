@@ -1,8 +1,16 @@
 # frozen_string_literal: true
 Browserino.config.define do
+  # Aside from the logic going on in this file, the order in which things are
+  # written is important! If you would move the :midori matcher below the
+  # :safari matcher and you would run rspec, you would see failures due to
+  # the change in order. The order can be changed - no problem,
+  # as long as the tests keep running
+
+
   # a set of global matchers that will use formatted properties found earlier
   # they will also be applied to every matcher unless that matcher has it's own
-  # property set for the defined smart matcher
+  # (or inherited a property through like) property set up for
+  # the defined smart matcher
   smart_match :version,        with: ':name[\s/]?([\d\._]+)', flags: [:i]
   smart_match :engine_version, with: ':engine/([\d\._]+)',    flags: [:i]
 
