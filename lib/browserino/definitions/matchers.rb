@@ -14,8 +14,8 @@ Browserino.config.define do
   smart_match :version,        with: ':name[\s/]?([\d\._]+)', flags: [:i]
   smart_match :engine_version, with: ':engine/([\d\._]+)',    flags: [:i]
 
-  # a simple set of global matchers that will be merged
-  # with an identity the final client object is created
+  # a simple set of global matchers that will be merged and scanned
+  # with a specific matcher when the final client object is created
   match do
     locale           %r{(?<!nintendo)[;\s](\w{2}(?:\-\w{2})?)[;)]}i
     architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86)}i
@@ -33,8 +33,8 @@ Browserino.config.define do
 
   # automatically set type to :browser for each defined matcher
   browsers do
-    # a single matcher that will create an Identity for a specific match
-    # identities are added in an array in order of definition - higher is better
+    # a single matcher that will create a matcher for a specific match
+    # matchers are added in an array in order of definition - higher is better
     # aliasses are prepended to the list instead of appended (e.g. like blocks)
     # this ensures that aliasses will be matched before any regular matcher
     match %r{maxthon}i do
@@ -225,7 +225,7 @@ Browserino.config.define do
 
   # inherit properties a standard set of properties by the name of a
   # previously defined matcher, overwritten by properties added within matchers
-  # inherit properties from Identity where name == :chrome, (except :version)
+  # inherit properties from matcher where name == :chrome, (except :version)
   like :chrome, except: [:version] do
     match %r{brave}i,         name: :brave
     match %r{vivaldi}i,       name: :vivaldi
@@ -235,7 +235,7 @@ Browserino.config.define do
     match %r{comodo_dragon}i, name: :comodo_dragon
   end
 
-  # inherit properties from Identity where name == :safari, (except :version)
+  # inherit properties from matcher where name == :safari, (except :version)
   like :safari, except: [:version] do
     match %r{bolt}i,           name: :bolt
     match %r{stainless}i,      name: :stainless
@@ -247,7 +247,7 @@ Browserino.config.define do
           version: %r{(?:version|w(?:eb)?osbrowser)/([\d\.]+)}i
   end
 
-  # inherit properties from Identity where name == :firefox, (except :version)
+  # inherit properties from matcher where name == :firefox, (except :version)
   like :firefox, except: [:version] do
     match %r{prism}i,     name: :prism
     match %r{waterfox}i,  name: :waterfox

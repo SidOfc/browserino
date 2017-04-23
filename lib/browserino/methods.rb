@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 module Browserino
-  def self.analyze(user_agent, identity = nil)
-    @defaults ||= config.global_identities.map(&:properties).reduce(&:merge)
+  def self.analyze(user_agent, matcher = nil)
+    @defaults ||= config.global_matchers.map(&:properties).reduce(&:merge)
 
-    props = @defaults.merge(identity && identity.properties || {})
+    props = @defaults.merge(matcher && matcher.properties || {})
     like  = props.delete :like
     props = collect props, user_agent
     props = props.merge collect(smart_matchers(props), user_agent)
@@ -11,7 +11,7 @@ module Browserino
 
     if like
       repl = user_agent =~ %r{#{like}}i && '' || like.to_s
-      like = parse user_agent.gsub identity.pattern, repl
+      like = parse user_agent.gsub matcher.pattern, repl
     end
 
     Client.new props, like
@@ -19,12 +19,12 @@ module Browserino
 
   def self.config
     @config ||= Config.new({ before_parse: [],
-                             global_identities: [],
+                             global_matchers: [],
                              properties: [],
                              types: [:unknown],
                              names: [],
                              smart_matchers: {},
-                             identities: [],
+                             matchers: [],
                              labels: Hash.new { |h, k| h[k] = [] },
                              filters: Hash.new { |h, k| h[k] = [] },
                              aliasses: Hash.new { |h, k| h[k] = [] } })

@@ -23,7 +23,7 @@ Browserino.config.define do
     ua
   end
 
-  # after an identity is found, it's values are filtered in two stages
+  # after a matcher is found, it's values are filtered in two stages
   # first, filters will parse all statically defined values (e.g.) no regexp
   # or block within matchers, after that, smart matcher patterns will be
   # conditionally added and parsed with the previously collected values and

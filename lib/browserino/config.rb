@@ -4,10 +4,10 @@ module Browserino
     def define(&block)
       instance_eval(&block)
 
-      identities.each do |identity|
-        properties << identity.properties.keys
-        types      << identity.type
-        names      << identity.name
+      matchers.each do |matcher|
+        properties << matcher.properties.keys
+        types      << matcher.type
+        names      << matcher.name
       end
 
       properties.flatten!.uniq!
@@ -35,11 +35,11 @@ module Browserino
       opts = @tmp_defaults.merge opts if @tmp_defaults.is_a? Hash
 
       if rgxp && opts[:like]
-        identities.unshift with_alias(rgxp, opts, &block)
+        matchers.unshift with_alias(rgxp, opts, &block)
       elsif rgxp
-        identities << Identity.new(rgxp, opts, &block).freeze
+        matchers << Matcher.new(rgxp, opts, &block).freeze
       else
-        global_identities.unshift Identity.new(&block).freeze
+        global_matchers.unshift Matcher.new(&block).freeze
       end
     end
 
@@ -79,7 +79,7 @@ module Browserino
     end
 
     def with_alias(pattern, **opts, &block)
-      id = identities.select { |id| id == opts[:like] }.first
+      id = matchers.select { |id| id == opts[:like] }.first
 
       raise "No alias found for: #{opts[:like] || 'nil'}" unless id
 
@@ -88,7 +88,7 @@ module Browserino
         base = base.reject { |k| excl.include? k }
       end
 
-      Identity.new(pattern, base.merge(opts), &block).freeze
+      Matcher.new(pattern, base.merge(opts), &block).freeze
     end
   end
 end

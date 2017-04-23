@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Browserino
-  class Identity
+  class Matcher
     attr_reader :pattern, :properties
 
     SETTINGS = { name: nil, type: :unknown }.freeze
@@ -28,7 +28,7 @@ module Browserino
       when Regexp   then other =~ properties[:name]
       when String   then other.to_sym == properties[:name]
       when Symbol   then other == properties[:name]
-      when Identity then other.properties[:name] == properties[:name]
+      when Matcher then other.properties[:name] == properties[:name]
       else false
       end
     end
