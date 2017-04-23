@@ -203,21 +203,11 @@ Browserino.config.define do
   end
 
   # automatically set type to :library for each defined matcher
-  libraries do
-    match %r{php}i,    name: :php
-    match %r{python}i, name: :python, version: %r{-urllib/([\d\.]+)}i
-    match %r{perl}i,   name: :perl
-    match %r{java}i,   name: :java
-    match %r{pycurl}i, name: :pycurl
-    match %r{curl}i,   name: :curl
-  end
-
-  # automatically set type to :library for each defined matcher
   validators do
     match %r{cse\shtml\svalidator}i, name: :cse_html_validator
-    match %r{csschecl}i,             name: :csschecl
+    match %r{csscheck}i,             name: :csscheck
     match %r{htmlparser}i,           name: :htmlparser
-    match %r{p3p_validator}i,        name: :p3p_validator
+    match %r{p3p\svalidator}i,       name: :p3p_validator
     match %r{wdg_validator}i,        name: :wdg_validator
     match %r{w3c_validator}i,        name: :w3c_validator
 
@@ -225,8 +215,18 @@ Browserino.config.define do
                         version: %r{cynthia\s([\d\.]+)}i
 
     match %r{w3c_css_validator}i,
-          name: :w3c_validator,
+          name: :w3c_css_validator,
           version: %r{w3c_css_validator_jfouffa/([\d\.]+)}i
+  end
+
+  # automatically set type to :library for each defined matcher
+  libraries do
+    match %r{php}i,    name: :php
+    match %r{python}i, name: :python, version: %r{-urllib/([\d\.]+)}i
+    match %r{perl}i,   name: :perl
+    match %r{java}i,   name: :java
+    match %r{pycurl}i, name: :pycurl
+    match %r{curl}i,   name: :curl
   end
 
   # inherit properties a standard set of properties by the name of a
