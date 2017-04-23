@@ -43,15 +43,6 @@ Browserino.config.define do
       engine         %r{(webkit|presto|gecko|trident)}i
     end
 
-    match %r{retawq}i do
-      name           :retawq
-      locale         %r{\[(\w{2}(?:\-\w{2})?)\]}i
-    end
-
-    match %r{lynx}i do
-      name           :lynx
-    end
-
     match %r{ucbrowser}i do
       name           :ucbrowser
 
@@ -103,10 +94,6 @@ Browserino.config.define do
       modern?        { version >= 50 }
     end
 
-    match %r{konqueror}i do
-      name           :konqueror
-    end
-
     match %r{midori}i do
       name           :midori
       engine         :webkit
@@ -119,6 +106,10 @@ Browserino.config.define do
       version        %r{(?:safari|version)/([\d\.]+)}i
       modern?        { version >= 9 }
     end
+
+    match %r{konqueror}i, name: :konqueror
+    match %r{retawq}i,    name: :retawq, locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
+    match %r{lynx}i,      name: :lynx
   end
 
   # automatically set type to :bot for each defined matcher
