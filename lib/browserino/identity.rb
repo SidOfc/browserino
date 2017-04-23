@@ -14,7 +14,11 @@ module Browserino
     end
 
     def matches?(user_agent)
-      pattern =~ user_agent if pattern.is_a? Regexp
+      pattern =~ user_agent
+    end
+
+    def =~(user_agent)
+      pattern =~ user_agent
     end
 
     def ===(other)
@@ -33,17 +37,13 @@ module Browserino
       properties[:name].to_s
     end
 
-    def =~(other)
-      self === other
-    end
-
     def ==(other)
       self === other
     end
 
     def method_missing(sym, *args, &block)
-      return @properties[sym] = block      if block
       return @properties[sym] = args.shift if args.any?
+      return @properties[sym] = block      if block
 
       @properties[sym]
     end

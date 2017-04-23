@@ -4,8 +4,9 @@ module Browserino
     attr_reader :property_names
 
     def initialize(props = {}, like = nil)
-      @property_names = props.is_a?(Hash) && props.keys || []
-      @like           = like if like
+      @property_names = props.keys
+      @like           = like
+
       # properties are added as methods that will each be defined in a specific
       # order below. First, seperate static value methods from procs,
       # procs will be able to call methods in this instances' context
@@ -161,15 +162,15 @@ module Browserino
 
     def define_proc_methods!(props)
       props.select { |_, val| val.respond_to? :call }.each do |name, value|
-        result = instance_eval(&value)
+        result = instance_eval(&value).freeze
         define_singleton_method(name) { result }
       end
     end
 
     def define_name_result_methods!
       [:name, :engine, :platform].each do |prop|
-        result  = properties[prop]
-        ver_res = version_for prop
+        result  = properties[prop].freeze
+        ver_res = version_for(prop).freeze
 
         # for each of the props:
         # -- define a question method using the value of prop
@@ -196,8 +197,8 @@ module Browserino
 
     def define_label_methods!
       property_names.select { |name| name =~ /label/i }.each do |prop|
-        next unless (result = properties[prop])
-        ver_res = version_for prop.to_s.split('_').first
+        next unless (result = properties[prop].freeze)
+        ver_res = version_for(prop.to_s.split('_').first).freeze
 
         define_singleton_method("#{result}?") do |value = nil|
           return ver_res == value if value
