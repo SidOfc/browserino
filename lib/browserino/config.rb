@@ -63,6 +63,10 @@ module Browserino
       preset like: tmp.to_sym, &block
     end
 
+    def validators(&block)
+      preset type: :validator, &block
+    end
+
     def browsers(&block)
       preset type: :browser, &block
     end

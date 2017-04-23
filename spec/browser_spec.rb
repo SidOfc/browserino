@@ -4,8 +4,8 @@ describe 'Browserino browsers' do
   browsers = Library.data.fetch(:browsers, [])
 
   browsers.each do |spec|
-    exclude     = [:user_agent, :mobile, :to_s]
-    client      = Browserino.parse spec[:user_agent]
+    exclude = [:user_agent, :mobile, :to_s]
+    client  = Browserino.parse spec[:user_agent]
 
     describe [client.name, spec[:user_agent]].join(' :: ') do
       if client.type != :unknown
