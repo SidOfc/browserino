@@ -19,7 +19,6 @@ module Browserino
     config.identities.each do |identity|
       return analyze ua, identity if identity.matches? ua
     end
-
     analyze ua
   end
 end

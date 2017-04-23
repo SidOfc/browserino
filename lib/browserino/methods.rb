@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 module Browserino
   def self.analyze(user_agent, identity = nil)
-    props = [*config.global_identities, identity].compact.map(&:properties)
-                                                 .reduce(&:merge)
+    @defaults ||= config.global_identities.map(&:properties).reduce(&:merge)
+
+    props = identity && @defaults.merge(identity.properties) || @defaults.dup
     like  = props.delete :like if props.key? :like
     props = collect(props, user_agent)
-    props = normalize props
-    props = with_smart_matchers props
-    left  = props.select { |_, val| val.is_a? Regexp }
-    props = props.merge normalize(collect(left, user_agent)) if left.any?
+    props = props.merge collect(smart_matchers(props), user_agent)
     props = with_labels props
 
     if like
@@ -55,9 +53,10 @@ module Browserino
     properties
   end
 
-  def self.with_smart_matchers(properties)
-    config.smart_matchers.each_with_object properties do |(prop, detector), props|
-      props[prop] ||= parse_detector detector, properties
+  def self.smart_matchers(properties)
+    config.smart_matchers.each_with_object({}) do |(prop, detector), props|
+      next if properties.key? prop
+      props[prop] = parse_detector detector, properties
     end
   end
 
@@ -71,23 +70,14 @@ module Browserino
   end
 
   def self.collect(properties, ua)
-    properties.each_with_object({}) do |(prop, value), res|
-      res[prop] = case value
-                  when Regexp then value.match(ua).to_a[1]
-                  else value
-                  end
-    end
-  end
-
-  def self.normalize(properties)
-    properties.each_with_object({}) do |(prop, value), store|
-      store[prop] = convert value, format: prop
+    properties.each_with_object({}) do |(n, v), r|
+      r[n] = convert (v.is_a?(Regexp) ? v.match(ua).to_a[1] : v), format: n
     end
   end
 
   def self.convert(val, **opts)
     filters = config.filters[:global] + config.filters[opts[:format]]
-    filters.compact.each do |fmt|
+    filters.each do |fmt|
       val = fmt.call val
     end
 

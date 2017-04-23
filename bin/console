@@ -4,9 +4,23 @@ require 'bundler/setup'
 require 'pry'
 require 'browserino'
 
-@client = Browserino.parse ARGV[0].dup || 'Mozilla/5.0 (Macintosh; Intel Mac\
-                                           OS X 10_11_2) AppleWebKit/601.3.9\
-                                           (KHTML, l ike Gecko) Version/9.0.\
-                                           2 Safari/601.3.9'
+smpl  = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9' \
+        ' (KHTML, l ike Gecko) Version/9.0.2 Safari/601.3.9'
+
+start = Time.now.to_f
+GC.start
+before = GC.stat :total_freed_objects
+
+@client = Browserino.parse(ARGV[0].dup || smpl)
+
+GC.start
+after = GC.stat :total_freed_objects
+finish = Time.now.to_f
+
+puts "Start:        #{start}"
+puts "Finish:       #{finish}"
+puts "microseconds: #{(finish - start) * 1000}"
+puts "---------------------------------"
+puts "Objects Freed:  #{after - before}"
 
 Pry.start

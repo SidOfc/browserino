@@ -3,7 +3,6 @@ module Browserino
   class Config < Options
     def define(&block)
       instance_eval(&block)
-      return unless identities.any? && identities.all?
 
       identities.each do |identity|
         properties << identity.properties.keys
@@ -38,9 +37,9 @@ module Browserino
       if rgxp && opts[:like]
         identities.unshift with_alias(rgxp, opts, &block)
       elsif rgxp
-        identities << Identity.new(rgxp, opts, &block)
+        identities << Identity.new(rgxp, opts, &block).freeze
       else
-        global_identities.unshift Identity.new(&block)
+        global_identities.unshift Identity.new(&block).freeze
       end
     end
 
@@ -84,7 +83,7 @@ module Browserino
 
       raise "No alias found for: #{opts[:like] || 'nil'}" unless id
 
-      Identity.new pattern, id.properties.merge(opts), &block
+      Identity.new(pattern, id.properties.merge(opts), &block).freeze
     end
   end
 end

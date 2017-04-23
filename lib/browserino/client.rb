@@ -139,6 +139,11 @@ module Browserino
 
     private
 
+    def version_for(sym)
+      mtd = [:label, :name].include?(sym) ? :version : "#{sym}_version".to_sym
+      properties[mtd]
+    end
+
     def define_simple_methods!(props)
       props.reject { |val| val.respond_to? :call }.each do |name, value|
         define_singleton_method(name) { value }
@@ -146,8 +151,7 @@ module Browserino
           values = [value, *Browserino.config.aliasses[value]]
           return values.include? val if val && !opts[:version]
           if val && opts[:version]
-            ver_res = send(name == :name ? :version : "#{name}_version")
-            return (ver_res == opts[:version]) && values.include?(val)
+            return (version_for(name) == opts[:version]) && values.include?(val)
           end
           return value > 0 if value.is_a? Version
           value && true
@@ -164,9 +168,8 @@ module Browserino
 
     def define_name_result_methods!
       [:name, :engine, :platform].each do |prop|
-        result  = send prop
-        ver_res = version if prop == :name
-        ver_res = send("#{prop}_version") if ver_res.nil?
+        result  = properties[prop]
+        ver_res = version_for prop
 
         # for each of the props:
         # -- define a question method using the value of prop
@@ -193,11 +196,8 @@ module Browserino
 
     def define_label_methods!
       property_names.select { |name| name =~ /label/i }.each do |prop|
-        next unless (result = send(prop))
-
-        ver_type = prop.to_s.gsub /_?label/, ''
-        ver_res  = version if ver_type.empty?
-        ver_res  = send("#{ver_type}_version") unless prop == :label
+        next unless (result = properties[prop])
+        ver_res = version_for prop.to_s.split('_').first
 
         define_singleton_method("#{result}?") do |value = nil|
           return ver_res == value if value
