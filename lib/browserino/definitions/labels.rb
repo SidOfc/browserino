@@ -7,7 +7,9 @@ Browserino.config.define do
   # will create #label, #engine_label and #platform_label properties
   # respectively. These enjoy all the features that regular defined properties
   # in for instance methods enjoy, such as automatic question methods like
-  # client.platform_label? :mavericks
+  # client.platform_label? :mavericks and they can also be used in
+  # the method this alias is for, e.g. client.platform? :mavericks or
+  # client.is? :mavericks
   label :android,            for: :android,   range: '1'..'1.4.9'
   label :cupcake,            for: :android,   range: '1.5'..'1.9.9'
   label :eclair,             for: :android,   range: '2'..'2.1'
