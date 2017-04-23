@@ -196,7 +196,7 @@ Browserino.config.define do
                                  version: %r{download\sdemon/([\d\.]+)}i
   end
 
-  # automatically set type to :library for each defined matcher
+  # automatically set type to :validator for each defined matcher
   validators do
     match %r{cse\shtml\svalidator}i, name: :cse_html_validator
     match %r{csscheck}i,             name: :csscheck
@@ -225,7 +225,7 @@ Browserino.config.define do
 
   # inherit properties a standard set of properties by the name of a
   # previously defined matcher, overwritten by properties added within matchers
-  # inherit properties from Identity where name == :chrome
+  # inherit properties from Identity where name == :chrome, (except :version)
   like :chrome, except: [:version] do
     match %r{brave}i,         name: :brave
     match %r{vivaldi}i,       name: :vivaldi
@@ -235,7 +235,7 @@ Browserino.config.define do
     match %r{comodo_dragon}i, name: :comodo_dragon
   end
 
-  # inherit properties from Identity where name == :safari
+  # inherit properties from Identity where name == :safari, (except :version)
   like :safari, except: [:version] do
     match %r{bolt}i,           name: :bolt
     match %r{stainless}i,      name: :stainless
@@ -247,7 +247,7 @@ Browserino.config.define do
           version: %r{(?:version|w(?:eb)?osbrowser)/([\d\.]+)}i
   end
 
-  # inherit properties from Identity where name == :firefox
+  # inherit properties from Identity where name == :firefox, (except :version)
   like :firefox, except: [:version] do
     match %r{prism}i,     name: :prism
     match %r{waterfox}i,  name: :waterfox
