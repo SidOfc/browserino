@@ -44,6 +44,15 @@ Browserino.config.define do
       engine_version %r{(?:webkit|presto|gecko|trident)/([\d\.]+)}i
     end
 
+    match %r{retawq}i do
+      name           :retawq
+      locale         %r{\[(\w{2}(?:\-\w{2})?)\]}i
+    end
+
+    match %r{lynx}i do
+      name           :lynx
+    end
+
     match %r{ucbrowser}i do
       name           :ucbrowser
 
@@ -97,6 +106,10 @@ Browserino.config.define do
       engine         %r{(gecko|servo)}i
       engine_version %r{(?:rv:\s?|servo/)([\d\.]+)}i
       modern?        { version >= 50 }
+    end
+
+    match %r{konqueror}i do
+      name           :konqueror
     end
 
     match %r{midori}i do
@@ -203,17 +216,26 @@ Browserino.config.define do
   # previously defined matcher, overwritten by properties added within matchers
   # inherit properties from Identity where name == :chrome
   like :chrome do
-    match %r{brave}i,    name: :brave,    version: %r{brave/([\d\.]+)}i
-    match %r{vivaldi}i,  name: :vivaldi,  version: %r{vivaldi/([\d\.]+)}i
-    match %r{colibri}i,  name: :colibri,  version: %r{colibri/([\d\.]+)}i
-    match %r{rockmelt}i, name: :rockmelt, version: %r{rockmelt/([\d\.]+)}i
+    match %r{brave}i,         name: :brave,    version: %r{brave/([\d\.]+)}i
+    match %r{vivaldi}i,       name: :vivaldi,  version: %r{vivaldi/([\d\.]+)}i
+    match %r{colibri}i,       name: :colibri,  version: %r{colibri/([\d\.]+)}i
+    match %r{rockmelt}i,      name: :rockmelt, version: %r{rockmelt/([\d\.]+)}i
+    match %r{flock}i,         name: :flock,    version: %r{flock/([\d\.]+)}i
+
+    match %r{comodo_dragon}i, name: :comodo_dragon,
+                              version: %r{comodo_dragon/([\d\.]+)}i
   end
 
   # inherit properties from Identity where name == :safari
   like :safari do
     match %r{bolt}i,           name: :bolt, version: %r{bolt/([\d\.]+)}i
+
+    match %r{stainless}i,      name: :stainless,
+                               version: %r{stainless/([\d\.]+)}i
     match %r{samsungbrowser}i, name: :samsungbrowser,
                                version: %r{samsungbrowser/([\d\.]+)}i
+    match %r{omniweb}i,        name: :omniweb,
+                               version: %r{omniweb/v([\d\.]+)}i
 
     match %r{webos|wosbrowser}i,
           name: :webosbrowser,
@@ -230,6 +252,9 @@ Browserino.config.define do
     match %r{iceweasel}i, name: :iceweasel, version: %r{iceweasel/([\d\.]+)}i
     match %r{seamonkey}i, name: :seamonkey, version: %r{seamonkey/([\d\.]+)}i
     match %r{superswan}i, name: :superswan, version: %r{superswan/([\d\.]+)}i
+    match %r{lunascape}i, name: :lunascape, version: %r{lunascape/([\d\.]+)}i
+    match %r{camino}i,    name: :camino,    version: %r{camino/([\d\.]+)}i,
+                          locale: %r{\s(\w{2}(?:\-\w{2})?),}i
   end
 
   # never thought a browser would want to be like IE...
@@ -240,6 +265,8 @@ Browserino.config.define do
     match %r{avant\sbrowser}i,    name: :avant_browser
     match %r{slimbrowser}i,       name: :slimbrowser
 
+    match %r{sleipnir}i,          name: :sleipnir,
+                                  version: %r{sleipnir/([\d\.]+)}i
     match %r{deepnet\sexplorer}i, name: :deepnet_explorer,
                                   version: %r{deepnet\sexplorer ([\d\.]+)}i
   end

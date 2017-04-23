@@ -1,5 +1,140 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (Windows NT 6.2) AppleWebKit/535.7 (KHTML, like Gecko) Comodo_Dragon/16.1.1.0 Chrome/16.0.912.63 Safari/535.7
+  :name:             :comodo_dragon
+  :version:          '16.1.1.0'
+  :engine:           :webkit
+  :engine_version:   '535.7'
+  :platform:         :windows
+  :platform_label:   :windows_8
+  :platform_version: '6.2'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'comodo_dragon comodo_dragon16 webkit webkit535 windows windows6'
+  :like:             :chrome
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; en-US) AppleWebKit/534.7 (KHTML, like Gecko) Flock/3.5.3.4628 Chrome/7.0.517.450 Safari/534.7
+  :name:             :flock
+  :version:          '3.5.3'
+  :engine:           :webkit
+  :engine_version:   '534.7'
+  :platform:         :macintosh
+  :platform_label:   :snow_leopard
+  :platform_version: '10.6.6'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'flock flock3 webkit webkit534 macintosh macintosh10'
+  :like:             :chrome
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; XH; rv:8.578.498) fr, Gecko/20121021 Camino/8.723+ (Firefox compatible)
+  :name:             :camino
+  :version:          '8.723'
+  :engine:           :gecko
+  :engine_version:   '8.578.498'
+  :platform:         :macintosh
+  :platform_label:
+  :platform_version:
+  :locale:           :fr
+  :architecture:
+  :mobile:           false
+  :to_s:             'camino camino8 gecko gecko8 macintosh'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US) AppleWebKit/528.16 (KHTML, like Gecko, Safari/528.16) OmniWeb/v622.8.0.112941
+  :name:             :omniweb
+  :version:          '622.8.0.112941'
+  :engine:           :webkit
+  :engine_version:   '528.16'
+  :platform:         :macintosh
+  :platform_label:
+  :platform_version:
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'omniweb omniweb622 webkit webkit528 macintosh'
+
+- :user_agent:       Mozilla/5.0 (compatible; Konqueror/3.5; NetBSD 4.0_RC3; X11) KHTML/3.5.7 (like Gecko)
+  :name:             :konqueror
+  :version:          '3.5'
+  :engine:
+  :engine_version:
+  :platform:         :bsd
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'konqueror konqueror3 bsd'
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.28) Gecko/20120410 Firefox/3.6.28 Lunascape/6.7.1.25446
+  :name:             :lunascape
+  :version:          '6.7.1.25446'
+  :engine:           :gecko
+  :engine_version:   '1.9.2.28'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'lunascape lunascape6 gecko gecko1 windows windows6'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.5.30729; .NET CLR 3.0.30618; .NET4.0C; .NET4.0E; Sleipnir/2.9.9)
+  :name:             :sleipnir
+  :version:          '2.9.9'
+  :engine:           :trident
+  :engine_version:   '4.0'
+  :platform:         :windows
+  :platform_label:   :windows_vista
+  :platform_version: '6.0'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'sleipnir sleipnir2 trident trident4 windows windows6'
+  :like:             :ie
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_6; en-us) AppleWebKit/528.16 (KHTML, like Gecko) Stainless/0.5.3 Safari/525.20.1
+  :name:             :stainless
+  :version:          '0.5.3'
+  :engine:           :webkit
+  :engine_version:   '528'
+  :platform:         :macintosh
+  :platform_label:   :leopard
+  :platform_version: '10.5.6'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'stainless stainless0 webkit webkit528 macintosh macintosh10'
+
+- :user_agent:       Lynx/2.8.8dev.3 libwww-FM/2.14 SSL-MM/1.4.1
+  :name:             :lynx
+  :version:          '2.8.8'
+  :engine:
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'lynx lynx2'
+
+- :user_agent:       retawq/0.2.6c [en] (text)
+  :name:             :retawq
+  :version:          '0.2.6'
+  :engine:
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:           :en
+  :architecture:
+  :mobile:           false
+  :to_s:             'retawq retawq0'
+
 - :user_agent:       Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.3) Gecko/20100402 Prism/1.0b4
   :name:             :prism
   :version:          '1.0'
