@@ -229,7 +229,8 @@ Browserino.config.define do
   # never thought a browser would want to be like IE...
   like :ie do
     # version does not have to be supplied because we simply want to use
-    # the version supplied by the MSIE token instead (there is no version on the avant browser or slimbrowser UA itself)
+    # the version supplied by the MSIE token instead (there is no version on
+    # the avant browser or slimbrowser UA itself)
     match %r{avant\sbrowser}i,    name: :avant_browser
     match %r{slimbrowser}i,       name: :slimbrowser
 
