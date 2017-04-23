@@ -1,5 +1,150 @@
 ---
 :bots:
+- :user_agent: Huaweisymantecspider
+  :name:       :huaweisymantecspider
+  :version:
+  :to_s:       'huaweisymantecspider'
+
+- :user_agent: SafetyNet Robot 0.1
+  :name:       :safetynet_robot
+  :version:    '0.1'
+  :to_s:       'safetynet_robot safetynet_robot0'
+
+- :user_agent: Harvest/1.5
+  :name:       :harvest
+  :version:    '1.5'
+  :to_s:       'harvest harvest1'
+
+- :user_agent: Go!Zilla 3.3 (www.gozilla.com)
+  :name:       :gozilla
+  :version:    '3.3'
+  :to_s:       'gozilla gozilla3'
+
+- :user_agent: GetRight/3.3.4
+  :name:       :getright
+  :version:    '3.3.4'
+  :to_s:       'getright getright3'
+
+- :user_agent: Flaming AttackBot
+  :name:       :flaming_attackbot
+  :version:
+  :to_s:       'flaming_attackbot'
+
+- :user_agent: eCatch/3.0
+  :name:       :ecatch
+  :version:    '3.0'
+  :to_s:       'ecatch ecatch3'
+
+- :user_agent: EmailSiphon
+  :name:       :emailsiphon
+  :version:
+  :to_s:       'emailsiphon'
+
+- :user_agent: EmailWolf
+  :name:       :emailwolf
+  :version:
+  :to_s:       'emailwolf'
+
+- :user_agent: EmailCollector
+  :name:       :emailcollector
+  :version:
+  :to_s:       'emailcollector'
+
+- :user_agent: Download Demon/3.2.0.8
+  :name:       :download_demon
+  :version:    '3.2.0.8'
+  :to_s:       'download_demon download_demon3'
+
+- :user_agent: Bullseye/1.0
+  :name:       :bullseye
+  :version:    '1.0'
+  :to_s:       'bullseye bullseye1'
+
+- :user_agent: BSpider/1.0 libwww-perl/0.40
+  :name:       :bspider
+  :version:    '1.0'
+  :to_s:       'bspider bspider1'
+
+- :user_agent: Mozilla/5.0 (compatible; BLEXBot/1.0; +http://webmeup.com/crawler.html)
+  :name:       :blexbot
+  :version:    '1.0'
+  :to_s:       'blexbot blexbot1'
+
+- :user_agent: BlackWidow
+  :name:       :blackwidow
+  :version:
+  :to_s:       'blackwidow'
+
+- :user_agent: Black Hole
+  :name:       :black_hole
+  :version:
+  :to_s:       'black_hole'
+
+- :user_agent: Bizbot003
+  :name:       :bizbot
+  :version:
+  :to_s:       'bizbot'
+
+- :user_agent: Big Brother
+  :name:       :big_brother
+  :version:
+  :to_s:       'big_brother'
+
+- :user_agent: BackRub/.
+  :name:       :backrub
+  :version:
+  :to_s:       'backrub'
+
+- :user_agent: BackDoorBot/1.0
+  :name:       :backdoorbot
+  :version:    '1.0'
+  :to_s:       'backdoorbot backdoorbot1'
+
+- :user_agent: b2w/0.1
+  :name:       :b2w
+  :version:    '0.1'
+  :to_s:       'b2w b2w0'
+
+- :user_agent: AURESYS/1.0
+  :name:       :auresys
+  :version:    '1.0'
+  :to_s:       'auresys auresys1'
+
+- :user_agent: asterias
+  :name:       :asterias
+  :version:
+  :to_s:       'asterias'
+
+- :user_agent: ASpider/0.09
+  :name:       :aspider
+  :version:
+  :to_s:       'aspider aspider0'
+
+- :user_agent: Arachnophilia
+  :name:       :arachnophilia
+  :version:
+  :to_s:       'arachnophilia'
+
+- :user_agent: Aqua_Products
+  :name:       :aqua_products
+  :version:
+  :to_s:       'aqua_products'
+
+- :user_agent: Alexibot
+  :name:       :alexibot
+  :version:
+  :to_s:       'alexibot'
+
+- :user_agent: AITCSRobot/1.1
+  :name:       :aitcsrobot
+  :version:    '1.1'
+  :to_s:       'aitcsrobot aitcsrobot1'
+
+- :user_agent: Mozilla/5.0 (compatible; linkdexbot/2.1; +http://www.linkdex.com/about/bots/)
+  :name:       :linkdexbot
+  :version:    '2.1'
+  :to_s:       'linkdexbot linkdexbot2'
+
 - :user_agent: autoemailspider
   :name:       :auto_email_spider
   :to_s:       'auto_email_spider'

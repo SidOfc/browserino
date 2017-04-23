@@ -148,6 +148,39 @@ Browserino.config.define do
     match %r{acoon}i,                       name: :acoon
     match %r{accoona}i,                     name: :accoona
     match %r{face(?:bookexternalhit|bot)}i, name: :facebook
+    match %r{linkdexbot}i,                  name: :linkdexbot
+    match %r{aitcsrobot}i,                  name: :aitcsrobot
+    match %r{alexibot}i,                    name: :alexibot
+    match %r{aqua_products}i,               name: :aqua_products
+    match %r{arachnophilia}i,               name: :arachnophilia
+    match %r{aspider}i,                     name: :aspider
+    match %r{asterias}i,                    name: :asterias
+    match %r{auresys}i,                     name: :auresys
+    match %r{b2w}i,                         name: :b2w
+    match %r{backdoorbot}i,                 name: :backdoorbot
+    match %r{backrub}i,                     name: :backrub
+    match %r{big\sbrother}i,                name: :big_brother
+    match %r{bizbot}i,                      name: :bizbot
+    match %r{black\shole}i,                 name: :black_hole
+    match %r{blackwidow}i,                  name: :blackwidow
+    match %r{blexbot}i,                     name: :blexbot
+    match %r{bspider}i,                     name: :bspider
+    match %r{bullseye}i,                    name: :bullseye
+    match %r{emailcollector}i,              name: :emailcollector
+    match %r{emailsiphon}i,                 name: :emailsiphon
+    match %r{emailwolf}i,                   name: :emailwolf
+    match %r{ecatch}i,                      name: :ecatch
+    match %r{flaming\sattackbot}i,          name: :flaming_attackbot
+    match %r{getright}i,                    name: :getright
+    match %r{harvest}i,                     name: :harvest
+    match %r{huaweisymantecspider}i,        name: :huaweisymantecspider
+
+    match %r{safetynet\srobot}i, name: :safetynet_robot,
+                                 version: %r{safetynet\srobot\s([\d\.]+)}i
+    match %r{go\!zilla}i,        name: :gozilla,
+                                 version: %r{go\!zilla\s([\d\.]+)}i
+    match %r{download\sdemon}i,  name: :download_demon,
+                                 version: %r{download\sdemon/([\d\.]+)}i
   end
 
   # automatically set type to :library for each defined matcher
