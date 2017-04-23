@@ -1,5 +1,20 @@
 ---
 :bots:
+- :user_agent: Mass Downloader/2.2
+  :name:       :mass_downloader
+  :version:    '2.2'
+  :to_s:       'mass_downloader mass_downloader2'
+
+- :user_agent: larbin_2.6.2 (kabura@sushi.com)
+  :name:       :larbin
+  :version:    '2.6.2'
+  :to_s:       'larbin larbin2'
+
+- :user_agent: Internet Ninja 4.0
+  :name:       :internet_ninja
+  :version:    '4.0'
+  :to_s:       'internet_ninja internet_ninja4'
+
 - :user_agent: Huaweisymantecspider (compatible; MSIE 8.0; DSE-support@huaweisymantec.com)
   :name:       :huaweisymantecspider
   :version:

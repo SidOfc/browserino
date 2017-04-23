@@ -175,10 +175,16 @@ Browserino.config.define do
     match %r{harvest}i,                     name: :harvest
     match %r{huaweisymantecspider}i,        name: :huaweisymantecspider
 
+    match %r{mass\sdownloader}i, name: :mass_downloader,
+                                 version: %r{mass\sdownloader/([\d\.]+)}i
     match %r{safetynet\srobot}i, name: :safetynet_robot,
                                  version: %r{safetynet\srobot\s([\d\.]+)}i
+    match %r{internet\sninja}i,  name: :internet_ninja,
+                                 version: %r{internet\sninja\s([\d\.]+)}i
     match %r{go\!zilla}i,        name: :gozilla,
                                  version: %r{go\!zilla\s([\d\.]+)}i
+    match %r{larbin}i,           name: :larbin,
+                                 version: %r{larbin_([\d\.]+)}i
     match %r{download\sdemon}i,  name: :download_demon,
                                  version: %r{download\sdemon/([\d\.]+)}i
   end
