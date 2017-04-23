@@ -3,9 +3,9 @@ module Browserino
   def self.analyze(user_agent, identity = nil)
     @defaults ||= config.global_identities.map(&:properties).reduce(&:merge)
 
-    props = identity && @defaults.merge(identity.properties) || @defaults.dup
-    like  = props.delete :like if props.key? :like
-    props = collect(props, user_agent)
+    props = @defaults.merge(identity && identity.properties || {})
+    like  = props.delete :like
+    props = collect props, user_agent
     props = props.merge collect(smart_matchers(props), user_agent)
     props = with_labels props
 

@@ -58,8 +58,8 @@ module Browserino
       @tmp_defaults = nil
     end
 
-    def like(tmp, &block)
-      preset like: tmp.to_sym, &block
+    def like(tmp, opts = {}, &block)
+      preset opts.merge(like: tmp.to_sym), &block
     end
 
     def validators(&block)
@@ -83,7 +83,12 @@ module Browserino
 
       raise "No alias found for: #{opts[:like] || 'nil'}" unless id
 
-      Identity.new(pattern, id.properties.merge(opts), &block).freeze
+      base = id.properties
+      if (excl = opts.delete(:except))
+        base = base.reject { |k| excl.include? k }
+      end
+
+      Identity.new(pattern, base.merge(opts), &block).freeze
     end
   end
 end

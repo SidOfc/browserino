@@ -97,8 +97,8 @@
 
 - :user_agent: Bizbot003
   :name:       :bizbot
-  :version:
-  :to_s:       'bizbot'
+  :version:    '3'
+  :to_s:       'bizbot bizbot3'
 
 - :user_agent: Big Brother
   :name:       :big_brother
@@ -300,7 +300,8 @@
 
 - :user_agent: Mozilla/5.0 (compatible; BeslistBot; nl; BeslistBot 1.0; http://www.beslist.nl/
   :name:       :beslistbot
-  :to_s:       'beslistbot'
+  :version:    '1.0'
+  :to_s:       'beslistbot beslistbot1'
 
 - :user_agent: facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)
   :name:       :facebook
@@ -323,11 +324,13 @@
 
 - :user_agent: Instagram 4.2.5 (iPad3,6; iPhone OS 7_0_6; en_US; en) AppleWebKit/420+
   :name:       :instagram
-  :to_s:       'instagram ios ios7'
+  :version:    '4.2.5'
+  :to_s:       'instagram instagram4 ios ios7'
 
 - :user_agent: Instagram 6.0.1 (iPad3,4; iPhone OS 7_0_3; en_AU; en-GB) AppleWebKit/420+
   :name:       :instagram
-  :to_s:       'instagram ios ios7'
+  :version:    '6.0.1'
+  :to_s:       'instagram instagram6 ios ios7'
 
 - :user_agent: Pinterest/1.0 +http://pinterest.com
   :name:       :pinterest

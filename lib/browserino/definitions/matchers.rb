@@ -3,8 +3,8 @@ Browserino.config.define do
   # a set of global matchers that will use formatted properties found earlier
   # they will also be applied to every matcher unless that matcher has it's own
   # property set for the defined smart matcher
-  smart_match :version,        with: ':name/([\d\._]+)',   flags: [:i]
-  smart_match :engine_version, with: ':engine/([\d\._]+)', flags: [:i]
+  smart_match :version,        with: ':name[\s/]?([\d\._]+)', flags: [:i]
+  smart_match :engine_version, with: ':engine/([\d\._]+)',    flags: [:i]
 
   # a simple set of global matchers that will be merged
   # with an identity the final client object is created
@@ -15,7 +15,7 @@ Browserino.config.define do
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
                         |tizen|vodafone|t\-mobile|opera\sm(?:ob|in)i)}xi
     platform         %r{.*(xbox|wii|nintendo\sds|playstation|windows(?:\sphone)?
-                        |macintosh|mac\sos\sx|android|tizen|ip(?:[ao]d|hone)
+                        |mac\sos\sx|android|tizen|ip(?:[ao]d|hone)
                         |blackberry|linux|ubuntu|x11|bsd|s(?:unos|olaris)
                         |w(?:eb)?os)}xi
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|mac\sos\sx|android
@@ -36,12 +36,11 @@ Browserino.config.define do
       #                  saves the first capture group
       #  -- { blk } # => will create a dynamic method that returns the result
       #                  of the block, it will be executed within an
-      #                  instantiated Client object
+      #                  instantiated Client object (right after creation)
       name           :maxthon
 
       version        %r{maxthon[/\s]([\d\.]+)}i
       engine         %r{(webkit|presto|gecko|trident)}i
-      engine_version %r{(?:webkit|presto|gecko|trident)/([\d\.]+)}i
     end
 
     match %r{retawq}i do
@@ -58,7 +57,6 @@ Browserino.config.define do
 
       version        %r{ucbrowser/?([\d\.]+)}i
       engine         %r{(trident|gecko|webkit|presto)}i
-      engine_version %r{(?:trident|gecko|webkit|presto)/([\d\.]+)}i
     end
 
     match %r{edge}i do
@@ -72,7 +70,6 @@ Browserino.config.define do
 
       version        %r{ope?ra?\smini/([\d\.]+)}i
       engine         %r{(presto|webkit)}i
-      engine_version %r{(?:presto|webkit)/([\d\.]+)}i
     end
 
     match %r{opera[^\w]}i do
@@ -80,7 +77,6 @@ Browserino.config.define do
 
       version        %r{(?:opera[\s/]|version/)([\d\.]+)}i
       engine         %r{(presto|webkit)}i
-      engine_version %r{(?:presto|webkit)/([\d\.]+)}i
     end
 
     match %r{msie|trident}i do
@@ -96,7 +92,6 @@ Browserino.config.define do
 
       version        %r{chrome(?:ium)?/([\d\.]+)}i
       engine         %r{(webkit|blink)}i
-      engine_version %r{(?:webkit|blink)/([\d\.]+)}i
       modern?        { version >= 50 }
     end
 
@@ -232,27 +227,21 @@ Browserino.config.define do
   # inherit properties a standard set of properties by the name of a
   # previously defined matcher, overwritten by properties added within matchers
   # inherit properties from Identity where name == :chrome
-  like :chrome do
-    match %r{brave}i,         name: :brave,    version: %r{brave/([\d\.]+)}i
-    match %r{vivaldi}i,       name: :vivaldi,  version: %r{vivaldi/([\d\.]+)}i
-    match %r{colibri}i,       name: :colibri,  version: %r{colibri/([\d\.]+)}i
-    match %r{rockmelt}i,      name: :rockmelt, version: %r{rockmelt/([\d\.]+)}i
-    match %r{flock}i,         name: :flock,    version: %r{flock/([\d\.]+)}i
-
-    match %r{comodo_dragon}i, name: :comodo_dragon,
-                              version: %r{comodo_dragon/([\d\.]+)}i
+  like :chrome, except: [:version] do
+    match %r{brave}i,         name: :brave
+    match %r{vivaldi}i,       name: :vivaldi
+    match %r{colibri}i,       name: :colibri
+    match %r{rockmelt}i,      name: :rockmelt
+    match %r{flock}i,         name: :flock
+    match %r{comodo_dragon}i, name: :comodo_dragon
   end
 
   # inherit properties from Identity where name == :safari
-  like :safari do
-    match %r{bolt}i,           name: :bolt, version: %r{bolt/([\d\.]+)}i
-
-    match %r{stainless}i,      name: :stainless,
-                               version: %r{stainless/([\d\.]+)}i
-    match %r{samsungbrowser}i, name: :samsungbrowser,
-                               version: %r{samsungbrowser/([\d\.]+)}i
-    match %r{omniweb}i,        name: :omniweb,
-                               version: %r{omniweb/v([\d\.]+)}i
+  like :safari, except: [:version] do
+    match %r{bolt}i,           name: :bolt
+    match %r{stainless}i,      name: :stainless
+    match %r{samsungbrowser}i, name: :samsungbrowser
+    match %r{omniweb}i,        name: :omniweb, version: %r{omniweb/v([\d\.]+)}i
 
     match %r{webos|wosbrowser}i,
           name: :webosbrowser,
@@ -260,18 +249,17 @@ Browserino.config.define do
   end
 
   # inherit properties from Identity where name == :firefox
-  like :firefox do
-    match %r{prism}i,     name: :prism,     version: %r{prism/([\d\.]+)}i
-    match %r{waterfox}i,  name: :waterfox,  version: %r{waterfox/([\d\.]+)}i
-    match %r{firebird}i,  name: :firebird,  version: %r{firebird/([\d\.]+)}i
-    match %r{netscape}i,  name: :netscape,  version: %r{netscape/([\d\.]+)}i
-    match %r{icecat}i,    name: :icecat,    version: %r{icecat/([\d\.]+)}i
-    match %r{iceweasel}i, name: :iceweasel, version: %r{iceweasel/([\d\.]+)}i
-    match %r{seamonkey}i, name: :seamonkey, version: %r{seamonkey/([\d\.]+)}i
-    match %r{superswan}i, name: :superswan, version: %r{superswan/([\d\.]+)}i
-    match %r{lunascape}i, name: :lunascape, version: %r{lunascape/([\d\.]+)}i
-    match %r{camino}i,    name: :camino,    version: %r{camino/([\d\.]+)}i,
-                          locale: %r{\s(\w{2}(?:\-\w{2})?),}i
+  like :firefox, except: [:version] do
+    match %r{prism}i,     name: :prism
+    match %r{waterfox}i,  name: :waterfox
+    match %r{firebird}i,  name: :firebird
+    match %r{netscape}i,  name: :netscape
+    match %r{icecat}i,    name: :icecat
+    match %r{iceweasel}i, name: :iceweasel
+    match %r{seamonkey}i, name: :seamonkey
+    match %r{superswan}i, name: :superswan
+    match %r{lunascape}i, name: :lunascape
+    match %r{camino}i,    name: :camino, locale: %r{\s(\w{2}(?:\-\w{2})?),}i
   end
 
   # never thought a browser would want to be like IE...
