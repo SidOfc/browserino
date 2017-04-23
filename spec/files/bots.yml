@@ -1,6 +1,6 @@
 ---
 :bots:
-- :user_agent: Huaweisymantecspider
+- :user_agent: Huaweisymantecspider (compatible; MSIE 8.0; DSE-support@huaweisymantec.com)
   :name:       :huaweisymantecspider
   :version:
   :to_s:       'huaweisymantecspider'

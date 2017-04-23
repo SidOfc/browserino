@@ -19,6 +19,7 @@ Browserino.config.define do
     ua = ua.gsub %r{windows\snt}i, '' if ua =~ %r{windows\sphone}i
     ua = ua.gsub %r{rv:}i, '' if ua =~ %r{servo}i
     ua = ua.gsub %r{mac\sos\sx}i, '' if ua =~ %r{ip(?:[ao]d|hone)}i
+    ua = ua.gsub %r{msie}i, '' if ua =~ %r{huaweisymantecspider}i
     ua
   end
 
