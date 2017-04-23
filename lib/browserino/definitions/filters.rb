@@ -18,6 +18,7 @@ Browserino.config.define do
     ua = ua.gsub %r{x11}i, '' if ua =~ %r{bsd|s(unos|olaris)}i
     ua = ua.gsub %r{windows\snt}i, '' if ua =~ %r{windows\sphone}i
     ua = ua.gsub %r{rv:}i, '' if ua =~ %r{servo}i
+    ua = ua.gsub %r{mac\sos\sx}i, '' if ua =~ %r{ip(?:[ao]d|hone)}i
     ua
   end
 
@@ -45,10 +46,11 @@ Browserino.config.define do
   end
 
   filter :platform do |value|
-    value = :ios     if value =~ %r{ip(?:[ao]d|hone)}
-    value = :webos   if value =~ %r{w(?:eb)?os}
-    value = :linux   if value =~ %r{ubuntu|x11}
-    value = :solaris if value =~ %r{s(?:unos|olaris)}
+    value = :ios       if value =~ %r{ip(?:[ao]d|hone)}i
+    value = :webos     if value =~ %r{w(?:eb)?os}i
+    value = :linux     if value =~ %r{ubuntu|x11}i
+    value = :solaris   if value =~ %r{s(?:unos|olaris)}i
+    value = :macintosh if value =~ %r{mac_os_x}i
     value
   end
 

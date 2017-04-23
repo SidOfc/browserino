@@ -110,7 +110,7 @@ module Browserino
         ver  = version if prop == :name
         ver  = send "#{prop}_version" if ver.nil?
 
-        [[name], [name, (ver.major if ver > 0)].compact.join.to_sym]
+        [[name], [name, (ver.major if ver > '0.0.0')].compact.join.to_sym]
       end.flatten.uniq.join(' ').gsub(/\s{2,}/, ' ').strip
     end
 

@@ -35,6 +35,7 @@ module Browserino
   def self.label_for(target_name, version = nil)
     return unless config.labels.key?(target_name) && version
     version = Version.new version unless version.is_a? Version
+    return unless version > 0
     config.labels[target_name].each do |candidate|
       min = Version.new candidate[:range].min
       max = Version.new candidate[:range].max

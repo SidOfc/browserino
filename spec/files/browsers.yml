@@ -1,5 +1,199 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.3) Gecko/20100402 Prism/1.0b4
+  :name:             :prism
+  :version:          '1.0'
+  :engine:           :gecko
+  :engine_version:   '1.9.2.3'
+  :platform:         :macintosh
+  :platform_label:   :snow_leopard
+  :platform_version: '10.6'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'prism prism1 gecko gecko1 macintosh macintosh10'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.24 (KHTML, like Gecko) RockMelt/0.9.58.494 Chrome/11.0.696.71 Safari/534.24
+  :name:             :rockmelt
+  :version:          '0.9.58.494'
+  :engine:           :webkit
+  :engine_version:   '534.24'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'rockmelt rockmelt0 webkit webkit534 windows windows6'
+  :like:             :chrome
+
+- :user_agent:       Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; SlimBrowser)
+  :name:             :slimbrowser
+  :version:          '7.0'
+  :engine:           :trident
+  :engine_version:   '4.0'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'slimbrowser slimbrowser7 trident trident4 windows windows6'
+  :like:             :ie
+
+- :user_agent:       Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/4.0; Deepnet Explorer 1.5.3; Smart 2x2; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)
+  :name:             :deepnet_explorer
+  :version:          '1.5.3'
+  :engine:           :trident
+  :engine_version:   '4.0'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'deepnet_explorer deepnet_explorer1 trident trident4 windows windows6'
+  :like:             :ie
+
+- :user_agent:       Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; Avant Browser; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)
+  :name:             :avant_browser
+  :version:          '8.0'
+  :engine:           :trident
+  :engine_version:   '4.0'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'avant_browser avant_browser8 trident trident4 windows windows6'
+  :like:             :ie
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:24.0) Gecko/20100101 Firefox/24.0 Waterfox/24.0
+  :name:             :waterfox
+  :version:          '24.0'
+  :engine:           :gecko
+  :engine_version:   '24.0'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'waterfox waterfox24 gecko gecko24 windows windows6'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.1; x64; fr; rv:1.9.2.13) Gecko/20101203 Firebird/3.6.13
+  :name:             :firebird
+  :version:          '3.6.13'
+  :engine:           :gecko
+  :engine_version:   '1.9.2.13'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:           :fr
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'firebird firebird3 gecko gecko1 windows windows6'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Win 9x 4.90; SG; rv:1.9.2.4) Gecko/20101104 Netscape/9.1.0285
+  :name:             :netscape
+  :version:          '9.1.0285'
+  :engine:           :gecko
+  :engine_version:   '1.9.2.4'
+  :platform:         :windows
+  :platform_label:
+  :platform_version:
+  :locale:           :sg
+  :architecture:
+  :mobile:           false
+  :to_s:             'netscape netscape9 gecko gecko1 windows'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (X11; U; Linux i686; fr-fr) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+) midori/1.19
+  :name:             :midori
+  :version:          '1.19'
+  :engine:           :webkit
+  :engine_version:   '525'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:           :fr_fr
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'midori midori1 webkit webkit525 linux'
+
+- :user_agent:       Mozilla/5.0 (X11; U; Linux x86_64; en-us) AppleWebKit/532+ (KHTML, like Gecko) Safari/419.3 Midori/0.1.8
+  :name:             :midori
+  :version:          '0.1.8'
+  :engine:           :webkit
+  :engine_version:   '532'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:           :en_us
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'midori midori0 webkit webkit532 linux'
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.0; it; rv:1.9.2.12) Gecko/20101114 IceCat/3.6.12 (like Firefox/3.6.12)
+  :name:             :icecat
+  :version:          '3.6.12'
+  :engine:           :gecko
+  :engine_version:   '1.9.2.12'
+  :platform:         :windows
+  :platform_label:   :windows_vista
+  :platform_version: '6.0'
+  :locale:           :it
+  :architecture:
+  :mobile:           false
+  :to_s:             'icecat icecat3 gecko gecko1 windows windows6'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (X11; U; Linux sparc64; es-PY; rv:5.0) Gecko/20100101 IceCat/5.0 (like Firefox/5.0; Debian-6.0.1)
+  :name:             :icecat
+  :version:          '5.0'
+  :engine:           :gecko
+  :engine_version:   '5.0'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:           :es_py
+  :architecture:
+  :mobile:           false
+  :to_s:             'icecat icecat5 gecko gecko5 linux'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (X11; U; Linux i686; pt-PT; rv:1.9.2.3) Gecko/20100402 Iceweasel/3.6.3 (like Firefox/3.6.3) GTB7.0
+  :name:             :iceweasel
+  :version:          '3.6.3'
+  :engine:           :gecko
+  :engine_version:   '1.9.2.3'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:           :pt_pt
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'iceweasel iceweasel3 gecko gecko1 linux'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/20121202 Firefox/17.0 Iceweasel/17.0.1
+  :name:             :iceweasel
+  :version:          '17.0.1'
+  :engine:           :gecko
+  :engine_version:   '17.0'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'iceweasel iceweasel17 gecko gecko17 linux'
+  :like:             :firefox
+
 - :user_agent:       Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Colibri/1.0.0-beta.9 Chrome/52.0.2743.82 Electron/1.3.13 Safari/537.36
   :name:             :colibri
   :version:          '1.0.0'
@@ -434,7 +628,7 @@
   :locale:
   :architecture:
   :mobile:           false
-  :to_s:             'brave webkit webkit537 macintosh macintosh10'
+  :to_s:             'brave brave0 webkit webkit537 macintosh macintosh10'
   :like:             :chrome
 
 - :user_agent:       Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36

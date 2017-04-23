@@ -15,8 +15,9 @@ Browserino.config.define do
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
                         |tizen|vodafone|t\-mobile|opera\sm(?:ob|in)i)}xi
     platform         %r{.*(xbox|wii|nintendo\sds|playstation|windows(?:\sphone)?
-                        |macintosh|android|tizen|ip(?:[ao]d|hone)|blackberry
-                        |linux|ubuntu|x11|bsd|s(?:unos|olaris)|w(?:eb)?os)}xi
+                        |macintosh|mac\sos\sx|android|tizen|ip(?:[ao]d|hone)
+                        |blackberry|linux|ubuntu|x11|bsd|s(?:unos|olaris)
+                        |w(?:eb)?os)}xi
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|mac\sos\sx|android
                       |(?:cpu\s|ip(?:[ao]d|hone)\s)os|blackberry|bb
                       |s(?:unos|olaris)/?|w(?:eb)?os/|tizen)\s?([\d\._]+)}xi
@@ -87,14 +88,20 @@ Browserino.config.define do
       version        %r{chrome(?:ium)?/([\d\.]+)}i
       engine         %r{(webkit|blink)}i
       engine_version %r{(?:webkit|blink)/([\d\.]+)}i
+      modern?        { version >= 50 }
     end
 
     match %r{firefox}i do
       name           :firefox
 
-      version        %r{firefox/([\d\.]+)}i
       engine         %r{(gecko|servo)}i
       engine_version %r{(?:rv:\s?|servo/)([\d\.]+)}i
+      modern?        { version >= 50 }
+    end
+
+    match %r{midori}i do
+      name           :midori
+      engine         :webkit
     end
 
     match %r{safari}i do
@@ -157,9 +164,10 @@ Browserino.config.define do
   # previously defined matcher, overwritten by properties added within matchers
   # inherit properties from Identity where name == :chrome
   like :chrome do
-    match %r{brave}i,   name: :brave,   version: %r{brave/([\d\.]+)}i
-    match %r{vivaldi}i, name: :vivaldi, version: %r{vivaldi/([\d\.]+)}i
-    match %r{colibri}i, name: :colibri, version: %r{colibri/([\d\.]+)}i
+    match %r{brave}i,    name: :brave,    version: %r{brave/([\d\.]+)}i
+    match %r{vivaldi}i,  name: :vivaldi,  version: %r{vivaldi/([\d\.]+)}i
+    match %r{colibri}i,  name: :colibri,  version: %r{colibri/([\d\.]+)}i
+    match %r{rockmelt}i, name: :rockmelt, version: %r{rockmelt/([\d\.]+)}i
   end
 
   # inherit properties from Identity where name == :safari
@@ -175,7 +183,24 @@ Browserino.config.define do
 
   # inherit properties from Identity where name == :firefox
   like :firefox do
+    match %r{prism}i,     name: :prism,     version: %r{prism/([\d\.]+)}i
+    match %r{waterfox}i,  name: :waterfox,  version: %r{waterfox/([\d\.]+)}i
+    match %r{firebird}i,  name: :firebird,  version: %r{firebird/([\d\.]+)}i
+    match %r{netscape}i,  name: :netscape,  version: %r{netscape/([\d\.]+)}i
+    match %r{icecat}i,    name: :icecat,    version: %r{icecat/([\d\.]+)}i
+    match %r{iceweasel}i, name: :iceweasel, version: %r{iceweasel/([\d\.]+)}i
     match %r{seamonkey}i, name: :seamonkey, version: %r{seamonkey/([\d\.]+)}i
     match %r{superswan}i, name: :superswan, version: %r{superswan/([\d\.]+)}i
+  end
+
+  # never thought a browser would want to be like IE...
+  like :ie do
+    # version does not have to be supplied because we simply want to use
+    # the version supplied by the MSIE token instead (there is no version on the avant browser or slimbrowser UA itself)
+    match %r{avant\sbrowser}i,    name: :avant_browser
+    match %r{slimbrowser}i,       name: :slimbrowser
+
+    match %r{deepnet\sexplorer}i, name: :deepnet_explorer,
+                                  version: %r{deepnet\sexplorer ([\d\.]+)}i
   end
 end
