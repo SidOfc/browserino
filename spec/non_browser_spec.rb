@@ -20,7 +20,7 @@ TYPE_MAP = { validators: :validator, bots: :bot, libraries: :library }
             expect(client.send(test_method)).to eq test_result
           end
 
-          it "expects client.#{test_method}? #{test_result && ":#{test_result}"} to be #{test_result && 'truthy' || 'falsy'}" do
+          it "expects client.#{test_method}? '#{test_result}' to be #{test_result && 'truthy' || 'falsy'}" do
             if test_result
               expect(client.send("#{test_method}?", test_result)).to be_truthy
             else
@@ -59,7 +59,7 @@ TYPE_MAP = { validators: :validator, bots: :bot, libraries: :library }
               expect(client.send("#{name}", name_ver.to_s)).to be_truthy
             end
 
-            it "expects client.is? :#{spec[:name]}, version: #{name_ver} to be truthy" do
+            it "expects client.is? :#{spec[:name]}, version: '#{name_ver}' to be truthy" do
               expect(client.is?(spec[:name], version: name_ver)).to be_truthy
             end
           end

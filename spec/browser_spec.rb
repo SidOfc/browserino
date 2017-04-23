@@ -45,11 +45,11 @@ describe 'Browserino browsers' do
 
       # Test defined property methods in browsers.yml
       spec.reject { |k| exclude.include? k }.each do |test_method, test_result|
-        it "expects client.#{test_method} == :#{test_result} to be truthy" do
+        it "expects client.#{test_method} == '#{test_result}' to be truthy" do
           expect(client.send(test_method) == test_result).to be_truthy
         end
 
-        it "expects client.#{test_method}? #{test_result && ":#{test_result}"} to be #{test_result && 'truthy' || 'falsy'}" do
+        it "expects client.#{test_method}? '#{test_result}' to be #{test_result && 'truthy' || 'falsy'}" do
           if test_result
             expect(client.send("#{test_method}?", test_result)).to be_truthy
           else
@@ -73,7 +73,7 @@ describe 'Browserino browsers' do
           end
 
           if ver_res
-            it "expects client.#{alt}? #{ver_res} to be truthy" do
+            it "expects client.#{alt}? '#{ver_res}' to be truthy" do
               expect(client.send("#{alt}?", ver_res)).to be_truthy
             end
           end
@@ -97,7 +97,7 @@ describe 'Browserino browsers' do
             expect(client.send("#{name}", name_ver.to_s)).to be_truthy
           end
 
-          it "expects client.is? :#{spec[:name]}, version: #{name_ver} to be truthy" do
+          it "expects client.is? :#{spec[:name]}, version: '#{name_ver}' to be truthy" do
             expect(client.is?(spec[:name], version: name_ver)).to be_truthy
           end
         end

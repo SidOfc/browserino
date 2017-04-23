@@ -62,12 +62,6 @@ module Browserino
       @x32_cache ||= architecture == :x32
     end
 
-    # check the type of a Client
-    def type?(sym)
-      return type == sym if sym.is_a? Symbol
-      type == sym.to_sym
-    end
-
     # the catch all method, anything it can ask as question will respond
     # otherwise nil is returned, this is also true when supplying a version
     def is?(sym, opts = {})
@@ -150,12 +144,16 @@ module Browserino
         define_singleton_method(name) { value }
         define_singleton_method("#{name}?") do |val = nil, **opts|
           values = [value, *Browserino.config.aliasses[value]]
-          return values.include? val if val && !opts[:version]
+
           if val && opts[:version]
-            return (version_for(name) == opts[:version]) && values.include?(val)
+            (version_for(name) == opts[:version]) && values.include?(val.to_sym)
+          elsif val
+            values.include? val.to_sym
+          elsif value.is_a? Version
+            return value > 0
+          else
+            value && true
           end
-          return value > 0 if value.is_a? Version
-          value && true
         end
       end
     end
