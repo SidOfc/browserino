@@ -21,6 +21,7 @@ Browserino.config.define do
     ua = ua.gsub %r{mac\sos\sx}i, '' if ua =~ %r{ip(?:[ao]d|hone)}i
     ua = ua.gsub %r{msie}i, '' if ua =~ %r{huaweisymantecspider}i
     ua = ua.gsub %r{risc\sos}i, 'risc' if ua =~ %r{risc\sos}i
+    ua = ua.gsub %r{msie}i, '' if ua =~ %r{surf}i
     ua
   end
 

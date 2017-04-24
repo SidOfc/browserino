@@ -1,5 +1,11 @@
 ---
 :libraries:
+- :user_agent: Wget/1.13.4 (linux-gnu)
+  :name:       :wget
+  :version:    '1.13.4'
+  :platform:    :linux
+  :to_s:       'wget wget1 linux'
+
 - :user_agent: PHP/5.9.2
   :name:       :php
   :version:    '5.9.2'

@@ -17,7 +17,7 @@ Browserino.config.define do
   # a simple set of global matchers that will be merged and scanned
   # with a specific matcher when the final client object is created
   match do
-    locale           %r{(?<!nintendo)[;\s](\w{2}(?:\-\w{2})?)[;)]}i
+    locale           %r{(?<!nintendo)[;\s(](\w{2}(?:\-\w{2})?)[;)]}i
     architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86|armv)}i
     mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
@@ -103,10 +103,9 @@ Browserino.config.define do
       modern?        { version >= 50 }
     end
 
-    match %r{midori}i do
-      name           :midori
-      engine         :webkit
-    end
+    match %r{midori}i,           name: :midori,   engine: :webkit
+    match %r{qupzilla}i,         name: :qupzilla, engine: :webkit
+    match %r{(?<!(?:net))surf}i, name: :surf
 
     match %r{safari}i do
       name           :safari
@@ -116,10 +115,14 @@ Browserino.config.define do
       modern?        { version >= 9 }
     end
 
+    match %r{epiphany}i,  name: :epiphany, engine: :webkit
+    match %r{dooble}i,    name: :dooble,   engine: :webkit,
+                          locale: %r{\((\w{2}(?:[-_]\w{2})?)\)}i
+    match %r{retawq}i,    name: :retawq,   locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
     match %r{netsurf}i,   name: :netsurf
+    match %r{flashfire}i, name: :flashfire
     match %r{amaya}i,     name: :amaya
     match %r{konqueror}i, name: :konqueror
-    match %r{retawq}i,    name: :retawq, locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
     match %r{lynx}i,      name: :lynx
   end
 
@@ -224,6 +227,7 @@ Browserino.config.define do
     match %r{java}i,   name: :java
     match %r{pycurl}i, name: :pycurl
     match %r{curl}i,   name: :curl
+    match %r{wget}i,   name: :wget
   end
 
   # inherit properties a standard set of properties by the name of a
@@ -273,6 +277,7 @@ Browserino.config.define do
     # the avant browser or slimbrowser UA itself)
     match %r{avant\sbrowser}i,    name: :avant_browser
     match %r{slimbrowser}i,       name: :slimbrowser
+    match %r{greenbrowser}i,      name: :greenbrowser
 
     match %r{sleipnir}i,          name: :sleipnir,
                                   version: %r{sleipnir/([\d\.]+)}i
