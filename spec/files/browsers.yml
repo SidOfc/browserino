@@ -1,5 +1,19 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (Linux; Android 4.4.4; XT1032 Build/KXB21.14-L1.40) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 YaBrowser/14.12.2125.9740.00 Mobile Safari/537.36
+  :name:             :yandex
+  :version:          '14.12.2125.9740.00'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :android
+  :platform_label:   :kitkat
+  :platform_version: '4.4.4'
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'yandex yandex14 webkit webkit537 android android4'
+  :like:             :chrome
+
 - :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) YaBrowser/1.1.1084.5410 Chrome/19.1.1084.5410 Safari/536.5
   :name:             :yandex
   :version:          '1.1.1084.5410'
