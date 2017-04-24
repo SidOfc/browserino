@@ -1,5 +1,47 @@
 ---
 :browsers:
+- :user_agent:       iCab/4.5 (Macintosh; U; Mac OS X Leopard 10.5.8)
+  :name:             :icab
+  :version:          '4.5'
+  :engine:           :webkit
+  :engine_version:
+  :platform:         :macintosh
+  :platform_label:   :leopard
+  :platform_version: '10.5.8'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'icab icab4 webkit macintosh macintosh10'
+  :like:             :safari
+
+- :user_agent:       Mozilla/5.0 (Macintosh; PPC Mac OS X 10_5_8) AppleWebKit/537.3+ (KHTML, like Gecko) iCab/5.0 Safari/533.16
+  :name:             :icab
+  :version:          '5.0'
+  :engine:           :webkit
+  :engine_version:   '537.3'
+  :platform:         :macintosh
+  :platform_label:   :leopard
+  :platform_version: '10.5.8'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'icab icab5 webkit webkit537 macintosh macintosh10'
+  :like:             :safari
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; nn-no) AppleWebKit/533.21.1 (KHTML, like Gecko) iCab/4.8b Safari/533.16
+  :name:             :icab
+  :version:          '4.8'
+  :engine:           :webkit
+  :engine_version:   '533.21.1'
+  :platform:         :macintosh
+  :platform_label:   :snow_leopard
+  :platform_version: '10.6.7'
+  :locale:           :nn_no
+  :architecture:
+  :mobile:           false
+  :to_s:             'icab icab4 webkit webkit533 macintosh macintosh10'
+  :like:             :safari
+
 - :user_agent:       Mozilla/5.0 (Linux; Android 4.4.4; XT1032 Build/KXB21.14-L1.40) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 YaBrowser/14.12.2125.9740.00 Mobile Safari/537.36
   :name:             :yandex
   :version:          '14.12.2125.9740.00'

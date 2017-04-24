@@ -26,9 +26,10 @@ Browserino.config.define do
                         |mac\sos\sx|android|tizen|ip(?:[ao]d|hone)
                         |blackberry|linux|ubuntu|x11|bsd|s(?:unos|olaris)
                         |w(?:eb)?os)}xi
-    platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|mac\sos\sx|android
-                      |(?:cpu\s|ip(?:[ao]d|hone)\s)os|blackberry|bb
-                      |s(?:unos|olaris)/?|w(?:eb)?os/|tizen)\s?([\d\._]+)}xi
+    platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android
+                        |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
+                        |blackberry|bb|s(?:unos|olaris)/?|w(?:eb)?os/|tizen)
+                        \s?([\d\._]+)}xi
   end
 
   # automatically set type to :browser for each defined matcher
@@ -238,6 +239,7 @@ Browserino.config.define do
 
   # inherit properties from matcher where name == :safari, (except :version)
   like :safari, except: [:version] do
+    match %r{icab}i,           name: :icab
     match %r{bolt}i,           name: :bolt
     match %r{stainless}i,      name: :stainless
     match %r{samsungbrowser}i, name: :samsungbrowser
