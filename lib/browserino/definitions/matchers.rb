@@ -233,6 +233,7 @@ Browserino.config.define do
     match %r{rockmelt}i,      name: :rockmelt
     match %r{flock}i,         name: :flock
     match %r{comodo_dragon}i, name: :comodo_dragon
+    match %r{yabrowser}i,     name: :yandex, version: %r{yabrowser/([\d\.]+)}i
   end
 
   # inherit properties from matcher where name == :safari, (except :version)

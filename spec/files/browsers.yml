@@ -1,5 +1,19 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) YaBrowser/1.1.1084.5410 Chrome/19.1.1084.5410 Safari/536.5
+  :name:             :yandex
+  :version:          '1.1.1084.5410'
+  :engine:           :webkit
+  :engine_version:   '536.5'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'yandex yandex1 webkit webkit536 windows windows6'
+  :like:             :chrome
+
 - :user_agent:       Mozilla/5.0 (Windows NT 6.2) AppleWebKit/535.7 (KHTML, like Gecko) Comodo_Dragon/16.1.1.0 Chrome/16.0.912.63 Safari/535.7
   :name:             :comodo_dragon
   :version:          '16.1.1.0'
