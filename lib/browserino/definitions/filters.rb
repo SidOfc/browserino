@@ -20,6 +20,7 @@ Browserino.config.define do
     ua = ua.gsub %r{rv:}i, '' if ua =~ %r{servo}i
     ua = ua.gsub %r{mac\sos\sx}i, '' if ua =~ %r{ip(?:[ao]d|hone)}i
     ua = ua.gsub %r{msie}i, '' if ua =~ %r{huaweisymantecspider}i
+    ua = ua.gsub %r{risc\sos}i, 'risc' if ua =~ %r{risc\sos}i
     ua
   end
 
@@ -57,7 +58,8 @@ Browserino.config.define do
 
   filter :architecture do |value|
     value = :x64 if value && value =~ %r{(?:x86_|amd|wow)?64|i686}i
-    value = :x32 if value && value != :x64
+    value = :arm if value && value =~ /arm/ && value != :x64
+    value = :x32 if value && ![:arm, :x64].include?(value)
     value
   end
 

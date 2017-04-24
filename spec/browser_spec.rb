@@ -22,6 +22,10 @@ describe 'Browserino browsers' do
         it "expects client.x32? to be true" do
           expect(client.x32?).to eq true
         end
+      elsif client.architecture == :arm
+        it "expects client.arm? to be true" do
+          expect(client.arm?).to eq true
+        end
       end
 
       if spec[:to_s]

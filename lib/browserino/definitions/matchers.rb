@@ -18,14 +18,14 @@ Browserino.config.define do
   # with a specific matcher when the final client object is created
   match do
     locale           %r{(?<!nintendo)[;\s](\w{2}(?:\-\w{2})?)[;)]}i
-    architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86)}i
+    architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86|armv)}i
     mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
                         |tizen|vodafone|t\-mobile|opera\sm(?:ob|in)i)}xi
     platform         %r{.*(xbox|wii|nintendo\sds|playstation|windows(?:\sphone)?
                         |mac\sos\sx|android|tizen|ip(?:[ao]d|hone)
                         |blackberry|linux|ubuntu|x11|bsd|s(?:unos|olaris)
-                        |w(?:eb)?os)}xi
+                        |w(?:eb)?os|risc)}xi
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
                         |blackberry|bb|s(?:unos|olaris)/?|w(?:eb)?os/|tizen)
@@ -116,6 +116,8 @@ Browserino.config.define do
       modern?        { version >= 9 }
     end
 
+    match %r{netsurf}i,   name: :netsurf
+    match %r{amaya}i,     name: :amaya
     match %r{konqueror}i, name: :konqueror
     match %r{retawq}i,    name: :retawq, locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
     match %r{lynx}i,      name: :lynx

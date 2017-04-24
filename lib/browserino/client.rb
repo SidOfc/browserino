@@ -62,6 +62,10 @@ module Browserino
       @x32_cache ||= architecture == :x32
     end
 
+    def arm?
+      @arm_cache ||= architecture == :arm
+    end
+
     # the catch all method, anything it can ask as question will respond
     # otherwise nil is returned, this is also true when supplying a version
     def is?(sym, opts = {})

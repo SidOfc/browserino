@@ -1,5 +1,44 @@
 ---
 :browsers:
+- :user_agent:       NetSurf/2.0 (RISC OS; armv5l)
+  :name:             :netsurf
+  :version:          '2.0'
+  :engine:
+  :engine_version:
+  :platform:         :risc
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:     :arm
+  :mobile:           false
+  :to_s:             'netsurf netsurf2 risc'
+
+- :user_agent:       NetSurf/2.0 (Linux; i686)
+  :name:             :netsurf
+  :version:          '2.0'
+  :engine:
+  :engine_version:
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'netsurf netsurf2 linux'
+
+- :user_agent:       amaya/11.3.1 libwww/5.4.1
+  :name:             :amaya
+  :version:          '11.3.1'
+  :engine:
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'amaya amaya11'
+
 - :user_agent:       iCab/4.5 (Macintosh; U; Mac OS X Leopard 10.5.8)
   :name:             :icab
   :version:          '4.5'
