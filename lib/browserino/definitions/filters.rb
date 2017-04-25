@@ -22,6 +22,7 @@ Browserino.config.define do
     ua = ua.gsub %r{msie}i, '' if ua =~ %r{huaweisymantecspider}i
     ua = ua.gsub %r{risc\sos}i, 'risc' if ua =~ %r{risc\sos}i
     ua = ua.gsub %r{msie}i, '' if ua =~ %r{surf}i
+    ua = ua.gsub %r{safari}i, 'chrome' if ua =~ %r{bluechrome}i
     ua
   end
 
@@ -33,35 +34,34 @@ Browserino.config.define do
 
   # this is a global filter, multiple can be defined and they will all run
   # before any named filters
-  filter do |value|
-    case value
-    when TrueClass, FalseClass, NilClass, Proc then value
-    when %r{\A[\d_\.]+\z}i then value.to_s.strip.tr('_', '.')
-    else value.to_s.downcase.strip.gsub(%r{[\s-]+}i, '_').to_sym
+  filter do |val|
+    case val
+    when TrueClass, FalseClass, NilClass, Proc then val
+    when %r{\A[\d_\.]+\z}i then val.to_s.strip.tr('_', '.')
+    else val.to_s.downcase.strip.gsub(%r{[\s-]+}i, '_').to_sym
     end
   end
 
   # this is a named filter, it defines the same filter for 3 properties
   # multiple name filters for the same property can be created, they will be
   # executed in order of addition
-  filter :version, :engine_version, :platform_version do |value|
-    Browserino::Version.new value
+  filter :version, :engine_version, :platform_version do |val|
+    Browserino::Version.new val
   end
 
-  filter :platform do |value|
-    value = :ios       if value =~ %r{ip(?:[ao]d|hone)}i
-    value = :webos     if value =~ %r{w(?:eb)?os}i
-    value = :linux     if value =~ %r{ubuntu|x11}i
-    value = :solaris   if value =~ %r{s(?:unos|olaris)}i
-    value = :macintosh if value =~ %r{mac_os_x}i
-    value
+  filter :platform do |val|
+    val = :ios       if val =~ %r{ip(?:[ao]d|hone)}i
+    val = :webos     if val =~ %r{w(?:eb)?os}i
+    val = :linux     if val =~ %r{ubuntu|x11}i
+    val = :solaris   if val =~ %r{s(?:unos|olaris)}i
+    val = :macintosh if val =~ %r{mac_os_x}i
+    val
   end
 
-  filter :architecture do |value|
-    value = :x64 if value && value =~ %r{(?:x86_|amd|wow)?64|i686}i
-    value = :arm if value && value =~ /arm/ && value != :x64
-    value = :x32 if value && ![:arm, :x64].include?(value)
-    value
+  filter :architecture do |val|
+    val = :x64 if val && val != :arm && val =~ %r{(?:x86_|amd|wow)?64|i686}i
+    val = :x32 if val && ![:arm, :x64].include?(val)
+    val
   end
 
   filter :mobile do |value|

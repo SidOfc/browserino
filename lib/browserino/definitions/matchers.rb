@@ -11,22 +11,22 @@ Browserino.config.define do
   # they will also be applied to every matcher unless that matcher has it's own
   # (or inherited a property through like) property set up for
   # the defined smart matcher
-  smart_match :version,        with: ':name[\s/]?([\d\._]+)', flags: [:i]
-  smart_match :engine_version, with: ':engine/([\d\._]+)',    flags: [:i]
+  smart_match :version,        with: ':name[\s/]?([\d\._]+)',   flags: [:i]
+  smart_match :engine_version, with: ':engine[\s/]?([\d\._]+)', flags: [:i]
 
   # a simple set of global matchers that will be merged and scanned
   # with a specific matcher when the final client object is created
   match do
     locale           %r{(?<!nintendo)[;\s(](\w{2}(?:\-\w{2})?)[;)]}i
-    architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86|armv)}i
+    architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86|arm)}i
     mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
                         |tizen|vodafone|t\-mobile|opera\sm(?:ob|in)i)}xi
     platform         %r{.*(xbox|wii|nintendo\sds|playstation|windows(?:\sphone)?
-                        |mac\sos\sx|android|tizen|ip(?:[ao]d|hone)
+                        |macintosh|mac\sos\sx|android|tizen|ip(?:[ao]d|hone)
                         |blackberry|linux|ubuntu|x11|bsd|s(?:unos|olaris)
                         |w(?:eb)?os|risc)}xi
-    platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android
+    platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
                         |blackberry|bb|s(?:unos|olaris)/?|w(?:eb)?os/|tizen)
                         \s?([\d\._]+)}xi
@@ -95,17 +95,20 @@ Browserino.config.define do
       modern?        { version >= 50 }
     end
 
-    match %r{firefox}i do
+    match %r{(?<!(?:net))surf}i, name: :surf
+    match %r{midori}i,           name: :midori,    engine: :webkit
+    match %r{qupzilla}i,         name: :qupzilla,  engine: :webkit
+    match %r{shiira}i,           name: :shiira,    engine: :webkit
+    match %r{classilla}i,        name: :classilla, engine: :gecko,
+                                 engine_version: %r{rv:\s?([\d\.]+)}i
+
+    match %r{firefox|phoenix}i do
       name           :firefox
 
       engine         %r{(gecko|servo)}i
       engine_version %r{(?:rv:\s?|servo/)([\d\.]+)}i
       modern?        { version >= 50 }
     end
-
-    match %r{midori}i,           name: :midori,   engine: :webkit
-    match %r{qupzilla}i,         name: :qupzilla, engine: :webkit
-    match %r{(?<!(?:net))surf}i, name: :surf
 
     match %r{safari}i do
       name           :safari
@@ -115,15 +118,25 @@ Browserino.config.define do
       modern?        { version >= 9 }
     end
 
-    match %r{epiphany}i,  name: :epiphany, engine: :webkit
-    match %r{dooble}i,    name: :dooble,   engine: :webkit,
-                          locale: %r{\((\w{2}(?:[-_]\w{2})?)\)}i
-    match %r{retawq}i,    name: :retawq,   locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
-    match %r{netsurf}i,   name: :netsurf
-    match %r{flashfire}i, name: :flashfire
-    match %r{amaya}i,     name: :amaya
-    match %r{konqueror}i, name: :konqueror
-    match %r{lynx}i,      name: :lynx
+    match %r{epiphany}i,       name: :epiphany, engine: :webkit
+    match %r{uzbl}i,           name: :uzbl,     engine: :webkit
+    match %r{adobeair}i,       name: :adobeair, engine: :webkit
+    match %r{dooble}i,         name: :dooble,   engine: :webkit,
+                               locale: %r{\((\w{2}(?:[-_]\w{2})?)\)}i
+    match %r{retawq}i,         name: :retawq,   text: true,
+                               locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
+    match %r{amaya}i,          name: :amaya,    text: true
+    match %r{lynx}i,           name: :lynx,     text: true
+    match %r{elinks}i,         name: :elinks,   text: true
+    match %r{links}i,          name: :links,    version: %r{links\s\(([\d\.]+)}i
+    match %r{netsurf}i,        name: :netsurf
+    match %r{flashfire}i,      name: :flashfire
+    match %r{contiki}i,        name: :contiki
+    match %r{konqueror}i,      name: :konqueror
+    match %r{mosaic|ibrowse}i, name: :mosaic
+    match %r{dillo}i,          name: :dillo
+    match %r{hotjava}i,        name: :hotjava
+    match %r{netpositive}i,    name: :netpositive
   end
 
   # automatically set type to :bot for each defined matcher
@@ -236,6 +249,7 @@ Browserino.config.define do
   like :chrome, except: [:version] do
     match %r{brave}i,         name: :brave
     match %r{vivaldi}i,       name: :vivaldi
+    match %r{bluechrome}i,    name: :bluechrome
     match %r{colibri}i,       name: :colibri
     match %r{rockmelt}i,      name: :rockmelt
     match %r{flock}i,         name: :flock
@@ -248,6 +262,7 @@ Browserino.config.define do
     match %r{icab}i,           name: :icab
     match %r{bolt}i,           name: :bolt
     match %r{stainless}i,      name: :stainless
+    match %r{arora}i,          name: :arora
     match %r{samsungbrowser}i, name: :samsungbrowser
     match %r{omniweb}i,        name: :omniweb, version: %r{omniweb/v([\d\.]+)}i
 
@@ -258,30 +273,38 @@ Browserino.config.define do
 
   # inherit properties from matcher where name == :firefox, (except :version)
   like :firefox, except: [:version] do
-    match %r{prism}i,     name: :prism
-    match %r{waterfox}i,  name: :waterfox
-    match %r{firebird}i,  name: :firebird
-    match %r{netscape}i,  name: :netscape
-    match %r{icecat}i,    name: :icecat
-    match %r{iceweasel}i, name: :iceweasel
-    match %r{seamonkey}i, name: :seamonkey
-    match %r{superswan}i, name: :superswan
-    match %r{lunascape}i, name: :lunascape
-    match %r{camino}i,    name: :camino, locale: %r{\s(\w{2}(?:\-\w{2})?),}i
+    match %r{k-meleon}i,   name: :kmeleon,  version: %r{k-meleon/([\d\.]+)}i
+    match %r{camino}i,     name: :camino,   locale: %r{\s(\w{2}(?:\-\w{2})?),}i
+    match %r{waterfox}i,   name: :waterfox, architecture: :x664
+    match %r{prism}i,      name: :prism
+    match %r{firebird}i,   name: :firebird
+    match %r{netscape}i,   name: :netscape
+    match %r{icecat}i,     name: :icecat
+    match %r{iceweasel}i,  name: :iceweasel
+    match %r{seamonkey}i,  name: :seamonkey
+    match %r{superswan}i,  name: :superswan
+    match %r{lunascape}i,  name: :lunascape
+    match %r{kazehakase}i, name: :kazehakase
+    match %r{shiretoko}i,  name: :shiretoko
+    match %r{galeon}i,     name: :galeon
   end
 
   # never thought a browser would want to be like IE...
   like :ie do
     # version does not have to be supplied because we simply want to use
     # the version supplied by the MSIE token instead (there is no version on
-    # the avant browser or slimbrowser UA itself)
+    # the avant browser or slimbrowser etc... UA itself)
     match %r{avant\sbrowser}i,    name: :avant_browser
     match %r{slimbrowser}i,       name: :slimbrowser
     match %r{greenbrowser}i,      name: :greenbrowser
 
+    # because of this, we now have to explicitly define version patterns
+    # for the user agents that follow the 'regular' pattern
+    match %r{aol}i     ,          name: :aol,
+                                  version: %r{aol\s([\d\.]+)}i
     match %r{sleipnir}i,          name: :sleipnir,
                                   version: %r{sleipnir/([\d\.]+)}i
     match %r{deepnet\sexplorer}i, name: :deepnet_explorer,
-                                  version: %r{deepnet\sexplorer ([\d\.]+)}i
+                                  version: %r{deepnet\sexplorer\s([\d\.]+)}i
   end
 end

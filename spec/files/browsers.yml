@@ -1,5 +1,245 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.8.1.22pre) Gecko/20090301 (Debian-1.8.1.18+nobinonly.b308.cvs20090331t155113-0ubuntu0.8.04.1) Galeon/2.0.4 (Ubuntu 2.0.4-1ubuntu1)
+  :name:             :galeon
+  :version:          '2.0.4'
+  :engine:           :gecko
+  :engine_version:   '1.8.1'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:           :en_us
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'galeon galeon2 gecko gecko1 linux'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (compatible; MSIE 9.0; AOL 9.7; AOLBuild 4343.19; Windows NT 6.1; WOW64; Trident/5.0; FunWebProducts)
+  :name:             :aol
+  :version:          '9.7'
+  :engine:           :trident
+  :engine_version:   '5.0'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'aol aol9 trident trident5 windows windows6'
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; PPC; en-US; mimic; rv:9.3.0) Gecko/20120117 Firefox/3.6.25 Classilla/CFM
+  :name:             :classilla
+  :version:
+  :engine:           :gecko
+  :engine_version:   '9.3.0'
+  :platform:         :macintosh
+  :platform_label:
+  :platform_version:
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'classilla gecko gecko9 macintosh'
+
+- :user_agent:       Mozilla/3.0 (compatible; NetPositive/2.2.2; BeOS)
+  :name:             :netpositive
+  :version:          '2.2.2'
+  :engine:
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'netpositive netpositive2'
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; PPC Mac OS X; ja-jp) AppleWebKit/419 (KHTML, like Gecko) Shiira/1.2.3 Safari/125
+  :name:             :shiira
+  :version:          '1.2.3'
+  :engine:           :webkit
+  :engine_version:   '419'
+  :platform:         :macintosh
+  :platform_label:
+  :platform_version:
+  :locale:           :ja_jp
+  :architecture:
+  :mobile:           false
+  :to_s:             'shiira shiira1 webkit webkit419 macintosh'
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1pre) Gecko/20090603 Shiretoko/3.5pre
+  :name:             :shiretoko
+  :version:          '3.5'
+  :engine:           :gecko
+  :engine_version:   '1.9.1'
+  :platform:         :windows
+  :platform_label:   :windows_xp
+  :platform_version: '5.1'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'shiretoko shiretoko3 gecko gecko1 windows windows5'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (Windows NT 5.1; tr-TR) AppleWebKit/533+ (KHTML, like Gecko) BlueChrome/16.0.2245.10 Safari/537.17
+  :name:             :bluechrome
+  :version:          '16.0.2245.10'
+  :engine:           :webkit
+  :engine_version:   '533'
+  :platform:         :windows
+  :platform_label:   :windows_xp
+  :platform_version: '5.1'
+  :locale:           :tr_tr
+  :architecture:
+  :mobile:           false
+  :to_s:             'bluechrome bluechrome16 webkit webkit533 windows windows5'
+  :like:             :chrome
+
+- :user_agent:       Mozilla/5.0 (Windows; U; en-US) AppleWebKit/533.19.4 (KHTML, like Gecko) AdobeAIR/3.1
+  :name:             :adobeair
+  :version:          '3.1'
+  :engine:           :webkit
+  :engine_version:   '533.19.4'
+  :platform:         :windows
+  :platform_label:
+  :platform_version:
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'adobeair adobeair3 webkit webkit533 windows'
+
+- :user_agent:       HotJava/1.1.2 FCS
+  :name:             :hotjava
+  :version:          '1.1.2'
+  :engine:
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'hotjava hotjava1'
+
+- :user_agent:       Mozilla/5.0 (X11; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) Arora/0.11.0 Safari/534.34
+  :name:             :arora
+  :version:          '0.11.0'
+  :engine:           :webkit
+  :engine_version:   '534.34'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'arora arora0 webkit webkit534 linux'
+
+- :user_agent:       Uzbl (Webkit 1.3) (Linux i686 [i686])
+  :name:             :uzbl
+  :version:
+  :engine:           :webkit
+  :engine_version:   '1.3'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'uzbl webkit webkit1 linux'
+
+- :user_agent:       Dillo/2.0
+  :name:             :dillo
+  :version:          '2.0'
+  :engine:
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'dillo dillo2'
+
+- :user_agent:       Contiki/3.x (; http://www.contiki-os.org/)
+  :name:             :contiki
+  :version:          '3'
+  :engine:
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'contiki contiki3'
+
+- :user_agent:       Links (2.7; Linux 3.10.24+ armv6l; GNU C 4.6.3; dump)
+  :name:             :links
+  :version:          '2.7'
+  :engine:
+  :engine_version:
+  :platform:         :linux
+  :platform_label:
+  :platform_version: '3.10.24'
+  :locale:
+  :architecture:     :arm
+  :mobile:           false
+  :to_s:             'links links2 linux linux3'
+
+- :user_agent:       ELinks/0.12~pre5-8ubuntu1 (textmode; Ubuntu; Linux 3.5.0-25-generic i686; 80x24-2)
+  :name:             :elinks
+  :version:          '0.12'
+  :engine:
+  :engine_version:
+  :platform:         :linux
+  :platform_label:
+  :platform_version: '3.5.0.25'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :text:             true
+  :to_s:             'elinks elinks0 linux linux3'
+
+- :user_agent:       Mosaic 1.0 on SunOS 4.1 - NCSA Mosaic/1.0 (X11;SunOS 4.1.4 sun4m)
+  :name:             :mosaic
+  :version:          '1.0'
+  :engine:
+  :engine_version:
+  :platform:         :solaris
+  :platform_label:
+  :platform_version: '4.1.4'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'mosaic mosaic1 solaris solaris4'
+
+- :user_agent:       Mozilla/5.0 (X11; U; FreeBSD amd64; en-US; rv:1.8.1.20) Gecko/20090422 Firefox/2.0.0.20 Kazehakase/0.5.4
+  :name:             :kazehakase
+  :version:          '0.5.4'
+  :engine:           :gecko
+  :engine_version:   '1.8.1.20'
+  :platform:         :bsd
+  :platform_label:
+  :platform_version:
+  :locale:           :en_us
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'kazehakase kazehakase0 gecko gecko1 bsd'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.8.1.24pre) Gecko/20100228 K-Meleon/1.5.4
+  :name:             :kmeleon
+  :version:          '1.5.4'
+  :engine:           :gecko
+  :engine_version:   '1.8.1.24'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'kmeleon kmeleon1 gecko gecko1 windows windows6'
+  :like:             :firefox
+
 - :user_agent:       Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; WOW64; Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1) ; SLCC1; .NET CLR 2.0.50727; .NET CLR 3.0.04506; Media Center PC 5.0; .NET CLR 3.5.21022; GreenBrowser)
   :name:             :greenbrowser
   :version:          '7.0'
@@ -308,6 +548,7 @@
   :locale:
   :architecture:
   :mobile:           false
+  :text:             true
   :to_s:             'lynx lynx2'
 
 - :user_agent:       retawq/0.2.6c [en] (text)
@@ -321,6 +562,7 @@
   :locale:           :en
   :architecture:
   :mobile:           false
+  :text:             true
   :to_s:             'retawq retawq0'
 
 - :user_agent:       Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.3) Gecko/20100402 Prism/1.0b4
@@ -1229,7 +1471,7 @@
   :platform:         :windows_phone
   :platform_version: '8.0'
   :locale:
-  :architecture:
+  :architecture:     :arm
   :mobile:           true
   :to_s:             'ie ie10 trident trident6 windows_phone windows_phone8'
 

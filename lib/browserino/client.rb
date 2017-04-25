@@ -151,10 +151,10 @@ module Browserino
 
           if val && opts[:version]
             (version_for(name) == opts[:version]) && values.include?(val.to_sym)
-          elsif val
+          elsif val && val.respond_to?(:to_sym)
             values.include? val.to_sym
           elsif value.is_a? Version
-            return value > 0
+            value > 0
           else
             value && true
           end
