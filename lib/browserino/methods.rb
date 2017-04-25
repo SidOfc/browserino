@@ -6,7 +6,7 @@ module Browserino
     props = @defaults.merge(matcher && matcher.properties || {})
     like  = props.delete :like
     props = collect props, user_agent
-    props = props.merge collect(smart_matchers(props), user_agent)
+    props = collect_with_smart_watchers props, user_agent
     props = with_labels props
 
     if like
@@ -18,16 +18,16 @@ module Browserino
   end
 
   def self.config
-    @config ||= Config.new({ before_parse: [],
-                             global_matchers: [],
-                             properties: [],
-                             types: [:unknown],
-                             names: [],
-                             smart_matchers: {},
-                             matchers: [],
-                             labels: Hash.new { |h, k| h[k] = [] },
-                             filters: Hash.new { |h, k| h[k] = [] },
-                             aliasses: Hash.new { |h, k| h[k] = [] } })
+    @config ||= Config.new(before_parse: [],
+                           global_matchers: [],
+                           properties: [],
+                           types: [:unknown],
+                           names: [],
+                           smart_matchers: {},
+                           matchers: [],
+                           labels: Hash.new { |h, k| h[k] = [] },
+                           filters: Hash.new { |h, k| h[k] = [] },
+                           aliasses: Hash.new { |h, k| h[k] = [] })
   end
 
   def self.label_for(target_name, version = nil)
@@ -35,10 +35,7 @@ module Browserino
     version = Version.new version unless version.is_a? Version
     return unless version > 0
     config.labels[target_name].each do |candidate|
-      min = Version.new candidate[:range].min
-      max = Version.new candidate[:range].max
-
-      return candidate[:name] if version >= min && version <= max
+      return candidate[:name] if version.between? candidate[:range]
     end
     nil
   end
@@ -51,6 +48,10 @@ module Browserino
     end
 
     properties
+  end
+
+  def self.collect_with_smart_watchers(properties, user_agent)
+    properties.merge collect(smart_matchers(properties), user_agent)
   end
 
   def self.smart_matchers(properties)

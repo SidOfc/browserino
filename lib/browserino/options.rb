@@ -5,12 +5,12 @@ module Browserino
       @options = options
     end
 
-    def method_missing(sym, *args, &block)
+    def method_missing(sym, *args, &___)
       return @options[opt(sym)] == args.first if args.any?
       @options[opt(sym)]
     end
 
-    def respond_to_missing?(sym, *args, &block)
+    def respond_to_missing?(sym, *_, &___)
       option? sym
     end
 

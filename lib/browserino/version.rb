@@ -50,11 +50,19 @@ module Browserino
       compare :!=, other
     end
 
+    def between?(min, max = nil)
+      if min.is_a? Range
+        max = min.max
+        min = min.min
+      end
+
+      (self >= Version.new(min)) && (self <= Version.new(max))
+    end
+
     private
 
     def parse_params(val, *rest)
       case val
-      when Float   then val.to_s.split '.'
       when Integer then [val, *rest]
       when String  then val.tr('_', '.').split '.'
       when Array   then val

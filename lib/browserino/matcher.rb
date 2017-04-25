@@ -17,8 +17,8 @@ module Browserino
       pattern =~ user_agent
     end
 
-    def =~(user_agent)
-      pattern =~ user_agent
+    def =~(other)
+      pattern =~ other
     end
 
     def ===(other)
