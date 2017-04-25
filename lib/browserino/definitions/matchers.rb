@@ -25,11 +25,11 @@ Browserino.config.define do
     platform         %r{.*(xbox|wii|nintendo\sds|playstation|windows(?:\sphone)?
                         |macintosh|mac\sos\sx|android|tizen|ip(?:[ao]d|hone)
                         |blackberry|linux|ubuntu|x11|bsd|s(?:unos|olaris)
-                        |w(?:eb)?os|risc)}xi
+                        |amigaos|w(?:eb)?os|risc)}xi
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
-                        |blackberry|bb|s(?:unos|olaris)/?|w(?:eb)?os/|tizen)
-                        \s?([\d\._]+)}xi
+                        |blackberry|bb|s(?:unos|olaris)/?|w(?:eb)?os/|tizen
+                        |amigaos/?)\s?([\d\._]+)}xi
   end
 
   # automatically set type to :browser for each defined matcher
@@ -97,6 +97,7 @@ Browserino.config.define do
 
     match %r{(?<!(?:net))surf}i, name: :surf
     match %r{midori}i,           name: :midori,    engine: :webkit
+    match %r{amigavoyager}i,     name: :amigavoyager
     match %r{qupzilla}i,         name: :qupzilla,  engine: :webkit
     match %r{shiira}i,           name: :shiira,    engine: :webkit
     match %r{classilla}i,        name: :classilla, engine: :gecko,

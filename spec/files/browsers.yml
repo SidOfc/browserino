@@ -1,5 +1,31 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/4.0 (compatible; MSIE 5.0; SunOS 5.5.1 sun4m; X11)
+  :name:             :ie
+  :version:          '5.0'
+  :engine:           :trident
+  :engine_version:
+  :platform:         :solaris
+  :platform_label:
+  :platform_version: '5.5.1'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'ie ie5 trident solaris solaris5'
+
+- :user_agent:       AmigaVoyager/3.2 (AmigaOS/MC680x0)
+  :name:             :amigavoyager
+  :version:          '3.2'
+  :engine:
+  :engine_version:
+  :platform:         :amigaos
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'amigavoyager amigavoyager3 amigaos'
+
 - :user_agent:       W3CLineMode/5.4.0 libwww/5.x.x
   :name:             :linemode
   :version:          '5.4.0'
