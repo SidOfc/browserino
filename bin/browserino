@@ -25,4 +25,4 @@ row = '+' * (out.map(&:size).max - 1) + "\n"
 
 out[0]  = "#{row}#{out[0]}"
 out[-1] = "#{out[-1]}#{row}"
-puts out.join("#{row}")
+puts out.join row

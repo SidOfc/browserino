@@ -20,7 +20,7 @@ finish = Time.now.to_f
 puts "Start:        #{start}"
 puts "Finish:       #{finish}"
 puts "microseconds: #{(finish - start) * 1000}"
-puts "---------------------------------"
+puts '---------------------------------'
 puts "Objects Freed:  #{after - before}"
 
 Pry.start

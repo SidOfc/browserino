@@ -4,6 +4,7 @@ AllCops:
     - 'Guardfile'
     - '*.gemspec'
     - 'Rakefile'
+    - 'tmp/*'
 
 Documentation:
   Enabled: false

@@ -143,36 +143,38 @@ module Browserino
       properties[mtd]
     end
 
-    def define_simple_methods!(props)
-      props.reject { |val| val.respond_to? :call }.each do |name, value|
-        define_singleton_method(name) { value }
-        define_singleton_method("#{name}?") do |val = nil, **opts|
-          values = [value, *Browserino.config.aliasses[value]]
+    def get_answer(mtd, res, ver = nil, val = nil)
+      incl = [res, *Browserino.config.aliasses[res]].include? val
+      return res.is_a?(Version) ? res > 0 : res && true unless val
+      ver && incl ? version_for(mtd) == ver : incl
+    end
 
-          if val && opts[:version]
-            (version_for(name) == opts[:version]) && values.include?(val.to_sym)
-          elsif val && val.respond_to?(:to_sym)
-            values.include? val.to_sym
-          elsif value.is_a? Version
-            value > 0
-          else
-            value && true
-          end
-        end
+    def define_simple_methods!(props)
+      props.each do |name, value|
+        define_singleton_method(name) { value }
+        define_question_method! name, value
+      end
+    end
+
+    def define_question_method!(name, value)
+      define_singleton_method("#{name}?") do |val = nil, opts = {}|
+        ver = opts.delete :version
+        val = val.to_sym if ver
+        get_answer name, value, ver, val
       end
     end
 
     def define_proc_methods!(props)
       props.select { |_, val| val.respond_to? :call }.each do |name, value|
-        result = instance_eval(&value).freeze
+        result = instance_eval(&value)
         define_singleton_method(name) { result }
       end
     end
 
     def define_name_result_methods!
       [:name, :engine, :platform].each do |prop|
-        result  = properties[prop].freeze
-        ver_res = version_for(prop).freeze
+        result  = properties[prop]
+        ver_res = version_for(prop)
 
         # for each of the props:
         # -- define a question method using the value of prop
@@ -199,8 +201,8 @@ module Browserino
 
     def define_label_methods!
       property_names.select { |name| name =~ /label/i }.each do |prop|
-        next unless (result = properties[prop].freeze)
-        ver_res = version_for(prop.to_s.split('_').first).freeze
+        next unless (result = properties[prop])
+        ver_res = version_for(prop.to_s.split('_').first)
 
         define_singleton_method("#{result}?") do |value = nil|
           return ver_res == value if value
