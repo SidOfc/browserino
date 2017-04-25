@@ -5,6 +5,7 @@ AllCops:
     - '*.gemspec'
     - 'Rakefile'
     - 'tmp/*'
+    - 'vendor/*'
 
 Documentation:
   Enabled: false
