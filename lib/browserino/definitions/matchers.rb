@@ -141,7 +141,7 @@ Browserino.config.define do
   end
 
   # automatically set type to :bot for each defined matcher
-  bots do
+  bots text: true do
     match %r{googlebot}i,                   name: :googlebot
     match %r{yahoo\!\sslurp}i,              name: :yahoo_slurp
     match %r{msnbot}i,                      name: :msnbot

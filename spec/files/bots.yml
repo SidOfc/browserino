@@ -3,355 +3,430 @@
 - :user_agent: Mass Downloader/2.2
   :name:       :mass_downloader
   :version:    '2.2'
+  :text:       true
   :to_s:       'mass_downloader mass_downloader2'
 
 - :user_agent: larbin_2.6.2 (kabura@sushi.com)
   :name:       :larbin
   :version:    '2.6.2'
+  :text:       true
   :to_s:       'larbin larbin2'
 
 - :user_agent: Internet Ninja 4.0
   :name:       :internet_ninja
   :version:    '4.0'
+  :text:       true
   :to_s:       'internet_ninja internet_ninja4'
 
 - :user_agent: Huaweisymantecspider (compatible; MSIE 8.0; DSE-support@huaweisymantec.com)
   :name:       :huaweisymantecspider
   :version:
+  :text:       true
   :to_s:       'huaweisymantecspider'
 
 - :user_agent: SafetyNet Robot 0.1
   :name:       :safetynet_robot
   :version:    '0.1'
+  :text:       true
   :to_s:       'safetynet_robot safetynet_robot0'
 
 - :user_agent: Harvest/1.5
   :name:       :harvest
   :version:    '1.5'
+  :text:       true
   :to_s:       'harvest harvest1'
 
 - :user_agent: Go!Zilla 3.3 (www.gozilla.com)
   :name:       :gozilla
   :version:    '3.3'
+  :text:       true
   :to_s:       'gozilla gozilla3'
 
 - :user_agent: GetRight/3.3.4
   :name:       :getright
   :version:    '3.3.4'
+  :text:       true
   :to_s:       'getright getright3'
 
 - :user_agent: Flaming AttackBot
   :name:       :flaming_attackbot
   :version:
+  :text:       true
   :to_s:       'flaming_attackbot'
 
 - :user_agent: eCatch/3.0
   :name:       :ecatch
   :version:    '3.0'
+  :text:       true
   :to_s:       'ecatch ecatch3'
 
 - :user_agent: EmailSiphon
   :name:       :emailsiphon
   :version:
+  :text:       true
   :to_s:       'emailsiphon'
 
 - :user_agent: EmailWolf
   :name:       :emailwolf
   :version:
+  :text:       true
   :to_s:       'emailwolf'
 
 - :user_agent: EmailCollector
   :name:       :emailcollector
   :version:
+  :text:       true
   :to_s:       'emailcollector'
 
 - :user_agent: Download Demon/3.2.0.8
   :name:       :download_demon
   :version:    '3.2.0.8'
+  :text:       true
   :to_s:       'download_demon download_demon3'
 
 - :user_agent: Bullseye/1.0
   :name:       :bullseye
   :version:    '1.0'
+  :text:       true
   :to_s:       'bullseye bullseye1'
 
 - :user_agent: BSpider/1.0 libwww-perl/0.40
   :name:       :bspider
   :version:    '1.0'
+  :text:       true
   :to_s:       'bspider bspider1'
 
 - :user_agent: Mozilla/5.0 (compatible; BLEXBot/1.0; +http://webmeup.com/crawler.html)
   :name:       :blexbot
   :version:    '1.0'
+  :text:       true
   :to_s:       'blexbot blexbot1'
 
 - :user_agent: BlackWidow
   :name:       :blackwidow
   :version:
+  :text:       true
   :to_s:       'blackwidow'
 
 - :user_agent: Black Hole
   :name:       :black_hole
   :version:
+  :text:       true
   :to_s:       'black_hole'
 
 - :user_agent: Bizbot003
   :name:       :bizbot
   :version:    '3'
+  :text:       true
   :to_s:       'bizbot bizbot3'
 
 - :user_agent: Big Brother
   :name:       :big_brother
   :version:
+  :text:       true
   :to_s:       'big_brother'
 
 - :user_agent: BackRub/.
   :name:       :backrub
   :version:
+  :text:       true
   :to_s:       'backrub'
 
 - :user_agent: BackDoorBot/1.0
   :name:       :backdoorbot
   :version:    '1.0'
+  :text:       true
   :to_s:       'backdoorbot backdoorbot1'
 
 - :user_agent: b2w/0.1
   :name:       :b2w
   :version:    '0.1'
+  :text:       true
   :to_s:       'b2w b2w0'
 
 - :user_agent: AURESYS/1.0
   :name:       :auresys
   :version:    '1.0'
+  :text:       true
   :to_s:       'auresys auresys1'
 
 - :user_agent: asterias
   :name:       :asterias
   :version:
+  :text:       true
   :to_s:       'asterias'
 
 - :user_agent: ASpider/0.09
   :name:       :aspider
   :version:
+  :text:       true
   :to_s:       'aspider aspider0'
 
 - :user_agent: Arachnophilia
   :name:       :arachnophilia
   :version:
+  :text:       true
   :to_s:       'arachnophilia'
 
 - :user_agent: Aqua_Products
   :name:       :aqua_products
   :version:
+  :text:       true
   :to_s:       'aqua_products'
 
 - :user_agent: Alexibot
   :name:       :alexibot
   :version:
+  :text:       true
   :to_s:       'alexibot'
 
 - :user_agent: AITCSRobot/1.1
   :name:       :aitcsrobot
   :version:    '1.1'
+  :text:       true
   :to_s:       'aitcsrobot aitcsrobot1'
 
 - :user_agent: Mozilla/5.0 (compatible; linkdexbot/2.1; +http://www.linkdex.com/about/bots/)
   :name:       :linkdexbot
   :version:    '2.1'
+  :text:       true
   :to_s:       'linkdexbot linkdexbot2'
 
 - :user_agent: autoemailspider
   :name:       :auto_email_spider
+  :version:
+  :text:       true
   :to_s:       'auto_email_spider'
 
 - :user_agent: Atomz/1.0
   :name:       :atomz
   :version:    '1.0'
+  :text:       true
   :to_s:       'atomz atomz1'
 
 - :user_agent: Atomic_Email_Hunter/4.0
   :name:       :atomic_email_hunter
   :version:    '4.0'
+  :text:       true
   :to_s:       'atomic_email_hunter atomic_email_hunter4'
 
 - :user_agent: AltaVista Intranet V2.0 evreka.com crawler@evreka.com
   :name:       :altavista
   :version:
+  :text:       true
   :to_s:       'altavista'
 
 - :user_agent: AlkalineBOT/1.4 (1.4.0326.0 RTM)
   :name:       :alkalinebot
   :version:     '1.4'
+  :text:       true
   :to_s:       'alkalinebot alkalinebot1'
 
 - :user_agent: AcoiRobot
   :name:       :acoi
   :version:
+  :text:       true
   :to_s:       'acoi'
 
 - :user_agent: 8484 Boston Project v 1.0
   :name:       :boston_project
   :version:
+  :text:       true
   :to_s:       'boston_project'
 
 - :user_agent: Acoon Robot v1.52 (http://www.acoon.de)
   :name:       :acoon
   :version:
+  :text:       true
   :to_s:       'acoon'
 
 - :user_agent: Acoon Robot v1.50.001
   :name:       :acoon
   :version:
+  :text:       true
   :to_s:       'acoon'
 
 - :user_agent: Accoona-AI-Agent/1.1.1 (crawler at accoona dot com)
   :name:       :accoona
   :version:
+  :text:       true
   :to_s:       'accoona'
 
 - :user_agent: 4anything.com LinkChecker v2.0
   :name:       :four_anything
   :version:
+  :text:       true
   :to_s:       'four_anything'
 
 - :user_agent: ia_archiver (+http://www.alexa.com/site/help/webmasters; crawler@alexa.com)
   :name:       :alexa
   :version:
+  :text:       true
   :to_s:       'alexa'
 
 - :user_agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
   :name:       :googlebot
   :version:    '2.1'
+  :text:       true
   :to_s:       'googlebot googlebot2'
 
 - :user_agent: Googlebot/2.1 (+http://www.googlebot.com/bot.html)
   :name:       :googlebot
   :version:    '2.1'
+  :text:       true
   :to_s:       'googlebot googlebot2'
 
 - :user_agent: Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)
   :name:       :yahoo_slurp
   :version:
+  :text:       true
   :to_s:       'yahoo_slurp'
 
 - :user_agent: msnbot/2.1
   :name:       :msnbot
   :version:    '2.1'
+  :text:       true
   :to_s:       'msnbot msnbot2'
 
 - :user_agent: msnbot/1.1 (+http://search.msn.com/msnbot.htm)
   :name:       :msnbot
   :version:    '1.1'
+  :text:       true
   :to_s:       'msnbot msnbot1'
 
 - :user_agent: Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)
   :name:       :bingbot
   :version:    '2.0'
+  :text:       true
   :to_s:       'bingbot bingbot2'
 
 - :user_agent: Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)
   :name:       :baiduspider
   :version:    '2.0'
+  :text:       true
   :to_s:       'baiduspider baiduspider2'
 
 - :user_agent: Baiduspider+(+http://www.baidu.com/search/spider_jp.html)
   :name:       :baiduspider
   :version:
+  :text:       true
   :to_s:       'baiduspider'
 
 - :user_agent: Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)
   :name:       :yandexbot
   :version:    '3.0'
+  :text:       true
   :to_s:       'yandexbot yandexbot3'
 
 - :user_agent: Sosospider+(+http://help.soso.com/webspider.htm)
   :name:       :sosospider
   :version:
+  :text:       true
   :to_s:       'sosospider'
 
 - :user_agent: Exabot/2.0
   :name:       :exabot
   :version:    '2.0'
+  :text:       true
   :to_s:       'exabot exabot2'
 
 - :user_agent: sogou spider
   :name:       :sogou_spider
   :version:
+  :text:       true
   :to_s:       'sogou_spider'
 
 - :user_agent: NutchCVS/0.8-dev (Nutch; http://lucene.apache.org/nutch/bot.html; nutch-agent@lucene.apache.org)
   :name:       :nutch
+  :version:
+  :text:       true
   :to_s:       'nutch'
 
 - :user_agent: Scrapy/2.0 (+http://scrapy.org)
   :name:       :scrapy
   :version:    '2.0'
+  :text:       true
   :to_s:       'scrapy scrapy2'
 
 - :user_agent: DataparkSearch/4.37-23012006 ( http://www.dataparksearch.org/)
   :name:       :dataparksearch
   :version:    '4.37'
+  :text:       true
   :to_s:       'dataparksearch dataparksearch4'
 
 - :user_agent: DataparkSearch/4.35-02122005 ( http://www.dataparksearch.org/)
   :name:       :dataparksearch
   :version:    '4.35'
+  :text:       true
   :to_s:       'dataparksearch dataparksearch4'
 
 - :user_agent: Mozilla/5.0 (compatible; BeslistBot; nl; BeslistBot 1.0; http://www.beslist.nl/
   :name:       :beslistbot
   :version:    '1.0'
+  :text:       true
   :to_s:       'beslistbot beslistbot1'
 
 - :user_agent: facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)
   :name:       :facebook
   :version:
+  :text:       true
   :to_s:       'facebook'
 
 - :user_agent: facebot
   :version:
+  :text:       true
   :name:       :facebook
 
 - :user_agent: twitterbot
   :name:       :twitterbot
   :version:
+  :text:       true
   :to_s:       'twitterbot'
 
 - :user_agent: linkedinbot
   :name:       :linkedin
   :version:
+  :text:       true
   :to_s:       'linkedin'
 
 - :user_agent: Instagram 4.2.5 (iPad3,6; iPhone OS 7_0_6; en_US; en) AppleWebKit/420+
   :name:       :instagram
   :version:    '4.2.5'
+  :text:       true
   :to_s:       'instagram instagram4 ios ios7'
 
 - :user_agent: Instagram 6.0.1 (iPad3,4; iPhone OS 7_0_3; en_AU; en-GB) AppleWebKit/420+
   :name:       :instagram
   :version:    '6.0.1'
+  :text:       true
   :to_s:       'instagram instagram6 ios ios7'
 
 - :user_agent: Pinterest/1.0 +http://pinterest.com
   :name:       :pinterest
   :version:    '1.0'
+  :text:       true
   :to_s:       'pinterest pinterest1'
 
 - :user_agent: Tumblr/117 CFNetwork/609.1.4 Darwin/13.0.0
   :name:       :tumblr
   :version:    '117'
+  :text:       true
   :to_s:       'tumblr tumblr117'
 
 - :user_agent: holmes/3.12.4 (http://morfeo.centrum.cz/bot)
   :name:       :holmes
   :version:    '3.12.4'
+  :text:       true
   :to_s:       'holmes holmes3'
 
 - :user_agent: Mozilla/2.0 (compatible; Ask Jeeves/Teoma)
   :name:       :ask
   :version:
+  :text:       true
   :to_s:       'ask'
 
 - :user_agent: DuckDuckBot/1.0; (+http://duckduckgo.com/duckduckbot.html)
   :name:       :duckduckgo
+  :version:
+  :text:       true
   :to_s:       'duckduckgo'
