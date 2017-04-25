@@ -62,20 +62,20 @@ module Browserino
       preset opts.merge(like: tmp.to_sym), &block
     end
 
-    def validators(&block)
-      preset type: :validator, &block
+    def validators(opts = {}, &block)
+      preset opts.merge(type: :validator), &block
     end
 
-    def browsers(&block)
-      preset type: :browser, &block
+    def browsers(opts = {}, &block)
+      preset opts.merge(type: :browser), &block
     end
 
-    def bots(&block)
-      preset type: :bot, &block
+    def bots(opts = {}, &block)
+      preset opts.merge(type: :bot), &block
     end
 
-    def libraries(&block)
-      preset type: :library, &block
+    def libraries(opts = {}, &block)
+      preset opts.merge(type: :library), &block
     end
 
     def with_alias(pattern, **opts, &block)

@@ -38,6 +38,7 @@ Browserino.config.define do
   label :sierra,             for: :macintosh, range: '10.12'..'10.12.9'
 
   label :windows_dos,        for: :windows,   range: '3.1'..'4.0'
+  label :windows_98,         for: :windows,   range: '98'..'98.9.9'
   label :windows_2000,       for: :windows,   range: '5.0'..'5.0.9'
   label :windows_xp,         for: :windows,   range: '5.1'..'5.2.9'
   label :windows_vista,      for: :windows,   range: '6.0'..'6.0.9'

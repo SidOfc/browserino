@@ -17,7 +17,7 @@ Browserino.config.define do
   # a simple set of global matchers that will be merged and scanned
   # with a specific matcher when the final client object is created
   match do
-    locale           %r{(?<!nintendo)[;\s(](\w{2}(?:\-\w{2})?)[;)]}i
+    locale           %r{(?<!nintendo)[;\s(]([a-z]{2}(?:\-[a-z]{2})?)[;)]}i
     architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86|arm)}i
     mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
@@ -127,6 +127,7 @@ Browserino.config.define do
                                locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
     match %r{amaya}i,          name: :amaya,    text: true
     match %r{lynx}i,           name: :lynx,     text: true
+    match %r{linemode}i,       name: :linemode, text: true
     match %r{elinks}i,         name: :elinks,   text: true
     match %r{links}i,          name: :links,    version: %r{links\s\(([\d\.]+)}i
     match %r{netsurf}i,        name: :netsurf
@@ -233,14 +234,15 @@ Browserino.config.define do
   end
 
   # automatically set type to :library for each defined matcher
-  libraries do
-    match %r{php}i,    name: :php
-    match %r{python}i, name: :python, version: %r{-urllib/([\d\.]+)}i
-    match %r{perl}i,   name: :perl
-    match %r{java}i,   name: :java
-    match %r{pycurl}i, name: :pycurl
-    match %r{curl}i,   name: :curl
-    match %r{wget}i,   name: :wget
+  libraries text: true do
+    match %r{php}i,      name: :php
+    match %r{python}i,   name: :python, version: %r{-urllib/([\d\.]+)}i
+    match %r{perl}i,     name: :perl
+    match %r{java}i,     name: :java
+    match %r{pycurl}i,   name: :pycurl
+    match %r{curl}i,     name: :curl
+    match %r{wget}i,     name: :wget
+    match %r{webfetch}i, name: :webfetch
   end
 
   # inherit properties a standard set of properties by the name of a
@@ -300,7 +302,11 @@ Browserino.config.define do
 
     # because of this, we now have to explicitly define version patterns
     # for the user agents that follow the 'regular' pattern
-    match %r{aol}i     ,          name: :aol,
+    match %r{netcaptor}i,         name: :netcaptor,
+                                  version: %r{netcaptor\s([\d\.]+)}i
+    match %r{simulbrowse}i,       name: :simulbrowse,
+                                  version: %r{simulbrowse\s([\d\.]+)}i
+    match %r{aol}i,               name: :aol,
                                   version: %r{aol\s([\d\.]+)}i
     match %r{sleipnir}i,          name: :sleipnir,
                                   version: %r{sleipnir/([\d\.]+)}i
