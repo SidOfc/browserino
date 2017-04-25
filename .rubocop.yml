@@ -4,8 +4,8 @@ AllCops:
     - 'Guardfile'
     - '*.gemspec'
     - 'Rakefile'
-    - 'tmp/*'
-    - 'vendor/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
 
 Documentation:
   Enabled: false
