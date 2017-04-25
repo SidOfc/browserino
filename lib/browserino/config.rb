@@ -31,7 +31,11 @@ module Browserino
     end
 
     def match(rgxp = nil, **opts, &block)
-      rgxp, opts = [nil, rgxp] if rgxp.is_a? Hash
+      if rgxp.is_a? Hash
+        opts = rgxp.dup
+        rgxp = nil
+      end
+
       opts = @tmp_defaults.merge opts if @tmp_defaults.is_a? Hash
 
       if rgxp && opts[:like]
@@ -79,11 +83,11 @@ module Browserino
     end
 
     def with_alias(pattern, **opts, &block)
-      id = matchers.select { |id| id == opts[:like] }.first
+      alt = matchers.select { |id| id == opts[:like] }.first
 
-      raise "No alias found for: #{opts[:like] || 'nil'}" unless id
+      raise "No alias found for: #{opts[:like] || 'nil'}" unless alt
 
-      base = id.properties
+      base = alt.properties
       if (excl = opts.delete(:except))
         base = base.reject { |k| excl.include? k }
       end

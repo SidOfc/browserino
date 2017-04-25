@@ -11,8 +11,24 @@ Documentation:
 Lint/AmbiguousRegexpLiteral:
   Enabled: false
 
+Style/CaseEquality:
+  Enabled: false
+
 Style/RegexpLiteral:
   Enabled: false
+
+Style/MethodMissing:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/ClassLength:
+  CountComments: false
+  Max: 150
 
 Metrics/MethodLength:
   CountComments: false

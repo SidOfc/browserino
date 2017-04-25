@@ -6,7 +6,6 @@ Browserino.config.define do
   # the change in order. The order can be changed - no problem,
   # as long as the tests keep running
 
-
   # a set of global matchers that will use formatted properties found earlier
   # they will also be applied to every matcher unless that matcher has it's own
   # (or inherited a property through like) property set up for
@@ -96,8 +95,8 @@ Browserino.config.define do
     end
 
     match %r{(?<!(?:net))surf}i, name: :surf
-    match %r{midori}i,           name: :midori,    engine: :webkit
     match %r{amigavoyager}i,     name: :amigavoyager
+    match %r{midori}i,           name: :midori,    engine: :webkit
     match %r{qupzilla}i,         name: :qupzilla,  engine: :webkit
     match %r{shiira}i,           name: :shiira,    engine: :webkit
     match %r{classilla}i,        name: :classilla, engine: :gecko,
