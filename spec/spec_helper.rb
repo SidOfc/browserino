@@ -19,4 +19,10 @@ module Library
   def self.random_user_agent(type = :browsers)
     data[type].sample[:user_agent]
   end
+
+  module Helpers
+    def self.version_sym_for(sym)
+      [:label, :name].include?(sym) ? :version : "#{sym}_version".to_sym
+    end
+  end
 end

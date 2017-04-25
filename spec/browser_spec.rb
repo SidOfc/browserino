@@ -14,17 +14,9 @@ describe 'Browserino browsers' do
         end
       end
 
-      if client.architecture == :x64
-        it "expects client.x64? to be true" do
-          expect(client.x64?).to eq true
-        end
-      elsif client.architecture == :x32
-        it "expects client.x32? to be true" do
-          expect(client.x32?).to eq true
-        end
-      elsif client.architecture == :arm
-        it "expects client.arm? to be true" do
-          expect(client.arm?).to eq true
+      if [:x64, :arm, :x32].include?(client.architecture)
+        it "expects client.#{client.architecture}? to be true" do
+          expect(client.send("#{client.architecture}?")).to eq true
         end
       end
 
@@ -49,8 +41,7 @@ describe 'Browserino browsers' do
 
       # Test defined property methods in browsers.yml
       spec.reject { |k| exclude.include? k }.each do |test_method, test_result|
-        additional = test_result && " and client.#{test_method}?('#{test_result}') to be #{test_result && 'truthy' || 'falsy'}"
-        it "expects client.#{test_method} to be '#{test_result}'#{additional}" do
+        it "expects client.#{test_method} to be '#{test_result}' and client.#{test_method}?('#{test_result}') to be #{test_result && 'truthy' || 'falsy'}" do
           expect(client.send(test_method)).to eq test_result
           if test_result
             expect(client.send("#{test_method}?", test_result)).to be_truthy
@@ -60,76 +51,32 @@ describe 'Browserino browsers' do
         end
       end
 
-      # test magic aliasses when defined
       [:name, :engine, :platform].each do |prop|
         result  = spec[prop]
+        name    = "#{spec[prop]}?"
+        ver     = spec[Library::Helpers.version_sym_for(prop)]
+        has_ver = ver.to_s.strip.empty?
 
+        unless result.to_s.strip.empty?
+          additional = has_ver && ", client.#{name}('#{ver}') and client.is?('#{spec[:name]}', version: #{ver})"
+          it "expects client.#{name}, client.is?('#{spec[prop]}')#{additional} to be truthy" do
+            expect(client.send("#{name}")).to be_truthy
+            expect(client.is?(spec[prop])).to be_truthy
+
+            if has_ver
+              expect(client.send("#{name}", ver.to_s)).to be_truthy
+              expect(client.is?(spec[prop], version: ver)).to be_truthy
+            end
+          end
+        end
+
+        # test magic aliasses when defined
         next unless Browserino.config.aliasses[result].any?
 
-        ver_res = spec[:version] if prop == :name
-        ver_res = spec["#{prop}_version".to_sym] if ver_res.nil?
-
         Browserino.config.aliasses[result].each do |alt|
-          it "expects client.#{alt}?#{ver_res && "and client.#{alt}? '#{ver_res}'"} to be truthy" do
+          it "expects client.#{alt}?#{ver && "and client.#{alt}?('#{ver}')"} to be truthy" do
             expect(client.send("#{alt}?")).to be_truthy
-            expect(client.send("#{alt}?", ver_res)).to be_truthy if ver_res
-          end
-        end
-      end
-
-      # test magic name methods when possible
-      unless spec[:name].to_s.strip.empty?
-        name = "#{spec[:name]}?"
-        it "expects client.#{name} to be truthy" do
-          expect(client.send("#{name}")).to be_truthy
-        end
-
-        it "expects client.is?('#{spec[:name]}') to be truthy" do
-          expect(client.is?(spec[:name])).to be_truthy
-        end
-
-        unless spec[:version].to_s.strip.empty?
-          name_ver = spec[:version]
-          it "expects client.#{name}('#{name_ver}') and client.is?('#{spec[:name]}', version: '#{name_ver}') to be truthy" do
-            expect(client.send("#{name}", name_ver.to_s)).to be_truthy
-            expect(client.is?(spec[:name], version: name_ver)).to be_truthy
-          end
-        end
-      end
-
-      # test magic platform methods when possible
-      unless spec[:platform].to_s.strip.empty?
-        platform = "#{spec[:platform]}?"
-        it "expects client.#{platform} to be truthy" do
-          expect(client.send("#{platform}")).to be_truthy
-        end
-
-        plat_ver     = spec[:platform_version]
-        has_plat_ver = plat_ver.to_s.strip.empty?
-        additional   = has_plat_ver && ", client.#{platform}('#{plat_ver}') and client.is?('#{spec[:platform]}', version: #{plat_ver})"
-        it "expects client.is?('#{spec[:platform]}')#{additional} to be truthy" do
-          expect(client.is?(spec[:platform])).to be_truthy
-
-          if has_plat_ver
-            expect(client.send("#{platform}", plat_ver.to_s)).to be_truthy
-            expect(client.is?(spec[:platform], version: plat_ver)).to be_truthy
-          end
-        end
-      end
-
-      # test magic engine methods when possible
-      unless spec[:engine].to_s.strip.empty?
-        engi = "#{spec[:engine]}?"
-        it "expects client.#{engi} and client.is?('#{spec[:engine]}') to be truthy" do
-          expect(client.send("#{engi}")).to be_truthy
-          expect(client.is?(spec[:engine])).to be_truthy
-        end
-
-        unless spec[:engine_version].to_s.strip.empty?
-          engi_ver = spec[:engine_version]
-          it "expects client.#{engi}('#{engi_ver}') and client.is?('#{spec[:engine]}', version: #{engi_ver}) to be truthy" do
-            expect(client.send("#{engi}", engi_ver.to_s)).to be_truthy
-            expect(client.is?(spec[:engine], version: engi_ver)).to be_truthy
+            expect(client.send("#{alt}?", ver)).to be_truthy if has_ver
           end
         end
       end

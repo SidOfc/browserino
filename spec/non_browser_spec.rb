@@ -29,30 +29,26 @@ TYPE_MAP = { validators: :validator, bots: :bot, libraries: :library }
 
         # test magic aliasses when defined
         Browserino.config.aliasses[spec[:name]].each do |alt|
-          it "expects client.#{alt}? to be truthy" do
+          additional = spec[:version] && " and client.#{alt}?('#{spec[:version]}')"
+          it "expects client.#{alt}?#{additional} to be truthy" do
             expect(client.send("#{alt}?")).to be_truthy
-          end
-
-          if spec[:version]
-            it "expects client.#{alt}?('#{spec[:version]}') to be truthy}" do
-              expect(client.send("#{alt}?", spec[:version])).to be_truthy
-            end
+            expect(client.send("#{alt}?", spec[:version])).to be_truthy if spec[:version]
           end
         end
 
         # test magic name methods when possible
         unless spec[:name].to_s.strip.empty?
-          name = "#{spec[:name]}?"
-          it "expects client.#{name} and client.is?('#{spec[:name]}') to be truthy" do
+          name       = "#{spec[:name]}?"
+          ver        = spec[:platform_version]
+          has_ver    = ver.to_s.strip.empty?
+          additional = has_ver && ", client.#{name}('#{ver}') and client.is?('#{spec[:name]}', version: #{ver})"
+          it "expects client.#{name} and client.is?('#{spec[:name]}')#{additional} to be truthy" do
             expect(client.send("#{name}")).to be_truthy
             expect(client.is?(spec[:name])).to be_truthy
-          end
 
-          unless spec[:version].to_s.strip.empty?
-            name_ver = spec[:version]
-            it "expects client.#{name}('#{name_ver}') and client.is?('#{spec[:name]}', version: '#{name_ver}') to be truthy" do
-              expect(client.send("#{name}", name_ver.to_s)).to be_truthy
-              expect(client.is?(spec[:name], version: name_ver)).to be_truthy
+            if has_ver
+              expect(client.send("#{name}", ver.to_s)).to be_truthy
+              expect(client.is?(spec[:name], version: ver)).to be_truthy
             end
           end
         end
