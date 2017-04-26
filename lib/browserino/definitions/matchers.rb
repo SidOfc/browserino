@@ -24,12 +24,12 @@ Browserino.config.define do
                         |tizen|vodafone|t\-mobile|opera\sm(?:ob|in)i)}xi
     platform         %r{.*(xbox|wii|nintendo\sds|playstation|windows(?:\sphone)?
                         |macintosh|mac\sos\sx|android|tizen|ip(?:[ao]d|hone)
-                        |blackberry|linux|ubuntu|x11|bsd|s(?:unos|olaris)
+                        |blackberry|cros|linux|ubuntu|x11|bsd|s(?:unos|olaris)
                         |amigaos|w(?:eb)?os|risc)}xi
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
                         |blackberry|bb|s(?:unos|olaris)/?|w(?:eb)?os/|tizen
-                        |amigaos/?)\s?([\d\._]+)}xi
+                        |amigaos/?|cros\s[\w-]+)\s?([\d\._]+)}xi
   end
 
   # automatically set type to :browser for each defined matcher

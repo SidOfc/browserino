@@ -51,12 +51,14 @@ Browserino.config.define do
   end
 
   filter :platform do |val|
-    val = :ios       if val =~ %r{ip(?:[ao]d|hone)}i
-    val = :webos     if val =~ %r{w(?:eb)?os}i
-    val = :linux     if val =~ %r{ubuntu|x11}i
-    val = :solaris   if val =~ %r{s(?:unos|olaris)}i
-    val = :macintosh if val =~ %r{mac_os_x}i
-    val
+    if %r{ip(?:[ao]d|hone)}i =~ val    then :ios
+    elsif %r{w(?:eb)?os}i =~ val       then :webos
+    elsif %r{ubuntu|x11}i =~ val       then :linux
+    elsif %r{mac_os_x}i =~ val         then :macintosh
+    elsif %r{s(?:unos|olaris)}i =~ val then :solaris
+    elsif %r{cros}i =~ val             then :chromeos
+    else val
+    end
   end
 
   filter :architecture do |val|

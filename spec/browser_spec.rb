@@ -58,7 +58,7 @@ describe 'Browserino browsers' do
         has_ver = ver.to_s.strip.empty?
 
         unless result.to_s.strip.empty?
-          additional = has_ver && ", client.#{name}('#{ver}') and client.is?('#{spec[:name]}', version: #{ver})"
+          additional = has_ver && ", client.#{name}('#{ver}') and client.is?('#{spec[:name]}', version: #{ver})" || ''
           it "expects client.#{name}, client.is?('#{spec[prop]}')#{additional} to be truthy" do
             expect(client.send("#{name}")).to be_truthy
             expect(client.is?(spec[prop])).to be_truthy
@@ -74,7 +74,7 @@ describe 'Browserino browsers' do
         next unless Browserino.config.aliasses[result].any?
 
         Browserino.config.aliasses[result].each do |alt|
-          it "expects client.#{alt}?#{ver && "and client.#{alt}?('#{ver}')"} to be truthy" do
+          it "expects client.#{alt}?#{has_ver && " and client.#{alt}?('#{ver}')" || ''} to be truthy" do
             expect(client.send("#{alt}?")).to be_truthy
             expect(client.send("#{alt}?", ver)).to be_truthy if has_ver
           end

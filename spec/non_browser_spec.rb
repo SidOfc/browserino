@@ -41,8 +41,8 @@ TYPE_MAP = { validators: :validator, bots: :bot, libraries: :library }
           name       = "#{spec[:name]}?"
           ver        = spec[:platform_version]
           has_ver    = ver.to_s.strip.empty?
-          additional = has_ver && ", client.#{name}('#{ver}') and client.is?('#{spec[:name]}', version: #{ver})"
-          it "expects client.#{name} and client.is?('#{spec[:name]}')#{additional} to be truthy" do
+          additional = has_ver && ", client.#{name}('#{ver}') and client.is?('#{spec[:name]}', version: '#{ver}')"
+          it "expects client.#{name}#{has_ver && ', ' || ' and '} client.is?('#{spec[:name]}')#{additional} to be truthy" do
             expect(client.send("#{name}")).to be_truthy
             expect(client.is?(spec[:name])).to be_truthy
 
