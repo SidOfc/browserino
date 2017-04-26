@@ -48,14 +48,12 @@ Browserino.config.define do
       #                  instantiated Client object (right after creation)
       name           :maxthon
 
-      version        %r{maxthon[/\s]([\d\.]+)}i
       engine         %r{(webkit|presto|gecko|trident)}i
     end
 
     match %r{ucbrowser}i do
       name           :ucbrowser
 
-      version        %r{ucbrowser/?([\d\.]+)}i
       engine         %r{(trident|gecko|webkit|presto)}i
     end
 
@@ -100,8 +98,6 @@ Browserino.config.define do
     match %r{midori}i,           name: :midori,    engine: :webkit
     match %r{qupzilla}i,         name: :qupzilla,  engine: :webkit
     match %r{shiira}i,           name: :shiira,    engine: :webkit
-    match %r{classilla}i,        name: :classilla, engine: :gecko,
-                                 engine_version: %r{rv:\s?([\d\.]+)}i
 
     match %r{firefox|phoenix}i do
       name           :firefox
@@ -203,7 +199,11 @@ Browserino.config.define do
     match %r{harvest}i,                     name: :harvest
     match %r{huaweisymantecspider}i,        name: :huaweisymantecspider
     match %r{mj12bot}i,                     name: :mj12bot
+    match %r{litefinder}i,                  name: :litefinder
+    match %r{ahrefsbot}i,                   name: :ahrefsbot
 
+    match %r{megaindex}i,        name: :megaindex,
+                                 version: %r{megaindex\.ru/([\d\.]+)}i
     match %r{mass\sdownloader}i, name: :mass_downloader,
                                  version: %r{mass\sdownloader/([\d\.]+)}i
     match %r{safetynet\srobot}i, name: :safetynet_robot,
@@ -238,8 +238,8 @@ Browserino.config.define do
   # automatically set type to :library for each defined matcher
   libraries text: true do
     match %r{Go-http-client}i, name: :golang, version: %r{-client/([\d\.]+)}i
-    match %r{php}i,            name: :php
     match %r{python}i,         name: :python, version: %r{-urllib/([\d\.]+)}i
+    match %r{php}i,            name: :php
     match %r{perl}i,           name: :perl
     match %r{java}i,           name: :java
     match %r{pycurl}i,         name: :pycurl
@@ -292,6 +292,7 @@ Browserino.config.define do
     match %r{kazehakase}i, name: :kazehakase
     match %r{shiretoko}i,  name: :shiretoko
     match %r{galeon}i,     name: :galeon
+    match %r{classilla}i,  name: :classilla
   end
 
   # never thought a browser would want to be like IE...

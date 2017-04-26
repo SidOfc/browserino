@@ -3,7 +3,7 @@ require 'spec_helper'
 TYPE_MAP = { validators: :validator, bots: :bot, libraries: :library }
 (Library.data.keys - [:browsers]).each do |type|
   describe "Browserino #{type}" do
-    Library.data.fetch(type, []).each do |spec|
+    Library.data.fetch(type, []).shuffle.each do |spec|
       ua          = spec.delete :user_agent
       client      = Browserino.parse ua
       spec[:type] ||= TYPE_MAP[type]

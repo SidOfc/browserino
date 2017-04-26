@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Browserino browsers' do
   browsers = Library.data.fetch(:browsers, [])
 
-  browsers.each do |spec|
+  browsers.shuffle.each do |spec|
     exclude = [:user_agent, :mobile, :to_s]
     client  = Browserino.parse spec[:user_agent]
 

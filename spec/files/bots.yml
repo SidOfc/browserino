@@ -1,5 +1,29 @@
 ---
 :bots:
+- :user_agent: Mozilla/5.0 (compatible; AhrefsBot/5.1; +http://ahrefs.com/robot/)
+  :name:       :ahrefsbot
+  :version:    '5.1'
+  :text:       true
+  :to_s:       'ahrefsbot ahrefsbot5'
+
+- :user_agent: Mozilla/5.0 (compatible; MegaIndex.ru/2.0; +http://megaindex.com/crawler)
+  :name:       :megaindex
+  :version:    '2.0'
+  :text:       true
+  :to_s:       'megaindex megaindex2'
+
+- :user_agent: Mozilla/5.0 (compatible; MJ12bot/v1.4.7; http://mj12bot.com/)
+  :name:       :mj12bot
+  :version:    '1.4.7'
+  :text:       true
+  :to_s:       'mj12bot mj12bot1'
+
+- :user_agent: Mozilla/5.0 (compatible; LiteFinder/1.0; +http://www.litefinder.net/about.html)
+  :name:       :litefinder
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'litefinder litefinder1'
+
 - :user_agent: Mozilla/5.0 (compatible; MJ12bot/v1.4.7; http://mj12bot.com/)
   :name:       :mj12bot
   :version:    '1.4.7'

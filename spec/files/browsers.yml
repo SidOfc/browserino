@@ -120,6 +120,7 @@
   :architecture:
   :mobile:           false
   :to_s:             'classilla gecko gecko9 macintosh'
+  :like:             :firefox
 
 - :user_agent:       Mozilla/3.0 (compatible; NetPositive/2.2.2; BeOS)
   :name:             :netpositive
