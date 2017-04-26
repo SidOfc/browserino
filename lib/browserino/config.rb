@@ -67,6 +67,10 @@ module Browserino
       preset opts.merge(like: tmp.to_sym), &block
     end
 
+    def emails(opts = {}, &block)
+      preset opts.merge(type: :email), &block
+    end
+
     def validators(opts = {}, &block)
       preset opts.merge(type: :validator), &block
     end

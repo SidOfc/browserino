@@ -17,7 +17,7 @@ Browserino.config.define do
   # a simple set of global matchers that will be merged and scanned
   # with a specific matcher when the final client object is created
   match do
-    locale           %r{(?<!nintendo)[;\s(]([a-z]{2}(?:\-[a-z]{2})?)[;)]}i
+    locale           %r{(?<!nintendo)[;\s(]([a-z]{2}(?:[-_][a-z]{2})?)[;)]}i
     architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86|arm)}i
 
     mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
@@ -26,13 +26,34 @@ Browserino.config.define do
 
     platform         %r{.*(xbox|wii|nintendo\sds|playstation|windows(?:\sphone)?
                         |macintosh|mac\sos\sx|android|tizen|ip(?:[ao]d|hone)
-                        |blackberry|cros|linux|ubuntu|x11|bsd|s(?:unos|olaris)
-                        |amigaos|w(?:eb)?os|risc)}xi
+                        |blackberry|risc|linux|ubuntu|x11|bsd|s(?:unos|olaris)
+                        |amigaos|w(?:eb)?os|(?<!mi)cros)}xi
 
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
                         |blackberry|bb|s(?:unos|olaris)/?|w(?:eb)?os/|tizen
                         |amigaos/?|cros\s[\w-]+)\s?([\d\._]+)}xi
+  end
+
+  # automatically set type to :email for each defined matcher
+  emails do
+    match %r{outlook}i, name: :outlook
+    match %r{airmail}i, name: :airmail, engine: :webkit
+    match %r{barca}i,   name: :barca,   version: %r{barca(?:pro)?/([\d\.]+)}i
+
+    match %r{ggpht}i do
+      name           :gmail
+      engine         %r{(trident|gecko|webkit|presto|blink|servo|edge)}i
+      engine_version %r{(?:rv:|trident|webkit|presto|blink
+                        |servo|edge)[\s/]?([\d\.]+)}i
+    end
+  end
+
+  # these are the same as above except with engine set to gecko and
+  # to look for engine_version using gecko version pattern
+  emails engine: :gecko, engine_version: %r{rv:\s?([\d\.]+)}i do
+    match %r{thunderbird}i, name: :thunderbird
+    match %r{postbox}i,     name: :postbox
   end
 
   # automatically set type to :browser for each defined matcher
@@ -135,6 +156,7 @@ Browserino.config.define do
   end
 
   # automatically set type to :bot for each defined matcher
+  # additionally, set text to true to each of the matchers automatically
   bots text: true do
     match %r{googlebot}i,                   name: :googlebot
     match %r{yahoo\!\sslurp}i,              name: :yahoo_slurp
@@ -229,6 +251,7 @@ Browserino.config.define do
   end
 
   # automatically set type to :validator for each defined matcher
+  # additionally, set text to true to each of the matchers automatically
   validators text: true do
     match %r{cse\shtml\svalidator}i, name: :cse_html_validator
     match %r{csscheck}i,             name: :csscheck
@@ -245,6 +268,7 @@ Browserino.config.define do
   end
 
   # automatically set type to :library for each defined matcher
+  # additionally, set text to true to each of the matchers automatically
   libraries text: true do
     match %r{Go-http-client}i, name: :golang, version: %r{-client/([\d\.]+)}i
     match %r{python}i,         name: :python, version: %r{-urllib/([\d\.]+)}i

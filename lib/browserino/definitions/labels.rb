@@ -45,5 +45,7 @@ Browserino.config.define do
   label :windows_vista,      for: :windows,   range: '6.0'..'6.0.9'
   label :windows_7,          for: :windows,   range: '6.1'..'6.1.9'
   label :windows_8,          for: :windows,   range: '6.2'..'6.3'
-  label :windows_10,         for: :windows,   range: '10.0'..'10.0.9'
+  label :windows_10,         for: :windows,   range: '10.0'..'10.9.9'
+
+  label :outlook_2016,       for: :outlook,   range: '16.0'..'16.9.9'
 end

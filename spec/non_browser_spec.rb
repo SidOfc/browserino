@@ -1,12 +1,16 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-TYPE_MAP = { validators: :validator, bots: :bot, libraries: :library }
-(Library.data.keys - [:browsers]).each do |type|
+TYPE_MAP = { validators: :validator, bots: :bot, libraries: :library,
+             emails: :email }.freeze
+
+TYPE_MAP.each do |type, singular_type|
   describe "Browserino #{type}" do
     Library.data.fetch(type, []).shuffle.each do |spec|
       ua          = spec.delete :user_agent
       client      = Browserino.parse ua
-      spec[:type] ||= TYPE_MAP[type]
+      spec[:type] ||= singular_type
 
       describe [client.name, ua].join(' :: ') do
         if spec[:to_s]
