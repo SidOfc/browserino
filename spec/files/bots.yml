@@ -1,5 +1,11 @@
 ---
 :bots:
+- :user_agent: Mozilla/5.0 (compatible; Gigamega.bot/1.0; +http://www.gigamega.net/bot.html)
+  :name:       :gigamega
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'gigamega gigamega1'
+
 - :user_agent: Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt; DTS Agent
   :name:       :dts_agent
   :version:

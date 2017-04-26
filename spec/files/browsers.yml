@@ -1381,7 +1381,7 @@
   :to_s:             'safari safari5 webkit webkit533 windows windows6'
 
 - :user_agent:       Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; en-US) AppleWebKit/534.8+ (KHTML, like Gecko) Version/6.0.0.450 Mobile Safari/534.8+
-  :name:             :safari
+  :name:             :blackberry_browser
   :version:          '6.0.0.450'
   :engine:           :webkit
   :engine_version:   '534.8'
@@ -1390,7 +1390,8 @@
   :locale:           :en_us
   :architecture:
   :mobile:           true
-  :to_s:             'safari safari6 webkit webkit534 blackberry blackberry9800'
+  :to_s:             'blackberry_browser blackberry_browser6 webkit webkit534 blackberry blackberry9800'
+  :like:             :safari
 
 - :user_agent:       Mozilla/5.0 (iPhone; U; CPU iPhone OS 8_0 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8A293 Safari/6531.22.7
   :name:             :safari
@@ -1925,7 +1926,7 @@
   :to_s:             'safari safari5 webkit webkit533 windows windows6'
 
 - :user_agent:       Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+
-  :name:             :safari
+  :name:             :blackberry_browser
   :version:          '7.1.0.346'
   :engine:           :webkit
   :engine_version:   '534.11'
@@ -1934,10 +1935,11 @@
   :locale:           :en
   :architecture:
   :mobile:           true
-  :to_s:             'safari safari7 webkit webkit534 blackberry blackberry9900'
+  :to_s:             'blackberry_browser blackberry_browser7 webkit webkit534 blackberry blackberry9900'
+  :like:             :safari
 
 - :user_agent:       Mozilla/5.0 (BlackBerry; U; BlackBerry 9860; en-US) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.0.0.254 Mobile Safari/534.11+
-  :name:             :safari
+  :name:             :blackberry_browser
   :version:          '7.0.0.254'
   :engine:           :webkit
   :engine_version:   '534.11'
@@ -1946,10 +1948,11 @@
   :locale:           :en_us
   :architecture:
   :mobile:           true
-  :to_s:             'safari safari7 webkit webkit534 blackberry blackberry9860'
+  :to_s:             'blackberry_browser blackberry_browser7 webkit webkit534 blackberry blackberry9860'
+  :like:             :safari
 
 - :user_agent:       Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; it) AppleWebKit/534.8+ (KHTML, like Gecko) Version/6.0.0.668 Mobile Safari/534.8+
-  :name:             :safari
+  :name:             :blackberry_browser
   :version:          '6.0.0.668'
   :engine:           :webkit
   :engine_version:   '534.8'
@@ -1958,10 +1961,11 @@
   :locale:           :it
   :architecture:
   :mobile:           true
-  :to_s:             'safari safari6 webkit webkit534 blackberry blackberry9800'
+  :to_s:             'blackberry_browser blackberry_browser6 webkit webkit534 blackberry blackberry9800'
+  :like:             :safari
 
 - :user_agent:       Mozilla/5.0 (BlackBerry; U; BlackBerry 9700; pt) AppleWebKit/534.8+ (KHTML, like Gecko) Version/6.0.0.546 Mobile Safari/534.8+
-  :name:             :safari
+  :name:             :blackberry_browser
   :version:          '6.0.0.546'
   :engine:           :webkit
   :engine_version:   '534.8'
@@ -1970,7 +1974,8 @@
   :locale:           :pt
   :architecture:
   :mobile:           true
-  :to_s:             'safari safari6 webkit webkit534 blackberry blackberry9700'
+  :to_s:             'blackberry_browser blackberry_browser6 webkit webkit534 blackberry blackberry9700'
+  :like:             :safari
 
 - :user_agent:       Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25
   :name:             :safari

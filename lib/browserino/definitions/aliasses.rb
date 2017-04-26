@@ -10,4 +10,5 @@ Browserino.config.define do
   alias_for :ie,         :internet_explorer
   alias_for :facebook,   :fb
   alias_for :duckduckgo, :ddg
+  alias_for :chromeos,   :cros
 end

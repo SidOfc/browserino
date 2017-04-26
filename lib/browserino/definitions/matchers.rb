@@ -19,13 +19,16 @@ Browserino.config.define do
   match do
     locale           %r{(?<!nintendo)[;\s(]([a-z]{2}(?:\-[a-z]{2})?)[;)]}i
     architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86|arm)}i
+
     mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
                         |tizen|vodafone|t\-mobile|opera\sm(?:ob|in)i)}xi
+
     platform         %r{.*(xbox|wii|nintendo\sds|playstation|windows(?:\sphone)?
                         |macintosh|mac\sos\sx|android|tizen|ip(?:[ao]d|hone)
                         |blackberry|cros|linux|ubuntu|x11|bsd|s(?:unos|olaris)
                         |amigaos|w(?:eb)?os|risc)}xi
+
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
                         |blackberry|bb|s(?:unos|olaris)/?|w(?:eb)?os/|tizen
@@ -197,6 +200,9 @@ Browserino.config.define do
     match %r{seznambot}i,                   name: :seznambot
     match %r{dts\sagent}i,                  name: :dts_agent
 
+    match %r{gigamega}i,                 name: :gigamega,
+                                         version: %r{mega\.bot/([\d\.]+)}i
+
     match %r{sogou(?:\s\w+)?\s?spider}i, name: :sogou_spider,
                                          version: %r{spider/([\d\.]+)}i
 
@@ -267,19 +273,23 @@ Browserino.config.define do
 
   # inherit properties from matcher where name == :safari, (except :version)
   like :safari, except: [:version] do
-    match %r{icab}i,             name: :icab
-    match %r{bolt}i,             name: :bolt
-    match %r{stainless}i,        name: :stainless
-    match %r{arora}i,            name: :arora
-    match %r{samsungbrowser}i,   name: :samsungbrowser
-    match %r{omniweb}i,          name: :omniweb
-    match %r{webos|wosbrowser}i, name: :webosbrowser,
-                                 version: %r{(?:version|osbrowser)/([\d\.]+)}i
+    match %r{icab}i,               name: :icab
+    match %r{bolt}i,               name: :bolt
+    match %r{stainless}i,          name: :stainless
+    match %r{arora}i,              name: :arora
+    match %r{samsungbrowser}i,     name: :samsungbrowser
+    match %r{omniweb}i,            name: :omniweb
+
+    match %r{blackberry.*?(?=safari)}i, name: :blackberry_browser,
+                                        version: %r{version/([\d\.]+)}i
+
+    match %r{webos|wosbrowser}i,   name: :webosbrowser,
+                                   version: %r{(?:version|osbrowser)/([\d\.]+)}i
   end
 
   # inherit properties from matcher where name == :firefox, (except :version)
   like :firefox, except: [:version] do
-    match %r{k-meleon}i,   name: :kmeleon,  version: %r{k-meleon/([\d\.]+)}i
+    match %r{k-meleon}i,   name: :kmeleon,  version: %r{leon/([\d\.]+)}i
     match %r{camino}i,     name: :camino,   locale: %r{\s(\w{2}(?:\-\w{2})?),}i
     match %r{waterfox}i,   name: :waterfox, architecture: :x664
     match %r{prism}i,      name: :prism
