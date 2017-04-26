@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Browserino
   class Matcher
     attr_reader :pattern, :properties

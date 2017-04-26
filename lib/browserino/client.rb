@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Browserino
   class Client
     attr_reader :property_names
@@ -104,7 +105,7 @@ module Browserino
     end
 
     def to_s
-      @str_cache ||= [:name, :engine, :platform].map do |prop|
+      @str_cache ||= %i[name engine platform].map do |prop|
         name = send prop
         ver  = version if prop == :name
         ver  = send "#{prop}_version" if ver.nil?
@@ -139,7 +140,7 @@ module Browserino
     private
 
     def version_for(sym)
-      mtd = [:label, :name].include?(sym) ? :version : "#{sym}_version".to_sym
+      mtd = %i[label name].include?(sym) ? :version : "#{sym}_version".to_sym
       properties[mtd]
     end
 
@@ -172,7 +173,7 @@ module Browserino
     end
 
     def define_name_result_methods!
-      [:name, :engine, :platform].each do |prop|
+      %i[name engine platform].each do |prop|
         result  = properties[prop]
         ver_res = version_for(prop)
 

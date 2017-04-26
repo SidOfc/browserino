@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Browserino
   def self.analyze(user_agent, matcher = nil)
     @defaults ||= config.global_matchers.map(&:properties).reduce(&:merge)
@@ -41,7 +42,7 @@ module Browserino
   end
 
   def self.with_labels(properties)
-    [:name, :engine, :platform].each do |prop|
+    %i[name engine platform].each do |prop|
       lbl_prop = (prop == :name) && :label || "#{prop}_label".to_sym
       ver_prop = (prop == :name) && :version || "#{prop}_version".to_sym
       properties[lbl_prop] ||= label_for properties[prop], properties[ver_prop]

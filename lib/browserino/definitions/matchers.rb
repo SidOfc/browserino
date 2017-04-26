@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Browserino.config.define do
   # Aside from the logic going on in this file, the order in which things are
   # written is important! If you would move the :midori matcher below the

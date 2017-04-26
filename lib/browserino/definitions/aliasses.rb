@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Browserino.config.define do
   # aliasses will be defined after a Client has been initialized
   # only the aliasses matching the Client will be defined

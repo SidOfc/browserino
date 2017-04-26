@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Browserino.config.define do
   # executes before parsing the user agent, 's' in this case is the actual
   # user agent string in full glory. Do manipulations as you wish, I'm
@@ -60,7 +61,7 @@ Browserino.config.define do
 
   filter :architecture do |val|
     val = :x64 if val && val != :arm && val =~ %r{(?:x86_|amd|wow)?64|i686}i
-    val = :x32 if val && ![:arm, :x64].include?(val)
+    val = :x32 if val && !%i[arm x64].include?(val)
     val
   end
 

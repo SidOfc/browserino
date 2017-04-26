@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Browserino
   class Config < Options
     def define(&block)

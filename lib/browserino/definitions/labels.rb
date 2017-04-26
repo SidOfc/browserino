@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Browserino.config.define do
   # labels will be defined before a client has been initialized
   # they will not be filtered before being injected into the Client
