@@ -1,5 +1,12 @@
 ---
 :libraries:
+- :user_agent: Go-http-client/1.1
+  :name:       :golang
+  :version:    '1.1'
+  :platform:
+  :text:       true
+  :to_s:       'golang golang1'
+
 - :user_agent: webfetch/5.x.x
   :name:       :webfetch
   :version:    '5'

@@ -1,5 +1,11 @@
 ---
 :bots:
+- :user_agent: Mozilla/5.0 (compatible; MJ12bot/v1.4.7; http://mj12bot.com/)
+  :name:       :mj12bot
+  :version:    '1.4.7'
+  :text:       true
+  :to_s:       'mj12bot mj12bot1'
+
 - :user_agent: Mass Downloader/2.2
   :name:       :mass_downloader
   :version:    '2.2'

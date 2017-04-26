@@ -11,7 +11,7 @@ Browserino.config.define do
   # they will also be applied to every matcher unless that matcher has it's own
   # (or inherited a property through like) property set up for
   # the defined smart matcher
-  smart_match :version,        with: ':name[\s/]?([\d\._]+)',   flags: [:i]
+  smart_match :version,        with: ':name[\s/]?v?([\d\._]+)', flags: [:i]
   smart_match :engine_version, with: ':engine[\s/]?([\d\._]+)', flags: [:i]
 
   # a simple set of global matchers that will be merged and scanned
@@ -202,6 +202,7 @@ Browserino.config.define do
     match %r{getright}i,                    name: :getright
     match %r{harvest}i,                     name: :harvest
     match %r{huaweisymantecspider}i,        name: :huaweisymantecspider
+    match %r{mj12bot}i,                     name: :mj12bot
 
     match %r{mass\sdownloader}i, name: :mass_downloader,
                                  version: %r{mass\sdownloader/([\d\.]+)}i
@@ -218,7 +219,7 @@ Browserino.config.define do
   end
 
   # automatically set type to :validator for each defined matcher
-  validators do
+  validators text: true do
     match %r{cse\shtml\svalidator}i, name: :cse_html_validator
     match %r{csscheck}i,             name: :csscheck
     match %r{htmlparser}i,           name: :htmlparser
@@ -236,14 +237,15 @@ Browserino.config.define do
 
   # automatically set type to :library for each defined matcher
   libraries text: true do
-    match %r{php}i,      name: :php
-    match %r{python}i,   name: :python, version: %r{-urllib/([\d\.]+)}i
-    match %r{perl}i,     name: :perl
-    match %r{java}i,     name: :java
-    match %r{pycurl}i,   name: :pycurl
-    match %r{curl}i,     name: :curl
-    match %r{wget}i,     name: :wget
-    match %r{webfetch}i, name: :webfetch
+    match %r{Go-http-client}i, name: :golang, version: %r{-client/([\d\.]+)}i
+    match %r{php}i,            name: :php
+    match %r{python}i,         name: :python, version: %r{-urllib/([\d\.]+)}i
+    match %r{perl}i,           name: :perl
+    match %r{java}i,           name: :java
+    match %r{pycurl}i,         name: :pycurl
+    match %r{curl}i,           name: :curl
+    match %r{wget}i,           name: :wget
+    match %r{webfetch}i,       name: :webfetch
   end
 
   # inherit properties a standard set of properties by the name of a
@@ -257,7 +259,7 @@ Browserino.config.define do
     match %r{rockmelt}i,      name: :rockmelt
     match %r{flock}i,         name: :flock
     match %r{comodo_dragon}i, name: :comodo_dragon
-    match %r{yabrowser}i,     name: :yandex, version: %r{yabrowser/([\d\.]+)}i
+    match %r{yabrowser}i,     name: :yabrowser
   end
 
   # inherit properties from matcher where name == :safari, (except :version)
@@ -267,7 +269,7 @@ Browserino.config.define do
     match %r{stainless}i,      name: :stainless
     match %r{arora}i,          name: :arora
     match %r{samsungbrowser}i, name: :samsungbrowser
-    match %r{omniweb}i,        name: :omniweb, version: %r{omniweb/v([\d\.]+)}i
+    match %r{omniweb}i,        name: :omniweb
 
     match %r{webos|wosbrowser}i,
           name: :webosbrowser,

@@ -3,39 +3,47 @@
 - :user_agent: CSE HTML Validator Lite Online (http://online.htmlvalidator.com/php/onlinevallite.php)
   :name:       :cse_html_validator
   :version:
+  :text:       true
   :to_s:       'cse_html_validator'
 
 - :user_agent: CSSCheck/1.2.2
   :name:       :csscheck
   :version:    '1.2.2'
+  :text:       true
   :to_s:       'csscheck csscheck1'
 
 - :user_agent: Cynthia 1.0
   :name:       :cynthia
   :version:    '1.0'
+  :text:       true
   :to_s:       'cynthia cynthia1'
 
 - :user_agent: HTMLParser/1.6
   :name:       :htmlparser
   :version:    '1.6'
+  :text:       true
   :to_s:       'htmlparser htmlparser1'
 
 - :user_agent: P3P Validator
   :name:       :p3p_validator
   :version:
+  :text:       true
   :to_s:       'p3p_validator'
 
 - :user_agent: Jigsaw/2.2.5 W3C_CSS_Validator_JFouffa/2.0
   :name:       :w3c_css_validator
   :version:    '2.0.0'
+  :text:       true
   :to_s:       'w3c_css_validator w3c_css_validator2'
 
 - :user_agent: WDG_Validator/1.6.2
   :name:       :wdg_validator
   :version:    '1.6.2'
+  :text:       true
   :to_s:       'wdg_validator wdg_validator1'
 
 - :user_agent: W3C_Validator/1.654
   :name:       :w3c_validator
   :version:    '1.654'
+  :text:       true
   :to_s:       'w3c_validator w3c_validator1'
