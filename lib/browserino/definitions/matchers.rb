@@ -47,13 +47,11 @@ Browserino.config.define do
       #                  of the block, it will be executed within an
       #                  instantiated Client object (right after creation)
       name           :maxthon
-
       engine         %r{(webkit|presto|gecko|trident)}i
     end
 
     match %r{ucbrowser}i do
       name           :ucbrowser
-
       engine         %r{(trident|gecko|webkit|presto)}i
     end
 
@@ -65,14 +63,12 @@ Browserino.config.define do
 
     match %r{ope?ra?\smini}i do
       name           :opera_mini
-
       version        %r{ope?ra?\smini/([\d\.]+)}i
       engine         %r{(presto|webkit)}i
     end
 
     match %r{opera[^\w]}i do
       name           :opera
-
       version        %r{(?:opera[\s/]|version/)([\d\.]+)}i
       engine         %r{(presto|webkit)}i
     end
@@ -80,14 +76,12 @@ Browserino.config.define do
     match %r{msie|trident}i do
       name           :ie
       engine         :trident
-
       version        %r{(?:(?:ms)?ie\s|rv:)([\d\.]+)}i
       modern?        { version >= 10 }
     end
 
     match %r{chrome(?:ium)?}i do
       name           :chrome
-
       version        %r{chrome(?:ium)?/([\d\.]+)}i
       engine         %r{(webkit|blink)}i
       modern?        { version >= 50 }
@@ -101,7 +95,6 @@ Browserino.config.define do
 
     match %r{firefox|phoenix}i do
       name           :firefox
-
       engine         %r{(gecko|servo)}i
       engine_version %r{(?:rv:\s?|servo/)([\d\.]+)}i
       modern?        { version >= 50 }
@@ -110,7 +103,6 @@ Browserino.config.define do
     match %r{safari}i do
       name           :safari
       engine         :webkit
-
       version        %r{(?:safari|version)/([\d\.]+)}i
       modern?        { version >= 9 }
     end
@@ -118,10 +110,6 @@ Browserino.config.define do
     match %r{epiphany}i,       name: :epiphany, engine: :webkit
     match %r{uzbl}i,           name: :uzbl,     engine: :webkit
     match %r{adobeair}i,       name: :adobeair, engine: :webkit
-    match %r{dooble}i,         name: :dooble,   engine: :webkit,
-                               locale: %r{\((\w{2}(?:[-_]\w{2})?)\)}i
-    match %r{retawq}i,         name: :retawq,   text: true,
-                               locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
     match %r{amaya}i,          name: :amaya,    text: true
     match %r{lynx}i,           name: :lynx,     text: true
     match %r{linemode}i,       name: :linemode, text: true
@@ -135,6 +123,12 @@ Browserino.config.define do
     match %r{dillo}i,          name: :dillo
     match %r{hotjava}i,        name: :hotjava
     match %r{netpositive}i,    name: :netpositive
+
+    match %r{dooble}i,         name: :dooble,   engine: :webkit,
+                               locale: %r{\((\w{2}(?:[-_]\w{2})?)\)}i
+
+    match %r{retawq}i,         name: :retawq,   text: true,
+                               locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
   end
 
   # automatically set type to :bot for each defined matcher
@@ -147,7 +141,6 @@ Browserino.config.define do
     match %r{yandexbot}i,                   name: :yandexbot
     match %r{sosospider}i,                  name: :sosospider
     match %r{exabot}i,                      name: :exabot
-    match %r{sogou\s?spider}i,              name: :sogou_spider
     match %r{nutch}i,                       name: :nutch
     match %r{scrapy}i,                      name: :scrapy
     match %r{dataparksearch}i,              name: :dataparksearch
@@ -201,21 +194,31 @@ Browserino.config.define do
     match %r{mj12bot}i,                     name: :mj12bot
     match %r{litefinder}i,                  name: :litefinder
     match %r{ahrefsbot}i,                   name: :ahrefsbot
+    match %r{seznambot}i,                   name: :seznambot
 
-    match %r{megaindex}i,        name: :megaindex,
-                                 version: %r{megaindex\.ru/([\d\.]+)}i
-    match %r{mass\sdownloader}i, name: :mass_downloader,
-                                 version: %r{mass\sdownloader/([\d\.]+)}i
-    match %r{safetynet\srobot}i, name: :safetynet_robot,
-                                 version: %r{safetynet\srobot\s([\d\.]+)}i
-    match %r{internet\sninja}i,  name: :internet_ninja,
-                                 version: %r{internet\sninja\s([\d\.]+)}i
-    match %r{go\!zilla}i,        name: :gozilla,
-                                 version: %r{go\!zilla\s([\d\.]+)}i
-    match %r{larbin}i,           name: :larbin,
-                                 version: %r{larbin_([\d\.]+)}i
-    match %r{download\sdemon}i,  name: :download_demon,
-                                 version: %r{download\sdemon/([\d\.]+)}i
+    match %r{sogou(?:\s\w+)?\s?spider}i, name: :sogou_spider,
+                                         version: %r{spider/([\d\.]+)}i
+
+    match %r{megaindex}i,                name: :megaindex,
+                                         version: %r{index\.ru/([\d\.]+)}i
+
+    match %r{mass\sdownloader}i,         name: :mass_downloader,
+                                         version: %r{downloader/([\d\.]+)}i
+
+    match %r{safetynet\srobot}i,         name: :safetynet_robot,
+                                         version: %r{net\srobot\s([\d\.]+)}i
+
+    match %r{internet\sninja}i,          name: :internet_ninja,
+                                         version: %r{ninja\s([\d\.]+)}i
+
+    match %r{go\!zilla}i,                name: :gozilla,
+                                         version: %r{go\!zilla\s([\d\.]+)}i
+
+    match %r{larbin}i,                   name: :larbin,
+                                         version: %r{larbin_([\d\.]+)}i
+
+    match %r{download\sdemon}i,          name: :download_demon,
+                                         version: %r{demon/([\d\.]+)}i
   end
 
   # automatically set type to :validator for each defined matcher
@@ -227,12 +230,11 @@ Browserino.config.define do
     match %r{wdg_validator}i,        name: :wdg_validator
     match %r{w3c_validator}i,        name: :w3c_validator
 
-    match %r{cynthia}i, name: :cynthia,
-                        version: %r{cynthia\s([\d\.]+)}i
+    match %r{cynthia}i,           name: :cynthia,
+                                  version: %r{cynthia\s([\d\.]+)}i
 
-    match %r{w3c_css_validator}i,
-          name: :w3c_css_validator,
-          version: %r{w3c_css_validator_jfouffa/([\d\.]+)}i
+    match %r{w3c_css_validator}i, name: :w3c_css_validator,
+                                  version: %r{validator_jfouffa/([\d\.]+)}i
   end
 
   # automatically set type to :library for each defined matcher
@@ -264,16 +266,14 @@ Browserino.config.define do
 
   # inherit properties from matcher where name == :safari, (except :version)
   like :safari, except: [:version] do
-    match %r{icab}i,           name: :icab
-    match %r{bolt}i,           name: :bolt
-    match %r{stainless}i,      name: :stainless
-    match %r{arora}i,          name: :arora
-    match %r{samsungbrowser}i, name: :samsungbrowser
-    match %r{omniweb}i,        name: :omniweb
-
-    match %r{webos|wosbrowser}i,
-          name: :webosbrowser,
-          version: %r{(?:version|w(?:eb)?osbrowser)/([\d\.]+)}i
+    match %r{icab}i,             name: :icab
+    match %r{bolt}i,             name: :bolt
+    match %r{stainless}i,        name: :stainless
+    match %r{arora}i,            name: :arora
+    match %r{samsungbrowser}i,   name: :samsungbrowser
+    match %r{omniweb}i,          name: :omniweb
+    match %r{webos|wosbrowser}i, name: :webosbrowser,
+                                 version: %r{osbrowser/([\d\.]+)}i
   end
 
   # inherit properties from matcher where name == :firefox, (except :version)
@@ -308,13 +308,17 @@ Browserino.config.define do
     # for the user agents that follow the 'regular' pattern
     match %r{netcaptor}i,         name: :netcaptor,
                                   version: %r{netcaptor\s([\d\.]+)}i
+
     match %r{simulbrowse}i,       name: :simulbrowse,
                                   version: %r{simulbrowse\s([\d\.]+)}i
+
     match %r{aol}i,               name: :aol,
                                   version: %r{aol\s([\d\.]+)}i
+
     match %r{sleipnir}i,          name: :sleipnir,
                                   version: %r{sleipnir/([\d\.]+)}i
+
     match %r{deepnet\sexplorer}i, name: :deepnet_explorer,
-                                  version: %r{deepnet\sexplorer\s([\d\.]+)}i
+                                  version: %r{explorer\s([\d\.]+)}i
   end
 end

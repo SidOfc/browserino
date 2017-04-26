@@ -1,5 +1,11 @@
 ---
 :bots:
+- :user_agent: Mozilla/5.0 (compatible; SeznamBot/3.2; +http://napoveda.seznam.cz/en/seznambot-intro/)
+  :name:       :seznambot
+  :version:    '3.2'
+  :text:       true
+  :to_s:       'seznambot seznambot3'
+
 - :user_agent: Mozilla/5.0 (compatible; AhrefsBot/5.1; +http://ahrefs.com/robot/)
   :name:       :ahrefsbot
   :version:    '5.1'
@@ -359,6 +365,12 @@
   :version:    '2.0'
   :text:       true
   :to_s:       'exabot exabot2'
+
+- :user_agent: Sogou web spider/4.0(+http://www.sogou.com/docs/help/webmasters.htm#07)
+  :name:       :sogou_spider
+  :version:    '4.0'
+  :text:       true
+  :to_s:       'sogou_spider sogou_spider4'
 
 - :user_agent: sogou spider
   :name:       :sogou_spider
