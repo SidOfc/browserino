@@ -1,5 +1,11 @@
 ---
 :bots:
+- :user_agent: Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt; DTS Agent
+  :name:       :dts_agent
+  :version:
+  :text:       true
+  :to_s:       'dts_agent'
+
 - :user_agent: Mozilla/5.0 (compatible; SeznamBot/3.2; +http://napoveda.seznam.cz/en/seznambot-intro/)
   :name:       :seznambot
   :version:    '3.2'

@@ -195,6 +195,7 @@ Browserino.config.define do
     match %r{litefinder}i,                  name: :litefinder
     match %r{ahrefsbot}i,                   name: :ahrefsbot
     match %r{seznambot}i,                   name: :seznambot
+    match %r{dts\sagent}i,                  name: :dts_agent
 
     match %r{sogou(?:\s\w+)?\s?spider}i, name: :sogou_spider,
                                          version: %r{spider/([\d\.]+)}i
@@ -273,7 +274,7 @@ Browserino.config.define do
     match %r{samsungbrowser}i,   name: :samsungbrowser
     match %r{omniweb}i,          name: :omniweb
     match %r{webos|wosbrowser}i, name: :webosbrowser,
-                                 version: %r{osbrowser/([\d\.]+)}i
+                                 version: %r{(?:version|osbrowser)/([\d\.]+)}i
   end
 
   # inherit properties from matcher where name == :firefox, (except :version)
