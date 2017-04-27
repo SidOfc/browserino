@@ -341,17 +341,12 @@ Browserino.config.define do
 
     # because of this, we now have to explicitly define version patterns
     # for the user agents that follow the 'regular' pattern
-    match %r{netcaptor}i,         name: :netcaptor,
-                                  version: %r{netcaptor\s([\d\.]+)}i
-
-    match %r{simulbrowse}i,       name: :simulbrowse,
-                                  version: %r{simulbrowse\s([\d\.]+)}i
-
-    match %r{aol}i,               name: :aol,
-                                  version: %r{aol\s([\d\.]+)}i
-
-    match %r{sleipnir}i,          name: :sleipnir,
-                                  version: %r{sleipnir/([\d\.]+)}i
+    preset except: [:version] do
+      match %r{netcaptor}i,   name: :netcaptor
+      match %r{simulbrowse}i, name: :simulbrowse
+      match %r{aol}i,         name: :aol
+      match %r{sleipnir}i,    name: :sleipnir
+    end
 
     match %r{deepnet\sexplorer}i, name: :deepnet_explorer,
                                   version: %r{explorer\s([\d\.]+)}i
