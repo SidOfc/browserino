@@ -57,10 +57,24 @@ module Browserino
       @options[:before_parse]
     end
 
+    def store
+      @preset_store
+    end
+
+    def tmp_settings
+      @tmp_defaults
+    end
+
     def preset(props, &block)
-      @tmp_defaults = props
+      @preset_store ||= []
+      @preset_store << props if @preset_store.empty?
+      @preset_store << @tmp_defaults.merge(props) if @tmp_defaults
+      @tmp_defaults = @preset_store.last
+
       instance_eval(&block)
-      @tmp_defaults = nil
+
+      @preset_store.pop
+      @tmp_defaults = @preset_store.last
     end
 
     def like(tmp, opts = {}, &block)
