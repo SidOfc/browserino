@@ -1,5 +1,213 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.20) Gecko/20081217 Firefox/2.0.0.20 Novarra-Vision/8.0
+  :name:             :vision
+  :version:          '8.0'
+  :engine:           :gecko
+  :engine_version:   '1.8.1.20'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:           :en_us
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'vision vision8 gecko gecko1 linux'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; Macintosh; en-US; Valve Steam GameOverlay/1329175982; ) AppleWebKit/534.1 (KHTML, like Gecko) Chrome/6.0.444.0 Safari/534.1
+  :name:             :steam
+  :version:          '1329175982'
+  :engine:           :webkit
+  :engine_version:   '534.1'
+  :platform:         :macintosh
+  :platform_label:
+  :platform_version:
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'steam steam1329175982 webkit webkit534 macintosh'
+  :like:             :chrome
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.3) Gecko/20101201 Songbird/1.11.0a (20111112014625)
+  :name:             :songbird
+  :version:          '1.11.0'
+  :engine:           :gecko
+  :engine_version:   '1.9.2.3'
+  :platform:         :windows
+  :platform_label:   :windows7
+  :platform_version: '6.1'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'songbird songbird1 gecko gecko1 windows windows7'
+  :like:             :firefox
+
+- :user_agent:       Solid Core/0.82 (compatible; MSIE 6.0; Windows NT 5.1.2600.196608; en-US)
+  :name:             :solid_core
+  :version:          '0.82'
+  :engine:           :trident
+  :engine_version:
+  :platform:         :windows
+  :platform_label:   :xp
+  :platform_version: '5.1'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'solid_core solid_core0 trident windows xp'
+  :like:             :ie
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_7; en-us) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Safari/530.17 Skyfire/2.0
+  :name:             :skyfire
+  :version:          '2.0'
+  :engine:           :webkit
+  :engine_version:   '530.17'
+  :platform:         :macintosh
+  :platform_label:   :leopard
+  :platform_version: '10.5.7'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'skyfire skyfire2 webkit webkit530 macintosh leopard'
+  :like:             :safari
+
+- :user_agent:       Mozilla/5.0 (Linux; U; en-gb; KFOT Build/IML74K) AppleWebKit/535.19 (KHTML, like Gecko) Silk/2.4 Safari/535.19 Silk-Accelerated=true
+  :name:             :silk
+  :version:          '2.4'
+  :engine:           :webkit
+  :engine_version:   '535.19'
+  :platform:         :fire_os
+  :platform_label:
+  :platform_version:
+  :locale:           :en_gb
+  :architecture:
+  :mobile:           true
+  :to_s:             'silk silk2 webkit webkit535 fire_os'
+  :like:             :safari
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_7_3; en-us) AppleWebKit/534.53.11 (KHTML, like Gecko) Roccat/2.3 Roccat/534.53.11
+  :name:             :roccat
+  :version:          '2.3'
+  :engine:           :webkit
+  :engine_version:   '534.53.11'
+  :platform:         :macintosh
+  :platform_label:   :lion
+  :platform_version: '10.7.3'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'roccat roccat2 webkit webkit534 macintosh lion'
+
+- :user_agent:       Mozilla/5.0 (N; Windows NT 6.1; WOW64) AppleWebKit/534.34 (KHTML, like Gecko) Raptr Safari/534.34
+  :name:             :raptr
+  :version:
+  :engine:           :webkit
+  :engine_version:   '534.34'
+  :platform:         :windows
+  :platform_label:   :windows7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'raptr webkit webkit534 windows windows7'
+  :like:             :safari
+
+- :user_agent:       Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.34 (KHTML, like Gecko) Qt/4.8.1 Safari/534.34
+  :name:             :qt
+  :version:          '4.8.1'
+  :engine:           :webkit
+  :engine_version:   '534.34'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'qt qt4 webkit webkit534 linux'
+  :like:             :safari
+
+- :user_agent:       Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/535.10 (KHTML, like Gecko) Chrome/17.0.925.0 QQBrowser/1.0.0.1096 Safari/535.10
+  :name:             :qqbrowser
+  :version:          '1.0.0.1096'
+  :engine:           :webkit
+  :engine_version:   '535.10'
+  :platform:         :macintosh
+  :platform_label:   :lion
+  :platform_version: '10.7.3'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'qqbrowser qqbrowser1 webkit webkit535 macintosh lion'
+  :like:             :chrome
+
+- :user_agent:       Mozilla/5.0 (X11; U; Linux x86_64; en-us) AppleWebKit/534.35 (KHTML, like Gecko) Chrome/11.0.696.65 Safari/534.35 Puffin/2.9174AP
+  :name:             :puffin
+  :version:          '2.9174'
+  :engine:           :webkit
+  :engine_version:   '534.35'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:           :en_us
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'puffin puffin2 webkit webkit534 linux'
+  :like:             :chrome
+
+- :user_agent:       Mozilla/5.0 (Linux; U; Android 2.2.1; en-us; NOOK BNRV200 Build/ERD79 1.4.3) Apple WebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+  :name:             :nook
+  :version:          '1.4.3'
+  :engine:           :webkit
+  :engine_version:   '533.1'
+  :platform:         :android
+  :platform_label:   :froyo
+  :platform_version: '2.2.1'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           true
+  :to_s:             'nook nook1 webkit webkit533 android froyo'
+  :like:             :safari
+
+- :user_agent:       Mozilla/5.0 (Nintendo WiiU) AppleWebKit/534.52 (KHTML, like Gecko) NX/2.1.0.8.23 NintendoBrowser/1.1.0.7579.US
+  :name:             :nintendobrowser
+  :version:          '1.1.0.7579'
+  :engine:           :webkit
+  :engine_version:   '534.52'
+  :platform:         :wiiu
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'nintendobrowser nintendobrowser1 webkit webkit534 wiiu'
+
+- :user_agent:       Mozilla/5.0 (iPad; CPU OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mercury/7.2 Mobile/9B206 Safari/7534.48.3
+  :name:             :mercury
+  :version:          '7.2'
+  :engine:           :webkit
+  :engine_version:   '534.46'
+  :platform:         :ios
+  :platform_label:
+  :platform_version: '5.1.1'
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'mercury mercury7 webkit webkit534 ios ios5'
+  :like:             :safari
+
+- :user_agent:       Mozilla/5.0 (Linux; U; Android 2.3.4; en-us; Kindle Fire Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+  :name:             :kindle
+  :version:          '4.0'
+  :engine:           :webkit
+  :engine_version:   '533.1'
+  :platform:         :fire_os
+  :platform_label:
+  :platform_version: '2.3.4'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           true
+  :to_s:             'kindle kindle4 webkit webkit533 fire_os fire_os2'
+  :like:             :safari
+
 - :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.1; ko-KR) AppleWebKit/534.3 (KHTML, like Gecko) Origin/8.4.1.210 Safari/534.3
   :name:             :origin
   :version:          '8.4.1'

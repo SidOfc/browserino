@@ -22,12 +22,13 @@ Browserino.config.define do
 
     mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
-                        |tizen|vodafone|t\-mobile|opera\sm(?:ob|in)i)}xi
+                        |tizen|vodafone|t\-mobile|kindle|kf\w\w
+                        |opera\sm(?:ob|in)i)}xi
 
-    platform         %r{.*(xbox|wii|nintendo\sds|playstation|windows(?:\sphone)?
-                        |macintosh|mac\sos\sx|android|tizen|ip(?:[ao]d|hone)
+    platform         %r{.*(wiiu?|nintendo\sds|playstation|windows(?:\sphone)?
+                        |kf\w\w|mac(?:intosh|\sos\sx)|android|ip(?:[ao]d|hone)
                         |blackberry|risc|linux|ubuntu|x11|bsd|s(?:unos|olaris)
-                        |amigaos|w(?:eb)?os|(?<!mi)cros)}xi
+                        |tizen|xbox|amigaos|w(?:eb)?os|(?<!mi)cros|kindle)}xi
 
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
@@ -120,10 +121,11 @@ Browserino.config.define do
       modern?        { version >= 50 }
     end
 
-    match %r{deskbrowse}i,       name: :deskbrowse,   engine: :webkit
-    match %r{qupzilla}i,         name: :qupzilla,     engine: :webkit
-    match %r{midori}i,           name: :midori,       engine: :webkit
-    match %r{shiira}i,           name: :shiira,       engine: :webkit
+    match %r{nintendobrowser}i,  name: :nintendobrowser, engine: :webkit
+    match %r{deskbrowse}i,       name: :deskbrowse,      engine: :webkit
+    match %r{qupzilla}i,         name: :qupzilla,        engine: :webkit
+    match %r{midori}i,           name: :midori,          engine: :webkit
+    match %r{shiira}i,           name: :shiira,          engine: :webkit
     match %r{amigavoyager}i,     name: :amigavoyager
     match %r{(?<!(?:net))surf}i, name: :surf
 
@@ -158,6 +160,7 @@ Browserino.config.define do
 
     match %r{epiphany}i,           name: :epiphany,    engine: :webkit
     match %r{uzbl}i,               name: :uzbl,        engine: :webkit
+    match %r{roccat}i,             name: :roccat,      engine: :webkit
     match %r{adobeair}i,           name: :adobeair,    engine: :webkit
     match %r{abrowse}i,            name: :abrowse,     engine: :webkit
     match %r{vimprobable}i,        name: :vimprobable, engine: :webkit
@@ -334,10 +337,12 @@ Browserino.config.define do
   # previously defined matcher, overwritten by properties added within matchers
   # inherit properties from matcher where name == :chrome, (except :version)
   like :chrome, except: [:version] do
+    match %r{steam\sgame}i,   name: :steam, version: %r{meoverlay/([\d\.]+)}i
     match %r{comodo_dragon}i, name: :comodo_dragon
     match %r{chromeplus}i,    name: :chromeplus
     match %r{bluechrome}i,    name: :bluechrome
     match %r{awesomium}i,     name: :awesomium
+    match %r{qqbrowser}i,     name: :qqbrowser
     match %r{yabrowser}i,     name: :yabrowser
     match %r{rockmelt}i,      name: :rockmelt
     match %r{coolnovo}i,      name: :coolnovo
@@ -345,6 +350,7 @@ Browserino.config.define do
     match %r{colibri}i,       name: :colibri
     match %r{iridium}i,       name: :iridium
     match %r{origin}i,        name: :origin
+    match %r{puffin}i,        name: :puffin
     match %r{fluid}i,         name: :fluid
     match %r{brave}i,         name: :brave
     match %r{hana}i,          name: :hana
@@ -360,19 +366,30 @@ Browserino.config.define do
     match %r{stainless}i,          name: :stainless
     match %r{cheshire}i,           name: :cheshire
     match %r{omniweb}i,            name: :omniweb
+    match %r{skyfire}i,            name: :skyfire
+    match %r{mercury}i,            name: :mercury
     match %r{rekonq}i,             name: :rekonq
     match %r{arora}i,              name: :arora
+    match %r{raptr}i,              name: :raptr
     match %r{icab}i,               name: :icab
     match %r{bolt}i,               name: :bolt
+    match %r{silk}i,               name: :silk
+    match %r{qt(?!web)}i,          name: :qt
 
-    match %r{blackberry.*?(?=safari)}i, name: :blackberry_browser,
-                                        version: %r{version/([\d\.]+)}i
+    match %r{nook}i,               name: :nook,
+                                   version: %r{build/\w+\s([\d\.]+)}i
+
+    match %r{kindle}i,             name: :kindle,
+                                   version: %r{(?:kindle|version)/([\d\.]+)}i
 
     match %r{leechcraft}i,         name: :leechcraft,
                                    version: %r{craft/(?:\w+\s)?([\d\.]+)}i
 
     match %r{webos|wosbrowser}i,   name: :webosbrowser,
                                    version: %r{(?:version|osbrowser)/([\d\.]+)}i
+
+    match %r{blackberry.*?(?=safari)}i, name: :blackberry_browser,
+                                        version: %r{version/([\d\.]+)}i
   end
 
   # inherit properties from matcher where name == :firefox, (except :version)
@@ -400,6 +417,7 @@ Browserino.config.define do
     match %r{icedragon}i,    name: :icedragon
     match %r{palemoon}i,     name: :palemoon
     match %r{namoroka}i,     name: :namoroka
+    match %r{songbird}i,     name: :songbird
     match %r{firebird}i,     name: :firebird
     match %r{vonkeror}i,     name: :vonkeror
     match %r{conkeror}i,     name: :conkeror
@@ -417,6 +435,7 @@ Browserino.config.define do
     match %r{beonex}i,       name: :beonex
     match %r{icecat}i,       name: :icecat
     match %r{galeon}i,       name: :galeon
+    match %r{vision}i,       name: :vision
     match %r{prism}i,        name: :prism
     match %r{pogo}i,         name: :pogo
     match %r{orca}i,         name: :orca
@@ -439,13 +458,16 @@ Browserino.config.define do
     match %r{theworld}i,          name: :theworld
     match %r{browzar}i,           name: :browzar
 
-    # deepnet is a special case where we need to manually
+    # below are special cases where we need to manually
     # supply the version pattern
     match %r{deepnet\sexplorer}i, name: :deepnet_explorer,
                                   version: %r{explorer\s([\d\.]+)}i
 
-    match %r{crazy\sbrowser}i, name: :crazy_browser,
-                               version: %r{browser\s([\d\.]+)}i
+    match %r{crazy\sbrowser}i,    name: :crazy_browser,
+                                  version: %r{browser\s([\d\.]+)}i
+
+    match %r{solid\score}i,       name: :solid_core,
+                                  version: %r{d\score/([\d\.]+)}i
 
     # we can exclude the default version which will then be replaced by
     # the smart_matcher for :version which uses the :name token automatically

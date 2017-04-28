@@ -28,6 +28,7 @@ Browserino.config.define do
     ua = ua.gsub %r{blade\sos}i, 'blade-os' if ua =~ %r{future\sstar}i
     ua = ua.gsub %r{safari}i, '' if ua =~ %r{obigo}i
     ua = ua.gsub %r{awesomium}i, '' if ua =~ %r{flashfire}i
+    ua = ua.gsub %r{version}i, '' if ua =~ %r{kindle/\d}i
     ua
   end
 
@@ -61,6 +62,7 @@ Browserino.config.define do
     elsif %r{mac_os_x}i =~ val         then :macintosh
     elsif %r{s(?:unos|olaris)}i =~ val then :solaris
     elsif %r{cros}i =~ val             then :chromeos
+    elsif %r{kindle|kf\w+}i =~ val     then :fire_os
     else val
     end
   end
