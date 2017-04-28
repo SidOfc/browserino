@@ -340,9 +340,11 @@ Browserino.config.define do
     match %r{awesomium}i,     name: :awesomium
     match %r{yabrowser}i,     name: :yabrowser
     match %r{rockmelt}i,      name: :rockmelt
+    match %r{coolnovo}i,      name: :coolnovo
     match %r{vivaldi}i,       name: :vivaldi
     match %r{colibri}i,       name: :colibri
     match %r{iridium}i,       name: :iridium
+    match %r{origin}i,        name: :origin
     match %r{fluid}i,         name: :fluid
     match %r{brave}i,         name: :brave
     match %r{hana}i,          name: :hana

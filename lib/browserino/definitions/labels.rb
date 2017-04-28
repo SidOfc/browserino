@@ -38,14 +38,14 @@ Browserino.config.define do
   label :el_capitan,         for: :macintosh, range: '10.11'..'10.11.9'
   label :sierra,             for: :macintosh, range: '10.12'..'10.12.9'
 
-  label :windows_dos,        for: :windows,   range: '3.1'..'4.0'
-  label :windows_98,         for: :windows,   range: '98'..'98.9.9'
-  label :windows_2000,       for: :windows,   range: '5.0'..'5.0.9'
-  label :windows_xp,         for: :windows,   range: '5.1'..'5.2.9'
-  label :windows_vista,      for: :windows,   range: '6.0'..'6.0.9'
-  label :windows_7,          for: :windows,   range: '6.1'..'6.1.9'
-  label :windows_8,          for: :windows,   range: '6.2'..'6.3'
-  label :windows_10,         for: :windows,   range: '10.0'..'10.9.9'
+  label :dos,               for: :windows,   range: '3.1'..'4.0'
+  label :windows98,         for: :windows,   range: '98'..'98.9.9'
+  label :windows2000,       for: :windows,   range: '5.0'..'5.0.9'
+  label :xp,                for: :windows,   range: '5.1'..'5.2.9'
+  label :vista,             for: :windows,   range: '6.0'..'6.0.9'
+  label :windows7,          for: :windows,   range: '6.1'..'6.1.9'
+  label :windows8,          for: :windows,   range: '6.2'..'6.3'
+  label :windows10,         for: :windows,   range: '10.0'..'10.9.9'
 
-  label :outlook_2016,       for: :outlook,   range: '16.0'..'16.9.9'
+  label :outlook2016,       for: :outlook,   range: '16.0'..'16.9.9'
 end
