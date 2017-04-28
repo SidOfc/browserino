@@ -32,7 +32,7 @@ Browserino.config.define do
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
                         |blackberry|bb|s(?:unos|olaris)/?|w(?:eb)?os/|tizen
-                        |risc\s*|amigaos/?|cros\s[\w-]+)\s?([\d\._]+)}xi
+                        |risc\s*|amigaos/?|cros\s[\w-]+|ows\sxp)\s?([\d\._]+)}xi
   end
 
   # automatically set type to :email for each defined matcher
@@ -98,10 +98,13 @@ Browserino.config.define do
     end
 
     # escape has to come before IE
-    match %r{escape}i, name: :escape
+    match %r{escape}i,  name: :escape
 
-    match %r{flock}i,  name: :flock, engine: %r{(webkit|gecko|servo)}i,
-                       engine_version: %r{(?:webkit|rv:|servo)[\s/]?([\d\.]+)}i
+    match %r{flock}i,   name: :flock, engine: %r{(webkit|gecko|servo)}i,
+                        engine_version: %r{(?:webkit|rv:|servo)[\s/]?([\d\.]+)}i
+
+    match %r{sunrise}i, name: :sunrise, engine: %r{(webkit|gecko|servo)}i,
+                        engine_version: %r{(?:webkit|rv:|servo)[\s/]?([\d\.]+)}i
 
     match %r{msie|trident}i do
       name           :ie
@@ -123,6 +126,9 @@ Browserino.config.define do
     match %r{shiira}i,           name: :shiira,       engine: :webkit
     match %r{amigavoyager}i,     name: :amigavoyager
     match %r{(?<!(?:net))surf}i, name: :surf
+
+    match %r{sundance}i,         name: :sundance,
+                                 version: %r{(?:version/|sundance/)([\d\.]+)}i
 
     match %r{inet\sbrowser}i,    name: :inet_browser, platform: :star_blade_os,
                                  version: %r{browser[\s/]?([\d\.]+)}i
@@ -154,6 +160,7 @@ Browserino.config.define do
     match %r{uzbl}i,           name: :uzbl,        engine: :webkit
     match %r{adobeair}i,       name: :adobeair,    engine: :webkit
     match %r{abrowse}i,        name: :abrowse,     engine: :webkit
+    match %r{vimprobable}i,    name: :vimprobable, engine: :webkit
     match %r{amaya}i,          name: :amaya,       text: true
     match %r{lynx}i,           name: :lynx,        text: true
     match %r{linemode}i,       name: :linemode,    text: true
@@ -325,6 +332,10 @@ Browserino.config.define do
     match %r{fluid}i,         name: :fluid
     match %r{brave}i,         name: :brave
     match %r{hana}i,          name: :hana
+    match %r{(?<!env)iron}i,  name: :iron
+
+    match %r{qtweb}i,         name: :qtweb_browser,
+                              version: %r{net\sbrowser/([\d\.]+)}i
   end
 
   # inherit properties from matcher where name == :safari, (except :version)
@@ -333,12 +344,16 @@ Browserino.config.define do
     match %r{stainless}i,          name: :stainless
     match %r{cheshire}i,           name: :cheshire
     match %r{omniweb}i,            name: :omniweb
+    match %r{rekonq}i,             name: :rekonq
     match %r{arora}i,              name: :arora
     match %r{icab}i,               name: :icab
     match %r{bolt}i,               name: :bolt
 
     match %r{blackberry.*?(?=safari)}i, name: :blackberry_browser,
                                         version: %r{version/([\d\.]+)}i
+
+    match %r{leechcraft}i,         name: :leechcraft,
+                                   version: %r{craft/(?:\w+\s)?([\d\.]+)}i
 
     match %r{webos|wosbrowser}i,   name: :webosbrowser,
                                    version: %r{(?:version|osbrowser)/([\d\.]+)}i
@@ -353,8 +368,10 @@ Browserino.config.define do
     # instance
     match %r{minefield}i,    name: :minefield, nightly: true
     match %r{k-meleon}i,     name: :kmeleon,   version: %r{leon/([\d\.]+)}i
+    match %r{k-ninja}i,      name: :kninja,    version: %r{ninja/([\d\.]+)}i
     match %r{waterfox}i,     name: :waterfox,  architecture: :x64
     match %r{granparadiso}i, name: :granparadiso
+    match %r{tenfourfox}i,   name: :tenfourfox
     match %r{enigmafox}i,    name: :enigmafox
     match %r{iceweasel}i,    name: :iceweasel
     match %r{seamonkey}i,    name: :seamonkey
@@ -367,12 +384,19 @@ Browserino.config.define do
     match %r{palemoon}i,     name: :palemoon
     match %r{namoroka}i,     name: :namoroka
     match %r{firebird}i,     name: :firebird
+    match %r{vonkeror}i,     name: :vonkeror
     match %r{conkeror}i,     name: :conkeror
     match %r{netscape}i,     name: :netscape
     match %r{bonecho}i,      name: :bonecho
     match %r{chimera}i,      name: :chimera
+    match %r{lolifox}i,      name: :lolifox
+    match %r{lorentz}i,      name: :lorentz
+    match %r{myibrow}i,      name: :myibrow
+    match %r{sylera}i,       name: :sylera
     match %r{iceape}i,       name: :iceape
     match %r{madfox}i,       name: :madfox
+    match %r{kapiko}i,       name: :kapiko
+    match %r{kmlite}i,       name: :kmlite
     match %r{beonex}i,       name: :beonex
     match %r{icecat}i,       name: :icecat
     match %r{galeon}i,       name: :galeon
@@ -395,6 +419,7 @@ Browserino.config.define do
     match %r{avant\sbrowser}i,    name: :avant_browser
     match %r{greenbrowser}i,      name: :greenbrowser
     match %r{slimbrowser}i,       name: :slimbrowser
+    match %r{theworld}i,          name: :theworld
     match %r{browzar}i,           name: :browzar
 
     # deepnet is a special case where we need to manually
@@ -409,11 +434,14 @@ Browserino.config.define do
     # the smart_matcher for :version which uses the :name token automatically
     # upon creating it's pattern
     preset except: [:version] do
+      match %r{tencenttraveler}i, name: :tencenttraveler
       match %r{enigma\sbrowser}i, name: :enigma_browser
       match %r{simulbrowse}i,     name: :simulbrowse
       match %r{netcaptor}i,       name: :netcaptor
       match %r{sleipnir}i,        name: :sleipnir
       match %r{irider}i,          name: :irider
+      match %r{kkman}i,           name: :kkman
+      match %r{lobo}i,            name: :lobo
       match %r{aol}i,             name: :aol
     end
   end
