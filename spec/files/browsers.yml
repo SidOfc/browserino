@@ -1,5 +1,32 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (Series40; Nokia311/05.60; Profile/MIDP-2.1 Configuration/CLDC-1.1) Gecko/20100401 S40OviBrowser/1.8.0.50.5
+  :name:             :ovibrowser
+  :version:          '1.8.0.50.5'
+  :engine:           :gecko
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'ovibrowser ovibrowser1 gecko'
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; rv:26.0) Gecko/20100101 Firefox/26.0 IceDragon/26.0.0.2
+  :name:             :icedragon
+  :version:          '26.0.0.2'
+  :engine:           :gecko
+  :engine_version:   '26.0'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'icedragon icedragon26 gecko gecko26 windows windows_7'
+  :like:             :firefox
+
 - :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1pre) Gecko/20090629 Vonkeror/1.0
   :name:             :vonkeror
   :version:          '1.0'

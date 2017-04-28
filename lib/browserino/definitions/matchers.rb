@@ -156,24 +156,27 @@ Browserino.config.define do
       modern?        { version >= 9 }
     end
 
-    match %r{epiphany}i,       name: :epiphany,    engine: :webkit
-    match %r{uzbl}i,           name: :uzbl,        engine: :webkit
-    match %r{adobeair}i,       name: :adobeair,    engine: :webkit
-    match %r{abrowse}i,        name: :abrowse,     engine: :webkit
-    match %r{vimprobable}i,    name: :vimprobable, engine: :webkit
-    match %r{amaya}i,          name: :amaya,       text: true
-    match %r{lynx}i,           name: :lynx,        text: true
-    match %r{linemode}i,       name: :linemode,    text: true
-    match %r{elinks}i,         name: :elinks,      text: true
-    match %r{netpositive}i,    name: :netpositive
-    match %r{flashfire}i,      name: :flashfire
-    match %r{konqueror}i,      name: :konqueror
-    match %r{cyberdog}i,       name: :cyberdog
-    match %r{hotjava}i,        name: :hotjava
-    match %r{netsurf}i,        name: :netsurf
-    match %r{contiki}i,        name: :contiki
-    match %r{mosaic|ibrowse}i, name: :mosaic
-    match %r{dillo}i,          name: :dillo
+    match %r{epiphany}i,           name: :epiphany,    engine: :webkit
+    match %r{uzbl}i,               name: :uzbl,        engine: :webkit
+    match %r{adobeair}i,           name: :adobeair,    engine: :webkit
+    match %r{abrowse}i,            name: :abrowse,     engine: :webkit
+    match %r{vimprobable}i,        name: :vimprobable, engine: :webkit
+    match %r{amaya}i,              name: :amaya,       text: true
+    match %r{lynx}i,               name: :lynx,        text: true
+    match %r{linemode}i,           name: :linemode,    text: true
+    match %r{elinks}i,             name: :elinks,      text: true
+    match %r{netpositive}i,        name: :netpositive
+    match %r{flashfire}i,          name: :flashfire
+    match %r{konqueror}i,          name: :konqueror
+    match %r{cyberdog}i,           name: :cyberdog
+    match %r{hotjava}i,            name: :hotjava
+    match %r{netsurf}i,            name: :netsurf
+    match %r{contiki}i,            name: :contiki
+    match %r{mosaic|ibrowse[^r]}i, name: :mosaic
+    match %r{dillo}i,              name: :dillo
+
+    match %r{ovibrowser}i,     name: :ovibrowser,  engine: :gecko,
+                               engine_version: %r{rv:\s?([\d\.]+)}i
 
     match %r{osb\-browser}i,   name: :osb_browser, engine: :webkit,
                                version: %r{\-browser/([\d\.]+)}i
@@ -381,6 +384,7 @@ Browserino.config.define do
     match %r{shiretoko}i,    name: :shiretoko
     match %r{classilla}i,    name: :classilla
     match %r{cometbird}i,    name: :cometbird
+    match %r{icedragon}i,    name: :icedragon
     match %r{palemoon}i,     name: :palemoon
     match %r{namoroka}i,     name: :namoroka
     match %r{firebird}i,     name: :firebird
