@@ -106,11 +106,12 @@ module Browserino
 
     def to_s
       @str_cache ||= %i[name engine platform].map do |prop|
-        name = send prop
-        ver  = version if prop == :name
-        ver  = send "#{prop}_version" if ver.nil?
+        n = properties[prop]
+        v = properties[prop == :name ? :version : "#{prop}_version".to_sym]
+        l = properties[prop == :name ? :label : "#{prop}_label".to_sym]
+        a = l ? l : [n, (v.major if v > '0.0.0')].join.to_sym
 
-        [[name], [name, (ver.major if ver > '0.0.0')].compact.join.to_sym]
+        [n, a].uniq
       end.flatten.uniq.join(' ').gsub(/\s{2,}/, ' ').strip
     end
 

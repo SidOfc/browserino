@@ -140,7 +140,7 @@ Browserino.config.define do
       version        %r{(?:safari|version)/([\d\.]+)}i
       modern?        { version >= 9 }
     end
-
+    # NOTE: reformat using presets or reformat the multiline ones using blocks
     match %r{epiphany}i,       name: :epiphany,    engine: :webkit
     match %r{uzbl}i,           name: :uzbl,        engine: :webkit
     match %r{adobeair}i,       name: :adobeair,    engine: :webkit
@@ -369,6 +369,9 @@ Browserino.config.define do
     match %r{prism}i,      name: :prism
     match %r{pogo}i,       name: :pogo
     match %r{orca}i,       name: :orca
+
+    match %r{fireweb\snavigator}i, name: :fireweb_navigator, engine: :gecko,
+                                   version: %r{\snavigator/([\d\.]+)}i
   end
 
   # never thought a browser would want to be like IE...

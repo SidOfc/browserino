@@ -10,7 +10,7 @@
   :platform_label:   :windows_8
   :architecture:     :x64
   :locale:
-  :to_s:             'postbox postbox4 gecko gecko7 windows windows6'
+  :to_s:             'postbox postbox4 gecko gecko7 windows windows_8'
 
 - :user_agent:       Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.1.8) Gecko/20100317 Postbox/1.1.3
   :name:             :postbox
@@ -22,7 +22,7 @@
   :platform_label:   :snow_leopard
   :architecture:
   :locale:           :en_us
-  :to_s:             'postbox postbox1 gecko gecko1 macintosh macintosh10'
+  :to_s:             'postbox postbox1 gecko gecko1 macintosh snow_leopard'
 
 - :user_agent:       Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.14) Gecko/20080505 Thunderbird/2.0.0.14
   :name:             :thunderbird
@@ -46,7 +46,7 @@
   :platform_version: '10'
   :platform_label:   :windows_10
   :locale:
-  :to_s:             'outlook outlook16 windows windows10'
+  :to_s:             'outlook outlook_2016 windows windows_10'
 
 - :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7 (via ggpht.com)
   :name:             :gmail
@@ -57,7 +57,7 @@
   :platform_version: '5.1'
   :platform_label:   :windows_xp
   :locale:           :de
-  :to_s:             'gmail gecko gecko1 windows windows5'
+  :to_s:             'gmail gecko gecko1 windows windows_xp'
 
 - :user_agent:       BarcaPro/2.8.4400
   :name:             :barca
@@ -90,4 +90,4 @@
   :platform_version: '10.8.3'
   :platform_label:   :mountain_lion
   :locale:            :en_be
-  :to_s:             'airmail airmail1 webkit macintosh macintosh10'
+  :to_s:             'airmail airmail1 webkit macintosh mountain_lion'
