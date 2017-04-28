@@ -1,5 +1,11 @@
 ---
 :bots:
+- :user_agent: Mozilla/5.0 (compatible; NetSeer crawler/2.0; +http://www.netseer.com/crawler.html; crawler@netseer.com)
+  :name:       :netseer
+  :version:    '2.0'
+  :text:       true
+  :to_s:       'netseer netseer2'
+
 - :user_agent: Mozilla/5.0 (compatible; Gigamega.bot/1.0; +http://www.gigamega.net/bot.html)
   :name:       :gigamega
   :version:    '1.0'

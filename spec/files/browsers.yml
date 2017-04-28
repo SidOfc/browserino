@@ -1,5 +1,30 @@
 ---
 :browsers:
+- :user_agent:       OneBrowser/3.1 (NokiaC1-01/04.40)
+  :name:             :onebrowser
+  :version:          '3.1'
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'onebrowser onebrowser3'
+
+- :user_agent:       HTC-F5151/1.0 Mozilla/5.0 (BMP; U; en) AppleWebKit/530.8 (KHTML, like Gecko) OBIGO/W10 Safari/530.8
+  :name:             :obigo
+  :version:          '10'
+  :engine:           :webkit
+  :engine_version:   '530.8'
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:           :en
+  :architecture:
+  :mobile:           false
+  :to_s:             'obigo obigo10 webkit webkit530'
+
 - :user_agent:       Mozilla/5.0 (Series40; Nokia311/05.60; Profile/MIDP-2.1 Configuration/CLDC-1.1) Gecko/20100401 S40OviBrowser/1.8.0.50.5
   :name:             :ovibrowser
   :version:          '1.8.0.50.5'

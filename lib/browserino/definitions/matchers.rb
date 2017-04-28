@@ -166,6 +166,7 @@ Browserino.config.define do
     match %r{linemode}i,           name: :linemode,    text: true
     match %r{elinks}i,             name: :elinks,      text: true
     match %r{netpositive}i,        name: :netpositive
+    match %r{onebrowser}i,         name: :onebrowser
     match %r{flashfire}i,          name: :flashfire
     match %r{konqueror}i,          name: :konqueror
     match %r{cyberdog}i,           name: :cyberdog
@@ -174,6 +175,9 @@ Browserino.config.define do
     match %r{contiki}i,            name: :contiki
     match %r{mosaic|ibrowse[^r]}i, name: :mosaic
     match %r{dillo}i,              name: :dillo
+
+    match %r{obigo}i,          name: :obigo, engine: :webkit,
+                               version: %r{obigo/w?([\d\.]+)}i
 
     match %r{ovibrowser}i,     name: :ovibrowser,  engine: :gecko,
                                engine_version: %r{rv:\s?([\d\.]+)}i
@@ -287,6 +291,9 @@ Browserino.config.define do
 
     match %r{download\sdemon}i,             name: :download_demon,
                                             version: %r{demon/([\d\.]+)}i
+
+    match %r{netseer}i,                     name: :netseer,
+                                            version: %r{\scrawler/([\d\.]+)}i
   end
 
   # automatically set type to :validator for each defined matcher
