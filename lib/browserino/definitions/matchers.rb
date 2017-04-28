@@ -100,6 +100,9 @@ Browserino.config.define do
     # escape has to come before IE
     match %r{escape}i, name: :escape
 
+    match %r{flock}i,  name: :flock, engine: %r{(webkit|gecko|servo)}i,
+                       engine_version: %r{(?:webkit|rv:|servo)[\s/]?([\d\.]+)}i
+
     match %r{msie|trident}i do
       name           :ie
       engine         :trident
@@ -114,12 +117,18 @@ Browserino.config.define do
       modern?        { version >= 50 }
     end
 
-    match %r{(?<!(?:net))surf}i, name: :surf
+    match %r{deskbrowse}i,       name: :deskbrowse,   engine: :webkit
+    match %r{qupzilla}i,         name: :qupzilla,     engine: :webkit
+    match %r{midori}i,           name: :midori,       engine: :webkit
+    match %r{shiira}i,           name: :shiira,       engine: :webkit
     match %r{amigavoyager}i,     name: :amigavoyager
-    match %r{deskbrowse}i,       name: :deskbrowse, engine: :webkit
-    match %r{qupzilla}i,         name: :qupzilla,   engine: :webkit
-    match %r{midori}i,           name: :midori,     engine: :webkit
-    match %r{shiira}i,           name: :shiira,     engine: :webkit
+    match %r{(?<!(?:net))surf}i, name: :surf
+
+    match %r{inet\sbrowser}i,    name: :inet_browser, platform: :star_blade_os,
+                                 version: %r{browser[\s/]?([\d\.]+)}i
+
+    match %r{ibm\swebexplorer}i, name: :ibm_webexplorer, platform: :os2,
+                                 version: %r{bexplorer\s?/v?([\d\.]+)}i
 
     match %r{element\sbrowser}i, name: :element_browser, engine: :webkit,
                                  version: %r{browser[\s/]([\d\.]+)}i
@@ -140,7 +149,7 @@ Browserino.config.define do
       version        %r{(?:safari|version)/([\d\.]+)}i
       modern?        { version >= 9 }
     end
-    # NOTE: reformat using presets or reformat the multiline ones using blocks
+
     match %r{epiphany}i,       name: :epiphany,    engine: :webkit
     match %r{uzbl}i,           name: :uzbl,        engine: :webkit
     match %r{adobeair}i,       name: :adobeair,    engine: :webkit
@@ -313,8 +322,9 @@ Browserino.config.define do
     match %r{vivaldi}i,       name: :vivaldi
     match %r{colibri}i,       name: :colibri
     match %r{iridium}i,       name: :iridium
+    match %r{fluid}i,         name: :fluid
     match %r{brave}i,         name: :brave
-    match %r{flock}i,         name: :flock
+    match %r{hana}i,          name: :hana
   end
 
   # inherit properties from matcher where name == :safari, (except :version)
@@ -341,34 +351,37 @@ Browserino.config.define do
     # this method will be caught by method missing if it isn't defined,
     # therefore - this method can be used on every Browserino::Client
     # instance
-    match %r{minefield}i,  name: :minefield, nightly: true
-    match %r{k-meleon}i,   name: :kmeleon,   version: %r{leon/([\d\.]+)}i
-    match %r{camino}i,     name: :camino,    locale: %r{\s(\w{2}(?:\-\w{2})?),}i
-    match %r{waterfox}i,   name: :waterfox,  architecture: :x64
-    match %r{enigmafox}i,  name: :enigmafox
-    match %r{iceweasel}i,  name: :iceweasel
-    match %r{seamonkey}i,  name: :seamonkey
-    match %r{superswan}i,  name: :superswan
-    match %r{lunascape}i,  name: :lunascape
-    match %r{kazehakase}i, name: :kazehakase
-    match %r{shiretoko}i,  name: :shiretoko
-    match %r{classilla}i,  name: :classilla
-    match %r{cometbird}i,  name: :cometbird
-    match %r{palemoon}i,   name: :palemoon
-    match %r{namoroka}i,   name: :namoroka
-    match %r{firebird}i,   name: :firebird
-    match %r{conkeror}i,   name: :conkeror
-    match %r{netscape}i,   name: :netscape
-    match %r{bonecho}i,    name: :bonecho
-    match %r{chimera}i,    name: :chimera
-    match %r{iceape}i,     name: :iceape
-    match %r{madfox}i,     name: :madfox
-    match %r{beonex}i,     name: :beonex
-    match %r{icecat}i,     name: :icecat
-    match %r{galeon}i,     name: :galeon
-    match %r{prism}i,      name: :prism
-    match %r{pogo}i,       name: :pogo
-    match %r{orca}i,       name: :orca
+    match %r{minefield}i,    name: :minefield, nightly: true
+    match %r{k-meleon}i,     name: :kmeleon,   version: %r{leon/([\d\.]+)}i
+    match %r{waterfox}i,     name: :waterfox,  architecture: :x64
+    match %r{granparadiso}i, name: :granparadiso
+    match %r{enigmafox}i,    name: :enigmafox
+    match %r{iceweasel}i,    name: :iceweasel
+    match %r{seamonkey}i,    name: :seamonkey
+    match %r{superswan}i,    name: :superswan
+    match %r{lunascape}i,    name: :lunascape
+    match %r{kazehakase}i,   name: :kazehakase
+    match %r{shiretoko}i,    name: :shiretoko
+    match %r{classilla}i,    name: :classilla
+    match %r{cometbird}i,    name: :cometbird
+    match %r{palemoon}i,     name: :palemoon
+    match %r{namoroka}i,     name: :namoroka
+    match %r{firebird}i,     name: :firebird
+    match %r{conkeror}i,     name: :conkeror
+    match %r{netscape}i,     name: :netscape
+    match %r{bonecho}i,      name: :bonecho
+    match %r{chimera}i,      name: :chimera
+    match %r{iceape}i,       name: :iceape
+    match %r{madfox}i,       name: :madfox
+    match %r{beonex}i,       name: :beonex
+    match %r{icecat}i,       name: :icecat
+    match %r{galeon}i,       name: :galeon
+    match %r{prism}i,        name: :prism
+    match %r{pogo}i,         name: :pogo
+    match %r{orca}i,         name: :orca
+
+    match %r{camino}i,             name: :camino,
+                                   locale: %r{\s(\w{2}(?:\-\w{2})?),}i
 
     match %r{fireweb\snavigator}i, name: :fireweb_navigator, engine: :gecko,
                                    version: %r{\snavigator/([\d\.]+)}i
@@ -400,6 +413,7 @@ Browserino.config.define do
       match %r{simulbrowse}i,     name: :simulbrowse
       match %r{netcaptor}i,       name: :netcaptor
       match %r{sleipnir}i,        name: :sleipnir
+      match %r{irider}i,          name: :irider
       match %r{aol}i,             name: :aol
     end
   end

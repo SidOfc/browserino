@@ -25,6 +25,7 @@ Browserino.config.define do
     ua = ua.gsub %r{msie}i, '' if ua =~ %r{surf}i
     ua = ua.gsub %r{safari}i, 'chrome' if ua =~ %r{bluechrome}i
     ua = ua.gsub %r{msie|windows}i, '' if ua =~ %r{dts\sagent}i
+    ua = ua.gsub %r{blade\sos}i, 'blade-os' if ua =~ %r{future\sstar}i
     ua
   end
 
