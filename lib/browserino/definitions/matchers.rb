@@ -176,6 +176,9 @@ Browserino.config.define do
     match %r{mosaic|ibrowse[^r]}i, name: :mosaic
     match %r{dillo}i,              name: :dillo
 
+    match %r{alienblue}i,      name: :alienblue,
+                               version: %r{alienblue(?:hd)?/([\d\.]+)}i
+
     match %r{obigo}i,          name: :obigo, engine: :webkit,
                                version: %r{obigo/w?([\d\.]+)}i
 
@@ -334,6 +337,7 @@ Browserino.config.define do
     match %r{comodo_dragon}i, name: :comodo_dragon
     match %r{chromeplus}i,    name: :chromeplus
     match %r{bluechrome}i,    name: :bluechrome
+    match %r{awesomium}i,     name: :awesomium
     match %r{yabrowser}i,     name: :yabrowser
     match %r{rockmelt}i,      name: :rockmelt
     match %r{vivaldi}i,       name: :vivaldi

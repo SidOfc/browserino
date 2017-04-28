@@ -1,8 +1,36 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1003.1 Safari/535.19 Awesomium/1.7.4.2
+  :name:             :awesomium
+  :version:          '1.7.4.2'
+  :engine:           :webkit
+  :engine_version:   '535.19'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'awesomium awesomium1 webkit webkit535 windows windows_7'
+  :like:             :chrome
+
+- :user_agent:       AlienBlue/2.9.2 CFNetwork/711.1.16 Darwin/14.0.0
+  :name:             :alienblue
+  :version:          '2.9.2'
+  :engine:
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'alienblue alienblue2'
+
 - :user_agent:       OneBrowser/3.1 (NokiaC1-01/04.40)
   :name:             :onebrowser
   :version:          '3.1'
+  :engine:
   :engine_version:
   :platform:
   :platform_label:

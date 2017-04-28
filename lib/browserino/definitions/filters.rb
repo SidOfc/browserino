@@ -27,6 +27,7 @@ Browserino.config.define do
     ua = ua.gsub %r{msie|windows}i, '' if ua =~ %r{dts\sagent}i
     ua = ua.gsub %r{blade\sos}i, 'blade-os' if ua =~ %r{future\sstar}i
     ua = ua.gsub %r{safari}i, '' if ua =~ %r{obigo}i
+    ua = ua.gsub %r{awesomium}i, '' if ua =~ %r{flashfire}i
     ua
   end
 
