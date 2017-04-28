@@ -57,14 +57,6 @@ module Browserino
       @options[:before_parse]
     end
 
-    def store
-      @preset_store
-    end
-
-    def tmp_settings
-      @tmp_defaults
-    end
-
     def preset(props, &block)
       @preset_store ||= []
       @preset_store << props if @preset_store.empty?

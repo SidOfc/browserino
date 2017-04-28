@@ -1,5 +1,373 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.13) Gecko/20100916 Iceape/2.0.8
+  :name:             :iceape
+  :version:          '2.0.8'
+  :engine:           :gecko
+  :engine_version:   '1.9.1.13'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:           :en_us
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'iceape iceape2 gecko gecko1 linux'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (compatible; U; ABrowse 0.6; Syllable) AppleWebKit/420+ (KHTML, like Gecko)
+  :name:             :abrowse
+  :version:          '0.6'
+  :engine:           :webkit
+  :engine_version:   '420'
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'abrowse abrowse0 webkit webkit420'
+
+- :user_agent:       Mozilla/5.0 (Windows; U; WinNT; en; rv:1.0.2) Gecko/20030311 Beonex/0.8.2-stable
+  :name:             :beonex
+  :version:          '0.8.2'
+  :engine:           :gecko
+  :engine_version:   '1.0.2'
+  :platform:         :windows
+  :platform_label:
+  :platform_version:
+  :locale:           :en
+  :architecture:
+  :mobile:           false
+  :to_s:             'beonex beonex0 gecko gecko1 windows'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1b2) Gecko/20060826 BonEcho/2.0b2
+  :name:             :bonecho
+  :version:          '2.0'
+  :engine:           :gecko
+  :engine_version:   '1.8.1'
+  :platform:         :windows
+  :platform_label:   :windows_xp
+  :platform_version: '5.1'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'bonecho bonecho2 gecko gecko1 windows windows5'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 1.1.4322; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; Browzar)
+  :name:             :browzar
+  :version:          '7.0'
+  :engine:           :trident
+  :engine_version:   '4.0'
+  :platform:         :windows
+  :platform_label:   :windows_xp
+  :platform_version: '5.1'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'browzar browzar7 trident trident4 windows windows5'
+  :like:             :ie
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/418.8 (KHTML, like Gecko, Safari) Cheshire/1.0.UNOFFICIAL
+  :name:             :cheshire
+  :version:          '1.0'
+  :engine:           :webkit
+  :engine_version:   '418.8'
+  :platform:         :macintosh
+  :platform_label:
+  :platform_version:
+  :locale:           :en
+  :architecture:
+  :mobile:           false
+  :to_s:             'cheshire cheshire1 webkit webkit418 macintosh'
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; PPC Mac OS X; pl-PL; rv:1.0.1) Gecko/20021111 Chimera/0.6
+  :name:             :chimera
+  :version:          '0.6'
+  :engine:           :gecko
+  :engine_version:   '1.0.1'
+  :platform:         :macintosh
+  :platform_label:
+  :platform_version:
+  :locale:           :pl_pl
+  :architecture:
+  :mobile:           false
+  :to_s:             'chimera chimera0 gecko gecko1 macintosh'
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/532.2 (KHTML, like Gecko) ChromePlus/4.0.222.3
+  :name:             :chromeplus
+  :version:          '4.0.222.3'
+  :engine:           :webkit
+  :engine_version:   '532.2'
+  :platform:         :windows
+  :platform_label:   :windows_xp
+  :platform_version: '5.1'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'chromeplus chromeplus4 webkit webkit532 windows windows5'
+  :like:             :chrome
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.3) Gecko/20100409 Firefox/3.6.3 CometBird/3.6.3
+  :name:             :cometbird
+  :version:          '3.6.3'
+  :engine:           :gecko
+  :engine_version:   '1.9.2.3'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'cometbird cometbird3 gecko gecko1 windows windows6'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (X11; Linux x86_64; rv:10.0.11) Gecko/20100101 conkeror/1.0pre (Debian-1.0~~pre+git120527-1)
+  :name:             :conkeror
+  :version:          '1.0'
+  :engine:           :gecko
+  :engine_version:   '10.0.11'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'conkeror conkeror1 gecko gecko10 linux'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0; Crazy Browser 3.1.0)
+  :name:             :crazy_browser
+  :version:          '3.1.0'
+  :engine:           :trident
+  :engine_version:   '6.0'
+  :platform:         :windows
+  :platform_label:   :windows_8
+  :platform_version: '6.2'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'crazy_browser crazy_browser3 trident trident6 windows windows6'
+  :like:             :ie
+
+- :user_agent:       Cyberdog/2.0 (Macintosh; 68k)
+  :name:             :cyberdog
+  :version:          '2.0'
+  :engine:
+  :engine_version:
+  :platform:         :macintosh
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'cyberdog cyberdog2 macintosh'
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.0; en-GB; rv:1.9.0.13) Gecko/2009073022 EnigmaFox/3.0.13
+  :name:             :enigmafox
+  :version:          '3.0.13'
+  :engine:           :gecko
+  :engine_version:   '1.9.0.13'
+  :platform:         :windows
+  :platform_label:   :windows_vista
+  :platform_version: '6.0'
+  :locale:           :en_gb
+  :architecture:
+  :mobile:           false
+  :to_s:             'enigmafox enigmafox3 gecko gecko1 windows windows6'
+  :like:             :firefox
+
+- :user_agent:       Enigma Browser
+  :name:             :enigma_browser
+  :version:
+  :engine:           :trident
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'enigma_browser trident'
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533+ (KHTML, like Gecko) Element Browser 5.0
+  :name:             :element_browser
+  :version:          '5.0'
+  :engine:           :webkit
+  :engine_version:   '533'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'element_browser element_browser5 webkit webkit533 windows windows6'
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; PPC Mac OS X; pl-pl) AppleWebKit/312.8 (KHTML, like Gecko, Safari) DeskBrowse/1.0
+  :name:             :deskbrowse
+  :version:          '1.0'
+  :engine:           :webkit
+  :engine_version:   '312.8'
+  :platform:         :macintosh
+  :platform_label:
+  :platform_version:
+  :locale:           :pl_pl
+  :architecture:
+  :mobile:           false
+  :to_s:             'deskbrowse deskbrowse1 webkit webkit312 macintosh'
+
+- :user_agent:       Mozilla/4.0 (compatible; MSIE 5.23; Macintosh; PPC) Escape 5.1.8
+  :name:             :escape
+  :version:          '5.1.8'
+  :engine:
+  :engine_version:
+  :platform:         :macintosh
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'escape escape5 macintosh'
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.1; x64; fr; rv:1.9.1.1) Gecko/20090722 Firefox/3.5.1 Orca/1.2 build 2
+  :name:             :orca
+  :version:          '1.2'
+  :engine:           :gecko
+  :engine_version:   '1.9.1.1'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:           :fr
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'orca orca1 gecko gecko1 windows windows6'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2a2pre) Gecko/20090908 Ubuntu/9.04 (jaunty) Namoroka/3.6a2pre GTB5 (.NET CLR 3.5.30729)
+  :name:             :namoroka
+  :version:          '3.6'
+  :engine:           :gecko
+  :engine_version:   '1.9.2'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:           :en_us
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'namoroka namoroka3 gecko gecko1 linux'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en; rv:1.7.12) Gecko/20050928 Firefox/1.0.7 Madfox/3.0
+  :name:             :madfox
+  :version:          '3.0'
+  :engine:           :gecko
+  :engine_version:   '1.7.12'
+  :platform:         :macintosh
+  :platform_label:
+  :platform_version:
+  :locale:           :en
+  :architecture:
+  :mobile:           false
+  :to_s:             'madfox madfox3 gecko gecko1 macintosh'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (X11; U; Linux i686; pt-BR) AppleWebKit/533.3 (KHTML, like Gecko) Navscape/Pre-0.2 Safari/533.3
+  :name:             :navscape
+  :version:          '0.2'
+  :engine:           :webkit
+  :engine_version:   '533.3'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:           :pt_br
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'navscape navscape0 webkit webkit533 linux'
+
+- :user_agent:       Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Iridium/58.0 Safari/537.36 Chrome/58.0.3029.81
+  :name:             :iridium
+  :version:          '58.0.3029.81'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :macintosh
+  :platform_label:   :sierra
+  :platform_version: '10.12.4'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'iridium iridium58 webkit webkit537 macintosh macintosh10'
+  :like:             :chrome
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64; rv:2.0b4pre) Gecko/20100815 Minefield/4.0b4pre
+  :name:             :minefield
+  :version:          '4.0'
+  :engine:           :gecko
+  :engine_version:   '2.0'
+  :platform:         :windows
+  :platform_label:   :windows_7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'minefield minefield4 gecko gecko2 windows windows6'
+  :like:             :firefox
+  :nightly:          true
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080414 Firefox/2.0.0.13 Pogo/2.0.0.13.6866
+  :name:             :pogo
+  :version:          '2.0.0.13.6866'
+  :engine:           :gecko
+  :engine_version:   '1.8.1.13'
+  :platform:         :windows
+  :platform_label:   :windows_xp
+  :platform_version: '5.1'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'pogo pogo2 gecko gecko1 windows windows5'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/5.0 (X11; U; Linux i686; en-us) AppleWebKit/146.1 (KHTML, like Gecko) osb-browser/0.5
+  :name:             :osb_browser
+  :version:          '0.5'
+  :engine:           :webkit
+  :engine_version:   '146.1'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:           :en_us
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'osb_browser osb_browser0 webkit webkit146 linux'
+
+- :user_agent:       Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:25.6) Gecko/20150723 Firefox/31.9 PaleMoon/25.6.0
+  :name:             :palemoon
+  :version:          '25.6.0'
+  :engine:           :gecko
+  :engine_version:   '25.6'
+  :platform:         :windows
+  :platform_label:   :windows_10
+  :platform_version: '10.0'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'palemoon palemoon25 gecko gecko25 windows windows10'
+  :like:             :firefox
+
+- :user_agent:       Mozilla/1.10 [en] (Compatible; RISC OS 3.70; Oregano 1.10)
+  :name:             :oregano
+  :version:          '1.10'
+  :engine:
+  :engine_version:
+  :platform:         :risc
+  :platform_label:
+  :platform_version: '3.70'
+  :locale:           :en
+  :architecture:
+  :mobile:           false
+  :to_s:             'oregano oregano1 risc risc3'
+
 - :user_agent:       Mozilla/5.0 (X11; CrOS x86_64 6310.68.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.96 Safari/537.36
   :name:             :chrome
   :version:          '39.0.2171.96'

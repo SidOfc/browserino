@@ -13,7 +13,7 @@ Browserino.config.define do
     ua = ua.gsub(%r{chrome|safari}i, '').gsub('OPR', 'opera') if ua =~ %r{OPR}
     ua = ua.gsub %r{9\.80}, '' if ua =~ %r{opera}i
     ua = ua.gsub %r{webkit/}i, '' if ua =~ %r{presto}i
-    ua = ua.gsub %r{(?:ms)?ie}i, '' if ua =~ %r{rv:}i
+    ua = ua.gsub %r{(?:ms)?ie\b}i, '' if ua =~ %r{rv:}i
     ua = ua.gsub %r{android|linux}i, '' if ua =~ %r{tizen}i
     ua = ua.gsub %r{linux}i, '' if ua =~ %r{android|s(unos|olaris)|w(eb)?os}i
     ua = ua.gsub %r{x11}i, '' if ua =~ %r{bsd|s(unos|olaris)}i

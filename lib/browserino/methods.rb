@@ -9,11 +9,7 @@ module Browserino
     props = collect props, user_agent
     props = collect_with_smart_watchers props, user_agent
     props = with_labels props
-
-    if like
-      repl = user_agent =~ %r{#{like}}i && '' || like.to_s
-      like = parse user_agent.gsub matcher.pattern, repl
-    end
+    like  = Client.new props.merge name: like if like
 
     Client.new props, like
   end
