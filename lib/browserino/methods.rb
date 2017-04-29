@@ -1,17 +1,26 @@
 # frozen_string_literal: true
 
 module Browserino
-  def self.analyze(user_agent, matcher = nil)
+  def self.analyze(ua, matcher = nil)
     @defaults ||= config.global_matchers.map(&:properties).reduce(&:merge)
 
-    props = @defaults.merge(matcher && matcher.properties || {})
-    like  = props.delete :like
-    props = collect props, user_agent
-    props = collect_with_smart_watchers props, user_agent
-    props = with_labels props
-    like  = Client.new props.merge name: like if like
+    props    = @defaults.merge(matcher && matcher.properties || {})
+    like     = props.delete :like
+    props    = collect props, ua
+    props    = collect_with_smart_watchers props, ua
+    props    = with_labels props
+    like     = Client.new props.merge(like_attrs(props, like, ua)) if like
 
     Client.new props, like
+  end
+
+  def self.like_attrs(props, like, user_agent)
+    lattrs = config.matchers.select { |m| m == like }.first.properties
+    fattrs = { name: like }
+    fattrs[:version] = lattrs[:version] if lattrs[:version].is_a? Regexp
+    fattrs[:version] ||= smart_matchers(fattrs)[:version]
+
+    props.dup.merge collect(fattrs, user_agent)
   end
 
   def self.config
