@@ -209,6 +209,7 @@ Browserino.config.define do
   bots text: true do
     match %r{huaweisymantecspider}i,        name: :huaweisymantecspider
     match %r{atomic_email_hunter}i,         name: :atomic_email_hunter
+    match %r{netresearchserver}i,           name: :netresearchserver
     match %r{autoemailspider}i,             name: :auto_email_spider
     match %r{flaming\sattackbot}i,          name: :flaming_attackbot
     match %r{addsugarspiderbot}i,           name: :addsugarspiderbot
@@ -228,6 +229,7 @@ Browserino.config.define do
     match %r{baiduspider}i,                 name: :baiduspider
     match %r{linguee\sbot}i,                name: :linguee_bot
     match %r{big\sbrother}i,                name: :big_brother
+    match %r{noxtrumbot}i,                  name: :noxtrumbot
     match %r{black\shole}i,                 name: :black_hole
     match %r{blackwidow}i,                  name: :blackwidow
     match %r{sosospider}i,                  name: :sosospider
@@ -247,12 +249,15 @@ Browserino.config.define do
     match %r{dts\sagent}i,                  name: :dts_agent
     match %r{emailwolf}i,                   name: :emailwolf
     match %r{googlebot}i,                   name: :googlebot
+    match %r{omgilibot}i,                   name: :omgilibot
     match %r{altavista}i,                   name: :altavista
     match %r{yandexbot}i,                   name: :yandexbot
+    match %r{newsgator}i,                   name: :newsgator
     match %r{instagram}i,                   name: :instagram
     match %r{pinterest}i,                   name: :pinterest
     match %r{gurujibot}i,                   name: :gurujibot
     match %r{lapozzbot}i,                   name: :lapozzbot
+    match %r{mvaclient}i,                   name: :mvaclient
     match %r{ldspider}i,                    name: :ldspider
     match %r{lexxebot}i,                    name: :lexxebot
     match %r{linkedinbot}i,                 name: :linkedin
@@ -267,6 +272,8 @@ Browserino.config.define do
     match %r{koepabot}i,                    name: :koepabot
     match %r{mogimogi}i,                    name: :mogimogi
     match %r{jyxobot}i,                     name: :jyxobot
+    match %r{orbiter}i,                     name: :orbiter
+    match %r{polybot}i,                     name: :polybot
     match %r{accoona}i,                     name: :accoona
     match %r{mj12bot}i,                     name: :mj12bot
     match %r{aspider}i,                     name: :aspider
@@ -277,23 +284,33 @@ Browserino.config.define do
     match %r{gaisbot}i,                     name: :gaisbot
     match %r{backrub}i,                     name: :backrub
     match %r{harvest}i,                     name: :harvest
+    match %r{nymesis}i,                     name: :nymesis
     match %r{ichiro}i,                      name: :ichiro
     match %r{bizbot}i,                      name: :bizbot
     match %r{msnbot}i,                      name: :msnbot
     match %r{exabot}i,                      name: :exabot
+    match %r{msrbot}i,                      name: :msrbot
     match %r{dotbot}i,                      name: :dotbot
     match %r{cosmos}i,                      name: :cosmos
     match %r{ecatch}i,                      name: :ecatch
     match %r{scrapy}i,                      name: :scrapy
     match %r{holmes}i,                      name: :holmes
     match %r{tumblr}i,                      name: :tumblr
+    match %r{mxbot}i,                       name: :mxbot
     match %r{acoon}i,                       name: :acoon
     match %r{nutch}i,                       name: :nutch
     match %r{ia_archiver}i,                 name: :alexa
     match %r{atomz}i,                       name: :atomz
     match %r{acoi}i,                        name: :acoi
+    match %r{\sobot}i,                      name: :obot
     match %r{(?:ask)\sjeeves}i,             name: :ask
     match %r{b2w}i,                         name: :b2w
+
+    match %r{oegp}i,                        name: :oegp,
+                                            version: %r{v\.\s([\d\.]+)}i
+
+    match %r{ng-search}i,                   name: :ng_search,
+                                            version: %r{-search/([\d\.]+)}i
 
     match %r{morning\spaper}i,              name: :morning_paper,
                                             version: %r{\spaper\s([\d\.]+)}i
