@@ -22,7 +22,7 @@ Browserino.config.define do
     ua = ua.gsub %r{mac\sos\sx}i, '' if ua =~ %r{ip(?:[ao]d|hone)}i
     ua = ua.gsub %r{msie}i, '' if ua =~ %r{huaweisymantecspider}i
     ua = ua.gsub %r{risc\sos}i, 'risc' if ua =~ %r{risc\sos}i
-    ua = ua.gsub %r{msie}i, '' if ua =~ %r{surf}i
+    ua = ua.gsub %r{msie}i, '' if ua =~ %r{surf|\w*bot}i
     ua = ua.gsub %r{safari}i, 'chrome' if ua =~ %r{bluechrome}i
     ua = ua.gsub %r{msie|windows}i, '' if ua =~ %r{dts\sagent}i
     ua = ua.gsub %r{blade\sos}i, 'blade-os' if ua =~ %r{future\sstar}i

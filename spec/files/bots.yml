@@ -1,5 +1,173 @@
 ---
 :bots:
+- :user_agent: Morning Paper 1.0 (robots.txt compliant!)
+  :name:       :morning_paper
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'morning_paper morning_paper1'
+
+- :user_agent: MojeekBot/0.2 (archi; http://www.mojeek.com/bot.html)
+  :name:       :mojeekbot
+  :version:    '0.2'
+  :text:       true
+  :to_s:       'mojeekbot mojeekbot0'
+
+- :user_agent: mogimogi/1.0
+  :name:       :mogimogi
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'mogimogi mogimogi1'
+
+- :user_agent: http://www.mabontland.com
+  :name:       :mabontland
+  :version:
+  :text:       true
+  :to_s:       'mabontland'
+
+- :user_agent: LinkWalker/2.0
+  :name:       :linkwalker
+  :version:    '2.0'
+  :text:       true
+  :to_s:       'linkwalker linkwalker2'
+
+- :user_agent: Linguee Bot (http://www.linguee.com/bot; bot@linguee.com)
+  :name:       :linguee_bot
+  :version:
+  :text:       true
+  :to_s:       'linguee_bot'
+
+- :user_agent: LexxeBot/1.0 (lexxebot@lexxe.com)
+  :name:       :lexxebot
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'lexxebot lexxebot1'
+
+- :user_agent: ldspider (http://code.google.com/p/ldspider/wiki/Robots)
+  :name:       :ldspider
+  :version:
+  :text:       true
+  :to_s:       'ldspider'
+
+- :user_agent: LapozzBot/1.4 (+http://robot.lapozz.com)
+  :name:       :lapozzbot
+  :version:    '1.4'
+  :text:       true
+  :to_s:       'lapozzbot lapozzbot1'
+
+- :user_agent: L.webis/0.87 (http://webalgo.iit.cnr.it/index.php?pg=lwebis)
+  :name:       :lwebis
+  :version:    '0.87'
+  :text:       true
+  :to_s:       'lwebis lwebis0'
+
+- :user_agent: Mozilla/5.0 (compatible; KoepaBot BETA; http://www.koepa.nl/bot.html)
+  :name:       :koepabot
+  :version:
+  :text:       true
+  :to_s:       'koepabot'
+
+- :user_agent: Jyxobot/1
+  :name:       :jyxobot
+  :version:    '1'
+  :text:       true
+  :to_s:       'jyxobot jyxobot1'
+
+- :user_agent: Jaxified Bot (+http://www.jaxified.com/crawler/)
+  :name:       :jaxified_bot
+  :version:
+  :text:       true
+  :to_s:       'jaxified_bot'
+
+- :user_agent: IssueCrawler
+  :name:       :issuecrawler
+  :version:
+  :text:       true
+  :to_s:       'issuecrawler'
+
+- :user_agent: ichiro/4.0 (http://help.goo.ne.jp/door/crawler.html)
+  :name:       :ichiro
+  :version:    '4.0'
+  :text:       true
+  :to_s:       'ichiro ichiro4'
+
+- :user_agent: GurujiBot/1.0 (+http://www.guruji.com/en/WebmasterFAQ.html)
+  :name:       :gurujibot
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'gurujibot gurujibot1'
+
+- :user_agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 4.0; Girafabot; girafabot at girafa dot com; http://www.girafa.com)
+  :name:       :girafabot
+  :version:
+  :text:       true
+  :to_s:       'girafabot windows dos'
+
+- :user_agent: genieBot ((http://64.5.245.11/faq/faq.html))
+  :name:       :geniebot
+  :version:
+  :text:       true
+  :to_s:       'geniebot'
+
+- :user_agent: Gaisbot/3.0+(robot06@gais.cs.ccu.edu.tw;+http://gais.cs.ccu.edu.tw/robot.php)
+  :name:       :gaisbot
+  :version:    '3.0'
+  :text:       true
+  :to_s:       'gaisbot gaisbot3'
+
+- :user_agent: EmeraldShield.com WebBot (http://www.emeraldshield.com/webbot.aspx)
+  :name:       :emeraldshield
+  :version:
+  :text:       true
+  :to_s:       'emeraldshield'
+
+- :user_agent: DotBot/1.0.1 (http://www.dotnetdotcom.org/#info, crawler@dotnetdotcom.org)
+  :name:       :dotbot
+  :version:    '1.0.1'
+  :text:       true
+  :to_s:       'dotbot dotbot1'
+
+- :user_agent: Mozilla/5.0 (compatible; discobot/1.0; +http://discoveryengine.com/discobot.html)
+  :name:       :discobot
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'discobot discobot1'
+
+- :user_agent: Covario-IDS/1.0 (Covario; http://www.covario.com/ids; support at covario dot com)
+  :name:       :covario_ids
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'covario_ids covario_ids1'
+
+- :user_agent: cosmos/0.9_(robot@xyleme.com)
+  :name:       :cosmos
+  :version:    '0.9'
+  :text:       true
+  :to_s:       'cosmos cosmos0'
+
+- :user_agent: CatchBot/2.0; +http://www.catchbot.com
+  :name:       :catchbot
+  :version:    '2.0'
+  :text:       true
+  :to_s:       'catchbot catchbot2'
+
+- :user_agent: Mozilla/4.0 (compatible; Cerberian Drtrs Version-3.2-Build-0)
+  :name:       :cerberian_drtrs
+  :version:    '3.2'
+  :text:       true
+  :to_s:       'cerberian_drtrs cerberian_drtrs3'
+
+- :user_agent: Mozilla/5.0 (compatible; BecomeBot/3.0; MSIE 6.0 compatible; +http://www.become.com/site_owners.html)
+  :name:       :becomebot
+  :version:    '3.0'
+  :text:       true
+  :to_s:       'becomebot becomebot3'
+
+- :user_agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0) AddSugarSpiderBot www.idealobserver.com
+  :name:       :addsugarspiderbot
+  :version:
+  :text:       true
+  :to_s:       'addsugarspiderbot windows vista'
+
 - :user_agent: Mozilla/5.0 (compatible; NetSeer crawler/2.0; +http://www.netseer.com/crawler.html; crawler@netseer.com)
   :name:       :netseer
   :version:    '2.0'
