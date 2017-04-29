@@ -107,8 +107,8 @@ module Browserino
     def to_s
       @str_cache ||= %i[name engine platform].map do |prop|
         n = properties[prop]
-        v = properties[prop == :name ? :version : "#{prop}_version".to_sym]
-        l = properties[prop == :name ? :label : "#{prop}_label".to_sym]
+        v = version_for prop
+        l = label_for prop
         a = l ? l : [n, (v.major if v > '0.0.0')].join.to_sym
 
         [n, a].uniq
@@ -139,6 +139,16 @@ module Browserino
     end
 
     private
+
+    def name_for(sym)
+      mtd = %i[version label].include?(sym) ? :name : "#{sym}_name".to_sym
+      properties[mtd]
+    end
+
+    def label_for(sym)
+      mtd = %i[version name].include?(sym) ? :label : "#{sym}_label".to_sym
+      properties[mtd]
+    end
 
     def version_for(sym)
       mtd = %i[label name].include?(sym) ? :version : "#{sym}_version".to_sym
