@@ -1,5 +1,107 @@
 ---
 :bots:
+- :user_agent: Vortex/2.2 ( http://marty.anstey.ca/robots/vortex/)
+  :name:       :vortex
+  :version:    '2.2'
+  :text:       true
+  :to_s:       'vortex vortex2'
+
+- :user_agent: TurnitinBot/2.1 (http://www.turnitin.com/robot/crawlerinfo.html)
+  :name:       :turnitinbot
+  :version:    '2.1'
+  :text:       true
+  :to_s:       'turnitinbot turnitinbot2'
+
+- :user_agent: TinEye/1.1 (http://tineye.com/crawler.html)
+  :name:       :tineye
+  :version:    '1.1'
+  :text:       true
+  :to_s:       'tineye tineye1'
+
+- :user_agent: TerrawizBot/1.0 (+http://www.terrawiz.com/bot.html)
+  :name:       :terrawizbot
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'terrawizbot terrawizbot1'
+
+- :user_agent: SynooBot/0.7.1 (SynooBot; http://www.synoo.de/bot.html; webmaster@synoo.com)
+  :name:       :synoobot
+  :version:    '0.7.1'
+  :text:       true
+  :to_s:       'synoobot synoobot0'
+
+- :user_agent: StackRambler/2.0
+  :name:       :stackrambler
+  :version:    '2.0'
+  :text:       true
+  :to_s:       'stackrambler stackrambler2'
+
+- :user_agent: Snappy/1.1 ( http://www.urltrends.com/ )
+  :name:       :snappy
+  :version:    '1.1'
+  :text:       true
+  :to_s:       'snappy snappy1'
+
+- :user_agent: Sqworm/2.9.85-BETA (beta_release; 20011115-775; i686-pc-linux-gnu)
+  :name:       :sqworm
+  :version:    '2.9.85'
+  :text:       true
+  :to_s:       'sqworm sqworm2 linux'
+
+- :user_agent: SearchSight/2.0 (http://SearchSight.com/)
+  :name:       :searchsight
+  :version:    '2.0'
+  :text:       true
+  :to_s:       'searchsight searchsight2'
+
+- :user_agent: Scrubby/2.1 (http://www.scrubtheweb.com/)
+  :name:       :scrubby
+  :version:    '2.1'
+  :text:       true
+  :to_s:       'scrubby scrubby2'
+
+- :user_agent: Mozilla/5.0 (compatible; ScoutJet; http://www.scoutjet.com/)
+  :name:       :scoutjet
+  :version:
+  :text:       true
+  :to_s:       'scoutjet'
+
+- :user_agent: SandCrawler - Compatibility Testing
+  :name:       :sandcrawler
+  :version:
+  :text:       true
+  :to_s:       'sandcrawler'
+
+- :user_agent: RufusBot (Rufus Web Miner; http://64.124.122.252/feedback.html)
+  :name:       :rufusbot
+  :version:
+  :text:       true
+  :to_s:       'rufusbot'
+
+- :user_agent: RAMPyBot - www.giveRAMP.com/0.1 (RAMPyBot - www.giveRAMP.com; http://www.giveramp.com/bot.html; support@giveRAMP.com)
+  :name:       :rampybot
+  :version:
+  :text:       true
+  :to_s:       'rampybot'
+
+- :user_agent: radian6_default_(www.radian6.com/crawler)
+  :name:       :radian6
+  :version:
+  :text:       true
+  :to_s:       'radian6'
+
+- :user_agent: Qseero v1.0.0
+  :name:       :qseero
+  :version:    '1.0.0'
+  :text:       true
+  :to_s:       'qseero qseero1'
+
+- :user_agent: Pompos/1.3 http://dir.com/pompos.html
+  :name:       :pompos
+  :version:    '1.3'
+  :text:       true
+  :to_s:       'pompos pompos1'
+
 - :user_agent: polybot 1.0 (http://cis.poly.edu/polybot/)
   :name:       :polybot
   :version:    '1.0'

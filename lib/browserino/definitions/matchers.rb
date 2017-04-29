@@ -222,12 +222,17 @@ Browserino.config.define do
     match %r{emeraldshield}i,               name: :emeraldshield
     match %r{issuecrawler}i,                name: :issuecrawler
     match %r{jaxified\sbot}i,               name: :jaxified_bot
+    match %r{stackrambler}i,                name: :stackrambler
+    match %r{turnitinbot}i,                 name: :turnitinbot
     match %r{alkaline}i,                    name: :alkalinebot
     match %r{yahoo\!\sslurp}i,              name: :yahoo_slurp
     match %r{emailsiphon}i,                 name: :emailsiphon
     match %r{backdoorbot}i,                 name: :backdoorbot
+    match %r{terrawizbot}i,                 name: :terrawizbot
+    match %r{searchsight}i,                 name: :searchsight
     match %r{baiduspider}i,                 name: :baiduspider
     match %r{linguee\sbot}i,                name: :linguee_bot
+    match %r{sandcrawler}i,                 name: :sandcrawler
     match %r{big\sbrother}i,                name: :big_brother
     match %r{noxtrumbot}i,                  name: :noxtrumbot
     match %r{black\shole}i,                 name: :black_hole
@@ -260,6 +265,7 @@ Browserino.config.define do
     match %r{mvaclient}i,                   name: :mvaclient
     match %r{ldspider}i,                    name: :ldspider
     match %r{lexxebot}i,                    name: :lexxebot
+    match %r{scoutjet}i,                    name: :scoutjet
     match %r{linkedinbot}i,                 name: :linkedin
     match %r{bullseye}i,                    name: :bullseye
     match %r{alexibot}i,                    name: :alexibot
@@ -270,6 +276,9 @@ Browserino.config.define do
     match %r{discobot}i,                    name: :discobot
     match %r{geniebot}i,                    name: :geniebot
     match %r{koepabot}i,                    name: :koepabot
+    match %r{synoobot}i,                    name: :synoobot
+    match %r{rufusbot}i,                    name: :rufusbot
+    match %r{rampybot}i,                    name: :rampybot
     match %r{mogimogi}i,                    name: :mogimogi
     match %r{jyxobot}i,                     name: :jyxobot
     match %r{orbiter}i,                     name: :orbiter
@@ -285,6 +294,14 @@ Browserino.config.define do
     match %r{backrub}i,                     name: :backrub
     match %r{harvest}i,                     name: :harvest
     match %r{nymesis}i,                     name: :nymesis
+    match %r{radian6}i,                     name: :radian6
+    match %r{scrubby}i,                     name: :scrubby
+    match %r{snappy}i,                      name: :snappy
+    match %r{vortex}i,                      name: :vortex
+    match %r{tineye}i,                      name: :tineye
+    match %r{sqworm}i,                      name: :sqworm
+    match %r{qseero}i,                      name: :qseero
+    match %r{pompos}i,                      name: :pompos
     match %r{ichiro}i,                      name: :ichiro
     match %r{bizbot}i,                      name: :bizbot
     match %r{msnbot}i,                      name: :msnbot
