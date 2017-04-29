@@ -6,6 +6,7 @@ describe 'Browserino browsers' do
   browsers.shuffle.each do |spec|
     exclude = [:user_agent, :mobile, :to_s]
     client  = Browserino.parse spec[:user_agent]
+    like_v  = spec.delete :like_version
 
     describe [client.name, spec[:user_agent]].join(' :: ') do
       if client.type != :unknown
@@ -78,6 +79,13 @@ describe 'Browserino browsers' do
             expect(client.send("#{alt}?")).to be_truthy
             expect(client.send("#{alt}?", ver)).to be_truthy if has_ver
           end
+        end
+      end
+
+      if like_v
+        it "expects client.like.version and client.like.version?('#{like_v}') to be truthy" do
+          expect(client.like.version).to be_truthy
+          expect(client.like.version?(like_v)).to be_truthy
         end
       end
     end
