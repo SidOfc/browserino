@@ -1,5 +1,19 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (Linux; Android 5.1; ZTE Blade L6 Build/LMY47I) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.91 Mobile Safari/537.36
+  :name:             :chrome
+  :version:          '52.0.2743.91'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :android
+  :platform_label:   :lollipop
+  :platform_version: '5.1'
+  :device:           :zte
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'chrome chrome52 webkit webkit537 android lollipop'
+
 - :user_agent:       Mozilla/5.0 (Linux; Android 6.0; MotoE2(4G-LTE) Build/MPI24.65-39; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/51.0.2704.81 Mobile Safari/537.36 ACHEETAHI/2100502055
   :name:             :chrome
   :version:          '51.0.2704.81'

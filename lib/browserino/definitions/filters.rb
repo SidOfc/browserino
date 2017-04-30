@@ -9,30 +9,29 @@ Browserino.config.define do
   # the returned result will be used as the user agent to parse so make
   # sure to return the final ua at the end
   before_parse do |ua|
-    ua = ua.gsub(%r{applewebkit}i, 'webkit').gsub(%r{(Mozilla/[\d\.]+)}i, '')
-           .gsub(%r{\sAdr\s}, 'Android ')
-    ua = ua.gsub(%r{chrome|safari}i, '').gsub('OPR', 'opera') if ua =~ %r{OPR}
-    ua = ua.gsub %r{9\.80}, '' if ua =~ %r{opera}i
-    ua = ua.gsub %r{webkit/}i, '' if ua =~ %r{presto}i
-    ua = ua.gsub %r{(?:ms)?ie\b}i, '' if ua =~ %r{rv:}i
-    ua = ua.gsub %r{android|linux}i, '' if ua =~ %r{tizen|windows\sphone}i
-    ua = ua.gsub %r{linux}i, '' if ua =~ %r{android|s(unos|olaris)|w(eb)?os}i
-    ua = ua.gsub %r{x11}i, '' if ua =~ %r{bsd|s(unos|olaris)}i
-    ua = ua.gsub %r{windows\snt}i, '' if ua =~ %r{windows\sphone}i
-    ua = ua.gsub %r{rv:}i, '' if ua =~ %r{servo}i
-    ua = ua.gsub %r{mac\sos\sx}i, '' if ua =~ %r{ip(?:[ao]d|hone)|fxos}i
-    ua = ua.gsub %r{macintosh}i, '' if ua =~ %r{fxos}i
-    ua = ua.gsub %r{msie}i, '' if ua =~ %r{huaweisymantecspider}i
-    ua = ua.gsub %r{risc\sos}i, 'risc' if ua =~ %r{risc\sos}i
-    ua = ua.gsub %r{msie}i, '' if ua =~ %r{surf|\w*bot}i
-    ua = ua.gsub %r{safari}i, 'chrome' if ua =~ %r{bluechrome}i
-    ua = ua.gsub %r{msie|windows}i, '' if ua =~ %r{dts\sagent}i
-    ua = ua.gsub %r{blade\sos}i, 'blade-os' if ua =~ %r{future\sstar}i
-    ua = ua.gsub %r{safari}i, '' if ua =~ %r{obigo}i
-    ua = ua.gsub %r{awesomium}i, '' if ua =~ %r{flashfire}i
-    ua = ua.gsub %r{version}i, '' if ua =~ %r{kindle/\d}i
-    ua = ua.gsub %r{maemo|linux}i, '' if ua =~ %r{sailfish}i
-    ua
+    subs = [[%r{applewebkit}i, 'webkit'], [%r{(Mozilla/[\d\.]+)}i, ''],
+            [%r{\sAdr\s}, 'Android ']]
+    subs += [[%r{chrome|safari}i, ''], ['OPR', 'opera']] if ua =~ %r{OPR}
+    subs << [%r{9\.80}, ''] if ua =~ %r{opera}i
+    subs << [%r{webkit/}i, ''] if ua =~ %r{presto}i
+    subs << [%r{(?:ms)?ie\b}i, ''] if ua =~ %r{rv:}i
+    subs << [%r{android|linux}i, ''] if ua =~ %r{tizen|windows\sphone}i
+    subs << [%r{linux}i, ''] if ua =~ %r{android|s(unos|olaris)|w(eb)?os}i
+    subs << [%r{x11}i, ''] if ua =~ %r{bsd|s(unos|olaris)}i
+    subs << [%r{windows\snt}i, ''] if ua =~ %r{windows\sphone}i
+    subs << [%r{rv:}i, ''] if ua =~ %r{servo}i
+    subs << [%r{mac\sos\sx|macintosh}i, ''] if ua =~ %r{ip(?:[ao]d|hone)|fxos}i
+    subs << [%r{msie}i, ''] if ua =~ %r{huaweisymantecspider|surf|\w*bot}i
+    subs << [%r{risc\sos}i, 'risc'] if ua =~ %r{risc\sos}i
+    subs << [%r{safari}i, 'chrome'] if ua =~ %r{bluechrome}i
+    subs << [%r{msie|windows}i, ''] if ua =~ %r{dts\sagent}i
+    subs << [%r{blade\sos}i, 'blade-os'] if ua =~ %r{future\sstar}i
+    subs << [%r{safari}i, ''] if ua =~ %r{obigo}i
+    subs << [%r{awesomium}i, ''] if ua =~ %r{flashfire}i
+    subs << [%r{version}i, ''] if ua =~ %r{kindle/\d}i
+    subs << [%r{maemo|linux}i, ''] if ua =~ %r{sailfish}i
+
+    subs.reduce(ua) { |str, gsub_args| str.gsub(*gsub_args) }
   end
 
   # after a matcher is found, it's values are filtered in two stages

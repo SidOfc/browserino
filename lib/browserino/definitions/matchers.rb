@@ -29,7 +29,7 @@ Browserino.config.define do
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
                         |tizen|vodafone|t\-mobile|kindle|kf\w\w|palmos|huawei
                         |moto|lumia|oneplus|fxos|nexus|opera\sm(?:ob|in)i
-                        |motorola)}xi
+                        |zte|motorola)}xi
 
     platform         %r{.*(wiiu?|nintendo\sds|playstation|windows\sphone|windows
                         |kf\w\w|mac(?:intosh|\sos\sx)|android|ip(?:[ao]d|hone)
@@ -45,7 +45,7 @@ Browserino.config.define do
                         |bada/?|symbianos/?|rim\stablet\sos)\s?([\d\._]+)}xi
 
     device           %r{(alcatel|all(?:tell|view)|htc|kindle|kf\w\w|apple\s?tv
-                        |iphone|ipad|a\d+f;|archos|transformer|slider|me\d+x
+                        |iphone|ipad|a\d+f;|archos|transformer|slider|me\d+x|zte
                         |blackberry|\d+dl|venue|hp|desire|huawei|lenovo|lumia
                         |moto|motorola|oneplus|nokia|nexus|\b\w+tab\b|lg[-l])}xi
   end
