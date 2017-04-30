@@ -15,7 +15,7 @@ Browserino.config.define do
     ua = ua.gsub %r{9\.80}, '' if ua =~ %r{opera}i
     ua = ua.gsub %r{webkit/}i, '' if ua =~ %r{presto}i
     ua = ua.gsub %r{(?:ms)?ie\b}i, '' if ua =~ %r{rv:}i
-    ua = ua.gsub %r{android|linux}i, '' if ua =~ %r{tizen}i
+    ua = ua.gsub %r{android|linux}i, '' if ua =~ %r{tizen|windows\sphone}i
     ua = ua.gsub %r{linux}i, '' if ua =~ %r{android|s(unos|olaris)|w(eb)?os}i
     ua = ua.gsub %r{x11}i, '' if ua =~ %r{bsd|s(unos|olaris)}i
     ua = ua.gsub %r{windows\snt}i, '' if ua =~ %r{windows\sphone}i
@@ -75,6 +75,8 @@ Browserino.config.define do
     if %r{kf\w*}i =~ val then :kindle
     elsif %r{lg[-l]}i =~ val then :lg
     elsif %r{\w+tab}i =~ val then :lenovo
+    elsif %r{lumia}i =~ val then :nokia
+    elsif %r{^moto}i =~ val then :motorola
     elsif %r{\d+dl|venue}i =~ val then :dell
     elsif %r{desire}i =~ val then :htc
     elsif %r{me\d+x|a\df;|transformer|slider}i =~ val then :asus

@@ -28,9 +28,10 @@ Browserino.config.define do
     mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
                         |tizen|vodafone|t\-mobile|kindle|kf\w\w|palmos|huawei
-                        |oneplus|fxos|nexus|opera\sm(?:ob|in)i)}xi
+                        |moto|lumia|oneplus|fxos|nexus|opera\sm(?:ob|in)i
+                        |motorola)}xi
 
-    platform         %r{.*(wiiu?|nintendo\sds|playstation|windows(?:\sphone)?
+    platform         %r{.*(wiiu?|nintendo\sds|playstation|windows\sphone|windows
                         |kf\w\w|mac(?:intosh|\sos\sx)|android|ip(?:[ao]d|hone)
                         |blackberry|risc|linux|ubuntu|x11|bsd|s(?:unos|olaris)
                         |tizen|xbox|amigaos|w(?:eb)?os|(?<!mi)cros|bada|palmos
@@ -45,8 +46,8 @@ Browserino.config.define do
 
     device           %r{(alcatel|all(?:tell|view)|htc|kindle|kf\w\w|apple\s?tv
                         |iphone|ipad|a\d+f;|archos|transformer|slider|me\d+x
-                        |blackberry|\d+dl|venue|hp|desire|huawei|lenovo
-                        |oneplus|nokia|nexus|\b\w+tab\b|lg[-l])}xi
+                        |blackberry|\d+dl|venue|hp|desire|huawei|lenovo|lumia
+                        |moto|motorola|oneplus|nokia|nexus|\b\w+tab\b|lg[-l])}xi
   end
 
   # automatically set type to :email for each defined matcher
