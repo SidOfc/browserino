@@ -69,8 +69,9 @@ Browserino.config.define do
   end
 
   filter :device do |val|
-    if %r{A\dF;} =~ val then :asus
-    elsif %r{kf\w*} =~ val then :kindle
+    if %r{kf\w*}i =~ val then :kindle
+    elsif %r{\d+dl|venue}i =~ val then :dell
+    elsif %r{me\d+x|a\df;|transformer|slider}i =~ val then :asus
     else val
     end
   end

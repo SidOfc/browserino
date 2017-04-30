@@ -22,7 +22,7 @@ Browserino.config.define do
 
     smarttv          %r{(?:smart[\-\s]|hbb|apple\s|google|g)(tv)}i
 
-    tablet           %r{(ipad|transformer|tablet\spc)}i
+    tablet           %r{(ipad|transformer|slider|a\d+f;|tablet\spc|hp\-tablet)}i
 
     mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
@@ -42,7 +42,8 @@ Browserino.config.define do
                         |bada/?|symbianos/?)\s?([\d\._]+)}xi
 
     device           %r{(alcatel|all(?:tell|view)|htc|kindle|kf\w\w|apple\s?tv
-                        |iphone|ipad|a\d+f;)}xi
+                        |iphone|ipad|a\d+f;|archos|transformer|slider|me\d+x
+                        |blackberry|\d+dl|venue|hp)}xi
   end
 
   # automatically set type to :email for each defined matcher

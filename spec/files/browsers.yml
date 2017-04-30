@@ -1,5 +1,77 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (Linux; U; Android 2.2; ja-jp; 001DL Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+  :name:             :safari
+  :version:          '4.0'
+  :engine:           :webkit
+  :engine_version:   '533.1'
+  :platform:         :android
+  :platform_label:   :froyo
+  :platform_version: '2.2'
+  :device:           :dell
+  :locale:           :ja_jp
+  :architecture:
+  :mobile:           true
+  :to_s:             'safari safari4 webkit webkit533 android froyo'
+
+- :user_agent:       Mozilla/5.0 (Linux; Android 4.2.1; ME173X Build/JOP40D) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Safari/537.36
+  :name:             :chrome
+  :version:          '32.0.1700.99'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :android
+  :platform_label:   :jelly_bean
+  :platform_version: '4.2.1'
+  :device:           :asus
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'chrome chrome32 webkit webkit537 android jelly_bean'
+
+- :user_agent:       Mozilla/5.0 (Linux; U; Android 4.0.3; fr-fr; Slider SL101 Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30
+  :name:             :safari
+  :version:          '4.0'
+  :engine:           :webkit
+  :engine_version:   '534.30'
+  :platform:         :android
+  :platform_label:   :ice_cream_sandwich
+  :platform_version: '4.0.3'
+  :device:           :asus
+  :locale:           :fr_fr
+  :architecture:
+  :tablet:           true
+  :mobile:           true
+  :to_s:             'safari safari4 webkit webkit534 android ice_cream_sandwich'
+
+- :user_agent:       Mozilla/5.0 (Linux; Android 4.1.2; Transformer Build/JZO54K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.59 Safari/537.36
+  :name:             :chrome
+  :version:          '29.0.1547.59'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :android
+  :platform_label:   :jelly_bean
+  :platform_version: '4.1.2'
+  :device:           :asus
+  :locale:
+  :architecture:
+  :tablet:           true
+  :mobile:           true
+  :to_s:             'chrome chrome29 webkit webkit537 android jelly_bean'
+
+- :user_agent:       Mozilla/5.0 (Linux; Android 4.4.2; Archos 101 Copper Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.93 Safari/537.36
+  :name:             :chrome
+  :version:          '43.0.2357.93'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :android
+  :platform_label:   :kitkat
+  :platform_version: '4.4.2'
+  :device:           :archos
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'chrome chrome43 webkit webkit537 android kitkat'
+
 - :user_agent:       Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) MxNitro/1.0.0.500 Chrome/35.0.1849.0 Safari/537.36
   :name:             :maxthon_nitro
   :version:          '1.0.0.500'
@@ -2582,8 +2654,10 @@
   :engine_version:   '534.6'
   :platform:         :webos
   :platform_version: '3.0.2'
+  :device:           :hp
   :locale:           :de_de
   :architecture:
+  :tablet:           true
   :mobile:           true
   :to_s:             'webosbrowser webosbrowser234 webkit webkit534 webos webos3'
   :like:             :safari
@@ -2741,6 +2815,7 @@
   :engine_version:   '2.5.25'
   :platform:         :blackberry
   :platform_version: '9700'
+  :device:           :blackberry
   :locale:           :en
   :architecture:
   :mobile:           true
@@ -3091,6 +3166,7 @@
   :engine_version:   '534.8'
   :platform:         :blackberry
   :platform_version: '9800'
+  :device:           :blackberry
   :locale:           :en_us
   :architecture:
   :mobile:           true
@@ -3644,6 +3720,7 @@
   :engine_version:   '534.11'
   :platform:         :blackberry
   :platform_version: '9900'
+  :device:           :blackberry
   :locale:           :en
   :architecture:
   :mobile:           true
@@ -3658,6 +3735,7 @@
   :engine_version:   '534.11'
   :platform:         :blackberry
   :platform_version: '9860'
+  :device:           :blackberry
   :locale:           :en_us
   :architecture:
   :mobile:           true
@@ -3672,6 +3750,7 @@
   :engine_version:   '534.8'
   :platform:         :blackberry
   :platform_version: '9800'
+  :device:           :blackberry
   :locale:           :it
   :architecture:
   :mobile:           true
@@ -3686,6 +3765,7 @@
   :engine_version:   '534.8'
   :platform:         :blackberry
   :platform_version: '9700'
+  :device:           :blackberry
   :locale:           :pt
   :architecture:
   :mobile:           true
