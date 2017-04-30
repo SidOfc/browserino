@@ -1,5 +1,148 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1717.129 Amigo/32.0.1717.129 MRCHROME SOC Safari/537.36
+  :name:             :amigo
+  :version:          '32.0.1717.129'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :windows
+  :platform_label:   :windows7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'amigo amigo32 webkit webkit537 windows windows7'
+  :like:             :chrome
+  :like_version:     '32.0.1717.129'
+
+- :user_agent:       Mozilla/5.0 (Linux; U; Android 4.4 Andro-id Build/KRT16S; X11; FxOS armv7I rv:29.0) MyWebkit/537.51.1 (KHTML, like Gecko) Gecko/29.0 Firefox/29.0 Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_9_1; en-ID) MyWebKit/537.51.1 (KHTML, like Gecko) Chrome/34.0.17
+  :name:             :firefox
+  :version:          '29.0'
+  :engine:           :gecko
+  :engine_version:   '29.0'
+  :platform:         :firefox_os
+  :platform_label:
+  :platform_version: '4.4'
+  :locale:           :en_id
+  :architecture:     :arm
+  :mobile:           true
+  :to_s:             'firefox firefox29 gecko gecko29 firefox_os firefox_os4'
+
+- :user_agent:       Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en) AppleWebKit/418.9.1 (KHTML, like Gecko) Safari/419.3 TeaShark/0.8
+  :name:             :teashark
+  :version:          '0.8'
+  :engine:           :webkit
+  :engine_version:   '418.9.1'
+  :platform:         :macintosh
+  :platform_label:
+  :platform_version:
+  :locale:           :en
+  :architecture:
+  :mobile:           false
+  :to_s:             'teashark teashark0 webkit webkit418 macintosh'
+  :like:             :safari
+  :like_version:     '419.3'
+
+- :user_agent:       spray-can/1.0-M4.2
+  :name:             :spray_can
+  :version:          '1.0'
+  :engine:
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'spray_can spray_can1'
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.8 (KHTML, like Gecko) Chrome/17.0.944.0 Safari/535.8 BitdefenderSafepay/0.2.0.0 (OBK; 17.0.944.0; r396.2011)
+  :name:             :safepay
+  :version:          '0.2.0.0'
+  :engine:           :webkit
+  :engine_version:   '535.8'
+  :platform:         :windows
+  :platform_label:   :windows7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'safepay safepay0 webkit webkit535 windows windows7'
+  :like:             :chrome
+  :like_version:     '17.0.944.0'
+
+- :user_agent:       Mozilla/5.0 (PlayBook; U; RIM Tablet OS 2.0.0; en-US) AppleWebKit/535.1+ (KHTML, like Gecko) Version/7.2.0.0 Safari/535.1+
+  :name:             :playbook_browser
+  :version:
+  :engine:           :webkit
+  :engine_version:   '535.1'
+  :platform:         :rim_tablet_os
+  :platform_label:
+  :platform_version: '2.0.0'
+  :locale:           :en_us
+  :architecture:
+  :tablet:           true
+  :mobile:           false
+  :to_s:             'playbook_browser webkit webkit535 rim_tablet_os rim_tablet_os2'
+  :like:             :safari
+  :like_version:     '7.2.0.0'
+
+- :user_agent:       LGE-MN240/1.0 UP.Browser/6.2.3.8 (GUI) MMP/2.0
+  :name:             :openwave_browser
+  :version:          '6.2.3.8'
+  :engine:
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'openwave_browser openwave_browser6'
+
+- :user_agent:       Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0, GomezAgent 3.0)
+  :name:             :gomezagent
+  :version:          '3.0'
+  :engine:           :trident
+  :engine_version:   '6.0'
+  :platform:         :windows
+  :platform_label:   :windows7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'gomezagent gomezagent3 trident trident6 windows windows7'
+  :like:             :ie
+  :like_version:     '10.0'
+
+- :user_agent:       Mozilla/5.0 (Android; Linux armv7l; rv:10.0) Gecko/20120123 Firefox/10.0 Fennec/10.0
+  :name:             :fennec
+  :version:          '10.0'
+  :engine:           :gecko
+  :engine_version:   '10.0'
+  :platform:         :android
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:     :arm
+  :mobile:           true
+  :to_s:             'fennec fennec10 gecko gecko10 android'
+  :like:             :firefox
+  :like_version:     '10.0'
+
+- :user_agent:       Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/536.26.14 (KHTML, like Gecko) (Coda, like Safari)
+  :name:             :coda
+  :version:
+  :engine:           :webkit
+  :engine_version:   '536.26.14'
+  :platform:         :macintosh
+  :platform_label:   :mountain_lion
+  :platform_version: '10.8.2'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'coda webkit webkit536 macintosh mountain_lion'
+
 - :user_agent:       UCWEB/2.0 (Linux; U; Adr 2.3; en-US; MI-ONEPlus) U2/1.0.0 UCBrowser/8.6.0.199 U2/1.0.0=
   :name:             :ucbrowser
   :version:          '8.6.0.199'
@@ -1010,6 +1153,8 @@
   :architecture:
   :mobile:           false
   :to_s:             'obigo obigo10 webkit webkit530'
+  :like:             :safari
+  :like_version:     '530.8'
 
 - :user_agent:       Mozilla/5.0 (Series40; Nokia311/05.60; Profile/MIDP-2.1 Configuration/CLDC-1.1) Gecko/20100401 S40OviBrowser/1.8.0.50.5
   :name:             :ovibrowser
@@ -1486,13 +1631,13 @@
   :version:          '0.6'
   :engine:           :webkit
   :engine_version:   '420'
-  :platform:
+  :platform:         :syllable
   :platform_label:
   :platform_version:
   :locale:
   :architecture:
   :mobile:           false
-  :to_s:             'abrowse abrowse0 webkit webkit420'
+  :to_s:             'abrowse abrowse0 webkit webkit420 syllable'
 
 - :user_agent:       Mozilla/5.0 (Windows; U; WinNT; en; rv:1.0.2) Gecko/20030311 Beonex/0.8.2-stable
   :name:             :beonex

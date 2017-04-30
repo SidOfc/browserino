@@ -22,25 +22,26 @@ Browserino.config.define do
 
     smarttv          %r{(?:smart[\-\s]|hbb|apple\s|google|g)(tv)}i
 
-    tablet           %r{(ipad|transformer|slider|a\d+f;|tablet\spc|hp\-tablet
-                        |lenovo|\s\w+tab\s)}xi
+    tablet           %r{(ipad|transformer|slider|a\d+f;|tablet|lenovo
+                        |\s\w+tab\s)}xi
 
     mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
                         |tizen|vodafone|t\-mobile|kindle|kf\w\w|palmos|huawei
-                        |oneplus|nexus|opera\sm(?:ob|in)i)}xi
+                        |oneplus|fxos|nexus|opera\sm(?:ob|in)i)}xi
 
     platform         %r{.*(wiiu?|nintendo\sds|playstation|windows(?:\sphone)?
                         |kf\w\w|mac(?:intosh|\sos\sx)|android|ip(?:[ao]d|hone)
                         |blackberry|risc|linux|ubuntu|x11|bsd|s(?:unos|olaris)
                         |tizen|xbox|amigaos|w(?:eb)?os|(?<!mi)cros|bada|palmos
-                        |kindle|symbianos|sailfish|meego|darwin)}xi
+                        |kindle|symbianos|sailfish|meego|darwin|syllable|fxos
+                        |rim\stablet\sos)}xi
 
-    platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?
+    platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?|fxos
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
                         |blackberry|bb|s(?:unos|olaris)/?|w(?:eb)?os/|tizen
                         |risc\s*|amigaos/?|cros\s[\w-]+|ows\sxp|darwin|palmos
-                        |bada/?|symbianos/?)\s?([\d\._]+)}xi
+                        |bada/?|symbianos/?|rim\stablet\sos)\s?([\d\._]+)}xi
 
     device           %r{(alcatel|all(?:tell|view)|htc|kindle|kf\w\w|apple\s?tv
                         |iphone|ipad|a\d+f;|archos|transformer|slider|me\d+x
@@ -126,13 +127,6 @@ Browserino.config.define do
       modern         { version >= 10 }
     end
 
-    match %r{chrome(?:ium)?}i do
-      name           :chrome
-      version        %r{chrome(?:ium)?/([\d\.]+)}i
-      engine         %r{(webkit|blink)}i
-      modern         { version >= 50 }
-    end
-
     match %r{nintendobrowser}i,  name: :nintendobrowser, engine: :webkit
     match %r{deskbrowse}i,       name: :deskbrowse,      engine: :webkit
     match %r{qupzilla}i,         name: :qupzilla,        engine: :webkit
@@ -140,6 +134,9 @@ Browserino.config.define do
     match %r{shiira}i,           name: :shiira,          engine: :webkit
     match %r{amigavoyager}i,     name: :amigavoyager
     match %r{(?<!(?:net))surf}i, name: :surf
+
+    match %r{spray\-can}i,       name: :spray_can,
+                                 version: %r{-can/([\d\.]+)}i
 
     match %r{webpro}i,           name: :webpro,
                                  locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
@@ -163,6 +160,13 @@ Browserino.config.define do
       name           :firefox
       engine         %r{(gecko|servo)}i
       engine_version %r{(?:rv:\s?|servo/)([\d\.]+)}i
+      modern         { version >= 50 }
+    end
+
+    match %r{chrome(?:ium)?}i do
+      name           :chrome
+      version        %r{chrome(?:ium)?/([\d\.]+)}i
+      engine         %r{(webkit|blink)}i
       modern         { version >= 50 }
     end
 
@@ -196,11 +200,11 @@ Browserino.config.define do
     match %r{mosaic|ibrowse[^r]}i, name: :mosaic
     match %r{dillo}i,              name: :dillo
 
+    match %r{UP\.Browser},     name: :openwave_browser,
+                               version: %r{UP\.Browser/([\d\.]+)}i
+
     match %r{alienblue}i,      name: :alienblue,
                                version: %r{alienblue(?:hd)?/([\d\.]+)}i
-
-    match %r{obigo}i,          name: :obigo, engine: :webkit,
-                               version: %r{obigo/w?([\d\.]+)}i
 
     match %r{ovibrowser}i,     name: :ovibrowser,  engine: :gecko,
                                engine_version: %r{rv:\s?([\d\.]+)}i
@@ -280,6 +284,7 @@ Browserino.config.define do
     match %r{gurujibot}i,                   name: :gurujibot
     match %r{lapozzbot}i,                   name: :lapozzbot
     match %r{mvaclient}i,                   name: :mvaclient
+    match %r{yodaobot}i,                    name: :yodaobot
     match %r{ldspider}i,                    name: :ldspider
     match %r{lexxebot}i,                    name: :lexxebot
     match %r{scoutjet}i,                    name: :scoutjet
@@ -441,12 +446,14 @@ Browserino.config.define do
     match %r{rockmelt}i,      name: :rockmelt
     match %r{coolnovo}i,      name: :coolnovo
     match %r{slimboat}i,      name: :slimboat
+    match %r{safepay}i,       name: :safepay
     match %r{vivaldi}i,       name: :vivaldi
     match %r{colibri}i,       name: :colibri
     match %r{iridium}i,       name: :iridium
     match %r{yowser}i,        name: :yowser
     match %r{origin}i,        name: :origin
     match %r{puffin}i,        name: :puffin
+    match %r{amigo}i,         name: :amigo
     match %r{fluid}i,         name: :fluid
     match %r{kinza}i,         name: :kinza
     match %r{swing}i,         name: :swing
@@ -467,13 +474,16 @@ Browserino.config.define do
 
   # inherit properties from matcher where name == :safari, (except :version)
   like :safari, except: [:version] do
+    match %r{obigo}i,              name: :obigo, version: %r{obigo/w?([\d\.]+)}i
     match %r{maple}i,              name: :mapple, version: %r{maple([\d\.]+)}i
+    match %r{playbook}i,           name: :playbook_browser
     match %r{samsungbrowser}i,     name: :samsungbrowser
     match %r{nokiabrowser}i,       name: :nokiabrowser
     match %r{mqqbrowser}i,         name: :mqqbrowser
     match %r{webbrowser}i,         name: :webbrowser
     match %r{stainless}i,          name: :stainless
     match %r{cheshire}i,           name: :cheshire
+    match %r{teashark}i,           name: :teashark
     match %r{omniweb}i,            name: :omniweb
     match %r{skyfire}i,            name: :skyfire
     match %r{mercury}i,            name: :mercury
@@ -484,6 +494,7 @@ Browserino.config.define do
     match %r{icab}i,               name: :icab
     match %r{bolt}i,               name: :bolt
     match %r{silk}i,               name: :silk
+    match %r{coda}i,               name: :coda
     match %r{qt(?!web)}i,          name: :qt
 
     match %r{xiaomi/miuibrowser}i, name: :xiaomi_miui,
@@ -555,6 +566,7 @@ Browserino.config.define do
     match %r{lorentz}i,         name: :lorentz
     match %r{myibrow}i,         name: :myibrow
     match %r{sylera}i,          name: :sylera
+    match %r{fennec}i,          name: :fennec
     match %r{iceape}i,          name: :iceape
     match %r{madfox}i,          name: :madfox
     match %r{kapiko}i,          name: :kapiko
@@ -614,6 +626,7 @@ Browserino.config.define do
       match %r{tencenttraveler}i, name: :tencenttraveler
       match %r{enigma\sbrowser}i, name: :enigma_browser
       match %r{simulbrowse}i,     name: :simulbrowse
+      match %r{gomezagent}i,      name: :gomezagent
       match %r{netcaptor}i,       name: :netcaptor
       match %r{sleipnir}i,        name: :sleipnir
       match %r{irider}i,          name: :irider

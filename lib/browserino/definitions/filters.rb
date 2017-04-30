@@ -20,7 +20,8 @@ Browserino.config.define do
     ua = ua.gsub %r{x11}i, '' if ua =~ %r{bsd|s(unos|olaris)}i
     ua = ua.gsub %r{windows\snt}i, '' if ua =~ %r{windows\sphone}i
     ua = ua.gsub %r{rv:}i, '' if ua =~ %r{servo}i
-    ua = ua.gsub %r{mac\sos\sx}i, '' if ua =~ %r{ip(?:[ao]d|hone)}i
+    ua = ua.gsub %r{mac\sos\sx}i, '' if ua =~ %r{ip(?:[ao]d|hone)|fxos}i
+    ua = ua.gsub %r{macintosh}i, '' if ua =~ %r{fxos}i
     ua = ua.gsub %r{msie}i, '' if ua =~ %r{huaweisymantecspider}i
     ua = ua.gsub %r{risc\sos}i, 'risc' if ua =~ %r{risc\sos}i
     ua = ua.gsub %r{msie}i, '' if ua =~ %r{surf|\w*bot}i
@@ -65,6 +66,7 @@ Browserino.config.define do
     elsif %r{s(?:unos|olaris)}i =~ val then :solaris
     elsif %r{cros}i =~ val             then :chromeos
     elsif %r{kindle|kf\w+}i =~ val     then :fire_os
+    elsif %r{fxos}i =~ val             then :firefox_os
     else val
     end
   end

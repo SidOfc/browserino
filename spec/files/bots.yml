@@ -1,5 +1,11 @@
 ---
 :bots:
+- :user_agent: Mozilla/5.0 (compatible; YodaoBot/1.0; http://www.yodao.com/help/webmaster/spider/; )
+  :name:       :yodaobot
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'yodaobot yodaobot1'
+
 - :user_agent: '*_WhatsApp/2.12.81 (Windows NT 6.1; U; es-ES) Presto/2.9.181 Version/12.00'
   :name:       :whatsapp
   :version:    '2.12.81'
