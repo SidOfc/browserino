@@ -29,6 +29,7 @@ Browserino.config.define do
     ua = ua.gsub %r{safari}i, '' if ua =~ %r{obigo}i
     ua = ua.gsub %r{awesomium}i, '' if ua =~ %r{flashfire}i
     ua = ua.gsub %r{version}i, '' if ua =~ %r{kindle/\d}i
+    ua = ua.gsub %r{maemo|linux}i, '' if ua =~ %r{sailfish}i
     ua
   end
 

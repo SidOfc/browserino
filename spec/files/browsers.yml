@@ -1,5 +1,213 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.74 YaBrowser/15.4.2272.2334 (custo) Yowser/2.0 Safari/537.36
+  :name:             :yowser
+  :version:          '2.0'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :windows
+  :platform_label:   :windows7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'yowser yowser2 webkit webkit537 windows windows7'
+  :like:             :chrome
+  :like_version:     '41.0.2272.74'
+
+- :user_agent:       Xiaomi_2014216_TD-LTE/V1 Linux/3.4.0 Android/4.4.4 Release/20.10.2014 Browser/AppleWebKit537.36 Mobile Safari/537.36 System/Android 4.4.4 XiaoMi/MiuiBrowser/2.0.1
+  :name:             :xiaomi_miui
+  :version:          '2.0.1'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :android
+  :platform_label:   :kitkat
+  :platform_version: '4.4.4'
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'xiaomi_miui xiaomi_miui2 webkit webkit537 android kitkat'
+  :like:             :safari
+  :like_version:     '537.36'
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) WhiteHat Aviator/35.0.1916.114 Chrome/35.0.1916.114 Safari/537.36
+  :name:             :whitehat_aviator
+  :version:          '35.0.1916.114'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :windows
+  :platform_label:   :windows7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'whitehat_aviator whitehat_aviator35 webkit webkit537 windows windows7'
+  :like:             :chrome
+  :like_version:     '35.0.1916.114'
+
+- :user_agent:       Mozilla/5.0 (SmartHub; SMART-TV; U; Linux/SmartTV) AppleWebKit/531.2+ (KHTML, like Gecko) WebBrowser/1.0 SmartTV Safari/531.2+
+  :name:             :webbrowser
+  :version:          '1.0'
+  :engine:           :webkit
+  :engine_version:   '531.2'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'webbrowser webbrowser1 webkit webkit531 linux'
+  :like:             :safari
+  :like_version:     '531.2'
+
+- :user_agent:       Mozilla/5.0 (Linux; U; Tizen 2.0; en-us) AppleWebKit/537.1 (KHTML, like Gecko) Mobile TizenBrowser/2
+  :name:             :tizenbrowser
+  :version:          '2'
+  :engine:           :webkit
+  :engine_version:   '537.1'
+  :platform:         :tizen
+  :platform_label:
+  :platform_version: '2.0'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           true
+  :to_s:             'tizenbrowser tizenbrowser2 webkit webkit537 tizen tizen2'
+
+- :user_agent:       Mozilla/5.0 (Windows NT 5.1) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.11 TaoBrowser/3.5 Safari/536.11
+  :name:             :taobrowser
+  :version:          '3.5'
+  :engine:           :webkit
+  :engine_version:   '536.11'
+  :platform:         :windows
+  :platform_label:   :xp
+  :platform_version: '5.1'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'taobrowser taobrowser3 webkit webkit536 windows xp'
+  :like:             :chrome
+  :like_version:     '20.0.1132.11'
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.152 Safari/537.22 Swing/1.2.2.0
+  :name:             :swing
+  :version:          '1.2.2.0'
+  :engine:           :webkit
+  :engine_version:   '537.22'
+  :platform:         :windows
+  :platform_label:   :windows7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'swing swing1 webkit webkit537 windows windows7'
+  :like:             :chrome
+  :like_version:     '25.0.1364.152'
+
+- :user_agent:       Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; .NET4.0E; MS-RTC LM 8; SE 2.X MetaSr 1.0)
+  :name:             :sogou_browser
+  :version:          '1.0'
+  :engine:           :trident
+  :engine_version:   '5.0'
+  :platform:         :windows
+  :platform_label:   :windows7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'sogou_browser sogou_browser1 trident trident5 windows windows7'
+  :like:             :ie
+  :like_version:     '7.0'
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20110610 Firefox/4.0.1 Sundial/4.0.1_1.0
+  :name:             :sundial
+  :version:          '4.0.1.1.0'
+  :engine:           :gecko
+  :engine_version:   '2.0.1'
+  :platform:         :windows
+  :platform_label:   :windows7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'sundial sundial4 gecko gecko2 windows windows7'
+  :like:             :firefox
+  :like_version:     '4.0.1'
+
+- :user_agent:       Mozilla/5.0 (X11; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) SlimBoat/1.1.50 Chrome/25.0.1364.97 Version/5.1 Safari/534.34
+  :name:             :slimboat
+  :version:          '1.1.50'
+  :engine:           :webkit
+  :engine_version:   '534.34'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'slimboat slimboat1 webkit webkit534 linux'
+  :like:             :chrome
+  :like_version:     '25.0.1364.97'
+
+- :user_agent:       Mozilla/5.0 (Maemo; Linux; U; Jolla; Sailfish; Mobile; rv:31.0) Gecko/31.0 Firefox/31.0 SailfishBrowser/1.0
+  :name:             :sailfishbrowser
+  :version:          '1.0'
+  :engine:           :gecko
+  :engine_version:   '31.0'
+  :platform:         :sailfish
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'sailfishbrowser sailfishbrowser1 gecko gecko31 sailfish'
+  :like:             :firefox
+  :like_version:     '31.0'
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/535.3 (KHTML, like Gecko) AppleWebKit/535.3 (KHTML, like Gecko) Chrome/18.0.1003.1 Polarity/6.3.0
+  :name:             :polarity
+  :version:          '6.3.0'
+  :engine:           :webkit
+  :engine_version:   '535.3'
+  :platform:         :windows
+  :platform_label:   :windows8
+  :platform_version: '6.3'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'polarity polarity6 webkit webkit535 windows windows8'
+  :like:             :chrome
+  :like_version:     '18.0.1003.1'
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.152 Safari/537.31 Perk/3.6.0.0
+  :name:             :perk
+  :version:          '3.6.0.0'
+  :engine:           :webkit
+  :engine_version:   '537.31'
+  :platform:         :windows
+  :platform_label:   :windows7
+  :platform_version: '6.1'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'perk perk3 webkit webkit537 windows windows7'
+  :like:             :chrome
+  :like_version:     '26.0.1410.152'
+
+- :user_agent:       Mozilla/5.0 (SymbianOS/9.4; Series60/5.0 Nokia5800d-1/60.0.003; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/533.4 (KHTML, like Gecko) NokiaBrowser/7.3.1.33 Mobile Safari/533.4
+  :name:             :nokiabrowser
+  :version:          '7.3.1.33'
+  :engine:           :webkit
+  :engine_version:   '533.4'
+  :platform:         :symbianos
+  :platform_label:
+  :platform_version: '9.4'
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'nokiabrowser nokiabrowser7 webkit webkit533 symbianos symbianos9'
+  :like:             :safari
+  :like_version:     '533.4'
+
 - :user_agent:       Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; FlexNetDesktopClient_1_0)
   :name:             :netflix_desktop
   :version:          '1.0'

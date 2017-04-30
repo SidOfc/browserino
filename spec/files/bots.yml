@@ -1,5 +1,11 @@
 ---
 :bots:
+- :user_agent: '*_WhatsApp/2.12.81 (Windows NT 6.1; U; es-ES) Presto/2.9.181 Version/12.00'
+  :name:       :whatsapp
+  :version:    '2.12.81'
+  :text:       true
+  :to_s:       'whatsapp whatsapp2 windows windows7'
+
 - :user_agent: Vortex/2.2 ( http://marty.anstey.ca/robots/vortex/)
   :name:       :vortex
   :version:    '2.2'

@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe 'Browserino::Matcher' do
-  matcher = Browserino.config.matchers.sample
-  matcher = Browserino.config.matchers.sample while matcher.name.to_s.strip.empty?
+  matcher = Browserino.config.matchers.select { |m| m == :firefox }.first
 
   it 'always responds to missing' do
     expect(matcher.respond_to?(:something)).to be true
