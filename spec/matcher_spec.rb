@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Browserino::Matcher' do
   matcher = Browserino.config.matchers.sample
-  matcher = Browserino.config.matchers.sample until matcher.name
+  matcher = Browserino.config.matchers.sample while matcher.name.to_s.strip.empty?
 
   it 'always responds to missing' do
     expect(matcher.respond_to?(:something)).to be true
