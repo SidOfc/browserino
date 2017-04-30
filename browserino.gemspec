@@ -5,7 +5,7 @@ require 'browserino/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "browserino"
-  spec.version       = Browserino::VERSION
+  spec.version       = Browserino.version.full
   spec.authors       = ["Sidney Liebrand"]
   spec.email         = ["sidneyliebrand@gmail.com"]
   spec.summary       = %q{A browser identification gem with command line and Rails (>= 3.2.0) integration}

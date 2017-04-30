@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Browserino
-  VERSION = '4.0.0'.freeze
+  VERSION = '4.1.0'.freeze
 
   def self.version
-    @verion ||= Version.new VERSION.dup
+    @version ||= Version.new VERSION.dup
   end
 
   # This class makes versions easily comparable using logical operators
