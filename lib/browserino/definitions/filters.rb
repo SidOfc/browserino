@@ -68,6 +68,13 @@ Browserino.config.define do
     end
   end
 
+  filter :device do |val|
+    if %r{A\dF;} =~ val then :asus
+    elsif %r{kf\w*} =~ val then :kindle
+    else val
+    end
+  end
+
   filter :architecture do |val|
     val = :x64 if val && val != :arm && val =~ %r{(?:x86_|amd|wow)?64|i686}i
     val = :x32 if val && !%i[arm x64].include?(val)
