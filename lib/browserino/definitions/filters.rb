@@ -11,7 +11,7 @@ Browserino.config.define do
   before_parse do |ua|
     subs = [[%r{applewebkit}i, 'webkit'], [%r{(Mozilla/[\d\.]+)}i, ''],
             [%r{\sAdr\s}, 'Android ']]
-    subs += [[%r{chrome|safari}i, ''], ['OPR', 'opera']] if ua =~ %r{OPR}
+    subs += [[%r{chrome|safari}i, ''], %w[OPR opera]] if ua =~ %r{OPR}
     subs << [%r{9\.80}, ''] if ua =~ %r{opera}i
     subs << [%r{webkit/}i, ''] if ua =~ %r{presto}i
     subs << [%r{(?:ms)?ie\b}i, ''] if ua =~ %r{rv:}i
