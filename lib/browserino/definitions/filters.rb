@@ -73,7 +73,7 @@ Browserino.config.define do
 
   filter :device do |val|
     if %r{kf\w*}i =~ val then :kindle
-    elsif %r{lg[-l]}i =~ val then :lg
+    elsif %r{lg[-l_]}i =~ val then :lg
     elsif %r{\w+tab}i =~ val then :lenovo
     elsif %r{lumia}i =~ val then :nokia
     elsif %r{^moto}i =~ val then :motorola

@@ -592,6 +592,7 @@
   :platform:         :android
   :platform_label:   :kitkat
   :platform_version: '4.4.2'
+  :device:           :lenovo
   :locale:
   :architecture:
   :mobile:           true
@@ -3364,6 +3365,7 @@
   :platform:         :android
   :platform_label:   :nougat
   :platform_version: '7.0'
+  :device:           :lg
   :locale:
   :architecture:
   :mobile:           true
