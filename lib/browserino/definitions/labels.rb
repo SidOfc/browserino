@@ -23,6 +23,7 @@ Browserino.config.define do
   label :lollipop,           for: :android,      range: '5'..'5.1.1'
   label :marshmallow,        for: :android,      range: '6'..'6.1.1'
   label :nougat,             for: :android,      range: '7'..'7.1.1'
+  label :oreo,               for: :android,      range: '8.0'..'8.0.9'
 
   label :cheetah,            for: :macintosh,    range: '10.0'..'10.0.9'
   label :puma,               for: :macintosh,    range: '10.1'..'10.1.9'
