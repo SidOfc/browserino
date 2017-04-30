@@ -140,11 +140,6 @@ module Browserino
 
     private
 
-    def name_for(sym)
-      mtd = %i[version label].include?(sym) ? :name : "#{sym}_name".to_sym
-      properties[mtd]
-    end
-
     def label_for(sym)
       mtd = %i[version name].include?(sym) ? :label : "#{sym}_label".to_sym
       properties[mtd]

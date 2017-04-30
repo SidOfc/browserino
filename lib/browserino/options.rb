@@ -24,12 +24,20 @@ module Browserino
       @options
     end
 
+    def to_h
+      @options
+    end
+
     def to_a
       @options.to_a
     end
 
     def to_s
       @options.to_s
+    end
+
+    def to_str
+      to_s
     end
 
     private
