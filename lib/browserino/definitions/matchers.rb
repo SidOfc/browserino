@@ -33,7 +33,7 @@ Browserino.config.define do
                         |kf\w\w|mac(?:intosh|\sos\sx)|android|ip(?:[ao]d|hone)
                         |blackberry|risc|linux|ubuntu|x11|bsd|s(?:unos|olaris)
                         |tizen|xbox|amigaos|w(?:eb)?os|(?<!mi)cros|bada
-                        |kindle|symbianos|sailfish)}xi
+                        |kindle|symbianos|sailfish|meego)}xi
 
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
@@ -449,6 +449,9 @@ Browserino.config.define do
     match %r{whitehat\saviator}i, name: :whitehat_aviator,
                                   version: %r{hat\saviator/([\d\.]+)}i
 
+    match %r{mxnitro}i,           name: :maxthon_nitro,
+                                  version: %r{mxnitro/([\d\.]+)}i
+
     match %r{qtweb}i,             name: :qtweb_browser,
                                   version: %r{net\sbrowser/([\d\.]+)}i
   end
@@ -495,8 +498,11 @@ Browserino.config.define do
 
   # inherit properties from matcher where name == :opera
   like :opera do
-    match %r{maemo;}i, name: :maemo
+    match %r{opera\smobi}i, name: :opera_mobile,
+                            version: %r{era\smobi/([\d\.]+)}i
   end
+
+  match %r{maemo;}i, name: :maemo, like: :opera_mobile
 
   # inherit properties from matcher where name == :firefox, (except :version)
   like :firefox, except: [:version] do
@@ -553,6 +559,9 @@ Browserino.config.define do
     match %r{light/}i,          name: :light
     match %r{pogo}i,            name: :pogo
     match %r{orca}i,            name: :orca
+
+    match %r{maemo\sbrowser}i,     name: :maemo_browser,
+                                   version: %r{o\sbrowser\s([\d\.]+)}i
 
     match %r{camino}i,             name: :camino,
                                    locale: %r{\s(\w{2}(?:\-\w{2})?),}i

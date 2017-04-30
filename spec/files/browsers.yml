@@ -1,5 +1,50 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) MxNitro/1.0.0.500 Chrome/35.0.1849.0 Safari/537.36
+  :name:             :maxthon_nitro
+  :version:          '1.0.0.500'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :windows
+  :platform_label:   :windows8
+  :platform_version: '6.2'
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'maxthon_nitro maxthon_nitro1 webkit webkit537 windows windows8'
+  :like:             :chrome
+  :like_version:     '35.0.1849.0'
+
+- :user_agent:       Mozilla/5.0 (X11; U; Linux armv7l; it-IT; rv:1.9.2.3pre) Gecko/20100723 Firefox/3.5 Maemo Browser 1.7.4.8 RX-51 N900
+  :name:             :maemo_browser
+  :version:          '1.7.4.8'
+  :engine:           :gecko
+  :engine_version:   '1.9.2.3'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:           :it_it
+  :architecture:     :arm
+  :mobile:           false
+  :to_s:             'maemo_browser maemo_browser1 gecko gecko1 linux'
+  :like:             :firefox
+  :like_version:     '3.5'
+
+- :user_agent:       Opera/9.80 (Linux armv7l; Opera Mobi/1; MeeGo) Presto/2.11.355 Version/12.10
+  :name:             :opera_mobile
+  :version:          '1'
+  :engine:           :presto
+  :engine_version:   '2.11.355'
+  :platform:         :meego
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:     :arm
+  :mobile:           true
+  :to_s:             'opera_mobile opera_mobile1 presto presto2 meego'
+  :like:             :opera
+  :like_version:     '12.10'
+
 - :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.74 YaBrowser/15.4.2272.2334 (custo) Yowser/2.0 Safari/537.36
   :name:             :yowser
   :version:          '2.0'
@@ -288,7 +333,7 @@
 
 - :user_agent:       Opera/9.80 (Linux armv7l; Maemo; Opera Mobi/16) Presto/2.11.355 Version/12.10
   :name:             :maemo
-  :version:          '12.10'
+  :version:          '16'
   :engine:           :presto
   :engine_version:   '2.11.355'
   :platform:         :linux
@@ -297,9 +342,9 @@
   :locale:
   :architecture:     :arm
   :mobile:           true
-  :to_s:             'maemo maemo12 presto presto2 linux'
-  :like:             :opera
-  :like_version:     '12.10'
+  :to_s:             'maemo maemo16 presto presto2 linux'
+  :like:             :opera_mobile
+  :like_version:     '16'
 
 - :user_agent:       Mozilla/5.0(X11; U;Linuxarm7tdmi; rv:1.8.1.11)Gecko/20071130 Minimo/0.025
   :name:             :minimo
