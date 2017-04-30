@@ -98,10 +98,9 @@ module Browserino
     end
 
     def to_json(*args)
-      @json_cache ||= properties.map do |prop, val|
-        final = val.is_a?(Version) && val.full || val
-        [prop, final]
-      end.to_h.to_json(*args)
+      @json_cache ||= properties.each_with_object({}) do |(prop, val), hsh|
+        hsh[prop] = val.is_a?(Version) && val.full || val
+      end.to_json(*args)
     end
 
     def to_s
