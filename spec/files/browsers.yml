@@ -807,18 +807,32 @@
   :like:             :chrome
   :like_version:     '18.0.1003.1'
 
+- :user_agent:       Mozilla/5.0 [en] (PalmOS; U; WebPro/3.5; Palm-Zi72)
+  :name:             :webpro
+  :version:          '3.5'
+  :engine:
+  :engine_version:
+  :platform:         :palmos
+  :platform_label:
+  :platform_version:
+  :locale:           :en
+  :architecture:
+  :mobile:           true
+  :to_s:             'webpro webpro3 palmos'
+
+
 - :user_agent:       AlienBlue/2.9.2 CFNetwork/711.1.16 Darwin/14.0.0
   :name:             :alienblue
   :version:          '2.9.2'
   :engine:
   :engine_version:
-  :platform:
+  :platform:         :darwin
   :platform_label:
-  :platform_version:
+  :platform_version: '14.0.0'
   :locale:
   :architecture:
   :mobile:           false
-  :to_s:             'alienblue alienblue2'
+  :to_s:             'alienblue alienblue2 darwin'
 
 - :user_agent:       OneBrowser/3.1 (NokiaC1-01/04.40)
   :name:             :onebrowser

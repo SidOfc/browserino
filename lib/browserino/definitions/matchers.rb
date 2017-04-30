@@ -26,19 +26,19 @@ Browserino.config.define do
 
     mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
-                        |tizen|vodafone|t\-mobile|kindle|kf\w\w
+                        |tizen|vodafone|t\-mobile|kindle|kf\w\w|palmos
                         |opera\sm(?:ob|in)i)}xi
 
     platform         %r{.*(wiiu?|nintendo\sds|playstation|windows(?:\sphone)?
                         |kf\w\w|mac(?:intosh|\sos\sx)|android|ip(?:[ao]d|hone)
                         |blackberry|risc|linux|ubuntu|x11|bsd|s(?:unos|olaris)
-                        |tizen|xbox|amigaos|w(?:eb)?os|(?<!mi)cros|bada
-                        |kindle|symbianos|sailfish|meego)}xi
+                        |tizen|xbox|amigaos|w(?:eb)?os|(?<!mi)cros|bada|palmos
+                        |kindle|symbianos|sailfish|meego|darwin)}xi
 
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
                         |blackberry|bb|s(?:unos|olaris)/?|w(?:eb)?os/|tizen
-                        |risc\s*|amigaos/?|cros\s[\w-]+|ows\sxp
+                        |risc\s*|amigaos/?|cros\s[\w-]+|ows\sxp|darwin|palmos
                         |bada/?|symbianos/?)\s?([\d\._]+)}xi
   end
 
@@ -134,6 +134,9 @@ Browserino.config.define do
     match %r{shiira}i,           name: :shiira,          engine: :webkit
     match %r{amigavoyager}i,     name: :amigavoyager
     match %r{(?<!(?:net))surf}i, name: :surf
+
+    match %r{webpro}i,           name: :webpro,
+                                 locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
 
     match %r{sundance}i,         name: :sundance,
                                  version: %r{(?:version/|sundance/)([\d\.]+)}i

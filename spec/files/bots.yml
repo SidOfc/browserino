@@ -825,7 +825,7 @@
   :name:       :tumblr
   :version:    '117'
   :text:       true
-  :to_s:       'tumblr tumblr117'
+  :to_s:       'tumblr tumblr117 darwin'
 
 - :user_agent: holmes/3.12.4 (http://morfeo.centrum.cz/bot)
   :name:       :holmes
