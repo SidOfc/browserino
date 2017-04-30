@@ -74,7 +74,7 @@ Browserino.config.define do
     val
   end
 
-  filter :mobile do |value|
+  filter :mobile, :tablet, :smarttv do |value|
     !value.to_s.strip.empty?
   end
 end

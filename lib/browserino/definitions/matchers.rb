@@ -20,6 +20,10 @@ Browserino.config.define do
     locale           %r{(?<!nintendo)[;\s(]([a-z]{2}(?:[-_][a-z]{2})?)[;)]}i
     architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86|arm)}i
 
+    smarttv          %r{(?:smart[\-\s]|hbb|apple\s|google|g)(tv)}i
+
+    tablet           %r{(ipad|transformer|tablet\spc)}i
+
     mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
                         |tizen|vodafone|t\-mobile|kindle|kf\w\w

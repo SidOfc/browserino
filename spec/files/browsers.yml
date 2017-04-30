@@ -55,6 +55,7 @@
   :platform_version:
   :locale:
   :architecture:
+  :smarttv:          true
   :mobile:           false
   :to_s:             'webbrowser webbrowser1 webkit webkit531 linux'
   :like:             :safari
@@ -248,6 +249,7 @@
   :platform_version: '7.0.2'
   :locale:
   :architecture:
+  :tablet:           true
   :mobile:           true
   :to_s:             'mqqbrowser mqqbrowser4 webkit webkit537 ios ios7'
   :like:             :safari
@@ -278,6 +280,7 @@
   :platform_version:
   :locale:
   :architecture:
+  :smarttv:          true
   :mobile:           false
   :to_s:             'mapple mapple2012 webkit webkit534 linux'
   :like:             :safari
@@ -471,6 +474,7 @@
   :platform_version: '7.0.6'
   :locale:
   :architecture:
+  :tablet:           true
   :mobile:           true
   :to_s:             'coast coast2 webkit webkit537 ios ios7'
   :like:             :safari
@@ -692,6 +696,7 @@
   :platform_version: '5.1.1'
   :locale:
   :architecture:
+  :tablet:           true
   :mobile:           true
   :to_s:             'mercury mercury7 webkit webkit534 ios ios5'
   :like:             :safari
@@ -2485,6 +2490,7 @@
   :platform_version: '2.3'
   :locale:
   :architecture:
+  :smarttv:          true
   :mobile:           true
   :to_s:             'samsungbrowser samsungbrowser1 webkit webkit538 tizen tizen2'
   :like:             :safari
@@ -2633,6 +2639,7 @@
   :platform_version:
   :locale:           :en
   :architecture:
+  :tablet:           true
   :mobile:           true
   :to_s:             'opera_mini opera_mini7 presto presto2 ios'
 
