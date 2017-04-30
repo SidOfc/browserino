@@ -9,7 +9,8 @@ Browserino.config.define do
   # the returned result will be used as the user agent to parse so make
   # sure to return the final ua at the end
   before_parse do |ua|
-    ua = ua.gsub(%r{applewebkit}i, 'webkit').gsub %r{(Mozilla/[\d\.]+)}i, ''
+    ua = ua.gsub(%r{applewebkit}i, 'webkit').gsub(%r{(Mozilla/[\d\.]+)}i, '')
+           .gsub(%r{\sAdr\s}, 'Android ')
     ua = ua.gsub(%r{chrome|safari}i, '').gsub('OPR', 'opera') if ua =~ %r{OPR}
     ua = ua.gsub %r{9\.80}, '' if ua =~ %r{opera}i
     ua = ua.gsub %r{webkit/}i, '' if ua =~ %r{presto}i
@@ -70,7 +71,10 @@ Browserino.config.define do
 
   filter :device do |val|
     if %r{kf\w*}i =~ val then :kindle
+    elsif %r{lg[-l]}i =~ val then :lg
+    elsif %r{\w+tab}i =~ val then :lenovo
     elsif %r{\d+dl|venue}i =~ val then :dell
+    elsif %r{desire}i =~ val then :htc
     elsif %r{me\d+x|a\df;|transformer|slider}i =~ val then :asus
     else val
     end

@@ -1,5 +1,76 @@
 ---
 :browsers:
+- :user_agent:       UCWEB/2.0 (Linux; U; Adr 2.3; en-US; MI-ONEPlus) U2/1.0.0 UCBrowser/8.6.0.199 U2/1.0.0=
+  :name:             :ucbrowser
+  :version:          '8.6.0.199'
+  :engine:
+  :engine_version:
+  :platform:         :android
+  :platform_label:   :gingerbread
+  :platform_version: '2.3'
+  :device:           :oneplus
+  :locale:           :en_us
+  :architecture:
+  :mobile:           true
+  :to_s:             'ucbrowser ucbrowser8 android gingerbread'
+
+- :user_agent:       Mozilla/5.0 (Linux; Android 4.3; Nexus 4 Build/JWR66Y) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.82 Mobile Safari/537.36
+  :name:             :chrome
+  :version:          '30.0.1599.82'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :android
+  :platform_label:   :jelly_bean
+  :platform_version: '4.3'
+  :device:           :nexus
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'chrome chrome30 webkit webkit537 android jelly_bean'
+
+- :user_agent:       Mozilla/5.0 (Linux; U; Android 2.3.6; en-us; LGL35G/V100) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+  :name:             :safari
+  :version:          '4.0'
+  :engine:           :webkit
+  :engine_version:   '533.1'
+  :platform:         :android
+  :platform_label:   :gingerbread
+  :platform_version: '2.3.6'
+  :device:           :lg
+  :locale:           :en_us
+  :architecture:
+  :mobile:           true
+  :to_s:             'safari safari4 webkit webkit533 android gingerbread'
+
+- :user_agent:       Mozilla/5.0 (Linux; Android 4.2.2; IdeaTab A3000-H Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.107 Safari/537.36 OPR/29.0.1809.92697
+  :name:             :opera
+  :version:          '29.0.1809.92697'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :android
+  :platform_label:   :jelly_bean
+  :platform_version: '4.2.2'
+  :device:           :lenovo
+  :locale:
+  :architecture:
+  :tablet:           true
+  :mobile:           true
+  :to_s:             'opera opera29 webkit webkit537 android jelly_bean'
+
+- :user_agent:       Mozilla/5.0 (Linux; U; Android 4.1.1; es-; HUAWEI G510-0251 Build/HuaweiG510-0251) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 bdbrowser_i18n/4.4.1.4
+  :name:             :safari
+  :version:          '4.0'
+  :engine:           :webkit
+  :engine_version:   '534.30'
+  :platform:         :android
+  :platform_label:   :jelly_bean
+  :platform_version: '4.1.1'
+  :device:           :huawei
+  :locale:           :es
+  :architecture:
+  :mobile:           true
+  :to_s:             'safari safari4 webkit webkit534 android jelly_bean'
+
 - :user_agent:       Mozilla/5.0 (Linux; U; Android 2.2; ja-jp; 001DL Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
   :name:             :safari
   :version:          '4.0'
@@ -319,6 +390,7 @@
   :platform:         :symbianos
   :platform_label:
   :platform_version: '9.4'
+  :device:           :nokia
   :locale:
   :architecture:
   :mobile:           true
@@ -918,6 +990,7 @@
   :engine_version:
   :platform:
   :platform_label:
+  :device:           :nokia
   :platform_version:
   :locale:
   :architecture:
@@ -946,6 +1019,7 @@
   :platform:
   :platform_label:
   :platform_version:
+  :device:           :nokia
   :locale:
   :architecture:
   :mobile:           true
@@ -2854,6 +2928,7 @@
   :platform:         :windows
   :platform_label:   :windows7
   :platform_version: '6.1'
+  :device:           :nokia
   :locale:
   :architecture:
   :mobile:           true
@@ -3340,6 +3415,7 @@
   :engine_version:   '6.0'
   :platform:         :windows_phone
   :platform_version: '8.0'
+  :device:           :nokia
   :locale:
   :architecture:     :arm
   :mobile:           true

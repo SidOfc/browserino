@@ -17,17 +17,18 @@ Browserino.config.define do
   # a simple set of global matchers that will be merged and scanned
   # with a specific matcher when the final client object is created
   match do
-    locale           %r{(?<!nintendo)[;\s(]([a-z]{2}(?:[-_][a-z]{2})?)[;)]}i
+    locale           %r{(?<!nintendo)[;\s(]([a-z]{2}(?:[-_][a-z]{2})?)\-?[;)]}i
     architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86|arm)}i
 
     smarttv          %r{(?:smart[\-\s]|hbb|apple\s|google|g)(tv)}i
 
-    tablet           %r{(ipad|transformer|slider|a\d+f;|tablet\spc|hp\-tablet)}i
+    tablet           %r{(ipad|transformer|slider|a\d+f;|tablet\spc|hp\-tablet
+                        |lenovo|\s\w+tab\s)}xi
 
     mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
-                        |tizen|vodafone|t\-mobile|kindle|kf\w\w|palmos
-                        |opera\sm(?:ob|in)i)}xi
+                        |tizen|vodafone|t\-mobile|kindle|kf\w\w|palmos|huawei
+                        |oneplus|nexus|opera\sm(?:ob|in)i)}xi
 
     platform         %r{.*(wiiu?|nintendo\sds|playstation|windows(?:\sphone)?
                         |kf\w\w|mac(?:intosh|\sos\sx)|android|ip(?:[ao]d|hone)
@@ -43,7 +44,8 @@ Browserino.config.define do
 
     device           %r{(alcatel|all(?:tell|view)|htc|kindle|kf\w\w|apple\s?tv
                         |iphone|ipad|a\d+f;|archos|transformer|slider|me\d+x
-                        |blackberry|\d+dl|venue|hp)}xi
+                        |blackberry|\d+dl|venue|hp|desire|huawei|lenovo
+                        |oneplus|nokia|nexus|\b\w+tab\b|lg[-l])}xi
   end
 
   # automatically set type to :email for each defined matcher
