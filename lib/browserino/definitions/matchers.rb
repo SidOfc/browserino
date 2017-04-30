@@ -89,7 +89,7 @@ Browserino.config.define do
     match %r{edge}i do
       name           :edge
       engine         :edge
-      modern?        true
+      modern         true
     end
 
     match %r{ope?ra?\smini}i do
@@ -117,14 +117,14 @@ Browserino.config.define do
       name           :ie
       engine         :trident
       version        %r{(?:(?:ms)?ie\s|rv:)([\d\.]+)}i
-      modern?        { version >= 10 }
+      modern         { version >= 10 }
     end
 
     match %r{chrome(?:ium)?}i do
       name           :chrome
       version        %r{chrome(?:ium)?/([\d\.]+)}i
       engine         %r{(webkit|blink)}i
-      modern?        { version >= 50 }
+      modern         { version >= 50 }
     end
 
     match %r{nintendobrowser}i,  name: :nintendobrowser, engine: :webkit
@@ -154,14 +154,14 @@ Browserino.config.define do
       name           :firefox
       engine         %r{(gecko|servo)}i
       engine_version %r{(?:rv:\s?|servo/)([\d\.]+)}i
-      modern?        { version >= 50 }
+      modern         { version >= 50 }
     end
 
     match %r{safari}i do
       name           :safari
       engine         :webkit
       version        %r{(?:safari|version)/([\d\.]+)}i
-      modern?        { version >= 9 }
+      modern         { version >= 9 }
     end
 
     match %r{tizenbrowser}i,       name: :tizenbrowser, engine: :webkit
