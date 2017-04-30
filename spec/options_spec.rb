@@ -3,6 +3,10 @@ require 'spec_helper'
 describe 'Browserino::Options' do
   options = Browserino::Options.new settings: true, something: false, foo: :bar
 
+  it 'always responds to missing' do
+    expect(options.respond_to?(:settings)).to be true
+  end
+
   it 'can be merged with a hash' do
     expect(options.merge({settings: false}).settings).to be false
   end

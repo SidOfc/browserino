@@ -52,7 +52,7 @@ describe 'Browserino browsers' do
         end
       end
 
-      [:name, :engine, :platform].each do |prop|
+      [:name, :engine, :platform, :platform_label].each do |prop|
         result  = spec[prop]
         name    = "#{spec[prop]}?"
         ver     = spec[Library::Helpers.version_sym_for(prop)]

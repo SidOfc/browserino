@@ -32,11 +32,6 @@ module Browserino
     end
 
     def match(rgxp = nil, **opts, &block)
-      if rgxp.is_a? Hash
-        opts = rgxp.dup
-        rgxp = nil
-      end
-
       opts = @tmp_defaults.merge opts if @tmp_defaults.is_a? Hash
 
       if rgxp && opts[:like]

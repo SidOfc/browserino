@@ -4,6 +4,10 @@ describe 'Browserino::Client' do
   client = Browserino.parse Library.random_user_agent
   client = Browserino.parse Library.random_user_agent until client.name
 
+  it 'always responds to missing' do
+    expect(client.respond_to?(client.name)).to be true
+  end
+
   it 'can be compared to a regexp' do
     name_pat = /.*?#{client.name}.*?/i
 
