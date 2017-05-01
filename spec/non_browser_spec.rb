@@ -33,7 +33,7 @@ TYPE_MAP.each do |type, singular_type|
 
         # test magic aliasses when defined
         Browserino.config.aliasses[spec[:name]].each do |alt|
-          additional = spec[:version] && " and client.#{alt}?('#{spec[:version]}')"
+          additional = spec[:version] && " and client.#{alt}?('#{spec[:version]}')" || ''
           it "expects client.#{alt}?#{additional} to be truthy" do
             expect(client.send("#{alt}?")).to be_truthy
             expect(client.send("#{alt}?", spec[:version])).to be_truthy if spec[:version]
@@ -43,9 +43,9 @@ TYPE_MAP.each do |type, singular_type|
         # test magic name methods when possible
         unless spec[:name].to_s.strip.empty?
           name       = "#{spec[:name]}?"
-          ver        = spec[:platform_version]
+          ver        = spec[:version]
           has_ver    = ver.to_s.strip.empty?
-          additional = has_ver && ", client.#{name}('#{ver}') and client.is?('#{spec[:name]}', version: '#{ver}')"
+          additional = has_ver && ", client.#{name}('#{ver}') and client.is?('#{spec[:name]}', version: '#{ver}')" || ''
           it "expects client.#{name}#{has_ver && ', ' || ' and '} client.is?('#{spec[:name]}')#{additional} to be truthy" do
             expect(client.send("#{name}")).to be_truthy
             expect(client.is?(spec[:name])).to be_truthy
@@ -54,6 +54,15 @@ TYPE_MAP.each do |type, singular_type|
               expect(client.send("#{name}", ver.to_s)).to be_truthy
               expect(client.is?(spec[:name], version: ver)).to be_truthy
             end
+          end
+
+          additional = has_ver && ", client.not.#{name}('#{ver}') and client.not.is?('#{spec[:name]}', version: '#{ver}')" || ''
+          it "expects client.not.#{name}#{has_ver && ', ' || ' and '} client.not.is?('#{spec[:name]}')#{additional} to be falsy" do
+            expect(client.not?(spec[:name])).to be_falsy
+            expect(client.not?(spec[:name], version: ver)).to be_falsy if has_ver
+
+            expect(client.not.is?(spec[:name])).to be_falsy
+            expect(client.not.is?(spec[:name], version: ver)).to be_falsy if has_ver
           end
         end
       end
