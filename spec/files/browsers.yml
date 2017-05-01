@@ -12,7 +12,7 @@
   :locale:
   :architecture:
   :mobile:           true
-  :to_s:             'chrome chrome52 webkit webkit537 android lollipop'
+  :to_s:             'chrome chrome52 webkit webkit537 android lollipop zte'
 
 - :user_agent:       Mozilla/5.0 (Linux; Android 6.0; MotoE2(4G-LTE) Build/MPI24.65-39; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/51.0.2704.81 Mobile Safari/537.36 ACHEETAHI/2100502055
   :name:             :chrome
@@ -26,7 +26,7 @@
   :locale:           :wv
   :architecture:
   :mobile:           true
-  :to_s:             'chrome chrome51 webkit webkit537 android marshmallow'
+  :to_s:             'chrome chrome51 webkit webkit537 android marshmallow motorola'
 
 - :user_agent:       Mozilla/5.0 (Windows Phone 10.0; Android 6.0.1; Microsoft; Lumia 650 Dual SIM) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Mobile Safari/537.36 Edge/14.14393
   :name:             :edge
@@ -40,7 +40,7 @@
   :locale:
   :architecture:
   :mobile:           true
-  :to_s:             'edge edge14 windows_phone windows10'
+  :to_s:             'edge edge14 windows_phone windows10 nokia'
 
 - :user_agent:       Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1717.129 Amigo/32.0.1717.129 MRCHROME SOC Safari/537.36
   :name:             :amigo
@@ -197,7 +197,7 @@
   :locale:           :en_us
   :architecture:
   :mobile:           true
-  :to_s:             'ucbrowser ucbrowser8 android gingerbread'
+  :to_s:             'ucbrowser ucbrowser8 android gingerbread oneplus'
 
 - :user_agent:       Mozilla/5.0 (Linux; Android 4.3; Nexus 4 Build/JWR66Y) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.82 Mobile Safari/537.36
   :name:             :chrome
@@ -211,7 +211,7 @@
   :locale:
   :architecture:
   :mobile:           true
-  :to_s:             'chrome chrome30 webkit webkit537 android jelly_bean'
+  :to_s:             'chrome chrome30 webkit webkit537 android jelly_bean nexus'
 
 - :user_agent:       Mozilla/5.0 (Linux; U; Android 2.3.6; en-us; LGL35G/V100) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
   :name:             :safari
@@ -225,7 +225,7 @@
   :locale:           :en_us
   :architecture:
   :mobile:           true
-  :to_s:             'safari safari4 webkit webkit533 android gingerbread'
+  :to_s:             'safari safari4 webkit webkit533 android gingerbread lg'
 
 - :user_agent:       Mozilla/5.0 (Linux; Android 4.2.2; IdeaTab A3000-H Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.107 Safari/537.36 OPR/29.0.1809.92697
   :name:             :opera
@@ -240,7 +240,7 @@
   :architecture:
   :tablet:           true
   :mobile:           true
-  :to_s:             'opera opera29 webkit webkit537 android jelly_bean'
+  :to_s:             'opera opera29 webkit webkit537 android jelly_bean lenovo'
 
 - :user_agent:       Mozilla/5.0 (Linux; U; Android 4.1.1; es-; HUAWEI G510-0251 Build/HuaweiG510-0251) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 bdbrowser_i18n/4.4.1.4
   :name:             :safari
@@ -254,7 +254,7 @@
   :locale:           :es
   :architecture:
   :mobile:           true
-  :to_s:             'safari safari4 webkit webkit534 android jelly_bean'
+  :to_s:             'safari safari4 webkit webkit534 android jelly_bean huawei'
 
 - :user_agent:       Mozilla/5.0 (Linux; U; Android 2.2; ja-jp; 001DL Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
   :name:             :safari
@@ -268,7 +268,7 @@
   :locale:           :ja_jp
   :architecture:
   :mobile:           true
-  :to_s:             'safari safari4 webkit webkit533 android froyo'
+  :to_s:             'safari safari4 webkit webkit533 android froyo dell'
 
 - :user_agent:       Mozilla/5.0 (Linux; Android 4.2.1; ME173X Build/JOP40D) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Safari/537.36
   :name:             :chrome
@@ -282,7 +282,7 @@
   :locale:
   :architecture:
   :mobile:           true
-  :to_s:             'chrome chrome32 webkit webkit537 android jelly_bean'
+  :to_s:             'chrome chrome32 webkit webkit537 android jelly_bean asus'
 
 - :user_agent:       Mozilla/5.0 (Linux; U; Android 4.0.3; fr-fr; Slider SL101 Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30
   :name:             :safari
@@ -297,7 +297,7 @@
   :architecture:
   :tablet:           true
   :mobile:           true
-  :to_s:             'safari safari4 webkit webkit534 android ice_cream_sandwich'
+  :to_s:             'safari safari4 webkit webkit534 android ice_cream_sandwich asus'
 
 - :user_agent:       Mozilla/5.0 (Linux; Android 4.1.2; Transformer Build/JZO54K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.59 Safari/537.36
   :name:             :chrome
@@ -312,7 +312,7 @@
   :architecture:
   :tablet:           true
   :mobile:           true
-  :to_s:             'chrome chrome29 webkit webkit537 android jelly_bean'
+  :to_s:             'chrome chrome29 webkit webkit537 android jelly_bean asus'
 
 - :user_agent:       Mozilla/5.0 (Linux; Android 4.4.2; Archos 101 Copper Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.93 Safari/537.36
   :name:             :chrome
@@ -326,7 +326,7 @@
   :locale:
   :architecture:
   :mobile:           true
-  :to_s:             'chrome chrome43 webkit webkit537 android kitkat'
+  :to_s:             'chrome chrome43 webkit webkit537 android kitkat archos'
 
 - :user_agent:       Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) MxNitro/1.0.0.500 Chrome/35.0.1849.0 Safari/537.36
   :name:             :maxthon_nitro
@@ -579,7 +579,7 @@
   :locale:
   :architecture:
   :mobile:           true
-  :to_s:             'nokiabrowser nokiabrowser7 webkit webkit533 symbianos symbianos9'
+  :to_s:             'nokiabrowser nokiabrowser7 webkit webkit533 symbianos symbianos9 nokia'
   :like:             :safari
   :like_version:     '533.4'
 
@@ -610,7 +610,7 @@
   :locale:
   :architecture:
   :mobile:           true
-  :to_s:             'mxbrowser mxbrowser4 webkit webkit537 android kitkat'
+  :to_s:             'mxbrowser mxbrowser4 webkit webkit537 android kitkat lenovo'
   :like:             :chrome
   :like_version:     '30.0.0.0'
 
@@ -627,7 +627,7 @@
   :architecture:
   :tablet:           true
   :mobile:           true
-  :to_s:             'mqqbrowser mqqbrowser4 webkit webkit537 ios ios7'
+  :to_s:             'mqqbrowser mqqbrowser4 webkit webkit537 ios ios7 ipad'
   :like:             :safari
   :like_version:     '6.0'
 
@@ -853,7 +853,7 @@
   :architecture:
   :tablet:           true
   :mobile:           true
-  :to_s:             'coast coast2 webkit webkit537 ios ios7'
+  :to_s:             'coast coast2 webkit webkit537 ios ios7 ipad'
   :like:             :safari
   :like_version:     '7534.48.3'
 
@@ -959,7 +959,7 @@
   :locale:           :en_gb
   :architecture:
   :mobile:           true
-  :to_s:             'silk silk2 webkit webkit535 fire_os'
+  :to_s:             'silk silk2 webkit webkit535 fire_os kindle'
   :like:             :safari
   :like_version:     '535.19'
 
@@ -1077,7 +1077,7 @@
   :architecture:
   :tablet:           true
   :mobile:           true
-  :to_s:             'mercury mercury7 webkit webkit534 ios ios5'
+  :to_s:             'mercury mercury7 webkit webkit534 ios ios5 ipad'
   :like:             :safari
   :like_version:     '7534.48.3'
 
@@ -1181,7 +1181,7 @@
   :locale:
   :architecture:
   :mobile:           true
-  :to_s:             'onebrowser onebrowser3'
+  :to_s:             'onebrowser onebrowser3 nokia'
 
 - :user_agent:       HTC-F5151/1.0 Mozilla/5.0 (BMP; U; en) AppleWebKit/530.8 (KHTML, like Gecko) OBIGO/W10 Safari/530.8
   :name:             :obigo
@@ -1195,7 +1195,7 @@
   :locale:           :en
   :architecture:
   :mobile:           false
-  :to_s:             'obigo obigo10 webkit webkit530'
+  :to_s:             'obigo obigo10 webkit webkit530 htc'
   :like:             :safari
   :like_version:     '530.8'
 
@@ -1211,7 +1211,7 @@
   :locale:
   :architecture:
   :mobile:           true
-  :to_s:             'ovibrowser ovibrowser1 gecko'
+  :to_s:             'ovibrowser ovibrowser1 gecko nokia'
 
 - :user_agent:       Mozilla/5.0 (Windows NT 6.1; rv:26.0) Gecko/20100101 Firefox/26.0 IceDragon/26.0.0.2
   :name:             :icedragon
@@ -2921,7 +2921,7 @@
   :architecture:
   :tablet:           true
   :mobile:           true
-  :to_s:             'webosbrowser webosbrowser234 webkit webkit534 webos webos3'
+  :to_s:             'webosbrowser webosbrowser234 webkit webkit534 webos webos3 hp'
   :like:             :safari
   :like_version:     '534.6'
 
@@ -3043,7 +3043,7 @@
   :architecture:
   :tablet:           true
   :mobile:           true
-  :to_s:             'opera_mini opera_mini7 presto presto2 ios'
+  :to_s:             'opera_mini opera_mini7 presto presto2 ios ipad'
 
 - :user_agent:       Opera/9.80 (Windows NT 5.1; U; Opera/9.80 (J2ME/MIDP; Opera Mini/5.0.18635/1030; U; en) Presto/2.4.15; ru) Presto/2.8.99 Version/11.10
   :name:             :opera_mini
@@ -3120,7 +3120,7 @@
   :locale:
   :architecture:
   :mobile:           true
-  :to_s:             'ucbrowser ucbrowser8 trident trident4 windows windows7'
+  :to_s:             'ucbrowser ucbrowser8 trident trident4 windows windows7 nokia'
 
 - :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; BOLT/2.340) AppleWebKit/530+ (KHTML, like Gecko) Version/4.0 Safari/530.17 UNTRUSTED/1.0 3gpp-gba
   :name:             :bolt
@@ -3383,7 +3383,7 @@
   :locale:
   :architecture:
   :mobile:           true
-  :to_s:             'chrome chrome51 webkit webkit537 android nougat'
+  :to_s:             'chrome chrome51 webkit webkit537 android nougat lg'
 
 - :user_agent:       Mozilla/5.0 (Linux; Tizen 2.2; SAMSUNG SM-Z9005) AppleWebKit/537.3 (KHTML, like Gecko) Version/2.2 like Android 4.1; Mobile Safari/537.3
   :name:             :safari
@@ -3449,7 +3449,7 @@
   :locale:           :en_us
   :architecture:
   :mobile:           true
-  :to_s:             'safari safari4 webkit webkit532 ios ios8'
+  :to_s:             'safari safari4 webkit webkit532 ios ios8 iphone'
 
 - :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.89 Vivaldi/1.0.83.38 Safari/537.36
   :name:             :vivaldi
@@ -3554,7 +3554,7 @@
   :locale:           :en
   :architecture:
   :mobile:           true
-  :to_s:             'opera_mini opera_mini7 presto presto2 ios'
+  :to_s:             'opera_mini opera_mini7 presto presto2 ios iphone'
 
 - :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; BOLT/2.800) AppleWebKit/534.6 (KHTML, like Gecko) Version/5.0 Safari/534.6.3
   :name:             :bolt
@@ -3608,7 +3608,7 @@
   :locale:
   :architecture:     :arm
   :mobile:           true
-  :to_s:             'ie ie10 trident trident6 windows_phone windows_phone8'
+  :to_s:             'ie ie10 trident trident6 windows_phone windows_phone8 nokia'
 
 - :user_agent:       Mozilla/4.0 (compatible; MSIE 7.0; Windows Phone OS 7.0; Trident/3.1; IEMobile/7.0; LG; GW910)
   :name:             :ie
@@ -4049,7 +4049,7 @@
   :locale:
   :architecture:
   :mobile:           true
-  :to_s:             'safari safari6 webkit webkit536 ios ios6'
+  :to_s:             'safari safari6 webkit webkit536 ios ios6 iphone'
 
 - :user_agent:       Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3
   :name:             :safari
@@ -4062,7 +4062,7 @@
   :locale:
   :architecture:
   :mobile:           true
-  :to_s:             'safari safari5 webkit webkit534 ios ios5'
+  :to_s:             'safari safari5 webkit webkit534 ios ios5 iphone'
 
 - :user_agent:       Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; Xbox)
   :name:             :ie

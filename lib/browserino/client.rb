@@ -2,7 +2,7 @@
 
 module Browserino
   class Client
-    attr_reader :property_names
+    attr_reader :properties
 
     def initialize(props = {}, like = nil)
       @property_names = props.keys
@@ -12,16 +12,16 @@ module Browserino
       # order below. First, seperate static value methods from procs,
       # procs will be able to call methods in this instances' context
       # therefore we need to define static methods before procs
-      define_preset_methods! props
-      define_proc_methods! props
+      generate_preset_methods! props
 
-      # for each of #name, #engine and #platform, use their results as
+      # for each of #name, #engine, #platform and #device use their results as
       # methods names, this will create a method #firefox? for the output
-      # of a #name # => :firefox for example
-      define_name_result_methods!
-
-      # finally, add labels and their aliasses into the mix
-      define_label_methods!
+      # of a #name # => :firefox for example.
+      # NOTE: labels do not have to be added, they will be extracted
+      # and inserted by this method, this method will also add aliasses
+      # of all the names as methods.
+      generate_result_methods! props, :name, :engine, :platform, :device
+      generate_proc_methods! props
     end
 
     def properties
@@ -39,15 +39,15 @@ module Browserino
     end
 
     def x64?
-      invertable architecture == :x64
+      invertable(@x64 ||= architecture == :x64)
     end
 
     def x32?
-      invertable architecture == :x32
+      invertable(@x32 ||= architecture == :x32)
     end
 
     def arm?
-      invertable architecture == :arm
+      invertable(@arm ||= architecture == :arm)
     end
 
     def is?(sm, opts = {})
@@ -63,9 +63,9 @@ module Browserino
       return invertable false unless name
 
       invertable case other
-                 when Regexp then other =~ name
-                 when String then other.to_sym == name
-                 when Symbol, Browserino::Client then other == name
+                 when Regexp         then other =~ name
+                 when String         then other.to_sym == name
+                 when Symbol, Client then other == name
                  else false
                  end
     end
@@ -83,20 +83,20 @@ module Browserino
     end
 
     def to_json(*args)
-      @json_cache ||= properties.each_with_object({}) do |(prop, val), hsh|
+      @json ||= properties.each_with_object({}) do |(prop, val), hsh|
         hsh[prop] = val.is_a?(Version) && val.full || val
       end.to_json(*args)
     end
 
     def to_s
-      @str_cache ||= %i[name engine platform].map do |prop|
-        n = properties[prop]
-        v = version_for prop
-        l = label_for prop
-        a = l ? l : [n, (v.major if v > '0.0.0')].join.to_sym
-
-        [n, a].uniq
-      end.flatten.uniq.join(' ').gsub(/\s{2,}/, ' ').strip
+      @str ||= %i[name engine platform device].each_with_object([]) do |prop, a|
+        a << properties[prop].to_s.strip
+        a << if (lbl = label_for(prop))
+               lbl
+             elsif (ver = version_for(prop))
+               [a.last, (ver.major if ver > '0.0.0')].join.strip
+             end
+      end.compact.reject(&:empty?).uniq.join ' '
     end
 
     def to_hash
@@ -128,99 +128,66 @@ module Browserino
     # instance variable and invert the state aswell as the result if set,
     # otherwise it will just return the value without touching it
     def not
-      @not = true
-      self
+      @not = true && self
     end
 
     private
 
     def invertable(result)
-      if @not
-        @not = false
-        return !result
-      end
-
-      result
+      @not ? @not = false || !result : result
     end
 
-    def label_for(sym)
-      mtd = %i[version name].include?(sym) ? :label : "#{sym}_label".to_sym
-      properties[mtd]
+    def label_for(sym, from = properties)
+      from[%i[version name].include?(sym) ? :label : "#{sym}_label".to_sym]
     end
 
-    def version_for(sym)
-      mtd = %i[label name].include?(sym) ? :version : "#{sym}_version".to_sym
-      properties[mtd]
+    def version_for(sym, from = properties)
+      from[%i[label name].include?(sym) ? :version : "#{sym}_version".to_sym]
     end
 
-    def get_answer(mtd, res, ver = nil, val = nil)
-      incl = [res, *Browserino.config.aliasses[res]].include? val
-      return res.is_a?(Version) ? res > 0 : res && true unless val
-      ver && incl ? version_for(mtd) == ver : incl
-    end
-
-    def define_preset_methods!(props)
+    def generate_preset_methods!(props)
       props.each do |name, value|
         define_singleton_method(name) { value }
-        define_question_method! name, value
+        create_question! name, value: value
       end
     end
 
-    def define_question_method!(name, value)
-      define_singleton_method("#{name}?") do |val = nil, opts = {}|
-        ver = opts.delete :version
-        val = val.to_sym if ver
-        invertable get_answer(name, value, ver, val)
-      end
-    end
-
-    def define_proc_methods!(props)
+    def generate_proc_methods!(props)
       props.select { |_, val| val.respond_to? :call }.each do |name, value|
         result = instance_eval(&value)
         define_singleton_method(name) { result }
       end
     end
 
-    def define_alias_methods!(result, version_result = nil)
-      Browserino.config.aliasses[result].each do |alt|
-        define_singleton_method("#{alt}?") do |value = nil|
-          return invertable(version_result == value) if value
-          invertable(result && true)
+    def generate_result_methods!(info, *property_names)
+      property_names.each do |prop|
+        ver_res = version_for prop, info
+
+        create_question! info[prop],            version: ver_res, aliasses: true
+        create_question! label_for(prop, info), version: ver_res, aliasses: true
+      end
+    end
+
+    def create_question!(result, opts = {})
+      methods = [result]
+      methods += Browserino.config.aliasses[result] if opts[:aliasses]
+
+      methods.each do |mtd|
+        define_singleton_method("#{mtd}?") do |val = nil, hsh = {}|
+          if opts.key?(:value)
+            invertable get_answer(result, opts[:value], hsh[:version], val)
+          else
+            return invertable opts[:version] == val if val
+            invertable true
+          end
         end
       end
     end
 
-    def define_name_result_methods!
-      %i[name engine platform].each do |prop|
-        result  = properties[prop]
-        ver_res = version_for(prop)
-
-        # for each of the props:
-        # -- define a question method using the value of prop
-        #    (ex: name # => firefox # => "firefox?")
-        #    -- when supplied with a value, check it against {prop_res}_version
-        #    -- when called without argument, return result
-        define_singleton_method("#{result}?") do |value = nil|
-          return ver_res == value if value
-          invertable(result && true)
-        end
-
-        define_alias_methods! result, ver_res
-      end
-    end
-
-    def define_label_methods!
-      property_names.select { |name| name =~ /label/i }.each do |prop|
-        next unless (result = properties[prop])
-        ver_res = version_for(prop.to_s.split('_').first)
-
-        define_singleton_method("#{result}?") do |value = nil|
-          return invertable(ver_res == value) if value
-          invertable(result && true)
-        end
-
-        define_alias_methods! result, ver_res
-      end
+    def get_answer(mtd, res, ver = nil, val = nil)
+      return res.is_a?(Version) ? res > '0.0.0' : res && true unless val
+      incl = res == val
+      ver && incl ? version_for(mtd) == ver : incl
     end
   end
 end

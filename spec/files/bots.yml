@@ -572,7 +572,7 @@
 
 - :user_agent: ASpider/0.09
   :name:       :aspider
-  :version:
+  :version:    '0.09'
   :text:       true
   :to_s:       'aspider aspider0'
 
@@ -813,13 +813,13 @@
   :name:       :instagram
   :version:    '4.2.5'
   :text:       true
-  :to_s:       'instagram instagram4 ios ios7'
+  :to_s:       'instagram instagram4 ios ios7 ipad'
 
 - :user_agent: Instagram 6.0.1 (iPad3,4; iPhone OS 7_0_3; en_AU; en-GB) AppleWebKit/420+
   :name:       :instagram
   :version:    '6.0.1'
   :text:       true
-  :to_s:       'instagram instagram6 ios ios7'
+  :to_s:       'instagram instagram6 ios ios7 ipad'
 
 - :user_agent: Pinterest/1.0 +http://pinterest.com
   :name:       :pinterest

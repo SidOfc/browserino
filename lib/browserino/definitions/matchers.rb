@@ -46,8 +46,9 @@ Browserino.config.define do
 
     device           %r{(alcatel|all(?:tell|view)|htc|kindle|kf\w\w|apple\s?tv
                         |iphone|ipad|a\d+f;|archos|transformer|slider|me\d+x|zte
-                        |blackberry|\d+dl|venue|hp|desire|huawei|lenovo|lumia
-                        |moto|motorola|oneplus|nokia|nexus|\b\w+tab\b|lg[-l])}xi
+                        |blackberry|\d+dl|venue|desire|oneplus|lenovo|lumia|moto
+                        |huawei\b|motorola|nokia|nexus|\b\w+tab\b|lg[-l]
+                        |(?<!p)hp)}xi
   end
 
   # automatically set type to :email for each defined matcher
