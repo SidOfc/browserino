@@ -12,27 +12,15 @@ module Browserino
       # order below. First, seperate static value methods from procs,
       # procs will be able to call methods in this instances' context
       # therefore we need to define static methods before procs
-
-      # for each static property:
-      # -- define a method that returns it's property value
-      # -- define a question method that returns it's property value or
-      #    checks version against supplied value if truthy
-      define_simple_methods! props
-
-      # for each proc property:
-      # -- define a method that returns it's instance evalled block value
-      # -- define a question method that returns it's instance evalled block
-      #    value or checks version against supplied value if truthy
+      define_preset_methods! props
       define_proc_methods! props
 
       # for each of #name, #engine and #platform, use their results as
       # methods names, this will create a method #firefox? for the output
-      # of a #name # => :firefox for example.
+      # of a #name # => :firefox for example
       define_name_result_methods!
 
       # finally, add labels and their aliasses into the mix
-      # none of these methods should override an existing method
-      # therefore we check it's existence using defined?
       define_label_methods!
     end
 
@@ -62,8 +50,6 @@ module Browserino
       invertable architecture == :arm
     end
 
-    # the catch all method, anything it can ask as question will respond
-    # otherwise nil is returned, this is also true when supplying a version
     def is?(sm, opts = {})
       return invertable send("#{sm}?", opts[:version]) if opts && opts[:version]
       invertable send("#{sm}?")
@@ -136,6 +122,11 @@ module Browserino
       true
     end
 
+    # if you wish for a method to respond to the #not method,
+    # you'll have to return the result of a function using the `invertable`
+    # method as seen in `method_missing` - this will apply the state of the
+    # instance variable and invert the state aswell as the result if set,
+    # otherwise it will just return the value without touching it
     def not
       @not = true
       self
@@ -168,7 +159,7 @@ module Browserino
       ver && incl ? version_for(mtd) == ver : incl
     end
 
-    def define_simple_methods!(props)
+    def define_preset_methods!(props)
       props.each do |name, value|
         define_singleton_method(name) { value }
         define_question_method! name, value
@@ -190,6 +181,15 @@ module Browserino
       end
     end
 
+    def define_alias_methods!(result, version_result = nil)
+      Browserino.config.aliasses[result].each do |alt|
+        define_singleton_method("#{alt}?") do |value = nil|
+          return invertable(version_result == value) if value
+          invertable(result && true)
+        end
+      end
+    end
+
     def define_name_result_methods!
       %i[name engine platform].each do |prop|
         result  = properties[prop]
@@ -205,16 +205,7 @@ module Browserino
           invertable(result && true)
         end
 
-        # for each of the aliasses found:
-        # -- define a question method using the current alias
-        #    -- when supplied with a value, check it against {prop_res}_version
-        #    -- when called without argument, return result
-        Browserino.config.aliasses[result].each do |alt|
-          define_singleton_method("#{alt}?") do |value = nil|
-            return invertable(ver_res == value) if value
-            invertable(result && true)
-          end
-        end
+        define_alias_methods! result, ver_res
       end
     end
 
@@ -228,12 +219,7 @@ module Browserino
           invertable(result && true)
         end
 
-        Browserino.config.aliasses[result].each do |alt|
-          define_singleton_method("#{alt}?") do |value = nil|
-            return invertable(ver_res == value) if value
-            invertable(result && true)
-          end
-        end
+        define_alias_methods! result, ver_res
       end
     end
   end
