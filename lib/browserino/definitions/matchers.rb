@@ -213,7 +213,7 @@ Browserino.config.define do
     match %r{oregano}i,        name: :oregano,
                                locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
 
-    match %r{retawq}i,         name: :retawq,   text: true,
+    match %r{retawq}i,         name: :retawq, text: true,
                                locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
   end
 
