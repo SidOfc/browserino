@@ -647,7 +647,7 @@
   :like_version:
 
 - :user_agent:       Mozilla/5.0 (SmartHub; SMART-TV; U; Linux/SmartTV; Maple2012) AppleWebKit/534.7 (KHTML, like Gecko) SmartTV Safari/534.7
-  :name:             :mapple
+  :name:             :maple
   :version:          '2012'
   :engine:           :webkit
   :engine_version:   '534.7'
@@ -658,7 +658,7 @@
   :architecture:
   :smarttv:          true
   :mobile:           false
-  :to_s:             'mapple mapple2012 webkit webkit534 linux'
+  :to_s:             'maple maple2012 webkit webkit534 linux'
   :like:             :safari
   :like_version:     '534.7'
 
@@ -1519,7 +1519,7 @@
   :like:             :firefox
 
 - :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.4pre) Gecko/20070404 K-Ninja/2.1.3
-  :name:             :kninja
+  :name:             :k_ninja
   :version:          '2.1.3'
   :engine:           :gecko
   :engine_version:   '1.8.1.4'
@@ -1529,7 +1529,7 @@
   :locale:           :en_us
   :architecture:
   :mobile:           false
-  :to_s:             'kninja kninja2 gecko gecko1 windows xp'
+  :to_s:             'k_ninja k_ninja2 gecko gecko1 windows xp'
   :like:             :firefox
 
 - :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1250.0 Iron/22.0.2150.0 Safari/537.4
@@ -2332,7 +2332,7 @@
   :like:             :firefox
 
 - :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.8.1.24pre) Gecko/20100228 K-Meleon/1.5.4
-  :name:             :kmeleon
+  :name:             :k_meleon
   :version:          '1.5.4'
   :engine:           :gecko
   :engine_version:   '1.8.1.24'
@@ -2342,7 +2342,7 @@
   :locale:           :en_us
   :architecture:
   :mobile:           false
-  :to_s:             'kmeleon kmeleon1 gecko gecko1 windows windows7'
+  :to_s:             'k_meleon k_meleon1 gecko gecko1 windows windows7'
   :like:             :firefox
 
 - :user_agent:       Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; WOW64; Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1) ; SLCC1; .NET CLR 2.0.50727; .NET CLR 3.0.04506; Media Center PC 5.0; .NET CLR 3.5.21022; GreenBrowser)

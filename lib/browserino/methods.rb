@@ -69,7 +69,7 @@ module Browserino
 
   def self.parse_detector(detect, properties)
     pat = properties.each_with_object(detect[:with].dup) do |(key, val), str|
-      replacement = val.to_s.strip
+      replacement = val.to_s.strip.gsub '_', '[_\s-]'
       str.gsub! ":#{key}", replacement unless replacement.empty?
     end
 

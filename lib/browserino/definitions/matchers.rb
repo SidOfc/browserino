@@ -129,16 +129,16 @@ Browserino.config.define do
       modern         { version >= 10 }
     end
 
+    match %r{inet\sbrowser}i,    name: :inet_browser, platform: :star_blade_os
     match %r{nintendobrowser}i,  name: :nintendobrowser, engine: :webkit
     match %r{deskbrowse}i,       name: :deskbrowse,      engine: :webkit
     match %r{qupzilla}i,         name: :qupzilla,        engine: :webkit
     match %r{midori}i,           name: :midori,          engine: :webkit
     match %r{shiira}i,           name: :shiira,          engine: :webkit
+    match %r{element\sbrowser}i, name: :element_browser, engine: :webkit
     match %r{amigavoyager}i,     name: :amigavoyager
     match %r{(?<!(?:net))surf}i, name: :surf
-
-    match %r{spray\-can}i,       name: :spray_can,
-                                 version: %r{-can/([\d\.]+)}i
+    match %r{spray\-can}i,       name: :spray_can
 
     match %r{webpro}i,           name: :webpro,
                                  locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
@@ -146,14 +146,8 @@ Browserino.config.define do
     match %r{sundance}i,         name: :sundance,
                                  version: %r{(?:version/|sundance/)([\d\.]+)}i
 
-    match %r{inet\sbrowser}i,    name: :inet_browser, platform: :star_blade_os,
-                                 version: %r{browser[\s/]?([\d\.]+)}i
-
     match %r{ibm\swebexplorer}i, name: :ibm_webexplorer, platform: :os2,
                                  version: %r{bexplorer\s?/v?([\d\.]+)}i
-
-    match %r{element\sbrowser}i, name: :element_browser, engine: :webkit,
-                                 version: %r{browser[\s/]([\d\.]+)}i
 
     match %r{navscape}i,         name: :navscape, engine: :webkit,
                                  version: %r{navscape/(?:\w+-)?([\d\.]+)}i
@@ -184,9 +178,11 @@ Browserino.config.define do
     match %r{uzbl}i,               name: :uzbl,         engine: :webkit
     match %r{roccat}i,             name: :roccat,       engine: :webkit
     match %r{dolfin}i,             name: :dolfin,       engine: :webkit
+    match %r{dooble}i,             name: :dooble,       engine: :webkit
     match %r{adobeair}i,           name: :adobeair,     engine: :webkit
     match %r{abrowse}i,            name: :abrowse,      engine: :webkit
     match %r{vimprobable}i,        name: :vimprobable,  engine: :webkit
+    match %r{osb\-browser}i,       name: :osb_browser,  engine: :webkit
     match %r{amaya}i,              name: :amaya,        text: true
     match %r{lynx}i,               name: :lynx,         text: true
     match %r{linemode}i,           name: :linemode,     text: true
@@ -211,17 +207,11 @@ Browserino.config.define do
     match %r{ovibrowser}i,     name: :ovibrowser,  engine: :gecko,
                                engine_version: %r{rv:\s?([\d\.]+)}i
 
-    match %r{osb\-browser}i,   name: :osb_browser, engine: :webkit,
-                               version: %r{\-browser/([\d\.]+)}i
-
     match %r{links}i,          name: :links,
                                version: %r{links\s\(([\d\.]+)}i
 
     match %r{oregano}i,        name: :oregano,
                                locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
-
-    match %r{dooble}i,         name: :dooble,   engine: :webkit,
-                               locale: %r{\((\w{2}(?:[-_]\w{2})?)\)}i
 
     match %r{retawq}i,         name: :retawq,   text: true,
                                locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
@@ -236,9 +226,14 @@ Browserino.config.define do
     match %r{autoemailspider}i,             name: :auto_email_spider
     match %r{flaming\sattackbot}i,          name: :flaming_attackbot
     match %r{addsugarspiderbot}i,           name: :addsugarspiderbot
+    match %r{mass\sdownloader}i,            name: :mass_downloader
+    match %r{safetynet\srobot}i,            name: :safetynet_robot
+    match %r{download\sdemon}i,             name: :download_demon
+    match %r{internet\sninja}i,             name: :internet_ninja
     match %r{dataparksearch}i,              name: :dataparksearch
     match %r{boston[_ ]project}i,           name: :boston_project
     match %r{emailcollector}i,              name: :emailcollector
+    match %r{morning\spaper}i,              name: :morning_paper
     match %r{4anything}i,                   name: :four_anything
     match %r{aqua_products}i,               name: :aqua_products
     match %r{arachnophilia}i,               name: :arachnophilia
@@ -247,6 +242,7 @@ Browserino.config.define do
     match %r{jaxified\sbot}i,               name: :jaxified_bot
     match %r{stackrambler}i,                name: :stackrambler
     match %r{turnitinbot}i,                 name: :turnitinbot
+    match %r{covario-ids}i,                 name: :covario_ids
     match %r{alkaline}i,                    name: :alkalinebot
     match %r{yahoo\!\sslurp}i,              name: :yahoo_slurp
     match %r{emailsiphon}i,                 name: :emailsiphon
@@ -286,6 +282,7 @@ Browserino.config.define do
     match %r{gurujibot}i,                   name: :gurujibot
     match %r{lapozzbot}i,                   name: :lapozzbot
     match %r{mvaclient}i,                   name: :mvaclient
+    match %r{ng-search}i,                   name: :ng_search
     match %r{yodaobot}i,                    name: :yodaobot
     match %r{ldspider}i,                    name: :ldspider
     match %r{lexxebot}i,                    name: :lexxebot
@@ -351,17 +348,8 @@ Browserino.config.define do
     match %r{oegp}i,                        name: :oegp,
                                             version: %r{v\.\s([\d\.]+)}i
 
-    match %r{ng-search}i,                   name: :ng_search,
-                                            version: %r{-search/([\d\.]+)}i
-
-    match %r{morning\spaper}i,              name: :morning_paper,
-                                            version: %r{\spaper\s([\d\.]+)}i
-
     match %r{l\.webis}i,                    name: :lwebis,
                                             version: %r{webis/([\d\.]+)}i
-
-    match %r{covario-ids}i,                 name: :covario_ids,
-                                            version: %r{io-ids/([\d\.]+)}i
 
     match %r{cerberian\sdrtrs}i,            name: :cerberian_drtrs,
                                             version: %r{version[-/]([\d\.]+)}i
@@ -375,23 +363,11 @@ Browserino.config.define do
     match %r{megaindex}i,                   name: :megaindex,
                                             version: %r{index\.ru/([\d\.]+)}i
 
-    match %r{mass\sdownloader}i,            name: :mass_downloader,
-                                            version: %r{downloader/([\d\.]+)}i
-
-    match %r{safetynet\srobot}i,            name: :safetynet_robot,
-                                            version: %r{net\srobot\s([\d\.]+)}i
-
-    match %r{internet\sninja}i,             name: :internet_ninja,
-                                            version: %r{ninja\s([\d\.]+)}i
-
     match %r{go\!zilla}i,                   name: :gozilla,
                                             version: %r{go\!zilla\s([\d\.]+)}i
 
     match %r{larbin}i,                      name: :larbin,
                                             version: %r{larbin_([\d\.]+)}i
-
-    match %r{download\sdemon}i,             name: :download_demon,
-                                            version: %r{demon/([\d\.]+)}i
 
     match %r{netseer}i,                     name: :netseer,
                                             version: %r{\scrawler/([\d\.]+)}i
@@ -406,9 +382,7 @@ Browserino.config.define do
     match %r{w3c_validator}i,        name: :w3c_validator
     match %r{htmlparser}i,           name: :htmlparser
     match %r{csscheck}i,             name: :csscheck
-
-    match %r{cynthia}i,              name: :cynthia,
-                                     version: %r{cynthia\s([\d\.]+)}i
+    match %r{cynthia}i,              name: :cynthia
 
     match %r{w3c_css_validator}i,    name: :w3c_css_validator,
                                      version: %r{validator_jfouffa/([\d\.]+)}i
@@ -432,40 +406,38 @@ Browserino.config.define do
   # previously defined matcher, overwritten by properties added within matchers
   # inherit properties from matcher where name == :chrome, (except :version)
   like :chrome, except: [:version] do
-    match %r{steam\sgame}i,   name: :steam, version: %r{meoverlay/([\d\.]+)}i
-    match %r{c_coc_browser}i, name: :coc_coc_browser
-    match %r{comodo_dragon}i, name: :comodo_dragon
-    match %r{chromeplus}i,    name: :chromeplus
-    match %r{bluechrome}i,    name: :bluechrome
-    match %r{taobrowser}i,    name: :taobrowser
-    match %r{fabrowser}i,     name: :fabrowser
-    match %r{mxbrowser}i,     name: :mxbrowser
-    match %r{awesomium}i,     name: :awesomium
-    match %r{qqbrowser}i,     name: :qqbrowser
-    match %r{yabrowser}i,     name: :yabrowser
-    match %r{chromeum}i,      name: :chromeum
-    match %r{polarity}i,      name: :polarity
-    match %r{rockmelt}i,      name: :rockmelt
-    match %r{coolnovo}i,      name: :coolnovo
-    match %r{slimboat}i,      name: :slimboat
-    match %r{safepay}i,       name: :safepay
-    match %r{vivaldi}i,       name: :vivaldi
-    match %r{colibri}i,       name: :colibri
-    match %r{iridium}i,       name: :iridium
-    match %r{yowser}i,        name: :yowser
-    match %r{origin}i,        name: :origin
-    match %r{puffin}i,        name: :puffin
-    match %r{amigo}i,         name: :amigo
-    match %r{fluid}i,         name: :fluid
-    match %r{kinza}i,         name: :kinza
-    match %r{swing}i,         name: :swing
-    match %r{brave}i,         name: :brave
-    match %r{perk}i,          name: :perk
-    match %r{hana}i,          name: :hana
-    match %r{(?<!env)iron}i,  name: :iron
-
-    match %r{whitehat\saviator}i, name: :whitehat_aviator,
-                                  version: %r{hat\saviator/([\d\.]+)}i
+    match %r{steam\sgame}i,       name: :steam, version: %r{eoverlay/([\d\.]+)}i
+    match %r{whitehat\saviator}i, name: :whitehat_aviator
+    match %r{c_coc_browser}i,     name: :coc_coc_browser
+    match %r{comodo_dragon}i,     name: :comodo_dragon
+    match %r{chromeplus}i,        name: :chromeplus
+    match %r{bluechrome}i,        name: :bluechrome
+    match %r{taobrowser}i,        name: :taobrowser
+    match %r{fabrowser}i,         name: :fabrowser
+    match %r{mxbrowser}i,         name: :mxbrowser
+    match %r{awesomium}i,         name: :awesomium
+    match %r{qqbrowser}i,         name: :qqbrowser
+    match %r{yabrowser}i,         name: :yabrowser
+    match %r{chromeum}i,          name: :chromeum
+    match %r{polarity}i,          name: :polarity
+    match %r{rockmelt}i,          name: :rockmelt
+    match %r{coolnovo}i,          name: :coolnovo
+    match %r{slimboat}i,          name: :slimboat
+    match %r{safepay}i,           name: :safepay
+    match %r{vivaldi}i,           name: :vivaldi
+    match %r{colibri}i,           name: :colibri
+    match %r{iridium}i,           name: :iridium
+    match %r{yowser}i,            name: :yowser
+    match %r{origin}i,            name: :origin
+    match %r{puffin}i,            name: :puffin
+    match %r{amigo}i,             name: :amigo
+    match %r{fluid}i,             name: :fluid
+    match %r{kinza}i,             name: :kinza
+    match %r{swing}i,             name: :swing
+    match %r{brave}i,             name: :brave
+    match %r{perk}i,              name: :perk
+    match %r{hana}i,              name: :hana
+    match %r{(?<!env)iron}i,      name: :iron
 
     match %r{mxnitro}i,           name: :maxthon_nitro,
                                   version: %r{mxnitro/([\d\.]+)}i
@@ -477,7 +449,6 @@ Browserino.config.define do
   # inherit properties from matcher where name == :safari, (except :version)
   like :safari, except: [:version] do
     match %r{obigo}i,              name: :obigo, version: %r{obigo/w?([\d\.]+)}i
-    match %r{maple}i,              name: :mapple, version: %r{maple([\d\.]+)}i
     match %r{playbook}i,           name: :playbook_browser
     match %r{samsungbrowser}i,     name: :samsungbrowser
     match %r{nokiabrowser}i,       name: :nokiabrowser
@@ -492,6 +463,7 @@ Browserino.config.define do
     match %r{rekonq}i,             name: :rekonq
     match %r{coast}i,              name: :coast
     match %r{arora}i,              name: :arora
+    match %r{maple}i,              name: :maple
     match %r{raptr}i,              name: :raptr
     match %r{icab}i,               name: :icab
     match %r{bolt}i,               name: :bolt
@@ -533,21 +505,22 @@ Browserino.config.define do
     # this method will be caught by method missing if it isn't defined,
     # therefore - this method can be used on every Browserino::Client
     # instance
-    match %r{minefield}i,       name: :minefield, nightly: true
-    match %r{k-meleon}i,        name: :kmeleon,   version: %r{leon/([\d\.]+)}i
-    match %r{k-ninja}i,         name: :kninja,    version: %r{ninja/([\d\.]+)}i
-    match %r{waterfox}i,        name: :waterfox,  architecture: :x64
-    match %r{monyq}i,           name: :monyq,     engine: :gecko
+    match %r{camino}i,          name: :camino, locale: %r{(\w{2}(?:\-\w{2})?),}i
+    match %r{fireweb\snaviga}i, name: :fireweb_navigator, engine: :gecko
+    match %r{minefield}i,       name: :minefield,         nightly: true
+    match %r{waterfox}i,        name: :waterfox,          architecture: :x64
+    match %r{monyq}i,           name: :monyq,             engine: :gecko
     match %r{sailfishbrowser}i, name: :sailfishbrowser
+    match %r{maemo\sbrowser}i,  name: :maemo_browser
     match %r{granparadiso}i,    name: :granparadiso
     match %r{tenfourfox}i,      name: :tenfourfox
+    match %r{kazehakase}i,      name: :kazehakase
     match %r{enigmafox}i,       name: :enigmafox
     match %r{iceweasel}i,       name: :iceweasel
     match %r{seamonkey}i,       name: :seamonkey
     match %r{lightning}i,       name: :lightning
     match %r{superswan}i,       name: :superswan
     match %r{lunascape}i,       name: :lunascape
-    match %r{kazehakase}i,      name: :kazehakase
     match %r{shiretoko}i,       name: :shiretoko
     match %r{classilla}i,       name: :classilla
     match %r{cometbird}i,       name: :cometbird
@@ -561,6 +534,8 @@ Browserino.config.define do
     match %r{vonkeror}i,        name: :vonkeror
     match %r{conkeror}i,        name: :conkeror
     match %r{netscape}i,        name: :netscape
+    match %r{k-meleon}i,        name: :k_meleon
+    match %r{k-ninja}i,         name: :k_ninja
     match %r{bonecho}i,         name: :bonecho
     match %r{sundial}i,         name: :sundial
     match %r{chimera}i,         name: :chimera
@@ -582,15 +557,6 @@ Browserino.config.define do
     match %r{light/}i,          name: :light
     match %r{pogo}i,            name: :pogo
     match %r{orca}i,            name: :orca
-
-    match %r{maemo\sbrowser}i,     name: :maemo_browser,
-                                   version: %r{o\sbrowser\s([\d\.]+)}i
-
-    match %r{camino}i,             name: :camino,
-                                   locale: %r{\s(\w{2}(?:\-\w{2})?),}i
-
-    match %r{fireweb\snavigator}i, name: :fireweb_navigator, engine: :gecko,
-                                   version: %r{\snavigator/([\d\.]+)}i
   end
 
   # never thought a browser would want to be like IE...
@@ -606,15 +572,6 @@ Browserino.config.define do
 
     # below are special cases where we need to manually
     # supply the version pattern
-    match %r{deepnet\sexplorer}i,    name: :deepnet_explorer,
-                                     version: %r{explorer\s([\d\.]+)}i
-
-    match %r{crazy\sbrowser}i,       name: :crazy_browser,
-                                     version: %r{browser\s([\d\.]+)}i
-
-    match %r{solid\score}i,          name: :solid_core,
-                                     version: %r{d\score/([\d\.]+)}i
-
     match %r{flexnetdesktopclient}i, name: :netflix_desktop,
                                      version: %r{pclient_([\d\.\_]+)}i
 
@@ -625,18 +582,21 @@ Browserino.config.define do
     # the smart_matcher for :version which uses the :name token automatically
     # upon creating it's pattern
     preset except: [:version] do
-      match %r{tencenttraveler}i, name: :tencenttraveler
-      match %r{enigma\sbrowser}i, name: :enigma_browser
-      match %r{simulbrowse}i,     name: :simulbrowse
-      match %r{gomezagent}i,      name: :gomezagent
-      match %r{netcaptor}i,       name: :netcaptor
-      match %r{sleipnir}i,        name: :sleipnir
-      match %r{irider}i,          name: :irider
-      match %r{kkman}i,           name: :kkman
-      match %r{lobo}i,            name: :lobo
-      match %r{foxy}i,            name: :foxy
-      match %r{aol}i,             name: :aol
-      match %r{\bIon\b},          name: :ion
+      match %r{deepnet\sexplorer}i, name: :deepnet_explorer
+      match %r{tencenttraveler}i,   name: :tencenttraveler
+      match %r{enigma\sbrowser}i,   name: :enigma_browser
+      match %r{crazy\sbrowser}i,    name: :crazy_browser
+      match %r{simulbrowse}i,       name: :simulbrowse
+      match %r{solid\score}i,       name: :solid_core
+      match %r{gomezagent}i,        name: :gomezagent
+      match %r{netcaptor}i,         name: :netcaptor
+      match %r{sleipnir}i,          name: :sleipnir
+      match %r{irider}i,            name: :irider
+      match %r{kkman}i,             name: :kkman
+      match %r{lobo}i,              name: :lobo
+      match %r{foxy}i,              name: :foxy
+      match %r{\bIon\b},            name: :ion
+      match %r{aol}i,               name: :aol
     end
   end
 end
