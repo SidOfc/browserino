@@ -46,43 +46,42 @@ module Browserino
       @like ||= self
     end
 
-    def like?(sym = nil, opts = {})
-      opts  = sym if sym.is_a? Hash
-      must  = []
-      must << like.is?(sym) if sym
-      must << like.version?(opts[:version]) if opts[:version]
-
-      must.any? && must.all?
+    def like?(sym, opts = {})
+      invertable like.is?(sym, opts)
     end
 
     def x64?
-      @x64_cache ||= architecture == :x64
+      invertable architecture == :x64
     end
 
     def x32?
-      @x32_cache ||= architecture == :x32
+      invertable architecture == :x32
     end
 
     def arm?
-      @arm_cache ||= architecture == :arm
+      invertable architecture == :arm
     end
 
     # the catch all method, anything it can ask as question will respond
     # otherwise nil is returned, this is also true when supplying a version
-    def is?(sym, opts = {})
-      return send "#{sym}?", opts[:version] if opts[:version]
-      send "#{sym}?"
+    def is?(sm, opts = {})
+      return invertable send("#{sm}?", opts[:version]) if opts && opts[:version]
+      invertable send("#{sm}?")
+    end
+
+    def not?(sym, opts = {})
+      !is? sym, opts
     end
 
     def ===(other)
-      return false unless name
+      return invertable false unless name
 
-      case other
-      when Regexp then other =~ name
-      when String then other.to_sym == name
-      when Symbol, Browserino::Client then other == name
-      else false
-      end
+      invertable case other
+                 when Regexp then other =~ name
+                 when String then other.to_sym == name
+                 when Symbol, Browserino::Client then other == name
+                 else false
+                 end
     end
 
     def ==(other)
@@ -129,7 +128,7 @@ module Browserino
     # scary, I know, but a falsy value is all we need to return if some
     # property isn't known or true as any property can be defined on the Client
     def method_missing(_, *__, &___)
-      nil
+      invertable nil
     end
 
     # always respond to missing, read method_missing comment
@@ -137,7 +136,21 @@ module Browserino
       true
     end
 
+    def not
+      @not = true
+      self
+    end
+
     private
+
+    def invertable(result)
+      if @not
+        @not = false
+        return !result
+      end
+
+      result
+    end
 
     def label_for(sym)
       mtd = %i[version name].include?(sym) ? :label : "#{sym}_label".to_sym
@@ -166,7 +179,7 @@ module Browserino
       define_singleton_method("#{name}?") do |val = nil, opts = {}|
         ver = opts.delete :version
         val = val.to_sym if ver
-        get_answer name, value, ver, val
+        invertable get_answer(name, value, ver, val)
       end
     end
 
@@ -189,7 +202,7 @@ module Browserino
         #    -- when called without argument, return result
         define_singleton_method("#{result}?") do |value = nil|
           return ver_res == value if value
-          result && true
+          invertable(result && true)
         end
 
         # for each of the aliasses found:
@@ -198,8 +211,8 @@ module Browserino
         #    -- when called without argument, return result
         Browserino.config.aliasses[result].each do |alt|
           define_singleton_method("#{alt}?") do |value = nil|
-            return ver_res == value if value
-            result && true
+            return invertable(ver_res == value) if value
+            invertable(result && true)
           end
         end
       end
@@ -211,14 +224,14 @@ module Browserino
         ver_res = version_for(prop.to_s.split('_').first)
 
         define_singleton_method("#{result}?") do |value = nil|
-          return ver_res == value if value
-          result && true
+          return invertable(ver_res == value) if value
+          invertable(result && true)
         end
 
         Browserino.config.aliasses[result].each do |alt|
           define_singleton_method("#{alt}?") do |value = nil|
-            return ver_res == value if value
-            result && true
+            return invertable(ver_res == value) if value
+            invertable(result && true)
           end
         end
       end
