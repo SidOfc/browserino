@@ -33,7 +33,7 @@ Browserino.config.define do
 
     platform         %r{.*(wiiu?|nintendo\sds|playstation|windows\sphone|windows
                         |kf\w\w|mac(?:intosh|\sos\sx)|android|ip(?:[ao]d|hone)
-                        |blackberry|risc|linux|ubuntu|x11|bsd|s(?:unos|olaris)
+                        |blackberry|risc|linux|ubuntu|unix|bsd|s(?:unos|olaris)
                         |tizen|xbox|amigaos|w(?:eb)?os|(?<!mi)cros|bada|palmos
                         |kindle|symbianos|sailfish|meego|darwin|syllable|fxos
                         |rim\stablet\sos)}xi
@@ -107,9 +107,9 @@ Browserino.config.define do
       engine         %r{(presto|webkit)}i
     end
 
-    match %r{opera[^\w]}i do
+    match %r{ope?ra?[^\w]}i do
       name           :opera
-      version        %r{(?:opera[\s/]|version/)([\d\.]+)}i
+      version        %r{(?:ope?ra?[\s/]|version/)([\d\.]+)}i
       engine         %r{(presto|webkit)}i
     end
 
@@ -393,6 +393,7 @@ Browserino.config.define do
   libraries text: true do
     match %r{Go-http-client}i, name: :golang, version: %r{-client/([\d\.]+)}i
     match %r{python}i,         name: :python, version: %r{-urllib/([\d\.]+)}i
+    match %r{luakit}i,         name: :luakit, engine: :webkit
     match %r{webfetch}i,       name: :webfetch
     match %r{pycurl}i,         name: :pycurl
     match %r{perl}i,           name: :perl
@@ -438,6 +439,9 @@ Browserino.config.define do
     match %r{perk}i,              name: :perk
     match %r{hana}i,              name: :hana
     match %r{(?<!env)iron}i,      name: :iron
+
+    match %r{nichrome}i,          name: :nichrome, engine: :webkit,
+                                  version: %r{chrome[\s/]\w+[\s/]([\d\.]+)}i
 
     match %r{mxnitro}i,           name: :maxthon_nitro,
                                   version: %r{mxnitro/([\d\.]+)}i
@@ -518,6 +522,7 @@ Browserino.config.define do
     match %r{enigmafox}i,       name: :enigmafox
     match %r{iceweasel}i,       name: :iceweasel
     match %r{seamonkey}i,       name: :seamonkey
+    match %r{multizilla}i,      name: :multizilla
     match %r{lightning}i,       name: :lightning
     match %r{superswan}i,       name: :superswan
     match %r{lunascape}i,       name: :lunascape
