@@ -1,5 +1,347 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9a5pre) Gecko/20070530 Swiftweasel/3.0a5.1pre
+  :name:             :swiftweasel
+  :version:          '3.0'
+  :engine:           :gecko
+  :engine_version:   '1.9'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :device:
+  :locale:           :en_us
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'swiftweasel swiftweasel3 gecko gecko1 linux'
+  :like:             :firefox
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2) Gecko/20100222 Firefox/3.6 Kylo/0.8.4.74873
+  :name:             :kylo
+  :version:          '0.8.4.74873'
+  :engine:           :gecko
+  :engine_version:   '1.9.2'
+  :platform:         :windows
+  :platform_label:   :xp
+  :platform_version: '5.1'
+  :device:
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'kylo kylo0 gecko gecko1 windows xp'
+  :like:             :firefox
+  :like_version:     '3.6'
+
+- :user_agent:       Bunjalloo/0.8(Nintendo DS;U;es)
+  :name:             :bunjalloo
+  :version:          '0.8'
+  :engine:
+  :engine_version:
+  :platform:         :nintendo_ds
+  :platform_label:
+  :platform_version:
+  :device:
+  :locale:           :es
+  :architecture:
+  :mobile:           false
+  :to_s:             'bunjalloo bunjalloo0 nintendo_ds'
+
+- :user_agent:       Doris/1.10 [en] (Symbian)
+  :name:             :doris
+  :version:          '1.10'
+  :engine:
+  :engine_version:
+  :platform:         :symbianos
+  :platform_label:
+  :platform_version:
+  :device:
+  :locale:           :en
+  :architecture:
+  :mobile:           false
+  :to_s:             'doris doris1 symbianos'
+
+- :user_agent:       Mozilla/4.61 [en] (X11; U; ) - BrowseX (2.0.0 Windows)
+  :name:             :browsex
+  :version:          '2.0.0'
+  :engine:
+  :engine_version:
+  :platform:         :windows
+  :platform_label:
+  :platform_version:
+  :device:
+  :locale:           :en
+  :architecture:
+  :mobile:           false
+  :to_s:             'browsex browsex2 windows'
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.3 (KHTML, like Gecko) BlackHawk/1.0.195.0 Chrome/127.0.0.1 Safari/62439616.534
+  :name:             :blackhawk
+  :version:          '1.0.195.0'
+  :engine:           :webkit
+  :engine_version:   '534.3'
+  :platform:         :windows
+  :platform_label:   :windows7
+  :platform_version: '6.1'
+  :device:
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'blackhawk blackhawk1 webkit webkit534 windows windows7'
+  :like:             :chrome
+  :like_version:     '127.0.0.1'
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9) Gecko/2008123109 Blackbird/0.997
+  :name:             :blackbird
+  :version:          '0.997'
+  :engine:           :gecko
+  :engine_version:   '1.9'
+  :platform:         :windows
+  :platform_label:   :vista
+  :platform_version: '6.0'
+  :device:
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'blackbird blackbird0 gecko gecko1 windows vista'
+  :like:             :firefox
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (compatible; Origyn Web Browser; MorphOS; PPC; U) AppleWebKit/534.12 (KHTML, like Gecko, Safari/534.12)
+  :name:             :origyn
+  :version:
+  :engine:           :webkit
+  :engine_version:   '534'
+  :platform:         :morphos
+  :platform_label:
+  :platform_version:
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'origyn webkit webkit534 morphos'
+
+- :user_agent:       Mozilla/4.7 (compatible; OffByOne; Windows NT 4.0) Webster Pro V3.2
+  :name:             :offbyone
+  :version:
+  :engine:
+  :engine_version:
+  :platform:         :windows
+  :platform_label:   :dos
+  :platform_version: '4.0'
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'offbyone windows dos'
+
+- :user_agent:       Mozilla/3.01 (compatible; NetBox/3.5 R85; Linux 2.2)
+  :name:             :netbox
+  :version:          '3.5'
+  :engine:
+  :engine_version:
+  :platform:         :linux
+  :platform_label:
+  :platform_version: '2.2'
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'netbox netbox3 linux linux2'
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.7) Gecko/20100723 Epic/1.1 Firefox/3.6.7
+  :name:             :epic
+  :version:          '1.1'
+  :engine:           :gecko
+  :engine_version:   '1.9.2.7'
+  :platform:         :windows
+  :platform_label:   :windows7
+  :platform_version: '6.1'
+  :device:
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'epic epic1 gecko gecko1 windows windows7'
+  :like:             :firefox
+  :like_version:     '3.6.7'
+
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.0.9) Gecko/2009042410 Firefox/3.0.9 Wyzo/3.0.3
+  :name:             :wyzo
+  :version:          '3.0.3'
+  :engine:           :gecko
+  :engine_version:   '1.9.0.9'
+  :platform:         :windows
+  :platform_label:   :vista
+  :platform_version: '6.0'
+  :device:
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'wyzo wyzo3 gecko gecko1 windows vista'
+  :like:             :firefox
+  :like_version:     '3.0.9'
+
+- :user_agent:       Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; Win64; x64; GTB7.0; .NET CLR 2.0.50727; SLCC1; Media Center PC 5.0; .NET CLR 3.5.21022; .NET CLR 3.5.30729; .NET CLR 3.0.30618; .NET4.0C; SiteKiosk 7
+  :name:             :sitekiosk
+  :version:          '7'
+  :engine:           :trident
+  :engine_version:
+  :platform:         :windows
+  :platform_label:   :vista
+  :platform_version: '6.0'
+  :device:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'sitekiosk sitekiosk7 trident windows vista'
+  :like:             :ie
+  :like_version:     '7.0'
+
+- :user_agent:       edbrowse/2.2.10
+  :name:             :edbrowse
+  :version:          '2.2.10'
+  :engine:
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'edbrowse edbrowse2'
+
+- :user_agent:       Emacs-W3/4.0pre.46 URL/p4.0pre.46 (i686-pc-linux; X11)
+  :name:             :emacs
+  :version:          '4.0'
+  :engine:
+  :engine_version:
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :device:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'emacs emacs4 linux'
+
+- :user_agent:       Mozilla/5.0 (compatible; U; InfiNet 0.1; Haiku) AppleWebKit/528+ (KHTML, like Gecko) WebPositive/528+ Safari/528+
+  :name:             :webpositive
+  :version:          '528'
+  :engine:           :webkit
+  :engine_version:   '528'
+  :platform:         :haiku
+  :platform_label:
+  :platform_version:
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'webpositive webpositive528 webkit webkit528 haiku'
+
+- :user_agent:       Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1) Gecko/20061024 Firefox/2.0 (Swiftfox)
+  :name:             :swiftfox
+  :version:
+  :engine:           :gecko
+  :engine_version:   '1.8.1'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :device:
+  :locale:           :en_us
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'swiftfox gecko gecko1 linux'
+  :like:             :firefox
+  :like_version:     '2.0'
+
+- :user_agent:       Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.12pre) Gecko/20080101 Strata/4.1.0.1274
+  :name:             :strata
+  :version:          '4.1.0.1274'
+  :engine:           :gecko
+  :engine_version:   '1.8.1.12'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :device:
+  :locale:           :en_us
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'strata strata4 gecko gecko1 linux'
+  :like:             :firefox
+  :like_version:
+
+- :user_agent:       Mozilla/4.01 (Compatible; Acorn Browse 1.25 [23-Oct-97] AW 97; RISC OS 4.39) Acorn-HTTP/0.84
+  :name:             :browse
+  :version:          '1.25'
+  :engine:
+  :engine_version:
+  :platform:         :risc
+  :platform_label:
+  :platform_version: '4.39'
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'browse browse1 risc risc4'
+
+- :user_agent:       muCommander v0.8.3 (Java 1.6.0_0-b11; Linux 2.6.24-19-generic i386)
+  :name:             :mucommander
+  :version:          '0.8.3'
+  :engine:
+  :engine_version:
+  :platform:         :linux
+  :platform_label:
+  :platform_version: '2.6.24'
+  :device:
+  :locale:
+  :architecture:     :x32
+  :mobile:           false
+  :to_s:             'mucommander mucommander0 linux linux2'
+
+- :user_agent:       Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.0; Smart Bro)
+  :name:             :smart_bro
+  :version:          '7.0'
+  :engine:           :trident
+  :engine_version:
+  :platform:         :windows
+  :platform_label:   :windows2000
+  :platform_version: '5.0'
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'smart_bro smart_bro7 trident windows windows2000'
+  :like:             :ie
+  :like_version:     '7.0'
+
+- :user_agent:       mothra/Jul-10-17:33:30-EDT-2006
+  :name:             :mothra
+  :version:
+  :engine:
+  :engine_version:
+  :platform:
+  :platform_label:
+  :platform_version:
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'mothra'
+
+- :user_agent:       ICE Browser/5.05 (Java 1.4.0; Windows 2000 5.0 x86)
+  :name:             :ice_browser
+  :version:          '5.5'
+  :engine:
+  :engine_version:
+  :platform:         :windows
+  :platform_label:   :windows2000
+  :platform_version: '5.0'
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'ice_browser ice_browser5 windows windows2000'
+
 - :user_agent:       Nichrome Browser 12.34
   :name:             :nichrome
   :version:          '12.34'
@@ -2182,13 +2524,13 @@
   :version:          '2.2.2'
   :engine:
   :engine_version:
-  :platform:
+  :platform:         :beos
   :platform_label:
   :platform_version:
   :locale:
   :architecture:
   :mobile:           false
-  :to_s:             'netpositive netpositive2'
+  :to_s:             'netpositive netpositive2 beos'
 
 - :user_agent:       Mozilla/5.0 (Macintosh; U; PPC Mac OS X; ja-jp) AppleWebKit/419 (KHTML, like Gecko) Shiira/1.2.3 Safari/125
   :name:             :shiira
@@ -4121,8 +4463,8 @@
   :to_s:             'opera opera9 wii'
 
 - :user_agent:       Bunjalloo/0.7.6(Nintendo DS;U;en)
-  :name:
-  :version:
+  :name:             :bunjalloo
+  :version:          '0.7.6'
   :engine:
   :engine_version:
   :platform:         :nintendo_ds
@@ -4130,8 +4472,7 @@
   :locale:           :en
   :architecture:
   :mobile:           false
-  :type:             :unknown
-  :to_s:             'nintendo_ds'
+  :to_s:             'bunjalloo bunjalloo0 nintendo_ds'
 
 - :user_agent:       Mozilla/4.0 (PS3 (PlayStation 3); 1.00)
   :name:

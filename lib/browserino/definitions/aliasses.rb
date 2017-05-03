@@ -15,4 +15,5 @@ Browserino.config.define do
   alias_for :duckduckgo,      :ddg
   alias_for :chromeos,        :cros
   alias_for :nintendobrowser, :netfrontbrowser
+  alias_for :ipd,             :alertsite
 end

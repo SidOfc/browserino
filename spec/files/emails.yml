@@ -1,5 +1,17 @@
 ---
 :emails:
+- :user_agent:       Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.2pre) Gecko/2009031304 Spicebird/0.7.1
+  :name:             :spicebird
+  :version:          '0.7.1'
+  :engine:           :gecko
+  :engine_version:   '1.9.0.2'
+  :platform:         :linux
+  :platform_version:
+  :platform_label:
+  :architecture:     :x64
+  :locale:           :en_us
+  :to_s:             'spicebird spicebird0 gecko gecko1 linux'
+
 - :user_agent:       Mozilla/5.0 (Windows NT 6.2; WOW64; rv:7.0.1) Gecko/20151105 Postbox/4.0.8
   :name:             :postbox
   :version:          '4.0.8'

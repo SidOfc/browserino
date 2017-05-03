@@ -1,5 +1,23 @@
 ---
 :bots:
+- :user_agent: ipd/1.0 from AlertSite.com
+  :name:       :ipd
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'ipd ipd1'
+
+- :user_agent: Mozilla/4.5 RPT-HTTPClient/0.3-2
+  :name:       :httpclient
+  :version:    '0.3.2'
+  :text:       true
+  :to_s:       'httpclient httpclient0'
+
+- :user_agent: Jakarta Commons-HttpClient/2.0.1
+  :name:       :jakarta
+  :version:    '2.0.1'
+  :text:       true
+  :to_s:       'jakarta jakarta2'
+
 - :user_agent: Mozilla/5.0 (compatible; YodaoBot/1.0; http://www.yodao.com/help/webmaster/spider/; )
   :name:       :yodaobot
   :version:    '1.0'

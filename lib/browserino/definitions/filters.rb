@@ -17,6 +17,7 @@ Browserino.config.define do
     subs << [%r{android|linux}i, ''] if ua =~ %r{tizen|windows\sphone}i
     subs << [%r{linux}i, ''] if ua =~ %r{android|s(unos|olaris)|w(eb)?os}i
     subs << [%r{windows\snt}i, ''] if ua =~ %r{windows\sphone}i
+    subs << [%r{Windows\s\d+}, 'windows'] if ua =~ %r{^ice\sbrowser}i
     subs << [%r{rv:}i, ''] if ua =~ %r{servo}i
     subs << [%r{mac\sos\sx|macintosh}i, ''] if ua =~ %r{ip(?:[ao]d|hone)|fxos}i
     subs << [%r{msie}i, ''] if ua =~ %r{huaweisymantecspider|surf|\w*bot}i
@@ -53,6 +54,7 @@ Browserino.config.define do
 
   filter :platform do |val|
     if %r{ip(?:[ao]d|hone)}i =~ val    then :ios
+    elsif %r{^symbian$}i =~ val        then :symbianos
     elsif %r{w(?:eb)?os}i =~ val       then :webos
     elsif %r{ubuntu|x11}i =~ val       then :linux
     elsif %r{mac_os_x}i =~ val         then :macintosh

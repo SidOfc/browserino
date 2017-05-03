@@ -35,8 +35,8 @@ Browserino.config.define do
                         |kf\w\w|mac(?:intosh|\sos\sx)|android|ip(?:[ao]d|hone)
                         |blackberry|risc|linux|ubuntu|unix|bsd|s(?:unos|olaris)
                         |tizen|xbox|amigaos|w(?:eb)?os|(?<!mi)cros|bada|palmos
-                        |kindle|symbianos|sailfish|meego|darwin|syllable|fxos
-                        |rim\stablet\sos)}xi
+                        |kindle|symbiano?s?|sailfish|meego|darwin|syllable|fxos
+                        |rim\stablet\sos|haiku|beos|morphos)}xi
 
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?|fxos
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
@@ -69,6 +69,7 @@ Browserino.config.define do
   # to look for engine_version using gecko version pattern
   emails engine: :gecko, engine_version: %r{rv:\s?([\d\.]+)}i do
     match %r{thunderbird}i, name: :thunderbird
+    match %r{spicebird}i,   name: :spicebird
     match %r{postbox}i,     name: :postbox
   end
 
@@ -129,16 +130,23 @@ Browserino.config.define do
       modern         { version >= 10 }
     end
 
-    match %r{inet\sbrowser}i,    name: :inet_browser, platform: :star_blade_os
-    match %r{nintendobrowser}i,  name: :nintendobrowser, engine: :webkit
-    match %r{deskbrowse}i,       name: :deskbrowse,      engine: :webkit
-    match %r{qupzilla}i,         name: :qupzilla,        engine: :webkit
-    match %r{midori}i,           name: :midori,          engine: :webkit
-    match %r{shiira}i,           name: :shiira,          engine: :webkit
-    match %r{element\sbrowser}i, name: :element_browser, engine: :webkit
-    match %r{amigavoyager}i,     name: :amigavoyager
-    match %r{(?<!(?:net))surf}i, name: :surf
-    match %r{spray\-can}i,       name: :spray_can
+    match %r{origyn\sweb\sbrowser}i, name: :origyn,          engine: :webkit
+    match %r{webpositive}i,          name: :webpositive,     engine: :webkit
+    match %r{nintendobrowser}i,      name: :nintendobrowser, engine: :webkit
+    match %r{deskbrowse}i,           name: :deskbrowse,      engine: :webkit
+    match %r{qupzilla}i,             name: :qupzilla,        engine: :webkit
+    match %r{midori}i,               name: :midori,          engine: :webkit
+    match %r{shiira}i,               name: :shiira,          engine: :webkit
+    match %r{element\sbrowser}i,     name: :element_browser, engine: :webkit
+    match %r{amigavoyager}i,         name: :amigavoyager
+    match %r{acorn\sbrowse}i,        name: :browse
+    match %r{mothra}i,               name: :mothra
+    match %r{(?<!(?:net))surf}i,     name: :surf
+    match %r{spray\-can}i,           name: :spray_can
+    match %r{bunjalloo}i,            name: :bunjalloo
+
+    match %r{inet\sbrowser}i,    name: :inet_browser,
+                                 platform: :star_blade_os
 
     match %r{webpro}i,           name: :webpro,
                                  locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
@@ -183,20 +191,28 @@ Browserino.config.define do
     match %r{abrowse}i,            name: :abrowse,      engine: :webkit
     match %r{vimprobable}i,        name: :vimprobable,  engine: :webkit
     match %r{osb\-browser}i,       name: :osb_browser,  engine: :webkit
+    match %r{edbrowse}i,           name: :edbrowse,     text: true
     match %r{amaya}i,              name: :amaya,        text: true
     match %r{lynx}i,               name: :lynx,         text: true
     match %r{linemode}i,           name: :linemode,     text: true
     match %r{elinks}i,             name: :elinks,       text: true
     match %r{netpositive}i,        name: :netpositive
+    match %r{mucommander}i,        name: :mucommander
     match %r{onebrowser}i,         name: :onebrowser
     match %r{flashfire}i,          name: :flashfire
     match %r{konqueror}i,          name: :konqueror
     match %r{cyberdog}i,           name: :cyberdog
+    match %r{offbyone}i,           name: :offbyone
     match %r{hotjava}i,            name: :hotjava
     match %r{netsurf}i,            name: :netsurf
     match %r{contiki}i,            name: :contiki
     match %r{mosaic|ibrowse[^r]}i, name: :mosaic
+    match %r{netbox}i,             name: :netbox
     match %r{dillo}i,              name: :dillo
+    match %r{ice\sbrowser}i,       name: :ice_browser
+
+    match %r{emacs}i,          name: :emacs, text: true,
+                               version: %r{emacs(?:\-\w+)?/([\d\.]+)}i
 
     match %r{UP\.Browser},     name: :openwave_browser,
                                version: %r{UP\.Browser/([\d\.]+)}i
@@ -211,6 +227,12 @@ Browserino.config.define do
                                version: %r{links\s\(([\d\.]+)}i
 
     match %r{oregano}i,        name: :oregano,
+                               locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
+
+    match %r{browsex}i,        name: :browsex, version: %r{wsex\s\(([\d\.]+)}i,
+                               locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
+
+    match %r{doris}i,          name: :doris,
                                locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
 
     match %r{retawq}i,         name: :retawq, text: true,
@@ -265,6 +287,7 @@ Browserino.config.define do
     match %r{litefinder}i,                  name: :litefinder
     match %r{linkwalker}i,                  name: :linkwalker
     match %r{mabontland}i,                  name: :mabontland
+    match %r{rpt-httpclient}i,              name: :httpclient
     match %r{ahrefsbot}i,                   name: :ahrefsbot
     match %r{mojeekbot}i,                   name: :mojeekbot
     match %r{seznambot}i,                   name: :seznambot
@@ -344,6 +367,10 @@ Browserino.config.define do
     match %r{\sobot}i,                      name: :obot
     match %r{(?:ask)\sjeeves}i,             name: :ask
     match %r{b2w}i,                         name: :b2w
+    match %r{ipd/}i,                        name: :ipd
+
+    match %r{jakarta}i,                     name: :jakarta,
+                                            version: %r{client/([\d\.]+)}i
 
     match %r{oegp}i,                        name: :oegp,
                                             version: %r{v\.\s([\d\.]+)}i
@@ -414,6 +441,7 @@ Browserino.config.define do
     match %r{chromeplus}i,        name: :chromeplus
     match %r{bluechrome}i,        name: :bluechrome
     match %r{taobrowser}i,        name: :taobrowser
+    match %r{blackhawk}i,         name: :blackhawk
     match %r{fabrowser}i,         name: :fabrowser
     match %r{mxbrowser}i,         name: :mxbrowser
     match %r{awesomium}i,         name: :awesomium
@@ -517,6 +545,7 @@ Browserino.config.define do
     match %r{sailfishbrowser}i, name: :sailfishbrowser
     match %r{maemo\sbrowser}i,  name: :maemo_browser
     match %r{granparadiso}i,    name: :granparadiso
+    match %r{swiftweasel}i,     name: :swiftweasel
     match %r{tenfourfox}i,      name: :tenfourfox
     match %r{kazehakase}i,      name: :kazehakase
     match %r{enigmafox}i,       name: :enigmafox
@@ -529,8 +558,10 @@ Browserino.config.define do
     match %r{shiretoko}i,       name: :shiretoko
     match %r{classilla}i,       name: :classilla
     match %r{cometbird}i,       name: :cometbird
+    match %r{blackbird}i,       name: :blackbird
     match %r{icedragon}i,       name: :icedragon
     match %r{cunaguaro}i,       name: :cunaguaro
+    match %r{swiftfox}i,        name: :swiftfox
     match %r{palemoon}i,        name: :palemoon
     match %r{cyberfox}i,        name: :cyberfox
     match %r{namoroka}i,        name: :namoroka
@@ -558,8 +589,12 @@ Browserino.config.define do
     match %r{icecat}i,          name: :icecat
     match %r{galeon}i,          name: :galeon
     match %r{vision}i,          name: :vision
+    match %r{strata}i,          name: :strata
     match %r{prism}i,           name: :prism
     match %r{light/}i,          name: :light
+    match %r{wyzo}i,            name: :wyzo
+    match %r{kylo}i,            name: :kylo
+    match %r{epic}i,            name: :epic
     match %r{pogo}i,            name: :pogo
     match %r{orca}i,            name: :orca
   end
@@ -572,6 +607,7 @@ Browserino.config.define do
     match %r{avant\sbrowser}i,    name: :avant_browser
     match %r{greenbrowser}i,      name: :greenbrowser
     match %r{slimbrowser}i,       name: :slimbrowser
+    match %r{smart\sbro}i,        name: :smart_bro
     match %r{theworld}i,          name: :theworld
     match %r{browzar}i,           name: :browzar
 
@@ -594,6 +630,7 @@ Browserino.config.define do
       match %r{simulbrowse}i,       name: :simulbrowse
       match %r{solid\score}i,       name: :solid_core
       match %r{gomezagent}i,        name: :gomezagent
+      match %r{sitekiosk}i,         name: :sitekiosk
       match %r{netcaptor}i,         name: :netcaptor
       match %r{sleipnir}i,          name: :sleipnir
       match %r{irider}i,            name: :irider
