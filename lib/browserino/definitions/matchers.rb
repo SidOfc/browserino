@@ -27,16 +27,15 @@ Browserino.config.define do
 
     mobile           %r{(bolt|nokia|samsung(?!b)|mobi(?:le)?|i?p(?:[ao]d|hone)
                         |android|bb\d+|blackberry|iemobile|fennec|bada|meego
-                        |tizen|vodafone|t\-mobile|kindle|kf\w\w|palmos|huawei
-                        |moto|lumia|oneplus|fxos|nexus|opera\sm(?:ob|in)i
-                        |zte|motorola)}xi
+                        |tizen|vodafone|kindle|kf\w\w|palmos|huawei|moto|lumia
+                        |oneplus|fxos|nexus|opera\sm(?:ob|in)i|zte|htc(?!\-))}xi
 
     platform         %r{.*(wiiu?|nintendo\sds|playstation|windows\sphone|windows
                         |kf\w\w|mac(?:intosh|\sos\sx)|android|ip(?:[ao]d|hone)
                         |blackberry|risc|linux|ubuntu|unix|bsd|s(?:unos|olaris)
                         |tizen|xbox|amigaos|w(?:eb)?os|(?<!mi)cros|bada|palmos
                         |kindle|symbiano?s?|sailfish|meego|darwin|syllable|fxos
-                        |rim\stablet\sos|haiku|beos|morphos)}xi
+                        |rim\stablet\sos|haiku|beos|morphos|debian)}xi
 
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?|fxos
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Browserino.config.define do
-  # executes before parsing the user agent, 's' in this case is the actual
-  # user agent string in full glory. Do manipulations as you wish, I'm
+  # executes before parsing the user agent, 'ua' in this case is the actual
+  # user agent string in its full glory. Do manipulations as you wish, I'm
   # using it to successfully strip lies from the user agent and to sometimes
   # simplify a word e.g. 'AppleWebKit' => 'webkit'
 
@@ -40,7 +40,7 @@ Browserino.config.define do
   filter do |val|
     case val
     when TrueClass, FalseClass, NilClass, Proc then val
-    when %r{\A[\d_\.]+\z}i then val.to_s.strip.tr('_', '.')
+    when %r{\A[\d_\.]+\z}i                     then val.to_s.strip.tr '_', '.'
     else val.to_s.downcase.strip.gsub(%r{[\s-]+}i, '_').to_sym
     end
   end
@@ -56,7 +56,7 @@ Browserino.config.define do
     if %r{ip(?:[ao]d|hone)}i =~ val    then :ios
     elsif %r{^symbian$}i =~ val        then :symbianos
     elsif %r{w(?:eb)?os}i =~ val       then :webos
-    elsif %r{ubuntu|x11}i =~ val       then :linux
+    elsif %r{ubuntu|debian}i =~ val    then :linux
     elsif %r{mac_os_x}i =~ val         then :macintosh
     elsif %r{s(?:unos|olaris)}i =~ val then :solaris
     elsif %r{cros}i =~ val             then :chromeos
@@ -67,13 +67,12 @@ Browserino.config.define do
   end
 
   filter :device do |val|
-    if %r{kf\w*}i =~ val then :kindle
-    elsif %r{lg[-l_]}i =~ val then :lg
-    elsif %r{\w+tab}i =~ val then :lenovo
-    elsif %r{lumia}i =~ val then :nokia
-    elsif %r{^moto}i =~ val then :motorola
-    elsif %r{\d+dl|venue}i =~ val then :dell
-    elsif %r{desire}i =~ val then :htc
+    if %r{kf\w*}i =~ val                              then :kindle
+    elsif %r{lg[-l_]}i =~ val                         then :lg
+    elsif %r{\w+tab}i =~ val                          then :lenovo
+    elsif %r{lumia}i =~ val                           then :nokia
+    elsif %r{^moto}i =~ val                           then :motorola
+    elsif %r{\d+dl|venue}i =~ val                     then :dell
     elsif %r{me\d+x|a\df;|transformer|slider}i =~ val then :asus
     else val
     end
