@@ -1,5 +1,131 @@
 ---
 :bots:
+- :user_agent: VYU2 (GNU; OpenRISC)
+  :name:       :vyu2
+  :version:
+  :text:       true
+  :to_s:       'vyu2'
+
+- :user_agent: http://www.almaden.ibm.com/cs/crawler [wf84]
+  :name:       :wf84
+  :version:
+  :text:       true
+  :to_s:       'wf84'
+
+- :user_agent: WomlpeFactory/0.1 (+http://www.Womple.com/bot.html)
+  :name:       :womlpefactory
+  :version:    '0.1'
+  :text:       true
+  :to_s:       'womlpefactory womlpefactory0'
+
+- :user_agent: Yeti/1.0 (+http://help.naver.com/robots/)
+  :name:       :yeti
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'yeti yeti1'
+
+- :user_agent: YahooSeeker/1.2 (compatible; Mozilla 4.0; MSIE 5.5; yahooseeker at yahoo-inc dot com ; http://help.yahoo.com/help/us/shop/merchant/)
+  :name:       :yahooseeker
+  :version:    '1.2'
+  :text:       true
+  :to_s:       'yahooseeker yahooseeker1'
+
+- :user_agent: Xaldon_WebSpider/2.0.b1
+  :name:       :xaldon_webspider
+  :version:    '2.0'
+  :text:       true
+  :to_s:       'xaldon_webspider xaldon_webspider2'
+
+- :user_agent: Mozilla/5.0 (compatible; YoudaoBot/1.0; http://www.youdao.com/help/webmaster/spider/; )
+  :name:       :youdaobot
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'youdaobot youdaobot1'
+
+- :user_agent: Mozilla/4.0 compatible ZyBorg/1.0 DLC (wn.zyborg@looksmart.net; http://www.WISEnutbot.com)
+  :name:       :zyborg
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'zyborg zyborg1'
+
+- :user_agent: zspider/0.9-dev http://feedback.redkolibri.com/
+  :name:       :zspider
+  :version:    '0.9'
+  :text:       true
+  :to_s:       'zspider zspider0'
+
+- :user_agent: Mozilla/4.0 (compatible; Zealbot 1.0)
+  :name:       :zealbot
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'zealbot zealbot1'
+
+- :user_agent: Zao/0.1 (http://www.kototoi.org/zao/)
+  :name:       :zao
+  :version:    '0.1'
+  :text:       true
+  :to_s:       'zao zao0'
+
+- :user_agent: yoogliFetchAgent/0.1
+  :name:       :yooglifetchagent
+  :version:    '0.1'
+  :text:       true
+  :to_s:       'yooglifetchagent yooglifetchagent0'
+
+- :user_agent: Yasaklibot/v1.2 (http://www.Yasakli.com/bot.php)
+  :name:       :yasaklibot
+  :version:    '1.2'
+  :text:       true
+  :to_s:       'yasaklibot yasaklibot1'
+
+- :user_agent: yacybot (x86 Windows XP 5.1; java 1.6.0_12; Europe/de) http://yacy.net/bot.html
+  :name:       :yacybot
+  :version:
+  :text:       true
+  :to_s:       'yacybot windows xp'
+
+- :user_agent: semanticdiscovery/0.1
+  :name:       :semanticdiscovery
+  :version:    '0.1'
+  :text:       true
+  :to_s:       'semanticdiscovery semanticdiscovery0'
+
+- :user_agent: Mozilla/5.0 (compatible; Peew/1.0; http://www.peew.de/crawler/)
+  :name:       :peew
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'peew peew1'
+
+- :user_agent: htdig/3.1.5 (infosys@storm.rmi.org)
+  :name:       :htdig
+  :version:    '3.1.5'
+  :text:       true
+  :to_s:       'htdig htdig3'
+
+- :user_agent: lmspider lmspider@scansoft.com
+  :name:       :lmspider
+  :version:
+  :text:       true
+  :to_s:       'lmspider'
+
+- :user_agent: htdig/3.1.5 (infosys@storm.rmi.org)
+  :name:       :htdig
+  :version:    '3.1.5'
+  :text:       true
+  :to_s:       'htdig htdig3'
+
+- :user_agent: Mozilla/4.0 compatible FurlBot/Furl Search 2.0 (FurlBot; http://www.furl.net; wn.furlbot@looksmart.net)
+  :name:       :furlbot
+  :version:    '2.0'
+  :text:       true
+  :to_s:       'furlbot furlbot2'
+
+- :user_agent: FyberSpider (+http://www.fybersearch.com/fyberspider.php)
+  :name:       :fyberspider
+  :version:
+  :text:       true
+  :to_s:       'fyberspider'
+
 - :user_agent: ipd/1.0 from AlertSite.com
   :name:       :ipd
   :version:    '1.0'

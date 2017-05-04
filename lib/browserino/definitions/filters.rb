@@ -20,7 +20,7 @@ Browserino.config.define do
     subs << [%r{Windows\s\d+}, 'windows'] if ua =~ %r{^ice\sbrowser}i
     subs << [%r{rv:}i, ''] if ua =~ %r{servo}i
     subs << [%r{mac\sos\sx|macintosh}i, ''] if ua =~ %r{ip(?:[ao]d|hone)|fxos}i
-    subs << [%r{msie}i, ''] if ua =~ %r{huaweisymantecspider|surf|\w*bot}i
+    subs << [%r{msie}i, ''] if ua =~ %r{huaweisymantecspid|surf|\w*bot|yahoose}i
     subs << [%r{risc\sos}i, 'risc'] if ua =~ %r{risc\sos}i
     subs << [%r{msie|windows}i, ''] if ua =~ %r{dts\sagent}i
     subs << [%r{blade\sos}i, 'blade-os'] if ua =~ %r{future\sstar}i

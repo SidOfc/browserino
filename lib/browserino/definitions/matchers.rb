@@ -32,10 +32,10 @@ Browserino.config.define do
 
     platform         %r{.*(wiiu?|nintendo\sds|playstation|windows\sphone|windows
                         |kf\w\w|mac(?:intosh|\sos\sx)|android|ip(?:[ao]d|hone)
-                        |blackberry|risc|linux|ubuntu|unix|bsd|s(?:unos|olaris)
+                        |blackberry|linux|ubuntu|beos|unix|bsd|s(?:unos|olaris)
                         |tizen|xbox|amigaos|w(?:eb)?os|(?<!mi)cros|bada|palmos
                         |kindle|symbiano?s?|sailfish|meego|darwin|syllable|fxos
-                        |rim\stablet\sos|haiku|beos|morphos|debian)}xi
+                        |(?<!en)risc|rim\stablet\sos|haiku|morphos|debian)}xi
 
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?|fxos
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
@@ -247,6 +247,9 @@ Browserino.config.define do
     match %r{autoemailspider}i,             name: :auto_email_spider
     match %r{flaming\sattackbot}i,          name: :flaming_attackbot
     match %r{addsugarspiderbot}i,           name: :addsugarspiderbot
+    match %r{semanticdiscovery}i,           name: :semanticdiscovery
+    match %r{xaldon_webspider}i,            name: :xaldon_webspider
+    match %r{yooglifetchagent}i,            name: :yooglifetchagent
     match %r{mass\sdownloader}i,            name: :mass_downloader
     match %r{safetynet\srobot}i,            name: :safetynet_robot
     match %r{download\sdemon}i,             name: :download_demon
@@ -259,6 +262,7 @@ Browserino.config.define do
     match %r{aqua_products}i,               name: :aqua_products
     match %r{arachnophilia}i,               name: :arachnophilia
     match %r{emeraldshield}i,               name: :emeraldshield
+    match %r{womlpefactory}i,               name: :womlpefactory
     match %r{issuecrawler}i,                name: :issuecrawler
     match %r{jaxified\sbot}i,               name: :jaxified_bot
     match %r{stackrambler}i,                name: :stackrambler
@@ -271,9 +275,11 @@ Browserino.config.define do
     match %r{terrawizbot}i,                 name: :terrawizbot
     match %r{searchsight}i,                 name: :searchsight
     match %r{baiduspider}i,                 name: :baiduspider
-    match %r{linguee\sbot}i,                name: :linguee_bot
     match %r{sandcrawler}i,                 name: :sandcrawler
+    match %r{fyberspider}i,                 name: :fyberspider
+    match %r{linguee\sbot}i,                name: :linguee_bot
     match %r{big\sbrother}i,                name: :big_brother
+    match %r{yahooseeker}i,                 name: :yahooseeker
     match %r{noxtrumbot}i,                  name: :noxtrumbot
     match %r{black\shole}i,                 name: :black_hole
     match %r{blackwidow}i,                  name: :blackwidow
@@ -286,6 +292,7 @@ Browserino.config.define do
     match %r{litefinder}i,                  name: :litefinder
     match %r{linkwalker}i,                  name: :linkwalker
     match %r{mabontland}i,                  name: :mabontland
+    match %r{yasaklibot}i,                  name: :yasaklibot
     match %r{rpt-httpclient}i,              name: :httpclient
     match %r{ahrefsbot}i,                   name: :ahrefsbot
     match %r{mojeekbot}i,                   name: :mojeekbot
@@ -305,6 +312,7 @@ Browserino.config.define do
     match %r{lapozzbot}i,                   name: :lapozzbot
     match %r{mvaclient}i,                   name: :mvaclient
     match %r{ng-search}i,                   name: :ng_search
+    match %r{youdaobot}i,                   name: :youdaobot
     match %r{yodaobot}i,                    name: :yodaobot
     match %r{ldspider}i,                    name: :ldspider
     match %r{lexxebot}i,                    name: :lexxebot
@@ -324,6 +332,8 @@ Browserino.config.define do
     match %r{rufusbot}i,                    name: :rufusbot
     match %r{rampybot}i,                    name: :rampybot
     match %r{mogimogi}i,                    name: :mogimogi
+    match %r{lmspider}i,                    name: :lmspider
+    match %r{yacybot}i,                     name: :yacybot
     match %r{jyxobot}i,                     name: :jyxobot
     match %r{orbiter}i,                     name: :orbiter
     match %r{polybot}i,                     name: :polybot
@@ -335,6 +345,8 @@ Browserino.config.define do
     match %r{auresys}i,                     name: :auresys
     match %r{bingbot}i,                     name: :bingbot
     match %r{gaisbot}i,                     name: :gaisbot
+    match %r{zealbot}i,                     name: :zealbot
+    match %r{zspider}i,                     name: :zspider
     match %r{backrub}i,                     name: :backrub
     match %r{harvest}i,                     name: :harvest
     match %r{nymesis}i,                     name: :nymesis
@@ -343,6 +355,7 @@ Browserino.config.define do
     match %r{snappy}i,                      name: :snappy
     match %r{vortex}i,                      name: :vortex
     match %r{tineye}i,                      name: :tineye
+    match %r{zyborg}i,                      name: :zyborg
     match %r{sqworm}i,                      name: :sqworm
     match %r{qseero}i,                      name: :qseero
     match %r{pompos}i,                      name: :pompos
@@ -362,11 +375,20 @@ Browserino.config.define do
     match %r{nutch}i,                       name: :nutch
     match %r{ia_archiver}i,                 name: :alexa
     match %r{atomz}i,                       name: :atomz
+    match %r{htdig}i,                       name: :htdig
+    match %r{peew}i,                        name: :peew
+    match %r{yeti}i,                        name: :yeti
+    match %r{wf84}i,                        name: :wf84
+    match %r{vyu2}i,                        name: :vyu2
     match %r{acoi}i,                        name: :acoi
     match %r{\sobot}i,                      name: :obot
     match %r{(?:ask)\sjeeves}i,             name: :ask
     match %r{b2w}i,                         name: :b2w
     match %r{ipd/}i,                        name: :ipd
+    match %r{zao}i,                         name: :zao
+
+    match %r{furlbot}i,                     name: :furlbot,
+                                            version: %r{rl\ssearch\s([\d\.]+)}i
 
     match %r{jakarta}i,                     name: :jakarta,
                                             version: %r{client/([\d\.]+)}i
