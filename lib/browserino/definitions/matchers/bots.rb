@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # automatically set type to :bot for each defined matcher
 # additionally, set text to true to each of the matchers automatically
 Browserino.config.bots text: true do

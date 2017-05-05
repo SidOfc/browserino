@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Browserino.config.browsers do
   # a single matcher that will create a matcher for a specific match
   # matchers are added in an array in order of definition - higher is better

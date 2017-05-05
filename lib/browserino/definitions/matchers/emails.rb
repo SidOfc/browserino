@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Browserino.config.emails do
   match %r{outlook}i, name: :outlook
   match %r{airmail}i, name: :airmail, engine: :webkit
