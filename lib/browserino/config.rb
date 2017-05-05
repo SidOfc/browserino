@@ -4,16 +4,9 @@ module Browserino
   class Config < Options
     def define(&block)
       instance_eval(&block)
-
-      matchers.each do |matcher|
-        properties << matcher.properties.keys
-        types      << matcher.type
-        names      << matcher.name
+      matchers.each_with_object types do |mtch, types_arr|
+        types_arr << mtch.type unless types_arr.include?(mtch.type)
       end
-
-      properties.flatten!.uniq!
-      types.uniq!
-      names.uniq!
     end
 
     def label(name, **opts)
@@ -64,28 +57,32 @@ module Browserino
       @tmp_defaults = @preset_store.last
     end
 
-    def like(tmp, opts = {}, &block)
-      preset opts.merge(like: tmp.to_sym), &block
-    end
-
+    # the order of these methods is the same as seen at the top of the
+    # definitions/matchers.rb file. It is the current "order" required
+    # for Browserino to work properly, maybe tweaking some regexes can lighten
+    # this up but it's OK for now.
     def emails(opts = {}, &block)
       preset opts.merge(type: :email), &block
-    end
-
-    def validators(opts = {}, &block)
-      preset opts.merge(type: :validator), &block
     end
 
     def browsers(opts = {}, &block)
       preset opts.merge(type: :browser), &block
     end
 
+    def like(tmp, opts = {}, &block)
+      preset opts.merge(like: tmp.to_sym), &block
+    end
+
     def bots(opts = {}, &block)
-      preset opts.merge(type: :bot), &block
+      preset opts.merge(type: :bot, text: true), &block
+    end
+
+    def validators(opts = {}, &block)
+      preset opts.merge(type: :validator, text: true), &block
     end
 
     def libraries(opts = {}, &block)
-      preset opts.merge(type: :library), &block
+      preset opts.merge(type: :library, text: true), &block
     end
 
     def with_alias(pattern, **opts, &block)

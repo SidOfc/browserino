@@ -92,16 +92,12 @@ module Browserino
   end
 
   def self.get_flags(*flags)
-    val = 0
-
-    flags.each do |flag|
+    flags.reduce(0) do |val, flag|
       case flag.to_sym
-      when :m then val |= Regexp::MULTILINE
-      when :i then val |= Regexp::IGNORECASE
-      when :x then val |= Regexp::EXTENDED
+      when :m then val | Regexp::MULTILINE
+      when :i then val | Regexp::IGNORECASE
+      when :x then val | Regexp::EXTENDED
       end
     end
-
-    val
   end
 end
