@@ -58,6 +58,7 @@ Browserino.config.bots text: true do
   match %r{rpt-httpclient}i,              name: :httpclient
   match %r{ahrefsbot}i,                   name: :ahrefsbot
   match %r{mojeekbot}i,                   name: :mojeekbot
+  match %r{incywincy}i,                   name: :incywincy
   match %r{seznambot}i,                   name: :seznambot
   match %r{girafabot}i,                   name: :girafabot
   match %r{becomebot}i,                   name: :becomebot
@@ -95,6 +96,7 @@ Browserino.config.bots text: true do
   match %r{rampybot}i,                    name: :rampybot
   match %r{mogimogi}i,                    name: :mogimogi
   match %r{lmspider}i,                    name: :lmspider
+  match %r{blowfish}i,                    name: :blowfish
   match %r{yacybot}i,                     name: :yacybot
   match %r{jyxobot}i,                     name: :jyxobot
   match %r{orbiter}i,                     name: :orbiter
@@ -114,6 +116,7 @@ Browserino.config.bots text: true do
   match %r{nymesis}i,                     name: :nymesis
   match %r{radian6}i,                     name: :radian6
   match %r{scrubby}i,                     name: :scrubby
+  match %r{gcreep}i,                      name: :gcreep
   match %r{snappy}i,                      name: :snappy
   match %r{vortex}i,                      name: :vortex
   match %r{tineye}i,                      name: :tineye

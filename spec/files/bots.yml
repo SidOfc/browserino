@@ -1,5 +1,23 @@
 ---
 :bots:
+- :user_agent: IncyWincy/1.0b1
+  :name:       :incywincy
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'incywincy incywincy1'
+
+- :user_agent: gcreep/1.0
+  :name:       :gcreep
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'gcreep gcreep1'
+
+- :user_agent: BlowFish/1.0
+  :name:       :blowfish
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'blowfish blowfish1'
+
 - :user_agent: VYU2 (GNU; OpenRISC)
   :name:       :vyu2
   :version:
