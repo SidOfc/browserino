@@ -20,6 +20,7 @@ Browserino.config.bots text: true do
   match %r{dataparksearch}i,              name: :dataparksearch
   match %r{boston[_ ]project}i,           name: :boston_project
   match %r{emailcollector}i,              name: :emailcollector
+  match %r{webemailextrac}i,              name: :webemailextrac
   match %r{morning\spaper}i,              name: :morning_paper
   match %r{4anything}i,                   name: :four_anything
   match %r{aqua_products}i,               name: :aqua_products
@@ -81,6 +82,7 @@ Browserino.config.bots text: true do
   match %r{mvaclient}i,                   name: :mvaclient
   match %r{ng-search}i,                   name: :ng_search
   match %r{youdaobot}i,                   name: :youdaobot
+  match %r{webcopier}i,                   name: :webcopier
   match %r{yodaobot}i,                    name: :yodaobot
   match %r{ldspider}i,                    name: :ldspider
   match %r{lexxebot}i,                    name: :lexxebot
@@ -103,6 +105,7 @@ Browserino.config.bots text: true do
   match %r{lmspider}i,                    name: :lmspider
   match %r{blowfish}i,                    name: :blowfish
   match %r{superbot}i,                    name: :superbot
+  match %r{valkyrie}i,                    name: :valkyrie
   match %r{yacybot}i,                     name: :yacybot
   match %r{jyxobot}i,                     name: :jyxobot
   match %r{orbiter}i,                     name: :orbiter

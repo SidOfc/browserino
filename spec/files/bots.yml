@@ -1,5 +1,23 @@
 ---
 :bots:
+- :user_agent: WebEMailExtrac.*
+  :name:       :webemailextrac
+  :version:
+  :text:       true
+  :to_s:       'webemailextrac'
+
+- :user_agent: WebCopier v3.0.1
+  :name:       :webcopier
+  :version:    '3.0.1'
+  :text:       true
+  :to_s:       'webcopier webcopier3'
+
+- :user_agent: Valkyrie/1.0 libwww-perl/0.40
+  :name:       :valkyrie
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'valkyrie valkyrie1'
+
 - :user_agent: SuperBot/3.0 (Win32)
   :name:       :superbot
   :version:    '3.0'
