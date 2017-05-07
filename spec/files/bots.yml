@@ -1,5 +1,59 @@
 ---
 :bots:
+- :user_agent: SuperBot/3.0 (Win32)
+  :name:       :superbot
+  :version:    '3.0'
+  :text:       true
+  :to_s:       'superbot superbot3'
+
+- :user_agent: Solbot/1.0 LWP/5.07
+  :name:       :solbot
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'solbot solbot1'
+
+- :user_agent: SmartDownload/1.2.76 (Win32; Apr 1 1999)
+  :name:       :smartdownload
+  :version:    '1.2.76'
+  :text:       true
+  :to_s:       'smartdownload smartdownload1'
+
+- :user_agent: ProPowerBot/2.14
+  :name:       :propowerbot
+  :version:    '2.14'
+  :text:       true
+  :to_s:       'propowerbot propowerbot2'
+
+- :user_agent: Occam/1.0
+  :name:       :occam
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'occam occam1'
+
+- :user_agent: moget/2.1
+  :name:       :moget
+  :version:    '2.1'
+  :text:       true
+  :to_s:       'moget moget2'
+
+- :user_agent: IsraeliSearch/1.0
+  :name:       :israelisearch
+  :version:    '1.0'
+  :text:       true
+  :to_s:       'israelisearch israelisearch1'
+
+- :user_agent: LabelGrab/1.1
+  :name:       :labelgrab
+  :version:    '1.1'
+  :text:       true
+  :to_s:       'labelgrab labelgrab1'
+
+- :user_agent: Keyword Density/0.9
+  :name:       :keyword_density
+  :version:    '0.9'
+  :text:       true
+  :to_s:       'keyword_density keyword_density0'
+
 - :user_agent: IncyWincy/1.0b1
   :name:       :incywincy
   :version:    '1.0'

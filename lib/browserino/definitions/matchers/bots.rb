@@ -12,6 +12,7 @@ Browserino.config.bots text: true do
   match %r{semanticdiscovery}i,           name: :semanticdiscovery
   match %r{xaldon_webspider}i,            name: :xaldon_webspider
   match %r{yooglifetchagent}i,            name: :yooglifetchagent
+  match %r{keyword\sdensity}i,            name: :keyword_density
   match %r{mass\sdownloader}i,            name: :mass_downloader
   match %r{safetynet\srobot}i,            name: :safetynet_robot
   match %r{download\sdemon}i,             name: :download_demon
@@ -23,8 +24,10 @@ Browserino.config.bots text: true do
   match %r{4anything}i,                   name: :four_anything
   match %r{aqua_products}i,               name: :aqua_products
   match %r{arachnophilia}i,               name: :arachnophilia
+  match %r{smartdownload}i,               name: :smartdownload
   match %r{emeraldshield}i,               name: :emeraldshield
   match %r{womlpefactory}i,               name: :womlpefactory
+  match %r{israelisearch}i,               name: :israelisearch
   match %r{issuecrawler}i,                name: :issuecrawler
   match %r{jaxified\sbot}i,               name: :jaxified_bot
   match %r{stackrambler}i,                name: :stackrambler
@@ -32,6 +35,7 @@ Browserino.config.bots text: true do
   match %r{covario-ids}i,                 name: :covario_ids
   match %r{alkaline}i,                    name: :alkalinebot
   match %r{yahoo\!\sslurp}i,              name: :yahoo_slurp
+  match %r{propowerbot}i,                 name: :propowerbot
   match %r{emailsiphon}i,                 name: :emailsiphon
   match %r{backdoorbot}i,                 name: :backdoorbot
   match %r{terrawizbot}i,                 name: :terrawizbot
@@ -66,6 +70,7 @@ Browserino.config.bots text: true do
   match %r{emailwolf}i,                   name: :emailwolf
   match %r{googlebot}i,                   name: :googlebot
   match %r{omgilibot}i,                   name: :omgilibot
+  match %r{labelgrab}i,                   name: :labelgrab
   match %r{altavista}i,                   name: :altavista
   match %r{yandexbot}i,                   name: :yandexbot
   match %r{newsgator}i,                   name: :newsgator
@@ -97,6 +102,7 @@ Browserino.config.bots text: true do
   match %r{mogimogi}i,                    name: :mogimogi
   match %r{lmspider}i,                    name: :lmspider
   match %r{blowfish}i,                    name: :blowfish
+  match %r{superbot}i,                    name: :superbot
   match %r{yacybot}i,                     name: :yacybot
   match %r{jyxobot}i,                     name: :jyxobot
   match %r{orbiter}i,                     name: :orbiter
@@ -124,6 +130,7 @@ Browserino.config.bots text: true do
   match %r{sqworm}i,                      name: :sqworm
   match %r{qseero}i,                      name: :qseero
   match %r{pompos}i,                      name: :pompos
+  match %r{solbot}i,                      name: :solbot
   match %r{ichiro}i,                      name: :ichiro
   match %r{bizbot}i,                      name: :bizbot
   match %r{msnbot}i,                      name: :msnbot
@@ -136,6 +143,8 @@ Browserino.config.bots text: true do
   match %r{holmes}i,                      name: :holmes
   match %r{tumblr}i,                      name: :tumblr
   match %r{mxbot}i,                       name: :mxbot
+  match %r{moget}i,                       name: :moget
+  match %r{occam}i,                       name: :occam
   match %r{acoon}i,                       name: :acoon
   match %r{nutch}i,                       name: :nutch
   match %r{ia_archiver}i,                 name: :alexa
