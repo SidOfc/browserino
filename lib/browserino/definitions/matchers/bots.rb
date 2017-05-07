@@ -19,7 +19,7 @@ Browserino.config.bots text: true, good: proc { !bad },
   match %r{download\sdemon}i,             name: :download_demon
   match %r{internet\sninja}i,             name: :internet_ninja
   match %r{dataparksearch}i,              name: :dataparksearch
-  match %r{boston[_ ]project}i,           name: :boston_project
+  match %r{boston[_\s]project}i,          name: :boston_project
   match %r{emailcollector}i,              name: :emailcollector
   match %r{webemailextrac}i,              name: :webemailextrac
   match %r{morning\spaper}i,              name: :morning_paper
