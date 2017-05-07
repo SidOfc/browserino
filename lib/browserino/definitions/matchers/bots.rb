@@ -2,7 +2,7 @@
 
 # automatically set type to :bot for each defined matcher
 # additionally, set text to true to each of the matchers automatically
-Browserino.config.bots text: true, good: -> { !bad },
+Browserino.config.bots text: true, good: proc { !bad },
                        bad: %r{(extrac|harvest)}i do
   match %r{huaweisymantecspider}i,        name: :huaweisymantecspider
   match %r{atomic_email_hunter}i,         name: :atomic_email_hunter
