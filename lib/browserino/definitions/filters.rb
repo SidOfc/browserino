@@ -26,7 +26,7 @@ Browserino.config.define do
     subs << [%r{blade\sos}i, 'blade-os'] if ua =~ %r{future\sstar}i
     subs << [%r{awesomium}i, ''] if ua =~ %r{flashfire}i
 
-    subs.reduce(ua) { |str, gsub_args| str.gsub(*gsub_args) }
+    subs.reduce(ua) { |acc, elem| acc.gsub(*elem) }
   end
 
   # after a matcher is found, it's values are filtered in two stages
