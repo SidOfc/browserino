@@ -6,12 +6,14 @@ engines:
     enabled: true
     config:
       languages:
-      - ruby:
-      	  mass_threshold: 30
+        - ruby:
+        	  mass_threshold: 30
+
 ratings:
   paths:
-  - lib/**
-  - "**.rb"
+    - lib/**
+    - "**.rb"
+
 exclude_paths:
-- spec/**/*
-- "**/vendor/**/*"
+  - spec/**/*
+  - "**/vendor/**/*"
