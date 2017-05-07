@@ -155,7 +155,8 @@ module Browserino
     def generate_proc_methods!(props)
       props.select { |_, val| val.respond_to? :call }.each do |name, value|
         result = instance_eval(&value)
-        define_singleton_method(name) { result }
+        define_singleton_method(name)       { result }
+        define_singleton_method("#{name}?") { result && true }
       end
     end
 
