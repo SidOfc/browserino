@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 TYPE_MAP = { validators: :validator, bots: :bot, libraries: :library,
-             emails: :email }.freeze
+             emails: :email, rss: :rss }.freeze
 
 TYPE_MAP.each do |type, singular_type|
   describe "Browserino #{type}" do

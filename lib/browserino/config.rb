@@ -73,6 +73,10 @@ module Browserino
       preset opts.merge(like: tmp.to_sym), &block
     end
 
+    def rss(opts = {}, &block)
+      preset opts.merge(type: :rss), &block
+    end
+
     def bots(opts = {}, &block)
       preset opts.merge(type: :bot, text: true), &block
     end
