@@ -25,6 +25,7 @@ Browserino.config.define do
     subs << [%r{msie|windows}i, ''] if ua =~ %r{dts\sagent}i
     subs << [%r{blade\sos}i, 'blade-os'] if ua =~ %r{future\sstar}i
     subs << [%r{awesomium}i, ''] if ua =~ %r{flashfire}i
+    subs << [%r{firefox}i, ''] if ua =~ %r{ips-agent}i
 
     subs.reduce(ua) { |acc, elem| acc.gsub(*elem) }
   end

@@ -2,6 +2,12 @@
 
 # automatically set type to :bot for each defined matcher
 # additionally, set text to true to each of the matchers automatically
+# the property 'good' here is defined as a proc, it calls an instance method
+# on the current Client object (!bad).
+
+# Since procs are defined after all other methods, the property bad defined
+# here will be defined as a method before good is run, this makes
+# them order-indepentent when adding them
 Browserino.config.bots text: true, good: proc { !bad },
                        bad: %r{(extrac|harvest)}i do
   match %r{huaweisymantecspider}i,        name: :huaweisymantecspider
@@ -22,6 +28,7 @@ Browserino.config.bots text: true, good: proc { !bad },
   match %r{boston[_\s]project}i,          name: :boston_project
   match %r{emailcollector}i,              name: :emailcollector
   match %r{webemailextrac}i,              name: :webemailextrac
+  match %r{sitelockspider}i,              name: :sitelockspider
   match %r{morning\spaper}i,              name: :morning_paper
   match %r{4anything}i,                   name: :four_anything
   match %r{aqua_products}i,               name: :aqua_products
@@ -84,6 +91,7 @@ Browserino.config.bots text: true, good: proc { !bad },
   match %r{ng-search}i,                   name: :ng_search
   match %r{youdaobot}i,                   name: :youdaobot
   match %r{webcopier}i,                   name: :webcopier
+  match %r{ips-agent}i,                   name: :ips_agent
   match %r{yodaobot}i,                    name: :yodaobot
   match %r{ldspider}i,                    name: :ldspider
   match %r{lexxebot}i,                    name: :lexxebot
@@ -144,8 +152,9 @@ Browserino.config.bots text: true, good: proc { !bad },
   match %r{cosmos}i,                      name: :cosmos
   match %r{ecatch}i,                      name: :ecatch
   match %r{scrapy}i,                      name: :scrapy
-  match %r{holmes}i,                      name: :holmes
   match %r{tumblr}i,                      name: :tumblr
+  match %r{holmes}i,                      name: :holmes
+  match %r{okhttp}i,                      name: :okhttp
   match %r{mxbot}i,                       name: :mxbot
   match %r{moget}i,                       name: :moget
   match %r{occam}i,                       name: :occam

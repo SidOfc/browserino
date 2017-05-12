@@ -2,7 +2,6 @@
 
 module Browserino
   class Client
-    attr_reader :properties
 
     def initialize(props = {}, like = nil)
       @property_names = props.keys
@@ -63,9 +62,9 @@ module Browserino
       return invertable false unless name
 
       invertable case other
-                 when Regexp         then other =~ name
+                 when Regexp         then other        =~ name
                  when String         then other.to_sym == name
-                 when Symbol, Client then other == name
+                 when Symbol, Client then other        == name
                  else false
                  end
     end

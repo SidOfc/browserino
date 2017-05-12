@@ -7,6 +7,12 @@ AllCops:
     - 'tmp/**/*'
     - 'vendor/**/*'
 
+Style/ExtraSpacing:
+  Enabled: true
+
+SpaceAroundOperators:
+  Enabled: false
+
 Documentation:
   Enabled: false
 
