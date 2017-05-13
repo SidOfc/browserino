@@ -177,9 +177,7 @@ module Browserino
         define_singleton_method("#{mtd}?") do |val = nil, hsh = {}|
           invertable(if opts.key?(:value)
                        get_answer(result, opts[:value], hsh[:version], val)
-                     elsif val
-                       opts[:version] == val
-                     else true
+                     else val ? opts[:version] == val : true
                      end)
         end
       end
