@@ -6,3 +6,33 @@
   - :user_agent: Windows-RSS-Platform/2.0 (MSIE 9.0; Windows NT 6.1)
     :name:       :windows_rss
     :version:    '2.0'
+  - :user_agent: Apple-PubSub/28
+    :name:       :apple_pubsub
+    :version:    '28'
+  - :user_agent: JetBrains Omea Reader 2.0 (http://www.jetbrains.com/omea/reader/)
+    :name:       :omea_reader
+    :version:    '2.0'
+  - :user_agent: Akregator/1.2.5; librss/remnants
+    :name:       :akregator
+    :version:    '1.2.5'
+  - :user_agent: Feedfetcher-Google; (+http://www.google.com/feedfetcher.html; feed-id=8863418675138580825)
+    :name:       :feedfetcher_google
+    :version:
+  - :user_agent: AppleSyndication/54
+    :name:       :safari_rss
+    :version:    '54'
+  - :user_agent: RSSOwl/2.0.0.200811231841 (Windows; U; en)
+    :name:       :rssowl
+    :version:    '2.0.0.200811231841'
+  - :user_agent: NetNewsWire/3.1.7 (Mac OS X; http://www.newsgator.com/Individuals/NetNewsWire/)
+    :name:       :netnewswire
+    :version:    '3.1.7'
+  - :user_agent: Liferea/1.6.0 (Linux; cs_CZ.UTF-8; http://liferea.sf.net/)
+    :name:       :liferea
+    :version:    '1.6.0'
+  - :user_agent: YahooFeedSeeker/2.0 (compatible; Mozilla 4.0; MSIE 5.5; http://publisher.yahoo.com/rssguide; users 0; views 0)
+    :name:       :yahoofeedseeker
+    :version:    '2.0'
+  - :user_agent: Mozilla/5.0 (Sage)
+    :name:       :sage
+    :version:
