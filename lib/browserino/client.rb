@@ -2,7 +2,6 @@
 
 module Browserino
   class Client
-
     def initialize(props = {}, like = nil)
       @property_names = props.keys
       @like           = like
