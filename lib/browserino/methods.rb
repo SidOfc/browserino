@@ -4,20 +4,19 @@ module Browserino
   def self.analyze(ua, matcher = nil)
     @defaults ||= config.global_matchers.map(&:properties).reduce(&:merge)
 
-    props    = @defaults.merge(matcher && matcher.properties || {})
-    like     = props.delete :like
-    props    = collect props, ua
-    props    = collect_with_smart_watchers props, ua
-    props    = with_labels props
-    like     = Client.new props.merge(like_attrs(props, like, ua)) if like
+    props = @defaults.merge(matcher && matcher.properties || {})
+    like  = props.delete :like
+    props = mass_collect props, ua
+    like  = Client.new props.merge(like_attrs(props, like, ua)) if like
 
     Client.new props, like
   end
 
   def self.like_attrs(props, like, user_agent)
-    lattrs = config.matchers.select { |m| m == like }.first.properties
+    version = config.matchers.select { |m| m == like }
+                    .first.properties[:version]
     fattrs = { name: like }
-    fattrs[:version] = lattrs[:version] if lattrs[:version].is_a? Regexp
+    fattrs[:version] = version if version.is_a? Regexp
     fattrs[:version] ||= smart_matchers(fattrs)[:version]
 
     props.dup.merge collect(fattrs, user_agent)
@@ -74,6 +73,12 @@ module Browserino
     end
 
     Regexp.new pat, get_flags(*detect[:flags].to_a)
+  end
+
+  def self.mass_collect(props, ua)
+    props = collect props, ua
+    props = collect_with_smart_watchers props, ua
+    with_labels props
   end
 
   def self.collect(properties, ua)

@@ -32,7 +32,7 @@ Metrics/BlockLength:
   Enabled: false
 
 Metrics/AbcSize:
-  Max: 20
+  Max: 15
 
 Metrics/ClassLength:
   CountComments: false

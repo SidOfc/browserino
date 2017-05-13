@@ -86,14 +86,16 @@ module Browserino
       end.to_json(*args)
     end
 
+    def label_or_version_name(prop)
+      ver = version_for prop
+      label_for(prop) || ver && [properties[prop].to_s.strip,
+                                 (ver.major if ver > '0.0.0')].join.strip
+    end
+
     def to_s
       @str ||= %i[name engine platform device].each_with_object([]) do |prop, a|
         a << properties[prop].to_s.strip
-        a << if (lbl = label_for(prop))
-               lbl
-             elsif (ver = version_for(prop))
-               [a.last, (ver.major if ver > '0.0.0')].join.strip
-             end
+        a << label_or_version_name(prop)
       end.compact.reject(&:empty?).uniq.join ' '
     end
 
@@ -173,12 +175,12 @@ module Browserino
 
       methods.each do |mtd|
         define_singleton_method("#{mtd}?") do |val = nil, hsh = {}|
-          if opts.key?(:value)
-            invertable get_answer(result, opts[:value], hsh[:version], val)
-          else
-            return invertable opts[:version] == val if val
-            invertable true
-          end
+          invertable(if opts.key?(:value)
+                       get_answer(result, opts[:value], hsh[:version], val)
+                     elsif val
+                       opts[:version] == val
+                     else true
+                     end)
         end
       end
     end

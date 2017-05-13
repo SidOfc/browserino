@@ -23,13 +23,13 @@ module Browserino
     end
 
     def ===(other)
-      return false if properties[:name].nil?
+      return false unless (name = properties[:name])
 
       case other
-      when Regexp   then other =~ properties[:name]
-      when String   then other.to_sym == properties[:name]
-      when Symbol   then other == properties[:name]
-      when Matcher then other.properties[:name] == properties[:name]
+      when Regexp   then other =~ name
+      when String   then other.to_sym == name
+      when Symbol   then other == name
+      when Matcher then other.name == name
       else false
       end
     end
