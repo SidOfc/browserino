@@ -4,46 +4,133 @@
   :name:       :cse_html_validator
   :version:
   :text:       true
-  :to_s:       'cse_html_validator'
 
 - :user_agent: CSSCheck/1.2.2
   :name:       :csscheck
   :version:    '1.2.2'
   :text:       true
-  :to_s:       'csscheck csscheck1'
 
 - :user_agent: Cynthia 1.0
   :name:       :cynthia
   :version:    '1.0'
   :text:       true
-  :to_s:       'cynthia cynthia1'
 
 - :user_agent: HTMLParser/1.6
   :name:       :htmlparser
   :version:    '1.6'
   :text:       true
-  :to_s:       'htmlparser htmlparser1'
 
 - :user_agent: P3P Validator
   :name:       :p3p_validator
   :version:
   :text:       true
-  :to_s:       'p3p_validator'
 
 - :user_agent: Jigsaw/2.2.5 W3C_CSS_Validator_JFouffa/2.0
   :name:       :w3c_css_validator
   :version:    '2.0.0'
   :text:       true
-  :to_s:       'w3c_css_validator w3c_css_validator2'
 
 - :user_agent: WDG_Validator/1.6.2
   :name:       :wdg_validator
   :version:    '1.6.2'
   :text:       true
-  :to_s:       'wdg_validator wdg_validator1'
 
 - :user_agent: W3C_Validator/1.654
   :name:       :w3c_validator
   :version:    '1.654'
   :text:       true
-  :to_s:       'w3c_validator w3c_validator1'
+
+- :user_agent: FeedValidator/1.3
+  :name:       :feedvalidator
+  :version:    '1.3'
+  :text:       true
+
+- :user_agent: Checkbot/1.76
+  :name:       :checkbot
+  :version:    '1.76'
+  :text:       true
+
+- :user_agent: topSUBMIT.de HTMLChecker/1.1
+  :name:       :anw_htmlchecker
+  :version:    '1.1'
+  :text:       true
+
+- :user_agent: A1 Website Analyzer/3.2.2 (+http://www.microsystools.com/products/website-analyzer/) miggibot
+  :name:       :a1_website_analyzer
+  :version:    '3.2.2'
+  :text:       true
+
+- :user_agent: LinkChecker/4.9 ( http://linkchecker.sourceforge.net/)
+  :name:       :linkchecker
+  :version:    '4.9'
+  :text:       true
+
+- :user_agent: LinkExaminer/1.00 (Windows)
+  :name:       :linkexaminer
+  :version:    '1.0'
+  :text:       true
+
+- :user_agent: LinkWalker/2.0 - www.seventwentyfour.com/
+  :name:       :linkwalker
+  :version:    '2.0'
+  :text:       true
+
+- :user_agent: W3C_Multipage_Validator/2.0 (+http://www.validator.ca/)
+  :name:       :w3c_multipage_validator
+  :version:    '2.0'
+  :text:       true
+
+- :user_agent: FPLinkChecker/1.2
+  :name:       :fplinkchecker
+  :version:    '1.2'
+  :text:       true
+
+- :user_agent: REL Link Checker Lite 1.0
+  :name:       :rel_link_checker_lite
+  :version:    '1.0'
+  :text:       true
+
+- :user_agent: Screaming Frog SEO Spider/2.21
+  :name:       :screaming_frog_seo_spider
+  :version:    '2.21'
+  :text:       true
+
+- :user_agent: Validator.nu/3
+  :name:       :validator_nu
+  :version:    '3'
+  :text:       true
+
+- :user_agent: W3C-checklink/4.2.1 [4.21] libwww-perl/5.803
+  :name:       :w3c_checklink
+  :version:    '4.2.1'
+  :text:       true
+
+- :user_agent: W3C_I18n-Checker/1.0
+  :name:       :w3c_i18n_checker
+  :version:    '1.0'
+  :text:       true
+
+- :user_agent: W3C-mobileOK/DDC-1.0 (see http://www.w3.org/2006/07/mobileok-ddc)
+  :name:       :w3c_mobileok
+  :version:    '1.0'
+  :text:       true
+
+- :user_agent: W3C_Unicorn/1.0 (http://validator.w3.org/services)
+  :name:       :w3c_unicorn
+  :version:    '1.0'
+  :text:       true
+
+- :user_agent: CSSCheck/1.2.2
+  :name:       :csscheck
+  :version:    '1.2.2'
+  :text:       true
+
+- :user_agent: WDG_Validator/1.6.4
+  :name:       :wdg_validator
+  :version:    '1.6.4'
+  :text:       true
+
+- :user_agent: Xenu Link Sleuth 1.2d
+  :name:       :xenu_link_sleuth
+  :version:    '1.2'
+  :text:       true

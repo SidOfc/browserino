@@ -65,7 +65,6 @@ Browserino.config.bots text: true, good: proc { !bad },
   match %r{linkdexbot}i,                  name: :linkdexbot
   match %r{aitcsrobot}i,                  name: :aitcsrobot
   match %r{litefinder}i,                  name: :litefinder
-  match %r{linkwalker}i,                  name: :linkwalker
   match %r{mabontland}i,                  name: :mabontland
   match %r{yasaklibot}i,                  name: :yasaklibot
   match %r{rpt-httpclient}i,              name: :httpclient
