@@ -468,12 +468,6 @@
   :text:       true
   :to_s:       'mabontland'
 
-- :user_agent: LinkWalker/2.0
-  :name:       :linkwalker
-  :version:    '2.0'
-  :text:       true
-  :to_s:       'linkwalker linkwalker2'
-
 - :user_agent: Linguee Bot (http://www.linguee.com/bot; bot@linguee.com)
   :name:       :linguee_bot
   :version:
