@@ -140,6 +140,22 @@
   :name:       :trileet_newsroom
   :version:
 
-- :user_agent: YeahReader [http://www.yeahreader.com/]
-  :name:       :yeahreader
-  :version:    '1.4'
+- :user_agent: CPG Dragonfly RSS Module Feed Viewer
+  :name:       :dragonfly_rss
+  :version:
+
+- :user_agent: Fastladder FeedFetcher/0.01 (http://fastladder.com/; 1 subscriber)
+  :name:       :fastladder_feedfetcher
+  :version:    '0.1'
+
+- :user_agent: FeedDemon/4.1 (http://www.feeddemon.com/; Microsoft Windows)
+  :name:       :feeddemon
+  :version:    '4.1'
+
+- :user_agent: LuckNews/3.0.1 (Macintosh; Intel Mac OS X Version 10.10.5 (Build 14F27))
+  :name:       :lucknews
+  :version:    '3.0.1'
+
+- :user_agent: InoReader/1.0; http://inoreader.com support@inoreader.com
+  :name:       :inoreader
+  :version:    '1.0'

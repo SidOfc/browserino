@@ -8,6 +8,9 @@ Browserino.config.rss do
   match %r{netnewswire}i,         name: :netnewswire
   match %r{omea\sreader}i,        name: :omea_reader
   match %r{rssbandit}i,           name: :rssbandit
+  match %r{feeddemon}i,           name: :feeddemon
+  match %r{lucknews}i,            name: :lucknews
+  match %r{inoreader}i,           name: :inoreader
   match %r{rss\smenu}i,           name: :rss_menu
   match %r{rss\spopper}i,         name: :rss_popper
   match %r{homepage\srss\sread}i, name: :seznam_rss
@@ -34,8 +37,10 @@ Browserino.config.rss do
   match %r{sage}i,                name: :sage
   match %r{akregator}i,           name: :akregator
   match %r{trileet\snewsroom}i,   name: :trileet_newsroom
+  match %r{dragonfly\srss}i,      name: :dragonfly_rss
   match %r{digg\sfeed\sfetcher}i, name: :digg_feed_fetcher
   match %r{yahoofeedseeker}i,     name: :yahoofeedseeker
   match %r{universalfeedparser}i, name: :universalfeedparser
   match %r{feedfetcher-google}i,  name: :feedfetcher_google
+  match %r{fastladder\sfeed}i,    name: :fastladder_feedfetcher
 end
