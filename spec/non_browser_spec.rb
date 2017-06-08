@@ -7,7 +7,7 @@ TYPE_MAP = { validators: :validator, bots: :bot, libraries: :library,
 
 TYPE_MAP.each do |type, singular_type|
   describe "Browserino #{type}" do
-    Library.data.fetch(type, []).shuffle.each do |spec|
+    Library.data.fetch(type, []).first(Library::LIMIT).shuffle.each do |spec|
       ua          = spec.delete :user_agent
       client      = Browserino.parse ua
       spec[:type] ||= singular_type

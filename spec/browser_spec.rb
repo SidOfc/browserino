@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'Browserino browsers' do
-  browsers = Library.data.fetch(:browsers, [])
+  browsers = Library.data.fetch(:browsers, []).first(Library::LIMIT)
 
   browsers.shuffle.each do |spec|
     exclude = [:user_agent, :mobile, :to_s]
