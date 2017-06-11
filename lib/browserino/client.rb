@@ -138,17 +138,27 @@ module Browserino
     end
 
     def label_for(sym, from = properties)
-      from[%i[version name].include?(sym) ? :label : "#{sym}_label".to_sym]
+      from[%i[version label name].include?(sym) ? :label : "#{sym}_label".to_sym]
+    end
+
+    def name_for(sym, from = properties)
+      from[%i[label version name].include?(sym) ? :name : "#{sym}_name".to_sym]
     end
 
     def version_for(sym, from = properties)
-      from[%i[label name].include?(sym) ? :version : "#{sym}_version".to_sym]
+      from[%i[label version name].include?(sym) ? :version : "#{sym}_version".to_sym]
     end
 
     def generate_preset_methods!(props)
       props.each do |name, value|
-        define_singleton_method(name) { value }
-        create_question! name, value: value
+        methods = [name, *Browserino.config.aliasses[name]]
+        methods.each do |mtd|
+          define_singleton_method(mtd) { value }
+          define_singleton_method("#{mtd}?") do |val = nil|
+            return value == val if val
+            value && true
+          end
+        end
       end
     end
 
@@ -175,10 +185,7 @@ module Browserino
 
       methods.each do |mtd|
         define_singleton_method("#{mtd}?") do |val = nil, hsh = {}|
-          invertable(if opts.key?(:value)
-                       get_answer(result, opts[:value], hsh[:version], val)
-                     else val ? opts[:version] == val : true
-                     end)
+          invertable(val ? opts[:version] == val : true)
         end
       end
     end

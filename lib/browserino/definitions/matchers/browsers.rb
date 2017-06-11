@@ -243,8 +243,7 @@ Browserino.config.browsers do
     match %r{nook}i,               name: :nook,
                                    version: %r{build/\w+\s([\d\.]+)}i
 
-    match %r{kindle}i,             name: :kindle,
-                                   version: %r{(?:kindle|version)/([\d\.]+)}i
+    match %r{kindle}i,             name: :kindle
 
     match %r{leechcraft}i,         name: :leechcraft,
                                    version: %r{craft/(?:\w+\s)?([\d\.]+)}i

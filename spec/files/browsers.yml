@@ -1457,7 +1457,7 @@
 
 - :user_agent:       Mozilla/5.0 (Linux; U; Android 2.3.4; en-us; Kindle Fire Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
   :name:             :kindle
-  :version:          '4.0'
+  :version:
   :engine:           :webkit
   :engine_version:   '533.1'
   :platform:         :fire_os
@@ -1467,7 +1467,7 @@
   :locale:           :en_us
   :architecture:
   :mobile:           true
-  :to_s:             'kindle kindle4 webkit webkit533 fire_os fire_os2'
+  :to_s:             'kindle webkit webkit533 fire_os fire_os2'
   :like:             :safari
   :like_version:     '4.0'
 

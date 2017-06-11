@@ -8,8 +8,6 @@ require 'browserino'
 Coveralls.wear!
 
 module Library
-  LIMIT = 10
-
   def self.data
     @data ||= begin
       paths = Dir[File.expand_path('files/*.yml', File.dirname(__FILE__))]

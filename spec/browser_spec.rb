@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'Browserino browsers' do
-  browsers = Library.data.fetch(:browsers, []).first(Library::LIMIT)
+  browsers = Library.data.fetch(:browsers, [])
 
   browsers.shuffle.each do |spec|
     exclude = [:user_agent, :mobile, :to_s]
@@ -42,25 +42,20 @@ describe 'Browserino browsers' do
 
       # Test defined property methods in browsers.yml
       spec.reject { |k| exclude.include? k }.each do |test_method, test_result|
-        it "expects client.#{test_method} to be '#{test_result}' and client.#{test_method}?('#{test_result}') to be #{test_result && 'truthy' || 'falsy'}" do
+        it "expects client.#{test_method} to be '#{test_result}'" do
           expect(client.send(test_method)).to eq test_result
-          if test_result
-            expect(client.send("#{test_method}?", test_result)).to be_truthy
-          else
-            expect(client.send("#{test_method}?", test_result)).to be_falsy
-          end
         end
       end
 
       [:name, :engine, :platform, :platform_label].each do |prop|
         result  = spec[prop]
-        name    = "#{spec[prop]}?"
+        name    = "#{result}?"
         ver     = spec[Library::Helpers.version_sym_for(prop)]
-        has_ver = ver.to_s.strip.empty?
+        has_ver = !ver.to_s.strip.empty? && [:name, :engine].include?(prop)
 
         unless result.to_s.strip.empty?
-          additional = has_ver && ", client.#{name}('#{ver}') and client.is?('#{spec[:name]}', version: #{ver})" || ''
-          it "expects client.#{name}, client.is?('#{spec[prop]}')#{additional} to be truthy" do
+          additional = has_ver && ", client.#{name}('#{ver}') and client.is?('#{result}', version: '#{ver}')" || ''
+          it "expects client.#{name}, client.is?('#{result}')#{additional} to be truthy" do
             expect(client.send("#{name}")).to be_truthy
             expect(client.is?(spec[prop])).to be_truthy
 

@@ -7,7 +7,7 @@ TYPE_MAP = { validators: :validator, bots: :bot, libraries: :library,
 
 TYPE_MAP.each do |type, singular_type|
   describe "Browserino #{type}" do
-    Library.data.fetch(type, []).first(Library::LIMIT).shuffle.each do |spec|
+    Library.data.fetch(type, []).shuffle.each do |spec|
       ua          = spec.delete :user_agent
       client      = Browserino.parse ua
       spec[:type] ||= singular_type
@@ -20,23 +20,17 @@ TYPE_MAP.each do |type, singular_type|
         end
 
         spec.reject { |k, _| k == :to_s }.each do |test_method, test_result|
-          additional = test_result && " and client.#{test_method}?('#{test_result}') to be #{test_result && 'truthy' || 'falsy'}"
-          it "expects client.#{test_method} to be '#{test_result}'#{additional}" do
+          it "expects client.#{test_method} to be '#{test_result}'" do
             expect(client.send(test_method)).to eq test_result
-            if test_result
-              expect(client.send("#{test_method}?", test_result)).to be_truthy
-            else
-              expect(client.send("#{test_method}?", test_result)).to be_falsy
-            end
           end
         end
 
         # test magic aliasses when defined
         Browserino.config.aliasses[spec[:name]].each do |alt|
-          additional = spec[:version] && " and client.#{alt}?('#{spec[:version]}')" || ''
+          additional = !spec[:version].to_s.strip.empty? && " and client.#{alt}?('#{spec[:version]}')" || ''
           it "expects client.#{alt}?#{additional} to be truthy" do
             expect(client.send("#{alt}?")).to be_truthy
-            expect(client.send("#{alt}?", spec[:version])).to be_truthy if spec[:version]
+            expect(client.send("#{alt}?", spec[:version])).to be_truthy unless spec[:version].to_s.strip.empty?
           end
         end
 
@@ -44,7 +38,7 @@ TYPE_MAP.each do |type, singular_type|
         unless spec[:name].to_s.strip.empty?
           name       = "#{spec[:name]}?"
           ver        = spec[:version]
-          has_ver    = ver.to_s.strip.empty?
+          has_ver    = !ver.to_s.strip.empty?
           additional = has_ver && ", client.#{name}('#{ver}') and client.is?('#{spec[:name]}', version: '#{ver}')" || ''
           it "expects client.#{name}#{has_ver && ', ' || ' and '} client.is?('#{spec[:name]}')#{additional} to be truthy" do
             expect(client.send("#{name}")).to be_truthy
