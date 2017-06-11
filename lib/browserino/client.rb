@@ -157,7 +157,8 @@ module Browserino
         methods = [name, *Browserino.config.aliasses[name]]
         methods.each do |mtd|
           define_singleton_method(mtd) { value }
-          define_singleton_method("#{mtd}?") do |val = nil|
+          define_singleton_method("#{mtd}?") do |val = nil, opts = {}|
+            return value == val && version_for(name) == opts[:version] if opts[:version]
             return value == val if val
             value && true
           end
