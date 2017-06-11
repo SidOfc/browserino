@@ -75,7 +75,7 @@ module Browserino
       other   = Version.new other unless other.is_a? Version
       subsize = [size, other.size].min
 
-      return if subsize.zero? && size.positive?
+      return if subsize.zero? && size > 0
 
       (self[0...subsize] <=> other[0...subsize]).send op, 0
     end
