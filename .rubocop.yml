@@ -40,4 +40,4 @@ Metrics/ClassLength:
 
 Metrics/MethodLength:
   CountComments: false
-  Max: 10
+  Max: 15

@@ -158,9 +158,12 @@ module Browserino
         methods.each do |mtd|
           define_singleton_method(mtd) { value }
           define_singleton_method("#{mtd}?") do |val = nil, opts = {}|
-            return value == val && version_for(name) == opts[:version] if opts[:version]
-            return value == val if val
-            value && true
+            if val && opts.key?(:version)
+              value == val && version_for(name) == opts[:version]
+            elsif val
+              value == val
+            else value && true
+            end
           end
         end
       end
