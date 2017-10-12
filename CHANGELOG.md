@@ -1,6 +1,11 @@
 # Changelog
 _dates are in dd-mm-yyyy format_
 
+### 22-04-2017 VERSION 4.0.0
+
+- Complete rewrite
+- Complete documentation rewrite
+
 #### 14-11-2016 VERSION 2.12.0
 
 - Added support for SamsungBrowser

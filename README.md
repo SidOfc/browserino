@@ -36,6 +36,10 @@ Many thanks to the creators and maintainers of the following sources of user age
 _dates are in dd-mm-yyyy format_
 older changes can be found in the [changelog](/projects/browserino/changelog/)
 
+### 12-10-2017 VERSION 4.2.2
+
+- Added support for `high_sierra`
+
 ### 11-06-2017 VERSION 4.2.1
 
 - Fixed a bug which caused arguments in the form of `version: v` to return true by default
@@ -52,11 +56,6 @@ older changes can be found in the [changelog](/projects/browserino/changelog/)
 - Changed some internal naming
 - Added ~200 additional browsers / bots
 - Added list of browsers / bots and platforms to the documentation
-
-### 22-04-2017 VERSION 4.0.0
-
-- Complete rewrite
-- Complete documentation rewrite
 
 ## Installation
 

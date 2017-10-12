@@ -44,7 +44,7 @@ module Browserino
 
     def method_missing(sym, *args, &block)
       return @properties[sym] = args.shift if args.any?
-      return @properties[sym] = block      if block
+      return @properties[sym] = block if block
 
       @properties[sym]
     end
