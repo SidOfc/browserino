@@ -479,7 +479,7 @@ This means that for a `client.is? :firefox` you can do `client.is? :ff` or `clie
 ##### Labels
 
 A label could be a codename or a specific OS name for instance, it applies to a name and it's respective version combination.
-It autodetects against which version it should match, this will always be the correct version. Here are some examples (also not the complete file -  [source](https://github.com/SidOfc/browserino/blob/master/lib/browserino/definitions/labels.rb):
+It autodetects against which version it should match, this will always be the correct version. Here are some examples (also not the complete file -  [source](https://github.com/SidOfc/browserino/blob/master/lib/browserino/definitions/labels.rb)):
 
 ```ruby
 # small subset of labels from the source
