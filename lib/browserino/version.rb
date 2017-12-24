@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Browserino
-  def self.version(current = '4.2.2')
+  def self.version(current = '4.2.3')
     @version ||= Version.new current
   end
 
@@ -67,6 +67,7 @@ module Browserino
       when Array   then val
       when Hash    then [val[:major], val[:minor], val[:patch]]
       when Symbol  then []
+      when Float   then val.to_s.split('.').map(&:to_i)
       else val.to_a
       end.map(&:to_i)
     end

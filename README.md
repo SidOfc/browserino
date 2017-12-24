@@ -103,6 +103,11 @@ Many thanks to the creators and maintainers of the following sources of user age
 _dates are in dd-mm-yyyy format_
 older changes can be found in the [changelog](/projects/browserino/changelog/)
 
+### 24-12-2017 VERSION 4.2.3
+
+- Loosened some Android label version ranges
+- `Browserino::Version` can now also parse floats float `1.1` equals major version 1, minor version 1, patch level 0
+
 ### 12-10-2017 VERSION 4.2.2
 
 - Added support for `high_sierra`
@@ -117,12 +122,6 @@ older changes can be found in the [changelog](/projects/browserino/changelog/)
 - Added `not` method that allows calling `client.not.firefox?`. It simply inverts the original result
 - Added `not?` method which is the opposite of `is?`
 - Added `:mediaplayer` type
-
-### 30-04-2017 VERSION 4.1.0
-
-- Changed some internal naming
-- Added ~200 additional browsers / bots
-- Added list of browsers / bots and platforms to the documentation
 
 ## Installation
 

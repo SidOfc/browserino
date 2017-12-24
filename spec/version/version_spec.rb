@@ -19,7 +19,25 @@ describe 'Browserino::Version' do
     expect(a > b).to  eq true
   end
 
-  it 'correctly identifies less and / or equal than' do
+  it 'maps floating point argument to a version' do
+    a = Browserino::Version.new 9.1
+    b = Browserino::Version.new 8.2
+
+    expect(a.major).to eq 9
+    expect(a.minor).to eq 1
+    expect(a.patch).to eq 0
+
+    expect(a == b).to eq false
+    expect(a != b).to eq true
+
+    expect(a <= b).to eq false
+    expect(a < b).to  eq false
+
+    expect(a >= b).to eq true
+    expect(a > b).to  eq true
+  end
+
+  it 'correctly compares less and / or equal than' do
     a = Browserino::Version.new '4.2.0'
     b = Browserino::Version.new '4.2.0'
 
@@ -36,7 +54,7 @@ describe 'Browserino::Version' do
     expect(d <= c).to eq false
   end
 
-  it 'correctly identifies greater and / or equal than' do
+  it 'correctly compares greater and / or equal than' do
     a = Browserino::Version.new '4.2.0'
     b = Browserino::Version.new '4.2.0'
 

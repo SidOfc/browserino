@@ -1,6 +1,12 @@
 # Changelog
 _dates are in dd-mm-yyyy format_
 
+### 30-04-2017 VERSION 4.1.0
+
+- Changed some internal naming
+- Added ~200 additional browsers / bots
+- Added list of browsers / bots and platforms to the documentation
+
 ### 22-04-2017 VERSION 4.0.0
 
 - Complete rewrite
