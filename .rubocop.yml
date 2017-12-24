@@ -31,6 +31,9 @@ Style/MethodMissing:
 Metrics/BlockLength:
   Enabled: false
 
+Metrics/CyclomaticComplexity:
+  Max: 10
+
 Metrics/AbcSize:
   Max: 15
 
