@@ -1283,7 +1283,7 @@ Below are a list of versions the agent can identify so far
 
 Regular: `:android`
 
-`:android`, `:cupcake`, `:eclair`, `:froyo`, `:gingerbread`, `:honeycomb`, `:ice_cream_sandwich`, `:jelly_bean`, `:kitkat`, `:lollipop`, `:marshmallow`, `:nougat`
+`:android`, `:cupcake`, `:eclair`, `:froyo`, `:gingerbread`, `:honeycomb`, `:ice_cream_sandwich`, `:jelly_bean`, `:kitkat`, `:lollipop`, `:marshmallow`, `:nougat`, `oreo`
 
 #### Windows
 
@@ -1295,7 +1295,7 @@ Regular: `:windows`
 
 Regular: `:macintosh`
 
-`:cheetah`, `:puma`, `:jaguar`, `:panther`, `:tiger`, `:leopard`, `:snow_leopard`, `:lion`, `:mountain_lion`, `:mavericks`, `:yosemite`, `:el_capitan`, `:sierra`
+`:cheetah`, `:puma`, `:jaguar`, `:panther`, `:tiger`, `:leopard`, `:snow_leopard`, `:lion`, `:mountain_lion`, `:mavericks`, `:yosemite`, `:el_capitan`, `:sierra`, `:high_sierra`
 
 ### Devices
 
