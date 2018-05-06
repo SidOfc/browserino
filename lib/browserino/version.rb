@@ -22,7 +22,7 @@ module Browserino
     end
 
     def to_s
-      @str ||= join '.'
+      @to_s ||= join '.'
     end
 
     def <(other)
@@ -72,13 +72,13 @@ module Browserino
       end.map(&:to_i)
     end
 
-    def compare(op, other)
+    def compare(opr, other)
       other   = Version.new other unless other.is_a? Version
       subsize = [size, other.size].min
 
       return if subsize.zero? && size > 0
 
-      (self[0...subsize] <=> other[0...subsize]).send op, 0
+      (self[0...subsize] <=> other[0...subsize]).send opr, 0
     end
   end
 end

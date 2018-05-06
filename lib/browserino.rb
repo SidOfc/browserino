@@ -15,11 +15,11 @@ require_relative 'browserino/definitions/filters'
 require_relative 'browserino/definitions/labels'
 
 module Browserino
-  def self.parse(ua)
-    config.before_parse.each { |b| ua = b.call ua } if config.before_parse.any?
+  def self.parse(uas)
+    config.before_parse.each { |b| uas = b.call uas }
     config.matchers.each do |matcher|
-      return analyze ua, matcher if matcher.matches? ua
+      return analyze uas, matcher if matcher.matches? uas
     end
-    analyze ua
+    analyze uas
   end
 end

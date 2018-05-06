@@ -48,9 +48,9 @@ module Browserino
       invertable(@arm ||= architecture == :arm)
     end
 
-    def is?(sm, opts = {})
-      return invertable send("#{sm}?", opts[:version]) if opts && opts[:version]
-      invertable send("#{sm}?")
+    def is?(sym, opt = {})
+      return invertable send("#{sym}?", opt[:version]) if opt && opt[:version]
+      invertable send("#{sym}?")
     end
 
     def not?(sym, opts = {})
@@ -81,7 +81,7 @@ module Browserino
     end
 
     def to_json(*args)
-      @json ||= properties.each_with_object({}) do |(prop, val), hsh|
+      @to_json ||= properties.each_with_object({}) do |(prop, val), hsh|
         hsh[prop] = val.is_a?(Version) && val.full || val
       end.to_json(*args)
     end
@@ -93,9 +93,9 @@ module Browserino
     end
 
     def to_s
-      @str ||= %i[name engine platform device].each_with_object([]) do |prop, a|
-        a << properties[prop].to_s.strip
-        a << label_or_version_name(prop)
+      @to_s ||= %i[name engine platform device].each_with_object([]) do |pr, a|
+        a << properties[pr].to_s.strip
+        a << label_or_version_name(pr)
       end.compact.reject(&:empty?).uniq.join ' '
     end
 
@@ -113,12 +113,12 @@ module Browserino
 
     # scary, I know, but a falsy value is all we need to return if some
     # property isn't known or true as any property can be defined on the Client
-    def method_missing(_, *__, &___)
+    def method_missing(*)
       invertable nil
     end
 
     # always respond to missing, read method_missing comment
-    def respond_to_missing?(_, *__, &___)
+    def respond_to_missing?(*)
       true
     end
 

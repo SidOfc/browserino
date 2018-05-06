@@ -49,7 +49,7 @@ module Browserino
       @properties[sym]
     end
 
-    def respond_to_missing?(_, *__, &___)
+    def respond_to_missing?(*)
       true
     end
   end

@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 module Browserino
-  def self.analyze(ua, matcher = nil)
+  def self.analyze(uas, matcher = nil)
     @defaults ||= config.global_matchers.map(&:properties).reduce(&:merge)
 
     props = @defaults.merge(matcher && matcher.properties || {})
     like  = props.delete :like
-    props = mass_collect props, ua
-    like  = Client.new props.merge(like_attrs(props, like, ua)) if like
+    props = mass_collect props, uas
+    like  = Client.new props.merge(like_attrs(props, like, uas)) if like
 
     Client.new props, like
   end
