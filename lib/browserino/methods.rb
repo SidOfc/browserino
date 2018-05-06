@@ -75,15 +75,15 @@ module Browserino
     Regexp.new pat, get_flags(*detect[:flags].to_a)
   end
 
-  def self.mass_collect(props, ua)
-    props = collect props, ua
-    props = collect_with_smart_watchers props, ua
+  def self.mass_collect(props, uas)
+    props = collect props, uas
+    props = collect_with_smart_watchers props, uas
     with_labels props
   end
 
-  def self.collect(properties, ua)
+  def self.collect(properties, uas)
     properties.each_with_object({}) do |(n, v), r|
-      r[n] = convert (v.is_a?(Regexp) ? v.match(ua).to_a[1] : v), format: n
+      r[n] = convert (v.is_a?(Regexp) ? v.match(uas).to_a[1] : v), format: n
     end
   end
 
