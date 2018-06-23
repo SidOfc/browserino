@@ -3724,6 +3724,19 @@
   :mobile:           false
   :to_s:             'chrome chrome47 webkit webkit537 macintosh el_capitan'
 
+- :user_agent:       Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.2526.106 Safari/537.36
+  :name:             :chrome
+  :version:          '67.0.2526.106'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :macintosh
+  :platform_label:   :mojave
+  :platform_version: '10.14.2'
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'chrome chrome67 webkit webkit537 macintosh mojave'
+
 - :user_agent:       Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36
   :name:             :chrome
   :version:          '41.0.2228.0'

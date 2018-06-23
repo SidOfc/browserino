@@ -1,6 +1,17 @@
 # Changelog
 _dates are in dd-mm-yyyy format_
 
+### 11-06-2017 VERSION 4.2.1
+
+- Fixed a bug which caused arguments in the form of `version: v` to return true by default
+- Added 174 additional clients
+- Added some global properties
+  - `smarttv?` and `tablet?` in addition to `mobile?`
+  - Added device detection using `device? :namOfDevice`
+- Added `not` method that allows calling `client.not.firefox?`. It simply inverts the original result
+- Added `not?` method which is the opposite of `is?`
+- Added `:mediaplayer` type
+
 ### 30-04-2017 VERSION 4.1.0
 
 - Changed some internal naming

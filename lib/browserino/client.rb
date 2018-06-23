@@ -112,7 +112,7 @@ module Browserino
     end
 
     # scary, I know, but a falsy value is all we need to return if some
-    # property isn't known or true as any property can be defined on the Client
+    # property isn't known as any property can be defined on the Client
     def method_missing(*)
       invertable nil
     end

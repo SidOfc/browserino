@@ -24,7 +24,15 @@ Browserino.config.define do
   label :lollipop,           for: :android,       range: '5'..'5.9.9'
   label :marshmallow,        for: :android,       range: '6'..'6.9.9'
   label :nougat,             for: :android,       range: '7'..'7.9.9'
-  label :oreo,               for: :android,       range: '8.0'..'8.9.9'
+  label :oreo,               for: :android,       range: '8'..'8.9.9'
+
+  # support android up to the letter Z by following their version scheme which
+  # uses versions X.0.0 up to X.9.9. the callable methods will be a single character
+  # long and will allow one to apply detection for future android versions in advance
+  (:p..:z).reduce 9 do |vnum, letter|
+    label "android_#{letter}".to_sym, for: :android, range: vnum.to_s.."#{vnum}.9.9"
+    vnum + 1
+  end
 
   label :cheetah,            for: :macintosh,     range: '10.0'..'10.0.9'
   label :puma,               for: :macintosh,     range: '10.1'..'10.1.9'
@@ -40,6 +48,7 @@ Browserino.config.define do
   label :el_capitan,         for: :macintosh,     range: '10.11'..'10.11.9'
   label :sierra,             for: :macintosh,     range: '10.12'..'10.12.9'
   label :high_sierra,        for: :macintosh,     range: '10.13'..'10.13.9'
+  label :mojave,             for: :macintosh,     range: '10.14'..'10.14.9'
 
   label :dos,                for: :windows,       range: '3.1'..'4.0'
   label :windows98,          for: :windows,       range: '98'..'98.9.9'

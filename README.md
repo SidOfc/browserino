@@ -1,12 +1,9 @@
 Browserino
 ---
 
-Browserino has been completely rewritten! While some components remain backwards compatible, the inner workings of Browserino have completely changed.
-It has taken on a DSL-like form to allow for easy addition of features and more detection in general. This allowed me to clean up lots of constants and other messy constructions I've built to add things such as aliasses for instance. The test suite had also become a quite cumbersome task to maintain, it was hard to read and all the test data was structured using Ruby, again using structures more complex than they could and should be.
-
-In the new version, test data is written in YAML format and then parsed to usable test data in the respective spec. Each spec generates their own tests based on what is present in the YAML, this helped test a lot of the methods added using `define_singleton_method` upon instantiation of a `Browserino::Client` object. Don't let this scare you into submitting your own tests tho, as all you'll have to do is write the YAML and the tests will simply be generated for you :)
-
-The below sections will explain how the new Browserino works, enjoy!
+Browserino is a tool that parses a user agent string into a convenient object to work with.
+This allows developers to gather information about the system of a user on a website without having to ask countless questions
+about their browser / OS versions.
 
 ## Status
 
@@ -15,73 +12,85 @@ The below sections will explain how the new Browserino works, enjoy!
 [![Issues](https://img.shields.io/github/issues/SidOfc/browserino.svg)](https://github.com/SidOfc/browserino/issues)
 [![Build Status](https://img.shields.io/travis/SidOfc/browserino.svg)](https://travis-ci.org/SidOfc/browserino)
 [![Coverage Status](https://img.shields.io/coveralls/SidOfc/browserino.svg)](https://coveralls.io/github/SidOfc/browserino?branch=master)
-[![Code Climate](https://img.shields.io/codeclimate/github/SidOfc/browserino.svg)](https://img.shields.io/codeclimate/github/SidOfc/browserino)
 
-## TOC
+## Table of Contents
 
-  - [Status](#status)
-  - [TOC](#toc)
-  - [Sources](#sources)
-  - [Changelog](#changelog)
-    - [12-10-2017 VERSION 4.2.2](#12-10-2017-version-422)
-    - [11-06-2017 VERSION 4.2.1](#11-06-2017-version-421)
-    - [30-04-2017 VERSION 4.1.0](#30-04-2017-version-410)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Rails (>= 3.2.0)](#rails--320)
-      - [Initializer](#initializer)
-    - [General](#general)
-      - [Client](#client)
-      - [Formatting](#formatting)
-        - [Non version-like properties](#non-version-like-properties)
-        - [Version-like properties](#version-like-properties)
-      - [Config](#config)
-        - [Matchers](#matchers)
-        - [Aliasses](#aliasses)
-        - [Labels](#labels)
-      - [Methods](#methods)
-        - [\#name](#name)
-        - [\#name?(sym, opts = {})](#namesym-opts--)
-        - [\#version](#version)
-        - [\#version?(version)](#versionversion)
-        - [\#engine](#engine)
-        - [\#engine?(sym, opts = {})](#enginesym-opts--)
-        - [\#engine_version](#engine_version)
-        - [\#engine_version?(version)](#engine_versionversion)
-        - [\#platform](#platform)
-        - [\#platform?(sym, opts = {})](#platformsym-opts--)
-        - [\#platform_label](#platform_label)
-        - [\#platform_version](#platform_version)
-        - [\#platform_version?(version)](#platform_versionversion)
-        - [\#device](#device)
-        - [\#device?(sym)](#devicesym)
-        - [\#architecture](#architecture)
-        - [\#architecture?(sym)](#architecturesym)
-        - [\#x64?](#x64)
-        - [\#x32?](#x32)
-        - [\#mobile and #mobile?](#mobile-and-mobile)
-        - [\#type](#type)
-        - [\#type?(sym)](#typesym)
-        - [\#like](#like)
-        - [\#like?(sym, opts = {})](#likesym-opts--)
-        - [\#is?(sym, opts = {})](#issym-opts--)
-        - [\#not](#not)
-        - [\#not?(sym, opts = {})](#notsym-opts--)
-      - [Magic methods](#magic-methods)
-        - [Names](#names)
-        - [Aliasses](#aliasses-1)
-  - [Supported](#supported)
-    - [Browsers](#browsers)
-    - [Bots](#bots)
-    - [Validators](#validators)
-    - [Libraries](#libraries)
-    - [Email Clients](#email-clients)
-    - [RSS](#rss)
-    - [Platforms](#platforms)
-      - [Android](#android)
-      - [Windows](#windows)
-      - [Macintosh](#macintosh)
-    - [Devices](#devices)
+<details>
+<summary>Click to expand Table of Contents</summary>
+<ul>
+        <li><a href="#status">Status</a></li>
+        <li><a href="#table-of-contents">Table of Contents</a></li>
+        <li><a href="#sources">Sources</a></li>
+        <li><a href="#changelog">Changelog</a><ul>
+            <li><a href="#23-06-2018-version-424">23-06-2018 VERSION 4.2.4</a></li>
+            <li><a href="#24-12-2017-version-423">24-12-2017 VERSION 4.2.3</a></li>
+            <li><a href="#12-10-2017-version-422">12-10-2017 VERSION 4.2.2</a></li>
+        </ul></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#usage">Usage</a><ul>
+            <li><a href="#rails--320">Rails (>= 3.2.0)</a><ul>
+                <li><a href="#initializer">Initializer</a></li>
+            </ul></li>
+            <li><a href="#general">General</a><ul>
+                <li><a href="#client">Client</a></li>
+                <li><a href="#formatting">Formatting</a><ul>
+                    <li><a href="#non-version-like-properties">Non version-like properties</a></li>
+                    <li><a href="#version-like-properties">Version-like properties</a></li>
+                </ul></li>
+                <li><a href="#config">Config</a><ul>
+                    <li><a href="#matchers">Matchers</a></li>
+                    <li><a href="#aliasses">Aliasses</a></li>
+                    <li><a href="#labels">Labels</a></li>
+                </ul></li>
+                <li><a href="#methods">Methods</a><ul>
+                    <li><a href="#name">\#name</a></li>
+                    <li><a href="#namesym-opts--">\#name?(sym, opts = {})</a></li>
+                    <li><a href="#version">\#version</a></li>
+                    <li><a href="#versionversion">\#version?(version)</a></li>
+                    <li><a href="#engine">\#engine</a></li>
+                    <li><a href="#enginesym-opts--">\#engine?(sym, opts = {})</a></li>
+                    <li><a href="#engine_version">\#engine_version</a></li>
+                    <li><a href="#engine_versionversion">\#engine_version?(version)</a></li>
+                    <li><a href="#platform">\#platform</a></li>
+                    <li><a href="#platformsym-opts--">\#platform?(sym, opts = {})</a></li>
+                    <li><a href="#platform_label">\#platform_label</a></li>
+                    <li><a href="#platform_version">\#platform_version</a></li>
+                    <li><a href="#platform_versionversion">\#platform_version?(version)</a></li>
+                    <li><a href="#device">\#device</a></li>
+                    <li><a href="#devicesym">\#device?(sym)</a></li>
+                    <li><a href="#architecture">\#architecture</a></li>
+                    <li><a href="#architecturesym">\#architecture?(sym)</a></li>
+                    <li><a href="#x64">\#x64?</a></li>
+                    <li><a href="#x32">\#x32?</a></li>
+                    <li><a href="#mobile-and-mobile">\#mobile and #mobile?</a></li>
+                    <li><a href="#type">\#type</a></li>
+                    <li><a href="#typesym">\#type?(sym)</a></li>
+                    <li><a href="#like">\#like</a></li>
+                    <li><a href="#likesym-opts--">\#like?(sym, opts = {})</a></li>
+                    <li><a href="#issym-opts--">\#is?(sym, opts = {})</a></li>
+                    <li><a href="#not">\#not</a></li>
+                    <li><a href="#notsym-opts--">\#not?(sym, opts = {})</a></li>
+                </ul></li>
+                <li><a href="#magic-methods">Magic methods</a><ul>
+                    <li><a href="#names">Names</a></li>
+                    <li><a href="#aliasses-1">Aliasses</a></li>
+        </ul></li></ul></li></ul></li>
+        <li><a href="#supported">Supported</a><ul>
+            <li><a href="#browsers">Browsers</a></li>
+            <li><a href="#bots">Bots</a></li>
+            <li><a href="#validators">Validators</a></li>
+            <li><a href="#libraries">Libraries</a></li>
+            <li><a href="#email-clients">Email Clients</a></li>
+            <li><a href="#rss">RSS</a></li>
+            <li><a href="#platforms">Platforms</a><ul>
+                <li><a href="#android">Android</a></li>
+                <li><a href="#windows">Windows</a></li>
+                <li><a href="#macintosh">Macintosh</a></li>
+            </ul></li>
+            <li><a href="#devices">Devices</a></li>
+    </ul></li></ul></li>
+</ul>
+</details>
 
 ## Sources
 
@@ -103,6 +112,11 @@ Many thanks to the creators and maintainers of the following sources of user age
 _dates are in dd-mm-yyyy format_
 older changes can be found in the [changelog](/projects/browserino/changelog/)
 
+### 23-06-2018 VERSION 4.2.4
+
+- Add macOS `mojave` label
+- Add generic `android_*` labels for android versions `p` through `z`.
+
 ### 24-12-2017 VERSION 4.2.3
 
 - Loosened some Android label version ranges
@@ -111,17 +125,6 @@ older changes can be found in the [changelog](/projects/browserino/changelog/)
 ### 12-10-2017 VERSION 4.2.2
 
 - Added support for `high_sierra`
-
-### 11-06-2017 VERSION 4.2.1
-
-- Fixed a bug which caused arguments in the form of `version: v` to return true by default
-- Added 174 additional clients
-- Added some global properties
-  - `smarttv?` and `tablet?` in addition to `mobile?`
-  - Added device detection using `device? :namOfDevice`
-- Added `not` method that allows calling `client.not.firefox?`. It simply inverts the original result
-- Added `not?` method which is the opposite of `is?`
-- Added `:mediaplayer` type
 
 ## Installation
 
@@ -1285,17 +1288,35 @@ Regular: `:android`
 
 `:android`, `:cupcake`, `:eclair`, `:froyo`, `:gingerbread`, `:honeycomb`, `:ice_cream_sandwich`, `:jelly_bean`, `:kitkat`, `:lollipop`, `:marshmallow`, `:nougat`, `oreo`
 
+Since android version releases follow the alphabet and since every new version since android `5` is contained within a single major version number,
+additional methods are defined for all "future" android releases e.g:
+
+```ruby
+label :android_p, for: :android, version: '9'..'9.9.9'
+label :android_q, for: :android, version: '10'..'10.9.9'
+# ... snipped ...
+label :android_y, for: :android, version: '18'..'18.9.9'
+label :android_z, for: :android, version: '19'..'19.9.9'
+```
+
+So for every unreleased version of android, you can identify it by using `:android_` followed by the letter for that version: `client.android_p?`.
+This method will stay supported even after the name is known (the actual name will be added too). Since some android versions are already known, this system is supported from the letter `p` up to and including `z`.
+
 #### Windows
 
 Regular: `:windows`
 
 `:dos`, `:windows98`, `:windows2000`, `:xp`, `:vista`, `:windows7`, `:windows8`, `:windows10`
 
+**NOTE:** Windows 10 will be the last major version bump for Windows (for now, at least).
+
 #### Macintosh
 
 Regular: `:macintosh`
 
-`:cheetah`, `:puma`, `:jaguar`, `:panther`, `:tiger`, `:leopard`, `:snow_leopard`, `:lion`, `:mountain_lion`, `:mavericks`, `:yosemite`, `:el_capitan`, `:sierra`, `:high_sierra`
+`:cheetah`, `:puma`, `:jaguar`, `:panther`, `:tiger`, `:leopard`, `:snow_leopard`, `:lion`, `:mountain_lion`, `:mavericks`, `:yosemite`, `:el_capitan`, `:sierra`, `:high_sierra`, `:mojave`
+
+**NOTE:** macOS version 10 and up increment the _minor version_ instead of the _major version_ in a new major release.
 
 ### Devices
 
