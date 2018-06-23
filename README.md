@@ -1300,7 +1300,7 @@ label :android_z, for: :android, version: '19'..'19.9.9'
 ```
 
 So for every unreleased version of android, you can identify it by using `:android_` followed by the letter for that version: `client.android_p?`.
-This method will stay supported even after the name is known (the actual name will be added too). Since some android versions are already known, this system is supported from the letter `p` up to and including `z`.
+Since some android versions are already known, this system is supported from the letter `p` up to and including `z`.
 
 #### Windows
 
