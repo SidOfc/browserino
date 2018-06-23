@@ -27,10 +27,11 @@ Browserino.config.define do
   label :oreo,               for: :android,       range: '8'..'8.9.9'
 
   # support android up to the letter Z by following their version scheme which
-  # uses versions X.0.0 up to X.9.9. the callable methods will be a single character
-  # long and will allow one to apply detection for future android versions in advance
+  # uses versions X.0.0 up to X.9.9. the callable methods will be named like
+  # android_[LETTER] where letter can be anything between 'p' and 'z' inclusive
   (:p..:z).reduce 9 do |vnum, letter|
-    label "android_#{letter}".to_sym, for: :android, range: vnum.to_s.."#{vnum}.9.9"
+    label "android_#{letter}".to_sym, for: :android,
+                                      range: vnum.to_s.."#{vnum}.9.9"
     vnum + 1
   end
 
