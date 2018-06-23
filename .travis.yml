@@ -10,5 +10,3 @@ rvm:
 before_install: gem update bundler
 script:
   - bundle exec rspec spec
-  - bundle exec codeclimate-test-reporter
-  - bundle exec rubocop
