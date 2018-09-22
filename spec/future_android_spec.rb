@@ -7,7 +7,6 @@ describe 'Browserino future android versions' do
 
       expect(client.send("android_#{letter}?".to_sym)).to eq true
       expect(client.send("android_#{letter}?".to_sym, "#{vnum}.1.2")).to eq true
-      expect(client.platform_label?("android_#{letter}".to_sym)).to eq true
     end
 
     vnum + 1

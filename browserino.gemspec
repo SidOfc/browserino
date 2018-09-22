@@ -5,18 +5,19 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'browserino/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "browserino"
-  spec.version       = Browserino.version.full
-  spec.authors       = ["Sidney Liebrand"]
-  spec.email         = ["sidneyliebrand@gmail.com"]
-  spec.summary       = %q{A browser identification gem with command line and Rails (>= 3.2.0) integration}
-  spec.homepage      = "https://github.com/sidofc/browserino"
-  spec.license       = "MIT"
+  spec.required_ruby_version = '>= 2.0'
+  spec.name                  = "browserino"
+  spec.version               = Browserino.version.full
+  spec.authors               = ["Sidney Liebrand"]
+  spec.email                 = ["sidneyliebrand@gmail.com"]
+  spec.summary               = %q{A browser identification gem with command line and Rails (>= 3.2.0) integration}
+  spec.homepage              = "https://github.com/sidofc/browserino"
+  spec.license               = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "bin"
-  spec.executables   = ['browserino']
-  spec.require_paths = ["lib"]
+  spec.files                 = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.bindir                = "bin"
+  spec.executables           = ['browserino']
+  spec.require_paths         = ["lib"]
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"

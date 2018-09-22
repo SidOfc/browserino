@@ -25,7 +25,10 @@ Style/CaseEquality:
 Style/RegexpLiteral:
   Enabled: false
 
-Style/MethodMissing:
+Style/MissingRespondToMissing:
+  Enabled: false
+
+Style/MethodMissingSuper:
   Enabled: false
 
 Metrics/BlockLength:
