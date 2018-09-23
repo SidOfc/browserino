@@ -62,27 +62,29 @@ Browserino.config.define do
   end
 
   filter :platform do |val|
-    if %r{ip(?:[ao]d|hone)}i =~ val    then :ios
-    elsif %r{^symbian$}i =~ val        then :symbianos
-    elsif %r{w(?:eb)?os}i =~ val       then :webos
-    elsif %r{ubuntu|debian}i =~ val    then :linux
-    elsif %r{mac_os_x}i =~ val         then :macintosh
-    elsif %r{s(?:unos|olaris)}i =~ val then :solaris
-    elsif %r{cros}i =~ val             then :chromeos
-    elsif %r{kindle|kf\w+}i =~ val     then :fire_os
-    elsif %r{fxos}i =~ val             then :firefox_os
+    case val
+    when %r{ip(?:[ao]d|hone)}i then :ios
+    when %r{^symbian$}i        then :symbianos
+    when %r{w(?:eb)?os}i       then :webos
+    when %r{ubuntu|debian}i    then :linux
+    when %r{mac_os_x}i         then :macintosh
+    when %r{s(?:unos|olaris)}i then :solaris
+    when %r{cros}i             then :chromeos
+    when %r{kindle|kf\w+}i     then :fire_os
+    when %r{fxos}i             then :firefox_os
     else val
     end
   end
 
   filter :device do |val|
-    if %r{kf\w*}i =~ val                              then :kindle
-    elsif %r{lg[-l_]}i =~ val                         then :lg
-    elsif %r{\w+tab}i =~ val                          then :lenovo
-    elsif %r{lumia}i =~ val                           then :nokia
-    elsif %r{^moto}i =~ val                           then :motorola
-    elsif %r{\d+dl|venue}i =~ val                     then :dell
-    elsif %r{me\d+x|a\df;|transformer|slider}i =~ val then :asus
+    case val
+    when %r{kf\w*}i                           then :kindle
+    when %r{lg[-l_]}i                         then :lg
+    when %r{\w+tab}i                          then :lenovo
+    when %r{lumia}i                           then :nokia
+    when %r{^moto}i                           then :motorola
+    when %r{\d+dl|venue}i                     then :dell
+    when %r{me\d+x|a\df;|transformer|slider}i then :asus
     else val
     end
   end
