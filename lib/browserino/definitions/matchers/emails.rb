@@ -18,5 +18,6 @@ Browserino.config.emails do
     match %r{thunderbird}i, name: :thunderbird
     match %r{spicebird}i,   name: :spicebird
     match %r{postbox}i,     name: :postbox
+    match %r{icedove}i,     name: :icedove
   end
 end

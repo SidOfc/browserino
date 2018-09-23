@@ -161,6 +161,7 @@ Browserino.config.bots text: true, good: proc { !bad },
   match %r{nutch}i,                       name: :nutch
   match %r{ia_archiver}i,                 name: :alexa
   match %r{atomz}i,                       name: :atomz
+  match %r{ntent}i,                       name: :ntent
   match %r{htdig}i,                       name: :htdig
   match %r{peew}i,                        name: :peew
   match %r{yeti}i,                        name: :yeti
@@ -172,6 +173,9 @@ Browserino.config.bots text: true, good: proc { !bad },
   match %r{b2w}i,                         name: :b2w
   match %r{ipd/}i,                        name: :ipd
   match %r{zao}i,                         name: :zao
+
+  match %r{sheenbot}i,                    name: :sheenbot,
+                                          version: %r{sheenbot\-([\d\.]+)}i
 
   match %r{furlbot}i,                     name: :furlbot,
                                           version: %r{rl\ssearch\s([\d\.]+)}i

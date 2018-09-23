@@ -196,11 +196,5 @@ module Browserino
         end
       end
     end
-
-    def get_answer(mtd, res, ver = nil, val = nil)
-      return res.is_a?(Version) ? res > '0.0.0' : res && true unless val
-      incl = res == val
-      ver && incl ? version_for(mtd) == ver : incl
-    end
   end
 end

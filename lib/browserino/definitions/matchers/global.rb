@@ -40,7 +40,7 @@ Browserino.config.define do
                         |blackberry|linux|ubuntu|beos|unix|bsd|s(?:unos|olaris)
                         |tizen|xbox|amigaos|w(?:eb)?os|(?<!mi)cros|bada|palmos
                         |kindle|symbiano?s?|sailfish|meego|darwin|syllable|fxos
-                        |(?<!en)risc|rim\stablet\sos|haiku|morphos|debian)}xi
+                        |(?<!en)risc|rim\stablet\sos|haiku|morphos|debian|inferno)}xi
 
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?|fxos
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os
@@ -51,7 +51,7 @@ Browserino.config.define do
     device           %r{(alcatel|all(?:tell|view)|htc|kindle|kf\w\w|apple\s?tv
                         |iphone|ipad|a\d+f;|archos|transformer|slider|me\d+x|zte
                         |blackberry|\d+dl|venue|desire|oneplus|lenovo|lumia|moto
-                        |huawei\b|motorola|nokia|nexus|\b\w+tab\b|lg[-l]
-                        |(?<!p)hp)}xi
+                        |huawei\b|motorola|nokia|nexus|\b\w+tab\b|lg[-l]|oppo
+                        |\b(?<!p)hp)}xi
   end
 end

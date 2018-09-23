@@ -16,4 +16,8 @@ Browserino.config.define do
   alias_for :chromeos,        :cros
   alias_for :nintendobrowser, :netfrontbrowser
   alias_for :ipd,             :alertsite
+  alias_for :qupzilla,        :falkon
+
+  # backwards compat with android_(p..z) labels
+  alias_for :pie,             :android_p
 end

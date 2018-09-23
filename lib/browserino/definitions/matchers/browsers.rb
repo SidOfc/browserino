@@ -40,14 +40,15 @@ Browserino.config.browsers do
     engine         %r{(presto|webkit)}i
   end
 
-  # escape has to come before IE
-  match %r{escape}i,  name: :escape
+  # these come before IE
+  match %r{escape}i,          name: :escape
+  match %r{juzi(?:browser)}i, name: :orange_browser, engine: :trident
 
-  match %r{flock}i,   name: :flock, engine: %r{(webkit|gecko|servo)}i,
-                      engine_version: %r{(?:webkit|rv:|servo)[\s/]?([\d\.]+)}i
+  match %r{flock}i,           name: :flock, engine: %r{(webkit|gecko|servo)}i,
+                              engine_version: %r{(?:webkit|rv:|servo)[\s/]?([\d\.]+)}i
 
-  match %r{sunrise}i, name: :sunrise, engine: %r{(webkit|gecko|servo)}i,
-                      engine_version: %r{(?:webkit|rv:|servo)[\s/]?([\d\.]+)}i
+  match %r{sunrise}i,         name: :sunrise, engine: %r{(webkit|gecko|servo)}i,
+                              engine_version: %r{(?:webkit|rv:|servo)[\s/]?([\d\.]+)}i
 
   match %r{msie|trident}i do
     name           :ie
@@ -56,20 +57,55 @@ Browserino.config.browsers do
     modern         { version >= 10 }
   end
 
+  match %r{alohabrowser}i,         name: :alohabrowser,    engine: :webkit
   match %r{origyn\sweb\sbrowser}i, name: :origyn,          engine: :webkit
   match %r{webpositive}i,          name: :webpositive,     engine: :webkit
   match %r{nintendobrowser}i,      name: :nintendobrowser, engine: :webkit
   match %r{deskbrowse}i,           name: :deskbrowse,      engine: :webkit
-  match %r{qupzilla}i,             name: :qupzilla,        engine: :webkit
   match %r{midori}i,               name: :midori,          engine: :webkit
   match %r{shiira}i,               name: :shiira,          engine: :webkit
   match %r{element\sbrowser}i,     name: :element_browser, engine: :webkit
+  match %r{iris}i,                 name: :iris,            engine: :webkit
+  match %r{otter}i,                name: :otter,           engine: :webkit
+  match %r{chedot}i,               name: :chedot,          engine: :webkit
+  match %r{acheetahi}i,            name: :cm_browser,      engine: :webkit
+  match %r{diglo}i,                name: :diglo,           engine: :webkit
+  match %r{diigo(?:browser)}i,     name: :diigo_browser,   engine: :webkit
+  match %r{flyflow}i,              name: :flyflow,         engine: :webkit
+  match %r{freebox}i,              name: :freebox,         engine: :webkit
+  match %r{kuaiso}i,               name: :kuaiso,          engine: :webkit
+  match %r{lovense}i,              name: :lovense,         engine: :webkit
+  match %r{slimjet}i,              name: :slimjet,         engine: :webkit
+  match %r{zetakey}i,              name: :zetakey,         engine: :webkit
+  match %r{wkbrowser}i,            name: :wkbrowser,       engine: :webkit
+  match %r{yolobrowser}i,          name: :yolobrowser,     engine: :webkit
+  match %r{whale}i,                name: :whale,           engine: :webkit
+  match %r{vivo}i,                 name: :vivo,            engine: :webkit
+  match %r{jasmine}i,              name: :jasmine
   match %r{amigavoyager}i,         name: :amigavoyager
   match %r{acorn\sbrowse}i,        name: :browse
   match %r{mothra}i,               name: :mothra
   match %r{(?<!(?:net))surf}i,     name: :surf
   match %r{spray\-can}i,           name: :spray_can
   match %r{bunjalloo}i,            name: :bunjalloo
+
+  match %r{sraf}i,             name: :seraphic_sraf,
+                               version: %r{sraf/([\d\.]+)}i
+
+  match %r{phantomjs}i,        name: :phantomjs,
+                               engine: %r{(webkit|gecko|servo|trident|blink)}i
+
+  match %r{slimerjs}i,         name: :slimerjs,
+                               engine: %r{(webkit|gecko|servo|trident|blink)}i,
+                               engine_version: %r{(?:webkit|gecko|servo|
+                                                   trident|blink|rv)
+                                                   [:/]([\d\.]+)}xi
+
+  match %r{liebao}i,           name: :liebao, engine: :webkit,
+                               version: %r{liebao(?:fast)/([\d\.]+)}i
+
+  match %r{qupzilla|falkon}i,  name: :qupzilla, engine: :webkit,
+                               version: %r{(?:qupzilla|falkon)/([\d\.]+)}i
 
   match %r{inet\sbrowser}i,    name: :inet_browser,
                                platform: :star_blade_os
@@ -119,6 +155,7 @@ Browserino.config.browsers do
   match %r{osb\-browser}i,       name: :osb_browser,  engine: :webkit
   match %r{edbrowse}i,           name: :edbrowse,     text: true
   match %r{amaya}i,              name: :amaya,        text: true
+  match %r{w3m}i,                name: :w3m,          text: true
   match %r{lynx}i,               name: :lynx,         text: true
   match %r{linemode}i,           name: :linemode,     text: true
   match %r{elinks}i,             name: :elinks,       text: true
@@ -129,13 +166,17 @@ Browserino.config.browsers do
   match %r{konqueror}i,          name: :konqueror
   match %r{cyberdog}i,           name: :cyberdog
   match %r{offbyone}i,           name: :offbyone
-  match %r{hotjava}i,            name: :hotjava
   match %r{netsurf}i,            name: :netsurf
   match %r{contiki}i,            name: :contiki
   match %r{mosaic|ibrowse[^r]}i, name: :mosaic
   match %r{netbox}i,             name: :netbox
+  match %r{charon}i,             name: :charon
   match %r{dillo}i,              name: :dillo
   match %r{ice\sbrowser}i,       name: :ice_browser
+
+  match %r{hotjava|webrunner}i,  name: :hotjava, engine: %r{(gecko)}i,
+                                 version: %r{(?:hotjava|webrunner)/([\d\.]+)}i,
+                                 engine_version: %r{rv:\s?([\d\.]+)}i
 
   match %r{emacs}i,          name: :emacs, text: true,
                              version: %r{emacs(?:\-\w+)?/([\d\.]+)}i
@@ -201,6 +242,7 @@ Browserino.config.browsers do
     match %r{perk}i,              name: :perk
     match %r{hana}i,              name: :hana
     match %r{(?<!env)iron}i,      name: :iron
+    match %r{cent\b}i,            name: :cent, engine: :blink
 
     match %r{nichrome}i,          name: :nichrome, engine: :webkit,
                                   version: %r{chrome[\s/]\w+[\s/]([\d\.]+)}i
@@ -346,11 +388,17 @@ Browserino.config.browsers do
 
     # below are special cases where we need to manually
     # supply the version pattern
-    match %r{flexnetdesktopclient}i, name: :netflix_desktop,
-                                     version: %r{pclient_([\d\.\_]+)}i
+    match %r{flexnetdesktopclient}i,  name: :netflix_desktop,
+                                      version: %r{pclient_([\d\.\_]+)}i
 
-    match %r{MetaSr},                name: :sogou_browser,
-                                     version: %r{metasr\s([\d\.\_]+)}i
+    match %r{MetaSr},                 name: :sogou_browser,
+                                      version: %r{metasr\s([\d\.\_]+)}i
+
+    match %r{jig(?:\sbrowser\sweb)}i, name: :jig_browser_web,
+                                      engine: %r{webkit|trident|gecko},
+                                      version: %r{jig(?:\sbrowser\sweb);
+                                                \s?([\d\.]+)}xi
+
 
     # we can exclude the default version which will then be replaced by
     # the smart_matcher for :version which uses the :name token automatically
@@ -367,6 +415,7 @@ Browserino.config.browsers do
       match %r{netcaptor}i,         name: :netcaptor
       match %r{sleipnir}i,          name: :sleipnir
       match %r{irider}i,            name: :irider
+      match %r{blazer}i,            name: :blazer
       match %r{kkman}i,             name: :kkman
       match %r{lobo}i,              name: :lobo
       match %r{foxy}i,              name: :foxy

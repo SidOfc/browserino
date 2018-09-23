@@ -1,5 +1,17 @@
 ---
 :bots:
+- :user_agent: Mozilla/5.0 (compatible; NTENTbot; +http://www.ntent.com/ntentbot)
+  :name:       :ntent
+  :version:
+  :text:       true
+  :to_s:       'ntent'
+
+- :user_agent: SheenBot/SheenBot-1.0.4 (Sheen web crawler)
+  :name:       :sheenbot
+  :version:    1.0.4
+  :text:       true
+  :to_s:       'sheenbot sheenbot1'
+
 - :user_agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:14.0; ips-agent) Gecko/20100101 Firefox/14.0.1
   :name:       :ips_agent
   :version:

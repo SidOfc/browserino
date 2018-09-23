@@ -25,6 +25,7 @@ Browserino.config.define do
   label :marshmallow,        for: :android,       range: '6'..'6.9.9'
   label :nougat,             for: :android,       range: '7'..'7.9.9'
   label :oreo,               for: :android,       range: '8'..'8.9.9'
+  label :pie,                for: :android,       range: '9'..'9.9.9'
 
   # support android up to the letter Z by following their version scheme which
   # uses versions X.0.0 up to X.9.9. the callable methods will be named like

@@ -9,8 +9,8 @@ Browserino.config.define do
   # the returned result will be used as the user agent to parse so make
   # sure to return the final ua at the end
   before_parse do |ua|
-    subs = [[%r{applewebkit}i, 'webkit'], [%r{(Mozilla/[\d\.]+)}i, ''],
-            [%r{\sAdr\s}, 'Android '], ['X11', '']]
+    subs = [[%r{applewebkit}i, 'webkit'], [%r{\sAdr\s}, 'Android '],
+            [%r{(Mozilla/[\d\.]+|X11|PVR DL)}i, '']]
     subs << [%r{Chrome|Safari}, ''] if ua =~ %r{nichrome|digg\sfeed|quiterss}i
     subs << [%r{9\.80}, ''] if ua =~ %r{opera}i
     subs << [%r{webkit/}i, ''] if ua =~ %r{presto}i

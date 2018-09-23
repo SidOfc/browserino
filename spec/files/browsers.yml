@@ -1,5 +1,399 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (Linux; Android 6.0; vivo 1713 Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.124 Mobile Safari/537.36
+  :name:             :vivo
+  :version:          '1713'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :android
+  :platform_version: '6.0'
+  :platform_label:   :marshmallow
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'vivo vivo1713 webkit webkit537 android marshmallow'
+  :like:             :vivo
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Linux; U; Android) AppleWebKit/533.1 (KHTML, like Gecko) Mobile Zetakey/3.2
+  :name:             :zetakey
+  :version:          '3.2'
+  :engine:           :webkit
+  :engine_version:   '533.1'
+  :platform:         :android
+  :platform_version:
+  :platform_label:
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'zetakey zetakey3 webkit webkit533 android'
+  :like:             :zetakey
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Linux; Android 5.1.1; KFDOWI Build/LVY48F) AppleWebKit/537.36 (KHTML, like Gecko) YoloBrowser/1.0.1.74 Safari/537.36
+  :name:             :yolobrowser
+  :version:          '1.0.1.74'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :fire_os
+  :platform_version: '5.1.1'
+  :platform_label:
+  :device:           :kindle
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'yolobrowser yolobrowser1 webkit webkit537 fire_os fire_os5 kindle'
+  :like:             :yolobrowser
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Linux; Android 5.1; OPPO R9tm Build/LMY47I; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 wkbrowser 4.1.61 3091
+  :name:             :wkbrowser
+  :version:          '4.1.61'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :android
+  :platform_version: '5.1'
+  :platform_label:   :lollipop
+  :device:           :oppo
+  :locale:           :wv
+  :architecture:
+  :mobile:           true
+  :to_s:             'wkbrowser wkbrowser4 webkit webkit537 android lollipop oppo'
+  :like:             :wkbrowser
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Whale/0.7.33.5 Safari/537.36
+  :name:             :whale
+  :version:          '0.7.33.5'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :windows
+  :platform_version: '6.1'
+  :platform_label:   :windows7
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'whale whale0 webkit webkit537 windows windows7'
+  :like:             :whale
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (X11; Linux x86_64; rv:25.0) Gecko/20100101 SlimerJS/0.9.0
+  :name:             :slimerjs
+  :version:          '0.9.0'
+  :engine:           :gecko
+  :engine_version:   '25.0'
+  :platform:         :linux
+  :platform_version:
+  :platform_label:
+  :device:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'slimerjs slimerjs0 gecko gecko25 linux'
+  :like:             :slimerjs
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.0 (development) Safari/534.34
+  :name:             :phantomjs
+  :version:          '1.9.0'
+  :engine:           :webkit
+  :engine_version:   '534.34'
+  :platform:         :macintosh
+  :platform_version:
+  :platform_label:
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'phantomjs phantomjs1 webkit webkit534 macintosh'
+  :like:             :phantomjs
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36 Slimjet/15.1.2.0
+  :name:             :slimjet
+  :version:          '15.1.2.0'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :windows
+  :platform_version: '6.1'
+  :platform_label:   :windows7
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'slimjet slimjet15 webkit webkit537 windows windows7'
+  :like:             :slimjet
+  :like_version:
+
+- :user_agent:       Sraf/3.0 (Linux i686 ; U; HbbTV/1.1.1 ( PVR DL;NEXUS; TV44; sw1.0) CE-HTML/1.0 Config(L:eng,CC:DEU); en/de)
+  :name:             :seraphic_sraf
+  :version:          '3.0'
+  :engine:
+  :engine_version:
+  :platform:         :linux
+  :platform_version:
+  :platform_label:
+  :device:           :nexus
+  :locale:           :en
+  :architecture:     :x64
+  :mobile:           true
+  :to_s:             'seraphic_sraf seraphic_sraf3 linux nexus'
+  :like:             :seraphic_sraf
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Linux; Android 4.4.2; SM-N9005 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36 LieBaoFast/2.16.2
+  :name:             :liebao
+  :version:          '2.16.2'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :android
+  :platform_version: '4.4.2'
+  :platform_label:   :kitkat
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'liebao liebao2 webkit webkit537 android kitkat'
+  :like:             :liebao
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.152 Kuaiso/1.42.501.448 Safari/537.36
+  :name:             :kuaiso
+  :version:          '1.42.501.448'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :windows
+  :platform_version: '6.1'
+  :platform_label:   :windows7
+  :device:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'kuaiso kuaiso1 webkit webkit537 windows windows7'
+  :like:             :kuaiso
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0; JuziBrowser)
+  :name:             :orange_browser
+  :version:
+  :engine:           :trident
+  :engine_version:   '6.0'
+  :platform:         :windows
+  :platform_version: '6.1'
+  :platform_label:   :windows7
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'orange_browser trident trident6 windows windows7'
+  :like:             :orange_browser
+  :like_version:
+
+- :user_agent:       Mozilla/4.0 (jig browser web; 1.0.4; 001SC)
+  :name:             :jig_browser_web
+  :version:          '1.0.4'
+  :engine:
+  :engine_version:
+  :platform:
+  :platform_version:
+  :platform_label:
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'jig_browser_web jig_browser_web1'
+  :like:             :ie
+  :like_version:     '10.0'
+
+- :user_agent:       SAMSUNG-S8000/S8000XEIF6 SHP/VPP/R5 Jasmine/1.0 Nextreaming SMM-MMS/1.2.0 profile/MIDP-2.1 configuration/CLDC-1.1
+  :name:             :jasmine
+  :version:          '1.0'
+  :engine:
+  :engine_version:
+  :platform:
+  :platform_version:
+  :platform_label:
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'jasmine jasmine1'
+  :like:             :jasmine
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Freebox; Linux i686) AppleWebKit/538.1 (KHTML, like Gecko) Navigateur web/1.0 Safari/538.1
+  :name:             :freebox
+  :version:
+  :engine:           :webkit
+  :engine_version:   '538.1'
+  :platform:         :linux
+  :platform_version:
+  :platform_label:
+  :device:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'freebox webkit webkit538 linux'
+  :like:             :freebox
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Linux; U; Android 4.2.2; en-gb; GT-I9500 Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) FlyFlow/1.4 Version/4.0 Mobile Safari/534.30
+  :name:             :flyflow
+  :version:          '1.4'
+  :engine:           :webkit
+  :engine_version:   '534.30'
+  :platform:         :android
+  :platform_version: '4.2.2'
+  :platform_label:   :jelly_bean
+  :device:
+  :locale:           :en_gb
+  :architecture:
+  :mobile:           true
+  :to_s:             'flyflow flyflow1 webkit webkit534 android jelly_bean'
+  :like:             :flyflow
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (iPad; CPU OS 8_4 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12H143 Safari/9537.53 DiigoBrowser
+  :name:             :diigo_browser
+  :version:
+  :engine:           :webkit
+  :engine_version:   '600.1.4'
+  :platform:         :ios
+  :platform_version: '8.4'
+  :platform_label:
+  :device:           :ipad
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'diigo_browser webkit webkit600 ios ios8 ipad'
+  :like:             :diigo_browser
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Diglo/22.0.1194.0 Safari/537.1
+  :name:             :diglo
+  :version:          '22.0.1194.0'
+  :engine:           :webkit
+  :engine_version:   '537.1'
+  :platform:         :windows
+  :platform_version: '6.1'
+  :platform_label:   :windows7
+  :device:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'diglo diglo22 webkit webkit537 windows windows7'
+  :like:             :diglo
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Linux; Android 4.4.3; D5303 Build/19.1.1.A.0.165) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0 Mobile Safari/537.36 ACHEETAHI/2100501044
+  :name:             :cm_browser
+  :version:
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :android
+  :platform_version: '4.4.3'
+  :platform_label:   :kitkat
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'cm_browser webkit webkit537 android kitkat'
+  :like:             :cm_browser
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.78 Chedot/8.0.0 Safari/537.36
+  :name:             :chedot
+  :version:          '8.0.0'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :windows
+  :platform_version: '10.0'
+  :device:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'chedot chedot8 webkit webkit537 windows windows10'
+  :like:             :chedot
+  :like_version:
+
+- :user_agent:       Mozilla/4.08 (Charon; Inferno)
+  :name:             :charon
+  :version:
+  :engine:
+  :engine_version:
+  :platform:         :inferno
+  :platform_version:
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'charon inferno'
+  :like:             :charon
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36 Cent/1.5.7.18
+  :name:             :cent
+  :version:          '1.5.7.18'
+  :engine:           :blink
+  :engine_version:
+  :platform:         :windows
+  :platform_version: '6.1'
+  :device:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'cent cent1 blink windows windows7'
+  :like:             :chrome
+  :like_version:     '46.0.2490.80'
+
+- :user_agent:       Mozilla/4.0 (compatible; MSIE 6.0; Windows 95; PalmSource; Blazer 3.0) 16; 160x160
+  :name:             :blazer
+  :version:          '3.0'
+  :engine:           :trident
+  :engine_version:   '2.0'
+  :platform:         :windows
+  :platform_version: '95'
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'blazer blazer3 trident windows windows95'
+  :like:             :ie
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (iPhone; CPU iPhone OS 10_0_2 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/14A456 Safari/602.1 AlohaBrowser/1.4
+  :name:             :alohabrowser
+  :version:          '1.4'
+  :engine:           :webkit
+  :engine_version:   '602.1.50'
+  :platform:         :ios
+  :platform_version: '10.0.2'
+  :device:           :iphone
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'alohabrowser alohabrowser1 webkit webkit602 ios ios10 iphone'
+  :like:             :alohabrowser
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Falkon/3.0.1 Chrome/61.0.3163.140 Safari/537.36
+  :name:             :qupzilla
+  :version:          '3.0.1'
+  :engine:           :webkit
+  :engine_version:   '537.36'
+  :platform:         :windows
+  :platform_version: '6.1'
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'qupzilla qupzilla3 webkit webkit537 windows windows7'
+  :like:             :qupzilla
+  :like_version:
+
 - :user_agent:       Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36
   :name:             :chrome
   :version:          '61.0.3163.100'
@@ -405,7 +799,7 @@
   :to_s:             'chrome chrome52 webkit webkit537 android lollipop zte'
 
 - :user_agent:       Mozilla/5.0 (Linux; Android 6.0; MotoE2(4G-LTE) Build/MPI24.65-39; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/51.0.2704.81 Mobile Safari/537.36 ACHEETAHI/2100502055
-  :name:             :chrome
+  :name:             :cm_browser
   :version:          '51.0.2704.81'
   :engine:           :webkit
   :engine_version:   '537.36'
@@ -416,7 +810,7 @@
   :locale:           :wv
   :architecture:
   :mobile:           true
-  :to_s:             'chrome chrome51 webkit webkit537 android marshmallow motorola'
+  :to_s:             'cm_browser webkit webkit537 android marshmallow motorola'
 
 - :user_agent:       Mozilla/5.0 (Windows Phone 10.0; Android 6.0.1; Microsoft; Lumia 650 Dual SIM) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Mobile Safari/537.36 Edge/14.14393
   :name:             :edge
@@ -2602,6 +2996,19 @@
   :mobile:           false
   :to_s:             'adobeair adobeair3 webkit webkit533 windows'
 
+- :user_agent:       Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9a9pre) Gecko/2007092312 Webrunner/0.7
+  :name:             :hotjava
+  :version:          '0.7'
+  :engine:           :gecko
+  :engine_version:   '1.9'
+  :platform:         :windows
+  :platform_label:   :vista
+  :platform_version: '6.0'
+  :locale:           :en_us
+  :architecture:
+  :mobile:           false
+  :to_s:             'hotjava hotjava0 gecko gecko1 windows vista'
+
 - :user_agent:       HotJava/1.1.2 FCS
   :name:             :hotjava
   :version:          '1.1.2'
@@ -2788,6 +3195,19 @@
   :mobile:           false
   :to_s:             'dooble dooble0 webkit'
 
+- :user_agent:       Mozilla/5.0 (Windows NT; U; en) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Iris/1.1.7 Safari/525.20
+  :name:             :iris
+  :version:          '1.1.7'
+  :engine:           :webkit
+  :engine_version:   '525.18.1'
+  :platform:         :windows
+  :platform_label:
+  :platform_version:
+  :locale:           :en
+  :architecture:
+  :mobile:           false
+  :to_s:             'iris iris1 webkit webkit525 windows'
+
 - :user_agent:       Mozilla/5.0 (X11; U; Linux x86_64; it-it) AppleWebKit/534.26+ (KHTML, like Gecko) Ubuntu/11.04 Epiphany/2.30.6
   :name:             :epiphany
   :version:          '2.30.6'
@@ -2839,6 +3259,20 @@
   :architecture:     :x64
   :mobile:           false
   :to_s:             'netsurf netsurf2 linux'
+
+- :user_agent:       w3m/0.5.2 (Linux i686; it; Debian-3.0.6-3)
+  :name:             :w3m
+  :version:          '0.5.2'
+  :engine:
+  :engine_version:
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:           :it
+  :architecture:     :x64
+  :mobile:           false
+  :text:             true
+  :to_s:             'w3m w3m0 linux'
 
 - :user_agent:       amaya/11.3.1 libwww/5.4.1
   :name:             :amaya
@@ -2895,6 +3329,20 @@
   :mobile:           false
   :to_s:             'icab icab4 webkit webkit533 macintosh snow_leopard'
   :like:             :safari
+
+- :user_agent:       Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) Otter/0.9.05 Safari/537.21
+  :name:             :otter
+  :version:          '0.9.05'
+  :engine:           :webkit
+  :engine_version:   '537.21'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'otter otter0 webkit webkit537 linux'
+  :like:             :otter
 
 - :user_agent:       Mozilla/5.0 (Linux; Android 4.4.4; XT1032 Build/KXB21.14-L1.40) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 YaBrowser/14.12.2125.9740.00 Mobile Safari/537.36
   :name:             :yabrowser
