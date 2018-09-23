@@ -26,6 +26,10 @@ Browserino.config.define do
     # a hash of http headers as second argument
     locales          []
 
+    # overwrite client-generated locales? method
+    # to make the correct comparison for arrays
+    locales?         { locales.any? }
+
     smarttv          %r{(?:smart[\-\s]|hbb|apple\s|google|g)(tv)}i
 
     tablet           %r{(ipad|transformer|slider|a\d+f;|tablet|lenovo
