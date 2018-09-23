@@ -13,7 +13,7 @@ Browserino.config.define do
   prop_missing :locales do |http_headers|
     http_headers[:accept_language]
       .to_s.scan(/(\w{2}(?:[_\-]\w{2})?)(?:;q=([\d.]+))?/i)
-      .map { |(locale, quality)| [locale, (quality || 1).to_i] }
+      .map { |(locale, quality)| [locale, (quality || 1).to_f] }
       .sort_by { |a| -a[1] }
       .map(&:first)
   end
