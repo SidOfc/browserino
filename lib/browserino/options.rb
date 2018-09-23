@@ -8,6 +8,7 @@ module Browserino
 
     def method_missing(sym, *args)
       return @options[opt(sym)] == args.first if args.any?
+
       @options[opt(sym)]
     end
 
@@ -47,7 +48,7 @@ module Browserino
     end
 
     def option?(sym)
-      @options.keys.include? opt(sym)
+      @options.key? opt(sym)
     end
   end
 end

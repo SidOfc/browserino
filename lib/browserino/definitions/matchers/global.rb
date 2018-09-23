@@ -17,7 +17,8 @@ Browserino.config.define do
   # a simple set of global matchers that will be merged and scanned
   # with a specific matcher when the final client object is created
   match do
-    locale           %r{(?<!nintendo)[;\s(](?!nt)([a-z]{2}(?:[-_][a-z]{2})?)\-?[;)/](?!\d)}i
+    locale           %r{(?<!nintendo)[;\s(](?!nt)([a-z]{2}(?:[-_][a-z]{2})?)
+                        \-?[;)/](?!\d)}xi
     architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86|arm)}i
 
     # set locales prop which will be populated with accept-language header
@@ -40,7 +41,8 @@ Browserino.config.define do
                         |blackberry|linux|ubuntu|beos|unix|bsd|s(?:unos|olaris)
                         |tizen|xbox|amigaos|w(?:eb)?os|(?<!mi)cros|bada|palmos
                         |kindle|symbiano?s?|sailfish|meego|darwin|syllable|fxos
-                        |(?<!en)risc|rim\stablet\sos|haiku|morphos|debian|inferno)}xi
+                        |(?<!en)risc|rim\stablet\sos|haiku|morphos|debian
+                        |inferno)}xi
 
     platform_version %r{(?:windows(?:\sphone(?:\sos)?)?|nt|android|linux/?|fxos
                         |mac\sos\sx(?:\s\w+\s)?|(?:cpu\s|ip(?:[ao]d|hone)\s)os

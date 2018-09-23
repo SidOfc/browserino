@@ -44,11 +44,11 @@ Browserino.config.browsers do
   match %r{escape}i,          name: :escape
   match %r{juzi(?:browser)}i, name: :orange_browser, engine: :trident
 
-  match %r{flock}i,           name: :flock, engine: %r{(webkit|gecko|servo)}i,
-                              engine_version: %r{(?:webkit|rv:|servo)[\s/]?([\d\.]+)}i
+  match %r{flock}i,   name: :flock, engine: %r{(webkit|gecko|servo)}i,
+                      engine_version: %r{(?:webkit|rv:|servo)[\s/]?([\d\.]+)}i
 
-  match %r{sunrise}i,         name: :sunrise, engine: %r{(webkit|gecko|servo)}i,
-                              engine_version: %r{(?:webkit|rv:|servo)[\s/]?([\d\.]+)}i
+  match %r{sunrise}i, name: :sunrise, engine: %r{(webkit|gecko|servo)}i,
+                      engine_version: %r{(?:webkit|rv:|servo)[\s/]?([\d\.]+)}i
 
   match %r{msie|trident}i do
     name           :ie
@@ -398,7 +398,6 @@ Browserino.config.browsers do
                                       engine: %r{webkit|trident|gecko},
                                       version: %r{jig(?:\sbrowser\sweb);
                                                 \s?([\d\.]+)}xi
-
 
     # we can exclude the default version which will then be replaced by
     # the smart_matcher for :version which uses the :name token automatically
