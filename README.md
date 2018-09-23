@@ -24,7 +24,7 @@ about their browser / OS versions.
         <li><a href="#sources">Sources</a></li>
         <li><a href="#changelog">Changelog</a><ul>
             <li><a href="#23-06-2018-version-440">23-06-2018 VERSION 4.4.0</a></li>
-            <li><a href="#23-06-2018-version-424">23-06-2018 VERSION 4.2.4</a></li>
+            <li><a href="#23-06-2018-version-430">23-06-2018 VERSION 4.3.0</a></li>
             <li><a href="#24-12-2017-version-423">24-12-2017 VERSION 4.2.3</a></li>
         </ul></li>
         <li><a href="#installation">Installation</a></li>
@@ -153,7 +153,7 @@ older changes can be found in the [changelog](/projects/browserino/changelog/)
 - Add: `:jig_browser_web`
 - Add: `:blazer`
 
-### 23-06-2018 VERSION 4.2.4
+### 23-06-2018 VERSION 4.3.0
 
 - Add macOS `mojave` label
 - Add generic `android_*` labels for android versions `p` through `z`.
