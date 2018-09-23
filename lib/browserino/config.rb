@@ -9,6 +9,10 @@ module Browserino
       end
     end
 
+    def prop_missing(name, &block)
+      missing_props[name] = block
+    end
+
     def label(name, **opts)
       return false unless opts[:for]
       opts[:name] ||= name

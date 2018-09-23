@@ -13,13 +13,14 @@ require_relative 'browserino/definitions/matchers'
 require_relative 'browserino/definitions/aliasses'
 require_relative 'browserino/definitions/filters'
 require_relative 'browserino/definitions/labels'
+require_relative 'browserino/definitions/missing_props'
 
 module Browserino
-  def self.parse(uas)
-    config.before_parse.each { |b| uas = b.call uas }
+  def self.parse(uas, headers = nil)
+    uas = config.before_parse.reduce(uas) { |u, b| b.call u }
     config.matchers.each do |matcher|
-      return analyze uas, matcher if matcher.matches? uas
+      return analyze uas, matcher, headers if matcher.matches? uas
     end
-    analyze uas
+    analyze uas, nil, headers
   end
 end

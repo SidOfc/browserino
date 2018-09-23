@@ -1,15 +1,37 @@
 # frozen_string_literal: true
 
 module Browserino
-  def self.analyze(uas, matcher = nil)
+  def self.analyze(ua, matcher = nil, headers = nil)
     @defaults ||= config.global_matchers.map(&:properties).reduce(&:merge)
 
     props = @defaults.merge(matcher && matcher.properties || {})
     like  = props.delete :like
-    props = mass_collect props, uas
-    like  = Client.new props.merge(like_attrs(props, like, uas)) if like
+    props = mass_collect props, ua
+
+    if headers.is_a? Hash
+      headers = normalize_header_keys headers
+      props   = fill_missing_with_headers headers, props
+    end
+
+    like = Client.new props.merge(like_attrs(props, like, ua)) if like
 
     Client.new props, like
+  end
+
+  def self.normalize_header_keys(headers)
+    headers.each_with_object({}) do |(header, value), normalized|
+      header = header.gsub(/^HTTP_/i, '').tr('-', '_').downcase.to_sym
+      normalized[header] = value
+    end
+  end
+
+  def self.fill_missing_with_headers(headers, props)
+    config.missing_props.each_with_object props do |(prop, blk), res|
+      if props.key?(prop) && (!props[prop] ||
+         (props[prop].respond_to?(:empty?) && props[prop].empty?))
+        res[prop] = convert blk.call(headers, res), format: prop
+      end
+    end
   end
 
   def self.like_attrs(props, like, user_agent)
@@ -23,16 +45,17 @@ module Browserino
   end
 
   def self.config
-    @config ||= Config.new(before_parse: [],
+    @config ||= Config.new before_parse:    [],
                            global_matchers: [],
-                           properties: [],
-                           types: [:unknown],
-                           names: [],
-                           smart_matchers: {},
-                           matchers: [],
-                           labels: Hash.new { |h, k| h[k] = [] },
-                           filters: Hash.new { |h, k| h[k] = [] },
-                           aliasses: Hash.new { |h, k| h[k] = [] })
+                           properties:      [],
+                           types:           [:unknown],
+                           names:           [],
+                           smart_matchers:  {},
+                           missing_props:   {},
+                           matchers:        [],
+                           labels:          Hash.new { |h, k| h[k] = [] },
+                           filters:         Hash.new { |h, k| h[k] = [] },
+                           aliasses:        Hash.new { |h, k| h[k] = [] }
   end
 
   def self.label_for(target_name, version = nil)
