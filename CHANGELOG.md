@@ -1,6 +1,10 @@
 # Changelog
 _dates are in dd-mm-yyyy format_
 
+### 12-10-2017 VERSION 4.2.2
+
+- Added support for `high_sierra`
+
 ### 11-06-2017 VERSION 4.2.1
 
 - Fixed a bug which caused arguments in the form of `version: v` to return true by default
