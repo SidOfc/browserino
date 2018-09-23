@@ -13,9 +13,28 @@ module Browserino
       props   = fill_missing_with_headers headers, props
     end
 
+    props = fix_inconsistent_props props
+
     like = Client.new props.merge(like_attrs(props, like, uas)) if like
 
     Client.new props, like
+  end
+
+  def self.fix_inconsistent_props(hsh)
+    # patch locale and locales props
+    if hsh[:locales].any?
+      # when locale is not present in locales, append it
+      hsh[:locales] << hsh[:locale] unless hsh[:locales].include? hsh[:locale]
+
+      # ensure locales.first == locale when locale present in locales
+      hsh[:locale] = hsh[:locales].first
+    elsif hsh[:locale]
+      # no locales from header but locale is found in UA, append locale
+      # to locales to ensure expected output
+      hsh[:locales] << hsh[:locale]
+    end
+
+    hsh
   end
 
   def self.normalize_header_keys(headers)

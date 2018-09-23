@@ -39,5 +39,32 @@ describe 'Browserino' do
       expect(client.locale).to be_nil
       expect(client.locales).to eq %i[]
     end
+
+    it 'prefers http header locale over user agent when possible' do
+      client = Browserino.parse(
+        'Mozilla/5.0 (Linux; Android 5.1; ZTE Blade L6 Build/LMY47I it-IT) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.91 Mobile Safari/537.36',
+        {'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,nl-NL;q=0.8,nl;q=0.7'}
+      )
+
+      expect(client.locale).to eq :en_us
+      expect(client.locales).to include :it_it
+    end
+
+    it 'adds locale to locales when locale is found in UA but no headers are given' do
+      client = Browserino.parse 'Mozilla/5.0 (Linux; Android 5.1; ZTE Blade L6 Build/LMY47I it-IT) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.91 Mobile Safari/537.36'
+
+      expect(client.locale).to eq :it_it
+      expect(client.locales).to include :it_it
+    end
+
+    it 'sets locale to locales.first when locale is found in headers but not in UA' do
+      client = Browserino.parse(
+        'Mozilla/5.0 (Linux; Android 5.1; ZTE Blade L6 Build/LMY47I) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.91 Mobile Safari/537.36',
+        {'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,nl-NL;q=0.8,nl;q=0.7'}
+      )
+
+      expect(client.locale).to eq :en_us
+      expect(client.locales).to include :en_us
+    end
   end
 end
