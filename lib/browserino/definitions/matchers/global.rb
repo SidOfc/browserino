@@ -17,8 +17,13 @@ Browserino.config.define do
   # a simple set of global matchers that will be merged and scanned
   # with a specific matcher when the final client object is created
   match do
-    locale           %r{(?<!nintendo)[;\s(]([a-z]{2}(?:[-_][a-z]{2})?)\-?[;)]}i
+    locale           %r{(?<!nintendo)[;\s(](?!nt)([a-z]{2}(?:[-_][a-z]{2})?)\-?[;)/](?!\d)}i
     architecture     %r{((?:(?:x|x86_|amd|wow|win)64)|i[36]86|arm)}i
+
+    # set locales prop which will be populated with accept-language header
+    # locales sorted by quality when Browserino.parse receives
+    # a hash of http headers as second argument
+    locales          []
 
     smarttv          %r{(?:smart[\-\s]|hbb|apple\s|google|g)(tv)}i
 

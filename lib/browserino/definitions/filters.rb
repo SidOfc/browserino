@@ -42,17 +42,23 @@ Browserino.config.define do
   # before any named filters
   filter do |val|
     case val
-    when TrueClass, FalseClass, NilClass, Proc then val
-    when %r{\A[\d_\.]+\z}i                     then val.to_s.strip.tr '_', '.'
+    when TrueClass, FalseClass, NilClass, Proc, Array then val
+    when %r{\A[\d_\.]+\z}i                            then val.to_s.strip.tr '_', '.'
     else val.to_s.downcase.strip.gsub(%r{[\s-]+}i, '_').to_sym
     end
   end
 
   # this is a named filter, it defines the same filter for 3 properties
-  # multiple name filters for the same property can be created, they will be
-  # executed in order of addition
+  # multiple name filters for the same property can be created, they
+  # will be executed in order of definition
   filter :version, :engine_version, :platform_version do |val|
     Browserino::Version.new val
+  end
+
+  filter :locales do |locales|
+    locales.map do |(locale, _quality)|
+      locale.downcase.strip.tr('-', '_').to_sym
+    end
   end
 
   filter :platform do |val|

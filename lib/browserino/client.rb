@@ -125,7 +125,7 @@ module Browserino
     # if you wish for a method to respond to the #not method,
     # you'll have to return the result of a function using the `invertable`
     # method as seen in `method_missing` - this will apply the state of the
-    # instance variable and invert the state aswell as the result if set,
+    # instance variable and invert the state as well as the result if set,
     # otherwise it will just return the value without touching it
     def not
       @not = true && self
