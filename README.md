@@ -22,61 +22,64 @@ about their browser / OS versions.
         <li><a href="#status">Status</a></li>
         <li><a href="#table-of-contents">Table of Contents</a></li>
         <li><a href="#sources">Sources</a></li>
-        <li><a href="#"></a></li>
         <li><a href="#changelog">Changelog</a><ul>
+            <li><a href="#23-06-2018-version-440">23-06-2018 VERSION 4.4.0</a></li>
             <li><a href="#23-06-2018-version-424">23-06-2018 VERSION 4.2.4</a></li>
             <li><a href="#24-12-2017-version-423">24-12-2017 VERSION 4.2.3</a></li>
-            <li><a href="#12-10-2017-version-422">12-10-2017 VERSION 4.2.2</a></li>
         </ul></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#rails--320">Rails (>= 3.2.0)</a><ul>
+            <li><a href="#initializer">Initializer</a></li>
+        </ul></li>
         <li><a href="#usage">Usage</a><ul>
-            <li><a href="#rails--320">Rails (>= 3.2.0)</a><ul>
-                <li><a href="#initializer">Initializer</a></li>
+            <li><a href="#client">Client</a></li>
+            <li><a href="#formatting">Formatting</a><ul>
+                <li><a href="#non-version-like-properties">Non version-like properties</a></li>
+                <li><a href="#version-like-properties">Version-like properties</a></li>
             </ul></li>
-            <li><a href="#general">General</a><ul>
-                <li><a href="#client">Client</a></li>
-                <li><a href="#formatting">Formatting</a><ul>
-                    <li><a href="#non-version-like-properties">Non version-like properties</a></li>
-                    <li><a href="#version-like-properties">Version-like properties</a></li>
-                </ul></li>
-                <li><a href="#config">Config</a><ul>
-                    <li><a href="#matchers">Matchers</a></li>
-                    <li><a href="#aliasses">Aliasses</a></li>
-                    <li><a href="#labels">Labels</a></li>
-                </ul></li>
-                <li><a href="#methods">Methods</a><ul>
-                    <li><a href="#name">\#name</a></li>
-                    <li><a href="#namesym-opts--">\#name?(sym, opts = {})</a></li>
-                    <li><a href="#version">\#version</a></li>
-                    <li><a href="#versionversion">\#version?(version)</a></li>
-                    <li><a href="#engine">\#engine</a></li>
-                    <li><a href="#enginesym-opts--">\#engine?(sym, opts = {})</a></li>
-                    <li><a href="#engine_version">\#engine_version</a></li>
-                    <li><a href="#engine_versionversion">\#engine_version?(version)</a></li>
-                    <li><a href="#platform">\#platform</a></li>
-                    <li><a href="#platformsym-opts--">\#platform?(sym, opts = {})</a></li>
-                    <li><a href="#platform_label">\#platform_label</a></li>
-                    <li><a href="#platform_version">\#platform_version</a></li>
-                    <li><a href="#platform_versionversion">\#platform_version?(version)</a></li>
-                    <li><a href="#device">\#device</a></li>
-                    <li><a href="#devicesym">\#device?(sym)</a></li>
-                    <li><a href="#architecture">\#architecture</a></li>
-                    <li><a href="#architecturesym">\#architecture?(sym)</a></li>
-                    <li><a href="#x64">\#x64?</a></li>
-                    <li><a href="#x32">\#x32?</a></li>
-                    <li><a href="#mobile-and-mobile">\#mobile and #mobile?</a></li>
-                    <li><a href="#type">\#type</a></li>
-                    <li><a href="#typesym">\#type?(sym)</a></li>
-                    <li><a href="#like">\#like</a></li>
-                    <li><a href="#likesym-opts--">\#like?(sym, opts = {})</a></li>
-                    <li><a href="#issym-opts--">\#is?(sym, opts = {})</a></li>
-                    <li><a href="#not">\#not</a></li>
-                    <li><a href="#notsym-opts--">\#not?(sym, opts = {})</a></li>
-                </ul></li>
-                <li><a href="#magic-methods">Magic methods</a><ul>
-                    <li><a href="#names">Names</a></li>
-                    <li><a href="#aliasses-1">Aliasses</a></li>
-        </ul></li></ul></li></ul></li>
+            <li><a href="#config">Config</a><ul>
+                <li><a href="#matchers">Matchers</a></li>
+                <li><a href="#aliasses">Aliasses</a></li>
+                <li><a href="#labels">Labels</a></li>
+                <li><a href="#http-headers">HTTP headers</a></li>
+            </ul></li>
+            <li><a href="#methods">Methods</a><ul>
+                <li><a href="#name">name</a></li>
+                <li><a href="#namesym-opts--">name?(sym, opts = {})</a></li>
+                <li><a href="#version">version</a></li>
+                <li><a href="#versionversion">version?(version)</a></li>
+                <li><a href="#engine">engine</a></li>
+                <li><a href="#enginesym-opts--">engine?(sym, opts = {})</a></li>
+                <li><a href="#engine_version">engine_version</a></li>
+                <li><a href="#engine_versionversion">engine_version?(version)</a></li>
+                <li><a href="#platform">platform</a></li>
+                <li><a href="#platformsym-opts--">platform?(sym, opts = {})</a></li>
+                <li><a href="#platform_label">platform_label</a></li>
+                <li><a href="#platform_version">platform_version</a></li>
+                <li><a href="#platform_versionversion">platform_version?(version)</a></li>
+                <li><a href="#device">device</a></li>
+                <li><a href="#devicesym">device?(sym)</a></li>
+                <li><a href="#architecture">architecture</a></li>
+                <li><a href="#architecturesym">architecture?(sym)</a></li>
+                <li><a href="#locale">locale</a></li>
+                <li><a href="#locale-1">locale?</a></li>
+                <li><a href="#locales">locales</a></li>
+                <li><a href="#locales-1">locales?</a></li>
+                <li><a href="#x64">x64?</a></li>
+                <li><a href="#x32">x32?</a></li>
+                <li><a href="#mobile-and-mobile">mobile and #mobile?</a></li>
+                <li><a href="#type">type</a></li>
+                <li><a href="#typesym">type?(sym)</a></li>
+                <li><a href="#like">like</a></li>
+                <li><a href="#likesym-opts--">like?(sym, opts = {})</a></li>
+                <li><a href="#issym-opts--">is?(sym, opts = {})</a></li>
+                <li><a href="#not">not</a></li>
+                <li><a href="#notsym-opts--">not?(sym, opts = {})</a></li>
+            </ul></li>
+            <li><a href="#magic-methods">Magic methods</a><ul>
+                <li><a href="#names">Names</a></li>
+                <li><a href="#aliasses-1">Aliasses</a></li>
+        </ul></li></ul></li>
         <li><a href="#supported">Supported</a><ul>
             <li><a href="#browsers">Browsers</a></li>
             <li><a href="#bots">Bots</a></li>
@@ -108,12 +111,47 @@ Many thanks to the creators and maintainers of the following sources of user age
 - [commons.wikimedia.org browser timeline](https://commons.wikimedia.org/wiki/File:Timeline_of_web_browsers.svg)
 - [browscap database (github repo)](https://github.com/browscap/browscap/tree/master/resources/user-agents)
 
----
-
 ## Changelog
 
 _dates are in dd-mm-yyyy format_
 older changes can be found in the [changelog](/projects/browserino/changelog/)
+
+### 23-06-2018 VERSION 4.4.0
+
+- Update: Gem dependencies
+- Add: ability to supply HTTP headers to Browserino for extra information
+- Improve: location will be detected from HTTP headers when available (on by default in Rails)
+- Add: [`prop_missing`](#http-headers) DSL for last-minute info gathering
+- Add: Android `:pie` label
+- Add: `:falkon` alias for `:qupzilla`
+`orange_browser`
+- Add: `:alohabrowser`
+- Add: `:iris`
+- Add: `:otter`
+- Add: `:chedot`
+- Add: `:cm_browser`
+- Add: `:diglo`
+- Add: `:diigo_browser`
+- Add: `:flyflow`
+- Add: `:freebox`
+- Add: `:kuaiso`
+- Add: `:lovense`
+- Add: `:slimjet`
+- Add: `:zetakey`
+- Add: `:wkbrowser`
+- Add: `:yolobrowser`
+- Add: `:whale`
+- Add: `:vivo`
+- Add: `:jasmine`
+- Add: `:seraphic_sraf`
+- Add: `:phantomjs`
+- Add: `:slimerjs`
+- Add: `:liebao`
+- Add: `:w3m`
+- Add: `:charon`
+- Add: `:cent`
+- Add: `:jig_browser_web`
+- Add: `:blazer`
 
 ### 23-06-2018 VERSION 4.2.4
 
@@ -124,10 +162,6 @@ older changes can be found in the [changelog](/projects/browserino/changelog/)
 
 - Loosened some Android label version ranges
 - `Browserino::Version` can now also parse floats float `1.1` equals major version 1, minor version 1, patch level 0
-
-### 12-10-2017 VERSION 4.2.2
-
-- Added support for `high_sierra`
 
 ## Installation
 
@@ -149,16 +183,6 @@ Or install it yourself with:
 $ gem install browserino
 ```
 
-Browserino is tested with the following ruby versions
-
-- 2.0.0
-- 2.1.0
-- 2.2.0
-- 2.3.0
-- 2.4.0
-
-## Usage
-
 After installing the gem globally or in your application you'll have to `require` the gem before being able to use it.
 
 ```ruby
@@ -168,12 +192,27 @@ require 'browserino'
 Afterwards, the gem is loaded and you can proceed by calling:
 
 ```ruby
-Browserino.parse '<user agent>'
+Browserino.parse '<user agent>'[, {'request-header' => 'header-value', ...}]
 ```
 
-### Rails (>= 3.2.0)
+The first argument to `Browserino.parse` is a _user agent_ string. This is the string that browsers send to webservers for identification.
+The second (optional) argument to `Browserino.parse` is a hash that contains HTTP headers. When a property could not be found, these headers
+will be used by Browserino to attempt to extract it from there if a `prop_missing` handler is defined for it.
 
-If you're using Rails (>= 3.2.0) you'll have access to a `client` object. Browserino will initialize itself using the `request.headers['User-Agent']`
+
+Browserino is tested with the following ruby versions
+
+- 2.0.0
+- 2.1.0
+- 2.2.0
+- 2.3.0
+- 2.4.0
+- 2.5.0
+
+## Rails (>= 3.2.0)
+
+If you're using Rails (>= 3.2.0) you'll have access to a `client` object. Browserino will initialize itself using `request.headers['User-Agent']` and will also use Rails `request.headers` to find
+extra information that could not be found in the user agent (e.g. user locales).
 
 
 A quick example on how to get going:
@@ -186,7 +225,7 @@ class ExampleController < ApplicationController
 end
 ```
 
-#### Initializer
+### Initializer
 
 If you would like to extend Browserino within your rails app, this is certainly possible.
 Create a file _config/initializers/browserino.rb_ and add the following:
@@ -199,9 +238,9 @@ end
 
 Please skip ahead to the [**Config**](#config) part of the documentation, that section contains information on how to make use of Browserino's builtin DSL
 
-### General
+## Usage
 
-#### Client
+### Client
 
 the `parse` method will **always** return a `Browserino::Client` object. This object is special in that it simply resonds to everything. If a property does not exist or isn't defined on the current instance of `client` then it will simply return `nil`. Parsing an empty user agent will result in the following output:
 
@@ -210,15 +249,17 @@ client = Browserino.parse ''
 client.is_a? Browserino::Client # => true
 ```
 
-#### Formatting
+### Formatting
 
 This section explains the output / return values given by calling a method on an instantiated `Browserino::client` object.
 
-##### Non version-like properties
+#### Non version-like properties
 
-Non-version-like properties are properties that are not solely digits seperated by a delimiter like '.' or '_'.
-All the non-version-like property values will be formatted in the following order:
+Non-version-like properties are properties that are not solely digits seperated by a delimiter like '.' or '\_'.
+All the non-version-like property values (which aren't `Array` or `Hash` instances) will be formatted in the following order:
 
+- skip following steps if `Array` or `Hash`
+- stringify value
 - lowercase all characters
 - strip spaces on either side
 - replace one or more spaces or dashes with a single underscore (`_`)
@@ -234,7 +275,7 @@ client.engine         # => :gecko
 client.platform_label # => :windows7
 ```
 
-##### Version-like properties
+#### Version-like properties
 
 All the version-like property values will be converted to `Browserino::Version` objects.
 These objects are comparable to numbers and version-like strings (e.g. `'1.2.4'`)
@@ -264,9 +305,9 @@ client.version >= '37.0.2000' # => true
 client.version > '37.1.2000'  # => false
 ```
 
-#### Config
+### Config
 
-##### Matchers
+#### Matchers
 
 Browserino is based on a concept of _matchers_, a matcher is a single client entity.
 They are defined in a `Browserino.config.define { ... }` block. A small example:
@@ -285,6 +326,7 @@ client.to_h
 # => { :name             => :mybrowser,
 #      :type             => :browser,
 #      :locale           => nil,
+#      :locales          => [],
 #      :architecture     => nil,
 #      :mobile           => false,
 #      :smarttv          => false,
@@ -456,7 +498,7 @@ What the above code does is, if no `version` property has been supplied to a mat
 
 If you supply your own `version` property, this `smart_matcher` will not be applied.
 
-##### Aliasses
+#### Aliasses
 
 Aliasses are a bit simpler than `Matchers`, they look like this taken from the [source](https://github.com/SidOfc/browserino/blob/master/lib/browserino/definitions/aliasses.rb):
 
@@ -481,7 +523,7 @@ end
 What they do is they look for a value within the properties of a specific client and if found, all the aliasses specified will also be applied to that client.
 This means that for a `client.is? :firefox` you can do `client.is? :ff` or `client.ff?` instead. This works for all the names like `name, label`, `engine`, `engine_label`, `platform` and `platform_label`
 
-##### Labels
+#### Labels
 
 A label could be a codename or a specific OS name for instance, it applies to a name and it's respective version combination.
 It autodetects against which version it should match, this will always be the correct version. Here are some examples (also not the complete file -  [source](https://github.com/SidOfc/browserino/blob/master/lib/browserino/definitions/labels.rb)):
@@ -497,11 +539,59 @@ end
 
 So now it looks for a value of `:macintosh` in the properties gathered from a client, if it finds it, it will remember it's key (e.g. `platform` in this case.) and use it to find out the current version (e.g. `platform_version` in this case). If a version is supplied it will be compared to be `>= min` and `<= max` (which is inclusive) where `min` and `max` are the left and right values of the `range` option respectively.
 
-#### Methods
+#### HTTP headers
+
+Browserino as of version `4.4.0` accepts a hash of HTTP headers as a second argument. This adds more detailed information (primarily `#locales` property is added and `#locale` is read from it when not found).
+For Rails, this is already implemented and will work out of the box, adding support for it is as simple as supplying a `Hash` of HTTP headers (say, what you get from a `request.headers` in Rails or `request` from Sinatra) as second argument to `Browserino.parse`.
+
+This user agent does not have a locale but when we supply the `HTTP_ACCEPT_LANGUAGE` (or just `Accept-Language`) header it will find _all_ languages ordered by _user preference_ in a `#locales` property.
+For the [`#locale`](#locale) itself, if it is not found it will attempt to use [`#locales.first`](#locales):
+
+```ruby
+client = Browserino.parse(
+    'Mozilla/5.0 (Linux; Android 5.1; ZTE Blade L6 Build/LMY47I) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.91 Mobile Safari/537.36',
+    {'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,nl-NL;q=0.6,nl;q=0.7'}
+)
+
+client.locales
+# => [:en_us :en :nl :nl_nl]
+
+client.locale
+# => :en_us
+```
+
+The behavior is defined by `prop_missing` hooks which will be run _just_ before a new `Client` (and _after_ all data gathering / processing is done) is initialized.
+The hooks for `:locales` and `:locale` look like this:
+
+```ruby
+Browserino.config.define do
+  prop_missing :locales do |http_headers|
+    http_headers[:accept_language]
+      .to_s.scan(/(\w{2}(?:[_\-]\w{2})?)(?:;q=([\d.]+))?/i)
+      .map { |(locale, quality)| [locale, (quality || 1).to_f] }
+      .sort_by { |a| -a[1] }
+      .map(&:first)
+  end
+
+  prop_missing :locale do |_http_headers, props|
+    props[:locales].first
+  end
+end
+```
+
+The first block argument is a processed version of a hash with HTTP headers.
+Keys of this hash are "normalized", any `HTTP_` prefix is removed, `-` is replaced with `_` and finally the key is lowercased and converted to a symbol.
+This allows you to pass in raw header names as seen in the request like `Accept-Language` or Rails / Sinatra (read: rack) HTTP headers like `HTTP_ACCEPT_LANGUAGE`. Both will end up as `:accept_language` allowing for easy usage.
+
+The second block argument are the processed properties. This is _all_ the information from the UA / HTTP headers that Browserino could find combined.
+
+What you may also notice here is that in the second `prop_missing` we are leveraging the first `prop_missing`. They are executed in order of definition to make it easy to "chain" property fallbacks.
+
+### Methods
 
 The below methods are available by default, all methods with a questionmark at the end return either boolean `true` or `false` or `nil`.
 
-##### \#name
+#### #name
 
 Returns either a symbol containing the name of the agent or `nil` otherwise.
 
@@ -512,7 +602,7 @@ client.name
 # => :colibri
 ```
 
-##### \#name?(sym, opts = {})
+#### #name?(sym, opts = {})
 
 Returns true if supplied `sym` equals (`==`) the current `client.name`, if `opts` contains a `:version` key, it will be compared against `#version`
 Returns false if the supplied criteria doesn't match the current client.
@@ -537,7 +627,7 @@ client.name? :not_colibri, version: '1.0.0'
 # => nil
 ```
 
-##### \#version
+#### #version
 
 Returns a `Browserino::Version` object. This object allows for more flexible comparing of long version numbers where simple numbers or floats don't suffice.
 
@@ -566,7 +656,7 @@ client.version.full
 # => '1.0.0'
 ```
 
-##### \#version?(version)
+#### #version?(version)
 
 Returns true if the supplied version equals (`==`) the current clients version.
 Returns false otherwise
@@ -587,7 +677,7 @@ client.version? '1.0.1'
 # false
 ```
 
-##### \#engine
+#### #engine
 
 Returns either a symbol containing the engine of the agent or `nil` otherwise.
 
@@ -598,7 +688,7 @@ client.engine
 # => :webkit
 ```
 
-##### \#engine?(sym, opts = {})
+#### #engine?(sym, opts = {})
 
 Returns true if supplied `sym` equals (`==`) the current `client.version`, if `opts` contains a `:version` key, it will be compared against `#engine_version`
 Returns false if the supplied criteria doesn't match the current client.
@@ -623,7 +713,7 @@ client.engine? :not_webkit, version: '537.36'
 # => nil
 ```
 
-##### \#engine_version
+#### #engine_version
 
 Returns a [`Browserino::Version`](#version) object.
 
@@ -642,7 +732,7 @@ client.engine_version.full
 # => '537.36'
 ```
 
-##### \#engine_version?(version)
+#### #engine_version?(version)
 
 Returns true if the supplied version equals (`==`) the current clients engine_version.
 Returns false otherwise
@@ -654,7 +744,7 @@ client.engine_version? '537.36'
 # true
 ```
 
-##### \#platform
+#### #platform
 
 Returns either a symbol containing the platform of the agent or `nil` otherwise.
 
@@ -665,7 +755,7 @@ client.platform
 # => :macintosh
 ```
 
-##### \#platform?(sym, opts = {})
+#### #platform?(sym, opts = {})
 
 Returns true if supplied `sym` equals (`==`) the current `client.platform`, if `opts` contains a `:version` key, it will be compared against `#platform_version`
 Returns false if the supplied criteria doesn't match the current client.
@@ -690,7 +780,7 @@ client.platform? :not_macintosh, version: '10.12.1'
 # => nil
 ```
 
-##### \#platform_label
+#### #platform_label
 
 Returns either a symbol containing the platform_label of the agent or `nil` otherwise.
 
@@ -707,7 +797,7 @@ client2.platform_label
 # => :nougat
 ```
 
-##### \#platform_version
+#### #platform_version
 
 Returns a [`Browserino::Version`](#version) object.
 
@@ -726,7 +816,7 @@ client.platform_version.full
 # => '10.12.1'
 ```
 
-##### \#platform_version?(version)
+#### #platform_version?(version)
 
 Returns true if the supplied version equals (`==`) the current clients platform_version.
 Returns false otherwise
@@ -737,7 +827,7 @@ client = Browserino.parse 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) Apple
 client.platform_version? '10.12'
 # => true
 ```
-##### \#device
+#### #device
 
 Returns either a symbol containing the device of the client or `nil` otherwise
 
@@ -748,7 +838,7 @@ client.device
 # => :zte
 ```
 
-##### \#device?(sym)
+#### #device?(sym)
 
 Returns true if the supplied sym equals (`==`) the current clients device.
 
@@ -759,7 +849,7 @@ client.device
 # => :zte
 ```
 
-##### \#architecture
+#### #architecture
 
 Returns either `nil`, `:x32` or `:x64` depending on wether it could be found in the user agent
 
@@ -774,7 +864,7 @@ client2.architecture
 # => :x64
 ```
 
-##### \#architecture?(sym)
+#### #architecture?(sym)
 
 sym must be one of `:x32` or `:x64`, returns `true` if it matches the current client architecture, false otherwise.
 
@@ -784,8 +874,57 @@ client = Browserino.parse 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) Apple
 client.architecture? :x64
 # => false
 ```
+#### #locale
 
-##### \#x64?
+Returns either `nil` or a locale if present. Locales are formatted like `:en_us` for `en-US` and `en_US` and just `:en` for `en`.
+
+```ruby
+client = Browserino.parse 'Mozilla/5.0 (Macintosh; U; Macintosh; en-US; Valve Steam GameOverlay/1329175982; ) AppleWebKit/534.1 (KHTML, like Gecko) Chrome/6.0.444.0 Safari/534.1'
+
+client.locale
+# => :en_us
+```
+#### #locale?
+
+Returns `true` or `false` based on locale presence.
+
+```ruby
+client = Browserino.parse 'Mozilla/5.0 (Macintosh; U; Macintosh; en-US; Valve Steam GameOverlay/1329175982; ) AppleWebKit/534.1 (KHTML, like Gecko) Chrome/6.0.444.0 Safari/534.1'
+
+client.locale?
+# => true
+```
+#### #locales
+
+Returns an array of locales found in `Accept-Language` HTTP header. This only works when `Browserino.parse` is invoked with a hash containing the headers as second argument.
+When locales are found using this method, they will be used instead of the [`#locale`](#locale) found in the user agent (the locale will be replaced with the highest quality locale from the header).
+
+```ruby
+client = Browserino.parse 'Mozilla/5.0 (Macintosh; U; Macintosh; pt-BR; Valve Steam GameOverlay/1329175982; ) AppleWebKit/534.1 (KHTML, like Gecko) Chrome/6.0.444.0 Safari/534.1',
+                          {'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,nl-NL;q=0.8,nl;q=0.7'}
+
+# locale is :en_us because it is present in headers and thus overwrites :pt_br
+client.locale
+# => :en_us
+
+# the :pt_br locale gets added as the least preferred locale instead
+client.locales
+# => [:en_us, :en, :nl_nl, :nl, :pt_br]
+```
+
+#### #locales?
+
+Returns `true` or `false` depending on wether any locales were found at all (e.g. from UA and/or HTTP headers).
+
+```ruby
+client = Browserino.parse 'Mozilla/5.0 (Macintosh; U; Macintosh; pt-BR; Valve Steam GameOverlay/1329175982; ) AppleWebKit/534.1 (KHTML, like Gecko) Chrome/6.0.444.0 Safari/534.1',
+                          {'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,nl-NL;q=0.8,nl;q=0.7'}
+
+client.locales?
+# => true
+```
+
+#### #x64?
 
 A shorthand for `client.architecture? :x64` returns a boolean value
 
@@ -796,7 +935,7 @@ client.x64?
 # => false
 ```
 
-##### \#x32?
+#### #x32?
 
 A shorthand for `client.architecture? :x32` returns a boolean value
 
@@ -807,7 +946,7 @@ client.x32?
 # => false
 ```
 
-##### \#mobile and #mobile?
+#### #mobile and #mobile?
 
 Returns boolean `true` or `false` depending on wether the device user agent is a mobile device
 
@@ -820,7 +959,7 @@ client.mobile?
 # => false
 ```
 
-##### \#type
+#### #type
 
 There are currently 6 types defined, `:browser`, `:bot`, `:library`, `:validator`, `:email` and `:unknown` _(default)_
 This method simply returns the type of the current client, e.g.
@@ -832,7 +971,7 @@ client.type
 # => :browser
 ```
 
-##### \#type?(sym)
+#### #type?(sym)
 
 Returns true if `sym` equals (`==`) the current clients type
 
@@ -846,7 +985,7 @@ client.type? :bot
 # => false
 ```
 
-##### \#like
+#### #like
 
 Like is something  different. Within the defaults a few browsers are defined to be `like` others. This is the full list:
 
@@ -983,7 +1122,7 @@ client == client.like
 # => true
 ```
 
-##### \#like?(sym, opts = {})
+#### #like?(sym, opts = {})
 
 This method acts much like the `name?` method on a client except that like `like` method will match a broader set of things like it.
 Additionally, you can also supply an optional `:version` option which will then be compared to the `like.version` property.
@@ -1011,16 +1150,16 @@ client.like? :firefox
 # => false
 ```
 
-##### \#is?(sym, opts = {})
+#### #is?(sym, opts = {})
 
 The `is?` method is a bit more loose, it will recognize what it is and what it isn't automagically depending on what's passed in.
 It can be a more general replacement for [#name?](#name), [#engine?](#engine) and [#platform?](#platform)
 
-##### \#not
+#### #not
 
 Inverts the result returned by any method ending in a question mark (e.g. `client.version? == true && client.not.version? == false`)
 
-##### \#not?(sym, opts = {})
+#### #not?(sym, opts = {})
 
 An inverted version of `#is?`
 
@@ -1068,9 +1207,9 @@ client.not? :webkit, version: 537
 # => false
 ```
 
-#### Magic methods
+### Magic methods
 
-##### Names
+#### Names
 
 For each of `#name`, `#engine`, `#platform`, `#platform_label` and `#device`, upon instantiation of the current client object, the **results** of these methods will also be defined as methods if they aren't nil e.g:
 
@@ -1162,7 +1301,7 @@ client.el_capitan? '10.10'
 # => true
 ```
 
-##### Aliasses
+#### Aliasses
 
 For each of the defined keys in `Browserino.config.aliasses` that matches with any value of `#name`, `#engine`, `#platform` or `#platform_label`, define every alias as a method.
 
@@ -1257,7 +1396,7 @@ client.platform? :macos, version: '10.10'
 ### Browsers
 
 `aol`, `ion`, `foxy`, `lobo`, `kkman`, `irider`, `sleipnir`, `netcaptor`, `sitekiosk`, `gomezagent`, `solid_core`, `simulbrowse`, `crazy_browser`, `enigma_browser`, `tencenttraveler`, `deepnet_explorer`, `sogou_browser`, `netflix_desktop`, `browzar`, `theworld`, `smart_bro`, `slimbrowser`, `greenbrowser`, `avant_browser`, `orca`, `pogo`, `epic`, `kylo`, `wyzo`, `light`, `prism`, `strata`, `vision`, `galeon`, `icecat`, `minimo`, `beonex`, `kmlite`, `kapiko`, `madfox`, `iceape`, `fennec`, `sylera`, `myibrow`, `lorentz`, `lolifox`, `chimera`, `sundial`, `bonecho`, `k_ninja`, `k_meleon`, `netscape`, `conkeror`, `vonkeror`, `firebird`, `songbird`, `namoroka`, `cyberfox`, `palemoon`, `swiftfox`, `cunaguaro`, `icedragon`, `blackbird`, `cometbird`, `classilla`, `shiretoko`, `lunascape`, `superswan`, `lightning`, `multizilla`, `seamonkey`, `iceweasel`, `enigmafox`, `kazehakase`, `tenfourfox`, `swiftweasel`, `granparadiso`, `maemo_browser`, `sailfishbrowser`, `monyq`, `waterfox`, `minefield`, `fireweb_navigator`, `camino`, `maemo`, `opera_mobile`, `blackberry_browser`, `webosbrowser`, `leechcraft`, `kindle`, `nook`, `xiaomi_miui`, `qt`, `coda`, `silk`, `bolt`, `icab`, `raptr`, `maple`, `arora`, `coast`, `rekonq`, `mercury`, `skyfire`, `omniweb`, `teashark`, `cheshire`, `stainless`, `webbrowser`, `mqqbrowser`, `nokiabrowser`, `samsungbrowser`, `playbook_browser`, `obigo`, `qtweb_browser`, `maxthon_nitro`, `nichrome`, `iron`, `hana`, `perk`,
-`brave`, `swing`, `kinza`, `fluid`, `amigo`, `puffin`, `origin`, `yowser`, `iridium`, `colibri`, `vivaldi`, `safepay`, `slimboat`, `coolnovo`, `rockmelt`, `polarity`, `chromeum`, `yabrowser`, `qqbrowser`, `awesomium`, `mxbrowser`, `fabrowser`, `blackhawk`, `taobrowser`, `bluechrome`, `chromeplus`, `comodo_dragon`, `coc_coc_browser`, `whitehat_aviator`, `steam`, `maxthon`, `ucbrowser`, `edge`, `opera_mini`, `opera`, `escape`, `flock`, `sunrise`, `ie`, `origyn`, `webpositive`, `nintendobrowser`, `deskbrowse`, `qupzilla`, `midori`, `shiira`, `element_browser`, `amigavoyager`, `browse`, `mothra`, `surf`, `spray_can`, `bunjalloo`, `inet_browser`, `webpro`, `sundance`, `ibm_webexplorer`, `navscape`, `firefox`, `chrome`, `safari`, `tizenbrowser`, `epiphany`, `uzbl`, `roccat`, `dolfin`, `dooble`, `adobeair`, `abrowse`, `vimprobable`, `osb_browser`, `edbrowse`, `amaya`, `lynx`, `linemode`, `elinks`, `netpositive`, `mucommander`, `onebrowser`, `flashfire`, `konqueror`, `cyberdog`, `offbyone`, `hotjava`, `netsurf`, `contiki`, `mosaic`, `netbox`, `dillo`, `ice_browser`, `emacs`, `openwave_browser`, `alienblue`, `ovibrowser`, `links`, `oregano`, `browsex`, `doris`, `retawq`, `orange_browser`, `alohabrowser`, `iris`, `otter`, `chedot`, `cm_browser`, `diglo`, `diigo_browser`, `flyflow`, `freebox`, `kuaiso`, `lovense`, `slimjet`, `zetakey`, `wkbrowser`, `yolobrowser`, `whale`, `vivo`, 'jasmine', `seraphic_sraf`, `phantomjs`, `slimerjs`, `liebao`, `w3m`, `charon`, `cent`, `jig_browser_web`, `blazer`
+`brave`, `swing`, `kinza`, `fluid`, `amigo`, `puffin`, `origin`, `yowser`, `iridium`, `colibri`, `vivaldi`, `safepay`, `slimboat`, `coolnovo`, `rockmelt`, `polarity`, `chromeum`, `yabrowser`, `qqbrowser`, `awesomium`, `mxbrowser`, `fabrowser`, `blackhawk`, `taobrowser`, `bluechrome`, `chromeplus`, `comodo_dragon`, `coc_coc_browser`, `whitehat_aviator`, `steam`, `maxthon`, `ucbrowser`, `edge`, `opera_mini`, `opera`, `escape`, `flock`, `sunrise`, `ie`, `origyn`, `webpositive`, `nintendobrowser`, `deskbrowse`, `qupzilla`, `midori`, `shiira`, `element_browser`, `amigavoyager`, `browse`, `mothra`, `surf`, `spray_can`, `bunjalloo`, `inet_browser`, `webpro`, `sundance`, `ibm_webexplorer`, `navscape`, `firefox`, `chrome`, `safari`, `tizenbrowser`, `epiphany`, `uzbl`, `roccat`, `dolfin`, `dooble`, `adobeair`, `abrowse`, `vimprobable`, `osb_browser`, `edbrowse`, `amaya`, `lynx`, `linemode`, `elinks`, `netpositive`, `mucommander`, `onebrowser`, `flashfire`, `konqueror`, `cyberdog`, `offbyone`, `hotjava`, `netsurf`, `contiki`, `mosaic`, `netbox`, `dillo`, `ice_browser`, `emacs`, `openwave_browser`, `alienblue`, `ovibrowser`, `links`, `oregano`, `browsex`, `doris`, `retawq`, `orange_browser`, `alohabrowser`, `iris`, `otter`, `chedot`, `cm_browser`, `diglo`, `diigo_browser`, `flyflow`, `freebox`, `kuaiso`, `lovense`, `slimjet`, `zetakey`, `wkbrowser`, `yolobrowser`, `whale`, `vivo`, `jasmine`, `seraphic_sraf`, `phantomjs`, `slimerjs`, `liebao`, `w3m`, `charon`, `cent`, `jig_browser_web`, `blazer`
 
 ### Bots
 
@@ -1282,7 +1421,7 @@ client.platform? :macos, version: '10.10'
 ### Platforms
 
 In addition to just supporting regular platform names as `client.android?`, there are also specific methods that get added if a certain version matches a platform.
-This is the _platform_label_ property and allows you to do things like `client.froyo?` for instance.
+This is the _platform\_label_ property and allows you to do things like `client.froyo?` for instance.
 
 Below are a list of versions the agent can identify so far
 
@@ -1290,7 +1429,7 @@ Below are a list of versions the agent can identify so far
 
 Regular: `:android`
 
-`:android`, `:cupcake`, `:eclair`, `:froyo`, `:gingerbread`, `:honeycomb`, `:ice_cream_sandwich`, `:jelly_bean`, `:kitkat`, `:lollipop`, `:marshmallow`, `:nougat`, `oreo`
+`:android`, `:cupcake`, `:eclair`, `:froyo`, `:gingerbread`, `:honeycomb`, `:ice_cream_sandwich`, `:jelly_bean`, `:kitkat`, `:lollipop`, `:marshmallow`, `:nougat`, `:oreo`, `:pie`
 
 Since android version releases follow the alphabet and since every new version since android `5` is contained within a single major version number,
 additional methods are defined for all "future" android releases e.g:
