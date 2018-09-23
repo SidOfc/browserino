@@ -50,6 +50,7 @@ module Browserino
 
     def is?(sym, opt = {})
       return invertable send("#{sym}?", opt[:version]) if opt && opt[:version]
+
       invertable send("#{sym}?")
     end
 
@@ -139,16 +140,19 @@ module Browserino
 
     def label_for(sym, from = properties)
       return from[:label] if %i[version label name].include? sym
+
       from["#{sym}_label".to_sym]
     end
 
     def name_for(sym, from = properties)
       return from[:name] if %i[version label name].include? sym
+
       from["#{sym}_name".to_sym]
     end
 
     def version_for(sym, from = properties)
       return from[:version] if %i[version label name].include? sym
+
       from["#{sym}_version".to_sym]
     end
 

@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
 module Browserino
-  def self.analyze(ua, matcher = nil, headers = nil)
+  def self.analyze(uas, matcher = nil, headers = nil)
     @defaults ||= config.global_matchers.map(&:properties).reduce(&:merge)
 
     props = @defaults.merge(matcher && matcher.properties || {})
     like  = props.delete :like
-    props = mass_collect props, ua
+    props = mass_collect props, uas
 
     if headers.is_a? Hash
       headers = normalize_header_keys headers
       props   = fill_missing_with_headers headers, props
     end
 
-    like = Client.new props.merge(like_attrs(props, like, ua)) if like
+    like = Client.new props.merge(like_attrs(props, like, uas)) if like
 
     Client.new props, like
   end
@@ -60,8 +60,10 @@ module Browserino
 
   def self.label_for(target_name, version = nil)
     return unless config.labels.key?(target_name) && version
+
     version = Version.new version unless version.is_a? Version
     return unless version > 0
+
     config.labels[target_name].each do |candidate|
       return candidate[:name] if version.between? candidate[:range]
     end
@@ -85,6 +87,7 @@ module Browserino
   def self.smart_matchers(properties)
     config.smart_matchers.each_with_object({}) do |(prop, detector), props|
       next if properties.key? prop
+
       props[prop] = parse_detector detector, properties
     end
   end

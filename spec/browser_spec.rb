@@ -30,7 +30,7 @@ describe 'Browserino browsers' do
       # test defined property name presence
       it 'expects all properties in client.properties to be defined with formatted values' do
         client.properties.each do |property, value|
-          expect { spec.keys.include? property }
+          expect { spec.key? property }
           expect(value).to eq client.send property
         end
       end

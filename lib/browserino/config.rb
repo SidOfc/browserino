@@ -15,6 +15,7 @@ module Browserino
 
     def label(name, **opts)
       return false unless opts[:for]
+
       opts[:name] ||= name
       labels[opts[:for]] << opts
     end

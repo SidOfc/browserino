@@ -43,7 +43,7 @@ Browserino.config.define do
   filter do |val|
     case val
     when TrueClass, FalseClass, NilClass, Proc, Array then val
-    when %r{\A[\d_\.]+\z}i                            then val.to_s.strip.tr '_', '.'
+    when %r{\A[\d_\.]+\z}i then val.to_s.strip.tr '_', '.'
     else val.to_s.downcase.strip.gsub(%r{[\s-]+}i, '_').to_sym
     end
   end
