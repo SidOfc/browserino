@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Browserino
-  def self.version(current = '4.4.0')
+  def self.version(current = '4.4.1')
     @version ||= Version.new current
   end
 
