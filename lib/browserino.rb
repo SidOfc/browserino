@@ -17,6 +17,8 @@ require_relative 'browserino/definitions/missing_props'
 
 module Browserino
   def self.parse(uas, headers = nil)
+    uas = '' unless uas #stringify user agent before usage when nil or false
+
     uas = config.before_parse.reduce(uas) { |u, b| b.call u }
     config.matchers.each do |matcher|
       return analyze uas, matcher, headers if matcher.matches? uas
