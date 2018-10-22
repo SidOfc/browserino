@@ -4,6 +4,10 @@ describe 'Browserino::Client' do
   client = Browserino.parse Library.random_user_agent
   client = Browserino.parse Library.random_user_agent until client.name
 
+  it 'converts nil to an empty string' do
+    expect(Browserino.parse(nil)).to be_instance_of Browserino::Client
+  end
+
   it 'always responds to missing' do
     expect(client.respond_to?(client.name)).to be true
   end
