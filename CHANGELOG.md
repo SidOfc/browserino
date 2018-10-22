@@ -1,6 +1,11 @@
 # Changelog
 _dates are in dd-mm-yyyy format_
 
+### 24-12-2017 VERSION 4.2.3
+
+- Loosened some Android label version ranges
+- `Browserino::Version` can now also parse floats float `1.1` equals major version 1, minor version 1, patch level 0
+
 ### 12-10-2017 VERSION 4.2.2
 
 - Added support for `high_sierra`
