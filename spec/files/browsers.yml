@@ -1,5 +1,85 @@
 ---
 :browsers:
+- :user_agent:       Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.9) Gecko/20100101 Goanna/4.1 Firefox/60.9 Basilisk/20190211
+  :name:             :basilisk
+  :version:          '20190211'
+  :engine:           :goanna
+  :engine_version:   '4.1'
+  :platform:         :windows
+  :platform_version: '10.0'
+  :platform_label:   :windows10
+  :device:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'basilisk basilisk20190211 goanna goanna4 windows windows10'
+  :like:             :firefox
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Windows NT 10.0.15063.674; osmeta 10.3.3308) AppleWebKit/602.1.1 (KHTML, like Gecko) Version/9.0 Safari/602.1.1 osmeta/10.3.3308 Build/3308 [FBAN/FBW;FBAV/140.0.0.232.179;FBBV/83145113;FBDV/WindowsDevice;FBMD/UX360CAK;FBSN/Windows;FBSV/10.0.15063.674;FBSS/2;FBCR/;FBID/desktop;FBLC/pl_PL;FBOP/45;FBRV/0]
+  :name:             :facebook_app
+  :version:          '140.0.0.232.179'
+  :engine:           :webkit
+  :engine_version:   '602.1.1'
+  :platform:         :windows
+  :platform_version: '10.0.15063.674'
+  :platform_label:   :windows10
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'facebook_app facebook_app140 webkit webkit602 windows windows10'
+  :like:             :facebook_app
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15G77 [FBAN/FBIOS;FBAV/183.0.0.41.81;FBBV/119182652;FBDV/iPhone8,1;FBMD/iPhone;FBSN/iOS;FBSV/11.4.1;FBSS/2;FBCR/Oi;FBID/phone;FBLC/pt_BR;FBOP/5;FBRV/0]
+  :name:             :facebook_app
+  :version:          '183.0.0.41.81'
+  :engine:           :webkit
+  :engine_version:   '605.1.15'
+  :platform:         :ios
+  :platform_version: '11.4.1'
+  :platform_label:
+  :device:           :iphone
+  :locale:
+  :architecture:
+  :mobile:           true
+  :to_s:             'facebook_app facebook_app183 webkit webkit605 ios ios11 iphone'
+  :like:             :facebook_app
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Safari/605.1.15
+  :name:             :safari
+  :version:          '12.0'
+  :engine:           :webkit
+  :engine_version:   '605.1.15'
+  :platform:         :macintosh
+  :platform_version: '10.15'
+  :platform_label:   :catalina
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'safari safari12 webkit webkit605 macintosh catalina'
+  :like:             :safari
+  :like_version:
+
+- :user_agent:       Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Safari/605.1.15
+  :name:             :safari
+  :version:          '12.0'
+  :engine:           :webkit
+  :engine_version:   '605.1.15'
+  :platform:         :macintosh
+  :platform_version: '10.14'
+  :platform_label:   :mojave
+  :device:
+  :locale:
+  :architecture:
+  :mobile:           false
+  :to_s:             'safari safari12 webkit webkit605 macintosh mojave'
+  :like:             :safari
+  :like_version:
+
 - :user_agent:       Mozilla/5.0 (Linux; Android 6.0; vivo 1713 Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.124 Mobile Safari/537.36
   :name:             :vivo
   :version:          '1713'
@@ -2779,6 +2859,20 @@
   :architecture:     :x64
   :mobile:           false
   :to_s:             'osb_browser osb_browser0 webkit webkit146 linux'
+
+- :user_agent:       Mozilla/5.0 (X11; Linux i686; rv:45.9) Gecko/20100101 Goanna/3.0 Firefox/45.9 PaleMoon/27.1.2
+  :name:             :palemoon
+  :version:          '27.1.2'
+  :engine:           :goanna
+  :engine_version:   '3.0'
+  :platform:         :linux
+  :platform_label:
+  :platform_version:
+  :locale:
+  :architecture:     :x64
+  :mobile:           false
+  :to_s:             'palemoon palemoon27 goanna goanna3 linux'
+  :like:             :firefox
 
 - :user_agent:       Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:25.6) Gecko/20150723 Firefox/31.9 PaleMoon/25.6.0
   :name:             :palemoon

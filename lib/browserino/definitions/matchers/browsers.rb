@@ -89,38 +89,41 @@ Browserino.config.browsers do
   match %r{spray\-can}i,           name: :spray_can
   match %r{bunjalloo}i,            name: :bunjalloo
 
-  match %r{sraf}i,             name: :seraphic_sraf,
-                               version: %r{sraf/([\d\.]+)}i
+  match %r{sraf}i,              name: :seraphic_sraf,
+                                version: %r{sraf/([\d\.]+)}i
 
-  match %r{phantomjs}i,        name: :phantomjs,
-                               engine: %r{(webkit|gecko|servo|trident|blink)}i
+  match %r{phantomjs}i,         name: :phantomjs,
+                                engine: %r{(webkit|gecko|servo|trident|blink)}i
 
-  match %r{slimerjs}i,         name: :slimerjs,
-                               engine: %r{(webkit|gecko|servo|trident|blink)}i,
-                               engine_version: %r{(?:webkit|gecko|servo|
-                                                   trident|blink|rv)
-                                                   [:/]([\d\.]+)}xi
+  match %r{slimerjs}i,          name: :slimerjs,
+                                engine: %r{(webkit|gecko|servo|trident|blink)}i,
+                                engine_version: %r{(?:webkit|gecko|servo|
+                                                    trident|blink|rv)
+                                                    [:/]([\d\.]+)}xi
 
-  match %r{liebao}i,           name: :liebao, engine: :webkit,
-                               version: %r{liebao(?:fast)/([\d\.]+)}i
+  match %r{liebao}i,            name: :liebao, engine: :webkit,
+                                version: %r{liebao(?:fast)/([\d\.]+)}i
 
-  match %r{qupzilla|falkon}i,  name: :qupzilla, engine: :webkit,
-                               version: %r{(?:qupzilla|falkon)/([\d\.]+)}i
+  match %r{qupzilla|falkon}i,   name: :qupzilla, engine: :webkit,
+                                version: %r{(?:qupzilla|falkon)/([\d\.]+)}i
 
-  match %r{inet\sbrowser}i,    name: :inet_browser,
-                               platform: :star_blade_os
+  match %r{inet\sbrowser}i,     name: :inet_browser,
+                                platform: :star_blade_os
 
-  match %r{webpro}i,           name: :webpro,
-                               locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
+  match %r{webpro}i,            name: :webpro,
+                                locale: %r{\[(\w{2}(?:\-\w{2})?)\]}i
 
-  match %r{sundance}i,         name: :sundance,
-                               version: %r{(?:version/|sundance/)([\d\.]+)}i
+  match %r{sundance}i,          name: :sundance,
+                                version: %r{(?:version/|sundance/)([\d\.]+)}i
 
-  match %r{ibm\swebexplorer}i, name: :ibm_webexplorer, platform: :os2,
-                               version: %r{bexplorer\s?/v?([\d\.]+)}i
+  match %r{ibm\swebexplorer}i,  name: :ibm_webexplorer, platform: :os2,
+                                version: %r{bexplorer\s?/v?([\d\.]+)}i
 
-  match %r{navscape}i,         name: :navscape, engine: :webkit,
-                               version: %r{navscape/(?:\w+-)?([\d\.]+)}i
+  match %r{navscape}i,          name: :navscape, engine: :webkit,
+                                version: %r{navscape/(?:\w+-)?([\d\.]+)}i
+
+  match %r{FBAN/FB(?:IOS|W);}i, name: :facebook_app, version: %r{FBAV\/([\d\.]+)}i,
+                                engine: :webkit
 
   match %r{firefox|phoenix}i do
     name           :firefox
@@ -337,7 +340,6 @@ Browserino.config.browsers do
     match %r{icedragon}i,       name: :icedragon
     match %r{cunaguaro}i,       name: :cunaguaro
     match %r{swiftfox}i,        name: :swiftfox
-    match %r{palemoon}i,        name: :palemoon
     match %r{cyberfox}i,        name: :cyberfox
     match %r{namoroka}i,        name: :namoroka
     match %r{songbird}i,        name: :songbird
@@ -372,6 +374,18 @@ Browserino.config.browsers do
     match %r{epic}i,            name: :epic
     match %r{pogo}i,            name: :pogo
     match %r{orca}i,            name: :orca
+
+    match %r{palemoon}i do
+      name           :palemoon
+      engine         %r{(gecko|servo|goanna)}i
+      engine_version %r{(?:rv:\s?|servo/|goanna/)([\d\.]+)}i
+    end
+
+    match %r{basilisk}i do
+      name           :basilisk
+      engine         %r{(gecko|servo|goanna)}i
+      engine_version %r{(?:rv:\s?|servo/|goanna/)([\d\.]+)}i
+    end
   end
 
   # never thought a browser would want to be like IE...

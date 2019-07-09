@@ -28,6 +28,7 @@ Browserino.config.define do
     subs << [%r{awesomium}i, ''] if ua =~ %r{flashfire}i
     subs << [%r{firefox}i, ''] if ua =~ %r{ips-agent}i
     subs << [%r{newsgator}i, ''] if ua =~ %r{newswire}i
+    subs << [%r{gecko|rv:}i, ''] if ua =~ %r{goanna}i
 
     subs.reduce(ua) { |acc, elem| acc.gsub(*elem) }
   end

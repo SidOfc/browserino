@@ -27,6 +27,7 @@ Browserino.config.define do
   label :oreo,               for: :android,       range: '8'..'8.9.9'
   label :pie,                for: :android,       range: '9'..'9.9.9'
 
+  # NOTE: these can not be removed due to backwards compatibility.
   # support android up to the letter Z by following their version scheme which
   # uses versions X.0.0 up to X.9.9. the callable methods will be named like
   # android_[LETTER] where letter can be anything between 'p' and 'z' inclusive
@@ -51,6 +52,7 @@ Browserino.config.define do
   label :sierra,             for: :macintosh,     range: '10.12'..'10.12.9'
   label :high_sierra,        for: :macintosh,     range: '10.13'..'10.13.9'
   label :mojave,             for: :macintosh,     range: '10.14'..'10.14.9'
+  label :catalina,           for: :macintosh,     range: '10.15'..'10.15.9'
 
   label :dos,                for: :windows,       range: '3.1'..'4.0'
   label :windows98,          for: :windows,       range: '98'..'98.9.9'
