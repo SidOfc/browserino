@@ -23,15 +23,15 @@ about their browser / OS versions.
         <li><a href="#table-of-contents">Table of Contents</a></li>
         <li><a href="#sources">Sources</a></li>
         <li><a href="#changelog">Changelog</a><ul>
+            <li><a href="#10-07-2019-version-450">10-07-2019 VERSION 4.5.0</a></li>
             <li><a href="#21-10-2018-version-441">21-10-2018 VERSION 4.4.1</a></li>
             <li><a href="#23-06-2018-version-440">23-06-2018 VERSION 4.4.0</a></li>
-            <li><a href="#23-06-2018-version-430">23-06-2018 VERSION 4.3.0</a></li>
         </ul></li>
         <li><a href="#installation">Installation</a></li>
         <li><a href="#rails--320">Rails (>= 3.2.0)</a><ul>
             <li><a href="#initializer">Initializer</a></li>
-        </ul></li>
-        <li><a href="#usage">Usage</a><ul>
+        </ul></details></li>
+        <li><a href="#usage">Usage</a><details><summary>show 5 items</summary><ul>
             <li><a href="#client">Client</a></li>
             <li><a href="#formatting">Formatting</a><ul>
                 <li><a href="#non-version-like-properties">Non version-like properties</a></li>
@@ -42,8 +42,8 @@ about their browser / OS versions.
                 <li><a href="#aliasses">Aliasses</a></li>
                 <li><a href="#labels">Labels</a></li>
                 <li><a href="#http-headers">HTTP headers</a></li>
-            </ul></li>
-            <li><a href="#methods">Methods</a><ul>
+            </ul></details></li>
+            <li><a href="#methods">Methods</a><details><summary>show 31 items</summary><ul>
                 <li><a href="#name">name</a></li>
                 <li><a href="#namesym-opts--">name?(sym, opts = {})</a></li>
                 <li><a href="#version">version</a></li>
@@ -79,8 +79,8 @@ about their browser / OS versions.
             <li><a href="#magic-methods">Magic methods</a><ul>
                 <li><a href="#names">Names</a></li>
                 <li><a href="#aliasses-1">Aliasses</a></li>
-        </ul></li></ul></li>
-        <li><a href="#supported">Supported</a><ul>
+        </ul></li></ul></details></li>
+        <li><a href="#supported">Supported</a><details><summary>show 8 items</summary><ul>
             <li><a href="#browsers">Browsers</a></li>
             <li><a href="#bots">Bots</a></li>
             <li><a href="#validators">Validators</a></li>
@@ -93,7 +93,7 @@ about their browser / OS versions.
                 <li><a href="#macintosh">Macintosh</a></li>
             </ul></li>
             <li><a href="#devices">Devices</a></li>
-    </ul></li></ul></li>
+        </ul></li></ul></li>
 </ul>
 </details>
 
@@ -115,6 +115,14 @@ Many thanks to the creators and maintainers of the following sources of user age
 
 _dates are in dd-mm-yyyy format_
 older changes can be found in the [changelog](/projects/browserino/changelog/)
+
+### 10-07-2019 VERSION 4.5.0
+
+- Add: browser user-agents
+    - `:basilisk`
+    - `:facebook_app`
+- Add: `:goanna` rendering engine detection
+- Add: `:catalina` label for MacOS 10.15.x
 
 ### 21-10-2018 VERSION 4.4.1
 
@@ -156,11 +164,6 @@ older changes can be found in the [changelog](/projects/browserino/changelog/)
 - Add: `:cent`
 - Add: `:jig_browser_web`
 - Add: `:blazer`
-
-### 23-06-2018 VERSION 4.3.0
-
-- Add macOS `mojave` label
-- Add generic `android_*` labels for android versions `p` through `z`.
 
 ## Installation
 

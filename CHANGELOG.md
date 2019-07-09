@@ -1,6 +1,11 @@
 # Changelog
 _dates are in dd-mm-yyyy format_
 
+### 23-06-2018 VERSION 4.3.0
+
+- Add macOS `mojave` label
+- Add generic `android_*` labels for android versions `p` through `z`.
+
 ### 24-12-2017 VERSION 4.2.3
 
 - Loosened some Android label version ranges
