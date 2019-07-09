@@ -30,7 +30,7 @@ about their browser / OS versions.
         <li><a href="#installation">Installation</a></li>
         <li><a href="#rails--320">Rails (>= 3.2.0)</a><ul>
             <li><a href="#initializer">Initializer</a></li>
-        </ul></details></li>
+        </ul></li>
         <li><a href="#usage">Usage</a><details><summary>show 5 items</summary><ul>
             <li><a href="#client">Client</a></li>
             <li><a href="#formatting">Formatting</a><ul>
@@ -79,7 +79,7 @@ about their browser / OS versions.
             <li><a href="#magic-methods">Magic methods</a><ul>
                 <li><a href="#names">Names</a></li>
                 <li><a href="#aliasses-1">Aliasses</a></li>
-        </ul></li></ul></details></li>
+        </ul></li>
         <li><a href="#supported">Supported</a><details><summary>show 8 items</summary><ul>
             <li><a href="#browsers">Browsers</a></li>
             <li><a href="#bots">Bots</a></li>
