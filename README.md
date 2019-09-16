@@ -114,7 +114,7 @@ Many thanks to the creators and maintainers of the following sources of user age
 ## Changelog
 
 _dates are in dd-mm-yyyy format_
-older changes can be found in the [changelog](/projects/browserino/changelog/)
+older changes can be found in the [changelog](CHANGELOG.md)
 
 ### 10-07-2019 VERSION 4.5.0
 
