@@ -11,7 +11,6 @@ about their browser / OS versions.
 [![Gem Version](https://img.shields.io/gem/v/browserino.svg?colorB=E9573F&style=square)](rubygems.org/gems/browserino)
 [![Issues](https://img.shields.io/github/issues/SidOfc/browserino.svg)](https://github.com/SidOfc/browserino/issues)
 [![Build Status](https://img.shields.io/travis/SidOfc/browserino.svg)](https://travis-ci.org/SidOfc/browserino)
-[![Coverage Status](https://img.shields.io/coveralls/SidOfc/browserino.svg)](https://coveralls.io/github/SidOfc/browserino?branch=master)
 
 ## Table of Contents
 
