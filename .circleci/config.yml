@@ -9,9 +9,8 @@ jobs:
       - image: cimg/ruby:2.7
     steps:
       - checkout
-      - ruby/install-deps
       - run: gem install bundler
-      - ruby/rspec-test
+      - run: bundle exec rspec
 
 workflows:
   tests:
