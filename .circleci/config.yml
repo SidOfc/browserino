@@ -4,9 +4,17 @@ orbs:
   ruby: circleci/ruby@1.2.0
 
 jobs:
-  test:
+  "test/ruby:2.7":
     docker:
       - image: cimg/ruby:2.7
+    steps:
+      - checkout
+      - run: gem install bundler
+      - run: bundle
+      - run: bundle exec rspec
+  "test/ruby:2.6":
+    docker:
+      - image: cimg/ruby:2.6
     steps:
       - checkout
       - run: gem install bundler
@@ -16,5 +24,6 @@ jobs:
 workflows:
   tests:
     jobs:
-      - test
+      - "test/ruby:2.7"
+      - "test/ruby:2.6"
 
