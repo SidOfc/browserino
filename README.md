@@ -10,7 +10,7 @@ about their browser / OS versions.
 ![Licence](https://img.shields.io/badge/license-MIT-E9573F.svg)
 [![Gem Version](https://img.shields.io/gem/v/browserino.svg?colorB=E9573F&style=square)](rubygems.org/gems/browserino)
 [![Issues](https://img.shields.io/github/issues/SidOfc/browserino.svg)](https://github.com/SidOfc/browserino/issues)
-[![Build Status](https://img.shields.io/travis/SidOfc/browserino.svg)](https://travis-ci.org/SidOfc/browserino)
+[![Build Status](https://circleci.com/gh/SidOfc/browserino.svg?style=shield)](https://app.circleci.com/pipelines/github/SidOfc/browserino)
 
 ## Table of Contents
 
